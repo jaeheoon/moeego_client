@@ -1,0 +1,206 @@
+/* 공통 스타일 */
+h1, h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.grid {
+    display: grid;
+    gap: 10px;
+}
+
+button, span {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* 메인 배너 */
+.mainBannerWrap {
+    text-align: center;
+    padding: 40px 0;
+    background-color: white;
+}
+
+.mainBannerWrap h1 {
+    font-size: 28px;
+}
+
+.searchCategoryWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchCategoryWrap input {
+    padding: 10px;
+    width: 60%;
+    height: 20px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* 카테고리 */
+.categories {
+    display: flex;
+    gap: 20px;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.categories img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/* 배너 */
+.bannerWrap {
+    padding: 20px;
+    text-align: center;
+    background-color: #e0e0e0;
+    font-size: 24px;
+}
+
+/* 리뷰 */
+.reviewsWrap {
+    padding: 40px;
+    background-color: white;
+}
+
+.reviewsWrap h2 {
+    margin-bottom: 20px;
+}
+
+.review-cards {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.review-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%;
+    height: 300px;
+    text-align: left;
+    position: relative;
+}
+
+.review-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.review-card strong {
+    position: absolute;
+    top: 30px;
+    left: 70px;
+}
+
+.review-card strong:nth-of-type(2) {
+    color: rgb(126, 124, 124);
+    font-weight: normal;
+    top: 50px;
+}
+
+.review-card p:nth-of-type(2) {
+    margin-top: 10px;
+}
+
+.review-card p:nth-of-type(3) {
+    margin-top: 10px;
+}
+
+.clientName {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+/* 키워드 */
+.keywordWrap {
+    padding: 40px;
+    text-align: center;
+}
+
+.keyword-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.keyword-images div {
+    width: 23%;
+    height: 200px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 위치 목록 */
+.locationsWrap {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.locationsWrap h2 {
+    margin-bottom: 10px;
+}
+
+.city-listWrap {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    justify-content: start;
+    margin-top: 10px;
+    gap:10px;
+}
+
+.city-listWrap span {
+    padding: 10px 15px;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.city-listWrap span:hover {
+    background-color: #d0d0d0;
+}

@@ -1,0 +1,16 @@
+/* App 전체를 감싸는 컨테이너 */
+.App {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+}
+
+/* 메인 콘텐츠를 담는 컨테이너 */
+.main-content {
+  width: 60%;
+  max-width: 1200px; /* 최대 너비를 설정하여 큰 화면에서도 너무 넓지 않도록 */
+  min-width: 768px; /* 최소 너비 설정하여 작은 화면에서는 레이아웃 깨짐 방지 */
+  margin: 0 auto; /* 가운데 정렬 */
+}
