@@ -1,0 +1,166 @@
+.JoinPage {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.JoinPage #join_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.JoinPage .joinbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #F4F4F4;
+    width: 400px;
+    height: 1120px;
+    border-radius: 25px;
+    background-color: #F4F4F4;
+}
+
+.JoinPage #warn {
+    color: #737373; 
+    font-size: 11px;  
+}
+
+.JoinPage input[type="password"] {
+    margin-top: 5px; 
+}
+
+.JoinPage input[type="text"] {
+    margin-top: 5px; 
+}
+
+.JoinPage .join-align{
+    width: 320px; 
+    align-items: center;
+    margin-top: 5px; 
+}
+
+.joinbox .namebox,.joinbox .pwdbox,.joinbox .emailbox,.joinbox .repwdbox,.joinbox .phonebox,.joinbox .addrbox ,.joinbox .detailaddrbox{
+    border-radius: 10px; 
+    border-style: none;
+    padding: 12px 12px; 
+    font-size: 16px; 
+    width: 320px; 
+    box-sizing: border-box;
+    outline: lightcoral;
+}
+
+.JoinPage .checknumbox,.JoinPage .zipcodebox{
+    border-radius: 10px; 
+    border-style: none;
+    padding: 12px 12px; 
+    font-size: 16px; 
+    width: 220px; 
+    box-sizing: border-box;
+}
+
+.JoinPage .zipcodebox {margin-right: 5px;}
+
+.JoinPage .checknumBtn,.JoinPage .checkBtn,.JoinPage .zipcheckBtn,.JoinPage .joinBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    box-sizing: border-box;
+    padding: 10px 20px;           
+    font-size: 16px;              
+    border-radius: 10px;             
+    color: white;   
+    width: 320px;            
+    cursor: pointer;  
+    border: 1px solid #FFD8E4;   
+    background-color: #FFD8E4; 
+    margin-top: 5px; 
+    font-weight: bold;
+}
+.JoinPage .checknumBtn,.JoinPage .zipcheckBtn {
+    width: 95px; 
+    height : 45px;
+    float: right;
+    font-weight: bold;
+}
+
+.JoinPage .checknumBtn {font-size: 16px;}
+
+.JoinPage .zipcheckBtn {font-size: 13px;}
+
+.JoinPage .dalin a {
+    text-decoration: none; 
+    color: #737373; 
+    font-size: 11px; 
+}
+
+.JoinPage .radio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    box-sizing: border-box;
+    padding: 10px 20px;           
+    font-size: 16px;              
+    border-radius: 10px;             
+    color: #fd9bb9;   
+    width: 160px;            
+    cursor: pointer;  
+    border: 1px solid #FFD8E4;   
+    background-color: white; 
+    margin-top: 5px; 
+    font-size: 16px;  
+    font-weight: bold;
+}
+
+.JoinPage .checknumBtn:hover, .JoinPage .checkBtn:hover, .JoinPage .zipcheckBtn:hover, .JoinPage .joinBtn:hover, .JoinPage .radio:hover {
+    background-color: white; 
+    color: #fd9bb9; 
+}
+
+.JoinPage .select {
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+}
+.JoinPage .select input[type=radio]{
+    display: none;
+}
+
+.JoinPage .select input[type=radio]+label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    cursor: pointer;
+    width: 160px;
+    border-radius: 10px;
+    line-height: 24px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 20px;    
+    border: 1px solid #FFD8E4;   
+    margin-top: 5px; 
+    font-size: 16px;  
+    font-weight: bold;
+}
+
+.JoinPage .select input[type=radio]+label{
+    background-color: white; 
+    color: #fd9bb9; 
+}
+
+.JoinPage .select input[type=radio]:checked+label{
+    background-color: #FFD8E4; 
+    color: white; 
+    border-color: lightcoral;
+}

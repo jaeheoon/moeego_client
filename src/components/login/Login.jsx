@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
+        <div class="LoginPage">
         <div id="login_container">
             <h1>로그인</h1>
             <form class="loginbox">
@@ -11,9 +12,9 @@ const Login = () => {
                     <div class="login-align">
                         <label htmlFor="email">이메일</label>
                     </div>
-                    <div class="login-align">
+                    <div>
                         <input
-                        class="emailbox"
+                        className="emailbox"
                         type="email"
                         id="email"
                         placeholder="example@MoeeGo.com"
@@ -25,7 +26,7 @@ const Login = () => {
                         <label htmlFor="password">비밀번호</label>
                     </div>
                     
-                    <div class="login-align">
+                    <div>
                         <input
                         class="pwdbox"
                         type="password"
@@ -35,7 +36,7 @@ const Login = () => {
                     </div>
                     <div id="pwdDiv"></div>
                     <br/>
-                    <div class="login-align">
+                    <div>
                         <button type="submit" class="emailLoginBtn">
                         이메일 로그인
                         </button>
@@ -60,22 +61,23 @@ const Login = () => {
                 이전에 이메일로 로그인했어요
             </span>
             */} 
-            <div class="login-align">
+            <div>
                 <button type="button" class="kakaoLoginBtn">
                 <img src="../../src/image/kaka.png" alt="카카오" width="18" height="16"/>
                     카카오로 시작
                 </button>
             </div>
             <br/>
-            <div class="login-align">
+            <div>
                 <button type="button" class="naverLoginBtn">
                 <img src="../../src/image/n.png" alt="네이버" width="18" height="16"/>
+                <div></div>
                 네이버로 시작
                 </button>
             </div>
             </form>
-            <br/>
-            <br/>
+
+        </div>
         </div>
     );
   };
