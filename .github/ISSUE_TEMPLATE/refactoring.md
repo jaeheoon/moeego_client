@@ -2,7 +2,7 @@
 name: Refactoring
 about: Refactoring Function
 title: "[FE] Ref: "
-labels: ''
+labels: ref
 assignees: ''
 
 ---

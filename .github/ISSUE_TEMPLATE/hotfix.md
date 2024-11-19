@@ -2,7 +2,7 @@
 name: Hotfix
 about: bug code hotfix
 title: "[FE] Fix: "
-labels: ''
+labels: fix
 assignees: ''
 
 ---
@@ -13,5 +13,5 @@ assignees: ''
 # 수정할 내용 
 - 
 
-#수정 내용
+# 수정 내용
 -
