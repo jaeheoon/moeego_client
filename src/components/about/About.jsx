@@ -1,11 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import '../../css/about/About.css';
 
 const About = () => {
     return (
         <div className='homepageInfoPage'>
             <div className='infoBannerWrap'>
                 <div className='infoWrap'>
-                    <h2>모이고의 미션</h2>
+                    <div className='infoMissionWrap'>
+                        <h1>모이고의 미션</h1>
+                    </div>
                     <p>모이고는 여러분들이 도움을 필요로 하는 일을 도와줄 달인이 모이는 장소에요.</p>
                 </div>
             </div>
@@ -18,16 +22,40 @@ const About = () => {
                 </div>
             </div>
             <div className='infoProCountWrap'>
-                display:grid로 3개씩 두줄로 표현
-                Count로 각자 카테고리에 해당하는 달인 수 출력
+                <div className='proCountWrap'>
+                    <h1>14,267</h1>
+                    <p>홈/인테리어 달인들</p>
+                </div>
+                <div className='proCountWrap'>
+                    <h1>49,215</h1>
+                    <p>외주 달인들</p>
+                </div>
+                <div className='proCountWrap'>
+                    <h1>2,376</h1>
+                    <p>패션/뷰티 달인들</p>
+                </div>
+                <div className='proCountWrap'>
+                    <h1>154,267</h1>
+                    <p>직무/과외 달인들</p>
+                </div>
+                <div className='proCountWrap'>
+                    <h1>978,721</h1>
+                    <p>취미/자기계발 달인들</p>
+                </div>
+                <div className='proCountWrap'>
+                    <h1>2,421,235</h1>
+                    <p>자동차 달인들</p>
+                </div>
             </div>
             <div className='infoJoinWrap'>
                 <div>
                     <h2>모이고에 가입해보세요</h2>
                     <hr/>
-                    <input  type='button' value='일반 회원 가입'/>
-                    <input  type='button' value='달인 회원 가입'/>
-                    <p>이미 계정이 있으신가요?</p>
+                    <Link to="/login">이미 계정이 있으신가요?</Link>
+                    <div className='aboutBtnWrap'>
+                        <Link to="/signup"><input  type='button' value='일반 회원 가입'/></Link>
+                        <Link to="/pro/signup"><input  type='button' value='달인 회원 가입'/></Link>
+                    </div>
                 </div>
             </div>
         </div>
