@@ -35,77 +35,67 @@ import Join from "./components/join/Join";
 import ProMain from "./components/pro/ProMain";
 import Prosignup from "./components/pro/Prosignup";
 import ProSub from "./components/pro/ProSub";
-import Banner from "./components/mainpage/Banner.jsx";
-import Reviews from "./components/mainpage/Reviews.jsx";
-import CleaningSection from "./components/mainpage/CleaningSection.jsx";
-import Locations from "./components/mainpage/Locations.jsx";
 import ArticleMain from './components/articles/ArticleMain.jsx';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
 import ProDetail from './components/Pro/ProDetail.jsx';
+import ProReview from "./components/Pro/ProReview.jsx";
+import ProInfo from "./components/Pro/ProInfo.jsx";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <Header />
-        <div className='main-content'>
           <Routes>
             {/* 메인페이지 */}
-            <Route path={"/"} element={<MainPage />} />
+            <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
 
             {/* 카테고리 페이지 */}
-            <Route path={"/category/home"} element={<Home_interior />} />
-            <Route path={"/category/outsourcing"} element={<Outsourcing />} />
-            <Route path={"/category/fashion"} element={<Fashion_beauty />} />
-            <Route path={"/category/study"} element={<Study />} />
-            <Route path={"/category/hobby"} element={<Hobby />} />
-            <Route path={"/category/car"} element={<Car />} />
+            <Route path={"/category/home"} element={<div className='main-content'><Home_interior /></div>} />
+            <Route path={"/category/outsourcing"} element={<div className='main-content'><Outsourcing /></div>} />
+            <Route path={"/category/fashion"} element={<div className='main-content'><Fashion_beauty /></div>} />
+            <Route path={"/category/study"} element={<div className='main-content'><Study /></div>} />
+            <Route path={"/category/hobby"} element={<div className='main-content'><Hobby /></div>} />
+            <Route path={"/category/car"} element={<div className='main-content'><Car /></div>} />
             <Route path={"/about"} element={<About />} />
-            <Route path="/pro/search" element={<ProSearch />} />
-            <Route path="/pro" element={<ProView />} />
+            <Route path="/pro/search" element={<div className='main-content'><ProSearch /></div>} />
+            <Route path="/pro" element={<div className='main-content'><ProView /></div>} />
 
-            {/* 개별 페이지로 접근할 수 있도록 각각 라우트 설정 */}
-            <Route path="/banner" element={<Banner />} />
-            <Route path="/reviews" element={<Reviews />} />
-            <Route path="/cleaning" element={<CleaningSection />} />
-            <Route path="/locations" element={<Locations />} />
-
-            <Route path="/article/Write" element={<Write />} />
-            <Route path="/article/Update" element={<Update />} />
-            <Route path="/mypage/Review" element={<Review />} />
+            <Route path="/article/Write" element={<div className='main-content'><Write /></div>} />
+            <Route path="/article/Update" element={<div className='main-content'><Update /></div>} />
+            <Route path="/mypage/Review" element={<div className='main-content'><Review /></div>} />
 
             {/* 마이페이지 */}
-            <Route path={"/mypage"} element={<MyPage />} />
-            <Route path={"/mypage/likepro"} element={<BookMarkPro />} />
-            <Route path={"/mypage/reservation"} element={<MyReservation />} />
-            <Route path={"/mypage/myhistory"} element={<MyHistory />} />
-            <Route path={"/mypage/myhistory/myarticle"} element={<MyArticles />} />
-            <Route path={"/mypage/myhistory/mycomment"} element={<MyComments />} />
-            <Route path={"/mypage/account"} element={<Account />} />
-            <Route path={"/mypage/account/private"} element={<Private />} />
-            <Route path={"/mypage/account/private/email"} element={<ChangeEmail />} />
-            <Route path={"/mypage/account/private/password"} element={<ChangePassword />} />
-            <Route path={"/mypage/account/private/address"} element={<ChangeAddress />} />
-            <Route path={"/mypage/account/private/signout"} element={<SignOut />} />
-            <Route path={"/mypage/account/private/success"} element={<Success />} />
+            <Route path={"/mypage"} element={<div className='main-content'><MyPage /></div>} />
+            <Route path={"/mypage/likepro"} element={<div className='main-content'><BookMarkPro /></div>} />
+            <Route path={"/mypage/reservation"} element={<div className='main-content'><MyReservation /></div>} />
+            <Route path={"/mypage/myhistory"} element={<div className='main-content'><MyHistory /></div>} />
+            <Route path={"/mypage/myhistory/myarticle"} element={<div className='main-content'><MyArticles /></div>} />
+            <Route path={"/mypage/myhistory/mycomment"} element={<div className='main-content'><MyComments /></div>} />
+            <Route path={"/mypage/account"} element={<div className='main-content'><Account /></div>} />
+            <Route path={"/mypage/account/private"} element={<div className='main-content'><Private /></div>} />
+            <Route path={"/mypage/account/private/email"} element={<div className='main-content'><ChangeEmail /></div>} />
+            <Route path={"/mypage/account/private/password"} element={<div className='main-content'><ChangePassword /></div>} />
+            <Route path={"/mypage/account/private/address"} element={<div className='main-content'><ChangeAddress /></div>} />
+            <Route path={"/mypage/account/private/signout"} element={<div className='main-content'><SignOut /></div>} />
+            <Route path={"/mypage/account/private/success"} element={<div className='main-content'><Success /></div>} />
 
 
             {/* 커뮤니티 페이지 */}
-            <Route path={"/article"} element={<ArticleMain />} />
-            <Route path={"/article/free"} element={<FreeBoardForm />} />
-            <Route path={"/article/viewpage"} element={<ViewPage />} />
+            <Route path={"/article"} element={<div className='main-content'><ArticleMain /></div>} />
+            <Route path={"/article/free"} element={<div className='main-content'><FreeBoardForm /></div>} />
+            <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
 
             {/* 회원가입/로그인 페이지 */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Join />} />
+            <Route path="/login" element={<div className='main-content'><Login /></div>} />
+            <Route path="/signup" element={<div className='main-content'><Join /></div>} />
 
             {/* 달인 가입 페이지 */}
-            <Route path="/pro/signup/main" element={<ProMain />} />
-            <Route path="/pro/signup/sub" element={<ProSub />} />
-            <Route path="/pro/signup" element={<Prosignup />} />
-            <Route path="/pro/detail" element={<ProDetail />} />
+            <Route path="/pro/signup/main" element={<div className='main-content'><ProMain /></div>} />
+            <Route path="/pro/signup/sub" element={<div className='main-content'><ProSub /></div>} />
+            <Route path="/pro/signup" element={<div className='main-content'><Prosignup /></div>} />
+            <Route path="/pro/detail" element={<div className='main-content'><ProDetail /></div>} />
           </Routes>
-        </div>
         <Footer />
       </BrowserRouter>
     </div >
