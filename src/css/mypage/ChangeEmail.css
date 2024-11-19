@@ -54,7 +54,7 @@
 }
 
 .EmailWrap input[type="email"]:focus, .EmailWrap input[type="email"]:active {
-    border-bottom: 1px solid #fcc1cc;
+    border-bottom: 1px solid lightcoral;
     box-sizing: border-box;
 }
 
@@ -63,6 +63,7 @@
     align-items: center;
     justify-content: right;
     gap: 10px;
+    margin-bottom: 3em;
 }
 
 .ButtonContainer input[type="button"]:nth-child(1) {
