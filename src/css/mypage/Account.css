@@ -1,0 +1,258 @@
+.UserInfoPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.UserInfoPage hr {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-width:1px 0 0 0; 
+    border-color:#f2f2f2;
+    opacity: 30%;
+}
+
+.UserInfoWrap {
+    width: 80%;
+    margin-top: 5%;
+}
+
+.UserInfoPage .PageTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.UserInfoPage .PageTitle .Link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5%;
+}
+
+.ProfileImageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ProfileImageContainer .imgWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ProfileImageContainer .imgWrap img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 2px solid #f2f2f2;
+    box-sizing: border-box;
+}
+
+.ProfileImageContainer .imgWrap button {
+    border: 2px solid #f2f2f2;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border-style: none;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.ProfileImageContainer .imgWrap button img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.Link .Title {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    text-align: left;
+}
+
+.Link .next {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 15%;
+}
+
+.Link .next img {
+    height: 20px;
+    width: 20px;
+}
+
+.Link .prev {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.Link .prev img {
+    height: 20px;
+    width: 20px;
+}
+
+.UserInfoPage .Container {
+    width: 100%;
+}
+
+.UserInfoPage .Container div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.UserInfoPage .Container div .Title {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.UserInfoPage .Container div .Button {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.UserInfoPage .Container div .Button input[type='button'] {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #fcc1cc;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.UserInfoPage .Container div .Button input[type='button']:hover {
+    cursor: pointer;
+    background-color: lightcoral;
+    color: #ffffff;
+}
+
+.NickNameForm .ToggleWrap, .IntroductionForm .ToggleWrap {
+    margin-top: -20px;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.NickNameForm .ToggleWrap .ToggleButton, .IntroductionForm .ToggleWrap .ToggleButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.NickNameForm .ToggleWrap input[type='button']:nth-child(1), .IntroductionForm .ToggleWrap input[type='button']:nth-child(1) {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-weight: bold;
+    color: #b2b2b2;
+    border: 1px solid #b2b2b2;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.NickNameForm .ToggleWrap input[type='button']:nth-child(2), .IntroductionForm .ToggleWrap input[type='button']:nth-child(2) {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #fcc1cc;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.NickNameForm .ToggleWrap input[type='button']:nth-child(2):hover, .IntroductionForm .ToggleWrap input[type='button']:nth-child(2):hover {
+    cursor: pointer;
+    background-color: lightcoral;
+    color: #ffffff;
+}
+
+.NickNameForm .ToggleWrap input[type='button']:nth-child(1):hover, .IntroductionForm .ToggleWrap input[type='button']:nth-child(1):hover {
+    cursor: pointer;
+    background-color: #8f8f8f;
+    border-color: #8f8f8f;
+    color: #f2f2f2;
+}
+
+.IntroductionForm .Container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.IntroductionForm .Container .IntroductionWrap {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    align-items: center;
+    width: 100%;
+}
+
+.IntroductionForm .Container .IntroductionWrap .content {
+    display: flex;
+    align-items: center;
+    width: 85%;
+}
+
+.IntroductionForm .Container .IntroductionWrap .buttonwrap {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 15%;
+}
+
+.IntroductionForm .Container .IntroductionWrap .buttonwrap input[type="button"] {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #fcc1cc;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.IntroductionForm .Container .IntroductionWrap .buttonwrap input[type="button"]:hover {
+    cursor: pointer;
+    background-color: lightcoral;
+    color: #ffffff;
+}
+
+
+.DetailInfoContainer .Link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
