@@ -54,22 +54,54 @@ button, span {
     flex-direction: column;
     align-items: center;
 }
+.searchBarWrap {
+    background-color: #eee;
+    width: 70%;
+    height: 40px;
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 세로 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    padding: 0 10px; /* 내부 여백 설정 */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.searchBarWrap:focus-within{
+    border: 2px solid #fcc1cc;
+    background-color: white;
+    box-sizing: border-box;
+}
+.searchBarWrap img {
+    margin-right: 10px; /* 이미지와 입력창 간격 */
+    width: 20px;
+    height: 20px;
+}
 
 .searchCategoryWrap input {
+    flex: 1; /* 입력창이 남은 공간 채우도록 설정 */
     padding: 10px;
-    width: 60%;
     height: 20px;
     background-color: #eee;
     border: none;
     border-radius: 5px;
-    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.searchCategoryWrap input:focus {
+    outline: none;
+    background-color: white;
+    box-sizing: border-box;
 }
 
 /* 카테고리 */
 .categories {
+    margin-top: 20px;
     display: flex;
     gap: 20px;
 }
+.categories a:active{text-decoration: none; color:black;}
+.categories a:link{text-decoration: none; color:black;}
+.categories a:hover{text-decoration: none; color:black;}
+.categories a:visited{text-decoration: none; color:black;}
 
 .category-item {
     display: flex;
@@ -85,10 +117,13 @@ button, span {
 
 /* 배너 */
 .bannerWrap {
-    padding: 20px;
+    margin:0 auto;
+    width:85%;
+    height: 100px;
     text-align: center;
-    background-color: #e0e0e0;
-    font-size: 24px;
+    background-color: black;
+    /* background-image: url("./src/image/car.png"); */
+    border-radius: 10px;
 }
 
 /* 리뷰 */
@@ -150,57 +185,61 @@ button, span {
     bottom: 20px;
     left: 20px;
 }
-
+.keywordWrap{
+    padding: 0 40px 20px 40px;
+}
 /* 키워드 */
-.keywordWrap {
-    padding: 40px;
-    text-align: center;
-}
-
 .keyword-images {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    display: flex; /* 가로 정렬 */
+    flex-direction: row; /* 가로로 배치 */
+    gap: 40px; /* 사진 간격 조정 (기존 값보다 작은 값으로 설정) */
+    justify-content: left; /* 사진을 가운데 정렬 */
 }
 
-.keyword-images div {
-    width: 23%;
-    height: 200px;
-    background-color: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: #666;
+.keyword-images figure {
+    margin: 0; /* 불필요한 여백 제거 */
+    text-align: center; /* 캡션 정렬 */
+    font-size:18px;
+    font-weight: bold;
 }
+
+.keyword-images img {
+    border-radius: 10px;
+    width: 240px; /* 이미지 크기 조정 */
+    height: 160px; /* 높이 조정 */
+}
+
 
 /* 위치 목록 */
 .locationsWrap {
+    margin: 0 auto;
     text-align: center;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 0 40px 20px 40px;
 }
 
 .locationsWrap h2 {
+    text-align: left;
     margin-bottom: 10px;
 }
-
+.locationsWrap p{
+    text-align: left;
+}
 .city-listWrap {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     justify-content: start;
     margin-top: 10px;
-    gap:10px;
+    gap:5px;
 }
 
 .city-listWrap span {
-    padding: 10px 15px;
-    background-color: #e0e0e0;
+    width:80px;
+    height: 20px;
+    padding: 10px 0;
+    background-color: #EFF9F9;
     border-radius: 20px;
     font-size: 14px;
     white-space: nowrap;
-}
-
-.city-listWrap span:hover {
-    background-color: #d0d0d0;
+    color:#00C7AE;
 }
