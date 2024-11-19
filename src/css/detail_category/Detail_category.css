@@ -1,6 +1,6 @@
 .detail_categoryWrap {
     position: sticky;
-    top: 0; /* 화면 상단에 고정 */
+    top: 53px; /* 화면 상단에 고정 */
     z-index: 1000; /* 다른 콘텐츠 위에 위치 */
     background-color: #fff;
     padding: 10px 0;
@@ -31,7 +31,7 @@
 /* 좌측 메뉴 */
 .detailCategoryListWrap {
     position: sticky;
-    top: 140px; /* 최상단 카테고리 아래에 고정 */
+    top: 195px; /* 최상단 카테고리 아래에 고정 */
     width: 25%;
     margin-right: 20px;
     background-color: #fff;
