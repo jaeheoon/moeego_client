@@ -1,0 +1,121 @@
+.UserPrivateInfoPage {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.UserPrivateInfoWrap {
+    width: 80%;
+    margin-top: 5%;
+}
+
+.UserPrivateInfoWrap hr {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-width:1px 0 0 0; border-color:#f2f2f2;
+    opacity: 30%;
+}
+
+.PageTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PageTitle .prev {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 3.5%;
+}
+
+.PageTitle .prev img {
+    height: 20px;
+    width: 20px;
+}
+
+.MainContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.MainContainer .Text {
+    display: flex;
+    align-items: center;
+    width: 75%;
+}
+
+.MainContainer .Button {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    justify-content: right;
+}
+
+.MainContainer .Button input[type="button"] {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #fcc1cc;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.MainContainer .Button input[type="button"]:hover {
+    cursor: pointer;
+    background-color: lightcoral;
+    color: #ffffff;
+}
+
+.MainContainer div {
+    width: 95%;
+}
+
+.MainContainer .Link {
+    display: flex;
+    width: 5%;
+    justify-content: right;
+    align-items: center;
+}
+
+.MainContainer .Link .next {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+}
+
+.MainContainer .Link .next img {
+    height: 20px;
+    width: 20px;
+}
+
+.LinkTag {
+    text-decoration: none;
+    color: black;
+}
+
+.LinkTag2 {
+    text-decoration: none;
+    color: rgb(192, 192, 192);
+}
+
+.LinkTag2:nth-child(1):hover {
+    color: black;
+}
+
+.LinkTag2:nth-child(2):hover {
+    color: red;
+}
+
+.functionContainer {
+    display: flex;
+    margin-bottom: 2em;
+    gap: 1.5em;
+}
