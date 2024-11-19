@@ -1,0 +1,106 @@
+.ChangeEmailPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20em;
+}
+
+.ChangeEmailWrap hr {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-width:1px 0 0 0; 
+    border-color:#f2f2f2;
+    opacity: 30%;
+}
+
+.ChangeEmailWrap {
+    width: 80%;
+    margin-top: 5%;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.Title .Link {
+    display: flex;
+    align-items: center;
+}
+
+.Title .Link img {
+    height: 20px;
+    width: 20px;
+}
+
+.EmailWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.EmailWrap input[type="email"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 12pt;
+    border-style: solid;
+    outline-style: none;
+    border: 1px solid #ffffff;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.EmailWrap input[type="email"]:focus, .EmailWrap input[type="email"]:active {
+    border-bottom: 1px solid #fcc1cc;
+    box-sizing: border-box;
+}
+
+.ButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+}
+
+.ButtonContainer input[type="button"]:nth-child(1) {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-weight: bold;
+    color: #b2b2b2;
+    border: 1px solid #b2b2b2;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.ButtonContainer input[type="button"]:nth-child(2) {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #fcc1cc;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.ButtonContainer input[type="button"]:nth-child(2):hover {
+    cursor: pointer;
+    background-color: lightcoral;
+    color: #ffffff;
+}
+
+.ButtonContainer input[type="button"]:nth-child(1):hover {
+    cursor: pointer;
+    background-color: #8f8f8f;
+    border-color: #8f8f8f;
+    color: #f2f2f2;
+}
