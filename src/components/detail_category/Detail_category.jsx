@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import Home_interior from './Home_interior';
-import Outsourcing from './Outsourcing';
-import Fashion_beauty from './Fashion_beauty';
-import Study from './Study';
-import Hobby from './Hobby';
-import Car from './Car';
+import "../../css/detail_category/Detail_category.css";
 
 const Detail_category = () => {
     return (
