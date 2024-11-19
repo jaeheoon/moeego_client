@@ -1,0 +1,86 @@
+#login_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.login-align{
+    width: 320px; 
+    align-items: center;
+}
+
+.loginbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #F4F4F4;
+    width: 400px;
+    height: 430px;
+    border-radius: 25px;
+    background-color: #F4F4F4;
+}
+
+.emailbox,.pwdbox {
+    border-radius: 10px; 
+    border-style: none;
+    padding: 12px 12px; 
+    font-size: 16px; 
+    width: 320px; 
+    box-sizing: border-box;
+}
+
+.emailbox:focus,.pwdbox:focus {
+    border: 1px solid #fcc1cc;
+    box-sizing: border-box;
+}
+
+.emailLoginBtn, .kakaoLoginBtn, .naverLoginBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    box-sizing: border-box;
+    padding: 10px 20px;           
+    font-size: 16px;              
+    border-radius: 10px;             
+    color: white;   
+    width: 320px;            
+    cursor: pointer;  
+}
+
+.emailLoginBtn {    
+    border: 1px solid #FFD8E4;   
+    background-color: #FFD8E4;       
+}
+
+.kakaoLoginBtn { 
+    color: #401717;   
+    border: 1px solid #FEE500;   
+    background-color: #FEE500;       
+}
+
+.naverLoginBtn {    
+    border: 1px solid #03C75A;   
+    background-color: #03C75A;       
+}
+
+.find {
+    display: inline-block; 
+    margin-right: 25px; 
+}
+
+.find a {
+    text-decoration: none; 
+    color: #737373; 
+    font-size: 11px; 
+}
+
+.find a:hover {
+    color: #047dff; 
+}
+
