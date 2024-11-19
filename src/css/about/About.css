@@ -1,0 +1,146 @@
+.infoBannerWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    background-image: url("../src/image/aboutBanner.png");
+    background-size: 100%;
+    height: 600px;
+}
+.infoMissionWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.infoWrap .infoMissionWrap h1{
+    color:white;
+    font-size:2.5em;
+}
+.infoWrap p{
+    font-size:14pt;
+    color:white;
+}
+.infoFitProWrap{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.infoFitProWrap hr{
+    width: 30%;
+    border-color: #fcc1cc;
+    opacity: 50%;
+}
+.infoFitProWrap p{
+    font-size:13pt;
+}
+.infoProCountWrap {
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3칸 */
+    grid-template-rows: repeat(2, auto); /* 2줄 */
+}
+.infoProCountWrap .proCountWrap {
+    position: relative; /* 가상 요소를 사용하기 위해 relative position 설정 */
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.infoProCountWrap .proCountWrap h1{
+    z-index: 2;
+    font-size:2em;
+    color:white;
+    margin-bottom: 10px;
+}
+.infoProCountWrap .proCountWrap p{
+    margin-top:0;
+    z-index: 2;
+    font-size: 16pt;
+    color:white;
+}
+.infoProCountWrap .proCountWrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 회색 필터 */
+    z-index: 1; /* 이미지보다 위에 위치하게 설정 */
+}
+
+.infoProCountWrap .proCountWrap img {
+    position: relative; /* 이미지를 가상 요소 아래에 위치시키기 위해 relative position 설정 */
+    z-index: 0; /* 이미지가 필터 아래에 위치하게 설정 */
+}
+
+.infoProCountWrap .proCountWrap:nth-child(1){
+    background-image: url("../src/image/home_background.jpg");
+}
+.infoProCountWrap .proCountWrap:nth-child(2){
+    background-image: url("../src/image/si_background.png");
+}
+.infoProCountWrap .proCountWrap:nth-child(3){
+    background-image: url("../src/image/fashion_background.jpg");
+}
+.infoProCountWrap .proCountWrap:nth-child(4){
+    background-image: url("../src/image/study_background.jpg");
+}
+.infoProCountWrap .proCountWrap:nth-child(5){
+    background-image: url("../src/image/hobby_background.jpg");
+}
+.infoProCountWrap .proCountWrap:nth-child(6){
+    background-image: url("../src/image/car_background.jpg");
+}
+
+.infoJoinWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.infoJoinWrap hr{
+    margin-top: -5px;
+    margin-bottom: 1em;
+    width: 80%;
+    border-color: #fcc1cc;
+    opacity: 50%;
+}
+.infoJoinWrap a:link{text-decoration: none; color:#fcc1cc;}
+.infoJoinWrap a:visited{text-decoration: none; color:#fcc1cc;}
+.infoJoinWrap a:active{text-decoration: none; color:#fcc1cc;}
+.infoJoinWrap a:hover{text-decoration: none; color:#fcc1cc;}
+
+.aboutBtnWrap {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 2em;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+.aboutBtnWrap input[type="button"]{
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #fcc1cc;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.aboutBtnWrap input[type="button"]:hover {
+    cursor: pointer;
+    background-color: lightcoral;
+    color: #ffffff;
+}
