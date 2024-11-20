@@ -18,16 +18,17 @@
     opacity: 30%;
 }
 
-#zipcode {
-    width: 85%;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 12pt;
-    border-style: solid;
-    outline-style: none;
-    border: 1px solid #ffffff;
-    border-bottom: 1px solid #b2b2b2;
-    margin-right: 1.29em;
+.zipWrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.zipWrap .zipButton {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 15%;
 }
 
 #zipcodeBtn {
@@ -60,7 +61,18 @@
     border-bottom: 1px solid #b2b2b2;
 }
 
-.ChangeAddressWrap input[type="text"]:focus, .ChangePasswordContainer input[type="text"]:active, #zipcode:focus, #zipcode:active {
+.ChangeAddressContainer #zipcode {
+    width: 85%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 12pt;
+    border-style: solid;
+    outline-style: none;
+    border: 1px solid #ffffff;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.ChangeAddressWrap input[type="text"]:focus, .ChangePasswordContainer input[type="text"]:active, .ChangeAddressContainer #zipcode:focus, .ChangeAddressContainer #zipcode:active, .ChangeAddressWrap input[type="text"]:not(:placeholder-shown), .ChangeAddressContainer #zipcode:not(:placeholder-shown) {
     border-bottom: 1px solid lightcoral;
     box-sizing: border-box;
 }

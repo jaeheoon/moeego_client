@@ -24,14 +24,17 @@
     align-items: center;
     border: 2px solid #F4F4F4;
     width: 400px;
-    height: 1120px;
     border-radius: 25px;
     background-color: #F4F4F4;
+    box-sizing: border-box;
+    padding-bottom: 2em;
 }
 
 .JoinPage #warn {
     color: #737373; 
     font-size: 11px;  
+    text-decoration: none;
+    cursor: default;
 }
 
 .JoinPage input[type="password"] {
@@ -45,7 +48,8 @@
 .JoinPage .join-align{
     width: 320px; 
     align-items: center;
-    margin-top: 5px; 
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .joinbox .namebox,.joinbox .pwdbox,.joinbox .emailbox,.joinbox .repwdbox,.joinbox .phonebox,.joinbox .addrbox ,.joinbox .detailaddrbox{
@@ -55,8 +59,20 @@
     font-size: 16px; 
     width: 320px; 
     box-sizing: border-box;
-    outline: lightcoral;
 }
+
+.joinbox input[type="text"]:focus, 
+.joinbox input[type="password"]:focus, 
+.joinbox input[type="email"]:focus, 
+.joinbox input[type="text"]:active, 
+.joinbox input[type="password"]:active, 
+.joinbox input[type="email"]:active, 
+.joinbox input[type="text"]:not(:placeholder-shown),
+.joinbox input[type="password"]:not(:placeholder-shown),
+.joinbox input[type="email"]:not(:placeholder-shown) {
+    outline: 2px solid #fcc1cc;
+}
+
 
 .JoinPage .checknumbox,.JoinPage .zipcodebox{
     border-radius: 10px; 
@@ -67,7 +83,9 @@
     box-sizing: border-box;
 }
 
-.JoinPage .zipcodebox {margin-right: 5px;}
+.JoinPage .zipcodebox {
+    margin-right: 5px;
+}
 
 .JoinPage .checknumBtn,.JoinPage .checkBtn,.JoinPage .zipcheckBtn,.JoinPage .joinBtn {
     display: flex;
@@ -75,32 +93,39 @@
     justify-content: center;
     gap: 0.5em;
     box-sizing: border-box;
-    padding: 10px 20px;           
-    font-size: 16px;              
-    border-radius: 10px;             
-    color: white;   
+    padding: 10px 0px;
+    font-size: 10pt;
+    border-radius: 10px;
+    color: white;
     width: 320px;            
     cursor: pointer;  
     border: 1px solid #FFD8E4;   
     background-color: #FFD8E4; 
     margin-top: 5px; 
     font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
 }
+
 .JoinPage .checknumBtn,.JoinPage .zipcheckBtn {
     width: 95px; 
     height : 45px;
     float: right;
-    font-weight: bold;
+    box-sizing: border-box;
 }
 
-.JoinPage .checknumBtn {font-size: 16px;}
-
-.JoinPage .zipcheckBtn {font-size: 13px;}
+.JoinPage .join-align-inside {
+    margin-top: 1em;
+}
 
 .JoinPage .dalin a {
     text-decoration: none; 
     color: #737373; 
     font-size: 11px; 
+}
+
+.JoinPage .dalin a:hover {
+    color: lightcoral;
 }
 
 .JoinPage .radio {
@@ -125,6 +150,10 @@
 .JoinPage .checknumBtn:hover, .JoinPage .checkBtn:hover, .JoinPage .zipcheckBtn:hover, .JoinPage .joinBtn:hover, .JoinPage .radio:hover {
     background-color: white; 
     color: #fd9bb9; 
+}
+
+.JoinPage .joinBtn, .JoinPage .checkBtn {
+    margin-top: 1em;
 }
 
 .JoinPage .select {
@@ -161,6 +190,9 @@
 
 .JoinPage .select input[type=radio]:checked+label{
     background-color: #FFD8E4; 
-    color: white; 
-    border-color: lightcoral;
+    color: #ffffff;
+}
+
+.JoinPage .dalin {
+    margin-top: 1em;
 }
