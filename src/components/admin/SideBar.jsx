@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/admin/SideBar.css';
-import { useSideBar } from '../../css/admin/useSideBar';
+import { useSideBar } from '../../js/useSideBar';
 
 const SideBar = () => {
     const { 
