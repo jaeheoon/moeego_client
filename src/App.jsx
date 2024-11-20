@@ -50,6 +50,7 @@ import EventWrite from "./components/admin/EventWrite.jsx";
 import EventUpdate from "./components/admin/EventUpdate.jsx";
 import ProReview from "./components/Pro/ProReview.jsx";
 import ProInfo from "./components/Pro/ProInfo.jsx";
+import AdminLogin from "./components/admin/AdminLogin.jsx";
 
 
 const App = () => {
@@ -117,7 +118,7 @@ const App = () => {
             <Route path="/admin/EventList" element={<EventList />} />
             <Route path="/admin/EventWrite" element={<EventWrite />} />
             <Route path="/admin/EventUpdate" element={<EventUpdate />} />
-           
+            <Route path="/admin/Login" element={<AdminLogin />}/>
 
             <Route path="/ProRequest" element={<ProRequest />} />
 
