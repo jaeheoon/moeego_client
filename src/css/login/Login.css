@@ -13,9 +13,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 400px;
     margin: 0 auto; 
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .LoginPage .login-align{
@@ -29,9 +29,11 @@
     align-items: center;
     border: 2px solid #F4F4F4;
     width: 400px;
-    height: 430px;
     border-radius: 25px;
     background-color: #F4F4F4;
+    box-sizing: border-box;
+    padding-top: 1em;
+    padding-bottom: 1.5em;
 }
 
 .LoginPage .emailbox, .LoginPage .pwdbox {
@@ -40,6 +42,7 @@
     padding: 12px 12px; 
     font-size: 16px; 
     width: 320px; 
+    border: 2px solid #ffffff;
     box-sizing: border-box;
 }
 
@@ -47,6 +50,7 @@
     box-sizing: border-box;
     outline: lightcoral;
     border: 2px solid lightcoral;
+    box-sizing: border-box;
 }
 
 .LoginPage .emailLoginBtn, .LoginPage .kakaoLoginBtn, .LoginPage .naverLoginBtn {
@@ -68,24 +72,42 @@
     border: 1px solid #FFD8E4;   
     background-color: #FFD8E4;       
 }
+
 .LoginPage .emailLoginBtn:hover {
     background-color: white; 
     color: #fd9bb9; 
 }
 
-
 .LoginPage .kakaoLoginBtn { 
-    color: #401717;   
     border: 1px solid #FEE500;   
     background-color: #FEE500;       
+    color: #ffffff;
 }
 
+.LoginPage .kakaoLoginBtn:hover {
+    background-color: #ffffff;
+    border-color: #fee500;
+    color: #401717;
+}
+
+.LoginPage .kakaoLoginBtn:hover .kakaoImg {
+    content: url("../../src/image/kakao_wine.svg"); /* hover 시 변경할 이미지 */
+}
 
 .LoginPage .naverLoginBtn {    
     border: 1px solid #03C75A;   
     background-color: #03C75A;       
 }
 
+.LoginPage .naverLoginBtn:hover {
+    background-color: #ffffff;
+    border-color: #03C75A;
+    color:#03C75A;
+}
+
+.LoginPage .naverLoginBtn:hover .naverImg {
+    content: url("../../src/image/naver_green.svg");
+}
 
 .LoginPage .find {
     display: inline-block; 
@@ -100,7 +122,7 @@
 }
 
 .LoginPage .find a:hover {
-    color: #047dff; 
+    color: lightcoral; 
 }
 
 .LoginPage .LoginPage input[type="password"] {
@@ -111,3 +133,7 @@
     margin-top: 5px; 
 }
 
+.LoginPage .box {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
