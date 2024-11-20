@@ -1,37 +1,24 @@
 import React from 'react';
+import '/src/css/articles/PostComment.css';
 
 const PostComment = () => {
     return (
-        <div>
-            <div>
-                <label>
-                    <img></img>
-                    <div><input>
-                    </input>
-                        <label><span>no files chosen</span></label>
-                    </div>
+        <div className="post-comment">
+            <div className="comment-input-container">
+                {/* 카메라 아이콘 */}
+                <label className="upload-icon-container">
+                    <img
+                        src="/src/image/camera.png"
+                        alt="사진 업로드"
+                        className="upload-icon"
+                    />
                 </label>
-
-                <div>
-                    <textarea></textarea>
-                </div>
-
-            </div>
-            <div>
-                <div>
-                    <figure>
-                        <div>
-                           <div></div>
-                            <p></p>
-                        </div>
-                    </figure>
-                </div>
-                <div></div>
-                <div></div>
-                <div>
-                    <br/>
-                    <button></button>
-                </div>
+                {/* 댓글 입력창 */}
+                <input
+                    type="text"
+                    className="comment-input"
+                    placeholder="댓글을 남겨보세요."
+                />
             </div>
         </div>
     );

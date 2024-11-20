@@ -1,50 +1,58 @@
 import React from 'react';
+import '/src/css/articles/PostHeader.css';
 
 const PostHeader = () => {
     return (
-        <div>
-            <div className={'post-category-subject'}>
-                <ol>
-                    <li>
-                        <a>
+        <div className="post-header">
+            {/* 카테고리 및 제목 */}
+            <div className="post-category-subject">
+                <ol className="category-breadcrumb">
+                    <li className="category-breadcrumb-item">
+                        <a href="#" className="category-breadcrumb-link">
                             <span>커뮤니티</span>
                         </a>
                     </li>
-                    <p></p>
-                    <li><a>
-                        <span>고수에게 묻다</span>
-                    </a></li>
+                    <span className="breadcrumb-divider"> > </span>
+                    <li className="category-breadcrumb-item">
+                        <a href="#" className="category-breadcrumb-link">
+                            <span>고수에게 묻다</span>
+                        </a>
+                    </li>
                 </ol>
             </div>
-            <div className={'post-head-title-wrapper has-service'}>
-                <p>리본공예 제작</p>
-                <h1>선물 포장 알바 구해요</h1>
-                <p>서울/강남구</p>
+
+            {/* 게시물 제목 및 정보 */}
+            <div className="post-head-title-wrapper has-service">
+                <p className="post-subtitle">리본공예 제작</p>
+                <h1 className="post-title">선물 포장 알바 구해요</h1>
+                <p className="post-location">서울/강남구</p>
             </div>
-            <div className={'user-profile-bar-container'}>
-                <div>
-                    <div>
-                    <span><svg>
-                    <path></path>
-                </svg></span>명예고수
+
+            {/* 사용자 정보 및 액션 */}
+            <div className="user-profile-bar-container">
+                <div className="user-info">
+                    <div className="user-profile">
+                        <img
+                            src="../../src/image/home.png"
+                            alt="사용자 프로필"
+                            className="user-profile-image"
+                        />
                     </div>
-                    <div>
-                        <div>
-                            <div><img></img></div>
-                            <div></div>
-                        </div>
-                        <span>손지민</span>
-                        <span>2분전 조회 6</span>
+                    <div className="user-details">
+                        <span className="user-name">손지민</span>
+                        <span className="post-meta">2분 전 · 조회 6</span>
                     </div>
-                    <div className={'post-actions'}>
-                        <img></img>
-                        <div>
-                            <button></button>
-                            <ul>
-                                <li><a>게시물 신고하기</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                </div>
+
+                <div className="post-actions">
+                    {/* 공유 버튼 */}
+                    <button className="post-action-button">
+                        <img src="/src/image/share.png" alt="공유" className="action-icon"/>
+                    </button>
+                    {/* 옵션 버튼 */}
+                    <button className="post-action-button">
+                        <img src="/src/image/3dots.png" alt="옵션" className="action-icon"/>
+                    </button>
                 </div>
             </div>
         </div>

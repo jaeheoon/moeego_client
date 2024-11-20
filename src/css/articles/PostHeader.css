@@ -1,0 +1,124 @@
+/* 공통 스타일 */
+.post-header {
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid #eee;
+}
+
+/* 카테고리 및 제목 */
+.post-category-subject {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.category-breadcrumb {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-breadcrumb-item {
+    font-size: 14px;
+    color: #666;
+}
+
+.category-breadcrumb-link {
+    text-decoration: none;
+    color: #666;
+}
+
+.breadcrumb-divider {
+    margin: 0 5px;
+    color: #aaa;
+}
+
+.post-head-title-wrapper {
+    margin-bottom: 10px;
+}
+
+.post-subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.post-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.post-location {
+    font-size: 14px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* 사용자 정보 및 버튼 */
+.user-profile-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center; /* 이미지와 텍스트의 수직 정렬 */
+    gap: 10px; /* 이미지와 텍스트 사이 간격 */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30%; /* 이미지를 동그랗게 */
+    object-fit: cover; /* 이미지를 자르지 않고 중앙에 맞춤 */
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column; /* 텍스트를 세로로 정렬 */
+    justify-content: center; /* 텍스트가 이미지 중앙에 맞도록 수직 정렬 */
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px; /* 이름과 메타 정보 간 간격 */
+}
+
+.post-meta {
+    font-size: 12px;
+    color: #888;
+}
+/* 버튼 스타일 */
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 버튼 간격 */
+}
+
+.post-action-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+}

@@ -3,7 +3,7 @@ import PostDetail from "./PostDetail.jsx";
 
 const ViewPage = () => {
     return (
-        <div>
+        <div className={'community-container'}>
             <div>
             <PostDetail></PostDetail>
             </div>

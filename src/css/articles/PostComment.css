@@ -1,0 +1,43 @@
+/* PostComment.css */
+.post-comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 95%;
+    max-width: 600px;
+    margin: 10px auto;
+    background-color: #f9f9f9;
+}
+
+.comment-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.upload-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.upload-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+}
+
+.comment-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    background-color: transparent;
+    padding: 5px;
+}

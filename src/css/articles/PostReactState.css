@@ -1,0 +1,26 @@
+.post-react-state {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 0;
+}
+
+.react-item {
+    display: flex;
+    align-items: center;
+    gap: -20px; /* 아이콘과 버튼 간격 */
+}
+
+.react-icon {
+    width: 15x; /* 아이콘 크기 */
+    height: 15px;
+}
+
+.react-text {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    padding: 10px;
+    opacity: 0.6
+}
+
