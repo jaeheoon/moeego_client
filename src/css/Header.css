@@ -37,6 +37,8 @@
 
 .nav {
     display: flex;
+    align-items: center;
+
 }
 
 .nav a {
@@ -46,9 +48,18 @@
     font-weight: bold;
 }
 
-.nav input {
+.nav .search {
     margin-left: 20px;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 5px 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #c2c2c2;
+    border: 1px solid #c2c2c2;
+    color: #ffffff;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.nav .search::placeholder {
+    color: #ffffff;
 }
