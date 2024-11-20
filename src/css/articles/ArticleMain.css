@@ -21,6 +21,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 50px;
+    background-color: #ffffff;
+    z-index: 9990;
 }
 
 .TopContainer .ButtonWrap {
@@ -62,24 +66,23 @@
     color: #ffffff;
 }
 
-.TopContainer .MainContainer {
+.MainContainer {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    
+    height: 100%;    
 }
 
 .MainContainer .Main-LeftContainer {
+    position: sticky;
+    z-index: 9980;
+    display: flex;
+    align-items: flex-start;
     flex: 0 0 25%;
     padding: 10px;
     width: 100%;
-    height: 50vh;
-    position: sticky;
-    top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    top: 120px;
 }
 
 .MainContainer .Main-RightContainer {
@@ -92,10 +95,11 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    margin-top: -1.2em;
 }
 
 .life-topic-layout section {
-    width: 80%;
+    width: 90%;
 }
 
 .life-topic-layout section ul {
@@ -103,7 +107,7 @@
     flex-direction: column;
     align-items: start;
     padding: 5px 0px 5px 0px;
-    margin-left: 1em;
+    margin-left: -0.8em;
     box-sizing: border-box;
     width: 100%;
 }
@@ -111,7 +115,7 @@
 .life-topic-layout section ul li {
     width: 100%;
     list-style: none;
-    padding: 10px;
+    padding: 20px 10px;
     box-sizing: border-box;
 }
 
@@ -348,6 +352,115 @@
 
 .LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(1) span,
 .LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(2) span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0.3em;
+}
+
+.AllArticleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.AllArticleContainer .AllList {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.AllArticleContainer .AllList .AllWrap {
+    display: flex;
+    align-items: center;
+    background-color: #dedede;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.AllArticleContainer .AllList .AllWrap:hover {
+    cursor: pointer;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .titleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 90%;
+    color: #828282;
+    overflow: hidden;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(2) img {
+    width: 20px;
+    height: 20px;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .contentWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .contentWrap div {
+    width: 100%;
+    display: flex;
+    vertical-align: text-top;
+    margin-top: 1em;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(1),
+.AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 20%;
+    padding: 20px 0px 5px 0px;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(1) img,
+.AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(2) img {
+    width: 15px;
+    height: 15px;
+}
+
+.AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(1) span,
+.AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(2) span {
     display: flex;
     align-items: center;
     justify-content: center;
