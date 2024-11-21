@@ -1,0 +1,71 @@
+.ProJoinPage {
+    margin-top: 8%;
+    margin-bottom: 12%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ProJoinPage #projoinMain_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.ProJoinPage .ProJoinbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #F4F4F4;
+    width: 700px;
+    border-radius: 25px;
+    background-color: #F4F4F4;
+    box-sizing: border-box;
+    padding-bottom: 2em;
+}
+
+.ProJoinPage .category1 {
+    list-style: none; 
+    padding: 6px; 
+    float: left;
+  }
+  
+  .ProJoinPage .category-list {
+    display: flex;
+    align-items: center; 
+    width: 170px;
+    background-color: #FFFF; 
+    border-radius: 10px; 
+    padding: 13px 13px; 
+    cursor: pointer; 
+    font-weight: bold;
+  }
+  
+  .ProJoinPage .category-list:hover{
+    background-color: #fcc1cc;
+  }
+
+  .ProJoinPage .category-list:hover h1{
+    color: white;
+    font-weight: bold;
+  }
+  
+  .ProJoinPage .category-title {
+    color: #444444; 
+    margin: 0; 
+    font-size: 16px; 
+    padding-left: 5px;
+    display: inline-block;
+  }
+  
+  .ProJoinPage .category-list img {
+    vertical-align: middle; 
+    margin-right: 10px;
+  }
+

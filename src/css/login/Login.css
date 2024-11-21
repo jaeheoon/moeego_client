@@ -1,6 +1,6 @@
 .LoginPage {
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 12%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -48,8 +48,8 @@
 
 .LoginPage .emailbox:focus,.LoginPage .pwdbox:focus {
     box-sizing: border-box;
-    outline: lightcoral;
-    border: 2px solid lightcoral;
+    outline: #fcc1cc;
+    border: 2px solid #fcc1cc;
     box-sizing: border-box;
 }
 
