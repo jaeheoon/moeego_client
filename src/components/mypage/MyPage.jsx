@@ -45,7 +45,7 @@ const MyPage = () => {
                             <div className='next'><img src="./src/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>
                         <br />
-                        <Link to='' className='Link'>
+                        <Link to='/mypage/review' className='Link'>
                             <div className="Title">모이고 리뷰 내역</div>
                             <div className='next'><img src="./src/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>

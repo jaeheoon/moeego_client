@@ -5,7 +5,7 @@ const MyReservation = () => {
     return (
         <div className='MyReservationPage'>
             <div className='PageTitle'>
-                <Link to="/mypage/account"><img src="../../src/image/prev_icon.png" alt="prev"></img></Link>
+                <Link to="/mypage"><img src="../../src/image/prev_icon.png" alt="prev"></img></Link>
                 <h1>예약 내역</h1>
             </div>
             <div>
