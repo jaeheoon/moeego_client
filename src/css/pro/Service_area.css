@@ -1,0 +1,16 @@
+.service_areaHeader{
+    display: flex;
+    gap:10px;
+}
+.serviceBtn, .areaBtn{
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: space-between;
+    font-size: 1rem;
+    padding: .4375rem 1rem .5625rem;
+    height: 2.5em;
+    border-radius: 30px;
+    background-color: white;
+    border: 1px solid #d4d4d4;
+}

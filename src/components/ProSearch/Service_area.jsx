@@ -1,9 +1,10 @@
 import React from 'react';
+import "../../css/pro/Service_area.css";
 
 const Service_area = () => {
     return (
-        <section>
-            <button>
+        <section className='service_areaHeader'>
+            <button className='serviceBtn'>
                 <span>
                     서비스
                 </span>
@@ -13,7 +14,7 @@ const Service_area = () => {
                     </svg>
                 </span>
             </button>
-            <button>
+            <button className='areaBtn'>
                 <span>
                     지역
                 </span>
