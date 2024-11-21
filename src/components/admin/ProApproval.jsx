@@ -10,12 +10,12 @@ const GosuApproveTable = () => {
     ];
 
     return (
-        <div className="approve-container">
-            <div className='approve-inner-container'>
-                <h2 className="approve-title">고수 권한 승인 | 고수가 되고 싶은가?</h2>
-                <hr className="approve-divider" />
-                <div className="table-container">
-                    <table className="approve-table">
+        <div className="proApproval-approve-container">
+            <div className='proApproval-approve-inner-container'>
+                <h2 className="proApproval-approve-title">고수 권한 승인 | 고수가 되고 싶은가?</h2>
+                <hr className="proApproval-approve-divider" />
+                <div className="proApproval-table-container">
+                    <table className="proApproval-approve-table">
                         <thead>
                             <tr>
                                 <th>번호</th>
@@ -31,7 +31,7 @@ const GosuApproveTable = () => {
                                     <td>{row.name}</td>
                                     <td>{row.description}</td>
                                     <td>
-                                        <div className="status-badge">{row.status}</div>
+                                        <div className="proApproval-status-badge">{row.status}</div>
                                     </td>
                                 </tr>
                             ))}

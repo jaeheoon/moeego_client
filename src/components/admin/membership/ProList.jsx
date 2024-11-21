@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../css/admin/ProList.css';
+import '../../../css/admin/Membership.css'; 
 
 const ProList = () => {
     // 테이블 데이터
@@ -31,13 +31,13 @@ const ProList = () => {
         `status-badge ${status === '승인' ? 'approved' : 'revoked'}`;
 
     return (
-        <div className="approve-container">
-            <h2 className="approve-title">고수 관리 | 멋지고 캡짱 지리는 고수 형님덜</h2>
+        <div className="membership-container">
+            <div className='membership-inner-container'>
+            <h2 className="membership-title">고수 관리 | 멋지고 캡짱 지리는 고수 형님덜</h2>
 
-            <div className="white-container">
-                <hr className="approve-divider" />
-                <div className="table-container">
-                    <table className="approve-table">
+            <div className="membership-container">
+                <hr className="membership-divider" />
+                    <table className="membership-table">
                         <thead>
                             <tr>
                                 <th>번호</th>

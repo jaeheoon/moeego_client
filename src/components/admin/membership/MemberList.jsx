@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../css/admin/ProList.css'; // 기존 ProList.css 파일을 사용하는 방식으로 수정
+import '../../../css/admin/Membership.css'; 
 
 const MemberList = () => {
     // Table data
@@ -31,39 +31,39 @@ const MemberList = () => {
     ];
 
     return (
-        <div className="approve-container">
-            <h2 className="approve-title">회원 관리 | 떠난 고수들</h2>
+        <div className="membership-container">
+            <div className='membership-inner-container'>
+                <h2 className="membership-title">회원 관리 | 떠난 고수들</h2>
 
-            <div className="white-container">
-                <hr className="approve-divider" />
-                <div className="table-container">
-                    <table className="approve-table">
-                        <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th>이름</th>
-                                <th>이메일</th>
-                                <th>성별</th>
-                                <th>전화번호</th>
-                                <th>주소</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableData.map((row) => (
-                                <tr key={row.id}>
-                                    <td>{row.id}</td>
-                                    <td>{row.name}</td>
-                                    <td>{row.email}</td>
-                                    <td>{row.gender}</td>
-                                    <td>{row.phone}</td>
-                                    <td>{row.address}</td>
+                <div className="membership-container">
+                    <hr className="membership-divider" />
+                        <table className="membership-table">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>이름</th>
+                                    <th>이메일</th>
+                                    <th>성별</th>
+                                    <th>전화번호</th>
+                                    <th>주소</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {tableData.map((row) => (
+                                    <tr key={row.id}>
+                                        <td>{row.id}</td>
+                                        <td>{row.name}</td>
+                                        <td>{row.email}</td>
+                                        <td>{row.gender}</td>
+                                        <td>{row.phone}</td>
+                                        <td>{row.address}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
     );
 };
 
