@@ -12,7 +12,7 @@ const PostHeader = () => {
                             <span>커뮤니티</span>
                         </a>
                     </li>
-                    <span className="breadcrumb-divider"> > </span>
+                    <span className="breadcrumb-divider"></span>
                     <li className="category-breadcrumb-item">
                         <a href="#" className="category-breadcrumb-link">
                             <span>고수에게 묻다</span>
@@ -47,11 +47,11 @@ const PostHeader = () => {
                 <div className="post-actions">
                     {/* 공유 버튼 */}
                     <button className="post-action-button">
-                        <img src="/src/image/share.png" alt="공유" className="action-icon"/>
+                        <img src="/src/image/share.png" alt="공유" className="action-icon" />
                     </button>
                     {/* 옵션 버튼 */}
                     <button className="post-action-button">
-                        <img src="/src/image/3dots.png" alt="옵션" className="action-icon"/>
+                        <img src="/src/image/3dots.png" alt="옵션" className="action-icon" />
                     </button>
                 </div>
             </div>
