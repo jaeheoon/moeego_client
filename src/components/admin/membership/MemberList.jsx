@@ -35,7 +35,7 @@ const MemberList = () => {
             <div className='membership-inner-container'>
                 <h2 className="membership-title">회원 관리 | 떠난 고수들</h2>
 
-                <div className="membership-container">
+                <div className="membership-table-wrapper">
                     <hr className="membership-divider" />
                         <table className="membership-table">
                             <thead>

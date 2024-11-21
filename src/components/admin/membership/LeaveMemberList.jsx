@@ -34,7 +34,7 @@ const LeaveMemberList = () => {
             <div className='membership-inner-container'>
                 <h1 className="membership-title">탈퇴 회원 관리 | 떠난 고수들</h1>
 
-                <div className="membership-container">
+                <div className="-table-wrapper">
                     <hr className="membership-divider" />
                     <div className="membership-table-container">
                         <table className="membership-table">

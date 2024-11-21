@@ -1,14 +1,10 @@
-.adminDashBoard-container {
-    padding: 20px;
-    background-color: #f5f5f5;
-    min-height: 100vh;
-}
 
 .adminDashBoard-wrapper {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    margin: 20px;
 }
 
 .adminDashBoard-header {

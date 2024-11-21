@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import '../../css/admin/DashBoard.css';
 import people from '../../image/people.png';
+import { useNavigate } from 'react-router-dom';
 
 const DashBoard = () => {
+
+    const navigate = useNavigate(); // 경로 이동 훅
+
     const [eventCount] = useState(15); // 예시 데이터
     const [noticeCount] = useState(8); // 예시 데이터
 
@@ -22,7 +26,6 @@ const DashBoard = () => {
                 <div className="adminDashBoard-header">
                     <h1>대시보드 | 각종 이력을 간략히 확인할 수 있습니다.</h1>
                 </div>
-
                 <div className="adminDashBoard-list-section">
                     <div className="adminDashBoard-list-header">
                         <h4>List</h4>
@@ -38,7 +41,7 @@ const DashBoard = () => {
                                 <div>
                                     <button
                                         className="adminDashBoard-count-button"
-                                        onClick={() => alert('고수 회원 상세보기')}>
+                                        onClick={() => navigate('/admin/ProList')}>
                                         <span>+</span>
                                     </button>
                                 </div>
@@ -59,7 +62,7 @@ const DashBoard = () => {
                                 <div>
                                     <button
                                         className="adminDashBoard-count-button"
-                                        onClick={() => alert('일반 회원 상세보기')}>
+                                        onClick={() => navigate('/admin/MemberList')}>
                                         <span>+</span>
                                     </button>
                                 </div>
@@ -80,7 +83,7 @@ const DashBoard = () => {
                                 <div>
                                     <button
                                         className="adminDashBoard-count-button"
-                                        onClick={() => alert('탈퇴 회원 상세보기')}>
+                                        onClick={() => navigate('/admin/LeaveMemberList')}>
                                         <span>+</span>
                                     </button>
                                 </div>
@@ -101,7 +104,7 @@ const DashBoard = () => {
                             <div className="adminDashBoard-count-button-wrapper">
                                 <button
                                     className="adminDashBoard-count-button"
-                                    onClick={handleEventClick}>
+                                    onClick={() => navigate('/admin/EventList')}>
                                     <span>+</span>
                                 </button>
                             </div>
@@ -115,7 +118,7 @@ const DashBoard = () => {
                             <div className="adminDashBoard-count-button-wrapper">
                                 <button
                                     className="adminDashBoard-count-button"
-                                    onClick={handleNoticeClick}>
+                                    onClick={() => navigate('/admin/EventList')}>
                                     <span>+</span>
                                 </button>
                             </div>

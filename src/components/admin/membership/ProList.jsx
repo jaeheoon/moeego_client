@@ -35,7 +35,7 @@ const ProList = () => {
             <div className='membership-inner-container'>
             <h2 className="membership-title">고수 관리 | 멋지고 캡짱 지리는 고수 형님덜</h2>
 
-            <div className="membership-container">
+            <div className="membership-table-wrapper">
                 <hr className="membership-divider" />
                     <table className="membership-table">
                         <thead>
