@@ -1,0 +1,135 @@
+.free-board-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.free-board-wrap {
+    width: 100%;
+    margin-top: 5%;
+}
+
+.free-board-wrap hr {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-width:1px 0 0 0; border-color:#f2f2f2;
+    opacity: 30%;
+}
+
+.TopContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 50px;
+    background-color: #ffffff;
+    z-index: 9990;
+}
+
+.TopContainer .ButtonWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.TopContainer .ButtonWrap button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.TopContainer .ButtonWrap svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+}
+
+.TopContainer .ButtonWrap button {
+    font-size: 9pt;
+    border-style: none;
+    padding: 5px 20px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #fcc1cc;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 10px;
+    transition: all 0.25s ease-out;
+}
+
+.TopContainer .ButtonWrap button:hover {
+    cursor: pointer;
+    background-color: lightcoral;
+    color: #ffffff;
+}
+
+.MainContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.MainContainer .Main-LeftContainer {
+    position: sticky;
+    z-index: 9980;
+    display: flex;
+    align-items: flex-start;
+    flex: 0 0 25%;
+    padding: 10px;
+    width: 100%;
+    top: 120px;
+}
+
+.MainContainer .Main-RightContainer {
+    flex: 0 0 75%;
+    padding: 10px;
+}
+
+.life-topic-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -1.2em;
+}
+
+.life-topic-layout section {
+    width: 90%;
+}
+
+.life-topic-layout section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 5px 0px 5px 0px;
+    margin-left: -0.8em;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.life-topic-layout section ul li {
+    width: 100%;
+    list-style: none;
+    padding: 20px 10px;
+    box-sizing: border-box;
+}
+
+.life-topic-layout section ul li a {
+    text-decoration: none;
+    color: black;
+    box-sizing: border-box;
+}
+
+.life-topic-layout section ul li:hover {
+    background-color: #fcc1cc;
+    border-radius: 10px;
+}
+
+.life-topic-layout section ul li:hover a {
+    color: #ffffff;
+}

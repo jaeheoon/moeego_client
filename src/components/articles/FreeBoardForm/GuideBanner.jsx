@@ -4,7 +4,7 @@ const GuideBanner = () => {
     return (
         <div className={'guide-banner-layout'}>
             <p>
-                {/*<img>추가필요*/}
+        <img src='/src/image/guidebanner.png'alt="Guide Logo" />
             </p>
         </div>
     );
