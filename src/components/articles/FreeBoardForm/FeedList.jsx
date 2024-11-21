@@ -1,23 +1,19 @@
 import React from 'react';
 import FeedItem from "./FeedItem.jsx";
+import '/src/css/articles/FeedList.css'
 
 const FeedList = () => {
     return (
-        <article>
-            <ul>
-                <li><FeedItem></FeedItem></li>
-                <li><FeedItem></FeedItem></li>
-                <li><FeedItem></FeedItem></li>
-                <li><FeedItem></FeedItem></li>
-                <li><FeedItem></FeedItem></li>
-                <li><FeedItem></FeedItem></li>
-            </ul>
-            <div>
-                <div>
-                    <div></div>
-                </div>
+        <div className="FeedList">
+            <div className="FeedWrap">
+                <FeedItem/>
+                <FeedItem/>
+                <FeedItem/>
+                <FeedItem/>
+                <FeedItem/>
+                <FeedItem/>
             </div>
-        </article>
+        </div>
 
     );
 };

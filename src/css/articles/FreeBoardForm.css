@@ -38,16 +38,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-}
-
-.TopContainer .ButtonWrap svg {
-    width: 20px;
-    height: 20px;
-    fill: #ffffff;
-}
-
-.TopContainer .ButtonWrap button {
     font-size: 9pt;
     border-style: none;
     padding: 5px 20px;
@@ -58,6 +48,13 @@
     color: #f1f1f1;
     border-radius: 10px;
     transition: all 0.25s ease-out;
+
+}
+
+.TopContainer .ButtonWrap svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
 }
 
 .TopContainer .ButtonWrap button:hover {

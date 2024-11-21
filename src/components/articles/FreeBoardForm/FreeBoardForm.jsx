@@ -45,11 +45,8 @@ const FreeBoardForm = () => {
                     </div>
 
                     <div className="Main-RightContainer">
-                        <div >
-                            <GuideBanner/>
-                            <ServiceArea/>
-
-                        </div>
+                        <GuideBanner/>
+                        <ServiceArea/>
 
                         <div>
                             <FeedList/>

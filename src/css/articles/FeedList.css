@@ -1,0 +1,18 @@
+.FeedList {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.FeedList .FeedWrap{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.FeedList .FeedWrap:hover{
+    cursor: pointer;
+
+}

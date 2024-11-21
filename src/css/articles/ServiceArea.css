@@ -2,7 +2,7 @@
     display: flex;
     gap: 10px; /* 버튼 간격 */
     margin-top: 20px; /* 상단 여백 */
-    margin-left: 20px;
+    margin-left: 35px;
 }
 
 .service-button,.region-button {
