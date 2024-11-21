@@ -1,0 +1,173 @@
+.BookMarkProContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.BookMarkProContainer .BookMarkProWrap {
+    margin-top: 5%;
+    width: 100%;
+}
+
+.BookMarkProContainer .BookMarkProWrap .CheckContainer {
+    margin-top: 2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.BoxContainer {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    border: 0px solid #ffffff;
+    padding: 10px;
+    gap: 0.5em;
+}
+
+.BoxContainer .screen-reader {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    margin: -1px;
+    clip-path: inset(50%);
+}
+
+.BoxContainer .label-box {
+    position: relative;
+}
+
+.BoxContainer .label-box label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BoxContainer .check-icon {
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid gray;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.BoxContainer .check-icon::before {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    width: 30%;
+    height: 55%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-70%) rotateZ(40deg);
+    border-right: 1.7px solid gray;
+    border-bottom: 1.7px solid gray;
+}
+
+.BoxContainer label {
+    padding-left: 2.2em;
+    position: relative;
+    cursor: pointer;
+}
+
+.BoxContainer [type="checkbox"]:checked + .label-box .check-icon {
+    border-color: #fcc1cc;
+    background-color: #fcc1cc;
+}
+
+.BoxContainer [type="checkbox"]:checked + .label-box .check-icon::before {
+    border-color: #fff;
+}
+
+.BookMarkProContainer .BookMarkProWrap .CheckContainer .LinkContainer {
+    box-sizing: border-box;
+    border: 0px solid #ffffff;
+    padding: 10px;
+}
+
+.BookMarkProContainer .BookMarkProWrap .CheckContainer .LinkContainer a {
+    text-decoration: none;
+    color: #828282;
+}
+
+.BookMarkProContainer .BookMarkProWrap .CheckContainer .LinkContainer a:hover {
+    color: #fcc1cc;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer {
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(200, 200, 200, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-LeftContainer {
+    flex: 0 0 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-RightContainer {
+    flex: 0 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-RightContainer .ProProfile {
+    width: 70%;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-RightContainer .ProProfile img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .BoxContainer {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    border: 0px solid #ffffff;
+    padding: 10px;
+    gap: 0.5em;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .BoxContainer a {
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: large;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .infoContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+}
