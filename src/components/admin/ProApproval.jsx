@@ -11,9 +11,8 @@ const GosuApproveTable = () => {
 
     return (
         <div className="approve-container">
-            <h2 className="approve-title">고수 권한 승인 | 고수가 되고 싶은가?</h2>
-            
-            <div className="white-container">
+            <div className='approve-inner-container'>
+                <h2 className="approve-title">고수 권한 승인 | 고수가 되고 싶은가?</h2>
                 <hr className="approve-divider" />
                 <div className="table-container">
                     <table className="approve-table">
@@ -21,7 +20,7 @@ const GosuApproveTable = () => {
                             <tr>
                                 <th>번호</th>
                                 <th>이름</th>
-                                <th>의뢰 수</th>
+                                <th>한줄 소개</th>
                                 <th>승인 여부</th>
                             </tr>
                         </thead>

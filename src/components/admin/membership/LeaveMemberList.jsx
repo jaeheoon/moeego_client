@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../../css/admin/LeaveMemberList.css';
-
 const LeaveMemberList = () => {
     // 테이블 데이터
     const tableData = [
@@ -31,14 +30,14 @@ const LeaveMemberList = () => {
     ];
 
     return (
-        <div className="min-h-screen">
+        <div className="leave-container">
             <div className="max-w-7xl">
-                <h1 className="title">탈퇴 회원 관리 | 떠난 고수들</h1>
+                <h1 className="leave-title">탈퇴 회원 관리 | 떠난 고수들</h1>
 
-                <div className="container">
-                    <hr className="divider" />
-                    <div className="table-wrapper">
-                        <table className="table">
+                <div className="leave-divider-container">
+                    <hr className="leave-divider" />
+                    <div className="leave-table-container">
+                        <table className="leave-table">
                             <thead>
                                 <tr>
                                     <th>번호</th>
