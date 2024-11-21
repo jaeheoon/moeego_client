@@ -74,3 +74,9 @@
     width: 1rem;  /* Set appropriate width */
     height: auto; /* Maintain aspect ratio */
 }
+
+/* 링크 밑줄 제거 */
+.sideBar-Link{
+    text-decoration: none;
+    color: inherit; /* 기본 글자색 유지 */
+}
