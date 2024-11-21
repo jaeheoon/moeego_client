@@ -34,7 +34,6 @@ import Login from "./components/login/Login";
 import Join from "./components/join/Join";
 import ProMain from "./components/pro/ProMain";
 import Prosignup from "./components/pro/Prosignup";
-import ProSub from "./components/pro/ProSub";
 import ArticleMain from './components/articles/ArticleMain.jsx';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
 import ProDetail from './components/Pro/ProDetail.jsx';
@@ -46,6 +45,12 @@ import ProReview from "./components/Pro/ProReview.jsx";
 import ProInfo from "./components/Pro/ProInfo.jsx";
 import AdminLogin from "./components/admin/AdminLogin.jsx";
 import AdminMain from "./components/admin/AdminMain.jsx";
+import ProjoinSub_interoir from "./components/Pro/ProSub_interoir.jsx";
+import ProjoinSub_si from "./components/Pro/ProSub_si.jsx";
+import ProjoinSub_car from "./components/Pro/ProSub_car.jsx";
+import ProjoinSub_hobby from "./components/Pro/ProSub_hobby.jsx";
+import ProjoinSub_study from "./components/Pro/ProSub_study.jsx";
+import ProjoinSub_fashion from "./components/Pro/ProSub_fashion.jsx";
 
 const App = () => {
   return (
@@ -100,7 +105,12 @@ const App = () => {
 
           {/* 달인 가입 페이지 */}
           <Route path="/pro/signup/main" element={<ProMain />} />
-          <Route path="/pro/signup/sub" element={<ProSub />} />
+          <Route path="/pro/signup/sub_interoir" element={<ProjoinSub_interoir />} />
+          <Route path="/pro/signup/sub_si" element={<ProjoinSub_si />} />
+          <Route path="/pro/signup/sub_fashion" element={<ProjoinSub_fashion />} />
+          <Route path="/pro/signup/sub_study" element={<ProjoinSub_study />} />
+          <Route path="/pro/signup/sub_hobby" element={<ProjoinSub_hobby />} />
+          <Route path="/pro/signup/sub_car" element={<ProjoinSub_car />} />
           <Route path="/pro/signup" element={<Prosignup />} />
           <Route path="/pro/detail" element={<ProDetail />} />
 

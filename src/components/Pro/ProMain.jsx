@@ -12,52 +12,52 @@ const ProjoinMain = () => {
                 <ul className="category-wrapper">
                     {/* 이부분 메인카테고리 테이블 포이치로 돌릴 예정 */}
                     <li className="category1">
+                        <Link to="/pro/signup/sub_interoir">
                         <div className="category-list">
-                        <Link to="/pro/signup/sub">
                             <img src="../../src/image/home.png" alt="홈/인테리어" width="40" height="40"/>
                             <h1 className="category-title">홈/인테리어</h1>
-                        </Link>
                         </div>
+                        </Link>
                     </li>
                     <li className="category1">
+                        <Link to="/pro/signup/sub_si">
                         <div className="category-list">
-                        <Link to="/pro/signup/sub">
                             <img src="../../src/image/si.png" alt="외주" width="40" height="40"/>
                             <h1 className="category-title">외주</h1>
-                        </Link>
                         </div>
+                        </Link>
                     </li>
                     <li className="category1">
+                        <Link to="/pro/signup/sub_fashion">
                         <div className="category-list">
-                        <Link to="/pro/signup/sub">
                             <img src="../../src/image/fashion.png" alt="패션/뷰티" width="40" height="40"/>
                             <h1 className="category-title">패션/뷰티</h1>
-                        </Link>
                         </div>
+                        </Link>
                     </li>
                     <li className="category1">
+                        <Link to="/pro/signup/sub_study">
                         <div className="category-list">
-                        <Link to="/pro/signup/sub">
                             <img src="../../src/image/study.png" alt="직무/과외" width="40" height="40"/>
                             <h1 className="category-title">직무/과외</h1>
-                        </Link>
                         </div>
+                        </Link>
                     </li>
                     <li className="category1">
+                        <Link to="/pro/signup/sub_hobby">
                         <div className="category-list">
-                        <Link to="/pro/signup/sub">
                             <img src="../../src/image/hobby.png" alt="취미/자기계발" width="40" height="40"/>
                             <h1 className="category-title">취미/자기계발</h1>
-                        </Link>
                         </div>
+                        </Link>
                     </li>
                     <li className="category1">
+                        <Link to="/pro/signup/sub_car">
                         <div className="category-list">
-                        <Link to="/pro/signup/sub">
                             <img src="../../src/image/car.png" alt="자동차" width="40" height="40"/>
                             <h1 className="category-title">자동차</h1>
-                        </Link>
                         </div>
+                        </Link>
                     </li>
                 </ul>
                 </form>

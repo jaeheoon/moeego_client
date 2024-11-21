@@ -1,0 +1,82 @@
+.ProJoinSub_fashionPage {
+    margin-top: 6%;
+    margin-bottom: 6%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ProJoinSub_fashionPage #projoinSub_fashion_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.ProJoinSub_fashionPage .ProJoinSub_fashionbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #F4F4F4;
+    width: 650px;
+    border-radius: 25px;
+    background-color: #F4F4F4;
+    box-sizing: border-box;
+    padding-bottom: 2em;
+}
+
+.ProJoinSub_fashionPage .detail-fashion {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    width: 400px;
+    background-color: #FFFF; 
+    border-radius: 10px; 
+    padding: 20px 20px; 
+    margin: 11px;
+    font-weight: bold;
+}
+
+
+.ProJoinSub_fashionPage .prevBtn, .ProJoinSub_fashionPage .nextBtn{
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 10px 20px;
+    font-size: 16px;              
+    border-radius: 8px;     
+    width: 310px;            
+    cursor: pointer;  
+    font-weight: bold;
+    border: 1px solid #fd9bb9;  
+    background-color: white; 
+    color: #fd9bb9;
+}
+
+.ProJoinSub_fashionPage .moveBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 650px;
+    gap: 30px;
+    margin-top: 20px;
+}
+.ProJoinSub_fashionPage .prevBtn:hover, .ProJoinSub_fashionPage .nextBtn:hover {
+    border: 1px solid #fcc1cc;   
+    background-color: #fcc1cc; 
+    color: white;
+}
+
+
+.ProJoinSub_fashionPage input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #fd9bb9;
+}
