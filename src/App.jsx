@@ -105,9 +105,6 @@ const App = () => {
           <Route path="/pro/detail" element={<ProDetail />} />
 
           {/* 관리자 페이지 */}
-          <Route path="/admin/EventList" element={<EventList />} />
-          <Route path="/admin/EventWrite" element={<EventWrite />} />
-          <Route path="/admin/EventUpdate" element={<EventUpdate />} />
           <Route path="/admin/Login" element={<AdminLogin />} />
           <Route path="/ProRequest" element={<ProRequest />} />
 
@@ -116,8 +113,12 @@ const App = () => {
           <Route path="/admin/MemberList" element={<AdminMain />} />
           <Route path="/admin/ProList" element={<AdminMain />} />
           <Route path="/admin/LeaveMemberList" element={<AdminMain />} />
+          <Route path="/admin/EventList" element={<AdminMain />} />
+          <Route path="/admin/NoticeList" element={<AdminMain />} />
           
-          <Route path="/ProRequest" element={<ProRequest />} />
+          
+          <Route path="/admin/event-write" element={<EventWrite />} />
+          <Route path="/admin/event-update" element={<EventUpdate />} />
 
           </Routes>
           {!window.location.pathname.startsWith('/admin') && <Footer />}

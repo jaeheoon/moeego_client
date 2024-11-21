@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 const SideBar = () => {
     const { 
         isMemberSubmenuOpen, 
-        toggleMemberSubmenu, 
-        isEventSubmenuOpen, 
-        toggleEventSubmenu 
+        toggleMemberSubmenu,
     } = useSideBar();
 
     return (
@@ -44,21 +42,9 @@ const SideBar = () => {
                             </ul>
                         )}
                     </div>
-                    <div>
-                        <div 
-                            className="submenu-trigger"
-                            onClick={toggleEventSubmenu}
-                        >
-                            <span>이벤트 및 공지</span>
-                        </div>
-                        
-                        {isEventSubmenuOpen && (
-                            <ul className="submenu">
-                                <li className="submenu-item">이벤트 게시판</li>
-                                <li className="submenu-item">공지 게시판</li>
-                            </ul>
-                        )}
-                    </div>
+                    <Link to='/admin/EventList' className='sideBar-Link'>
+                        <li className="menu-item">이벤트 및 공지</li>
+                    </Link>
                 </ul>
             </div>
         </div>

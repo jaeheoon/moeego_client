@@ -1,0 +1,129 @@
+/* 전체 컨테이너 */
+.eventList-container {
+    width: 90%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* 내부 컨테이너 */
+.eventList-inner-container {
+    background-color: #fafafa; /* 밝은 회색 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.eventList-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4e4e4e; /* 어두운 회색 */
+}
+
+/* 구분선 스타일 */
+.eventList-divider {
+    margin: 20px 0;
+    border: 0;
+    height: 1px;
+    background: #e0e0e0; /* 회색 */
+}
+
+/* 테이블 스타일 */
+.eventList-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.eventList-table th,
+.eventList-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.eventList-table th {
+    background-color: #F0F0F0; /* 연한 회색 */
+    color: #333;
+    font-weight: bold;
+}
+
+.eventList-table tbody tr:nth-child(odd) {
+    background-color: #fdfdfd; /* 밝은 색 */
+}
+
+.eventList-table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+/* 버튼 스타일 */
+.eventList-edit-button,
+.eventList-delete-button,
+.eventList-register-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 편집 버튼 */
+.eventList-edit-button {
+    background-color: #add8e6; /* 연한 파란색 */
+    color: #fff;
+}
+
+.eventList-edit-button:hover {
+    background-color: #87cefa; /* 파란색 */
+}
+
+/* 삭제 버튼 */
+.eventList-delete-button {
+    background-color: #FF4949; /* 빨간색 */
+    color: #fff;
+    margin-left: 5px;
+}
+
+.eventList-delete-button:hover {
+    background-color: #ff7f7f; /* 연한 빨간색 */
+}
+
+/* 등록 버튼 */
+.eventList-register-button {
+    background-color: #80e0a7; /* 연한 초록색 */
+    color: #fff;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.eventList-register-button:hover {
+    background-color: #66cc7e; /* 초록색 */
+}
+
+/* 버튼 컨테이너 */
+.eventList-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .eventList-title {
+        font-size: 20px;
+    }
+
+    .eventList-table th,
+    .eventList-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .eventList-register-button {
+        font-size: 14px;
+    }
+}

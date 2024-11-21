@@ -6,6 +6,7 @@ import ProApproval from './ProApproval';
 import ProList from './membership/ProList';
 import LeaveMemberList from './membership/LeaveMemberList';
 import DashBoard from './Dashboard';
+import EventList from './EventList';
 
 const AdminMain = () => {
     // 현재 URL 경로 가져오기
@@ -18,6 +19,7 @@ const AdminMain = () => {
       '/admin/ProApproval': <ProApproval />,
       '/admin/ProList': <ProList />,
       '/admin/LeaveMemberList': <LeaveMemberList/>,
+      '/admin/EventList': <EventList/>,
     };
 
     // 현재 경로에 맞는 컴포넌트 선택

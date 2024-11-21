@@ -1,0 +1,103 @@
+/* EventWrite.css */
+
+/* 전체 컨테이너 스타일 */
+.event-write-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.event-write-container h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom : 50px;
+}
+
+/* 구분선 스타일 */
+.event-write-container hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* 제목 및 내용 구역 */
+.event-write-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 입력 필드 컨테이너 */
+.event-write-container form div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 라벨 스타일 */
+.event-write-container label {
+    width: 100px;
+    text-align: left;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 인풋 및 텍스트 박스 스타일 */
+.event-write-container input[type="text"],
+.event-write-container textarea,
+.event-write-container select {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 텍스트 에리어 스타일 */
+.event-write-container textarea {
+    height: 150px;
+    resize: none;
+}
+
+/* 파일 업로드 스타일 */
+.event-write-container input[type="file"] {
+    border: none;
+    font-size: 14px;
+}
+
+/* 버튼 스타일 */
+.event-write-container button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.event-write-container button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+}
+
+.event-write-container button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+/* 버튼 간격 */
+.event-write-container form > div:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
