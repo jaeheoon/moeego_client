@@ -57,80 +57,77 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Header />
-          <Routes>
-            {/* 메인페이지 */}
-            <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
+        {/* Header와 Footer를 제외할 조건 */}
+        {!window.location.pathname.startsWith('/admin') && <Header />}
+        
+        <Routes>
+          {/* 메인페이지 */}
+          <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
 
-            {/* 카테고리 페이지 */}
-            <Route path={"/category/home"} element={<div className='main-content'><Home_interior /></div>} />
-            <Route path={"/category/outsourcing"} element={<div className='main-content'><Outsourcing /></div>} />
-            <Route path={"/category/fashion"} element={<div className='main-content'><Fashion_beauty /></div>} />
-            <Route path={"/category/study"} element={<div className='main-content'><Study /></div>} />
-            <Route path={"/category/hobby"} element={<div className='main-content'><Hobby /></div>} />
-            <Route path={"/category/car"} element={<div className='main-content'><Car /></div>} />
-            <Route path={"/about"} element={<About />} />
-            <Route path="/pro/search" element={<div className='main-content'><ProSearch /></div>} />
-            <Route path="/pro" element={<div className='main-content'><ProView /></div>} />
+          {/* 카테고리 페이지 */}
+          <Route path={"/category/home"} element={<div className='main-content'><Home_interior /></div>} />
+          <Route path={"/category/outsourcing"} element={<div className='main-content'><Outsourcing /></div>} />
+          <Route path={"/category/fashion"} element={<div className='main-content'><Fashion_beauty /></div>} />
+          <Route path={"/category/study"} element={<div className='main-content'><Study /></div>} />
+          <Route path={"/category/hobby"} element={<div className='main-content'><Hobby /></div>} />
+          <Route path={"/category/car"} element={<div className='main-content'><Car /></div>} />
+          <Route path={"/about"} element={<About />} />
+          <Route path="/pro/search" element={<div className='main-content'><ProSearch /></div>} />
+          <Route path="/pro" element={<div className='main-content'><ProView /></div>} />
 
-            <Route path="/article/Write" element={<div className='main-content'><Write /></div>} />
-            <Route path="/article/Update" element={<div className='main-content'><Update /></div>} />
-            <Route path="/mypage/Review" element={<div className='main-content'><Review /></div>} />
+          {/* 작성 페이지 */}
+          <Route path="/article/Write" element={<div className='main-content'><Write /></div>} />
+          <Route path="/article/Update" element={<div className='main-content'><Update /></div>} />
+          <Route path="/mypage/Review" element={<div className='main-content'><Review /></div>} />
 
-            {/* 마이페이지 */}
-            <Route path={"/mypage"} element={<div className='main-content'><MyPage /></div>} />
-            <Route path={"/mypage/likepro"} element={<div className='main-content'><BookMarkPro /></div>} />
-            <Route path={"/mypage/reservation"} element={<div className='main-content'><MyReservation /></div>} />
-            <Route path={"/mypage/myhistory"} element={<div className='main-content'><MyHistory /></div>} />
-            <Route path={"/mypage/myhistory/myarticle"} element={<div className='main-content'><MyArticles /></div>} />
-            <Route path={"/mypage/myhistory/mycomment"} element={<div className='main-content'><MyComments /></div>} />
-            <Route path={"/mypage/account"} element={<div className='main-content'><Account /></div>} />
-            <Route path={"/mypage/account/private"} element={<div className='main-content'><Private /></div>} />
-            <Route path={"/mypage/account/private/email"} element={<div className='main-content'><ChangeEmail /></div>} />
-            <Route path={"/mypage/account/private/password"} element={<div className='main-content'><ChangePassword /></div>} />
-            <Route path={"/mypage/account/private/address"} element={<div className='main-content'><ChangeAddress /></div>} />
-            <Route path={"/mypage/account/private/signout"} element={<div className='main-content'><SignOut /></div>} />
-            <Route path={"/mypage/account/private/success"} element={<div className='main-content'><Success /></div>} />
+          {/* 마이페이지 */}
+          <Route path={"/mypage"} element={<div className='main-content'><MyPage /></div>} />
+          <Route path={"/mypage/likepro"} element={<div className='main-content'><BookMarkPro /></div>} />
+          <Route path={"/mypage/reservation"} element={<div className='main-content'><MyReservation /></div>} />
+          <Route path={"/mypage/myhistory"} element={<div className='main-content'><MyHistory /></div>} />
+          <Route path={"/mypage/myhistory/myarticle"} element={<div className='main-content'><MyArticles /></div>} />
+          <Route path={"/mypage/myhistory/mycomment"} element={<div className='main-content'><MyComments /></div>} />
+          <Route path={"/mypage/account"} element={<div className='main-content'><Account /></div>} />
+          <Route path={"/mypage/account/private"} element={<div className='main-content'><Private /></div>} />
+          <Route path={"/mypage/account/private/email"} element={<div className='main-content'><ChangeEmail /></div>} />
+          <Route path={"/mypage/account/private/password"} element={<div className='main-content'><ChangePassword /></div>} />
+          <Route path={"/mypage/account/private/address"} element={<div className='main-content'><ChangeAddress /></div>} />
+          <Route path={"/mypage/account/private/signout"} element={<div className='main-content'><SignOut /></div>} />
+          <Route path={"/mypage/account/private/success"} element={<div className='main-content'><Success /></div>} />
 
+          {/* 커뮤니티 페이지 */}
+          <Route path={"/article"} element={<div className='main-content'><ArticleMain /></div>} />
+          <Route path={"/article/free"} element={<div className='main-content'><FreeBoardForm /></div>} />
+          <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
 
-            {/* 커뮤니티 페이지 */}
-            <Route path={"/article"} element={<div className='main-content'><ArticleMain /></div>} />
-            <Route path={"/article/free"} element={<div className='main-content'><FreeBoardForm /></div>} />
-            <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
+          {/* 회원가입/로그인 페이지 */}
+          <Route path="/login" element={<div className='main-content'><Login /></div>} />
+          <Route path="/signup" element={<div className='main-content'><Join /></div>} />
 
-            {/* 회원가입/로그인 페이지 */}
-            <Route path="/login" element={<div className='main-content'><Login /></div>} />
-            <Route path="/signup" element={<div className='main-content'><Join /></div>} />
+          {/* 달인 가입 페이지 */}
+          <Route path="/pro/signup/main" element={<ProMain />} />
+          <Route path="/pro/signup/sub" element={<ProSub />} />
+          <Route path="/pro/signup" element={<Prosignup />} />
+          <Route path="/pro/detail" element={<ProDetail />} />
 
-            {/* 달인 가입 페이지 */}
-            <Route path="/pro/signup/main" element={<ProMain />} />
-            <Route path="/pro/signup/sub" element={<ProSub />} />
-            <Route path="/pro/signup" element={<Prosignup />} />
-            <Route path="/pro/detail" element={<ProDetail />} />
+          {/* 관리자 페이지 */}
+          <Route path="/admin/SideBar" element={<SideBar />} />
+          <Route path="/admin/DashBoard" element={<DashBoard />} />
+          <Route path="/admin/ProApproval" element={<ProApproval />} />
+          <Route path="/admin/ProList" element={<ProList />} />
+          <Route path="/admin/MemberList" element={<MemberList />} />
+          <Route path="/admin/LeaveMemberList" element={<LeaveMemberList />} />
+          <Route path="/admin/EventList" element={<EventList />} />
+          <Route path="/admin/EventWrite" element={<EventWrite />} />
+          <Route path="/admin/EventUpdate" element={<EventUpdate />} />
+          <Route path="/admin/Login" element={<AdminLogin />} />
 
-            {/* 관리자 페이지 */}
-            <Route path="/admin/SideBar" element={<SideBar />} />
-            <Route path="/admin/DashBoard" element={<DashBoard />} />
-            <Route path="/admin/ProApproval" element={<ProApproval />} />
-            <Route path="/admin/ProList" element={<ProList />} />
-            <Route path="/admin/MemberList" element={<MemberList />} />
-            <Route path="/admin/LeaveMemberList" element={<LeaveMemberList />} />
-            <Route path="/admin/EventList" element={<EventList />} />
-            <Route path="/admin/EventWrite" element={<EventWrite />} />
-            <Route path="/admin/EventUpdate" element={<EventUpdate />} />
-            <Route path="/admin/Login" element={<AdminLogin />}/>
+          <Route path="/ProRequest" element={<ProRequest />} />
+        </Routes>
 
-            <Route path="/ProRequest" element={<ProRequest />} />
-
-            <Route path="/pro/signup/main" element={<div className='main-content'><ProMain /></div>} />
-            <Route path="/pro/signup/sub" element={<div className='main-content'><ProSub /></div>} />
-            <Route path="/pro/signup" element={<div className='main-content'><Prosignup /></div>} />
-            <Route path="/pro/detail" element={<div className='main-content'><ProDetail /></div>} />
-
-          </Routes>
-        <Footer />
+        {!window.location.pathname.startsWith('/admin') && <Footer />}
       </BrowserRouter>
-    </div >
+    </div>
   );
 };
 
