@@ -1,0 +1,107 @@
+.PopularPostListContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.PopularPostListContainer .AllList {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.PopularPostListContainer .AllList .AllWrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.PopularPostListContainer .AllList .AllWrap:hover {
+    cursor: pointer;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .titleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 90%;
+    color: #828282;
+    overflow: hidden;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(2) img {
+    width: 20px;
+    height: 20px;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .contentWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .contentWrap div {
+    width: 100%;
+    display: flex;
+    vertical-align: text-top;
+    margin-top: 1em;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .imageWrap {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(1),
+.PopularPostListContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 20%;
+    padding: 20px 0px 5px 0px;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(1) img,
+.PopularPostListContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(2) img {
+    width: 15px;
+    height: 15px;
+}
+
+.PopularPostListContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(1) span,
+.PopularPostListContainer .AllList .AllWrap .viewWrap .imageWrap div:nth-child(2) span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0.3em;
+}
