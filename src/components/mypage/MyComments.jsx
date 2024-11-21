@@ -1,13 +1,12 @@
 import React from 'react';
+import MyCommentItem from './MyCommentItem';
 
 const MyComments = () => {
     return (
         <div className='myCommentsPage'>
-            <div>
-                <div>작성내용</div>
-                <div>작성된글제목</div>
-                <div>작성일</div>
-            </div>
+            <MyCommentItem />
+            <MyCommentItem />
+            <MyCommentItem />
         </div>
     );
 };

@@ -1,14 +1,12 @@
 import React from 'react';
+import MyArticleItem from './MyArticleItem';
 
 const MyArticles = () => {
     return (
         <div className='myArticlesPage'>
-            <div>카테고리명</div>
-            <div>
-                <div>제목</div>
-                <div>내용</div>
-                <div>작성일</div>
-            </div>
+            <MyArticleItem/>
+            <MyArticleItem/>
+            <MyArticleItem/>
         </div>
     );
 };

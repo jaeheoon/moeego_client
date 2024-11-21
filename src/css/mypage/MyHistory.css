@@ -1,0 +1,100 @@
+.PageTitle a {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 3.5%;
+}
+.myHistoryPage{
+    margin-top: 5%;
+}
+.myHistoryLinkWrap {
+    display: flex; /* 수평 정렬 */
+    gap: 1.5em; /* 탭 간 간격 */
+    margin-top: 5%;
+}
+
+.myHistoryLinkWrap div {
+    transition: color 0.3s, font-weight 0.3s; /* 부드러운 색상 변화 */
+    padding-bottom: 0.5em;
+    font-size: 1.1rem;
+}
+
+.myHistoryLinkWrap a {
+    text-decoration: none; /* 기본적으로 밑줄 제거 */
+    color: rgb(200, 200, 200); /* 기본 글씨 색상 */
+}
+
+.myHistoryLinkWrap a:hover {
+    color: rgb(150, 150, 150); /* 호버 시 색상 */
+}
+
+/* 활성화된 탭 스타일 */
+.myHistoryLinkWrap div.active {
+    color: black; /* 활성화된 탭 글씨 색상 */
+    font-weight: bold; /* 글씨 두껍게 */
+    border-bottom: 2px solid black;
+}
+
+/* hr 스타일 */
+.divider {
+    border: none; /* 기본 경계 제거 */
+    height: 2px; /* 두께 설정 */
+    background-color: #eee; /* 색상 설정 */
+    margin-top: -2px; /* 탭과의 간격 조정 */
+    margin-bottom: 1.5em;
+}
+
+/* 작성글 CSS */
+.myArticleItemPage{
+    padding-left: 1em;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+.myArticleItemCategory{
+    display: inline-block;
+    border: 1px solid #eee;
+    background-color: #eee;
+    font-weight: bold;
+    font-size: 10pt;
+    padding: 3px 5px;
+    color:rgb(150,150,150);
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+.myArticleItemContentWrap .myArticleItemTitle{
+    font-size: 12pt;
+    font-weight: bold;
+    color:black;
+}
+.myArticleItemContentWrap .myArticleItemContent{
+    font-size: 11pt;
+    color:rgb(150,150,150);
+    margin: 0.8em 0 1.1em 0;
+}
+.myArticleItemContentWrap .myArticleItemDate{
+    font-size: 11pt;
+    color:rgb(150,150,150);
+}
+
+/* 작성댓글 CSS */
+.MyCommentItem{
+    padding-left: 1em;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+.MyCommentItem .MyCommentItemContent{
+    font-size: 12pt;
+    font-weight: bold;
+    color:black;
+}
+.MyCommentItem .MyCommentItemTitle{
+    font-size: 11pt;
+    color:rgb(150,150,150);
+    margin: 0.8em 0 1.1em 0;
+}
+.MyCommentItem .MyCommentItemDate{
+    font-size: 11pt;
+    color:rgb(150,150,150);
+}
