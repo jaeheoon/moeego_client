@@ -10,13 +10,6 @@
     margin-top: 5%;
 }
 
-.ArticleMainWrap hr {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    border-width:1px 0 0 0; border-color:#f2f2f2;
-    opacity: 30%;
-}
-
 .TopContainer {
     display: flex;
     align-items: center;
@@ -88,6 +81,7 @@
 .MainContainer .Main-RightContainer {
     flex: 0 0 75%;
     padding: 10px;
+    width: 70%;
 }
 
 .life-topic-layout {
@@ -151,10 +145,12 @@
 }
 
 .NotionContainer div:nth-child(2) {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    width: 75%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
 }
 
 .NotionContainer div:nth-child(3) {
@@ -178,18 +174,20 @@
 
 .HotArticleContainer .HotList {
     display: flex;
-    align-items: center;
-    gap: 5%;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
+    gap: 1em;
 }
 
 .HotArticleContainer .HotList .HotWrap {
-    display: flex;
-    align-items: center;
-    background-color: rgb(226, 255, 252);
-    width: 100%;
-    border-radius: 10px;
+    flex: 1 1 calc(50% - 1em);
     box-sizing: border-box;
+    max-width: calc(50% - 1em);
+    background-color: rgb(226, 255, 252);
+    border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .HotArticleContainer .HotList .HotWrap:hover {
@@ -201,6 +199,7 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    width: 100%;
     padding: 20px;
 }
 
@@ -212,12 +211,12 @@
 }
 
 .HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(1) {
-    display: flex;
-    align-items: center;
-    justify-content: left;
     width: 90%;
     color: #828282;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
 }
 
 .HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(2) {
@@ -269,22 +268,25 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 1em;
+    width: 100%;
 }
 
 .LatestArticleContainer .LatestList {
     display: flex;
-    align-items: center;
-    gap: 5%;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
+    gap: 1em;
 }
 
 .LatestArticleContainer .LatestList .LatestWrap {
-    display: flex;
-    align-items: center;
-    background-color: #ffdae0;
-    width: 100%;
-    border-radius: 10px;
+    flex: 1 1 calc(50% - 1em);
     box-sizing: border-box;
+    max-width: calc(50% - 1em);
+    background-color: #ffdae0;
+    border-radius: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .LatestArticleContainer .LatestList .LatestWrap:hover {
@@ -292,6 +294,7 @@
 }
 
 .LatestArticleContainer .LatestList .LatestWrap .viewWrap {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -302,17 +305,19 @@
 .LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 }
 
 .LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(1) {
-    display: flex;
-    align-items: center;
-    justify-content: left;
     width: 90%;
     color: #828282;
+    text-align: left;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
 }
 
 .LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(2) {
@@ -371,12 +376,12 @@
     display: flex;
     align-items: center;
     width: 100%;
+    border-bottom: 1px solid #dedede;
 }
 
 .AllArticleContainer .AllList .AllWrap {
     display: flex;
     align-items: center;
-    background-color: #dedede;
     width: 100%;
     border-radius: 10px;
     box-sizing: border-box;
@@ -403,12 +408,13 @@
 }
 
 .AllArticleContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(1) {
-    display: flex;
-    align-items: center;
-    justify-content: left;
     width: 90%;
-    color: #828282;
+    text-align: left;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
 }
 
 .AllArticleContainer .AllList .AllWrap .viewWrap .titleWrap div:nth-child(2) {
@@ -426,15 +432,21 @@
 .AllArticleContainer .AllList .AllWrap .viewWrap .contentWrap {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     width: 100%;
 }
 
 .AllArticleContainer .AllList .AllWrap .viewWrap .contentWrap div {
-    width: 100%;
-    display: flex;
+    width: 95%;
+    color: #828282;
     vertical-align: text-top;
     margin-top: 1em;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
 }
 
 .AllArticleContainer .AllList .AllWrap .viewWrap .imageWrap {
@@ -449,7 +461,7 @@
     display: flex;
     align-items: center;
     justify-content: right;
-    width: 20%;
+    width: 15%;
     padding: 20px 0px 5px 0px;
 }
 
@@ -464,6 +476,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-left: 0.3em;
+    width: 50%;
 }

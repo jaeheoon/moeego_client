@@ -17,7 +17,7 @@ const ArticleMain = () => {
                     <h1>커뮤니티</h1>
                     <div className="ButtonWrap">
                         <button type="button" id="articleWriteBtn" onClick={GoWrite}>
-                            <svg fill="#b2b2b2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 24.00 24.00" enable-background="new 0 0 20 20" xml:space="preserve" stroke="#b2b2b2" stroke-width="0.0002" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18,20H2c-0.6,0-1-0.4-1-1s0.4-1,1-1h16c0.6,0,1,0.4,1,1S18.6,20,18,20z"></path> <path d="M7,16H3c-0.6,0-1-0.4-1-1v-4c0-0.3,0.1-0.5,0.3-0.7l10-10c0.4-0.4,1-0.4,1.4,0l4,4c0.4,0.4,0.4,1,0,1.4l-10,10 C7.5,15.9,7.3,16,7,16z M4,14h2.6l9-9L13,2.4l-9,9V14z"></path></g></svg>글쓰기
+                            <svg fill="#b2b2b2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 24.00 24.00" enableBackground="new 0 0 20 20" xmlSpace="preserve" stroke="#b2b2b2" strokeWidth="0.0002" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18,20H2c-0.6,0-1-0.4-1-1s0.4-1,1-1h16c0.6,0,1,0.4,1,1S18.6,20,18,20z"></path> <path d="M7,16H3c-0.6,0-1-0.4-1-1v-4c0-0.3,0.1-0.5,0.3-0.7l10-10c0.4-0.4,1-0.4,1.4,0l4,4c0.4,0.4,0.4,1,0,1.4l-10,10 C7.5,15.9,7.3,16,7,16z M4,14h2.6l9-9L13,2.4l-9,9V14z"></path></g></svg>글쓰기
                         </button>
                     </div>
                 </div>
@@ -30,7 +30,7 @@ const ArticleMain = () => {
                             <div>
                                 <h4>공지</h4>
                             </div>
-                            <div>모이고 생활 가이드</div>
+                            <div>모이고 생활 가이드 공지물을 올려봤습니다. 필독필독필독필독필독필독필독필독필독필독필독필독필독필독필독</div>
                             <div><img src="../src/image/next_icon.png" alt="next" /></div>
                         </div>
                         <div className='HotArticleContainer'>
@@ -52,7 +52,9 @@ const ArticleMain = () => {
                                     <div className='viewWrap'>
                                         <div className='titleWrap'>
                                             <div>제목</div>
-                                            <div><img src="../src/image/next_icon.png" alt="next" /></div>
+                                            <div>
+                                                <img src="../src/image/next_icon.png" alt="next" />
+                                            </div>
                                         </div>
                                         <div className='imageWrap'>
                                             <div><img src='../src/image/view_icon.svg' alt='view' /><span>100</span></div>
@@ -68,7 +70,7 @@ const ArticleMain = () => {
                                 <div className='LatestWrap'>
                                     <div className='viewWrap'>
                                         <div className='titleWrap'>
-                                            <div>제목</div>
+                                            <div>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</div>
                                             <div><img src="../src/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className='imageWrap'>
@@ -97,11 +99,11 @@ const ArticleMain = () => {
                                 <div className='AllWrap'>
                                     <div className='viewWrap'>
                                         <div className='titleWrap'>
-                                            <div>제목</div>
+                                            <div>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</div>
                                             <div><img src="../src/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className="contentWrap">
-                                            <div>글내용1, 글내용2, 글내용3, 글내용4, 글내용5</div>
+                                            <div>글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3</div>
                                         </div>
                                         <div className='imageWrap'>
                                             <div><img src='../src/image/view_icon.svg' alt='view' /><span>100</span></div>
@@ -158,7 +160,7 @@ const ArticleMain = () => {
                                             <div><img src="../src/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className="contentWrap">
-                                            <div>글내용1, 글내용2, 글내용3, 글내용4, 글내용5</div>
+                                            <div>글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5글내용1, 글내용2, 글내용3, 글내용4, 글내용5</div>
                                         </div>
                                         <div className='imageWrap'>
                                             <div><img src='../src/image/view_icon.svg' alt='view' /><span>100</span></div>
