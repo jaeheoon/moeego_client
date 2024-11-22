@@ -2,7 +2,7 @@
     display: flex;
     gap:10px;
 }
-.serviceBtn, .areaBtn{
+.service_areaHeader .serviceBtn, .service_areaHeader .areaBtn, .service_areaHeader .filterResetBtn{
     display: flex;
     align-items: center;
     vertical-align: middle;
@@ -13,4 +13,13 @@
     border-radius: 30px;
     background-color: white;
     border: 1px solid #d4d4d4;
+}
+.service_areaHeader .selectedService {
+    background-color: black; /* 배경색을 검은색으로 설정 */
+    color: white; /* 글자색을 흰색으로 설정 */
+}
+
+.service_areaHeader .serviceBtn, .service_areaHeader .filterResetBtn {
+    padding: 10px 15px; /* 버튼 패딩 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 */
 }

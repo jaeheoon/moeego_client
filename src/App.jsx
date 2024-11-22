@@ -52,6 +52,7 @@ import ProjoinSub_fashion from "./components/Pro/ProSub_fashion.jsx";
 import ProjoinMain from "./components/Pro/ProjoinMain.jsx";
 import SearchEmail from "./components/login/SearchEmail.jsx";
 import SearchPwd from "./components/login/SearchPwd.jsx";
+import ServiceAreaModal from "./components/ProSearch/ServiceAreaModal.jsx";
 
 const App = () => {
   return (
@@ -129,6 +130,8 @@ const App = () => {
 
           <Route path="/admin/event-write" element={<EventWrite />} />
           <Route path="/admin/event-update" element={<EventUpdate />} />
+
+          <Route path="/modal" element={<ServiceAreaModal />} />
 
         </Routes>
         {!window.location.pathname.startsWith('/admin') && <Footer />}
