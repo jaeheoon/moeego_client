@@ -1,9 +1,15 @@
-.PageTitle a {
+.myHistoryPage .PageTitle a {
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 3.5%;
+    width: 3.1%;
 }
+
+.myHistoryPage .PageTitle a img {
+    width: 20px;
+    height: 20px;
+}
+
 .myHistoryPage{
     margin-top: 5%;
 }

@@ -13,7 +13,7 @@ const Review = () => {
                                 <img src="../../src/image/prev_icon.png" alt="prev" />
                             </div>
                         </Link>
-                        <h1>계정 설정</h1>
+                        <h1>리뷰 내역</h1>
                     </div>
                     <div className="ReviewLIst">
                         <ul>
