@@ -68,11 +68,11 @@
 }
 
 /* 승인 상태 */
-.status-badge.approved {
+.memberList-status-badge.approved {
     color: #28a745; /* 초록색 */
 }
 
 /* 박탈 상태 */
-.status-badge.revoked {
+.memberList-status-badge.revoked {
     color: #dc3545; /* 빨간색 */
 }

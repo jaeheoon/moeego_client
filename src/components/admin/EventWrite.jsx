@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../css/admin/Event.css';
 
-const EventWrite = () => {
+const EventWrite = ({ closeWindow }) => {
     const handleCancel = () => {
         window.close(); // 현재 창을 닫음
+        closeWindow();   // 부모 컴포넌트에게 창이 닫혔다는 정보를 전달하여 상태를 갱신
     };
+
+    useEffect(() => {
+        // 창이 처음 열렸을 때, 닫히면 상태 초기화
+        return () => {
+            closeWindow();
+        };
+    }, [closeWindow]);
 
     return (
         <div className="event-write-container">

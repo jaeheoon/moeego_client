@@ -28,7 +28,7 @@ const ProList = () => {
 
     // 상태에 따른 클래스 이름을 반환하는 함수
     const getStatusBadgeClass = (status) =>
-        `status-badge ${status === '승인' ? 'approved' : 'revoked'}`;
+        `memberList-status-badge ${status === '승인' ? 'approved' : 'revoked'}`;
 
     return (
         <div className="membership-container">

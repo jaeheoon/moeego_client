@@ -28,20 +28,26 @@ const EventList = () => {
 
     // 새로운 창을 열기 위한 함수
     const openNewWriteWindow = () => {
-        const openedWindow = window.open('/admin/event-write', '_blank', 'width=800,height=600');
-        if (!openedWindow) {
-            alert('팝업이 차단되었습니다. 팝업 차단을 해제해 주세요.');
+        if (newWindow && !newWindow.closed) {
+            alert('이미 창이 열려있습니다. 창을 닫고 다시 시도하세요.');
+            newWindow.focus(); // 이미 열린 창이 있으면 그 창을 포커스
         } else {
-            setNewWindow(openedWindow); // 새로 연 창을 상태에 저장
+            const openedWindow = window.open('/admin/event-write', '_blank', 'width=800,height=600,scrollbars=yes');
+            if (openedWindow) {
+                setNewWindow(openedWindow); // 새로 열린 창을 상태에 저장
+            }
         }
     };
 
     const openNewUpdateWindow = () => {
-        const openedWindow = window.open('/admin/event-update', '_blank', 'width=800,height=600');
-        if (!openedWindow) {
-            alert('팝업이 차단되었습니다. 팝업 차단을 해제해 주세요.');
+        if (newWindow && !newWindow.closed) {
+            alert('이미 창이 열려있습니다. 창을 닫고 다시 시도하세요.');
+            newWindow.focus(); // 이미 열린 창이 있으면 그 창을 포커스
         } else {
-            setNewWindow(openedWindow); // 새로 연 창을 상태에 저장
+            const openedWindow = window.open('/admin/event-update', '_blank', 'width=800,height=600,scrollbars=yes');
+            if (openedWindow) {
+                setNewWindow(openedWindow); // 새로 열린 창을 상태에 저장
+            }
         }
     };
 
@@ -76,7 +82,7 @@ const EventList = () => {
                                     <td>{row.registrationDate}</td>
                                     <td>{row.views}</td>
                                     <td>
-                                        <button className="eventList-edit-button" onClick={openNewUpdateWindow}>수정</button>
+                                        <button className="eventList-edit-button" onClick={openNewUpdateWindow}>편집</button>
                                         <button className="eventList-delete-button">삭제</button>
                                     </td>
                                 </tr>

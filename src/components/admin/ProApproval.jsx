@@ -9,6 +9,16 @@ const GosuApproveTable = () => {
         { id: 7, name: '정진미', description: '고수 시작하겠요 열심히!!', status: '미승인' },
     ];
 
+    // 상태에 따라 다른 배지를 적용하기 위한 함수
+    const getStatusBadgeClass = (status) => {
+        if (status === '승인') {
+            return 'pro-status-badge-approved';
+        } else if (status === '미승인') {
+            return 'pro-status-badge-revoked';
+        }
+        return 'status-badge';
+    };
+
     return (
         <div className="proApproval-approve-container">
             <div className='proApproval-approve-inner-container'>
@@ -31,7 +41,7 @@ const GosuApproveTable = () => {
                                     <td>{row.name}</td>
                                     <td>{row.description}</td>
                                     <td>
-                                        <div className="proApproval-status-badge">{row.status}</div>
+                                        <div className={getStatusBadgeClass(row.status)}>{row.status}</div>
                                     </td>
                                 </tr>
                             ))}

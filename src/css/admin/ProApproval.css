@@ -1,35 +1,38 @@
 /* File: ProApproval.css */
 
+/* 전체 컨테이너 */
 .proApproval-approve-container {
     padding: 20px;
-    background-color: #f5f5f5; /* 변경된 부분 */
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
+/* 내부 컨테이너 */
 .proApproval-approve-inner-container {
-    background-color: white; /* 추가된 부분 */
+    background-color: #fafafa; /* 밝은 회색 */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* 제목 스타일 */
 .proApproval-approve-title {
-    text-align: left;
-    font-size: 1.5em;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #4e4e4e; /* 어두운 회색 */
+    text-align: left;
 }
 
+/* 구분선 스타일 */
 .proApproval-approve-divider {
+    margin: 20px 0;
     border: 0;
     height: 1px;
-    background-color: #F5F5F5;
-    margin-bottom: 20px;
+    background: #e0e0e0; /* 회색 */
 }
 
-.proApproval-table-container {
-    overflow-x: auto;
-}
-
+/* 테이블 스타일 */
 .proApproval-approve-table {
     width: 100%;
     border-collapse: collapse;
@@ -38,24 +41,41 @@
 .proApproval-approve-table th,
 .proApproval-approve-table td {
     padding: 12px 15px;
+    border: 1px solid #ddd;
     text-align: center;
-    border: 1px solid #ccc;
 }
 
 .proApproval-approve-table th {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* 연한 회색 */
+    color: #333;
     font-weight: bold;
 }
 
-.proApproval-approve-table td {
+.proApproval-approve-table tbody tr:nth-child(odd) {
+    background-color: #fdfdfd; /* 밝은 색 */
+}
+
+.proApproval-approve-table tbody tr:nth-child(even) {
     background-color: #fff;
 }
 
+/* 상태 배지 스타일 */
 .proApproval-status-badge {
     display: inline-block;
     padding: 5px 10px;
     border-radius: 20px;
-    background-color: #ffcccc;
-    color: #d9534f;
+    font-size: 0.9em;
     font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+/* 승인 상태 */
+.pro-status-badge-approved {
+    color: #28a745;
+}
+
+/* 박탈 상태 */
+.pro-status-badge-revoked {
+    color: #dc3545; /* 빨간색 */
 }
