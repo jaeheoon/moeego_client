@@ -1,0 +1,91 @@
+.detail-view {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dalin-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dalin-photo-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 6em;
+}
+
+.dalin-photo-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 175px;
+    left: 20%;
+    margin: 0;
+    padding: 0;  
+}
+
+.dalin-photo-main img {
+    width: 150px;
+    height: 150px;
+    border-radius: 30%;
+    border: 2px solid black;
+    margin: 0;
+    padding: 0;
+}
+
+.dalin-photo-background img {
+    width: 100%;
+}
+
+.detail-view-wrap {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dalin-mainpage {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.3em;
+    align-items: center;
+    width: 100%;
+}
+
+.dalin-mainpage .leftWrap {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dalin-mainpage .rightWrap {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.relativeWrap {
+    position: absolute;
+    bottom: 300px;
+}
+
+.dalin-hr {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

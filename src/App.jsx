@@ -35,8 +35,7 @@ import Join from "./components/join/Join";
 import Prosignup from "./components/pro/Prosignup";
 import ArticleMain from './components/articles/ArticleMain.jsx';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
-import ProDetail from './components/Pro/ProDetail.jsx';
-import ProRequest from "./components/Pro/ProRequest.jsx";
+import ProRequest from "./components/ProRequest.jsx";
 import EventList from "./components/admin/EventList.jsx";
 import EventWrite from "./components/admin/EventWrite.jsx";
 import EventUpdate from "./components/admin/EventUpdate.jsx";
@@ -112,8 +111,7 @@ const App = () => {
           <Route path="/pro/signup/sub_hobby" element={<ProjoinSub_hobby />} />
           <Route path="/pro/signup/sub_car" element={<ProjoinSub_car />} />
           <Route path="/pro/signup" element={<Prosignup />} />
-          <Route path="/pro/detail" element={<ProDetail />} />
-          <Route path="/pro/ProRequest" element={<ProRequest />} />
+          <Route path="/pro/detail" element={<ProView />} />
 
           {/* 관리자 페이지 */}
           <Route path="/admin/Login" element={<AdminLogin />} />

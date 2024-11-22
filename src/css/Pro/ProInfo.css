@@ -1,0 +1,127 @@
+.infoWrap {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.info-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.nickname {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+}
+
+.icon-buttons .heart {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.icon-buttons .heart:hover {
+    background-color: #ffe0e0;
+}
+
+.info-sub-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    padding: 5px 10px;
+    background-color: #e8e8e8;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.address {
+    font-size: 14px;
+    color: #888;
+}
+
+.info-sub-header svg {
+    margin: 0 5px;
+    fill: #888;
+}
+
+.introduce {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.detail-info {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.statistics-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statistics-info-item {
+    text-align: center;
+    flex: 1;
+}
+
+.statistics-info-item:not(:last-child) {
+    border-right: 1px solid #e8e8e8;
+}
+
+.statistics-info-item-header {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.statistics-info-item-contents {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+}
+
+.statistics-info-item-contents .rate {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.statistics-info-item-contents .count {
+    color: #888;
+    font-size: 14px;
+    margin-left: 5px;
+}

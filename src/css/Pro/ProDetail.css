@@ -1,0 +1,29 @@
+.proDetail-info {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.proDetail-info ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.proDetail-info ul li {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+    gap: 1em;
+}
