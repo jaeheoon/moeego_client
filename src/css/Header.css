@@ -13,53 +13,118 @@
     z-index: 9999;
 }
 
-.topWrap {
+/* 내부 컨테이너 */
+.header .header-container {
     width: 60%;
-    max-width: 1200px; /* 최대 너비를 설정하여 큰 화면에서도 너무 넓지 않도록 */
-    min-width: 768px; /* 최소 너비 설정하여 작은 화면에서는 레이아웃 깨짐 방지 */
-    justify-content: center;
-    align-items: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.logo {
-    font-size: 24px;
-    color: #fcc1cc;
+/* 로고 */
+.header .logo {
+    font-size: 20px;
     font-weight: bold;
-}
-
-.logo a {
-    text-decoration: none;
     color: #fcc1cc;
 }
 
-.nav {
+/* 네비게이션 */
+.header .nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.header .nav ul li {
+    margin: 0 15px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+}
+
+.header .nav ul li a {
+    color: #525252;
+    text-decoration: none;
+}
+
+.header .nav ul li a:hover {
+    color: #fcc1cc;
+}
+
+/* 검색 바 */
+.header .search-bar {
     display: flex;
     align-items: center;
-
-}
-
-.nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.nav .search {
-    margin-left: 20px;
-    padding: 5px 30px;
-    height: 30px;
-    border-radius: 15px;
     background-color: #c2c2c2;
-    border: 1px solid #c2c2c2;
-    color: #ffffff;
-    box-sizing: border-box;
-    outline: none;
+    border-radius: 50px;
+    padding: 5px 10px;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 20px;
 }
 
-.nav .search::placeholder {
+.header .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.header .search-input::placeholder {
     color: #ffffff;
+    font-weight: 500;
+}
+
+.header .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    position: relative;
+}
+
+.header .search-button svg {
+    position: absolute;
+    width: 20px;
+    height: 20px;    
+    top: -0.5em;
+    right: 0;
+}
+
+/* 유저 메뉴 */
+.header .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.header .user-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.header .user-icon svg:nth-child(1) {
+    cursor: pointer;
+    height: 2.5em;
+    width: 2.5em;
+}
+
+.header .user-icon svg:nth-child(2) {
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.header .chat {
+    cursor: pointer;
+}
+
+.ToggleMenu {
+    display: none;
 }
