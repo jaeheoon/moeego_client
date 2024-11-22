@@ -1,22 +1,42 @@
-
-.viewWrap {
+.itemWrap {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    width: 100%;
+    width: 95%;
+    border-bottom: 1px solid #dedede;
 }
-
-.viewWrap .titleWrap {
+.itemWrap .itemWrap-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.itemWrap-title_content{
+    display: flex;
+    flex-direction: column;
+    width:80%
+}
+.itemWrap-img{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width:20%;
+}
+.itemWrap-img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+.itemWrap .itemTitleWrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.viewWrap .titleWrap div:nth-child(1) {
-    width: 90%;
+.itemWrap .itemTitleWrap div:nth-child(1) {
+    width: 95%;
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -25,26 +45,26 @@
     word-break: break-word;
 }
 
-.viewWrap .titleWrap div:nth-child(2) {
+.itemWrap .itemTitleWrap div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
 }
 
-.viewWrap .titleWrap div:nth-child(2) img {
+.itemWrap .itemTitleWrap div:nth-child(2) img {
     width: 20px;
     height: 20px;
 }
 
-.viewWrap .contentWrap {
+.itemWrap .itemContentWrap {
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 100%;
+    width:90%;
 }
 
-.viewWrap .contentWrap div {
+.itemWrap .itemContentWrap div {
     width: 95%;
     color: #828282;
     vertical-align: text-top;
@@ -56,33 +76,60 @@
     box-sizing: border-box;
     word-break: break-word;
 }
+.itemWrap .itemWrap-location {
+    display: flex;
+    justify-content: left; /* 왼쪽 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    color:#b2b2b2;
+}
 
-.viewWrap .imageWrap {
+.itemWrap .imageWrap {
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: left;
     width: 100%;
+    margin-left: 0;
+}
+.itemWrap .itemWrap-bot {
+    display: flex;
+    justify-content: space-between; /* 두 요소를 양쪽 끝으로 배치 */
+    align-items: center; /* 수직 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+    margin-top: 10px; /* 필요에 따라 마진 추가 */
 }
 
-.viewWrap .imageWrap div:nth-child(1),
-.viewWrap .imageWrap div:nth-child(2) {
+.itemWrap .imageWrap {
+    display: flex;
+    align-items: center; /* 이미지 수직 정렬 */
+}
+
+.itemWrap .imageWrap div {
+    display: flex;
+    align-items: center; /* span과 이미지 수직 정렬 */
+    margin-right: 10px; /* 요소 간 간격 */
+    gap: 0.3em;
+}
+.itemWrap .imageWrap div span{
     display: flex;
     align-items: center;
+    justify-content: left;
+    color:#b2b2b2;
+    width:5em;
+}
+.itemWrap .imageWrap div svg{
+    width:15px;
+    height:15px;
+}
+.itemWrap .itemWrap-location {
+    margin-bottom: 5px; /* 위치와 아래 요소 간의 간격 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+.itemWrap .written-time-warp{
+    display: flex;
+    width:10%;
     justify-content: right;
-    width: 15%;
-    padding: 20px 0px 5px 0px;
-}
-
-.viewWrap .imageWrap div:nth-child(1) img,
-.viewWrap .imageWrap div:nth-child(2) img {
-    width: 15px;
-    height: 15px;
-}
-
-.viewWrap .imageWrap div:nth-child(1) span,
-.viewWrap .imageWrap div:nth-child(2) span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
+    margin-right: 0.5em;
+    color:#b2b2b2;
+    font-size:11pt;
 }

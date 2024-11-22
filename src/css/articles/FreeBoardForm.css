@@ -17,7 +17,7 @@
     opacity: 30%;
 }
 
-.TopContainer {
+.free-board-container .TopContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,14 +27,14 @@
     z-index: 9990;
 }
 
-.TopContainer .ButtonWrap {
+.free-board-container .TopContainer .ButtonWrap {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1em;
 }
 
-.TopContainer .ButtonWrap button {
+.free-board-container .TopContainer .ButtonWrap button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,19 +51,19 @@
 
 }
 
-.TopContainer .ButtonWrap svg {
+.free-board-container .TopContainer .ButtonWrap svg {
     width: 20px;
     height: 20px;
     fill: #ffffff;
 }
 
-.TopContainer .ButtonWrap button:hover {
+.free-board-container .TopContainer .ButtonWrap button:hover {
     cursor: pointer;
     background-color: lightcoral;
     color: #ffffff;
 }
 
-.MainContainer {
+.free-board-container .MainContainer {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -71,7 +71,7 @@
     height: 100%;
 }
 
-.MainContainer .Main-LeftContainer {
+.free-board-container .MainContainer .Main-LeftContainer {
     position: sticky;
     z-index: 9980;
     display: flex;
@@ -82,12 +82,48 @@
     top: 120px;
 }
 
-.MainContainer .Main-RightContainer {
+.free-board-container .MainContainer .Main-RightContainer {
     flex: 0 0 75%;
     padding: 10px;
 }
 
-.life-topic-layout {
+/* 가이드 배너 */
+.free-board-container .guide-banner-layout {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #FCF5EA;
+    padding: 1.3em 1em;
+    margin-bottom: 2em;
+}
+
+.free-board-container .guide-banner-layout div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
+    width:80%
+}
+
+.free-board-container .guide-banner-layout div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+.free-board-container .guide-banner-layout div:nth-child(2) img {
+    width: 20px;
+    height: 20px;
+}
+
+.free-board-container .life-topic-layout {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -95,11 +131,11 @@
     margin-top: -1.2em;
 }
 
-.life-topic-layout section {
+.free-board-container .life-topic-layout section {
     width: 90%;
 }
 
-.life-topic-layout section ul {
+.free-board-container .life-topic-layout section ul {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -109,24 +145,24 @@
     width: 100%;
 }
 
-.life-topic-layout section ul li {
+.free-board-container .life-topic-layout section ul li {
     width: 100%;
     list-style: none;
     padding: 20px 10px;
     box-sizing: border-box;
 }
 
-.life-topic-layout section ul li a {
+.free-board-container .life-topic-layout section ul li a {
     text-decoration: none;
     color: black;
     box-sizing: border-box;
 }
 
-.life-topic-layout section ul li:hover {
+.free-board-container .life-topic-layout section ul li:hover {
     background-color: #fcc1cc;
     border-radius: 10px;
 }
 
-.life-topic-layout section ul li:hover a {
+.free-board-container .life-topic-layout section ul li:hover a {
     color: #ffffff;
 }

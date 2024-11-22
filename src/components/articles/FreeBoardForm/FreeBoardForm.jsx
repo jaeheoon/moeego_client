@@ -5,6 +5,7 @@ import "../../../css/articles/FreeBoardForm.css";
 import ServiceArea from "./ServiceArea.jsx";
 import GuideBanner from "./GuideBanner.jsx";
 import FeedList from "./FeedList.jsx";
+import Service_area from '../../ProSearch/service_area.jsx';
 
 
 const FreeBoardForm = () => {
@@ -46,7 +47,7 @@ const FreeBoardForm = () => {
 
                     <div className="Main-RightContainer">
                         <GuideBanner/>
-                        <ServiceArea/>
+                        <Service_area/>
 
                         <div>
                             <FeedList/>
