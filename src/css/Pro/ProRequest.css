@@ -1,0 +1,86 @@
+.pro-request-container {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 80px;
+    max-width: 500px;
+    margin: 50px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pro-request-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pro-request-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.pro-request-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pro-request-label {
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pro-request-input,
+.pro-request-textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.pro-request-textarea {
+    height: 100px;
+    resize: none;
+}
+
+.pro-request-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.pro-request-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.pro-request-button.submit {
+    background-color: #ffcccc;
+    color: #fff;
+}
+
+.pro-request-button.submit:hover {
+    background-color: #ff9999; /* hover 시 더 진한 빨간색 */
+    opacity: 0.9; /* hover 시 살짝 투명하게 */
+}
+
+.pro-request-button.cancel {
+    background-color: lightgray; /* 기본 연한 회색 */
+    color: #fff; /* 글씨 색상: 흰색 */
+}
+
+.pro-request-button.cancel:hover {
+    background-color: gray; /* hover 시 중간 회색 */
+    opacity: 0.9; /* hover 시 살짝 투명 효과 */
+}
+
+
+
