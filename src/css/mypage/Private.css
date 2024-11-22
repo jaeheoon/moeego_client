@@ -35,27 +35,27 @@
     width: 20px;
 }
 
-.MainContainer {
+.UserPrivateInfoPage .MainContainer {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-.MainContainer .Text {
+.UserPrivateInfoPage .MainContainer .Text {
     display: flex;
     align-items: center;
     width: 75%;
     color: #b2b2b2;
 }
 
-.MainContainer .Button {
+.UserPrivateInfoPage .MainContainer .Button {
     display: flex;
     align-items: center;
     width: 25%;
     justify-content: right;
 }
 
-.MainContainer .Button input[type="button"] {
+.UserPrivateInfoPage .MainContainer .Button input[type="button"] {
     font-size: 9pt;
     border-style: none;
     padding: 5px 20px;
@@ -68,54 +68,54 @@
     transition: all 0.25s ease-out;
 }
 
-.MainContainer .Button input[type="button"]:hover {
+.UserPrivateInfoPage .MainContainer .Button input[type="button"]:hover {
     cursor: pointer;
     background-color: lightcoral;
     color: #ffffff;
 }
 
-.MainContainer div {
+.UserPrivateInfoPage .MainContainer div {
     width: 95%;
 }
 
-.MainContainer .Link {
+.UserPrivateInfoPage .MainContainer .Link {
     display: flex;
     width: 5%;
     justify-content: right;
     align-items: center;
 }
 
-.MainContainer .Link .next {
+.UserPrivateInfoPage .MainContainer .Link .next {
     display: flex;
     align-items: center;
     justify-content: end;
     width: 100%;
 }
 
-.MainContainer .Link .next img {
+.UserPrivateInfoPage .MainContainer .Link .next img {
     height: 20px;
     width: 20px;
 }
 
-.LinkTag {
+.UserPrivateInfoPage .LinkTag {
     text-decoration: none;
     color: black;
 }
 
-.LinkTag2 {
+.UserPrivateInfoPage .LinkTag2 {
     text-decoration: none;
     color: rgb(192, 192, 192);
 }
 
-.LinkTag2:nth-child(1):hover {
+.UserPrivateInfoPage .LinkTag2:nth-child(1):hover {
     color: black;
 }
 
-.LinkTag2:nth-child(2):hover {
+.UserPrivateInfoPage .LinkTag2:nth-child(2):hover {
     color: red;
 }
 
-.functionContainer {
+.UserPrivateInfoPage .functionContainer {
     display: flex;
     margin-bottom: 2em;
     gap: 1.5em;
