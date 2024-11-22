@@ -52,6 +52,21 @@
     color: #fcc1cc;
 }
 
+/* 햄버거 메뉴 버튼 */
+.header .hamburger-menu {
+    display: none; /* 기본적으로 숨김 */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.header .hamburger-menu div {
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
 /* 검색 바 */
 .header .search-bar {
     display: flex;
@@ -126,5 +141,71 @@
 }
 
 .ToggleMenu {
-    display: none;
+    position: absolute; /* user-menu 아래에 위치 */
+    top: 100%; /* user-menu 아래로 배치 */
+    right: 0;
+    z-index: 9999;
+    border-radius: 0.5em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+/* 모달 외부를 클릭하면 닫히도록 배경 처리 */
+.ToggleMenu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.ToggleMenu .ToggleMenuListWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ToggleMenu .ToggleMenuListWrap .ToggleMenuList {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffe4ea;
+    border-radius: 1em;
+    box-sizing: border-box;
+    padding: 2em 2em 2em 2em;
+    width: 13em;
+    height: 12em;
+    margin-right: 17em;
+    gap: 1em;
+}
+
+.ToggleMenu .ToggleMenuList div:nth-child(1) {
+    color: #525252;
+    margin-left: -0.5em;
+}
+
+.ToggleMenu .ToggleMenuList div:nth-child(2) a,
+.ToggleMenu .ToggleMenuList div:nth-child(3) a {
+    margin-left: -0.5em;
+    text-decoration: none;
+    color: #525252;
+}
+
+.ToggleMenu .ToggleMenuList .Logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ToggleMenu .ToggleMenuList .Logout a {
+    text-decoration: none;
+    color: #525252;
+    font-weight: normal;
+}
+
+.ToggleMenu .ToggleMenuList .Logout a:hover {
+    color: red;
 }
