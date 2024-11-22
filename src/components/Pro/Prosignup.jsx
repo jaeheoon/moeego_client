@@ -4,6 +4,7 @@ import checkPost from '../../js/daumpost';
 import "../../css/join/Join.css";
 
 const Projoin = () => {
+  
     useEffect(() => {
         const scriptSrc = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
         if (!document.querySelector(`script[src="${scriptSrc}"]`)) {

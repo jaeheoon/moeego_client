@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../../css/login/Login.css";
 import { Link } from 'react-router-dom';
+//-----------------------------------
+import SearchPwd from './SearchPwd';
+import SearchEmail from './SearchEmail';
+
 
 const Login = () => {
+
+const [modalType, setModalType] = useState(null); 
+
+  const openModal = (type) => {
+    setModalType((prevType) => (prevType === type ? null : type)); 
+    if (type) {
+        document.body.style.overflow = "hidden";  
+      } else {
+        document.body.style.overflow = "auto";   
+      }
+    };
+
+  const closeModal = () => {    
+    setModalType(null); 
+    document.body.style.overflow = "auto"; 
+  }; 
+  
+  const handleModalClose = () => {
+    setModalType(null);
+  }
+
     return (
         <div className="LoginPage">
             <div id="login_container">
@@ -27,16 +52,26 @@ const Login = () => {
                             이메일 로그인
                         </button>
                     </div>
-                    <div className="login-fuction">
+
+                    <div className="login-function">
                         <div className="find">
-                            <Link to="#">이메일 찾기</Link>
+                        <input type="button" value="이메일 찾기" onClick={() => openModal("email")}/>
                         </div>
                         <div className="find">
-                            <Link to="#">비밀번호 찾기</Link>
+                        <input type="button" value="비밀번호 찾기" onClick={() => openModal("password")}/>
                         </div>
                         <div className="find">
-                            <Link to="/signup">회원가입</Link>
+                        <Link to="/signup">회원가입</Link>
                         </div>
+                    </div>                    
+
+                    <div className={`ModalWrap ${modalType ? 'show' : ''}`} onClick={handleModalClose}>
+                        {modalType === "email" && (
+                        <SearchEmail closeModal={closeModal} />
+                        )}
+                        {modalType === "password" && (
+                        <SearchPwd closeModal={closeModal} />
+                        )}
                     </div>
                     <br />
                     {/* 이전에 로그인한 기록이 있으면 아래 문구 출력 시킴 

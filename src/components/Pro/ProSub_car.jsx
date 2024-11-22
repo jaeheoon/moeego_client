@@ -10,7 +10,7 @@ const ProjoinSub_car = () => {
     }
 
     const goBack = () => {
-        navigate("/pro/signup/main");
+        navigate("/pro/signup");
     }
 
     return (

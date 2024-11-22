@@ -1,10 +1,30 @@
 .LoginPage {
-    margin-top: 5%;
-    margin-bottom: 12%;
+    margin-top: 3%;
+    margin-bottom: 10%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.ModalWrap {
+    display: none; 
+  }
+  
+
+.ModalWrap.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999; 
 }
 
 #login_container {
@@ -91,7 +111,7 @@
 }
 
 .LoginPage .kakaoLoginBtn:hover .kakaoImg {
-    content: url("../../src/image/kakao_wine.svg"); /* hover 시 변경할 이미지 */
+    content: url("../../src/image/kakao_wine.svg");
 }
 
 .LoginPage .naverLoginBtn {    
@@ -115,7 +135,21 @@
     font-weight: bold;
 }
 
+.LoginPage .find input[type='button'] {
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    color: #737373; 
+    font-size: 11px; 
+    background-color: transparent;
+}
+
+.LoginPage .find input[type='button']:hover {
+    color: lightcoral; 
+}
+
 .LoginPage .find a {
+    border: none;
     text-decoration: none; 
     color: #737373; 
     font-size: 11px; 
