@@ -32,7 +32,6 @@ import MyReservation from './components/mypage/MyReservation';
 import Success from './components/mypage/Success';
 import Login from "./components/login/Login";
 import Join from "./components/join/Join";
-import ProMain from "./components/pro/ProMain";
 import Prosignup from "./components/pro/Prosignup";
 import ArticleMain from './components/articles/ArticleMain.jsx';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
@@ -51,6 +50,7 @@ import ProjoinSub_car from "./components/Pro/ProSub_car.jsx";
 import ProjoinSub_hobby from "./components/Pro/ProSub_hobby.jsx";
 import ProjoinSub_study from "./components/Pro/ProSub_study.jsx";
 import ProjoinSub_fashion from "./components/Pro/ProSub_fashion.jsx";
+import ProjoinMain from "./components/Pro/ProjoinMain";
 
 const App = () => {
   return (
@@ -58,7 +58,7 @@ const App = () => {
       <BrowserRouter>
         {/* Header와 Footer를 제외할 조건 */}
         {!window.location.pathname.startsWith('/admin') && <Header />}
-        
+
         <Routes>
           {/* 메인페이지 */}
           <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
@@ -104,7 +104,7 @@ const App = () => {
           <Route path="/signup" element={<div className='main-content'><Join /></div>} />
 
           {/* 달인 가입 페이지 */}
-          <Route path="/pro/signup/main" element={<ProMain />} />
+          <Route path="/pro/signup/main" element={<ProjoinMain />} />
           <Route path="/pro/signup/sub_interoir" element={<ProjoinSub_interoir />} />
           <Route path="/pro/signup/sub_si" element={<ProjoinSub_si />} />
           <Route path="/pro/signup/sub_fashion" element={<ProjoinSub_fashion />} />
@@ -118,20 +118,20 @@ const App = () => {
           <Route path="/admin/Login" element={<AdminLogin />} />
           <Route path="/ProRequest" element={<ProRequest />} />
 
-          <Route path="/admin/DashBoard" element={<AdminMain/>} />
+          <Route path="/admin/DashBoard" element={<AdminMain />} />
           <Route path="/admin/ProApproval" element={<AdminMain />} />
           <Route path="/admin/MemberList" element={<AdminMain />} />
           <Route path="/admin/ProList" element={<AdminMain />} />
           <Route path="/admin/LeaveMemberList" element={<AdminMain />} />
           <Route path="/admin/EventList" element={<AdminMain />} />
           <Route path="/admin/NoticeList" element={<AdminMain />} />
-          
-          
+
+
           <Route path="/admin/event-write" element={<EventWrite />} />
           <Route path="/admin/event-update" element={<EventUpdate />} />
 
-          </Routes>
-          {!window.location.pathname.startsWith('/admin') && <Footer />}
+        </Routes>
+        {!window.location.pathname.startsWith('/admin') && <Footer />}
       </BrowserRouter>
     </div>
   );

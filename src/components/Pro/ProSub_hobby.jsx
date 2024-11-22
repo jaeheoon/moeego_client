@@ -6,7 +6,7 @@ const ProjoinSub_hobby = () => {
     const navigate = useNavigate();
 
     const goJoin = () => {
-        navigate("/signup");
+        navigate("/pro/signup");
     }
 
     const goBack = () => {
@@ -17,31 +17,31 @@ const ProjoinSub_hobby = () => {
         <div className="ProJoinSub_hobbyPage">
             <div id="projoinSub_hobby_container">
                 <form id="ProJoinSub_hobbyForm" className="ProJoinSub_hobbybox">
-                <br/>
-                <h1>어떤 서비스를 제공할 수 있나요?</h1>
-                <div className="detail-hobby-wrap">
-                    {/* 여기에 포이치 돌려서 메인카테고리 별서브 카테고리 찍을 예정 */}
-                    <div className="detail-hobby">
-                        <input type='checkbox' id="1"/>
-                        <label htmlFor='1'>음악 / 악기</label>
+                    <br />
+                    <h1>어떤 서비스를 제공할 수 있나요?</h1>
+                    <div className="detail-hobby-wrap">
+                        {/* 여기에 포이치 돌려서 메인카테고리 별서브 카테고리 찍을 예정 */}
+                        <div className="detail-hobby">
+                            <input type='checkbox' id="1" />
+                            <label htmlFor='1'>음악 / 악기</label>
+                        </div>
+                        <div className="detail-hobby">
+                            <input type='checkbox' id="2" />
+                            <label htmlFor='2'>운동 / 대회</label>
+                        </div>
+                        <div className="detail-hobby">
+                            <input type='checkbox' />
+                            <label>연기 / 댄스</label>
+                        </div>
+                        <div className="detail-hobby">
+                            <input type='checkbox' />
+                            <label>미술 / 사진</label>
+                        </div>
+                        <div className="detail-hobby">
+                            <input type='checkbox' />
+                            <label>요리 / 베이킹</label>
+                        </div>
                     </div>
-                    <div className="detail-hobby">
-                        <input type='checkbox' id="2"/>
-                        <label htmlFor='2'>운동 / 대회</label>
-                    </div>
-                    <div className="detail-hobby">
-                        <input type='checkbox' />
-                        <label>연기 / 댄스</label>
-                    </div>
-                    <div className="detail-hobby">
-                        <input type='checkbox' />
-                        <label>미술 / 사진</label>
-                    </div>
-                    <div className="detail-hobby">
-                        <input type='checkbox' />
-                        <label>요리 / 베이킹</label>
-                    </div>
-                </div>
                 </form>
                 <div className='moveBtn'>
                     <span>
