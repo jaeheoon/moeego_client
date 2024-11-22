@@ -35,7 +35,7 @@ import Join from "./components/join/Join";
 import Prosignup from "./components/pro/Prosignup";
 import ArticleMain from './components/articles/ArticleMain.jsx';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
-import ProRequest from "./components/ProRequest.jsx";
+import ProRequest from "./components/pro/ProRequest.jsx";
 import EventList from "./components/admin/EventList.jsx";
 import EventWrite from "./components/admin/EventWrite.jsx";
 import EventUpdate from "./components/admin/EventUpdate.jsx";
