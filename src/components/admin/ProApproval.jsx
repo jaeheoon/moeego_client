@@ -3,10 +3,10 @@ import '../../css/admin/ProApproval.css';
 
 const GosuApproveTable = () => {
     const tableData = [
-        { id: 10, name: '윤상수', description: '고수 시작추천요 ㅎㅎ', status: '미승인' },
-        { id: 9, name: '주홍', description: '고수 시작하겠요 열심히!!', status: '미승인' },
-        { id: 8, name: '김태윤', description: '고수 시작하겠요 열심히!!', status: '미승인' },
-        { id: 7, name: '정진미', description: '고수 시작하겠요 열심히!!', status: '미승인' },
+        { id: 10, name: '윤상수', description: '고수 시작추천요 ㅎㅎ', deprive_count:0, status: '미승인' },
+        { id: 9, name: '주홍', description: '고수 시작하겠요 열심히!!', deprive_count:92, status: '미승인' },
+        { id: 8, name: '김태윤', description: '고수 시작하겠요 열심히!!', deprive_count:5, status: '미승인' },
+        { id: 7, name: '정진미', description: '고수 시작하겠요 열심히!!', deprive_count:8, status: '미승인' },
     ];
 
     // 상태에 따라 다른 배지를 적용하기 위한 함수
@@ -31,6 +31,7 @@ const GosuApproveTable = () => {
                                 <th>번호</th>
                                 <th>이름</th>
                                 <th>한줄 소개</th>
+                                <th>박탈 횟수</th>
                                 <th>승인 여부</th>
                             </tr>
                         </thead>
@@ -40,6 +41,7 @@ const GosuApproveTable = () => {
                                     <td>{row.id}</td>
                                     <td>{row.name}</td>
                                     <td>{row.description}</td>
+                                    <td>{row.deprive_count}회</td>
                                     <td>
                                         <div className={getStatusBadgeClass(row.status)}>{row.status}</div>
                                     </td>
