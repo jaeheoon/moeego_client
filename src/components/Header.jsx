@@ -166,7 +166,7 @@ function Header() {
           )}
         </div>
       </div>
-      {/* 모바일 검색창 */}
+      {/* 모바일 검색창 하단에 생성 */}
       <div className='moblie-search-insert'>
         {isSearchVisible && (
           <div className="moblie-search-bar">
