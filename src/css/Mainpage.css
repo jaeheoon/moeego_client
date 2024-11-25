@@ -279,6 +279,9 @@ button, span {
 
 /* 반응형 스타일 */
 @media (max-width: 1250px) {
+    .main-content{
+        width: 100%;
+    }
     h1, h2 {
         font-size: 20px; /* 제목 크기 조정 */
     }
@@ -325,12 +328,6 @@ button, span {
         box-sizing: border-box; /* 패딩과 보더를 포함하도록 설정 */
     }
 
-    .categories img {
-        width: 100px; /* 이미지 크기 조정 */
-        height: 100px; /* 이미지 크기 조정 */
-        margin-bottom: 10px; /* 이미지와 텍스트 간격 조정 */
-    }
-
     .bannerWrap {
         width: 95%; /* 배너 폭 조정 */
         height: 80px; /* 배너 높이 조정 */
@@ -341,7 +338,7 @@ button, span {
     }
 
     .reviewsWrap h2 {
-        font-size: 2em;
+        font-size: 1.5em;
         margin-bottom: 20px;
     }
     
@@ -354,31 +351,9 @@ button, span {
 
     .review-card {
         width: 100%; /* 리뷰 카드 폭을 100%로 */
-        height: 400px; /* 높이 자동 조정 */
+        height: 250px; /* 높이 자동 조정 */
         margin-bottom: 20px; /* 카드 간격 조정 */
-        font-size: 20pt;
         box-sizing: border-box; /* 패딩과 보더를 포함하도록 설정 */
-    }
-
-    .review-card img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .review-card strong {
-        position: absolute;
-        top: 40px;
-        left: 120px;
-    }
-    
-    .review-card strong:nth-of-type(2) {
-        color: rgb(126, 124, 124);
-        font-weight: normal;
-        top: 80px;
-    }
-
-    .review-card p{
-        font-size: 14pt;
     }
 
     .keywordWrap {
@@ -386,7 +361,7 @@ button, span {
     }
 
     .keywordWrap h2{
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .keyword-images {
@@ -406,7 +381,7 @@ button, span {
     }
     
     .locationsWrap h2{
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .locationsWrap p{

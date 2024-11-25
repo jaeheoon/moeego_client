@@ -13,3 +13,8 @@
   max-width: 1200px; /* 최대 너비를 설정하여 큰 화면에서도 너무 넓지 않도록 */
   margin: 0 auto; /* 가운데 정렬 */
 }
+@media (max-width: 1250px) {
+  .main-content{
+    width:100%;
+  }
+}
