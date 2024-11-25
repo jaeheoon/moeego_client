@@ -19,6 +19,7 @@
 .infoWrap p{
     font-size:14pt;
     color:white;
+    margin-top: -1em;
 }
 .infoFitProWrap{
     display: flex;
@@ -144,3 +145,59 @@
     background-color: lightcoral;
     color: #ffffff;
 }
+
+@media (max-width: 1250px) {
+    .infoBannerWrap {
+        background-image: url("../src/image/aboutBanner.png"); 
+        background-size: cover; 
+        background-position: center; 
+        height: 280px; 
+    }
+    .infoWrap {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1em;
+    }
+
+    .infoWrap p {
+        box-sizing: border-box;
+        padding: 1em;
+        text-align: center;
+    }
+
+    
+    .infoFitProWrap p {
+        padding: 20px 20px; 
+    }
+
+    .infoProCountWrap {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .infoProCountWrap .proCountWrap h1 {
+        font-size: 1.8em;
+    }
+
+    .infoProCountWrap .proCountWrap p {
+        font-size: 14pt; 
+    }
+
+    
+    .infoFitProWrap hr {
+        width: 50%; 
+        margin: 0 auto; 
+    }
+
+    .infoFitProWrap hr, .infoJoinWrap hr {
+        width: 50%; 
+        margin: 0 auto; 
+    }
+
+    .infoJoinWrap hr {
+        width: 50%; 
+        margin: 0 auto; 
+        margin-bottom: 3%;
+    }
+
+}
+
