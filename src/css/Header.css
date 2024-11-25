@@ -23,12 +23,29 @@
 
 /* 로고 */
 .header .logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: #fcc1cc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
 }
 
-/* 네비게이션 */
+.header .logo a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fcc1cc;
+    cursor: pointer;
+}
+
+.moblieSearch {
+    visibility: hidden;
+}
+
+/* 기본 네비게이션 메뉴 */
+.header .nav {
+    display: flex;
+}
+
 .header .nav ul {
     list-style: none;
     display: flex;
@@ -52,19 +69,170 @@
     color: #fcc1cc;
 }
 
-/* 햄버거 메뉴 버튼 */
+/* 햄버거 메뉴 */
 .header .hamburger-menu {
-    display: none; /* 기본적으로 숨김 */
-    flex-direction: column;
-    gap: 5px;
+    display: none; /* 데스크톱 환경에서는 숨김 */
     cursor: pointer;
 }
 
-.header .hamburger-menu div {
-    width: 30px;
-    height: 4px;
-    background-color: #333;
-    border-radius: 2px;
+.hamburger-menu svg {
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.hamburger-menu svg:hover {
+    background-color: #cacaca;
+    border-radius: 25px;
+}
+
+/* 드롭다운 메뉴 */
+.dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10000;
+    border-right: 1px solid #f2f2f2;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    margin: 1em 2em;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 80%;
+}
+
+.dropdown-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16pt;
+}
+
+.dropdown-menu ul li a:hover {
+    color: #fcc1cc;
+    font-weight: 500;
+}
+
+.dropdown-menu .dropdown-menu-close-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.dropdown-menu .dropdown-menu-close-wrap .close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-style: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.dropdown-menu .dropdown-menu-close-wrap .close-button svg {
+    fill: transparent;
+    border-radius: 12px;
+    height: 48px;
+    width: 48px;
+    box-sizing: border-box;
+    border-radius: 24px;
+    border: 1px solid transparent;
+}
+
+.dropdown-menu .dropdown-menu-close-wrap .close-button:hover svg {
+    background-color: #cacaca;
+    fill: #cacaca;
+}
+
+.dropdown-menu .dropdown-menu-close-wrap .close-button svg rect {
+    fill: transparent;
+    width: 36px;
+    height: 36px;
+}
+
+.dropdown-menu hr {
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 1em;
+}
+
+/* 드롭다운 메뉴 회원정보 */
+.HamburgerUserInfoWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.HamburgerUserInfoLinkWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.HamburgerUserInfoLinkWrap div:nth-child(1) {
+    width: 80%;
+}
+
+.HamburgerUserInfoLinkWrap div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 20%;
+}
+
+.HamburgerUserInfoLinkWrap img {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    box-sizing: border-box;
+}
+
+.HamburgerUserInfoButtonWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1em;
+}
+
+.HamburgerUserInfoButtonWrap input[type='button'] {
+    width: 50%;
+    border: 1px solid #f2f2f2;
+    background-color: #ffffff;
+    padding: 0.3em 1em;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: #a1a1a1;
+}
+
+.HamburgerUserInfoButtonWrap input[type='button']:hover {
+    color: #fcc1cc;
+    border-color: #fcc1cc;
 }
 
 /* 검색 바 */
@@ -86,6 +254,7 @@
     background-color: transparent;
     padding: 5px 10px;
     font-size: 14px;
+    color: #ffffff;
 }
 
 .header .search-input::placeholder {
@@ -110,6 +279,11 @@
     right: 0;
 }
 
+/* 모바일 검색창 */
+.moblie-search-bar {
+    display: none;
+}
+
 /* 유저 메뉴 */
 .header .user-menu {
     display: flex;
@@ -124,14 +298,12 @@
     align-items: center;
 }
 
-.header .user-icon svg:nth-child(1) {
-    cursor: pointer;
+.header .user-icon .default-svg {
     height: 2.5em;
     width: 2.5em;
 }
 
-.header .user-icon svg:nth-child(2) {
-    cursor: pointer;
+.header .user-icon .ToggleSvg {
     height: 1.5em;
     width: 1.5em;
 }
@@ -202,10 +374,149 @@
 
 .ToggleMenu .ToggleMenuList .Logout a {
     text-decoration: none;
-    color: #525252;
+    color: #b3b3b3;
     font-weight: normal;
 }
 
 .ToggleMenu .ToggleMenuList .Logout a:hover {
     color: red;
+}
+
+/* 반응형 스타일 */
+@media screen and (max-width: 1250px) {
+    .header .nav {
+        display: none;
+    }
+
+    .header .user-menu {
+        display: none;
+    }
+
+    .header .hamburger-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header .header-container {
+        width: 100%;
+        justify-content: left;
+    }
+
+    .header .header-container .hamburger-menu {
+        width: 15%;
+    }
+
+    .header .header-container .logo {
+        width: 25%;
+    }
+
+    .header .header-container .logo a {
+        font-size: 1.2rem;
+    }
+
+    .header .header-container .nav {
+        width: 0%;
+    }
+
+    .moblieSearch {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 15%;
+        visibility: visible;
+    }
+
+    .moblieSearchButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border-style: none;
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        border-radius: 25px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .moblieSearchButton svg {
+        width: 36px;
+        height: 36px;
+        box-sizing: border-box;
+        fill: transparent;
+    }
+
+    .moblieSearchButton svg path {
+        fill: #000000;
+        box-sizing: border-box;
+    }
+
+    .moblieSearchButton:hover {
+        background-color: #b2b2b2;
+        border-radius: 25px;
+    }
+
+    .header .search-bar {
+        display: none;
+    }
+
+    .ToggleMenu .ToggleMenuListWrap .ToggleMenuList {
+        margin-right: 0;
+    }
+
+    .moblie-search-insert {
+        width: 45%;
+    }
+
+    .moblie-search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 100%;
+        position: relative;
+    }
+
+    .moblie-search-bar .moblie-search-input {
+        width: 100%;
+        background-color: #c2c2c2;
+        border-radius: 50px;
+        padding: 0.8em 1em;
+        max-width: 400px;
+        margin: 0 20px;
+        outline: none;
+        border: 1px solid #c2c2c2;
+        box-sizing: border-box;
+        color: #ffffff;
+    }
+
+    .moblie-search-bar .moblie-search-input::placeholder {
+        color: #ffffff;
+    }
+
+    .moblie-search-bar .moblie-search-button {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0.65em;
+        right: 2em;
+        width: 20px;
+        width: 20px;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .moblie-search-bar .moblie-search-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .moblie-search-bar .moblie-search-button:hover {
+        background-color: #828282;
+    }
 }
