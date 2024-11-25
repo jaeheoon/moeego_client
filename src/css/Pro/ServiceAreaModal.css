@@ -1,4 +1,4 @@
-.modalOverlay {
+.ServiceAreaModalOverlay {
     position: fixed; /* 화면에 고정 */
     top: 0;
     left: 0;
@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center; /* 수평 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
-    z-index: 999; /* 가장 위에 배치 */
+    z-index: 10000; /* 가장 위에 배치 */
 }
 
 .ServiceAreaModal {
@@ -21,7 +21,7 @@
     overflow-y: scroll;
 }
 
-.modalHeader {
+.ServiceAreaModalHeader {
     display: flex; /* 가로 방향으로 배치 */
     justify-content: left; /* 버튼 사이에 공간을 균등하게 배치 */
     margin-bottom: 15px; /* 헤더와 모달 내용 간격 */
@@ -39,21 +39,6 @@
 .modalButton.active {
     border-bottom: 2px solid #fcc1cc; /* 활성화된 버튼의 아래쪽 테두리 */
     color: #fcc1cc; /* 활성화된 버튼의 글자색 */
-}
-
-.closeButton {
-    background-color: #f44336; /* 닫기 버튼 색상 */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    margin-bottom: 10px; /* 버튼과 모달 내용 간격 */
-    transition: background-color 0.3s; /* 부드러운 전환 효과 */
-}
-
-.closeButton:hover {
-    background-color: #d32f2f; /* 닫기 버튼 hover 효과 */
 }
 
 /* 모달 스타일 */
@@ -173,4 +158,26 @@
 .areaModal .modalMainMenu li:hover{
     background-color: #e0e0e0; /* Hover 효과 */
     cursor: pointer;
+}
+@media (max-width: 1250px) {
+    .ServiceAreaModalOverlay {
+        width: 412px;
+        padding: 0; /* 모달 오버레이의 패딩 제거 */
+    }
+
+    .ServiceAreaModal {
+        width: 100%; /* 모달 너비를 100%로 설정 */
+        height: 100%; /* 모달 높이를 100%로 설정 */
+        border-radius: 0; /* 모서리 둥글기 제거 */
+    }
+
+    .closeButton {
+        position: absolute; /* 닫기 버튼 위치 절대값으로 설정 */
+        top: 10px; /* 상단 위치 */
+        right: 10px; /* 우측 위치 */
+        background-color: transparent; /* 배경색 투명 */
+        border: none; /* 기본 버튼 스타일 제거 */
+        font-size: 20px; /* 폰트 크기 조정 */
+        cursor: pointer; /* 커서 변경 */
+    }
 }
