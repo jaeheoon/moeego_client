@@ -1,39 +1,42 @@
 /* 공통 스타일 */
-h1, h2 {
+h1{
+    font-size:1.5rem;
+}
+.indexPage h1, .indexPage h2 {
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
 }
 
-p {
+.indexPage p {
     color: #666;
     font-size: 14px;
 }
 
-.container {
+.indexPage .container {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
 }
 
-img {
+.indexPage img {
     max-width: 100%;
     height: auto;
 }
 
-.flex {
+.indexPage .flex {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
 }
 
-.grid {
+.indexPage .grid {
     display: grid;
     gap: 10px;
 }
 
-button, span {
+.indexPage button,.indexPage span {
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -190,68 +193,82 @@ button, span {
 /* 키워드 */
 .keywordWrap {
     padding: 20px;
-  }
+    max-width: 1200px;
+    margin: 0 auto;
+}
   
-  .carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    width: 100%; /* 2개의 사진이 보이도록 설정 */
-  }
-  
-  .carousel-track {
+.carousel-track {
     overflow: hidden;
     width: 100%;
-  }
+}
   
-  .keyword-images {
+.keyword-images {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* 부드러운 애니메이션 */
-    gap: 20px; /* 슬라이드 간격 */
-  }
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
   
-  .keyword-image {
-    flex: 0 0 calc(50% - 20px); /* 슬라이드 하나의 너비 */
-    height: 500px;
+.keyword-image {
+    flex: 0 0 calc(33.33% - 19px); /* 기본: 3개씩 표시 */
+    height: 340px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-  }
+}
   
-  .keyword-image div {
+.keyword-image div {
     height: 100%;
     display: flex;
-    font-size: 2em;
+    font-size: 1.5em;
     color: white;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s;
-  }
+}
   
-  .keyword-image:hover div {
+.keyword-image:hover div {
     opacity: 1;
     background-color: rgba(50, 50, 50, 0.7);
-  }
-  
-  .carousel-button {
-    background-color: #ddd;
-    border-radius: 5px;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    position: relative; /* 버튼을 바깥에 위치시키기 위해 relative로 설정 */
+    overflow: visible;
+    width: 100%;
+    padding: 0 40px; /* 양옆 여백을 추가하여 버튼이 내부에 겹치지 않도록 설정 */
+}
+
+.carousel-button {
+    border-radius: 50%;
     border: none;
     height: 50px;
+    width: 50px;
     font-size: 24px;
     cursor: pointer;
+    background-color: white;
     color: #333;
-    transition: background-color 0.3s;
     z-index: 10;
-  }
-  
-  .carousel-button:hover {
+    position: absolute; /* 절대 위치 지정 */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-button.prev {
+    left: -30px; /* 왼쪽 버튼을 carousel 바깥에 위치시킴 */
+}
+
+.carousel-button.next {
+    right: -20px; /* 오른쪽 버튼을 carousel 바깥에 위치시킴 */
+}
+
+.carousel-button:hover {
+    border-radius: 50%;
     background-color: #bbb;
-  }
+}
   
 
 /* 위치 목록 */
@@ -293,15 +310,19 @@ button, span {
     .main-content{
         width: 100%;
     }
-    h1, h2 {
+    .indexPage h1, h2 {
         font-size: 20px; /* 제목 크기 조정 */
     }
 
-    p {
+    .indexPage p {
         font-size: 12px; /* 본문 크기 조정 */
     }
 
-    .container {
+    .indexPage span{
+        font-size: 15px;
+    }
+
+    .indexPage .container {
         padding: 10px; /* 패딩 감소 */
     }
 
@@ -319,7 +340,10 @@ button, span {
         height: 50px; /* 높이 조정 */
         font-size: 16pt;
     }
-
+    .searchBarWrap img{
+        width: 20px;
+        height: 20px;
+    }
     .categories {
         display: grid; /* 그리드 사용 */
         width: 100%;
@@ -410,5 +434,24 @@ button, span {
         width: auto; /* 폭 자동 조정 */
         height: auto;
         padding: 10px; /* 패딩 조정 */
+    }
+    .keywordWrap{
+        width: 80%;
+    }
+
+    .keyword-image {
+        flex: 0 0 calc(50% - 19.5px); /* 2개씩 표시 */
+    }
+
+    .carousel{
+        padding: 0;
+    }
+
+    .carousel-button.prev {
+        left: -30px; /* 왼쪽 버튼을 carousel 바깥에 위치시킴 */
+    }
+    
+    .carousel-button.next {
+        right: -10px; /* 오른쪽 버튼을 carousel 바깥에 위치시킴 */
     }
 }
