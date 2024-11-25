@@ -20,22 +20,26 @@ const MyHistory = () => {
 
     return (
         <div className='myHistoryPage'>
-            <div className='PageTitle'>
-                <Link to="/mypage"><img src="../../src/image/prev_icon.png" alt="prev" /></Link>
-                <h1>커뮤니티 작성글/댓글</h1>
-            </div>
+            <div className='myHistoryWrap'>
+                <div className='PageTitle'>
+                    <Link to="/mypage" className='prev'>
+                        <img src="../../src/image/prev_icon.png" alt="prev" className='prev' />
+                    </Link>
+                    <h1>커뮤니티 작성글/댓글</h1>
+                </div>
 
-            <div className='myHistoryLinkWrap'>
-                <Link to="#" onClick={() => setActiveTab('myarticle')}>
-                    <div className={activeTab === 'myarticle' ? 'active' : ''}>작성 글</div>
-                </Link>
-                <Link to="#" onClick={() => setActiveTab('mycomment')}>
-                    <div className={activeTab === 'mycomment' ? 'active' : ''}>작성 댓글</div>
-                </Link>
-            </div>
-            <hr className='divider' />
-            <div className='myArticlesChangeDiv'>
-                {renderContent()} {/* 현재 활성화된 탭에 따라 내용 렌더링 */}
+                <div className='myHistoryLinkWrap'>
+                    <Link to="#" onClick={() => setActiveTab('myarticle')}>
+                        <div className={activeTab === 'myarticle' ? 'active' : ''}>작성 글</div>
+                    </Link>
+                    <Link to="#" onClick={() => setActiveTab('mycomment')}>
+                        <div className={activeTab === 'mycomment' ? 'active' : ''}>작성 댓글</div>
+                    </Link>
+                </div>
+                <hr className='divider' />
+                <div className='myArticlesChangeDiv'>
+                    {renderContent()} {/* 현재 활성화된 탭에 따라 내용 렌더링 */}
+                </div>
             </div>
         </div>
     );

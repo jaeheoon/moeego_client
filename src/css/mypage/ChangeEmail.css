@@ -20,20 +20,26 @@
     margin-top: 5%;
 }
 
-.Title {
+.ChangeEmailWrap .PageTitle {
     display: flex;
     align-items: center;
-    width: 100%;
+    flex-direction: row;
 }
 
-.Title .Link {
+.ChangeEmailWrap .PageTitle .prev {
     display: flex;
     align-items: center;
+    justify-content: left;
+    width: 5%;
 }
 
-.Title .Link img {
+.ChangeEmailWrap .PageTitle .prev img {
     height: 20px;
     width: 20px;
+}
+
+.ChangeEmailWrap .PageTitle h1 {
+    width: 95%;
 }
 
 .EmailWrap {
@@ -104,4 +110,20 @@
     background-color: #8f8f8f;
     border-color: #8f8f8f;
     color: #f2f2f2;
+}
+
+@media screen and (max-width: 1250px) {
+    .ChangeEmailWrap .PageTitle {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .ChangeEmailWrap .PageTitle .prev {
+        width: 10%;
+    }
+
+    .ChangeEmailWrap .PageTitle h1 {
+        width: 90%;
+    }
 }

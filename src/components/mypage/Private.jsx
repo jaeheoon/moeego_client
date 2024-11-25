@@ -7,7 +7,9 @@ const Private = () => {
         <div className='UserPrivateInfoPage'>
             <div className="UserPrivateInfoWrap">
                 <div className='PageTitle'>
-                    <Link className="prev" to="/mypage/account"><img src="../../src/image/prev_icon.png" alt="prev"></img></Link>
+                    <Link className="prev" to="/mypage/account">
+                        <img src="../../src/image/prev_icon.png" alt="prev" />
+                    </Link>
                     <h1>개인 정보 관리</h1>
                 </div>
                 <Link className='LinkTag' to="/mypage/account/private/phone">

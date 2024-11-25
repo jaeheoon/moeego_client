@@ -7,8 +7,8 @@ const BookMarkPro = () => {
         <div className='BookMarkProContainer'>
             <div className='BookMarkProWrap'>
                 <div className='PageTitle'>
-                    <Link className="Link" to="/mypage">
-                        <div className='prev'><img src="../../src/image/prev_icon.png" alt="prev"></img></div>
+                    <Link className="prev" to="/mypage">
+                        <img src="../../src/image/prev_icon.png" alt="prev" />
                     </Link>
                     <h1>찜한 달인</h1>
                 </div>

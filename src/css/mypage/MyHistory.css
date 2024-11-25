@@ -1,18 +1,40 @@
-.myHistoryPage .PageTitle a {
+.myHistoryPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.myHistoryPage .PageTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.myHistoryPage .PageTitle .prev {
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 3.1%;
+    width: 5%;
 }
 
-.myHistoryPage .PageTitle a img {
-    width: 20px;
+.myHistoryPage .PageTitle .prev img {
     height: 20px;
+    width: 20px;
 }
 
-.myHistoryPage{
-    margin-top: 5%;
+.myHistoryPage .PageTitle h1 {
+    width: 95%;
 }
+
+.myHistoryWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5%;
+    width: 90%;
+}
+
 .myHistoryLinkWrap {
     display: flex; /* 수평 정렬 */
     gap: 1.5em; /* 탭 간 간격 */
@@ -103,4 +125,31 @@
 .MyCommentItem .MyCommentItemDate{
     font-size: 11pt;
     color:rgb(150,150,150);
+}
+
+@media screen and (max-width: 1250px) {
+    .myHistoryPage {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .myHistoryPage .myHistoryWrap {
+        width: 80%;
+    }
+
+    .myHistoryPage .PageTitle {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .myHistoryPage .PageTitle .prev {
+        width: 10%;
+    }
+
+    .myHistoryPage .PageTitle h1 {
+        width: 90%;
+    }
 }

@@ -18,6 +18,26 @@
     opacity: 30%;
 }
 
+.ChangeAddressWrap .PageTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.ChangeAddressWrap .PageTitle .prev {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 5%;
+}
+
+.ChangeAddressWrap .PageTitle .prev img {
+    height: 20px;
+    width: 20px;
+}
+
+
 .zipWrap {
     display: flex;
     align-items: center;
@@ -75,4 +95,20 @@
 .ChangeAddressWrap input[type="text"]:focus, .ChangePasswordContainer input[type="text"]:active, .ChangeAddressContainer #zipcode:focus, .ChangeAddressContainer #zipcode:active, .ChangeAddressWrap input[type="text"]:not(:placeholder-shown), .ChangeAddressContainer #zipcode:not(:placeholder-shown) {
     border-bottom: 1px solid lightcoral;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 1250px) {
+    .ChangeAddressWrap .PageTitle {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .ChangeAddressWrap .PageTitle .prev {
+        width: 10%;
+    }
+
+    .ChangeAddressWrap .PageTitle h1 {
+        width: 90%;
+    }
 }

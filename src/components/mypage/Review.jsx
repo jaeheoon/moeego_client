@@ -8,10 +8,8 @@ const Review = () => {
             <section className='ReviewWrap'>
                 <div className='ReviewListWrap'>
                     <div className='PageTitle'>
-                        <Link className="Link" to="/mypage">
-                            <div className='prev'>
-                                <img src="../../src/image/prev_icon.png" alt="prev" />
-                            </div>
+                        <Link className="prev" to="/mypage">
+                            <img src="../../src/image/prev_icon.png" alt="prev" />
                         </Link>
                         <h1>리뷰 내역</h1>
                     </div>

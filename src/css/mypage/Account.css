@@ -19,17 +19,27 @@
     margin-top: 5%;
 }
 
-.UserInfoPage .PageTitle {
+.UserInfoWrap .PageTitle {
     display: flex;
-    flex-direction: row;
     align-items: center;
+    flex-direction: row;
+    width: 100%;
 }
 
-.UserInfoPage .PageTitle .Link {
+.UserInfoWrap .PageTitle .prev {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 3.5%;
+    justify-content: left;
+    width: 5%;
+}
+
+.UserInfoWrap .PageTitle .prev img {
+    height: 20px;
+    width: 20px;
+}
+
+.UserInfoWrap .PageTitle h1 {
+    width: 95%;
 }
 
 .ProfileImageContainer {
@@ -119,6 +129,20 @@
     display: flex;
     align-items: center;
     justify-items: center;
+}
+
+.UserInfoPage .Container div .Title input[type='text'] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em 0em 0.7em 0em;
+    border: none;
+    outline: none;
+    font-size: 1.00rem;
+}
+
+.UserInfoPage .Container div .Title input[type='text']:focus,
+.UserInfoPage .Container div .Title input[type='text']:not(:placeholder-shown) {
+    border-bottom: 1px solid #fcc1cc;
 }
 
 .UserInfoPage .Container div .Button {
@@ -223,6 +247,23 @@
     width: 85%;
 }
 
+.IntroductionForm .Container .IntroductionWrap .content textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.00rem;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+    height: 3em;
+    font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.IntroductionForm .Container .IntroductionWrap .content textarea:focus,
+.IntroductionForm .Container .IntroductionWrap .content textarea:not(:placeholder-shown) {
+    border-bottom: 1px solid #fcc1cc;
+}
+
 .IntroductionForm .Container .IntroductionWrap .buttonwrap {
     display: flex;
     align-items: center;
@@ -255,4 +296,66 @@
     align-items: center;
     text-decoration: none;
     color: black;
+}
+
+@media screen and (max-width: 1250px) {
+    .IntroductionForm {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .IntroductionForm .Container .IntroductionWrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .IntroductionForm .Container .IntroductionWrap .content {
+        width: 80%;
+    }
+
+    .IntroductionForm .Container .IntroductionWrap .content textarea {
+        width: 95%;
+    }
+
+    .IntroductionForm .Container .IntroductionWrap .buttonwrap {
+        width: 20%;
+    }
+
+    .IntroductionForm .Container .IntroductionWrap .buttonwrap input[type='button'] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .UserInfoPage .UserInfoWrap .NickNameForm .Container .Title {
+        width: 100%;
+    }
+
+    .UserInfoPage .UserInfoWrap .NickNameForm .Container .Title input[type='text'] {
+        width: 90%;
+    }
+
+    .UserInfoPage .PageTitle {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .UserInfoPage .PageTitle .prev {
+        width: 10%;
+    }
+
+    .UserInfoPage .PageTitle h1 {
+        width: 90%;
+        display: flex;
+        align-items: center;
+    }
 }
