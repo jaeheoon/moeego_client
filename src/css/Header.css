@@ -6,7 +6,7 @@
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    flex-direction: row;
+    flex-direction: column;
     padding: 10px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
@@ -404,7 +404,14 @@
     }
 
     .header .header-container .hamburger-menu {
-        width: 15%;
+        width: 25%;
+    }
+
+    .header .header-container .logo {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .header .header-container .logo {
@@ -423,7 +430,7 @@
         display: flex;
         align-items: center;
         justify-content: right;
-        width: 15%;
+        width: 25%;
         visibility: visible;
     }
 
@@ -467,15 +474,17 @@
     }
 
     .moblie-search-insert {
-        width: 45%;
+        width: 100%;
     }
 
     .moblie-search-bar {
         display: flex;
         align-items: center;
-        justify-content: right;
-        width: 100%;
+        justify-content: center;
         position: relative;
+        width: 100%;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
     }
 
     .moblie-search-bar .moblie-search-input {
