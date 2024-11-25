@@ -57,7 +57,7 @@ button, span {
 .searchBarWrap {
     background-color: #eee;
     width: 70%;
-    height: 40px;
+    height: 50px;
     display: flex; /* Flexbox 사용 */
     align-items: center; /* 세로 정렬 */
     justify-content: flex-start; /* 왼쪽 정렬 */
@@ -72,18 +72,19 @@ button, span {
 }
 .searchBarWrap img {
     margin-right: 10px; /* 이미지와 입력창 간격 */
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 .searchCategoryWrap input {
     flex: 1; /* 입력창이 남은 공간 채우도록 설정 */
     padding: 10px;
-    height: 20px;
+    height: 30px;
     background-color: #eee;
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
+    font-size:16pt;
 }
 
 .searchCategoryWrap input:focus {
@@ -266,12 +267,162 @@ button, span {
 }
 
 .city-listWrap span {
-    width:80px;
-    height: 20px;
-    padding: 10px 0;
+    width:auto;
+    height: auto;
+    padding: 10px;
     background-color: #EFF9F9;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 16px;
     white-space: nowrap;
     color:#00C7AE;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 1250px) {
+    h1, h2 {
+        font-size: 20px; /* 제목 크기 조정 */
+    }
+
+    p {
+        font-size: 12px; /* 본문 크기 조정 */
+    }
+
+    .container {
+        padding: 10px; /* 패딩 감소 */
+    }
+
+    .mainBannerWrap {
+        padding: 20px 0; /* 배너 패딩 조정 */
+    }
+
+    .searchCategoryWrap {
+        width: 90%; /* 검색 바 폭 조정 */
+        margin: 0 auto; /* 가운데 정렬 */
+    }
+
+    .searchBarWrap {
+        width: 100%; /* 검색 바 폭을 100%로 */
+        height: 50px; /* 높이 조정 */
+        font-size: 16pt;
+    }
+
+    .categories {
+        display: grid; /* 그리드 사용 */
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr); /* 3개 열, 각 열 동일한 비율 */
+        justify-items: center; /* 각 아이템을 중앙 정렬 */
+        gap: 10px; /* 간격 조정 */
+        font-size: 16pt
+    }
+
+    .category-item {
+        width: 100%; /* 각 아이템의 폭을 100%로 설정 */
+        display: flex; /* 플렉스 사용 */
+        flex-direction: column; /* 세로 방향으로 정렬 */
+        align-items: center; /* 중앙 정렬 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        padding: 10px; /* 패딩 추가 */
+        box-sizing: border-box; /* 패딩과 보더를 포함하도록 설정 */
+    }
+
+    .categories img {
+        width: 100px; /* 이미지 크기 조정 */
+        height: 100px; /* 이미지 크기 조정 */
+        margin-bottom: 10px; /* 이미지와 텍스트 간격 조정 */
+    }
+
+    .bannerWrap {
+        width: 95%; /* 배너 폭 조정 */
+        height: 80px; /* 배너 높이 조정 */
+    }
+
+    .reviewsWrap {
+        padding: 20px; /* 리뷰 패딩 조정 */
+    }
+
+    .reviewsWrap h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    .review-cards {
+        display: flex; /* 리뷰 카드를 가로로 배치 */
+        flex-direction: column; /* 세로로 배치 */
+        gap: 20px; /* 카드 간격 조정 */
+        width: 100%; /* 전체 폭 사용 */
+    }
+
+    .review-card {
+        width: 100%; /* 리뷰 카드 폭을 100%로 */
+        height: 400px; /* 높이 자동 조정 */
+        margin-bottom: 20px; /* 카드 간격 조정 */
+        font-size: 20pt;
+        box-sizing: border-box; /* 패딩과 보더를 포함하도록 설정 */
+    }
+
+    .review-card img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .review-card strong {
+        position: absolute;
+        top: 40px;
+        left: 120px;
+    }
+    
+    .review-card strong:nth-of-type(2) {
+        color: rgb(126, 124, 124);
+        font-weight: normal;
+        top: 80px;
+    }
+
+    .review-card p{
+        font-size: 14pt;
+    }
+
+    .keywordWrap {
+        padding: 0 20px 20px 20px;
+    }
+
+    .keywordWrap h2{
+        font-size: 2em;
+    }
+
+    .keyword-images {
+        display: flex; /* 가로 정렬 */
+        flex-direction: row; /* 가로로 배치 */
+        gap: 20px; /* 이미지 간격 조정 */
+        justify-content: start; /* 왼쪽 정렬 */
+    }
+
+    .keyword-image {
+        height: 150px; /* 키워드 이미지 높이 조정 */
+        width: 100%; /* 가로 폭 조정 */
+    }
+
+    .locationsWrap {
+        padding: 0 20px; /* 위치 목록 패딩 조정 */
+    }
+    
+    .locationsWrap h2{
+        font-size: 2em;
+    }
+
+    .locationsWrap p{
+        font-size:16pt;
+    }
+
+    .city-listWrap {
+        grid-template-columns: repeat(3, 1fr); /* 3열로 조정 */
+        gap: 10px; /* 간격 조정 */
+        margin-bottom: 1em;
+    }
+
+    .city-listWrap span {
+        font-size:16pt;
+        width: auto; /* 폭 자동 조정 */
+        height: auto;
+        padding: 10px; /* 패딩 조정 */
+    }
 }
