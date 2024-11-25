@@ -13,8 +13,8 @@ function Footer() {
           <li><a href="">챗봇상담</a></li>
         </ul>
       </div>
-      <p>e-mail: support@soomgo.com | Copyright © Soomgo</p>
-    </footer>
+      <p>e-mail: moeego@moeego.com | Copyright © Moeego</p>
+    </footer >
   );
 }
 

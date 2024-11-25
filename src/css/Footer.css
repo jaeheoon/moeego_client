@@ -16,7 +16,6 @@
 .ulWrap {
     width: 60%;
     max-width: 1200px; /* 최대 너비를 설정하여 큰 화면에서도 너무 넓지 않도록 */
-    min-width: 768px; /* 최소 너비 설정하여 작은 화면에서는 레이아웃 깨짐 방지 */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -39,10 +38,37 @@
 
 .ulWrap li a {
     text-decoration: none;
-    color: #4c4c4c;;
+    color: #828282;;
 }
 
 .ulWrap li a:hover {
     cursor: pointer;
     color: #383838;
+}
+
+@media screen and (max-width: 1250px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer .ulWrap {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer .ulWrap ul {
+        margin: 0.5em auto;
+        padding: 0;
+    }
+
+    .footer p {
+        font-size: 10pt;
+    }
 }
