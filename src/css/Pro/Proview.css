@@ -41,7 +41,7 @@
     width: 150px;
     height: 150px;
     border-radius: 30%;
-    border: 2px solid black;
+    border: 2px solid white;
     margin: 0;
     padding: 0;
 }
@@ -88,4 +88,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+}
+.leftWrap {
+    margin-bottom: 4%;
 }

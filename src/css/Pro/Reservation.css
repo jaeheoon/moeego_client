@@ -10,18 +10,19 @@
 .reservation-controller {
     font-family: Arial, sans-serif;
     box-sizing: border-box;
-    width: 100%;
+    width: 360px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 30px 20px;
+    background-color: #fce9ed;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 .product-title h3 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    color: #333;
+    color: #522823;
     margin: 20px 0;
 }
 
@@ -31,24 +32,30 @@ ol {
     list-style: none;
     padding: 0;
     margin: 0;
+    margin-top: 4%;
 }
 
 ol li a {
     text-decoration: none;
     font-size: 0.9rem;
-    color: #007bff;
+    text-shadow: 0 0 1px rgb(119, 119, 119);
+    color: rgb(53, 10, 10);
     transition: color 0.2s ease-in-out;
+    font-weight: bold;
 }
 
 ol li a:hover {
-    color: #0056b3;
+    color: #a8a8a8;
 }
 
 .options-wrapper {
     font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 15px;
-    color: #555;
+    margin-bottom: 8%;
+    color: #2c2c2c;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .product-reservation-date .picker-items {
@@ -58,6 +65,7 @@ ol li a:hover {
     margin: 0;
     padding: 0;
     list-style: none;
+    font-weight: bold;
 }
 
 .picker-item {
@@ -70,12 +78,16 @@ ol li a:hover {
     align-items: center;
     position: relative;
     cursor: pointer;
+    flex-direction: column;
+    gap: 0.01em;
+    margin-top: 5%;
+    margin-right: -1.2em;
 }
 
 .custom-radio-box {
     width: 16px;
     height: 16px;
-    border: 2px solid #007bff;
+    border: 2px solid #522823;
     border-radius: 50%;
     margin-right: 8px;
     display: inline-block;
@@ -87,14 +99,10 @@ ol li a:hover {
 }
 
 .custom-radio input[type="radio"]:checked + .custom-radio-box {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #522823;
+    border-color: #522823;
 }
 
-.date-text {
-    font-size: 0.9rem;
-    color: #333;
-}
 
 .reservation-timebox {
     margin-top: 20px;
@@ -103,32 +111,79 @@ ol li a:hover {
 .reservation-timelist {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 0;
+    gap: 5px;
     padding: 0;
     list-style: none;
+    font-weight: bold;
+    margin-top: -2em;
 }
 
 .reservation-time-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    background-color: #fff;
+    color: #522823;
+    width: 4.5em;
+    height: 100%;
+    border-radius: 15px;
+    padding: 15px;
+    list-style: none; 
+    float: left;
+    margin: 5px 0;
 }
 
+.reservation-time-item:hover {
+    background-color: #522823;
+    color:white;
+}
+
+/* .custom-checkbox input[type="checkbox"]:checked + .custom-checkbox-box + div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: white; 
+    background-color: #522823;  
+    
+    border-radius: 15px;
+} */
+.reservation-time-item input[type="checkbox"]:checked + .custom-checkbox-box + div {
+    background-color: #522823;  /* 배경색 변경 */
+    color: white;  /* 글자색 변경 */
+    border-radius: 15px;  /* 둥근 테두리 */
+}
+
+
+/* 체크박스를 숨기고, 커스터마이즈된 네모 상자 스타일 */
 .custom-checkbox {
     display: flex;
     align-items: center;
     position: relative;
     cursor: pointer;
+    box-sizing: border-box;    
+    width: 100%;
+    height: 100%;
 }
 
 .custom-checkbox-box {
     width: 16px;
     height: 16px;
-    border: 2px solid #007bff;
+    border: 2px solid #522823;
     border-radius: 4px;
     margin-right: 8px;
     display: inline-block;
     position: relative;
+}
+
+.custom-checkbox div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .custom-checkbox input[type="checkbox"] {
@@ -136,8 +191,8 @@ ol li a:hover {
 }
 
 .custom-checkbox input[type="checkbox"]:checked + .custom-checkbox-box {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #522823;
+    border-color: #522823;
 }
 
 .custom-checkbox-box:after {
@@ -171,13 +226,13 @@ ol li a:hover {
     cursor: pointer;
     padding: 5px 10px;
     font-size: 0.9rem;
-    color: #007bff;
+    color: #522823;
     transition: color 0.2s ease-in-out;
 }
 
 .btn-prev:hover,
 .btn-next:hover {
-    color: #0056b3;
+    color: #522823;
 }
 
 /* 예약 버튼 */
@@ -188,13 +243,108 @@ ol li a:hover {
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    background-color: #007bff;
+    background-color: #522823;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
 
 .reservation-btn:hover {
-    background-color: #0056b3;
+    background-color: white;
+    color: #522823;
+    outline: #522823;
+}
+
+
+.checkboxCard {
+    width: fit-content;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+  }
+  
+  .checkboxCard.checked {
+    border: 2px solid red;
+  }
+  
+  .checkboxCard input,
+  .checkboxCard label {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .checkboxCard input:checked ~ label {
+    color: red;
+  }
+
+  .day-text {
+    font-weight: bold;
+    color: white;
+    font-size: 16px; 
+    text-shadow: 0 0 1.5px black;
+  }
+
+  .date-text {
+    display: inline-block;
+    width: 38px; 
+    height: 38px;
+    border-radius: 50%; 
+    background-color: fce9ed; 
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 1.5px black;
+    font-weight: bold;
+    line-height: 40px; 
+    font-size: 16px; 
+    cursor: pointer;
+    border: 2px solid #fce9ed; 
+  }
+  
+  .date-text:hover {
+    color: white;
+    display: inline-block;
+    width: 38px; 
+    height: 38px;
+    border-radius: 50%; 
+    background-color: #522823;
+    text-align: center;
+    line-height: 40px; /* 텍스트 세로 중앙 정렬 */
+    font-size: 16px; /* 텍스트 크기 */
+    cursor: pointer;
+    border: 2px solid #522823; 
+    text-shadow: none;
+    
+  }
+  
+.picker-item input[type="radio"]:checked + .custom-radio-box + .day-text + .date-text {
+    background-color: #522823;  
+    color: white;  
+    border-color: #522823; 
+    text-shadow: none;
+}
+
+.picker-item input[type="radio"]:checked + .custom-radio-box + .day-text {
+    color: #522823; 
+    text-shadow: none;
+}
+ 
+.picker-item {
+    display: flex;
+    flex-direction: row; /* 세로 정렬 */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* day-text와 date-text의 정렬 */
+.picker-item .day-text,
+.picker-item .date-text {
+    display: inline-block; /* 한 줄로 나열되도록 변경 */
+    margin: 0 5px; /* 간격을 약간 추가 */
+}
+
+.picker-item .date-text {
+    margin-top: 0; /* margin-top 제거 */
 }

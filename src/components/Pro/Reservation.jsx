@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Link 컴포넌트 임포트
 import "../../css/pro/Reservation.css";
 
 const Reservation = () => {
+    const [checked, setChecked] = useState(false);
+
     return (
         <div className='reservation-wrap'>
             <div className="reservation-controller">
@@ -17,12 +19,15 @@ const Reservation = () => {
                     </ol>
                 </section>
                 <section className="product-title">
-                    <h3>[유튜브 4,000만 조회수] 운동하는 물리치료사 김동우의 진짜 헬스케어</h3>
+                    <h3>
+                        [유튜브 4,000만 조회수] 
+                        운동하는 물리치료사 김동우의 진짜 헬스케어
+                    </h3>
                 </section>
                 <section>
                     <div className="product-options">
                         <div className="options-wrapper">
-                            [모이고 마켓 한정] 체험 수업 1회 (55,000 원)
+                            [모이고 한정] 체험 수업 1회 (55,000 원)
                         </div>
                         <div className="product-reservation-date">
                             <ul className="picker-items">
@@ -38,8 +43,9 @@ const Reservation = () => {
                                     <li className="picker-item" key={index}>
                                         <label className="custom-radio">
                                             <input type="radio" name="date-picker" value={item.value} />
-                                            <span className="custom-radio-box"></span>
-                                            <span className="date-text">{item.day}</span>
+                                            <span className="custom-radio-box" style={{ display: "none" }}></span>
+                                            <span className="day-text">{item.day}</span>
+                                            <span className="date-text">{item.value.slice(-2)}</span>
                                         </label>
                                     </li>
                                 ))}
@@ -73,12 +79,15 @@ const Reservation = () => {
                                     "21:00",
                                     "22:00",
                                     "23:00",
+                                
                                 ].map((time, index) => (
                                     <li className="reservation-time-item" key={index}>
-                                        <label className="custom-checkbox">
+                                        {/* <label className="custom-checkbox"> */}
+                                        <label className="custom-checkbox" >
                                             <input type="checkbox" name="product-reservation-time" value={time} />
-                                            <span className="custom-checkbox-box"></span>
-                                            <span>{time}</span>
+                                            {/* <span className="custom-checkbox-box"></span> */}
+                                            <span className="custom-checkbox-box" style={{ display: "none" }}></span>
+                                            <div className='pull'>{time}</div>
                                         </label>
                                     </li>
                                 ))}
