@@ -1,147 +1,94 @@
-import React from 'react';
-import Detail_category from './Detail_category';
+import React, { useState, useRef, useEffect } from "react";
+import Detail_category from "./Detail_category";
 import "../../css/detail_category/Detail_category.css";
+import DetailCardList from "./DetailCardList";
 
 const Home_interior = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const sectionsRef = useRef([]);
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = sectionsRef.current.findIndex(
+                            (section) => section === entry.target
+                        );
+                        if (index !== -1 && index !== activeIndex) {
+                            setActiveIndex(index);
+                        }
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: "-220px 0px -70% 0px",
+                threshold: 0.3,
+            }
+        );
+
+        sectionsRef.current.forEach((section) => observer.observe(section));
+
+        return () => {
+            observer.disconnect();
+        };
+    }, [activeIndex]);
+
+    const handleMenuClick = (index) => {
+        setActiveIndex(index);
+        sectionsRef.current[index].scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+        });
+
+        const headerOffset = 220; // 필요에 따라 조정
+        const elementPosition = sectionsRef.current[index].getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+        });
+    };
+
     return (
-        <div className='detailCategoryListPage'>
+        <div className="detailCategoryListPage">
             <h1>견적 요청</h1>
-            {/* 최상단 카테고리 */}
-            <div className='detail_categoryWrap'>
+            <div className="detail_categoryWrap">
                 <Detail_category />
             </div>
-            {/* 좌측 메뉴와 우측 콘텐츠 */}
-            <div className='detailContentWrap'>
-                {/* 좌측 메뉴 */}
-                <div className='detailCategoryListWrap'>
+            <div className="detailContentWrap">
+                <div className="detailCategoryListWrap" ref={menuRef}>
                     <ul>
-                        <li>이사 / 청소</li>
-                        <li>설치 / 수리</li>
-                        <li>철거 / 폐기</li>
-                        <li>인테리어 / 시공</li>
-                        <li>가구 리폼 / 운반</li>
+                        {["이사 / 청소", "설치 / 수리", "철거 / 폐기", "인테리어 / 시공", "가구 리폼 / 운반"].map(
+                            (item, index) => (
+                                <li
+                                    key={index}
+                                    className={`menu-item ${activeIndex === index ? "active" : ""}`}
+                                    onClick={() => handleMenuClick(index)}
+                                >
+                                    {item}
+                                </li>
+                            )
+                        )}
                     </ul>
                 </div>
-
-                {/* 우측 콘텐츠 */}
-                <div className='detailRightWrap'>
-                    <h2>인테리어 / 시공</h2>
-                    <div className='detailCardWrap'>
-                        {/* 슬라이드 버튼 */}
-                        <button className='slideButton left'>{'<'}</button>
-                        
-                        {/* 카드 리스트 */}
-                        <div className='detailCardList'>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
+                <div className="detailRightWrap">
+                    {["이사 / 청소", "설치 / 수리", "철거 / 폐기", "인테리어 / 시공", "가구 리폼 / 운반"].map(
+                        (title, index) => (
+                            <div
+                                key={index}
+                                ref={(el) => (sectionsRef.current[index] = el)}
+                                className="detailSection"
+                                id={`section-${index}`}
+                            >
+                                <h2>{title}</h2>
+                                <DetailCardList />
                             </div>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {/* 슬라이드 버튼 */}
-                        <button className='slideButton right'>{'>'}</button>
-                    </div>
-                    <h2>인테리어 / 시공</h2>
-                    <div className='detailCardWrap'>
-                        {/* 슬라이드 버튼 */}
-                        <button className='slideButton left'>{'<'}</button>
-                        
-                        {/* 카드 리스트 */}
-                        <div className='detailCardList'>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {/* 슬라이드 버튼 */}
-                        <button className='slideButton right'>{'>'}</button>
-                    </div>
-                    <h2>가구 리폼 / 운반</h2>
-                    <div className='detailCardWrap'>
-                        {/* 슬라이드 버튼 */}
-                        <button className='slideButton left'>{'<'}</button>
-                        
-                        {/* 카드 리스트 */}
-                        <div className='detailCardList'>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                            <div className='detailCard'>
-                                <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
-                                </div>
-                                <div className='detailCardContent'>
-                                    <h4>정리수납 컨설팅</h4>
-                                    <p>312,300명 요청</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {/* 슬라이드 버튼 */}
-                        <button className='slideButton right'>{'>'}</button>
-                    </div>
+                        )
+                    )}
                 </div>
             </div>
         </div>

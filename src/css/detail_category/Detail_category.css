@@ -1,12 +1,18 @@
 .detail_categoryWrap {
+    display: flex;
+    flex-wrap: wrap; /* 내부 요소가 줄 바꿈 가능하게 설정 */
+    justify-content: center;
+    align-items: center;
     position: sticky;
-    top: 53px; /* 화면 상단에 고정 */
-    z-index: 1000; /* 다른 콘텐츠 위에 위치 */
+    top: 53px;
+    z-index: 1000;
     background-color: #fff;
     padding: 10px 0;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+    overflow: hidden; /* 내용이 넘칠 경우 숨기기 */
 }
+
 
 .detail_categoryWrap hr{
     margin: 20px;
@@ -31,13 +37,13 @@
 /* 좌측 메뉴 */
 .detailCategoryListWrap {
     position: sticky;
-    top: 195px; /* 최상단 카테고리 아래에 고정 */
-    width: 25%;
+    top: 195px;
+    width: 25%; /* 기본 넓이 */
     margin-right: 20px;
     background-color: #fff;
     padding: 15px;
-    max-height: calc(100vh - 80px); /* 화면 높이에 맞춤 */
-    overflow-y: auto; /* 내용이 많아질 경우 스크롤 */
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
 }
 
 .detailCategoryListWrap ul {
@@ -56,6 +62,15 @@
     transition: background-color 0.3s;
 }
 
+/* 활성화 상태 */
+.detailCategoryListWrap li.active {
+    background-color: lightcoral;
+    color: white;
+    font-weight: bold; /* 강조 효과 */
+}
+
+
+
 .detailCategoryListWrap li:hover {
     border-radius: 15px;
     background-color: lightcoral;
@@ -64,8 +79,8 @@
 
 /* 우측 콘텐츠 */
 .detailRightWrap {
-    width: 73%;
-    padding: 20px;
+    width: 60%;
+    padding: 20px 0 200px 0;
 }
 
 .detailRightWrap h3 {
@@ -79,13 +94,14 @@
     position: relative;
     display: flex;
     align-items: center;
+    overflow: visible;
 }
 
 /* 카드 리스트 */
 .detailCardList {
     display: flex;
     gap: 20px;
-    overflow-x: hidden; /* 가로 스크롤 */
+    overflow-x: visible; /* 가로 스크롤 */
     scroll-behavior: smooth; /* 부드러운 스크롤 */
     padding: 10px 0;
 }
@@ -98,12 +114,12 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    width: 370px;
+    width: 300px;
 }
 
 .detailCardImg img {
     width: 100%;
-    height: 200px;
+    height: auto;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -125,8 +141,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    background: none;
+    color: black;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -136,15 +152,111 @@
 }
 
 .slideButton.left {
-    left: 0;
-    transform: translateY(-50%) translateX(-50%);
+    left: -50px;
 }
 
 .slideButton.right {
-    right: 0;
-    transform: translateY(-50%) translateX(50%);
+    right: -50px;
 }
 
 .slideButton:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #bbb;
+}
+/* 카드 리스트 컨테이너 */
+.detailCardListContainer {
+    overflow: hidden; /* 가로 스크롤 숨기기 */
+    width: calc(340px * 2 + 20px); /* 카드 두 개의 너비 + 간격 (예시) */
+}
+
+/* 카드 리스트 */
+.detailCardList {
+    display: flex;
+    gap: 20px; /* 카드 간격 */
+    will-change: transform; /* 성능 최적화 */
+}
+@media(max-width:1250px){
+    .detail_categoryWrap {
+        flex-direction: column; /* 세로 방향으로 배치 */
+        align-items: flex-start; /* 왼쪽 정렬 */
+    }
+    .detailCategoryListPage{
+        width:95%;
+        margin: 0 auto;
+    }
+    .detail_categoryWrap{
+        top: 0px;
+    }
+    .detail_categoryWrap .categories{
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .detail_categoryWrap .categories span{
+        font-size:1rem;
+    }
+    .category-item{
+        padding: 0;
+    }
+    
+    /* 왼쪽 메뉴 */
+    .detailCategoryListWrap ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .detailCategoryListWrap{
+        padding: 0;
+        padding-right: 10px;
+    }
+    .detailCategoryListWrap li {
+        width:90%;
+        padding:10px;
+        font-size: 1rem;
+        color: #333;
+        cursor: pointer;
+        border-radius: 15px;
+        transition: background-color 0.3s;
+    }
+    /* 우측 콘텐츠 */
+    .detailRightWrap {
+        width: 60%;
+        padding: 0 0 200px 0;
+    }
+
+    .detailRightWrap h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #444;
+    }
+    .detailCard{
+        width:70px;
+        margin-left: 0.5em;
+    }
+    .detailCardImg img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+    .slideButton.left {
+        left: -30px;
+    }
+    
+    .slideButton.right {
+        right: -30px;
+    }
+    /* 카드 리스트 컨테이너 */
+    .detailCardListContainer {
+        overflow: hidden; /* 가로 스크롤 숨기기 */
+        width: calc(105px * 2 + 20px); /* 카드 두 개의 너비 + 간격 (예시) */
+    }
+
+    /* 카드 리스트 */
+    .detailCardList {
+        display: flex;
+        gap: 5px; /* 카드 간격 */
+        will-change: transform; /* 성능 최적화 */
+    }
+    .detailRightWrap {
+        padding: 20px 0 400px 0;
+    }
+    
 }

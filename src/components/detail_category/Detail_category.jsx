@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../../css/detail_category/Detail_category.css";
 
 const Detail_category = () => {
