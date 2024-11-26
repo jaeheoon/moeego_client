@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../css/about/About.css';
 
 const About = () => {
@@ -16,8 +16,8 @@ const About = () => {
             <div className='infoFitProWrap'>
                 <div>
                     <h2>딱! 맞는 달인을 만나세요</h2>
-                    <hr/>
-                    <p>필요한 사람을 찾는 일에 에너지와 시간을 낭비하지 마세요. 
+                    <hr />
+                    <p>필요한 사람을 찾는 일에 에너지와 시간을 낭비하지 마세요.
                         모이고에는 여러분들이 찾는 달인들이 모여있어요</p>
                 </div>
             </div>
@@ -50,11 +50,11 @@ const About = () => {
             <div className='infoJoinWrap'>
                 <div>
                     <h2>모이고에 가입해보세요</h2>
-                    <hr/>
+                    <hr />
                     <Link to="/login">이미 계정이 있으신가요?</Link>
                     <div className='aboutBtnWrap'>
-                        <Link to="/signup"><input  type='button' value='일반 회원 가입'/></Link>
-                        <Link to="/pro/signup"><input  type='button' value='달인 회원 가입'/></Link>
+                        <Link to="/signup"><input type='button' value='일반 회원 가입' /></Link>
+                        <Link to="/pro/signup/main"><input type='button' value='달인 회원 가입' /></Link>
                     </div>
                 </div>
             </div>
