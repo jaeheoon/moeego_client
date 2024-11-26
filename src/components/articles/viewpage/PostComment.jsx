@@ -21,6 +21,7 @@ const PostComment = () => {
                 />
             </div>
         </div>
+        
     );
 };
 

@@ -41,3 +41,19 @@
     background-color: transparent;
     padding: 5px;
 }
+
+@media (max-width: 1250px) {
+    .post-comment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 600px;
+        margin: 10px auto;
+        background-color: #f9f9f9;
+        margin-top: -0.5em;
+    }
+}

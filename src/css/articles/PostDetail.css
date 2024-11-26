@@ -3,3 +3,23 @@
     margin: 0 auto; /* 가운데 정렬 */
     overflow: hidden; /* 내용물 넘침 방지 */
 }
+
+@media (max-width: 1250px) {
+    .post-detail-container {
+        width :100%;
+    }
+    .post-detail-wrap {
+        width: 95%;
+    }
+}
+
+@media (max-width: 1250px) {
+    .post-detail-container {
+        width: 100%;
+    }
+    
+    .post-detail-wrap {
+        width: 95%;
+        margin: 0 auto;  
+    }
+}

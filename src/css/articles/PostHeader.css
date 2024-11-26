@@ -122,3 +122,18 @@
     height: 24px;
     object-fit: cover;
 }
+
+@media (max-width: 1250px) {
+    .category-breadcrumb {
+        margin-top: -2.5em;
+        align-items: center;
+    }
+
+    .post-category-subject{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5em;
+    }
+
+}

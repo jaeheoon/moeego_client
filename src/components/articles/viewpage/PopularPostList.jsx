@@ -5,7 +5,7 @@ import "/src/css/articles/PopularPostList.css";
 const PopularPostList = () => {
     return (
         <section>
-            <div>
+            <div className="popularPost">
                 <h3>지금 가장 뜨거운🔥커뮤니티 게시글</h3>
 
                 <><Link to="">
