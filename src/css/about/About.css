@@ -16,8 +16,12 @@
     color:white;
     font-size:2.5em;
 }
+.homepageInfoPage .infoWrap{
+    display: flex;
+    flex-direction: column;
+}
 .infoWrap p{
-    font-size:14pt;
+    font-size:1.2rem;
     color:white;
     margin-top: -1em;
 }
@@ -25,14 +29,16 @@
     display: flex;
     text-align: center;
     justify-content: center;
+    margin: 1.5em auto;
 }
 .infoFitProWrap hr{
+    margin: auto;
     width: 30%;
     border-color: #fcc1cc;
     opacity: 50%;
 }
 .infoFitProWrap p{
-    font-size:13pt;
+    font-size:1.1rem;
 }
 .infoProCountWrap {
     height: 500px;
@@ -61,7 +67,7 @@
 .infoProCountWrap .proCountWrap p{
     margin-top:0;
     z-index: 2;
-    font-size: 16pt;
+    font-size: 1rem;
     color:white;
 }
 .infoProCountWrap .proCountWrap::before {
@@ -104,11 +110,11 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-top:1em;
     margin-bottom: 20px;
 }
 .infoJoinWrap hr{
-    margin-top: -5px;
-    margin-bottom: 1em;
+    margin: -5px auto 1em auto;
     width: 80%;
     border-color: #fcc1cc;
     opacity: 50%;
@@ -171,7 +177,8 @@
     }
 
     .infoProCountWrap {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(1, 1fr);
+        height: 1200px;
     }
 
     .infoProCountWrap .proCountWrap h1 {
