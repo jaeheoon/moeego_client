@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/Pro/ProSub_fashion.css";
+import "../../css/Pro/ProSubMoblie.css";
 import { useNavigate } from 'react-router-dom';
 
 const ProjoinSub_fashion = () => {
@@ -10,34 +10,34 @@ const ProjoinSub_fashion = () => {
     }
 
     const goBack = () => {
-        navigate("/pro/signup");
+        navigate("/pro/signup/main");
     }
 
     return (
-        <div className="ProJoinSub_fashionPage">
-            <div id="projoinSub_study_container">
-                <form id="ProJoinSub_fashionForm" className="ProJoinSub_fashionbox">
+        <div className="ProJoinSubPage">
+            <div id="projoinSub_container">
+                <form id="ProJoinSub_fashionForm" className="ProJoinSub_box">
                     <br />
                     <h1>어떤 서비스를 제공할 수 있나요?</h1>
-                    <div className="detail-fashion-wrap">
+                    <div className="detail-wrap">
                         {/* 여기에 포이치 돌려서 메인카테고리 별서브 카테고리 찍을 예정 */}
-                        <div className="detail-fashion">
+                        <div className="detail-item">
                             <input type='checkbox' id="1" />
                             <label htmlFor='1'>헤어 / 메이크업</label>
                         </div>
-                        <div className="detail-fashion">
+                        <div className="detail-item">
                             <input type='checkbox' id="2" />
                             <label htmlFor='2'>코디</label>
                         </div>
-                        <div className="detail-fashion">
+                        <div className="detail-item">
                             <input type='checkbox' />
                             <label>퍼스널컬러 / 이미지메이킹</label>
                         </div>
-                        <div className="detail-fashion">
+                        <div className="detail-item">
                             <input type='checkbox' />
                             <label>촬영 / 모델</label>
                         </div>
-                        <div className="detail-fashion">
+                        <div className="detail-item">
                             <input type='checkbox' />
                             <label>피부 / 탈모</label>
                         </div>

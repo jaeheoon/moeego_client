@@ -196,3 +196,50 @@
 .JoinPage .dalin {
     margin-top: 1em;
 }
+
+@media screen and (max-width: 1250px) {
+    .JoinPage {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .JoinPage #join_container {
+        width: 90%;
+    }
+
+    .JoinPage #join_container h1 {
+        color: #525252;
+        font-size: 1.2rem;
+        margin-bottom: 1.2em;
+    }
+
+    .JoinPage #join_container .joinbox {
+        background-color: #ffffff;
+        border: none;
+        border-top: 2px solid #f2f2f2;
+        border-radius: 0;
+        padding-top: 1em;
+    }
+
+    .JoinPage #join_container .joinbox input[type='text'],
+    .JoinPage #join_container .joinbox input[type='password'],
+    .JoinPage #join_container .joinbox input[type='email'] {
+        border: none;
+        outline: none;
+        border-radius: 0;
+        border-bottom: 1px solid #fcc1cc;
+        height: 2.5em;
+        box-sizing: border-box;
+        color: #626262;
+    }
+
+    .JoinPage #join_container .joinbox input[type='text']:focus,
+    .JoinPage #join_container .joinbox input[type='text']:not(:placeholder-shown),
+    .JoinPage #join_container .joinbox input[type='password']:focus,
+    .JoinPage #join_container .joinbox input[type='password']:not(:placeholder-shown),
+    .JoinPage #join_container .joinbox input[type='email']:focus,
+    .JoinPage #join_container .joinbox input[type='email']:not(:placeholder-shown) {
+        border-bottom: 2px solid lightcoral;
+        box-sizing: border-box;
+    }
+}

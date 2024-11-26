@@ -23,7 +23,7 @@ const Join = () => {
     return (
         <div className="JoinPage">
             <div id="join_container">
-                <h1>MoeeGo에 오신 것을 환영합니다.</h1>
+                <h1>모이고에 오신 것을 환영합니다.</h1>
                 <form id="joinForm" className="joinbox">
                     <div className="join-align">
                         <label>이름</label>

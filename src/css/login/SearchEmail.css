@@ -1,145 +1,187 @@
 .SearchEmailPage #searchEmail_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 0 auto; 
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .SearchEmailPage .searchEmail-align{
-    width: 320px; 
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .SearchEmailPage .searchEmailbox h1{
-    font-size: 30px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-  }
-  
-  .SearchEmailPage .phone_label{
-    font-size: 15px;  
-    font-weight: bold;
-  }
-  
-  .SearchEmailPage .searchEmailbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 2px solid #F4F4F4;
-    width: 500px;
-    height: 300px;
-    border-radius: 15px;
-    background-color: #F4F4F4;
-    box-sizing: border-box;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    position: relative;
-    
-  }
-  
-.SearchEmailPage .phonecheckbox{
-    border-radius: 10px; 
-    border-style: none;
-    padding: 12px 12px; 
-    font-size: 16px; 
-    width: 320px; 
-    border: 2px solid #ffffff;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    
-    padding-right: 80px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto; 
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.SearchEmailPage .searchEmail-align {
+  width: 320px; 
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.SearchEmailPage .searchEmailbox h1 {
+  font-size: 30px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.SearchEmailPage .phone_label {
+  font-size: 15px;  
+  font-weight: bold;
+}
+
+.SearchEmailPage .searchEmailbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #F4F4F4;
+  width: 500px;
+  height: 300px;
+  border-radius: 15px;
+  background-color: #F4F4F4;
+  box-sizing: border-box;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  position: relative;
+}
+
+.SearchEmailPage .phonecheckbox {
+  border-radius: 10px; 
+  border-style: none;
+  padding: 12px 12px; 
+  font-size: 16px; 
+  width: 320px; 
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding-right: 80px; 
 }
 
 .SearchEmailPage .checknumBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 5px 8px;           
-    font-size: 13px;              
-    border-radius: 12px;             
-    color: white;   
-    width: 60px; 
-    height: 33px;           
-    cursor: pointer;  
-    font-weight: bold;
-    border: 1px solid #FFD8E4;   
-    background-color: #FFD8E4; 
-
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-80%); 
-    padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 5px 8px;           
+  font-size: 13px;              
+  border-radius: 12px;             
+  color: white;   
+  width: 60px; 
+  height: 33px;           
+  cursor: pointer;  
+  font-weight: bold;
+  border: 1px solid #FFD8E4;   
+  background-color: #FFD8E4; 
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-80%); 
+  padding: 10px 15px;
 }
 
-.SearchEmailPage .completeBtn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    box-sizing: border-box;
-    padding: 10px 20px;           
-    font-size: 16px;              
-    border-radius: 10px;             
-    color: white;   
-    width: 320px;            
-    cursor: pointer;  
-    font-weight: bold;
-    border: 1px solid #FFD8E4;   
-    background-color: #FFD8E4; 
-    margin-top: -20px;
+.SearchEmailPage .completeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  box-sizing: border-box;
+  padding: 10px 20px;           
+  font-size: 16px;              
+  border-radius: 10px;             
+  color: white;   
+  width: 320px;            
+  cursor: pointer;  
+  font-weight: bold;
+  border: 1px solid #FFD8E4;   
+  background-color: #FFD8E4; 
+  margin-top: -20px;
 }
 
-.SearchEmailPage .completeBtn:hover, .SearchEmailPage .checknumBtn:hover {
-    background-color: white; 
-    color: #fd9bb9; 
+.SearchEmailPage .completeBtn:hover,
+.SearchEmailPage .checknumBtn:hover {
+  background-color: white; 
+  color: #fd9bb9; 
 }
 
 .SearchEmailPage .searchEmailwrite {
-    position: relative;
+  position: relative;
 }
-  
+
 .SearchEmailPage .input-container {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 .phonecheckbox {
-    box-sizing: border-box;
-    border: 2px solid #ffffff;
-    outline: none;
+  box-sizing: border-box;
+  border: 2px solid #ffffff;
+  outline: none;
 }
-  
+
 .phonecheckbox:focus, 
 .phonecheckbox:active, 
-.phonecheckbox:not(:placeholder-shown){
-    border-color: #fcc1cc;
-    box-sizing: border-box;
+.phonecheckbox:not(:placeholder-shown) {
+  border-color: #fcc1cc;
+  box-sizing: border-box;
 }
 
 .SearchEmailPage .searchEamil-modal-close {
-    position: absolute;  
-    top: 30px;           
-    right: 30px;  
-    background: #FFD8E4;
+  position: absolute;  
+  top: 30px;           
+  right: 30px;  
+  background: #FFD8E4;
+  border: none;
+  font-size: 18px; 
+  border-radius: 5px; 
+  color: white;
+  cursor: pointer;
+}
+
+.SearchEmailPage .searchEamil-modal-close:hover {
+  background-color: white; 
+  color: #fd9bb9; 
+}
+
+.closeBtn {
+  float: right;
+}
+
+@media screen and (max-width: 1250px) {
+  .SearchEmailPage {
+    width: 100%;
+  }
+
+  .SearchEmailPage #searchEmail_container {
+    width: 100%;
+  }
+
+  .SearchEmailPage #searchEmail_container .modal-overlay {
+    width: 100%;
+  }
+
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content {
+    width: 100%;
+  }
+
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox {
+    width: 100%;
+    background-color: #ffffff;
+  }
+
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite {
+    margin-bottom: 0.5em;
+  }
+
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite .checknumBtn {
     border: none;
-    font-size: 18px; 
-    border-radius: 5px; 
-    color: white;
-    cursor: pointer;
+    background-color: transparent;
+    box-sizing: border-box;
+    color: #fcc1cc;
+    margin: 0;
+    width: 5em;
+    height: 40px;
+    border-radius: 0;
   }
-  
-  .SearchEmailPage .searchEamil-modal-close:hover {
-    background-color: white; 
-    color: #fd9bb9; 
+
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite .checknumBtn:hover,
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite .checknumBtn:active {
+    border: 1px solid #fcc1cc;
+    font-weight: bold;
   }
- 
-  .closeBtn {
-    float:right;
-  }
+}

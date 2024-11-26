@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/Pro/ProSub.css";
+import "../../css/Pro/ProSubMoblie.css";
 import { useNavigate } from 'react-router-dom';
 
 const ProjoinSub = () => {

@@ -110,3 +110,34 @@
   background-color: white; 
   color: #fd9bb9; 
 }
+
+@media screen and (max-width: 1250px) {
+  .SearchPwdPage {
+    width: 100%;
+  }
+
+  .SearchPwdPage #searchPwd_container {
+    width: 100%;
+  }
+
+  .SearchPwdPage #searchPwd_container .modal-overlay {
+    width: 100%;
+  }
+
+  .SearchPwdPage #searchPwd_container .modal-overlay .modal-content {
+    width: 100%;
+  }
+
+  .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox {
+    width: 100%;
+    background-color: #ffffff;
+  }
+
+  .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .box {
+    margin-bottom: 1.2em;
+  }
+
+  .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .emailsendBtn {
+    margin-top: 0;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/Pro/ProSub_hobby.css";
+import "../../css/Pro/ProSubMoblie.css";
 import { useNavigate } from 'react-router-dom';
 
 const ProjoinSub_hobby = () => {
@@ -10,34 +10,34 @@ const ProjoinSub_hobby = () => {
     }
 
     const goBack = () => {
-        navigate("/pro/signup");
+        navigate("/pro/signup/main");
     }
 
     return (
-        <div className="ProJoinSub_hobbyPage">
-            <div id="projoinSub_hobby_container">
-                <form id="ProJoinSub_hobbyForm" className="ProJoinSub_hobbybox">
+        <div className="ProJoinSubPage">
+            <div id="projoinSub_container">
+                <form id="ProJoinSub_hobbyForm" className="ProJoinSub_box">
                     <br />
                     <h1>어떤 서비스를 제공할 수 있나요?</h1>
-                    <div className="detail-hobby-wrap">
+                    <div className="detail-wrap">
                         {/* 여기에 포이치 돌려서 메인카테고리 별서브 카테고리 찍을 예정 */}
-                        <div className="detail-hobby">
+                        <div className="detail-item">
                             <input type='checkbox' id="1" />
                             <label htmlFor='1'>음악 / 악기</label>
                         </div>
-                        <div className="detail-hobby">
+                        <div className="detail-item">
                             <input type='checkbox' id="2" />
                             <label htmlFor='2'>운동 / 대회</label>
                         </div>
-                        <div className="detail-hobby">
+                        <div className="detail-item">
                             <input type='checkbox' />
                             <label>연기 / 댄스</label>
                         </div>
-                        <div className="detail-hobby">
+                        <div className="detail-item">
                             <input type='checkbox' />
                             <label>미술 / 사진</label>
                         </div>
-                        <div className="detail-hobby">
+                        <div className="detail-item">
                             <input type='checkbox' />
                             <label>요리 / 베이킹</label>
                         </div>

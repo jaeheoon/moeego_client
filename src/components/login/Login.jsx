@@ -8,25 +8,25 @@ import SearchEmail from './SearchEmail';
 
 const Login = () => {
 
-const [modalType, setModalType] = useState(null); 
+    const [modalType, setModalType] = useState(null);
 
-  const openModal = (type) => {
-    setModalType((prevType) => (prevType === type ? null : type)); 
-    if (type) {
-        document.body.style.overflow = "hidden";  
-      } else {
-        document.body.style.overflow = "auto";   
-      }
+    const openModal = (type) => {
+        setModalType((prevType) => (prevType === type ? null : type));
+        if (type) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
     };
 
-  const closeModal = () => {    
-    setModalType(null); 
-    document.body.style.overflow = "auto"; 
-  }; 
-  
-  const handleModalClose = () => {
-    setModalType(null);
-  }
+    const closeModal = () => {
+        setModalType(null);
+        document.body.style.overflow = "auto";
+    };
+
+    const handleModalClose = () => {
+        setModalType(null);
+    }
 
     return (
         <div className="LoginPage">
@@ -55,22 +55,22 @@ const [modalType, setModalType] = useState(null);
 
                     <div className="login-function">
                         <div className="find">
-                        <input type="button" value="이메일 찾기" onClick={() => openModal("email")}/>
+                            <input type="button" value="이메일 찾기" onClick={() => openModal("email")} />
                         </div>
                         <div className="find">
-                        <input type="button" value="비밀번호 찾기" onClick={() => openModal("password")}/>
+                            <input type="button" value="비밀번호 찾기" onClick={() => openModal("password")} />
                         </div>
                         <div className="find">
-                        <Link to="/signup">회원가입</Link>
+                            <Link to="/signup">회원가입</Link>
                         </div>
-                    </div>                    
+                    </div>
 
                     <div className={`ModalWrap ${modalType ? 'show' : ''}`} onClick={handleModalClose}>
                         {modalType === "email" && (
-                        <SearchEmail closeModal={closeModal} />
+                            <SearchEmail closeModal={closeModal} />
                         )}
                         {modalType === "password" && (
-                        <SearchPwd closeModal={closeModal} />
+                            <SearchPwd closeModal={closeModal} />
                         )}
                     </div>
                     <br />
