@@ -96,11 +96,11 @@ const ArticleMain = () => {
                         </div>
                         <div className='AllArticleContainer'>
                             <h3>전체글 모이고</h3>
-                            <FeedItem/>
-                            <FeedItem/>
-                            <FeedItem/>
-                            <FeedItem/>
-                            <FeedItem/>
+                            <FeedItem />
+                            <FeedItem />
+                            <FeedItem />
+                            <FeedItem />
+                            <FeedItem />
                         </div>
                     </div>
                 </div>

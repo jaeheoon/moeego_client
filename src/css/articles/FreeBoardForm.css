@@ -17,81 +17,11 @@
     opacity: 30%;
 }
 
-.free-board-container .TopContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 50px;
-    background-color: #ffffff;
-    z-index: 9990;
-}
-
-.free-board-container .TopContainer .ButtonWrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
-}
-
-.free-board-container .TopContainer .ButtonWrap button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 9pt;
-    border-style: none;
-    padding: 5px 20px;
-    height: 30px;
-    box-sizing: border-box;
-    background-color: #fcc1cc;
-    font-weight: bold;
-    color: #f1f1f1;
-    border-radius: 10px;
-    transition: all 0.25s ease-out;
-
-}
-
-.free-board-container .TopContainer .ButtonWrap svg {
-    width: 20px;
-    height: 20px;
-    fill: #ffffff;
-}
-
-.free-board-container .TopContainer .ButtonWrap button:hover {
-    cursor: pointer;
-    background-color: lightcoral;
-    color: #ffffff;
-}
-
-.free-board-container .MainContainer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-}
-
-.free-board-container .MainContainer .Main-LeftContainer {
-    position: sticky;
-    z-index: 9980;
-    display: flex;
-    align-items: flex-start;
-    flex: 0 0 25%;
-    padding: 10px;
-    width: 100%;
-    top: 120px;
-}
-
-.free-board-container .MainContainer .Main-RightContainer {
-    flex: 0 0 75%;
-    padding: 10px;
-}
-
 /* 가이드 배너 */
 .free-board-container .guide-banner-layout {
     display: flex;
     align-items: center;
-    width: 95%;
+    width: 100%;
     border-radius: 10px;
     box-sizing: border-box;
     background-color: #FCF5EA;
@@ -108,14 +38,14 @@
     white-space: nowrap;
     box-sizing: border-box;
     word-break: break-word;
-    width:80%
+    width: 95%
 }
 
 .free-board-container .guide-banner-layout div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20%;
+    width: 5%;
 }
 
 .free-board-container .guide-banner-layout div:nth-child(2) img {
@@ -131,38 +61,68 @@
     margin-top: -1.2em;
 }
 
-.free-board-container .life-topic-layout section {
-    width: 90%;
-}
+@media screen and (max-width: 1250px) {
+    .free-board-container {
+        width: 100%;
+    }
 
-.free-board-container .life-topic-layout section ul {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 5px 0px 5px 0px;
-    margin-left: -0.8em;
-    box-sizing: border-box;
-    width: 100%;
-}
+    .free-board-container .free-board-wrap {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        padding: 0;
+        margin: 0;
+    }
 
-.free-board-container .life-topic-layout section ul li {
-    width: 100%;
-    list-style: none;
-    padding: 20px 10px;
-    box-sizing: border-box;
-}
+    .free-board-container .free-board-wrap .TopContainer {
+        position: sticky;
+        top: 0;
+        left: 0;
+    }
 
-.free-board-container .life-topic-layout section ul li a {
-    text-decoration: none;
-    color: black;
-    box-sizing: border-box;
-}
+    .free-board-container .MainContainer .Main-RightContainer {
+        width: 100%;
+    }
 
-.free-board-container .life-topic-layout section ul li:hover {
-    background-color: #fcc1cc;
-    border-radius: 10px;
-}
+    .free-board-container .FeedContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0 auto;
+    }
 
-.free-board-container .life-topic-layout section ul li:hover a {
-    color: #ffffff;
+    .free-board-container .FeedContainer .itemWrap-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .free-board-container .FeedContainer .itemWrap {
+        padding: 0.5em;
+        margin-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .free-board-container .FeedContainer .itemWrap-content .itemWrap-title_content {
+        width: 65%;
+    }
+
+    .free-board-container .FeedContainer .itemWrap-content .itemWrap-img {
+        width: 35%;
+    }
+
+    .free-board-container .FeedContainer .itemWrap-content .itemWrap-img img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .free-board-container .FeedContainer .itemWrap-bot .imageWrap {
+        width: 80%;
+    }
+
+    .free-board-container .FeedContainer .itemWrap-bot .written-time-warp {
+        width: 20%;
+    }
 }

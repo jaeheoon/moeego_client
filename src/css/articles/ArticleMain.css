@@ -79,7 +79,7 @@
 }
 
 .MainContainer .Main-RightContainer {
-    flex: 0 0 75%;
+    flex: 0 0 70%;
     padding: 10px;
     width: 70%;
 }
@@ -181,13 +181,14 @@
 }
 
 .HotArticleContainer .HotList .HotWrap {
-    flex: 1 1 calc(50% - 1em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 0.5em);
     box-sizing: border-box;
-    max-width: calc(50% - 1em);
     background-color: rgb(226, 255, 252);
     border-radius: 10px;
     padding: 10px;
-    border-radius: 10px;
 }
 
 .HotArticleContainer .HotList .HotWrap:hover {
@@ -280,13 +281,14 @@
 }
 
 .LatestArticleContainer .LatestList .LatestWrap {
-    flex: 1 1 calc(50% - 1em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 0.5em);
     box-sizing: border-box;
-    max-width: calc(50% - 1em);
     background-color: #ffdae0;
     border-radius: 10px;
     padding: 10px;
-    border-radius: 10px;
 }
 
 .LatestArticleContainer .LatestList .LatestWrap:hover {
@@ -370,4 +372,177 @@
     justify-content: center;
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+@media screen and (max-width: 1250px) {
+    .ArticleMainContainer {
+        width: 100%;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap {
+        width: 90%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .TopContainer {
+        position: sticky;
+        top: 0;
+        left: 0;
+    }
+
+    .MainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .MainContainer .Main-LeftContainer {
+        position: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout section ul {
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        margin-top: 1em;
+        gap: 1em;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout section ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout section ul li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        width: 100%;
+        font-size: 10pt;
+        padding: 0.4em 0;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout section ul li:hover {
+        background-color: transparent;
+        color: #323232;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout section ul li a:hover {
+        background-color: #fcc1cc;
+    }
+
+    .MainContainer .Main-LeftContainer .life-topic-layout section ul li:hover a {
+        color: #323232;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer div:nth-child(1),
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer div:nth-child(3) {
+        width: 20%;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer div:nth-child(2) {
+        width: 60%;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer,
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .LatestArticleContainer {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer .HotList {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        align-content: center;
+        justify-items: center;
+        width: 100%;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer .HotList .HotWrap,
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .LatestArticleContainer .LatestList .LatestWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer .HotList .HotWrap .viewWrap,
+    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .LatestArticleContainer .LatestList .LatestWrap .viewWrap {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .AllArticleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .AllArticleContainer .itemWrap .itemWrap-content {
+        gap: 0;
+    }
+
+    .AllArticleContainer .itemWrap .itemWrap-content .itemWrap-title_content {
+        width: 65%;
+    }
+
+    .AllArticleContainer .itemWrap .itemWrap-content .itemWrap-img {
+        width: 35%;
+    }
+
+    .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap {
+        width: 80%;
+    }
+
+    .AllArticleContainer .itemWrap .itemWrap-bot .written-time-warp {
+        width: 20%;
+    }
 }
