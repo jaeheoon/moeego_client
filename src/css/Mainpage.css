@@ -65,7 +65,8 @@ h1{
     align-items: center; /* 세로 정렬 */
     justify-content: flex-start; /* 왼쪽 정렬 */
     padding: 0 10px; /* 내부 여백 설정 */
-    border-radius: 5px;
+    border-radius: 10px;
+    border:2px solid #eee;
     box-sizing: border-box;
 }
 .searchBarWrap:focus-within{
@@ -75,8 +76,8 @@ h1{
 }
 .searchBarWrap img {
     margin-right: 10px; /* 이미지와 입력창 간격 */
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 .searchCategoryWrap input {
@@ -85,9 +86,11 @@ h1{
     height: 30px;
     background-color: #eee;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     box-sizing: border-box;
     font-size:16pt;
+    align-items: center; /* 세로 정렬 */
+    vertical-align: middle;
 }
 
 .searchCategoryWrap input:focus {
@@ -338,7 +341,9 @@ h1{
     .searchBarWrap {
         width: 100%; /* 검색 바 폭을 100%로 */
         height: 50px; /* 높이 조정 */
-        font-size: 16pt;
+    }
+    .searchBarWrap input {
+        font-size: 12pt;
     }
     .searchBarWrap img{
         width: 20px;
