@@ -9,14 +9,16 @@ const MyPage = () => {
                 <h1>마이페이지</h1>
                 <div className='ProfileContainer'>
                     <Link to='/mypage/account' className='ProfileSettingPage'>
-                        <div className='ProfileImage'>
-                            <img src="../src/image/profile_default.png" alt="profile" />
-                        </div>
-                        <div className='ProfileInfo'>
-                            <div className='NickName'>ooo 고객님</div>
-                            <div className='MailWrap'>
-                                <div className="SNSWrap"><img src="../src/image/naver_sns.png" alt="naver" /></div>
-                                <div className='Email'>moeego@moeego.com</div>
+                        <div className='TopWrap'>
+                            <div className='ProfileImage'>
+                                <img src="../src/image/profile_default.png" alt="profile" />
+                            </div>
+                            <div className='ProfileInfo'>
+                                <div className='NickName'>ooo 고객님</div>
+                                <div className='MailWrap'>
+                                    <div className="SNSWrap"><img src="../src/image/naver_sns.png" alt="naver" /></div>
+                                    <div className='Email'>moeego@moeego.com</div>
+                                </div>
                             </div>
                         </div>
                         <div className='ProfileButton'>

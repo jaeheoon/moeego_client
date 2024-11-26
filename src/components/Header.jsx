@@ -15,7 +15,7 @@ function Header() {
 
   const openModal = (type) => {
     setModalType((prevType) => (prevType === type ? null : type));
-    setIsIconToggled((prevType) => (prevType === false ? true : false));
+    setIsIconToggled((prevState) => !prevState);
   };
 
   const closeModal = () => {
@@ -25,11 +25,16 @@ function Header() {
   };
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => {
+      if (!prev) document.body.style.overflow = "hidden";
+      else document.body.style.overflow = "auto";
+      return !prev;
+    });
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    document.body.style.overflow = "auto";
   };
 
   const toggleSearch = () => {
@@ -41,6 +46,7 @@ function Header() {
     if (searchRef.current && !searchRef.current.contains(event.relatedTarget)) {
       setIsSearchVisible(false);
       setIsSearchButtonVisible(true);
+      document.body.style.overflow = "auto";
     }
   };
 
@@ -52,9 +58,12 @@ function Header() {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.body.style.overflow = "auto";
     };
   }, []);
 
@@ -63,6 +72,19 @@ function Header() {
       searchRef.current?.focus();
     }
   }, [isSearchVisible]);
+
+  useEffect(() => {
+    if (isMenuOpen || isSearchVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMenuOpen, isSearchVisible]);
+
 
   return (
     <header className="header">
