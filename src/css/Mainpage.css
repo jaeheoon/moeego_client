@@ -214,6 +214,7 @@ h1{
 .keyword-image {
     flex: 0 0 calc(33.33% - 19px); /* 기본: 3개씩 표시 */
     height: 340px;
+    border-radius: 10px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -228,6 +229,7 @@ h1{
     justify-content: center;
     align-items: center;
     opacity: 0;
+    border-radius: 10px;
     transition: opacity 0.3s;
 }
   
@@ -273,7 +275,13 @@ h1{
     background-color: #bbb;
 }
   
-
+.carousel-button:disabled {
+    background-color: #ddd; /* 비활성화된 버튼의 배경색 */
+    color: #aaa; /* 비활성화된 버튼의 텍스트 색 */
+    cursor: not-allowed; /* 클릭 불가 커서 */
+    box-shadow: none; /* 그림자 제거 */
+  }
+  
 /* 위치 목록 */
 .locationsWrap {
     margin: 0 auto;
@@ -435,10 +443,10 @@ h1{
     }
 
     .city-listWrap span {
-        font-size:16pt;
+        font-size:12pt;
         width: auto; /* 폭 자동 조정 */
         height: auto;
-        padding: 10px; /* 패딩 조정 */
+        padding: 5px; /* 패딩 조정 */
     }
     .keywordWrap{
         width: 80%;
@@ -460,3 +468,8 @@ h1{
         right: -10px; /* 오른쪽 버튼을 carousel 바깥에 위치시킴 */
     }
 }
+@media (max-width: 400px) {
+    .indexPage h1{
+      font-size: 1rem;
+    }
+  }
