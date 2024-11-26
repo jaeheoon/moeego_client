@@ -9,10 +9,12 @@ const ServiceAreaModal = ({ onClose, activeModal, setActiveModal, handleServiceS
     };
 
     return (
-        <div className='main-content'>
+        <div className='ServiceAreaModalWrap'>
             <div className='ServiceAreaModalOverlay' onClick={handleOverlayClick}>
                 <div className='ServiceAreaModal' onClick={(e) => e.stopPropagation()}> {/* 모달 내부 클릭 시 이벤트 전파 방지 */}
-                    <button className='closeButton' onClick={onClose}>✖</button> {/* 닫기 버튼 추가 */}
+                    <div className='closeButtonWrap'>
+                        <button className='closeButton' onClick={onClose}>✖</button> {/* 닫기 버튼 추가 */}
+                    </div>
                     <div className='ServiceAreaModalHeader'>
                         <button onClick={() => setActiveModal('service')} className={`modalButton ${activeModal === 'service' ? 'active' : ''}`}>
                             서비스
