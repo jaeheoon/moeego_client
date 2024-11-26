@@ -71,28 +71,25 @@
 }
 
 /* SearchList 컴포넌트 CSS */
+.proSearchListWrap {
+    width: 100%;
+    display: flex; /* Flexbox 사용 */
+    margin: 15px; /* 항목 간 간격 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
 .proSearchListAWrap{
     display: flex;
     flex-direction: row;
-    width: 100%;
-}
-.proSearchListLink{
-    width:100%;
+    width: 80%;
+    border: 1px solid #ddd; /* 테두리 추가 (선택 사항) */
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 10px; /* 내부 여백 */
+    justify-content: space-between;
 }
 .proSearchListLink:visited{text-decoration: none; color: black;}
 .proSearchListLink:hover{text-decoration: none; color: black;}
 .proSearchListLink:link{text-decoration: none; color: black;}
 .proSearchListLink:active{text-decoration: none; color: black;}
-
-.proSearchListWrap {
-    width: 80%;
-    display: flex; /* Flexbox 사용 */
-    margin: 15px; /* 항목 간 간격 */
-    border: 1px solid #ddd; /* 테두리 추가 (선택 사항) */
-    border-radius: 5px; /* 둥근 모서리 */
-    padding: 10px; /* 내부 여백 */
-    align-items: center; /* 세로 중앙 정렬 */
-}
 
 .proSearchListContentWrap {
     flex: 1; /* 텍스트 영역이 남은 공간을 차지하도록 설정 */
@@ -100,6 +97,10 @@
 
 .proSearchListProfileWrap {
     margin-left: 15px; /* 프로필 사진과 텍스트 간의 간격 */
+}
+.proSearchListProfileWrap img{
+    max-width: 100%;
+    height: auto;
 }
 
 .proSearchListTitleWrap {
@@ -161,10 +162,13 @@
     }
 
     .proSearchListWrap{
-        width: 95%;
+        width: 100%;
         margin: 1em auto;
     }
     .proSearchListLink{
-        width:70%;
+        width:60%;
+    }
+    .proSearchListAWrap{
+        width:95%;
     }
 }
