@@ -4,7 +4,8 @@
     flex-direction: column;
 }
 .detailCategoryListPage .detailCategoryWrap{
-    width:100%;
+    width:95%;
+    margin:0 auto;
 }
 .detail_categoryWrap {
     display: flex;
@@ -20,7 +21,9 @@
     border-bottom: 1px solid rgba(150, 150, 150, 0.3);
     overflow: hidden;
 }
-
+.detailCategoryPage{
+    margin:0 auto;
+}
 
 .detail_categoryWrap hr{
     margin: 20px;
@@ -127,7 +130,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    width: 43.9%;
+    width: 43.5%;
 }
 
 .detailCardImg img {
@@ -182,12 +185,17 @@
 }
 
 @media(max-width:1250px){
+    
     .detail_categoryWrap {
         flex-direction: column; /* 세로 방향으로 배치 */
         align-items: flex-start; /* 왼쪽 정렬 */
     }
+    .detailContentWrap{
+        display: flex;
+        flex-direction: column;
+    }
     .detailCategoryListPage{
-        width:95%;
+        width:100%;
         margin: 0 auto;
     }
     .detail_categoryWrap{
@@ -204,23 +212,48 @@
     }
     
     /* 왼쪽 메뉴 */
+    .detailCategoryListWrap {
+        top: 173px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto; /* 가로 스크롤 활성화 */
+        white-space: nowrap; /* 항목이 한 줄에 표시되도록 설정 */
+        padding: 0;
+        position: sticky;
+        background-color: white;
+        z-index: 50;
+    }
+    
     .detailCategoryListWrap ul {
-        list-style: none;
+        display: flex;
+        flex-direction: row;
         padding: 0;
         margin: 0;
-    }
-    .detailCategoryListWrap{
-        padding: 0;
-        padding-right: 10px;
+        list-style: none;
+        gap: 10px; /* 메뉴 간격 조정 */
+        white-space: nowrap;
     }
     .detailCategoryListWrap li {
-        width:90%;
-        padding:10px;
-        font-size: 1rem;
+        width:100%;
+        padding: 10px;
+        font-size: 1.1rem;
         color: #333;
         cursor: pointer;
         border-radius: 15px;
         transition: background-color 0.3s;
+        text-align: center;
+    }
+    .detailCategoryListWrap li.active {
+        background-color: lightcoral;
+        color: black;
+        font-weight: bold; /* 활성화 상태 강조 */
+    }
+
+    .detailCategoryListWrap li:hover {
+        border-radius: 15px;
+        background-color: white;
+        color:black;
     }
     /* 우측 콘텐츠 */
     .detailRightWrap {

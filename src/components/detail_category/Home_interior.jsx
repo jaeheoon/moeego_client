@@ -7,31 +7,54 @@ const Home_interior = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionsRef = useRef([]);
     const menuRef = useRef(null);
-    const [isScrolling, setIsScrolling] = useState(false);
+    const [isScrolling, setIsScrolling] = useState(false); // 스크롤 상태 관리
 
     const handleMenuClick = (index) => {
-        setActiveIndex(index);
-        setIsScrolling(true); // 스크롤 상태 활성화
+        setActiveIndex(index); // 클릭한 메뉴 활성화
+        setIsScrolling(true); // 스크롤 중 상태 활성화
         sectionsRef.current[index].scrollIntoView({
             behavior: "smooth",
             block: "center",
         });
-    
-        const headerOffset = 220; // 필요에 따라 조정
-        const elementPosition = sectionsRef.current[index].getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-        });
-    
-        setTimeout(() => setIsScrolling(false), 1000); // 스크롤 상태 해제 (지연 시간 조정)
+
+        // 스크롤 완료 후 IntersectionObserver 활성화
+        setTimeout(() => setIsScrolling(false), 500); // 스크롤 시간에 맞춰 조정
     };
-    
+
+    const handleScrollToActiveMenu = (activeIndex) => {
+        const menuItems = menuRef.current.querySelectorAll("li");
+        const activeMenu = menuItems[activeIndex];
+        if (activeMenu) {
+            const menuContainer = menuRef.current;
+            const menuContainerWidth = menuContainer.offsetWidth;
+
+            const menuLeftOffset =
+                activeMenu.offsetLeft - menuContainerWidth / 2 + activeMenu.offsetWidth / 2;
+            menuContainer.scrollTo({
+                left: menuLeftOffset + 150,
+                behavior: "smooth",
+            });
+        }
+    };
+
     useEffect(() => {
-        if (isScrolling) return; // 스크롤 중에는 Observer 비활성화
-    
+        const handleScroll = () => {
+            // 스크롤이 최상단이면 첫 번째 메뉴 활성화
+            if (window.pageYOffset === 0 && activeIndex !== 0) {
+                setActiveIndex(0);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [activeIndex]);
+
+    useEffect(() => {
+        if (isScrolling) return; // 스크롤 중에는 IntersectionObserver 중단
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -40,7 +63,13 @@ const Home_interior = () => {
                             (section) => section === entry.target
                         );
                         if (index !== -1 && index !== activeIndex) {
-                            setActiveIndex(index);
+                            if(index == 1){
+                                setActiveIndex(index);
+                            }
+                            else{
+                                setActiveIndex(index+1); // 현재 보이는 섹션 활성화
+                            }
+                            handleScrollToActiveMenu(index); // 활성화된 메뉴로 스크롤
                         }
                     }
                 });
@@ -51,14 +80,13 @@ const Home_interior = () => {
                 threshold: 0.3,
             }
         );
-    
+
         sectionsRef.current.forEach((section) => observer.observe(section));
-    
+
         return () => {
             observer.disconnect();
         };
     }, [activeIndex, isScrolling]);
-    
 
     return (
         <div className="detailCategoryListPage">
