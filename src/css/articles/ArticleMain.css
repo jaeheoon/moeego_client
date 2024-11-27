@@ -526,6 +526,23 @@
         width: 100%;
     }
 
+    .AllArticleContainer h3 {
+        width: 100%;
+    }
+
+    .AllArticleContainer .itemWrap {
+        display: 100%;
+        box-sizing: border-box;
+        padding: 0;
+        border-bottom: 1px solid #c2c2c2;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .AllArticleContainer .itemWrap:last-child {
+        margin-bottom: 0;
+    }
+
     .AllArticleContainer .itemWrap .itemWrap-content {
         gap: 0;
     }
