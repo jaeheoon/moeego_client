@@ -489,11 +489,13 @@
 
     .moblie-search-bar .moblie-search-input {
         width: 100%;
+        height: 2.5rem;
         background-color: #c2c2c2;
         border-radius: 50px;
-        padding: 0.8em 1em;
-        margin: 0.5em 1em;
+        padding: 0.8rem 1.25rem;
+        margin: 0.5rem 1rem;
         outline: none;
+        font-size: 0.925rem;
         border: 1px solid #c2c2c2;
         box-sizing: border-box;
         color: #ffffff;
@@ -508,15 +510,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        top: 1.2em;
-        right: 1.5em;
-        width: 20px;
-        width: 20px;
+        top: 0.7715rem;
+        right: 1.25rem;
+        width: 2rem;
+        height: 2rem;
         padding: 0;
         margin: 0;
         background-color: transparent;
         border: none;
-        border-radius: 10px;
+        border-radius: 1rem;
     }
 
     .moblie-search-bar .moblie-search-button svg {

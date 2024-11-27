@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Header.css";
 import HeaderModal from "./mypage/HeaderModal";
 
@@ -12,6 +12,8 @@ function Header() {
 
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const openModal = (type) => {
     setModalType((prevType) => (prevType === type ? null : type));
@@ -50,6 +52,16 @@ function Header() {
     }
   };
 
+  const GoSignUp = () => {
+    closeMenu();
+    navigate('/signup');
+  }
+
+  const GoProSignUp = () => {
+    closeMenu();
+    navigate('/pro/signup/main');
+  }
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -85,7 +97,6 @@ function Header() {
     };
   }, [isMenuOpen, isSearchVisible]);
 
-
   return (
     <header className="header">
       <div className="header-container">
@@ -120,6 +131,17 @@ function Header() {
                 <div className='HamburgerUserInfoButtonWrap'>
                   <input type="button" value="로그아웃" onClick={closeMenu} />
                   <input type="button" value="달인전환" onClick={closeMenu} />
+                </div>
+              </li>
+              <li className='HamburgerUserInfoWrap'>
+                <Link to="/login" className='HamburgerUserInfoLinkWrap' onClick={closeMenu}>
+                  <div>
+                    <h3>로그인을 해주세요</h3>
+                  </div>
+                </Link>
+                <div className='HamburgerUserInfoButtonWrap'>
+                  <input type="button" value="회원가입" onClick={GoSignUp} />
+                  <input type="button" value="달인가입" onClick={GoProSignUp} />
                 </div>
               </li>
               <hr />
