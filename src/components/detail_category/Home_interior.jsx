@@ -62,40 +62,42 @@ const Home_interior = () => {
 
     return (
         <div className="detailCategoryListPage">
-            <h1>견적 요청</h1>
-            <div className="detail_categoryWrap">
-                <Detail_category />
-            </div>
-            <div className="detailContentWrap">
-                <div className="detailCategoryListWrap" ref={menuRef}>
-                    <ul>
+            <div className="detailCategoryWrap">
+                <h1>견적 요청</h1>
+                <div className="detail_categoryWrap">
+                    <Detail_category />
+                </div>
+                <div className="detailContentWrap">
+                    <div className="detailCategoryListWrap" ref={menuRef}>
+                        <ul>
+                            {["이사 / 청소", "설치 / 수리", "철거 / 폐기", "인테리어 / 시공", "가구 리폼 / 운반"].map(
+                                (item, index) => (
+                                    <li
+                                        key={index}
+                                        className={`menu-item ${activeIndex === index ? "active" : ""}`}
+                                        onClick={() => handleMenuClick(index)}
+                                    >
+                                        {item}
+                                    </li>
+                                )
+                            )}
+                        </ul>
+                    </div>
+                    <div className="detailRightWrap">
                         {["이사 / 청소", "설치 / 수리", "철거 / 폐기", "인테리어 / 시공", "가구 리폼 / 운반"].map(
-                            (item, index) => (
-                                <li
+                            (title, index) => (
+                                <div
                                     key={index}
-                                    className={`menu-item ${activeIndex === index ? "active" : ""}`}
-                                    onClick={() => handleMenuClick(index)}
+                                    ref={(el) => (sectionsRef.current[index] = el)}
+                                    className="detailSection"
+                                    id={`section-${index}`}
                                 >
-                                    {item}
-                                </li>
+                                    <h2>{title}</h2>
+                                    <DetailCardList />
+                                </div>
                             )
                         )}
-                    </ul>
-                </div>
-                <div className="detailRightWrap">
-                    {["이사 / 청소", "설치 / 수리", "철거 / 폐기", "인테리어 / 시공", "가구 리폼 / 운반"].map(
-                        (title, index) => (
-                            <div
-                                key={index}
-                                ref={(el) => (sectionsRef.current[index] = el)}
-                                className="detailSection"
-                                id={`section-${index}`}
-                            >
-                                <h2>{title}</h2>
-                                <DetailCardList />
-                            </div>
-                        )
-                    )}
+                    </div>
                 </div>
             </div>
         </div>

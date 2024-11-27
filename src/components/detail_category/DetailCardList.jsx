@@ -13,7 +13,7 @@ const DetailCardList = () => {
             if (window.innerWidth <= 1250) { // 모바일 환경
                 setCardWidth(115); // 모바일에서 카드 너비
             } else {
-                setCardWidth(350); // PC에서 카드 너비
+                setCardWidth(355.5); // PC에서 카드 너비
             }
         };
 
