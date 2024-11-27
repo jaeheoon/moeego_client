@@ -7,8 +7,31 @@ const Home_interior = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionsRef = useRef([]);
     const menuRef = useRef(null);
+    const [isScrolling, setIsScrolling] = useState(false);
 
+    const handleMenuClick = (index) => {
+        setActiveIndex(index);
+        setIsScrolling(true); // 스크롤 상태 활성화
+        sectionsRef.current[index].scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+        });
+    
+        const headerOffset = 220; // 필요에 따라 조정
+        const elementPosition = sectionsRef.current[index].getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+        });
+    
+        setTimeout(() => setIsScrolling(false), 1000); // 스크롤 상태 해제 (지연 시간 조정)
+    };
+    
     useEffect(() => {
+        if (isScrolling) return; // 스크롤 중에는 Observer 비활성화
+    
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -24,34 +47,18 @@ const Home_interior = () => {
             },
             {
                 root: null,
-                rootMargin: "-220px 0px -70% 0px",
+                rootMargin: "-220px 0px -60% 0px",
                 threshold: 0.3,
             }
         );
-
+    
         sectionsRef.current.forEach((section) => observer.observe(section));
-
+    
         return () => {
             observer.disconnect();
         };
-    }, [activeIndex]);
-
-    const handleMenuClick = (index) => {
-        setActiveIndex(index);
-        sectionsRef.current[index].scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-        });
-
-        const headerOffset = 220; // 필요에 따라 조정
-        const elementPosition = sectionsRef.current[index].getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-        });
-    };
+    }, [activeIndex, isScrolling]);
+    
 
     return (
         <div className="detailCategoryListPage">
