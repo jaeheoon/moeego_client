@@ -30,11 +30,18 @@
 }
 
 .header .logo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
     color: #fcc1cc;
     cursor: pointer;
+}
+
+.header .logo a img {
+    width: 100%;
 }
 
 .moblieSearch {
@@ -121,7 +128,7 @@
 .dropdown-menu ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 16pt;
+    font-size: 1rem;
 }
 
 .dropdown-menu ul li a:hover {
@@ -168,10 +175,13 @@
     height: 36px;
 }
 
-.dropdown-menu hr {
-    margin: 0 auto;
-    padding: 0;
-    margin-bottom: 1em;
+.dropdown-menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
 }
 
 /* 드롭다운 메뉴 회원정보 */
@@ -180,6 +190,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border-bottom: 1px solid #cecece;
     width: 100%;
 }
 
@@ -408,11 +419,11 @@
     }
 
     .header .header-container .hamburger-menu {
-        width: 25%;
+        width: 20%;
     }
 
     .header .header-container .logo {
-        width: 50%;
+        width: 60%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -430,7 +441,7 @@
         display: flex;
         align-items: center;
         justify-content: right;
-        width: 25%;
+        width: 20%;
         visibility: visible;
     }
 
@@ -535,6 +546,10 @@
     }
 
     .HamburgerUserInfoWrap div:nth-child(1) p {
-        font-size: 14px;
+        font-size: 0.825rem;
+    }
+
+    .header .logo a img {
+        width: 80%;
     }
 }

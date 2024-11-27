@@ -144,7 +144,6 @@ function Header() {
                   <input type="button" value="달인가입" onClick={GoProSignUp} />
                 </div>
               </li>
-              <hr />
               <li>
                 <Link to="/pro/search" onClick={closeMenu}>달인찾기</Link>
               </li>
@@ -157,7 +156,7 @@ function Header() {
 
 
         {/* 로고 */}
-        <div className="logo"><Link to="/">MoeeGo</Link></div>
+        <div className="logo"><Link to="/"><img src='src/image/moeego.png' alt='moeegoLogo' /></Link></div>
 
         {/* 메뉴 */}
         <nav className="nav">
