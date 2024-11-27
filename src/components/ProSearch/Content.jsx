@@ -4,14 +4,14 @@ import SearchList from './SearchList';
 
 const Content = () => {
     return (
-        <div>
+        <div className='ContentWrap'>
             <section>
-                <SearchBar/>
-                <SearchList/>
-                <SearchList/>
-                <SearchList/>
-                <SearchList/>
-                <SearchList/>
+                <SearchBar />
+                <SearchList />
+                <SearchList />
+                <SearchList />
+                <SearchList />
+                <SearchList />
             </section>
         </div>
     );
