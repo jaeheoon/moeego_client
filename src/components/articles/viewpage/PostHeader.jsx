@@ -1,5 +1,6 @@
 import React from 'react';
-import '/src/css/articles/PostHeader.css';
+import '../../../css/articles/PostHeader.css';
+import { Link } from 'react-router-dom';
 
 const PostHeader = () => {
     return (
@@ -8,15 +9,15 @@ const PostHeader = () => {
             <div className="post-category-subject">
                 <ol className="category-breadcrumb">
                     <li className="category-breadcrumb-item">
-                        <a href="#" className="category-breadcrumb-link">
+                        <Link to='/article' className="category-breadcrumb-link">
                             <span>커뮤니티</span>
-                        </a>
+                        </Link>
                     </li>
-                    <span className="breadcrumb-divider"></span>
+                    <span className="breadcrumb-divider">&gt;</span>
                     <li className="category-breadcrumb-item">
-                        <a href="#" className="category-breadcrumb-link">
-                            <span>고수에게 묻다</span>
-                        </a>
+                        <Link to='' className="category-breadcrumb-link">
+                            <span>Q&A</span>
+                        </Link>
                     </li>
                 </ol>
             </div>

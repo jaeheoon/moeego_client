@@ -156,7 +156,7 @@ function Header() {
 
 
         {/* 로고 */}
-        <div className="logo"><Link to="/"><img src='src/image/moeego.png' alt='moeegoLogo' /></Link></div>
+        <div className="logo"><Link to="/"><img src='../src/image/moeego.png' alt='moeegoLogo' /></Link></div>
 
         {/* 메뉴 */}
         <nav className="nav">

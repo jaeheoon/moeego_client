@@ -132,8 +132,9 @@
     .post-category-subject{
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: left;
         margin-bottom: 1.5em;
+        width: 100%;
     }
 
 }
