@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LifeTopic from './FreeBoardForm/LifeTopic';
 import "../../css/articles/ArticleMain.css";
 import { useNavigate } from 'react-router-dom';
 import FeedItem from './FreeBoardForm/FeedItem';
+import axios from 'axios';
 
 const ArticleMain = () => {
+    const [articles, setArticles] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:8080/article")
+            .then((response) => {
+                setArticles(response.data);
+            })
+            .catch((err) => {
+                console.error("Error fetching articles:", err);
+                setError(err);
+            });
+    }, []);
+
     const navigate = useNavigate();
 
     const GoWrite = () => {
@@ -96,11 +112,11 @@ const ArticleMain = () => {
                         </div>
                         <div className='AllArticleContainer'>
                             <h3>전체글 모이고</h3>
-                            <FeedItem />
-                            <FeedItem />
-                            <FeedItem />
-                            <FeedItem />
-                            <FeedItem />
+                            {
+                                articles.map(item => <div key={item.article_no}>
+                                    <FeedItem item={item} />
+                                </div>)
+                            }
                         </div>
                     </div>
                 </div>
