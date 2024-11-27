@@ -25,13 +25,14 @@ const ProView = () => {
 
     const handleModalClose = () => {
         setModalType(null);
+        document.body.style.overflow = "auto";
     }
 
     return (
         <section className="detail-view">
             <section className="dalin-photo">
                 <div className="dalin-photo-background">
-                    <img src="../src/image/mc.jpg" alt="긴딩동" width="100"/>
+                    <img src="../src/image/mc.jpg" alt="긴딩동" width="100" />
                 </div>
                 <div class="dalin-photo-main">
                     <img src="../src/image/mc.jpg" alt="딩동" width="100" height="100" />

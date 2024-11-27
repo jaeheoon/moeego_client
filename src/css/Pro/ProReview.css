@@ -83,6 +83,7 @@
     margin-right: 10px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .reviews .sort-btn:hover {
@@ -98,7 +99,15 @@
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    top: 40px;
+    top: 38%;
+    left: 10%;
+    width: 20%;
+    height: 8rem;
+}
+
+.reviews .dropdown-menu li a {
+    font-size: 0.825rem;
+    color: #323232;
 }
 
 .reviews .dropdown-btn:hover .dropdown-menu {
