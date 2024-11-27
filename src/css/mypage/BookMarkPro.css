@@ -1,12 +1,13 @@
 .BookMarkProContainer {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
 .BookMarkProContainer .BookMarkProWrap {
     margin-top: 5%;
-    width: 100%;
+    width: 80%;
 }
 
 .BookMarkProWrap .PageTitle {
@@ -189,8 +190,17 @@
 .BookMarkProContainer .BookMarkProWrap .ProListContainer .infoContainer {
     width: 100%;
     display: flex;
-    align-items: center;
     box-sizing: border-box;
+    vertical-align: text-top;
+    padding: 10px;
+    height: 5em;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .scoreContainer {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
     padding: 10px;
 }
 
