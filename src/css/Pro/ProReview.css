@@ -10,6 +10,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    margin-bottom: 2em;
 }
 
 .reviews div {
@@ -194,3 +195,4 @@
     color: #888;
     margin-top: 10px;
 }
+

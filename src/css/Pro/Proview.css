@@ -21,7 +21,7 @@
     height: 200px;
     overflow: hidden;
     position: relative;
-    margin-bottom: 6em;
+    margin-bottom: 3em;
 }
 
 .dalin-photo-main {
@@ -32,7 +32,7 @@
     width: 150px;
     height: 150px;
     top: 175px;
-    left: 20%;
+    left: 30%;
     margin: 0;
     padding: 0;  
 }
@@ -51,32 +51,34 @@
 }
 
 .detail-view-wrap {
+    /* width: 60%; */
     width: 60%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
 }
 
 .dalin-mainpage {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1.3em;
     align-items: center;
-    width: 100%;
+    width: 80%;
 }
 
 .dalin-mainpage .leftWrap {
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
 
-.dalin-mainpage .rightWrap {
+/* .dalin-mainpage .rightWrap {
     width: 30%;
     display: flex;
     align-items: center;
     position: relative;
-}
+} */
 
 .relativeWrap {
     position: absolute;
@@ -91,4 +93,138 @@
 }
 .leftWrap {
     margin-bottom: 4%;
+}
+
+.reservation-modalBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    box-sizing: border-box;
+    padding: 10px 20px;           
+    font-size: 16px;              
+    border-radius: 10px;   
+    border: 1px solid #FFD8E4;  
+    background-color: #FFD8E4;           
+    color: white;              
+    cursor: pointer;  
+    font-weight: bold;
+    width: 13em;
+}
+
+.reservationBtn-modal-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reservationBtn-modal-button-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.closeBtn {
+    width:100%;
+    transform: translateX(22em);
+
+}
+.reservationBtn:hover {
+    background-color: white; 
+    color: #fd9bb9; 
+}
+
+.reservation-modal-close {
+    background-color: white;
+    border: none;
+    font-size: 18px; 
+    border-radius: 5px; 
+    color: #522823; 
+    cursor: pointer;
+  }
+  
+ .reservation-modal-close:hover {
+    background: #522823;
+    color: white;
+  }
+
+  @media (max-width: 1250px) {
+    .detail-view-wrap {
+        width: 95%; /* 화면 가득 차게 설정 */
+    }
+    /* .detail-view-wrap {
+        width: 100%; 
+        padding-right: 0; 
+        margin-right: 0; 오른쪽 여백 제거
+    } */
+    .dalin-mainpage .leftWrap {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+    }
+    .dalin-photo-background {
+        width: 100%; /* 가로 폭을 100%로 설정하여 화면 끝까지 */
+        height: 180px; /* 중간 크기 화면에 맞게 높이 조정 */
+        margin-bottom: 2.5em;
+    }
+
+    .dalin-photo-main {
+        top: 160px;
+        left: 50%; /* 가운데 정렬을 위해 left 50% */
+        transform: translateX(-130%); /* 정확한 가운데 정렬 */
+        width: 140px;
+        height: 140px;
+    }
+
+    .dalin-photo-main img {
+        width: 140px;
+        height: 140px;
+        border-radius: 25%;
+    }
+
+    .dalin-mainpage {
+        flex-direction: row;
+        gap: 2em;
+        width: 100%; /* 가로 폭 100%로 설정 */
+        padding-right: 0; /* 오른쪽 공백 제거 */
+    }
+
+    .reservation-modalBtn {
+        width: 9em;
+        font-size: 15px;
+    }
+
+    .reservationBtn-modal-wrap {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .reservationBtn-modal-button-wrap {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .closeBtn {
+        transform: translateX(0); /* 오른쪽 공백 없애기 위해 translateX(0) */
+    }
+
+    .dalin-mainpage {
+        display: flex;
+        justify-content: center;
+        gap: 1.3em;
+        align-items: center;
+        width: 100%;
+    }
 }

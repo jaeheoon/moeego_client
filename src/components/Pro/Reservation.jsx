@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Link 컴포넌트 임포트
 import "../../css/pro/Reservation.css";
 
-const Reservation = () => {
+const Reservation = ({ closeModal }) => {
     const [checked, setChecked] = useState(false);
 
     return (
         <div className='reservation-wrap'>
             <div className="reservation-controller">
+                <div className="modal-overlay" onClick={closeModal}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <div class="closeBtn">
+                    <button className="reservation-modal-close" onClick={closeModal}>
+                        X
+                    </button>
+                </div>
                 <section>
                     <ol>
                         <li>
@@ -96,13 +103,15 @@ const Reservation = () => {
                     </div>
                 </section>
                 <section>
-                    <div>
+                    <div className="reservationBtn-wrap">
                         <button type="button" className="reservation-btn">
                             예약하기
                         </button>
                     </div>
                     <br />
                 </section>
+            </div>
+            </div>
             </div>
         </div>
     );

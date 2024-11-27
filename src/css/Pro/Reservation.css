@@ -10,7 +10,7 @@
 .reservation-controller {
     font-family: Arial, sans-serif;
     box-sizing: border-box;
-    width: 360px;
+    width: 420px;
     margin: 0 auto;
     padding: 30px 20px;
     background-color: #fce9ed;
@@ -20,10 +20,11 @@
 
 
 .product-title h3 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #522823;
     margin: 20px 0;
+    width: 95%;
 }
 
 ol {
@@ -33,11 +34,13 @@ ol {
     padding: 0;
     margin: 0;
     margin-top: 4%;
+
+    margin-left: 4%;
 }
 
 ol li a {
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-shadow: 0 0 1px rgb(119, 119, 119);
     color: rgb(53, 10, 10);
     transition: color 0.2s ease-in-out;
@@ -49,20 +52,21 @@ ol li a:hover {
 }
 
 .options-wrapper {
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: bold;
     margin-bottom: 8%;
     color: #2c2c2c;
     background-color: #fff;
     border-radius: 15px;
     padding: 15px;
+    margin-bottom: 0.5em;
 }
 
 .product-reservation-date .picker-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 0;
+    gap: 1.2em;
+    margin: 1em;
     padding: 0;
     list-style: none;
     font-weight: bold;
@@ -111,26 +115,38 @@ ol li a:hover {
 .reservation-timelist {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    padding: 0;
+    gap: 4px;
+    padding: 0.2em;
     list-style: none;
     font-weight: bold;
-    margin-top: -2em;
+    margin-top: -2.8em;
 }
 
+.reservationBtn-wrap {
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+
+}
 .reservation-time-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
+    width: 80%;
     color: #522823;
-    width: 4.5em;
+    width: 5.3em;
     height: 100%;
     border-radius: 15px;
     padding: 15px;
     list-style: none; 
     float: left;
-    margin: 5px 0;
+    margin: 5px 3px;
+}
+
+.reservation-time-item .pull{
+    font-size: 17px;
+    font-weight: bold;
 }
 
 .reservation-time-item:hover {
@@ -238,7 +254,7 @@ ol li a:hover {
 /* 예약 버튼 */
 .reservation-btn {
     display: block;
-    width: 100%;
+    width: 80%;
     padding: 10px 0;
     font-size: 1rem;
     font-weight: bold;
@@ -282,7 +298,7 @@ ol li a:hover {
   .day-text {
     font-weight: bold;
     color: white;
-    font-size: 16px; 
+    font-size: 20px; 
     text-shadow: 0 0 1.5px black;
   }
 
@@ -297,7 +313,7 @@ ol li a:hover {
     text-shadow: 0 0 1.5px black;
     font-weight: bold;
     line-height: 40px; 
-    font-size: 16px; 
+    font-size: 20px; 
     cursor: pointer;
     border: 2px solid #fce9ed; 
   }
@@ -311,7 +327,7 @@ ol li a:hover {
     background-color: #522823;
     text-align: center;
     line-height: 40px; /* 텍스트 세로 중앙 정렬 */
-    font-size: 16px; /* 텍스트 크기 */
+    font-size: 20px; 
     cursor: pointer;
     border: 2px solid #522823; 
     text-shadow: none;
