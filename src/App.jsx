@@ -1,23 +1,42 @@
 import "./App.css";
 import React from "react";
 import { Router, Route, Routes, BrowserRouter } from "react-router-dom";
+
+// 헤더 푸터
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+// mainPage
+import MainPage from './components/mainPage';
+
+// member
+import Login from "./components/login/Login";
+import Join from "./components/join/Join";
+
+// pro
+import Prosignup from "./components/pro/Prosignup";
+import ProjoinSub_interoir from "./components/Pro/ProSub_interoir.jsx";
+import ProjoinSub_si from "./components/Pro/ProSub_si.jsx";
+import ProjoinSub_car from "./components/Pro/ProSub_car.jsx";
+import ProjoinSub_hobby from "./components/Pro/ProSub_hobby.jsx";
+import ProjoinSub_study from "./components/Pro/ProSub_study.jsx";
+import ProjoinSub_fashion from "./components/Pro/ProSub_fashion.jsx";
+import ProjoinMain from "./components/Pro/ProjoinMain.jsx";
+import ProSearch from "./components/ProSearch/ProSearch";
+import ProDetail from './components/Pro/ProDetail.jsx';
+import ProRequest from "./components/Pro/ProRequest.jsx";
+import ProView from "./components/Pro/ProView";
+import ServiceAreaModal from "./components/ProSearch/ServiceAreaModal.jsx";
+
+// article
+import ArticleMain from './components/articles/ArticleMain.jsx';
 import Write from "./components/articles/Write";
 import Update from "./components/articles/Update";
-import Review from "./components/mypage/Review";
 import FreeBoardForm from "./components/articles/FreeBoardForm/FreeBoardForm.jsx";
 import ViewPage from "./components/articles/ViewPage/ViewPage.jsx";
-import ProSearch from "./components/ProSearch/ProSearch";
-import MainPage from './components/mainPage';
-import Home_interior from './components/detail_category/Home_interior';
-import Outsourcing from './components/detail_category/Outsourcing';
-import Fashion_beauty from './components/detail_category/Fashion_beauty';
-import Study from './components/detail_category/Study';
-import Hobby from './components/detail_category/Hobby';
-import Car from './components/detail_category/Car';
-import About from './components/about/About';
-import ProView from "./components/Pro/ProView";
+
+// myPage
+import Review from "./components/mypage/Review";
 import MyPage from './components/mypage/MyPage';
 import MyHistory from './components/mypage/MyHistory';
 import MyArticles from './components/mypage/MyArticles';
@@ -30,30 +49,24 @@ import ChangeEmail from './components/mypage/ChangeEmail';
 import SignOut from './components/mypage/SignOut';
 import MyReservation from './components/mypage/MyReservation';
 import Success from './components/mypage/Success';
-import Login from "./components/login/Login";
-import Join from "./components/join/Join";
-import Prosignup from "./components/pro/Prosignup";
-import ArticleMain from './components/articles/ArticleMain.jsx';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
-import ProDetail from './components/Pro/ProDetail.jsx';
-import ProRequest from "./components/Pro/ProRequest.jsx";
-import EventList from "./components/admin/EventList.jsx";
+
+// category
+import Home_interior from './components/detail_category/Home_interior';
+import Outsourcing from './components/detail_category/Outsourcing';
+import Fashion_beauty from './components/detail_category/Fashion_beauty';
+import Study from './components/detail_category/Study';
+import Hobby from './components/detail_category/Hobby';
+import Car from './components/detail_category/Car';
+
+// about
+import About from './components/about/About';
+
+// admin
 import EventWrite from "./components/admin/EventWrite.jsx";
 import EventUpdate from "./components/admin/EventUpdate.jsx";
-import ProReview from "./components/Pro/ProReview.jsx";
-import ProInfo from "./components/Pro/ProInfo.jsx";
 import AdminLogin from "./components/admin/AdminLogin.jsx";
 import AdminMain from "./components/admin/AdminMain.jsx";
-import ProjoinSub_interoir from "./components/Pro/ProSub_interoir.jsx";
-import ProjoinSub_si from "./components/Pro/ProSub_si.jsx";
-import ProjoinSub_car from "./components/Pro/ProSub_car.jsx";
-import ProjoinSub_hobby from "./components/Pro/ProSub_hobby.jsx";
-import ProjoinSub_study from "./components/Pro/ProSub_study.jsx";
-import ProjoinSub_fashion from "./components/Pro/ProSub_fashion.jsx";
-import ProjoinMain from "./components/Pro/ProjoinMain.jsx";
-import SearchEmail from "./components/login/SearchEmail.jsx";
-import SearchPwd from "./components/login/SearchPwd.jsx";
-import ServiceAreaModal from "./components/ProSearch/ServiceAreaModal.jsx";
 
 // Context Providers
 import { AdminProvider } from './context/admin/AdminContext.jsx';
@@ -129,7 +142,8 @@ const App = () => {
                       <Route path="/pro/signup/sub_hobby" element={<ProjoinSub_hobby />} />
                       <Route path="/pro/signup/sub_car" element={<ProjoinSub_car />} />
                       <Route path="/pro/signup" element={<Prosignup />} />
-                      <Route path="/pro/detail" element={<ProView />} />
+                      <Route path="/pro/detail" element={<ProDetail />} />
+                      <Route path="/pro/ProRequest" element={<ProRequest />} />
 
                       {/* 관리자 페이지 */}
                       <Route path="/admin/Login" element={<AdminLogin />} />
@@ -141,7 +155,6 @@ const App = () => {
                       <Route path="/admin/LeaveMemberList" element={<AdminMain />} />
                       <Route path="/admin/EventList" element={<AdminMain />} />
                       <Route path="/admin/NoticeList" element={<AdminMain />} />
-
 
                       <Route path="/admin/event-write" element={<EventWrite />} />
                       <Route path="/admin/event-update" element={<EventUpdate />} />
