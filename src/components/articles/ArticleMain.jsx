@@ -3,14 +3,14 @@ import LifeTopic from './FreeBoardForm/LifeTopic';
 import "../../css/articles/ArticleMain.css";
 import { useNavigate } from 'react-router-dom';
 import FeedItem from './FreeBoardForm/FeedItem';
-import axios from '../api/axios.jsx';
+import apiAxios from '../../api/apiAxios.jsx';
 
 const ArticleMain = () => {
     const [articles, setArticles] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios
+        apiAxios
             .get("/api/article")
             .then((response) => {
                 setArticles(response.data);
