@@ -30,15 +30,15 @@ const Account = () => {
             <div className='UserInfoWrap'>
                 <div className='PageTitle'>
                     <Link className="prev" to="/mypage">
-                        <img src="../../src/image/prev_icon.png" alt="prev" />
+                        <img src="/image/prev_icon.png" alt="prev" />
                     </Link>
                     <h1>계정 설정</h1>
                 </div>
                 <div className='ProfileImageContainer'>
                     <div className="imgWrap">
-                        <img src="../../src/image/profile_default.png" alt="default" />
+                        <img src="/image/profile.svg" alt="profile" />
                         <button>
-                            <img src="../../src/image/camera.png" alt="camera" />
+                            <img src="/image/camera.png" alt="camera" />
                         </button>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ const Account = () => {
                 <div className='DetailInfoContainer'>
                     <Link className="Link" to="/mypage/account/private">
                         <h3 className='Title'>개인정보관리</h3>
-                        <div className='next'><img src="../src/image/next_icon.png" alt="nextIcon" /></div>
+                        <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                     </Link>
                 </div>
                 <hr />

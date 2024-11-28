@@ -48,7 +48,7 @@ const ArticleMain = () => {
                                 <h4>공지</h4>
                             </div>
                             <div>모이고 생활 가이드 공지물을 올려봤습니다. 필독필독필독필독필독필독필독필독필독필독필독필독필독필독필독</div>
-                            <div><img src="../src/image/next_icon.png" alt="next" /></div>
+                            <div><img src="/image/next_icon.png" alt="next" /></div>
                         </div>
                         <div className='HotArticleContainer'>
                             <h3>인기글 모이고</h3>
@@ -57,11 +57,11 @@ const ArticleMain = () => {
                                     <div className='viewWrap'>
                                         <div className='titleWrap'>
                                             <div>제목</div>
-                                            <div><img src="../src/image/next_icon.png" alt="next" /></div>
+                                            <div><img src="/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='../src/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='../src/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -70,12 +70,12 @@ const ArticleMain = () => {
                                         <div className='titleWrap'>
                                             <div>제목</div>
                                             <div>
-                                                <img src="../src/image/next_icon.png" alt="next" />
+                                                <img src="/image/next_icon.png" alt="next" />
                                             </div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='../src/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='../src/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -88,11 +88,11 @@ const ArticleMain = () => {
                                     <div className='viewWrap'>
                                         <div className='titleWrap'>
                                             <div>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</div>
-                                            <div><img src="../src/image/next_icon.png" alt="next" /></div>
+                                            <div><img src="/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='../src/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='../src/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,11 +100,11 @@ const ArticleMain = () => {
                                     <div className='viewWrap'>
                                         <div className='titleWrap'>
                                             <div>제목</div>
-                                            <div><img src="../src/image/next_icon.png" alt="next" /></div>
+                                            <div><img src="/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='../src/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='../src/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@ const ArticleMain = () => {
                         <div className='AllArticleContainer'>
                             <h3>전체글 모이고</h3>
                             {
-                                articles.map(item => <div key={item.article_no}>
+                                articles.map(item => <div key={item.articleNo}>
                                     <FeedItem item={item} />
                                 </div>)
                             }

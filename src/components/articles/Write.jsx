@@ -23,7 +23,7 @@ const Write = () => {
                     {/* 파일 업로드 */}
                     <div className="file-container">
                         <input type="file" id="file-upload" />
-                        <label htmlFor="file-upload"><img className={'camera-img'} src='/src/image/camera.png' /></label>
+                        <label htmlFor="file-upload"><img className={'camera-img'} src='/image/camera.png' /></label>
                         <span>No file chosen</span>
                     </div>
 

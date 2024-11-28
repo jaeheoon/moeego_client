@@ -6,7 +6,7 @@ const PostReactState = () => {
         <div className="post-react-state">
             <div className="react-item">
                 <img
-                    src="/src/image/comments.png"
+                    src="/image/comments.png"
                     alt="좋아요"
                     className="react-icon"
                 />
@@ -14,7 +14,7 @@ const PostReactState = () => {
             </div>
             <div className="react-item">
                 <img
-                    src="/src/image/comments.png"
+                    src="/image/comments.png"
                     alt="댓글"
                     className="react-icon"
                 />

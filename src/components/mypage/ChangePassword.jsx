@@ -8,7 +8,7 @@ const ChangePassword = () => {
             <div className='ChangePasswordWrap'>
                 <div className='PageTitle'>
                     <Link className='prev' to="/mypage/account/private">
-                        <img src="../../../src/image/prev_icon.png" alt="prev" />
+                        <img src="/image/prev_icon.png" alt="prev" />
                     </Link>
                     <h1>비밀번호 변경</h1>
                 </div>

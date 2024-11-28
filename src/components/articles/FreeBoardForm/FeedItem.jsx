@@ -16,7 +16,7 @@ const FeedItem = ({ item }) => {
                     </div>
                 </div>
                 <div className='itemWrap-img'>
-                    <img src='../../src/image/cleaning.png' alt='Cleaning' />
+                    <img src='/image/cleaning.png' alt='Cleaning' />
                 </div>
             </div>
             <div className='itemWrap-location'>
@@ -39,7 +39,7 @@ const FeedItem = ({ item }) => {
                     </div>
                 </div>
                 <div className='written-time-warp'>
-                    <div>{item.write_date}</div>
+                    <div>{item.writeDate}</div>
                 </div>
             </div>
         </div>

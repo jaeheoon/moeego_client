@@ -8,7 +8,7 @@ const Private = () => {
             <div className="UserPrivateInfoWrap">
                 <div className='PageTitle'>
                     <Link className="prev" to="/mypage/account">
-                        <img src="../../src/image/prev_icon.png" alt="prev" />
+                        <img src="/image/prev_icon.png" alt="prev" />
                     </Link>
                     <h1>개인 정보 관리</h1>
                 </div>
@@ -30,7 +30,7 @@ const Private = () => {
                         <div className='MainContainer'>
                             <div>moeego@moeego.com</div>
                             <div className="Link">
-                                <div className='next'><img src="../../src/image/next_icon.png" alt="nextIcon" /></div>
+                                <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ const Private = () => {
                         <div className='MainContainer'>
                             <div>•••••••</div>
                             <div className="Link">
-                                <div className='next'><img src="../../src/image/next_icon.png" alt="nextIcon" /></div>
+                                <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ const Private = () => {
                         <div className='MainContainer'>
                             <div>서울시 서대문구 홍제동 통일로39가길 57(홍제동, 현대아파트) 102동 902호</div>
                             <div className="Link">
-                                <div className='next'><img src="../../src/image/next_icon.png" alt="nextIcon" /></div>
+                                <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                             </div>
                         </div>
                     </div>

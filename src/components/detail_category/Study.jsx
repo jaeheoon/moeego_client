@@ -34,7 +34,7 @@ const Study = () => {
                         <div className='detailCardList'>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -43,7 +43,7 @@ const Study = () => {
                             </div>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -52,7 +52,7 @@ const Study = () => {
                             </div>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -73,7 +73,7 @@ const Study = () => {
                         <div className='detailCardList'>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -82,7 +82,7 @@ const Study = () => {
                             </div>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -91,7 +91,7 @@ const Study = () => {
                             </div>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -112,7 +112,7 @@ const Study = () => {
                         <div className='detailCardList'>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -121,7 +121,7 @@ const Study = () => {
                             </div>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>
@@ -130,7 +130,7 @@ const Study = () => {
                             </div>
                             <div className='detailCard'>
                                 <div className='detailCardImg'>
-                                    <img src='../../src/image/cleaning.png' alt='정리' />
+                                    <img src='/image/cleaning.png' alt='정리' />
                                 </div>
                                 <div className='detailCardContent'>
                                     <h4>정리수납 컨설팅</h4>

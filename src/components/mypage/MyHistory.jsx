@@ -23,7 +23,7 @@ const MyHistory = () => {
             <div className='myHistoryWrap'>
                 <div className='PageTitle'>
                     <Link to="/mypage" className='prev'>
-                        <img src="../../src/image/prev_icon.png" alt="prev" className='prev' />
+                        <img src="/image/prev_icon.png" alt="prev" className='prev' />
                     </Link>
                     <h1>커뮤니티 작성글/댓글</h1>
                 </div>

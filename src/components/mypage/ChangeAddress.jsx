@@ -25,7 +25,7 @@ const ChangeAddress = () => {
             <div className='ChangeAddressWrap'>
                 <div className='PageTitle'>
                     <Link className="prev" to="/mypage/account/private">
-                        <img src="../../../src/image/prev_icon.png" alt="prev" />
+                        <img src="/image/prev_icon.png" alt="prev" />
                     </Link>
                     <h1>이메일 변경</h1>
                 </div>

@@ -20,8 +20,8 @@ const PopularPostList = () => {
                                         <div>글내용1, 글내용2, 글내용3, 글내용4, 글내용5</div>
                                     </div>
                                     <div className='imageWrap'>
-                                        <div><img src='../src/image/view_icon.svg' alt='view'/><span>100</span></div>
-                                        <div><img src='../src/image/chat_icon.svg' alt='chat'/><span>100</span></div>
+                                        <div><img src='/image/view_icon.svg' alt='view'/><span>100</span></div>
+                                        <div><img src='/image/chat_icon.svg' alt='chat'/><span>100</span></div>
                                     </div>
                                 </div>
                             </div>

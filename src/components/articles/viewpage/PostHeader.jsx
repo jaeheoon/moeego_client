@@ -34,7 +34,7 @@ const PostHeader = () => {
                 <div className="user-info">
                     <div className="user-profile">
                         <img
-                            src="../../src/image/home.png"
+                            src="/image/home.png"
                             alt="사용자 프로필"
                             className="user-profile-image"
                         />
@@ -48,11 +48,11 @@ const PostHeader = () => {
                 <div className="post-actions">
                     {/* 공유 버튼 */}
                     <button className="post-action-button">
-                        <img src="/src/image/share.png" alt="공유" className="action-icon" />
+                        <img src="/image/share.png" alt="공유" className="action-icon" />
                     </button>
                     {/* 옵션 버튼 */}
                     <button className="post-action-button">
-                        <img src="/src/image/3dots.png" alt="옵션" className="action-icon" />
+                        <img src="/image/3dots.png" alt="옵션" className="action-icon" />
                     </button>
                 </div>
             </div>

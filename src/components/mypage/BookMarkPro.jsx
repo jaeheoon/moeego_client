@@ -8,7 +8,7 @@ const BookMarkPro = () => {
             <div className='BookMarkProWrap'>
                 <div className='PageTitle'>
                     <Link className="prev" to="/mypage">
-                        <img src="../../src/image/prev_icon.png" alt="prev" />
+                        <img src="/image/prev_icon.png" alt="prev" />
                     </Link>
                     <h1>찜한 달인</h1>
                 </div>
@@ -39,7 +39,7 @@ const BookMarkPro = () => {
                         </div>
                         <div className='ProList-RightContainer'>
                             <div className='ProProfile'>
-                                <img src="../../src/image/naver_green.svg" alt="naver" />
+                                <img src="/image/naver_green.svg" alt="naver" />
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ const BookMarkPro = () => {
                         </div>
                         <div className='ProList-RightContainer'>
                             <div className='ProProfile'>
-                                <img src="../../src/image/naver_green.svg" alt="naver" />
+                                <img src="/image/naver_green.svg" alt="naver" />
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ const BookMarkPro = () => {
                         </div>
                         <div className='ProList-RightContainer'>
                             <div className='ProProfile'>
-                                <img src="../../src/image/naver_green.svg" alt="naver" />
+                                <img src="/image/naver_green.svg" alt="naver" />
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ const BookMarkPro = () => {
                         </div>
                         <div className='ProList-RightContainer'>
                             <div className='ProProfile'>
-                                <img src="../../src/image/naver_green.svg" alt="naver" />
+                                <img src="/image/naver_green.svg" alt="naver" />
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@ const BookMarkPro = () => {
                         </div>
                         <div className='ProList-RightContainer'>
                             <div className='ProProfile'>
-                                <img src="../../src/image/naver_green.svg" alt="naver" />
+                                <img src="/image/naver_green.svg" alt="naver" />
                             </div>
                         </div>
                     </div>

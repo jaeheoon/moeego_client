@@ -125,7 +125,7 @@ function Header() {
                     <p>moeego@moeego.com</p>
                   </div>
                   <div>
-                    <img src="../src/image/profile.svg" alt="profile" />
+                    <img src="/image/profile.svg" alt="profile" />
                   </div>
                 </Link>
                 <div className='HamburgerUserInfoButtonWrap'>
@@ -156,7 +156,7 @@ function Header() {
 
 
         {/* 로고 */}
-        <div className="logo"><Link to="/"><img src='../src/image/moeego.png' alt='moeegoLogo' /></Link></div>
+        <div className="logo"><Link to="/"><img src='/image/moeego.png' alt='moeegoLogo' /></Link></div>
 
         {/* 메뉴 */}
         <nav className="nav">

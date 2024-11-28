@@ -11,12 +11,12 @@ const MyPage = () => {
                     <Link to='/mypage/account' className='ProfileSettingPage'>
                         <div className='TopWrap'>
                             <div className='ProfileImage'>
-                                <img src="../src/image/profile_default.png" alt="profile" />
+                                <img src="/image/profile.svg" alt="profile" />
                             </div>
                             <div className='ProfileInfo'>
                                 <div className='NickName'>ooo 고객님</div>
                                 <div className='MailWrap'>
-                                    <div className="SNSWrap"><img src="../src/image/naver_sns.png" alt="naver" /></div>
+                                    <div className="SNSWrap"><img src="/image/naver_sns.png" alt="naver" /></div>
                                     <div className='Email'>moeego@moeego.com</div>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@ const MyPage = () => {
                     <div>
                         <Link to='/mypage/likepro' className='Link'>
                             <div className="Title">찜한 달인</div>
-                            <div className='next'><img src="./src/image/next_icon.png" alt="nextIcon" /></div>
+                            <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>
                     </div>
                 </div>
@@ -44,12 +44,12 @@ const MyPage = () => {
                     <div>
                         <Link to='/mypage/reservation' className='Link'>
                             <div className="Title">모이고 예약 내역</div>
-                            <div className='next'><img src="./src/image/next_icon.png" alt="nextIcon" /></div>
+                            <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>
                         <br />
                         <Link to='/mypage/review' className='Link'>
                             <div className="Title">모이고 리뷰 내역</div>
-                            <div className='next'><img src="./src/image/next_icon.png" alt="nextIcon" /></div>
+                            <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ const MyPage = () => {
                     <div>
                         <Link to='/mypage/myhistory' className='Link'>
                             <div className="Title">커뮤니티 작성 글/댓글</div>
-                            <div className='next'><img src="./src/image/next_icon.png" alt="nextIcon" /></div>
+                            <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>
                     </div>
                 </div>

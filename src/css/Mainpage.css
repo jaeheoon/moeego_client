@@ -129,7 +129,7 @@ h1{
     height: 100px;
     text-align: center;
     background-color: black;
-    /* background-image: url("./src/image/car.png"); */
+    /* background-image: url("/image/car.png"); */
     border-radius: 10px;
 }
 

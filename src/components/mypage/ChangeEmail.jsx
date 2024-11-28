@@ -7,7 +7,7 @@ const ChangeEmail = () => {
         <div className='ChangeEmailPage'>
             <div className='ChangeEmailWrap'>
                 <div className='PageTitle'>
-                    <Link className="prev" to="/mypage/account/private"><img src="../../../src/image/prev_icon.png" alt="prev"></img></Link>
+                    <Link className="prev" to="/mypage/account/private"><img src="image/prev_icon.png" alt="prev"></img></Link>
                     <h1>이메일 변경</h1>
                 </div>
                 <form className='ChangeEmailForm'>

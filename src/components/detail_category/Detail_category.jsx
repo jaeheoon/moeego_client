@@ -8,37 +8,37 @@ const Detail_category = () => {
             <div className="categories">
                 <Link to="/category/home">
                     <div className="category-item">
-                        <img src="../src/image/home.png" alt="홈/인테리어" />
+                        <img src="/image/home.png" alt="홈/인테리어" />
                         <span>홈/인테리어</span>
                     </div>
                 </Link>
                 <Link to="/category/outsourcing">
                     <div className="category-item">
-                        <img src="../src/image/si.png" alt="외주" />
+                        <img src="/image/si.png" alt="외주" />
                         <span>외주</span>
                     </div>
                 </Link>
                 <Link to="/category/fashion">
                     <div className="category-item">
-                        <img src="../src/image/fashion.png" alt="패션/뷰티" />
+                        <img src="/image/fashion.png" alt="패션/뷰티" />
                         <span>패션/뷰티</span>
                     </div>
                 </Link>
                 <Link to="/category/study">
                     <div className="category-item">
-                        <img src="../src/image/study.png" alt="직무/과외" />
+                        <img src="/image/study.png" alt="직무/과외" />
                         <span>직무/과외</span>
                     </div>
                 </Link>
                 <Link to="/category/hobby">
                     <div className="category-item">
-                        <img src="../src/image/hobby.png" alt="취미/자기계발" />
+                        <img src="/image/hobby.png" alt="취미/자기계발" />
                         <span>취미/자기계발</span>
                     </div>
                 </Link>
                 <Link to="/category/car">
                     <div className="category-item">
-                        <img src="../src/image/car.png" alt="자동차" />
+                        <img src="/image/car.png" alt="자동차" />
                         <span>자동차</span>
                     </div>
                 </Link>

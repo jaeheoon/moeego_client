@@ -6,7 +6,7 @@ function Reviews() {
       <h2>최신 ★ 5개 리뷰</h2>
       <div className="review-cards">
           <div className="review-card">
-          <img src="./src/image/male_icon.png" alt="프로필사진" />
+          <img src="/image/male_icon.png" alt="프로필사진" />
           <strong>성함 없음</strong>
           <strong>받으신 선택한 세부 카테고리명</strong>
           <p>⭐⭐⭐⭐⭐ 5.0</p>
@@ -14,7 +14,7 @@ function Reviews() {
           <span className="clientName">고객명</span>
           </div>
           <div className="review-card">
-          <img src="./src/image/male_icon.png" alt="프로필사진" />
+          <img src="/image/male_icon.png" alt="프로필사진" />
           <strong>성함 없음</strong>
           <strong>받으신 선택한 세부 카테고리명</strong>
           <p>⭐⭐⭐⭐⭐ 5.0</p>

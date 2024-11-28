@@ -5,10 +5,10 @@ function KeywordSection() {
   const [slidesToShow, setSlidesToShow] = useState(3); // 화면 크기에 따라 표시할 슬라이드 개수
 
   const images = [
-    { id: 1, label: "치워드림", url: "./src/image/keyword1.jpg" },
-    { id: 2, label: "삐까뻔쩍홈케어", url: "./src/image/keyword2.jpg" },
-    { id: 3, label: "청소다움", url: "./src/image/keyword3.jpg" },
-    { id: 4, label: "청소를 부탁해", url: "./src/image/keyword4.jpg" },
+    { id: 1, label: "치워드림", url: "/image/keyword1.jpg" },
+    { id: 2, label: "삐까뻔쩍홈케어", url: "/image/keyword2.jpg" },
+    { id: 3, label: "청소다움", url: "/image/keyword3.jpg" },
+    { id: 4, label: "청소를 부탁해", url: "/image/keyword4.jpg" },
   ];
 
   // 화면 크기에 따라 슬라이드 개수 조정

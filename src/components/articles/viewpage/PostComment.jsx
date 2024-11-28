@@ -8,7 +8,7 @@ const PostComment = () => {
                 {/* 카메라 아이콘 */}
                 <label className="upload-icon-container">
                     <img
-                        src="/src/image/camera.png"
+                        src="/image/camera.png"
                         alt="사진 업로드"
                         className="upload-icon"
                     />
