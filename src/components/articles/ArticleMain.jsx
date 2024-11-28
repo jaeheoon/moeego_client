@@ -60,8 +60,9 @@ const ArticleMain = () => {
                                             <div><img src="/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/like_icon.svg' alt='like' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -74,8 +75,9 @@ const ArticleMain = () => {
                                             </div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/like_icon.svg' alt='like' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -91,8 +93,9 @@ const ArticleMain = () => {
                                             <div><img src="/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/like_icon.svg' alt='like' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -103,8 +106,9 @@ const ArticleMain = () => {
                                             <div><img src="/image/next_icon.png" alt="next" /></div>
                                         </div>
                                         <div className='imageWrap'>
-                                            <div><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
-                                            <div><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/like_icon.svg' alt='like' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/view_icon.svg' alt='view' /><span>100</span></div>
+                                            <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +117,7 @@ const ArticleMain = () => {
                         <div className='AllArticleContainer'>
                             <h3>전체글 모이고</h3>
                             {
-                                articles.map(item => <div key={item.articleNo}>
+                                articles.map(item => <div className='FeedItemWrap' key={item.articleNo}>
                                     <FeedItem item={item} />
                                 </div>)
                             }

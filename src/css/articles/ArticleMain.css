@@ -240,8 +240,7 @@
     gap: 1em;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap div:nth-child(1),
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap div:nth-child(2) {
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon{
     display: flex;
     align-items: center;
     justify-content: right;
@@ -249,14 +248,12 @@
     padding: 20px 0px 5px 0px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap div:nth-child(1) img,
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap div:nth-child(2) img {
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon img {
     width: 15px;
     height: 15px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap div:nth-child(1) span,
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap div:nth-child(2) span {
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -342,8 +339,7 @@
     gap: 1em;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(1),
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(2) {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -351,14 +347,12 @@
     padding: 20px 0px 5px 0px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(1) img,
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(2) img {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon img {
     width: 15px;
     height: 15px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(1) span,
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap div:nth-child(2) span {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -373,7 +367,9 @@
     margin-top: 1em;
     margin-bottom: 1em;
 }
-
+.FeedItemWrap{
+    width: 100%;
+}
 @media screen and (max-width: 1250px) {
     .ArticleMainContainer {
         width: 100%;
@@ -557,6 +553,14 @@
 
     .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap {
         width: 80%;
+    }
+
+    .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap div{
+        width:20%;
+    }
+
+    .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap div svg{
+        width:100%;
     }
 
     .AllArticleContainer .itemWrap .itemWrap-bot .written-time-warp {
