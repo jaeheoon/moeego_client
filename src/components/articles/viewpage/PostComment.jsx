@@ -1,7 +1,7 @@
 import React from 'react';
 import '/src/css/articles/PostComment.css';
 
-const PostComment = () => {
+const PostComment = ({articleData}) => {
     return (
         <div className="post-comment">
             <div className="comment-input-container">

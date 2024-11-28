@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../css/articles/PostHeader.css';
 import { Link } from 'react-router-dom';
 
-const PostHeader = () => {
+const PostHeader = ({articleData}) => {
     return (
         <div className="post-header">
             {/* 카테고리 및 제목 */}
@@ -24,8 +24,7 @@ const PostHeader = () => {
 
             {/* 게시물 제목 및 정보 */}
             <div className="post-head-title-wrapper has-service">
-                <p className="post-subtitle">리본공예 제작</p>
-                <h1 className="post-title">선물 포장 알바 구해요</h1>
+                <h1 className="post-title">{articleData.subject}</h1>
                 <p className="post-location">서울/강남구</p>
             </div>
 
@@ -40,8 +39,8 @@ const PostHeader = () => {
                         />
                     </div>
                     <div className="user-details">
-                        <span className="user-name">손지민</span>
-                        <span className="post-meta">2분 전 · 조회 6</span>
+                        <span className="user-name">{articleData.memberName}</span>
+                        <span className="post-meta">{articleData.elapsedTime} · 조회 {articleData.view}</span>
                     </div>
                 </div>
 

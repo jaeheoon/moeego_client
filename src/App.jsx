@@ -127,6 +127,10 @@ const App = () => {
                       {/* 커뮤니티 페이지 */}
                       <Route path={"/article"} element={<div className='main-content'><ArticleMain /></div>} />
                       <Route path={"/article/free"} element={<div className='main-content'><FreeBoardForm /></div>} />
+                      <Route path={"/article/pro"} element={<div className='main-content'><FreeBoardForm /></div>} />
+                      <Route path={"/article/hot"} element={<div className='main-content'><FreeBoardForm /></div>} />
+                      <Route path={"/article/qna"} element={<div className='main-content'><FreeBoardForm /></div>} />
+                      
                       <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
 
                       {/* 회원가입/로그인 페이지 */}

@@ -1,19 +1,51 @@
-import React from 'react';
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
 import LifeTopic from "./LifeTopic.jsx";
 import "../../../css/articles/FreeBoardForm.css";
-import ServiceArea from "./ServiceArea.jsx";
 import GuideBanner from "./GuideBanner.jsx";
 import FeedList from "./FeedList.jsx";
 import Service_area from '../../ProSearch/service_area.jsx';
-
+import apiAxios from '../../../api/apiAxios.jsx';
 
 const FreeBoardForm = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [articles, setArticles] = useState([]);
 
+    //글쓰기버튼
     const GoWrite = () => {
         navigate("/article/write");
     }
+
+    useEffect(() => {
+        let apiUrl = "/api/article"
+        if(location.pathname === "/article/hot"){
+            apiUrl = "/api/article/hot";
+        }
+        else if(location.pathname === "/article/review"){
+            apiUrl = "/api/article/review";
+        }
+        else if(location.pathname === "/article/free"){
+            apiUrl = "/api/article/free";
+        }
+        else if(location.pathname === "/article/qna"){
+            apiUrl = "/api/article/qna";
+        }
+        else if(location.pathname === "/article/pro"){
+            apiUrl = "/api/article/pro";
+        }
+
+        //axios요청
+        apiAxios
+            .get(apiUrl)
+            .then((response) => {
+                setArticles(response.data);
+            })
+            .catch((err) => {
+                console.error("Error fetching articles:", err);
+                setError(err);
+            });
+    },[location.pathname])
 
     return (
         <div className={'free-board-container'}>
@@ -36,7 +68,7 @@ const FreeBoardForm = () => {
                         <GuideBanner />
                         <Service_area />
                         <div className='FeedContainer'>
-                            <FeedList />
+                            <FeedList articles={articles}/>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import '/src/css/articles/PostReactState.css';
 
-const PostReactState = () => {
+const PostReactState = ({articleData}) => {
     return (
         <div className="post-react-state">
             <div className="react-item">

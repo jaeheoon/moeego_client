@@ -1,34 +1,42 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import "/src/css/articles/PopularPostList.css";
+import FeedItem from '../FreeBoardForm/FeedItem';
+import apiAxios from '../../../api/apiAxios';
 
 const PopularPostList = () => {
+    const [hotArticle, setHotArticle] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+
+    
+    useEffect(() => {
+        setIsLoading(true);
+        // 인기 게시글 요청
+        apiAxios
+            .get('/api/article/hot')
+            .then((response) => {
+                const hotArticles = response.data;
+                if (hotArticles.length > 0) {
+                    setHotArticle(hotArticles[0]);
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching hot articles:", err);
+                setError(err);
+            })
+            .finally(() => {
+                setIsLoading(false); // 로딩 완료
+            });
+    }, []);
+
+    if (isLoading) {
+        return <div className='loadingPage'></div>;
+    }
     return (
         <section>
             <div className="popularPost">
                 <h3>지금 가장 뜨거운🔥커뮤니티 게시글</h3>
-
-                <><Link to="">
-                    <div className='PopularPostListContainer'>
-                        <div className='AllList'>
-                            <div className='AllWrap'>
-                                <div className='viewWrap'>
-                                    <div className='titleWrap'>
-                                        <div>제목</div>
-                                    </div>
-                                    <div className="contentWrap">
-                                        <div>글내용1, 글내용2, 글내용3, 글내용4, 글내용5</div>
-                                    </div>
-                                    <div className='imageWrap'>
-                                        <div><img src='/image/view_icon.svg' alt='view'/><span>100</span></div>
-                                        <div><img src='/image/chat_icon.svg' alt='chat'/><span>100</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Link>
-                </>
+                <FeedItem item={hotArticle} />
             </div>
         </section>
     );
