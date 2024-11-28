@@ -39,18 +39,18 @@ const ProView = () => {
                 </div>
             </section>
             <section className='detail-view-wrap'>
-                <div className="reservationBtn-modal-wrap">
-                    <div className='reservationBtn-modal-button-wrap'>
-                        <input type="button" className="reservation-modalBtn" value="예약하기" onClick={() => openModal("reservation")} />
-                    </div>
-                </div>
-                <div className={`ModalWrap ${modalType ? 'show' : ''}`} onClick={handleModalClose}>
-                    {modalType === "reservation" && (
-                        <Reservation closeModal={closeModal} />
-                    )}
-                </div>
                 <section class="dalin-mainpage">
                     <div className='leftWrap'>
+                        <div className="reservationBtn-modal-wrap">
+                            <div className='reservationBtn-modal-button-wrap'>
+                                <input type="button" className="reservation-modalBtn" value="예약하기" onClick={() => openModal("reservation")} />
+                            </div>
+                        </div>
+                        <div className={`ModalWrap ${modalType ? 'show' : ''}`} onClick={handleModalClose}>
+                            {modalType === "reservation" && (
+                                <Reservation closeModal={closeModal} />
+                            )}
+                        </div>
                         <ProInfo />
                         <ProDetail />
                         <ProReview />

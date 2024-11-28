@@ -1,6 +1,25 @@
 .infoWrap {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.2em;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 1em;
+}
+/* .infoWrap {
+    display: flex;
+    align-items: center;
     justify-content: left;
     width: 100%;
     margin-bottom: 1.2em;
@@ -17,13 +36,13 @@
     margin: 0 auto;
     font-family: 'Arial', sans-serif;
     color: #333;
-}
+} */
 
 .info-section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    width: 90%;
 }
 
 .nickname {
@@ -43,6 +62,7 @@
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s;
+    margin-left: 10px;
 }
 
 .icon-buttons .heart:hover {
@@ -52,7 +72,15 @@
 .info-sub-header {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 2rem;
+}
+
+.info-sub-header div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
 .category {
@@ -62,11 +90,10 @@
     padding: 5px 10px;
     background-color: #e8e8e8;
     border-radius: 20px;
-    margin-right: 10px;
 }
 
 .address {
-    font-size: 14px;
+    font-size: 1rem;
     color: #888;
 }
 
@@ -76,6 +103,7 @@
 }
 
 .introduce {
+    width: 90%;
     font-size: 18px;
     font-weight: bold;
     color: #444;
@@ -83,9 +111,10 @@
 }
 
 .detail-info {
+    width: 90%;
     background-color: #fff;
     border-radius: 10px;
-    padding: 15px;
+    padding: 13px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -129,22 +158,53 @@
 
 @media (max-width: 1250px) {
     .infoWrap {
+        padding: 20px;
+        margin: 0 auto;
         display: flex;
-        align-items: center;
-        justify-content: left;
-        width: 95%;
-        margin-bottom: 1.2em;
-    }
-
-    .info {
-        display: flex;
+        box-sizing: border-box;
+        align-items: flex-start;
         flex-direction: column;
+        /* align-items: center; */
+        /* justify-content: left; */
         width: 100%;
-        padding: 18px 7px;
+        margin-bottom: 1em;
         background-color: #f4f4f4;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+    }
+    /* .infoWrap {
+        padding: 20px;
         margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        /* align-items: center; */
+        /* justify-content: left; */
+        /*width: 85%;
+        margin-bottom: -0.2em;
+        
+    } */
+    /* .info {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        padding: 18px 7px; 
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-left: 6%;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }   */
+    .info {
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+        margin: 0 auto;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         font-family: 'Arial', sans-serif;
         color: #333;
     }  
@@ -154,7 +214,35 @@
         justify-content: space-between;
         align-items: center;
         margin-left: 5px;
-        margin-bottom: 1px;
+        margin-bottom: 1%;
         margin-top: -15px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .info-sub-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .info-sub-header .category {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+
+    .info-sub-header .category div:nth-child(2) {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .address {
+        font-size: 0.8rem;
     }
 }

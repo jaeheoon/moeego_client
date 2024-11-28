@@ -3,13 +3,20 @@ import { Link } from 'react-router-dom'; // Link 컴포넌트 임포트
 import "../../css/pro/Reservation.css";
 
 const Reservation = ({ closeModal }) => {
-    const [checked, setChecked] = useState(false);
+    const [checkedItems, setCheckedItems] = useState({});
+
+    const handleCheckboxChange = (time) => {
+        setCheckedItems((prevCheckedItems) => ({
+            ...prevCheckedItems,
+            [time]: !prevCheckedItems[time],
+        }));
+    };
 
     return (
         <div className='reservation-wrap'>
-            <div className="reservation-controller">
-                <div className="modal-overlay" onClick={closeModal}>
-                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="reservation-controller" onClick={closeModal}>
+                <div className="modal-overlay" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-content">
                 <div class="closeBtn">
                     <button className="reservation-modal-close" onClick={closeModal}>
                         X
@@ -88,11 +95,9 @@ const Reservation = ({ closeModal }) => {
                                     "23:00",
                                 
                                 ].map((time, index) => (
-                                    <li className="reservation-time-item" key={index}>
-                                        {/* <label className="custom-checkbox"> */}
-                                        <label className="custom-checkbox" >
-                                            <input type="checkbox" name="product-reservation-time" value={time} />
-                                            {/* <span className="custom-checkbox-box"></span> */}
+                                    <li className="reservation-time-item" key={index} onClick={() => handleLiClick(time)} >
+                                        <label className="custom-checkbox">
+                                            <input type="checkbox" name="product-reservation-time" value={time} checked={checkedItems[time] || false} onChange={() => handleCheckboxChange(time)} />
                                             <span className="custom-checkbox-box" style={{ display: "none" }}></span>
                                             <div className='pull'>{time}</div>
                                         </label>
@@ -102,14 +107,11 @@ const Reservation = ({ closeModal }) => {
                         </div>
                     </div>
                 </section>
-                <section>
-                    <div className="reservationBtn-wrap">
-                        <button type="button" className="reservation-btn">
-                            예약하기
-                        </button>
-                    </div>
-                    <br />
-                </section>
+                <div className="reservationBtn-wrap">
+                    <button type="button" className="reservation-btn">
+                        예약하기
+                    </button>
+                </div>
             </div>
             </div>
             </div>

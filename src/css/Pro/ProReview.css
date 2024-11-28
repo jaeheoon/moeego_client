@@ -2,6 +2,7 @@
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
+    box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 90%;
     margin: 0 auto;
@@ -33,6 +34,7 @@
     font-weight: bold;
     color: #222;
     margin-right: 15px;
+    margin-left: 14px;
 }
 
 .reviews .rate-star {
@@ -99,7 +101,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    top: 38%;
+    top: 34.6%;
     left: 10%;
     width: 20%;
     height: 8rem;
@@ -140,7 +142,7 @@
 
 .reviews .user-reivew {
     background-color: #fff;
-    padding: 15px;
+    padding: 25px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: flex;
@@ -186,9 +188,14 @@
     width: 15%;
 }
 
-.reviews .review-photo img {
+/* .reviews .review-photo img {
     width: 100%;
     height: 5.485em;
+    border-radius: 20%;
+} */
+.reviews .review-photo img {
+    width: 5rem;
+    height: 100%;
     border-radius: 20%;
 }
 
@@ -211,8 +218,9 @@
         padding: 20px;
         background-color: #f9f9f9;
         border-radius: 10px;
+        box-sizing: border-box;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 85%;
+        width: 100%;
         margin: 0 auto;
         font-family: 'Arial', sans-serif;
         color: #333;
@@ -232,9 +240,15 @@
         line-height: 1.6;
     }
 
-    .reviews .review-photo img {
+    /* .reviews .review-photo img {
         width: 100%;
         height: 5.485em;
+        border-radius: 20%;
+    } */
+
+    .reviews .review-photo img {
+        width: 5rem;
+        height: 5rem;
         border-radius: 20%;
     }
 
@@ -243,13 +257,44 @@
         justify-content: space-between;
         width: 100%;
         margin-bottom: 10px;
-        gap: 1em;
+        /* gap: 1em; */
     }
 
     .reviews .review-photo {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30%;
+        width: 40%;
+    }
+
+    .reviews .dropdown-menu {
+        display: none;
+        list-style: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        top: 30.6%;
+        left: 10%;
+        width: 35%;
+        height: 7.55rem;
+    }
+
+    .reviews .avg {
+        font-size: 32px;
+        font-weight: bold;
+        color: #222;
+        margin-right: 15px;
+    }
+
+    .reviews .user-reivew {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
     }
 }
