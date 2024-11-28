@@ -1,4 +1,3 @@
-
 .adminDashBoard-wrapper {
     background-color: white;
     border-radius: 8px;
@@ -45,13 +44,6 @@
     margin-top: 10px;
 }
 
-.adminDashBoard-member-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
 .adminDashBoard-member-box {
     background-color: white;
     border-radius: 6px;
@@ -60,10 +52,10 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 200px;
-    position: relative; /* z-index 사용을 위해 position 추가 */
+    min-height: 200px; /* 높이를 동적으로 변경 */
 }
 
+/* 스타일을 공통으로 묶어 하나로 적용 */
 .adminDashBoard-member-box:nth-child(1) {
     border-left: 4px solid #4CAF50;
 }
@@ -76,31 +68,23 @@
     border-left: 4px solid #f44336;
 }
 
-.adminDashBoard-member-image {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10; /* 다른 요소보다 위에 표시 */
-    pointer-events: none; /* 이미지 클릭 불가 */
-}
-
 .adminDashBoard-count-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2개의 동일한 크기의 컬럼 */
-    gap: 20px; /* 컬럼 사이의 간격 */
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .adminDashBoard-count-section {
-    background-color: white;
-    border-radius: 6px;
-    padding: 15px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height: 650px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 260px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
 
 .adminDashBoard-count-header {
     padding: 10px;
@@ -110,7 +94,7 @@
 }
 
 .adminDashBoard-count-header p {
-    font-size: 16px;
+    font-size: 20px;
     color: #2c3e50;
     font-weight: 500;
     margin: 0;
@@ -144,23 +128,69 @@
     font-size: 20px;
     line-height: 1;
     font-weight: 500;
-    margin-top: -2px; /* + 기호 미세 조정 */
+    margin-top: -2px;
 }
 
-.adminDashBoard-count-button-wrapper {
+/* 테이블 스타일 */
+.adminDashBoard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.adminDashBoard-table th,
+.adminDashBoard-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+.adminDashBoard-table th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+}
+
+.adminDashBoard-table tbody tr:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+
+.adminDashBoard-table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+/* 차트 부분 */
+.chart-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.adminDashBoard-chart {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 465px;
+    margin-bottom: 50px;
+}
+
+.adminDashBoard-chart p {
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+/* 차트 캔버스 크기 */
+.adminDashBoard-chart .chart-container {
     position: relative;
-}
-
-.adminDashBoard-count-button-wrapper:hover::after {
-    content: "등록 건수 보기";
-    position: absolute;
-    background-color: #333;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    right: 0;
-    top: 100%;
-    margin-top: 5px;
-    white-space: nowrap;
+    width: 100%;
+    height: 400px;
 }

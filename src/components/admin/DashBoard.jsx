@@ -1,24 +1,64 @@
 import React, { useState } from 'react';
 import '../../css/admin/DashBoard.css';
-import people from '../../image/people.png';
 import { useNavigate } from 'react-router-dom';
+import MemberPieChart from './MemberPieChart';
+import LineChart from './LineChart';
 
 const DashBoard = () => {
-
     const navigate = useNavigate(); // 경로 이동 훅
 
-    const [eventCount] = useState(15); // 예시 데이터
-    const [noticeCount] = useState(8); // 예시 데이터
+    // 예제 데이터
+    const [events, setEvents] = useState([
+        { id: 1, title: 'Event 1', subject: 'subject1', view: 20, date: '2024-11-21' },
+        { id: 2, title: 'Event 2', subject: 'subject2', view: 30, date: '2024-11-22' },
+        { id: 3, title: 'Event 3', subject: 'subject3', view: 10, date: '2024-11-23' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
+    ]);
 
-    const handleEventClick = () => {
-        alert(`현재 등록된 이벤트: ${eventCount}건`);
-        // 여기에 모달이나 더 상세한 내용을 보여주는 로직 추가
-    };
+    const [notices, setNotices] = useState([
+        { id: 1, title: 'Notice 1', subject: 'subject1', view: 50, date: '2024-11-21' },
+        { id: 2, title: 'Notice 2', subject: 'subject2', view: 30, date: '2024-11-22' },
+        { id: 3, title: 'Notice 3', subject: 'subject3', view: 280, date: '2024-11-23' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
+    ]);
 
-    const handleNoticeClick = () => {
-        alert(`현재 등록된 공지사항: ${noticeCount}건`);
-        // 여기에 모달이나 더 상세한 내용을 보여주는 로직 추가
-    };
+    // 일주일 동안 회원 가입 수 데이터 (예시)
+    const weekData = [
+        { date: '11.21', count: 5 },
+        { date: '11.22', count: 8 },
+        { date: '11.23', count: 3 },
+        { date: '11.24', count: 10 },
+        { date: '11.25', count: 4 },
+        { date: '11.26', count: 6 },
+        { date: '11.27', count: 7 }
+    ];
+
+    const expertData = [
+        { date: '11.21', count: 2 },
+        { date: '11.22', count: 3 },
+        { date: '11.23', count: 1 },
+        { date: '11.24', count: 5 },
+        { date: '11.25', count: 2 },
+        { date: '11.26', count: 4 },
+        { date: '11.27', count: 3 },
+    ];
 
     return (
         <div className="adminDashBoard-container">
@@ -26,81 +66,15 @@ const DashBoard = () => {
                 <div className="adminDashBoard-header">
                     <h1>대시보드 | 각종 이력을 간략히 확인할 수 있습니다.</h1>
                 </div>
-                <div className="adminDashBoard-list-section">
-                    <div className="adminDashBoard-list-header">
-                        <h4>List</h4>
-                        <hr />
-                    </div>
-                    <div className="adminDashBoard-member-grid">
-                        <div className="adminDashBoard-member-box" style={{ position: 'relative' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div>
-                                    <span>고수 회원</span><br />
-                                    <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#4CAF50' }}>554</span>
-                                </div>
-                                <div>
-                                    <button
-                                        className="adminDashBoard-count-button"
-                                        onClick={() => navigate('/admin/ProList')}>
-                                        <span>+</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <img
-                                src={people}
-                                className="adminDashBoard-member-image"
-                                alt="고수 회원 통계"
-                            />
-                        </div>
-
-                        <div className="adminDashBoard-member-box" style={{ position: 'relative' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div>
-                                    <span>일반 회원</span><br />
-                                    <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#2196F3' }}>51254</span>
-                                </div>
-                                <div>
-                                    <button
-                                        className="adminDashBoard-count-button"
-                                        onClick={() => navigate('/admin/MemberList')}>
-                                        <span>+</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <img
-                                src={people}
-                                className="adminDashBoard-member-image"
-                                alt="일반 회원 통계"
-                            />
-                        </div>
-
-                        <div className="adminDashBoard-member-box" style={{ position: 'relative' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div>
-                                    <span>탈퇴 회원</span><br />
-                                    <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#f44336' }}>165</span>
-                                </div>
-                                <div>
-                                    <button
-                                        className="adminDashBoard-count-button"
-                                        onClick={() => navigate('/admin/LeaveMemberList')}>
-                                        <span>+</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <img
-                                src={people}
-                                className="adminDashBoard-member-image"
-                                alt="탈퇴 회원 통계"
-                            />
-                        </div>
-                    </div>
+                <div className="chart-wrapper">
+                    <LineChart data={weekData} expertData={expertData} /> {/* 라인 차트 */}
+                    <MemberPieChart /> {/* 파이 차트 */}
                 </div>
 
                 <div className="adminDashBoard-count-wrapper">
                     <div className="adminDashBoard-count-section">
                         <div className="adminDashBoard-count-header">
-                            <p>이벤트 건수</p>
+                            <p>인기 이벤트</p>
                             <div className="adminDashBoard-count-button-wrapper">
                                 <button
                                     className="adminDashBoard-count-button"
@@ -109,21 +83,59 @@ const DashBoard = () => {
                                 </button>
                             </div>
                         </div>
-                        <hr />
+                        <table className="adminDashBoard-table">
+                            <thead>
+                                <tr>
+                                    <th>제목</th>
+                                    <th>내용</th>
+                                    <th>조회수</th>
+                                    <th>등록일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {events.slice(0, 3).map(event => (
+                                    <tr key={event.id}>
+                                        <td>{event.title}</td>
+                                        <td>{event.subject}</td>
+                                        <td>{event.view}</td>
+                                        <td>{event.date}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
 
                     <div className="adminDashBoard-count-section">
                         <div className="adminDashBoard-count-header">
-                            <p>공지사항 건수</p>
+                            <p>인기 공지사항</p>
                             <div className="adminDashBoard-count-button-wrapper">
                                 <button
                                     className="adminDashBoard-count-button"
-                                    onClick={() => navigate('/admin/EventList')}>
+                                    onClick={() => navigate('/admin/NoticeList')}>
                                     <span>+</span>
                                 </button>
                             </div>
                         </div>
-                        <hr />
+                        <table className="adminDashBoard-table">
+                            <thead>
+                                <tr>
+                                    <th>제목</th>
+                                    <th>내용</th>
+                                    <th>조회수</th>
+                                    <th>등록일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {notices.slice(0, 3).map(notice => (
+                                    <tr key={notice.id}>
+                                        <td>{notice.title}</td>
+                                        <td>{notice.subject}</td>
+                                        <td>{notice.view}</td>
+                                        <td>{notice.date}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
