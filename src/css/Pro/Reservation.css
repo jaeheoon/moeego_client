@@ -19,6 +19,8 @@
 }
 
 
+
+
 .product-title h3 {
     font-size: 1.3rem;
     font-weight: bold;
@@ -363,4 +365,387 @@ ol li a:hover {
 
 .picker-item .date-text {
     margin-top: 0; /* margin-top 제거 */
+}
+
+@media (max-width: 1250px) {
+    .reservation-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .reservation-controller {
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+        width: 95%;
+        margin: 0 auto;
+        padding: 30px 20px;
+        background-color: #fce9ed;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .reservation-controller section{
+        width: 100%;
+    }
+
+    .modal-overlay{
+        width: 100%;
+    }
+    .modal-content{
+        width: 100%;
+    }
+    
+    
+    .product-title h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #522823;
+        margin: 20px 0;
+        width: 95%;
+    }
+    
+    ol {
+        display: flex;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-top: 4%;
+    
+        margin-left: 4%;
+    }
+    
+    ol li a {
+        text-decoration: none;
+        font-size: 1rem;
+        text-shadow: 0 0 1px rgb(119, 119, 119);
+        color: rgb(53, 10, 10);
+        transition: color 0.2s ease-in-out;
+        font-weight: bold;
+    }
+    
+    ol li a:hover {
+        color: #a8a8a8;
+    }
+    
+    .options-wrapper {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 8%;
+        color: #2c2c2c;
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 15px;
+        margin-bottom: 0.5em;
+        /* width: 80%; */
+        justify-content: center;
+    }
+    
+    .product-reservation-date .picker-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        margin: 0.7em;
+        padding: 0;
+        list-style: none;
+        font-weight: bold;
+        justify-content: center;
+    }
+    
+    .picker-item {
+        display: flex;
+        align-items: center;
+    }
+    
+    .custom-radio {
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 0.01em;
+        margin-top: 5%;
+        margin-right: -1.2em;
+    }
+    
+    .custom-radio-box {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #522823;
+        border-radius: 50%;
+        margin-right: 8px;
+        display: inline-block;
+        position: relative;
+    }
+    
+    .custom-radio input[type="radio"] {
+        display: none;
+    }
+    
+    .custom-radio input[type="radio"]:checked + .custom-radio-box {
+        background-color: #522823;
+        border-color: #522823;
+    }
+    
+    
+    .reservation-timebox {
+        margin-top: 20px;
+    }
+    
+    .reservation-timelist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0.2em;
+        list-style: none;
+        font-weight: bold;
+        margin-top: -2.8em;
+        justify-content: center;
+    }
+    
+    .reservationBtn-wrap {
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .reservation-time-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        /* width: 80%; */
+        color: #522823;
+        /* width: 5.8em; */
+        height: 100%;
+        border-radius: 15px;
+        padding: 15px;
+        list-style: none; 
+        float: left;
+        margin: 5px 3px;
+    }
+    
+    .reservation-time-item .pull{
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .reservation-time-item:hover {
+        background-color: #522823;
+        color:white;
+    }
+    
+    /* .custom-checkbox input[type="checkbox"]:checked + .custom-checkbox-box + div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        color: white; 
+        background-color: #522823;  
+        
+        border-radius: 15px;
+    } */
+    .reservation-time-item input[type="checkbox"]:checked + .custom-checkbox-box + div {
+        background-color: #522823;  /* 배경색 변경 */
+        color: white;  /* 글자색 변경 */
+        border-radius: 15px;  /* 둥근 테두리 */
+    }
+    
+    
+    /* 체크박스를 숨기고, 커스터마이즈된 네모 상자 스타일 */
+    .custom-checkbox {
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        box-sizing: border-box;    
+        width: 100%;
+        height: 100%;
+    }
+    
+    .custom-checkbox-box {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #522823;
+        border-radius: 4px;
+        margin-right: 8px;
+        display: inline-block;
+        position: relative;
+    }
+    
+    .custom-checkbox div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .custom-checkbox input[type="checkbox"] {
+        display: none;
+    }
+    
+    .custom-checkbox input[type="checkbox"]:checked + .custom-checkbox-box {
+        background-color: #522823;
+        border-color: #522823;
+    }
+    
+    .custom-checkbox-box:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        background-color: white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .custom-checkbox input[type="checkbox"]:checked + .custom-checkbox-box:after {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    /* 버튼 스타일 */
+    .btn-controller {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    
+    .btn-prev,
+    .btn-next {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        color: #522823;
+        transition: color 0.2s ease-in-out;
+    }
+    
+    .btn-prev:hover,
+    .btn-next:hover {
+        color: #522823;
+    }
+    
+    /* 예약 버튼 */
+    .reservation-btn {
+        display: block;
+        width: 80%;
+        padding: 10px 0;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background-color: #522823;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+    }
+    
+    .reservation-btn:hover {
+        background-color: white;
+        color: #522823;
+        outline: #522823;
+    }
+    
+    
+    .checkboxCard {
+        width: fit-content;
+        border: 1px solid gray;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        cursor: pointer;
+      }
+      
+      .checkboxCard.checked {
+        border: 2px solid red;
+      }
+      
+      .checkboxCard input,
+      .checkboxCard label {
+        color: black;
+        cursor: pointer;
+      }
+      
+      .checkboxCard input:checked ~ label {
+        color: red;
+      }
+    
+      .day-text {
+        font-weight: bold;
+        color: white;
+        font-size: 20px; 
+        text-shadow: 0 0 1.5px black;
+      }
+    
+      .date-text {
+        display: inline-block;
+        width: 30px; 
+        height: 30px;
+        border-radius: 50%; 
+        background-color: fce9ed; 
+        text-align: center;
+        color: white;
+        text-shadow: 0 0 1.5px black;
+        font-weight: bold;
+        line-height: 40px; 
+        font-size: 20px; 
+        cursor: pointer;
+        border: 2px solid #fce9ed; 
+      }
+      
+      .date-text:hover {
+        color: white;
+        display: inline-block;
+        width: 30px; 
+        height: 30px;
+        border-radius: 50%; 
+        background-color: #522823;
+        text-align: center;
+        line-height: 40px; /* 텍스트 세로 중앙 정렬 */
+        font-size: 20px; 
+        cursor: pointer;
+        border: 2px solid #522823; 
+        text-shadow: none;
+        
+      }
+      
+    .picker-item input[type="radio"]:checked + .custom-radio-box + .day-text + .date-text {
+        background-color: #522823;  
+        color: white;  
+        border-color: #522823; 
+        text-shadow: none;
+    }
+    
+    .picker-item input[type="radio"]:checked + .custom-radio-box + .day-text {
+        color: #522823; 
+        text-shadow: none;
+    }
+     
+    .picker-item {
+        display: flex;
+        flex-direction: row; /* 세로 정렬 */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    /* day-text와 date-text의 정렬 */
+    .picker-item .day-text,
+    .picker-item .date-text {
+        display: inline-block; /* 한 줄로 나열되도록 변경 */
+        margin: 0 5px; /* 간격을 약간 추가 */
+    }
+    
+    .picker-item .date-text {
+        margin-top: 0; /* margin-top 제거 */
+    }
 }

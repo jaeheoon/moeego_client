@@ -205,3 +205,51 @@
     margin-top: 10px;
 }
 
+@media (max-width: 1250px){
+
+    .reviews {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 85%;
+        margin: 0 auto;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .review-list {
+        width: 100%;
+    }
+
+    .reviews .review-content {
+        width: 75%;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .reviews .review-photo img {
+        width: 100%;
+        height: 5.485em;
+        border-radius: 20%;
+    }
+
+    .reviews .user-reivew section:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+        gap: 1em;
+    }
+
+    .reviews .review-photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+}

@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 const ProReview = () => {
     return (
         <section className="reviews">
-            <div>
+            <div className="review-wrap">
+            <div className="review-list">
                 <h3>리뷰</h3>
                 <div className="summary">
                     <div className="avg">5.0</div>
@@ -18,7 +19,6 @@ const ProReview = () => {
                     </ul>
                     <div className="review-count">15개 리뷰</div>
                 </div>
-                <br />
                 <hr />
 
                 <div className="dropdown-btn">
@@ -193,7 +193,7 @@ const ProReview = () => {
                         </li>
                     </ul>
                 </div>
-
+                </div>
             </div>
         </section>
     );
