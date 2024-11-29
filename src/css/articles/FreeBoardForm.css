@@ -61,6 +61,11 @@
     margin-top: -1.2em;
 }
 
+.FeedContainer a:link{text-decoration: none; color: black;}
+.FeedContainer a:hover{text-decoration: none; color: black;}
+.FeedContainer a:active{text-decoration: none; color: black;}
+.FeedContainer a:visited{text-decoration: none; color: black;}
+
 @media screen and (max-width: 1250px) {
     .free-board-container {
         width: 100%;

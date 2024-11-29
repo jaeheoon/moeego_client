@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LifeTopic from './FreeBoardForm/LifeTopic';
 import "../../css/articles/ArticleMain.css";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FeedItem from './FreeBoardForm/FeedItem';
 import apiAxios from '../../api/apiAxios.jsx';
 
@@ -118,7 +118,7 @@ const ArticleMain = () => {
                             <h3>전체글 모이고</h3>
                             {
                                 articles.map(item => <div className='FeedItemWrap' key={item.articleNo}>
-                                    <FeedItem item={item} />
+                                    <Link className='FeedItemLink' to={`/article/viewpage?article_no=${item.articleNo}`}><FeedItem item={item} /></Link>
                                 </div>)
                             }
                         </div>

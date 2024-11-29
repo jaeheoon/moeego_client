@@ -367,9 +367,18 @@
     margin-top: 1em;
     margin-bottom: 1em;
 }
+.AllArticleContainer .FeedItemWrap .FeedItemLink{
+    width: 100%;
+}
+.AllArticleContainer .FeedItemLink:link{text-decoration: none; color: black}
+.AllArticleContainer .FeedItemLink:hover{text-decoration: none; color: black}
+.AllArticleContainer .FeedItemLink:active{text-decoration: none; color: black}
+.AllArticleContainer .FeedItemLink:visited{text-decoration: none; color: black}
+
 .FeedItemWrap{
     width: 100%;
 }
+
 @media screen and (max-width: 1250px) {
     .ArticleMainContainer {
         width: 100%;
@@ -552,7 +561,7 @@
     }
 
     .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap {
-        width: 80%;
+        width: 60%;
     }
 
     .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap div{
@@ -564,6 +573,6 @@
     }
 
     .AllArticleContainer .itemWrap .itemWrap-bot .written-time-warp {
-        width: 20%;
+        width: 40%;
     }
 }

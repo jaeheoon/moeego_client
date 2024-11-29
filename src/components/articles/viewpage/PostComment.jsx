@@ -1,5 +1,5 @@
 import React from 'react';
-import '/src/css/articles/PostComment.css';
+import '../../../../src/css/articles/PostComment.css';
 
 const PostComment = ({articleData}) => {
     return (

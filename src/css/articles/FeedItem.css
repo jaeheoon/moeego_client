@@ -100,11 +100,6 @@
     margin-top: 10px; /* 필요에 따라 마진 추가 */
 }
 
-.itemWrap .imageWrap {
-    display: flex;
-    align-items: center; /* 이미지 수직 정렬 */
-}
-
 .itemWrap .imageWrap div {
     display: flex;
     align-items: center; /* span과 이미지 수직 정렬 */
@@ -128,7 +123,7 @@
 }
 .itemWrap .written-time-warp{
     display: flex;
-    width:10%;
+    width:30%;
     justify-content: right;
     margin-right: 0.5em;
     color:#b2b2b2;
