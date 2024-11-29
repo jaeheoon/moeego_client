@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import checkPost from '../../js/daumpost';
 import { useNavigate } from 'react-router-dom';
+import apiAxios from '../../api/apiAxios';
 
 const SignUpContext = createContext();
 
@@ -14,7 +15,8 @@ const initialState = {
     authCode: '',
     zipcode: '',
     address1: '',
-    address2: ''
+    address2: '',
+    address: '',
 };
 
 const initialErrors = {
@@ -26,11 +28,14 @@ const initialErrors = {
     gender: '',
     zipcode: '',
     address1: '',
+    address2: '',
+    address: '',
 };
 
 const SignUpProvider = ({ children }) => {
     const [signup, setSignup] = useState(initialState);
     const [errors, setErrors] = useState(initialErrors);
+
     const [isReadonly, setIsReadonly] = useState({
         zipcode: false,
         address1: false,
@@ -41,11 +46,11 @@ const SignUpProvider = ({ children }) => {
 
     const goMain = () => {
         navigate(`/`);
-    }
+    };
 
     const goLogin = () => {
         navigate(`/`);
-    }
+    };
 
     const updateSignUpData = async (field, value) => {
         setSignup((prevData) => ({
@@ -145,18 +150,21 @@ const SignUpProvider = ({ children }) => {
                     error = '상세 주소를 입력해주세요.';
                 }
                 break;
+            case 'address':
+                if (!value) {
+                    error = '주소를 입력해주세요.';
+                }
+                break;
             default:
                 break;
         }
 
-        // 에러 상태 업데이트
         setErrors((prevErrors) => ({
             ...prevErrors,
             [field]: error,
         }));
     };
 
-    // 모든 필드 검증
     const validateForm = () => {
         const fieldsToValidate = Object.keys(signup);
         let isValid = true;
@@ -199,8 +207,10 @@ const SignUpProvider = ({ children }) => {
                 handleAddressSearch,
                 validateForm,
                 goMain,
-                goLogin
-            }}>{children}</SignUpContext.Provider>
+                goLogin,
+            }}>
+            {children}
+        </SignUpContext.Provider>
     );
 };
 

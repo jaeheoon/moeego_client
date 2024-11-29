@@ -29,9 +29,11 @@ const Join = () => {
 
     const handleJoinClick = async () => {
         if (validateForm()) {
+            const combinedAddress = `${signup.address1} ${signup.address2}`.trim();
+            const dataToSubmit = { ...signup, address: combinedAddress };
+
             try {
-                const response = await apiAxios.post('/api/signup', signup);
-                console.log(response.data);
+                const response = await apiAxios.post('/api/signup', dataToSubmit);
                 navigate('/signup/success', { state: { name: signup.name } });
             } catch (error) {
                 console.error('회원가입 실패:', error);
@@ -41,6 +43,7 @@ const Join = () => {
             return;
         }
     };
+
 
 
     return (
@@ -189,7 +192,6 @@ const Join = () => {
                     </div>
                     {errors.address1 && <span className="error">{errors.address1}</span>}
 
-                    {/* 상세주소 입력 */}
                     <div className="join-align">
                         <label>상세주소</label>
                         <input
@@ -202,6 +204,7 @@ const Join = () => {
                             onChange={(e) => updateSignUpData('address2', e.target.value)}
                         />
                     </div>
+                    {errors.address2 && <span className="error">{errors.address2}</span>}
 
                     {/* 회원가입 버튼 */}
                     <input

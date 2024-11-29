@@ -171,6 +171,12 @@
     margin-bottom: 1em;
 }
 
+.LoginPage .error {
+    font-size: 0.725rem;
+    width: 80%;
+    color: red;
+}
+
 @media screen and (max-width: 1250px) {
     .LoginPage {
         margin-top: 0;
