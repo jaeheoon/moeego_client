@@ -197,6 +197,12 @@
     margin-top: 1em;
 }
 
+.JoinPage .error {
+    font-size: 0.725rem;
+    width: 80%;
+    color: red;
+}
+
 @media screen and (max-width: 1250px) {
     .JoinPage {
         width: 100%;

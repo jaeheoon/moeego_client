@@ -12,6 +12,7 @@ import MainPage from './components/mainPage';
 // member
 import Login from "./components/login/Login";
 import Join from "./components/join/Join";
+import JoinSuccess from './components/join/JoinSuccess.jsx';
 
 // pro
 import Prosignup from "./components/pro/Prosignup";
@@ -23,10 +24,9 @@ import ProjoinSub_study from "./components/Pro/ProSub_study.jsx";
 import ProjoinSub_fashion from "./components/Pro/ProSub_fashion.jsx";
 import ProjoinMain from "./components/Pro/ProjoinMain.jsx";
 import ProSearch from "./components/ProSearch/ProSearch";
-import ProDetail from './components/Pro/ProDetail.jsx';
 import ProRequest from "./components/Pro/ProRequest.jsx";
-import ProView from "./components/Pro/ProView";
 import ServiceAreaModal from "./components/ProSearch/ServiceAreaModal.jsx";
+import ProView from "./components/Pro/ProView";
 
 // article
 import ArticleMain from './components/articles/ArticleMain.jsx';
@@ -130,12 +130,13 @@ const App = () => {
                       <Route path={"/article/pro"} element={<div className='main-content'><FreeBoardForm /></div>} />
                       <Route path={"/article/hot"} element={<div className='main-content'><FreeBoardForm /></div>} />
                       <Route path={"/article/qna"} element={<div className='main-content'><FreeBoardForm /></div>} />
-                      
+
                       <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
 
                       {/* 회원가입/로그인 페이지 */}
                       <Route path="/login" element={<Login />} />
                       <Route path="/signup" element={<div className='main-content'><Join /></div>} />
+                      <Route path="/signup/success" element={<div className='main-content'><JoinSuccess /></div>} />
 
                       {/* 달인 가입 페이지 */}
                       <Route path="/pro/signup/main" element={<ProjoinMain />} />
@@ -146,7 +147,7 @@ const App = () => {
                       <Route path="/pro/signup/sub_hobby" element={<ProjoinSub_hobby />} />
                       <Route path="/pro/signup/sub_car" element={<ProjoinSub_car />} />
                       <Route path="/pro/signup" element={<Prosignup />} />
-                      <Route path="/pro/detail" element={<ProDetail />} />
+                      <Route path="/pro/proview" element={<ProView />} />
                       <Route path="/pro/ProRequest" element={<ProRequest />} />
 
                       {/* 관리자 페이지 */}

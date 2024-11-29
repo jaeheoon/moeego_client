@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import checkPost from '../../js/daumpost';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpContext = createContext();
 
@@ -35,6 +36,16 @@ const SignUpProvider = ({ children }) => {
         address1: false,
         address2: false,
     });
+
+    const navigate = useNavigate();
+
+    const goMain = () => {
+        navigate(`/`);
+    }
+
+    const goLogin = () => {
+        navigate(`/`);
+    }
 
     const updateSignUpData = async (field, value) => {
         setSignup((prevData) => ({
@@ -94,8 +105,10 @@ const SignUpProvider = ({ children }) => {
             case 'password':
                 if (!value) {
                     error = '비밀번호를 입력해주세요.';
-                } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{12,20}$/.test(value)) {
-                    error = '비밀번호는 대문자, 소문자, 숫자 조합으로 12~20자리여야 합니다.';
+                } else if (/(.)\1{2,}/.test(value)) {
+                    error = '비밀번호에 연속으로 같은 문자를 3번 이상 사용할 수 없습니다.';
+                } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`|}{[\]:;?,.<>]).{12,20}$/.test(value)) {
+                    error = '비밀번호는 대문자, 소문자, 숫자, 특수문자를 포함하며, 12~20자리여야 합니다.';
                 }
                 break;
             case 'confirmPassword':
@@ -184,7 +197,9 @@ const SignUpProvider = ({ children }) => {
                 isReadonly,
                 updateSignUpData,
                 handleAddressSearch,
-                validateForm
+                validateForm,
+                goMain,
+                goLogin
             }}>{children}</SignUpContext.Provider>
     );
 };
