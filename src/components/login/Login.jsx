@@ -78,14 +78,14 @@ const Login = () => {
                         {modalType === "password" && <SearchPwd closeModal={closeModal} />}
                     </div>
                     <br />
-                    <div>
+                    <div className='snsWrap'>
                         <button type="button" className="kakaoLoginBtn">
                             <img className="kakaoImg" src="/image/kakao_white.svg" alt="카카오" width="18" height="16" />
                             카카오로 시작
                         </button>
                     </div>
                     <br />
-                    <div>
+                    <div className='snsWrap'>
                         <button type="button" className="naverLoginBtn">
                             <img className="naverImg" src="/image/naver_white.svg" alt="네이버" width="18" height="16" />
                             네이버로 시작

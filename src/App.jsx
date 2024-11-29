@@ -78,7 +78,7 @@ import { ProProvider } from './context/pro/ProContext.jsx';
 
 const App = () => {
   return (
-    <div>
+    <div className='App'>
       <BrowserRouter>
         <AdminProvider>
           <SignUpProvider>
@@ -134,7 +134,7 @@ const App = () => {
                       <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
 
                       {/* 회원가입/로그인 페이지 */}
-                      <Route path="/login" element={<Login />} />
+                      <Route path="/login" element={<div className='main-content'><Login /></div>} />
                       <Route path="/signup" element={<div className='main-content'><Join /></div>} />
                       <Route path="/signup/success" element={<div className='main-content'><JoinSuccess /></div>} />
 

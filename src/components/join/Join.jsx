@@ -156,7 +156,7 @@ const Join = () => {
                     <div className="join-align">
                         <label>우편번호</label>
                     </div>
-                    <div>
+                    <div className='zip-box'>
                         <input
                             className="zipcodebox"
                             id="zipcode"

@@ -1,9 +1,10 @@
 .header {
-    display: flex;
     position: sticky;
-    top: 0px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    height: 7%;
+    top: 0;
     width: 100%;
     box-sizing: border-box;
     flex-direction: column;
@@ -195,6 +196,7 @@
 }
 
 .HamburgerUserInfoLinkWrap {
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -203,14 +205,14 @@
 }
 
 .HamburgerUserInfoLinkWrap div:nth-child(1) {
-    width: 80%;
+    width: 100%;
 }
 
 .HamburgerUserInfoLinkWrap div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: right;
-    width: 20%;
+    width: 100%;
 }
 
 .HamburgerUserInfoLinkWrap img {
@@ -399,6 +401,12 @@
 
 /* 반응형 스타일 */
 @media screen and (max-width: 1250px) {
+    .header {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
     .header .nav {
         display: none;
     }

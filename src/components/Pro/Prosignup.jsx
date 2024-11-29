@@ -107,7 +107,6 @@ const Projoin = () => {
                     </div>
 
                     <input type="button" className="joinBtn" value="회원가입" />
-                    <div className="dalin"><Link to='/pro/signup/main'>달인으로 가입하시나요?</Link></div>
                 </form>
             </div >
         </div >

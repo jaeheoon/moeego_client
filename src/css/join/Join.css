@@ -1,10 +1,8 @@
 .JoinPage {
-    margin-top: 5%;
-    margin-bottom: 5%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .JoinPage #join_container {
@@ -16,6 +14,7 @@
     max-width: 400px;
     margin: 0 auto; 
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .JoinPage .joinbox {
@@ -205,26 +204,46 @@
 
 @media screen and (max-width: 1250px) {
     .JoinPage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        margin-top: 0;
+        height: auto;
+        box-sizing: border-box;
     }
 
     .JoinPage #join_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
         width: 90%;
     }
 
     .JoinPage #join_container h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
         color: #525252;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 1.2em;
     }
 
     .JoinPage #join_container .joinbox {
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #ffffff;
         border: none;
         border-top: 2px solid #f2f2f2;
         border-radius: 0;
         padding-top: 1em;
+    }
+
+    .JoinPage #join_container .joinbox .zip-box {
+        display: flex;
     }
 
     .JoinPage #join_container .joinbox input[type='text'],

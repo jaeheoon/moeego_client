@@ -91,7 +91,7 @@ const BookMarkPro = () => {
                                 <input type="checkbox" id="check4" name="check4" className='screen-reader' />
                                 <div className='label-box'>
                                     <span className='check-icon' aria-hidden="true"></span>
-                                    <label htmlFor='check4'><Link to="/pro/detail">달인 이름</Link></label>
+                                    <label htmlFor='check4'><Link to="/pro/proview">달인 이름</Link></label>
                                 </div>
                             </div>
                             <div className='infoContainer'>한줄 소개</div>

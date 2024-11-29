@@ -2,23 +2,24 @@
 .App {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   padding: 0;
   margin: 0;
+  flex-direction: column;
 }
 
 /* 메인 콘텐츠를 담는 컨테이너 */
 .main-content {
   width: 60%;
   max-width: 1200px; /* 최대 너비를 설정하여 큰 화면에서도 너무 넓지 않도록 */
-  height: 100%;
   margin: 0 auto; /* 가운데 정렬 */
-  overflow: auto;
 }
+
 @media (max-width: 1250px) {
   .main-content{
     width: 100%;
-    height: 100%;
+    height: 80%;
+    margin: 0 auto;
+    padding: 0;
     overflow: auto;
   }
 }

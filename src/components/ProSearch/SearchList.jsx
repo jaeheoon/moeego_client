@@ -5,7 +5,7 @@ const SearchList = () => {
     return (
         <article className='proSearchListWrap'>
             <div className='proSearchListAWrap'>
-                <Link className='proSearchListLink' to="/pro/detail">
+                <Link className='proSearchListLink' to="/pro/proview">
                     <div className='proSearchListContentWrap'>
                         {/* 제목 */}
                         <div className='proSearchListTitleWrap'>

@@ -63,11 +63,11 @@ const Home_interior = () => {
                             (section) => section === entry.target
                         );
                         if (index !== -1 && index !== activeIndex) {
-                            if(index == 1){
+                            if (index == 1) {
                                 setActiveIndex(index);
                             }
-                            else{
-                                setActiveIndex(index+1); // 현재 보이는 섹션 활성화
+                            else {
+                                setActiveIndex(index + 1); // 현재 보이는 섹션 활성화
                             }
                             handleScrollToActiveMenu(index); // 활성화된 메뉴로 스크롤
                         }
@@ -76,7 +76,7 @@ const Home_interior = () => {
             },
             {
                 root: null,
-                rootMargin: "-220px 0px -60% 0px",
+                rootMargin: "0px 0px 0% 0px",
                 threshold: 0.3,
             }
         );
