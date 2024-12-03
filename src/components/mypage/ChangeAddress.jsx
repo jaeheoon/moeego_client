@@ -27,7 +27,7 @@ const ChangeAddress = () => {
                     <Link className="prev" to="/mypage/account/private">
                         <img src="/image/prev_icon.png" alt="prev" />
                     </Link>
-                    <h1>이메일 변경</h1>
+                    <h1>주소 변경</h1>
                 </div>
                 <form className='ChangeAddressForm'>
                     <div className='ChangeAddressContainer'>

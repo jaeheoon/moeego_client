@@ -244,6 +244,7 @@
 .IntroductionForm .Container .IntroductionWrap .content {
     display: flex;
     align-items: center;
+    height: auto;
     width: 85%;
 }
 
@@ -254,8 +255,9 @@
     font-size: 1.00rem;
     box-sizing: border-box;
     resize: none;
-    overflow: hidden;
-    height: 3em;
+    overflow: auto;
+    min-height: 1rem;
+    max-height: 3rem;
     font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
@@ -299,6 +301,14 @@
 }
 
 @media screen and (max-width: 1250px) {
+    .UserInfoPage {
+        height: 80vh;
+    }
+
+    .UserInfoWrap {
+        height: 100%;
+    }
+
     .IntroductionForm {
         display: flex;
         align-items: flex-end;

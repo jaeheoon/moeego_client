@@ -148,8 +148,7 @@
     }
 
     .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) .ImageFeat img {
-        width: 100px;
-        height: 100px;
+        width: 100%;
         border-radius: 10px;
     }
 

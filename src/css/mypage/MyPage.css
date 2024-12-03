@@ -141,10 +141,15 @@
 
 /* 반응형 스타일 */
 @media screen and (max-width: 1250px) {
+    .MyPage {
+        height: 80vh;
+    }
+
     .MyPageWrap {
         display: flex;
         flex-direction: column;
         margin-bottom: 1em;
+        height: 100%;
     }
 
     .MyPageWrap .ProfileContainer .ProfileSettingPage {

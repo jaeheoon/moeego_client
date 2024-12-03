@@ -111,4 +111,14 @@
     .ChangeAddressWrap .PageTitle h1 {
         width: 90%;
     }
+
+    .ChangeAddressContainer .zipWrap .text {
+        box-sizing: border-box;
+        width: 60%;
+    }
+
+    .ChangeAddressContainer .zipWrap .zipButton {
+        box-sizing: border-box;
+        width: 40%;
+    }
 }

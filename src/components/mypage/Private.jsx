@@ -18,7 +18,7 @@ const Private = () => {
                         <div className='MainContainer'>
                             <div className='Text'>미인증</div>
                             <div className='Button'>
-                                <input type="button" value="본인인증이 필요해요" />
+                                <input type="button" value="본인인증" />
                             </div>
                         </div>
                     </div>
