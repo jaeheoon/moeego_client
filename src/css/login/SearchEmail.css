@@ -1,16 +1,31 @@
-.SearchEmailPage #searchEmail_container {
+.SearchEmailPage {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
+}
+
+.SearchEmailPage #searchEmail_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
   margin: 0 auto; 
   padding: 20px;
-  box-sizing: border-box;
+}
+
+.SearchEmailPage #searchEmail_container .modal-overlay .modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .SearchEmailPage .searchEmail-align {
-  width: 320px; 
+  width: 80%;
   align-items: center;
   margin-bottom: 10px;
 }
@@ -21,32 +36,43 @@
   margin-bottom: 25px;
 }
 
+.SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailwrite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
 .SearchEmailPage .phone_label {
   font-size: 15px;  
   font-weight: bold;
 }
 
 .SearchEmailPage .searchEmailbox {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   border: 2px solid #F4F4F4;
-  width: 500px;
-  height: 300px;
   border-radius: 15px;
   background-color: #F4F4F4;
-  box-sizing: border-box;
   padding-top: 1em;
   padding-bottom: 1em;
-  position: relative;
 }
 
 .SearchEmailPage .phonecheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px; 
   border-style: none;
   padding: 12px 12px; 
-  font-size: 16px; 
-  width: 320px; 
+  font-size: 16px;
+  width: 100%;
   border: 2px solid #ffffff;
   box-sizing: border-box;
   margin-bottom: 20px;
@@ -75,18 +101,25 @@
   padding: 10px 15px;
 }
 
+.SearchEmailPage .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
 .SearchEmailPage .completeBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
   box-sizing: border-box;
-  padding: 10px 20px;           
-  font-size: 16px;              
-  border-radius: 10px;             
-  color: white;   
-  width: 320px;            
-  cursor: pointer;  
+  gap: 0.5em;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: white;
+  width: 100%;
+  cursor: pointer;
   font-weight: bold;
   border: 1px solid #FFD8E4;   
   background-color: #FFD8E4; 
@@ -103,9 +136,18 @@
   position: relative;
 }
 
+.SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
 .SearchEmailPage .input-container {
   display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 .phonecheckbox {
@@ -144,34 +186,59 @@
 
 @media screen and (max-width: 1250px) {
   .SearchEmailPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     width: 100%;
+    height: 100%;
   }
 
   .SearchEmailPage #searchEmail_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     width: 100%;
+    height: 100%;
   }
 
   .SearchEmailPage #searchEmail_container .modal-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     width: 100%;
   }
 
   .SearchEmailPage #searchEmail_container .modal-overlay .modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     width: 100%;
   }
 
   .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     width: 100%;
     background-color: #ffffff;
   }
 
-  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite {
-    margin-bottom: 0.5em;
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite .phonecheckbox::placeholder {
+    font-size: 0.8rem;
   }
 
   .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite .checknumBtn {
-    border: none;
-    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: right;
     box-sizing: border-box;
+    background-color: transparent;
+    border: none;
     color: #fcc1cc;
     margin: 0;
     width: 5em;
@@ -179,9 +246,16 @@
     border-radius: 0;
   }
 
+  .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
+
   .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite .checknumBtn:hover,
   .SearchEmailPage #searchEmail_container .modal-overlay .modal-content .searchEmailbox .searchEmailwrite .checknumBtn:active {
-    border: 1px solid #fcc1cc;
+    color: lightcoral;
     font-weight: bold;
   }
 }

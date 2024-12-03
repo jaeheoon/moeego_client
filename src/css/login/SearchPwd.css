@@ -1,62 +1,106 @@
+.SearchPwdPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
 .SearchPwdPage #searchPwd_container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   width: 100%;
+  height: 100%;
   margin: 0 auto; 
   padding: 20px;
-  box-sizing: border-box;
-  z-index: 6000;
+  z-index: 9999;
 }
 
-.SearchPwdPage .searchPwd-align{
-  width: 350px; 
+.SearchPwdPage #searchPwd_container .modal-overlay {
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox {
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 2px solid #F4F4F4;
+  background-color: #F4F4F4;
+  width: 100%;
+  border-radius: 15px;
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+}
+
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .searchPwd-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  flex-direction: column;
+  width: 80%;
   margin-bottom: 10px;
   margin-top: -5px;
 }
 
-.SearchPwdPage .searchPwdbox h1{
-  font-size: 30px;
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .searchPwd-align .email_label {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   margin-top: 25px;
   margin-bottom: 25px;
 }
 
-.SearchPwdPage .email_label{
-  font-size: 15px;  
-  font-weight: bold;
-}
-
-.SearchPwdPage .searchPwdbox {
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .box {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  border: 2px solid #F4F4F4;
-  width: 500px;
-  height: 320px;
-  border-radius: 15px;
-  background-color: #F4F4F4;
-  box-sizing: border-box;
-  padding-top: 1em;
-  padding-bottom: 1.5em;
-  position: relative; 
-  
+  justify-content: center;
+  width: 100%;
 }
 
-.SearchPwdPage .checkemailbox{
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .box .checkemailbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   border-radius: 10px; 
   border-style: none;
   padding: 12px 12px; 
   font-size: 16px; 
-  width: 350px; 
+  width: 80%;
   border: 2px solid #ffffff;
-  box-sizing: border-box;
-  margin-bottom: -8px;
-  margin-top: -50px;
 }
 
-.SearchPwdPage .search-warn {
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .searchPwd-align .search-warn {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
   color: #737373; 
   font-size: 11px;  
   text-decoration: none;
@@ -66,7 +110,7 @@
   margin-top: 1.3em;
 }
 
-.SearchPwdPage .emailsendBtn {
+.SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .emailsendBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +120,7 @@
   font-size: 16px;              
   border-radius: 10px;             
   color: white;   
-  width: 350px;            
+  width: 80%;
   cursor: pointer;  
   font-weight: bold;
   border: 1px solid #FFD8E4;   
@@ -88,6 +132,7 @@
   background-color: white; 
   color: #fd9bb9; 
 }
+
 .searchPwdbox input[type="email"]:focus,
 .searchPwdbox input[type="email"]:active,
 .searchPwdbox input[type="email"]:not(:placeholder-shown){
@@ -133,11 +178,32 @@
     background-color: #ffffff;
   }
 
+  .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .searchPwd-align .email_label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+
   .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .box {
     margin-bottom: 1.2em;
   }
 
+  .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .box .checkemailbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #fcc1cc;
+    border-radius: 0;
+  }
+
   .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .emailsendBtn {
     margin-top: 0;
+  }
+
+  .SearchPwdPage #searchPwd_container .modal-overlay .modal-content .searchPwdbox .searchPwd-align .search-warn:nth-child(2) {
+    line-height: 1rem;
   }
 }
