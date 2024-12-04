@@ -94,7 +94,7 @@ const App = () => {
                       <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
 
                       {/* 카테고리 페이지 */}
-                      <Route path={"/category/home"} element={<div className='main-content'><Home_interior /></div>} />
+                      <Route path={"/category/:mainCateNo"} element={<div className='main-content'><Home_interior /></div>} />
                       <Route path={"/category/outsourcing"} element={<div className='main-content'><Outsourcing /></div>} />
                       <Route path={"/category/fashion"} element={<div className='main-content'><Fashion_beauty /></div>} />
                       <Route path={"/category/study"} element={<div className='main-content'><Study /></div>} />

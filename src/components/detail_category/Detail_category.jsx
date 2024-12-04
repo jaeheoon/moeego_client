@@ -1,47 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../../css/detail_category/Detail_category.css";
+import apiAxios from '../../api/apiAxios';
 
 const Detail_category = () => {
+    const [categories, setCategories] = useState([]);
+    const [mainCateNo, setMainCateNo] = useState('');
+
+    useEffect(() => {
+        apiAxios
+            .get("/api/maincategory")
+            .then((response) => {
+                setCategories(response.data);
+            })
+            .catch((err) => {
+                console.error("Error fetching articles:", err);
+                setError(err);
+            });
+    },[])
+
     return (
         <div className='detailCategoryPage'>
             <div className="categories">
-                <Link to="/category/home">
-                    <div className="category-item">
-                        <img src="/image/home.png" alt="홈/인테리어" />
-                        <span>홈/인테리어</span>
-                    </div>
-                </Link>
-                <Link to="/category/outsourcing">
-                    <div className="category-item">
-                        <img src="/image/si.png" alt="외주" />
-                        <span>외주</span>
-                    </div>
-                </Link>
-                <Link to="/category/fashion">
-                    <div className="category-item">
-                        <img src="/image/fashion.png" alt="패션/뷰티" />
-                        <span>패션/뷰티</span>
-                    </div>
-                </Link>
-                <Link to="/category/study">
-                    <div className="category-item">
-                        <img src="/image/study.png" alt="직무/과외" />
-                        <span>직무/과외</span>
-                    </div>
-                </Link>
-                <Link to="/category/hobby">
-                    <div className="category-item">
-                        <img src="/image/hobby.png" alt="취미/자기계발" />
-                        <span>취미/자기계발</span>
-                    </div>
-                </Link>
-                <Link to="/category/car">
-                    <div className="category-item">
-                        <img src="/image/car.png" alt="자동차" />
-                        <span>자동차</span>
-                    </div>
-                </Link>
+                {
+                    categories.map(item => (
+                        <Link to={`/category/${item.mainCateNo}`} key={item.mainCateNo}>
+                            <div className="category-item">
+                                <img src="/image/home.png" alt={item.mainCateName} />
+                                <span>{item.mainCateName}</span>
+                            </div>
+                        </Link>
+                    ))
+                }
             </div>
         </div>
     );
