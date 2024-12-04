@@ -39,7 +39,7 @@ const FreeBoardForm = () => {
         apiAxios
             .get(apiUrl)
             .then((response) => {
-                setArticles(response.data);
+                setArticles(response.data.content);
             })
             .catch((err) => {
                 console.error("Error fetching articles:", err);

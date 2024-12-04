@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "/src/css/articles/PopularPostList.css";
 import FeedItem from '../FreeBoardForm/FeedItem';
 import apiAxios from '../../../api/apiAxios';
+import Loading from '../../loading/loading';
 
 const PopularPostList = () => {
     const [hotArticle, setHotArticle] = useState(null);
@@ -15,7 +16,7 @@ const PopularPostList = () => {
         apiAxios
             .get('/api/article/hot')
             .then((response) => {
-                const hotArticles = response.data;
+                const hotArticles = response.data.content;
                 if (hotArticles.length > 0) {
                     setHotArticle(hotArticles[0]);
                 }
@@ -30,7 +31,7 @@ const PopularPostList = () => {
     }, []);
 
     if (isLoading) {
-        return <div className='loadingPage'></div>;
+        return <div className='loadingPage'><Loading/></div>;
     }
     return (
         <section>
