@@ -1,29 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { MyPageContext } from '../../context/mypage/MyPageContext';
 import { Link } from 'react-router-dom';
 import '../../css/mypage/Account.css';
 
 const Account = () => {
-    const [isToggleWrap1Visible, setIsToggleWrap1Visible] = useState(false);
-    const [isToggleWrap2Visible, setIsToggleWrap2Visible] = useState(false);
+    const {
+        nickname,
+        setNickname,
+        introduction,
+        setIntroduction,
+        isToggleWrap1Visible,
+        isToggleWrap2Visible,
+        toggleWrap1,
+        toggleWrap2,
+        loading,
+    } = useContext(MyPageContext);
 
-    const [nickname, setNickname] = useState('김달인'); // 닉네임 상태
-    const [introduction, setIntroduction] = useState('저는 코딩/개발/디자인 달인입니다. 서울 지역에서 활동합니다.'); // 소개 상태
-
-    const handleToggleWrap1 = () => {
-        setIsToggleWrap1Visible((prevState) => !prevState);
-    };
-
-    const handleToggleWrap2 = () => {
-        setIsToggleWrap2Visible((prevState) => !prevState);
-    };
-
-    const handleNicknameChange = (e) => {
-        setNickname(e.target.value);
-    };
-
-    const handleIntroductionChange = (e) => {
-        setIntroduction(e.target.value);
-    };
+    const handleNicknameChange = (e) => setNickname(e.target.value);
+    const handleIntroductionChange = (e) => setIntroduction(e.target.value);
 
     return (
         <div className='UserInfoPage'>
@@ -51,10 +45,10 @@ const Account = () => {
                                     <input type="text" value={nickname} onChange={handleNicknameChange} maxLength={20} />
                                 </div>
                             ) : (
-                                <div className='Title'>김달인</div>
+                                <div className='Title'>{nickname}</div>
                             )}
                             <div className="Button">
-                                <input id='toggleBtn1' type="button" value="수정" onClick={handleToggleWrap1} />
+                                <input id='toggleBtn1' type="button" value="수정" onClick={toggleWrap1} />
                             </div>
                         </div>
                     </div>
@@ -74,14 +68,14 @@ const Account = () => {
                         <h3 className="SubTitle">달인 소개</h3>
                         <div className='IntroductionWrap'>
                             {!isToggleWrap2Visible ? (
-                                <div className='content'>저는 코딩/개발/디자인 달인입니다. 서울 지역에서 활동합니다.</div>
+                                <div className='content'>{introduction}</div>
                             ) : (
                                 <div className='content'>
                                     <textarea type="text" value={introduction} onChange={handleIntroductionChange} maxLength={50}></textarea>
                                 </div>
                             )}
                             <div className='buttonwrap'>
-                                <input type="button" id='toggleBtn2' value="수정" onClick={handleToggleWrap2} />
+                                <input type="button" id='toggleBtn2' value="수정" onClick={toggleWrap2} />
                             </div>
                         </div>
                     </div>
