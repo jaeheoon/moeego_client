@@ -53,7 +53,7 @@ const ProReview = () => {
                                         많이 웃고 즐기는 체육대회가 되었습니다
                                     </div>
                                     <div className="review-photo">
-                                        <img src="../src/image/review1.webp" alt="리뷰사진1" />
+                                        <img src="/src/image/review1.webp" alt="리뷰사진1" />
                                     </div>
                                 </section>
                                 <div><span className="date">2024.10.15</span></div>
@@ -75,7 +75,7 @@ const ProReview = () => {
                                         많이 웃고 즐기는 체육대회가 되었습니다
                                     </div>
                                     <div className="review-photo">
-                                        <img src="../src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
+                                        <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
                                     </div>
                                 </section>
                                 <div><span className="date">2024.10.15</span></div>
@@ -97,7 +97,7 @@ const ProReview = () => {
                                         많이 웃고 즐기는 체육대회가 되었습니다
                                     </div>
                                     <div className="review-photo">
-                                        <img src="../src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
+                                        <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
                                     </div>
                                 </section>
                                 <div><span className="date">2024.10.15</span></div>
@@ -119,7 +119,7 @@ const ProReview = () => {
                                         많이 웃고 즐기는 체육대회가 되었습니다
                                     </div>
                                     <div className="review-photo">
-                                        <img src="../src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
+                                        <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
                                     </div>
                                 </section>
                                 <div><span className="date">2024.10.15</span></div>
@@ -141,7 +141,7 @@ const ProReview = () => {
                                         많이 웃고 즐기는 체육대회가 되었습니다
                                     </div>
                                     <div className="review-photo">
-                                        <img src="../src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
+                                        <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
                                     </div>
                                 </section>
                                 <div><span className="date">2024.10.15</span></div>
@@ -163,7 +163,7 @@ const ProReview = () => {
                                         많이 웃고 즐기는 체육대회가 되었습니다
                                     </div>
                                     <div className="review-photo">
-                                        <img src="../src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
+                                        <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
                                     </div>
                                 </section>
                                 <div><span className="date">2024.10.15</span></div>
@@ -185,7 +185,7 @@ const ProReview = () => {
                                         많이 웃고 즐기는 체육대회가 되었습니다
                                     </div>
                                     <div className="review-photo">
-                                        <img src="../src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
+                                        <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
                                     </div>
                                 </section>
                                 <div><span className="date">2024.10.15</span></div>

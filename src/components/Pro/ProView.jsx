@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ProInfo from './ProInfo';
 import ProDetail from './ProDetail';
 import ProReview from './ProReview';
 import Reservation from './Reservation';
 import "../../css/pro/ProView.css";
+//---------------------------------
+import { ProContext } from '../../context/pro/ProContext';
+import { useLocation, useParams } from 'react-router-dom';
 
 const ProView = () => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const proNo = queryParams.get('proNo');
+    //const { id } = useParams(); 
+    const { pro, updatePro } = useContext(ProContext); 
 
     const [modalType, setModalType] = useState(null);
 
@@ -28,18 +36,39 @@ const ProView = () => {
         document.body.style.overflow = "auto";
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            // 예시 데이터 (API에서 데이터를 가져오는 로직으로 대체 가능)
+            const fetchedData = {
+                id: proNo,
+                title: `프로필 제목 ${proNo}`,
+                description: `상세 정보 for ${proNo}`,
+                rating: 4.5,
+                reviews: 1234
+            };
+            updatePro(fetchedData); // 데이터를 ProContext에 업데이트
+        };
+
+        fetchData();
+    }, [proNo]);
+
+    if (!pro) {
+        return <div>로딩 중...</div>; // pro 데이터가 없으면 로딩 중 화면 표시
+    }
+
     return (
         <section className="detail-view">
             <section className="dalin-photo">
                 <div className="dalin-photo-background">
-                    <img src="../src/image/mc.jpg" alt="긴딩동" width="100" />
+                    {/* <img src="../src/image/mc.jpg" alt="긴딩동" width="100" /> */}
+                    <img src="/src/image/mc.jpg" alt="긴딩동" width="100" />
                 </div>
-                <div class="dalin-photo-main">
-                    <img src="../src/image/mc.jpg" alt="딩동" width="100" height="100" />
+                <div className="dalin-photo-main">
+                    <img src="/src/image/mc.jpg" alt="딩동" width="100" height="100" />
                 </div>
             </section>
             <section className='detail-view-wrap'>
-                <section class="dalin-mainpage">
+                <section className="dalin-mainpage">
                     <div className='leftWrap'>
                         <div className="reservationBtn-modal-wrap">
                             <div className='reservationBtn-modal-button-wrap'>
@@ -51,9 +80,9 @@ const ProView = () => {
                                 <Reservation closeModal={closeModal} />
                             )}
                         </div>
-                        <ProInfo />
-                        <ProDetail />
-                        <ProReview />
+                        <ProInfo pro={pro}/>
+                        <ProDetail pro={pro}/>
+                        <ProReview pro={pro}/>
                     </div>
                     {/* <div className='rightWrap'>
                         <div className='relativeWrap'>
@@ -62,7 +91,7 @@ const ProView = () => {
                     </div> */}
                 </section>
             </section>
-        </section >
+        </section>
     );
 };
 
