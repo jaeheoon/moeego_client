@@ -1,12 +1,12 @@
 import React from 'react';
 
-const MyCommentItem = () => {
+const MyCommentItem = ({item}) => {
     return (
         <div className='MyCommentItem'>
             <div className='MyCommentItemContentWrap'>
-                <div className='MyCommentItemContent'>작성내용</div>
-                <div className='MyCommentItemTitle'>작성된글제목</div>
-                <div className='MyCommentItemDate'>작성일</div>
+                <div className='MyCommentItemContent'>{item.content}</div>
+                <div className='MyCommentItemTitle'>{item.articleSubject}</div>
+                <div className='MyCommentItemDate'>{item.writeDate}</div>
             </div>
         </div>
     );

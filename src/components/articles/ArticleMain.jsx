@@ -13,7 +13,7 @@ const ArticleMain = () => {
         apiAxios
             .get("/api/article")
             .then((response) => {
-                setArticles(response.data);
+                setArticles(response.data.content);
             })
             .catch((err) => {
                 console.error("Error fetching articles:", err);
