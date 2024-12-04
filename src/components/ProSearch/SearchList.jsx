@@ -11,7 +11,7 @@ const SearchList = ({ id, name, rating, reviews, experience, intro, img_main }) 
                         {/* 제목 */}
                         <div className='proSearchListTitleWrap'>
                             <h3>
-                                {name} 
+                                {name}
                             </h3>
                         </div>
 
@@ -30,7 +30,7 @@ const SearchList = ({ id, name, rating, reviews, experience, intro, img_main }) 
                 </Link>
                 {/* 프로필 이미지 */}
                 <div className='proSearchListProfileWrap'>
-                    <div className="user-profile-picture pro-profile-picture">
+                    <div className="user-profile-picture">
                         <img
                             src={img_main}
                             width={150}

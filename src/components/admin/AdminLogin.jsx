@@ -9,17 +9,17 @@ const AdminLogin = () => {
                 <form className="adminLogin-form">
                     <div className="adminLogin-form-group">
                         <label>name</label>
-                        <input 
-                            type="text" 
-                            placeholder="Enter your name" 
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
                             className="adminLogin-input"
                         />
                     </div>
                     <div className="adminLogin-form-group">
                         <label>Password</label>
-                        <input 
-                            type="password"  
-                            placeholder="Enter your password" 
+                        <input
+                            type="password"
+                            placeholder="Enter your password"
                             className="adminLogin-input"
                         />
                     </div>
