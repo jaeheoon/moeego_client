@@ -5,7 +5,7 @@ import DetailCardList from "./DetailCardList";
 import { useParams } from "react-router-dom";
 import apiAxios from "../../api/apiAxios";
 
-const Home_interior = () => {
+const SelectCategory = () => {
     const { mainCateNo } = useParams();
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionsRef = useRef([]);
@@ -20,7 +20,7 @@ const Home_interior = () => {
 
         // mainCateNo를 기반으로 서브 카테고리 데이터 받아오기
         apiAxios
-            .get(`/api/subcategory/${mainCateNo}`)
+            .get(`/api/sub_category/${mainCateNo}`)
             .then((response) => {
                 setSubCategories(response.data); // 서브 카테고리 데이터 설정
             })
@@ -77,4 +77,4 @@ const Home_interior = () => {
     );
 };
 
-export default Home_interior;
+export default SelectCategory;

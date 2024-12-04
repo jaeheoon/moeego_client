@@ -9,7 +9,7 @@ const Detail_category = () => {
 
     useEffect(() => {
         apiAxios
-            .get("/api/maincategory")
+            .get("/api/main_category")
             .then((response) => {
                 setCategories(response.data);
             })

@@ -52,12 +52,7 @@ import Success from './components/mypage/Success';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
 
 // category
-import Home_interior from './components/detail_category/Home_interior';
-import Outsourcing from './components/detail_category/Outsourcing';
-import Fashion_beauty from './components/detail_category/Fashion_beauty';
-import Study from './components/detail_category/Study';
-import Hobby from './components/detail_category/Hobby';
-import Car from './components/detail_category/Car';
+import SelectCategory from './components/detail_category/SelectCategory';
 
 // about
 import About from './components/about/About';
@@ -94,12 +89,7 @@ const App = () => {
                       <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
 
                       {/* 카테고리 페이지 */}
-                      <Route path={"/category/:mainCateNo"} element={<div className='main-content'><Home_interior /></div>} />
-                      <Route path={"/category/outsourcing"} element={<div className='main-content'><Outsourcing /></div>} />
-                      <Route path={"/category/fashion"} element={<div className='main-content'><Fashion_beauty /></div>} />
-                      <Route path={"/category/study"} element={<div className='main-content'><Study /></div>} />
-                      <Route path={"/category/hobby"} element={<div className='main-content'><Hobby /></div>} />
-                      <Route path={"/category/car"} element={<div className='main-content'><Car /></div>} />
+                      <Route path={"/category/:mainCateNo"} element={<div className='main-content'><SelectCategory /></div>} />
                       <Route path={"/about"} element={<About />} />
                       <Route path="/pro/search" element={<div className='main-content'><ProSearch /></div>} />
                       <Route path="/pro" element={<div className='main-content'><ProView /></div>} />
