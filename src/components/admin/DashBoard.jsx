@@ -1,64 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import '../../css/admin/DashBoard.css';
 import { useNavigate } from 'react-router-dom';
 import MemberPieChart from './MemberPieChart';
 import LineChart from './LineChart';
+import { AdminContext } from '../../context/admin/AdminContext'; 
 
 const DashBoard = () => {
     const navigate = useNavigate(); // 경로 이동 훅
+    const { events, notices, weekData, expertData, allmemberData ,loading, error } = useContext(AdminContext);  // AdminContext에서 데이터 가져오기
 
-    // 예제 데이터
-    const [events, setEvents] = useState([
-        { id: 1, title: 'Event 1', subject: 'subject1', view: 20, date: '2024-11-21' },
-        { id: 2, title: 'Event 2', subject: 'subject2', view: 30, date: '2024-11-22' },
-        { id: 3, title: 'Event 3', subject: 'subject3', view: 10, date: '2024-11-23' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-        { id: 4, title: 'Event 4', subject: 'subject4', view: 50, date: '2024-11-24' },
-    ]);
+    // 로딩 중일 때 처리
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-    const [notices, setNotices] = useState([
-        { id: 1, title: 'Notice 1', subject: 'subject1', view: 50, date: '2024-11-21' },
-        { id: 2, title: 'Notice 2', subject: 'subject2', view: 30, date: '2024-11-22' },
-        { id: 3, title: 'Notice 3', subject: 'subject3', view: 280, date: '2024-11-23' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-        { id: 4, title: 'Notice 4', subject: 'subject4', view: 60, date: '2024-11-24' },
-    ]);
-
-    // 일주일 동안 회원 가입 수 데이터 (예시)
-    const weekData = [
-        { date: '11.21', count: 5 },
-        { date: '11.22', count: 8 },
-        { date: '11.23', count: 3 },
-        { date: '11.24', count: 10 },
-        { date: '11.25', count: 4 },
-        { date: '11.26', count: 6 },
-        { date: '11.27', count: 7 }
-    ];
-
-    const expertData = [
-        { date: '11.21', count: 2 },
-        { date: '11.22', count: 3 },
-        { date: '11.23', count: 1 },
-        { date: '11.24', count: 5 },
-        { date: '11.25', count: 2 },
-        { date: '11.26', count: 4 },
-        { date: '11.27', count: 3 },
-    ];
+    // 에러가 있을 경우 처리
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className="adminDashBoard-container">
@@ -68,7 +27,7 @@ const DashBoard = () => {
                 </div>
                 <div className="chart-wrapper">
                     <LineChart data={weekData} expertData={expertData} /> {/* 라인 차트 */}
-                    <MemberPieChart /> {/* 파이 차트 */}
+                    <MemberPieChart data={allmemberData}/> {/* 파이 차트 */}
                 </div>
 
                 <div className="adminDashBoard-count-wrapper">
