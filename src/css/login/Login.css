@@ -72,7 +72,7 @@
     box-sizing: border-box;
 }
 
-.LoginPage .emailLoginBtn, .LoginPage .kakaoLoginBtn, .LoginPage .naverLoginBtn {
+.LoginPage .emailLoginBtn, .LoginPage .kakaoLoginBtn, .LoginPage .naverLoginBtn, .LoginPage .googleLoginBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,6 +128,21 @@
     content: url("../../src/image/naver_green.svg");
 }
 
+.LoginPage .googleLoginBtn {
+    border: 1px solid #2e9dff;   
+    background-color: #2e9dff;  
+}
+
+.LoginPage .googleLoginBtn:hover {
+    background-color: #ffffff;
+    border-color: #2e9dff;
+    color:#2e9dff;
+}
+
+.LoginPage .googleLoginBtn:hover .googleImg {
+    content: url("../../src/image/google_blue.svg");
+}
+
 .LoginPage .find {
     display: inline-block; 
     margin-right: 25px; 
@@ -167,11 +182,23 @@
 }
 
 .LoginPage .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     margin-top: 1em;
     margin-bottom: 1em;
 }
 
-.LoginPage .error {
+.LoginPage .errorBox {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoginPage .errorBox .error {
+    text-align: left;
     font-size: 0.725rem;
     width: 80%;
     color: red;
@@ -266,5 +293,9 @@
     .LoginPage #login_container .loginbox input[type='email']:not(:placeholder-shown) {
         border-bottom: 2px solid lightcoral;
         box-sizing: border-box;
+    }
+
+    .LoginPage .errorBox .error {
+        width: 100%;
     }
 }

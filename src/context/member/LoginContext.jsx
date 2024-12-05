@@ -1,7 +1,7 @@
-import React, { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import apiAxios from "../../api/apiAxios";
-import Cookies from "js-cookie";
+import React, { createContext, useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
+import apiAxios from '../../api/apiAxios';
 
 const LoginContext = createContext();
 
@@ -10,12 +10,16 @@ const LoginProvider = ({ children }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [modalType, setModalType] = useState(null);
-    const [login, setLogin] = useState(null);
-    const navigate = useNavigate();
 
+    const { setIsLoggedIn, setLoginUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const prevUrl = location.state || "/";
+
+    // 모달 열기/닫기
     const openModal = (type) => {
-        setModalType((prevType) => (prevType === type ? null : type));
-        document.body.style.overflow = type ? "hidden" : "auto";
+        setModalType(type);
+        document.body.style.overflow = "hidden";
     };
 
     const closeModal = () => {
@@ -23,33 +27,45 @@ const LoginProvider = ({ children }) => {
         document.body.style.overflow = "auto";
     };
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-
+    const fetchLogin = async (credentials) => {
         try {
-            const response = await apiAxios.post("/api/login", { email, password });
+            const response = await apiAxios.post("/api/login", new URLSearchParams(credentials), {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                withCredentials: true,
+            });
 
-            if (response.data.success) {
-                const { user } = response.data; // 서버에서 쿠키 설정
-                setLogin(user); // 사용자 정보 저장
-                navigate("/"); // 로그인 후 홈으로 이동
+            if (response.status === 200) {
+                console.log('로그인 성공 : ' + response.data.name);
+                const { name } = response.data; // JSON 데이터에서 `name` 가져오기
+
+                window.localStorage.setItem("access", response.headers["access"]);
+                window.localStorage.setItem("name", name);
+
+                setIsLoggedIn(true);
+                setLoginUser(name);
+
+                navigate(prevUrl, { replace: true });
             } else {
-                setError("이메일 또는 비밀번호가 틀렸습니다.");
+                alert(`Login failed: ${response.data.message || 'Invalid credentials'}`);
             }
-        } catch (err) {
-            console.error("로그인 실패:", err);
-            setError("오류가 발생했습니다. 다시 시도해 주세요.");
+        } catch (error) {
+            console.error('Error during login: ', error);
+            console.log('로그인 중 오류가 발생했습니다.');
         }
     };
 
-    const handleLogout = async () => {
-        try {
-            await apiAxios.post("/api/logout"); // 서버에서 쿠키 삭제
-            setLogin(null); // 로그인 상태 초기화
-            navigate("/login"); // 로그아웃 후 로그인 페이지로 이동
-        } catch (err) {
-            console.error("로그아웃 실패:", err);
-        }
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const credentials = { email: email, pwd: password };
+        console.log(credentials);
+        fetchLogin(credentials);
+    }
+
+    // 소셜 로그인
+    const handleSocialLogin = (provider) => {
+        apiAxios.get(`/api/oauth2/authorization/${provider}`);
     };
 
     return (
@@ -60,15 +76,11 @@ const LoginProvider = ({ children }) => {
                 password,
                 setPassword,
                 error,
-                setError,
                 modalType,
-                setModalType,
-                login,
-                setLogin,
                 openModal,
                 closeModal,
                 handleLogin,
-                handleLogout,
+                handleSocialLogin,
             }}
         >
             {children}

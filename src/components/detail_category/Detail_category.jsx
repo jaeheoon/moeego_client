@@ -17,7 +17,7 @@ const Detail_category = () => {
                 console.error("Error fetching articles:", err);
                 setError(err);
             });
-    },[])
+    }, [])
 
     return (
         <div className='detailCategoryPage'>

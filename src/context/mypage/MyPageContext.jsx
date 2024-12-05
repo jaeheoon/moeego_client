@@ -10,23 +10,6 @@ const MyPageProvider = ({ children }) => {
     const [isToggleWrap2Visible, setIsToggleWrap2Visible] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const response = await apiAxios.get('/api/mypage/account');
-                const { nickname, introduction } = response.data;
-
-                setNickname(nickname);
-                setIntroduction(introduction);
-            } catch (error) {
-                console.error('axios 요청 오류:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchUserInfo();
-    }, []);
-
     const toggleWrap1 = () => setIsToggleWrap1Visible((prev) => !prev);
     const toggleWrap2 = () => setIsToggleWrap2Visible((prev) => !prev);
 

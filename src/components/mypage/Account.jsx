@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { MyPageContext } from '../../context/mypage/MyPageContext';
 import { Link } from 'react-router-dom';
 import '../../css/mypage/Account.css';
@@ -18,6 +18,23 @@ const Account = () => {
 
     const handleNicknameChange = (e) => setNickname(e.target.value);
     const handleIntroductionChange = (e) => setIntroduction(e.target.value);
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const response = await apiAxios.get('/api/mypage/account');
+                const { nickname, introduction } = response.data;
+
+                setNickname(nickname);
+                setIntroduction(introduction);
+            } catch (error) {
+                console.error('axios 요청 오류:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchUserInfo();
+    }, []);
 
     return (
         <div className='UserInfoPage'>

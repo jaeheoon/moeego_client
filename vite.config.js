@@ -8,7 +8,7 @@ export default defineConfig({
       "/api": {
         target: "http://localhost:8080", // Spring Boot 서버 주소
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""), // "/api"를 제거하고 Spring Boot로 전달
+        rewrite: (path) => path.replace(/^\/api/, ""), // "/api" 제거
       },
     },
   },

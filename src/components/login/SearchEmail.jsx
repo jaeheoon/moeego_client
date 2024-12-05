@@ -9,7 +9,7 @@ const SearchEmail = ({ closeModal }) => {
                 <div className="modal-overlay" onClick={closeModal}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <form className="searchEmailbox">
-                            <div class="closeBtn">
+                            <div className="closeBtn">
                                 <button className="searchEamil-modal-close" onClick={closeModal}>
                                     X
                                 </button>

@@ -9,7 +9,7 @@ const SearchPwd = ({ closeModal }) => {
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <form className="searchPwdbox">
-              <div class="closeBtn">
+              <div className="closeBtn">
                 <button className="searchPwd-modal-close" onClick={closeModal}>
                   X
                 </button>

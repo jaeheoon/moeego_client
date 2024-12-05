@@ -61,7 +61,7 @@ const Private = () => {
                 </Link>
                 <hr />
                 <div className='functionContainer'>
-                    <Link className='LinkTag2' to="/mypage/account/private/logout">로그아웃</Link>
+                    <Link className='LinkTag2' to="/logout">로그아웃</Link>
                     <Link className='LinkTag2' to="/mypage/account/private/signout">회원탈퇴</Link>
                 </div>
             </div>

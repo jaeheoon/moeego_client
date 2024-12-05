@@ -13,6 +13,7 @@ const Login = () => {
         setPassword,
         error,
         handleLogin,
+        handleSocialLogin,
         openModal,
         modalType,
         closeModal,
@@ -50,7 +51,9 @@ const Login = () => {
                         />
                     </div>
 
-                    {error && <span className="error">{error}</span>}
+                    <div className='errorBox'>
+                        {error && <span className="error">{error}</span>}
+                    </div>
 
                     <div className="box">
                         <button type="submit" className="emailLoginBtn">
@@ -69,29 +72,37 @@ const Login = () => {
                             <Link to="/signup">회원가입</Link>
                         </div>
                     </div>
+                    <br />
 
-                    <div
-                        className={`ModalWrap ${modalType ? "show" : ""}`}
-                        onClick={() => closeModal()}
-                    >
-                        {modalType === "email" && <SearchEmail closeModal={closeModal} />}
-                        {modalType === "password" && <SearchPwd closeModal={closeModal} />}
+                    <div className='snsWrap'>
+                        <button type="button" className="naverLoginBtn" onClick={() => handleSocialLogin("naver")}>
+                            <img className="naverImg" src="/image/naver_white.svg" alt="네이버" width="18" height="16" />
+                            네이버로 시작
+                        </button>
                     </div>
                     <br />
                     <div className='snsWrap'>
-                        <button type="button" className="kakaoLoginBtn">
+                        <button type="button" className="kakaoLoginBtn" onClick={() => handleSocialLogin("kakao")}>
                             <img className="kakaoImg" src="/image/kakao_white.svg" alt="카카오" width="18" height="16" />
                             카카오로 시작
                         </button>
                     </div>
                     <br />
                     <div className='snsWrap'>
-                        <button type="button" className="naverLoginBtn">
-                            <img className="naverImg" src="/image/naver_white.svg" alt="네이버" width="18" height="16" />
-                            네이버로 시작
+                        <button type="button" className="googleLoginBtn" onClick={() => handleSocialLogin("google")}>
+                            <img className="googleImg" src="/image/google_white.svg" alt="구글" width="18" height="16" />
+                            지메일로 시작
                         </button>
                     </div>
                 </form>
+                <div
+                    className={`ModalWrap ${modalType ? "show" : ""}`}
+                    onClick={() => closeModal()}
+                >
+                    {modalType === "email" && <SearchEmail closeModal={closeModal} />}
+                    {modalType === "password" && <SearchPwd closeModal={closeModal} />}
+                </div>
+                <br />
             </div>
         </div>
     );
