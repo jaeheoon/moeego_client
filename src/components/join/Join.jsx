@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SignUpContext } from '../../context/member/SignUpContext';
-import apiAxios from '../../api/apiAxios';
 import "../../css/join/Join.css";
 
 const Join = () => {
@@ -11,16 +10,14 @@ const Join = () => {
         isReadonly,
         updateSignUpData,
         handleAddressSearch,
-        validateForm,
-        goMain,
-        goLogin
+        submitSignupForm,
     } = useContext(SignUpContext);
 
     useEffect(() => {
         const scriptSrc = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
 
         if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
-            const script = document.createElement('script');
+            const script = document.createElement("script");
             script.src = scriptSrc;
             script.async = true;
             document.body.appendChild(script);
@@ -28,23 +25,8 @@ const Join = () => {
     }, []);
 
     const handleJoinClick = async () => {
-        if (validateForm()) {
-            const combinedAddress = `${signup.address1} ${signup.address2}`.trim();
-            const dataToSubmit = { ...signup, address: combinedAddress };
-
-            try {
-                const response = await apiAxios.post('/api/signup', dataToSubmit);
-                navigate('/signup/success', { state: { name: signup.name } });
-            } catch (error) {
-                console.error('회원가입 실패:', error);
-                alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
-            }
-        } else {
-            return;
-        }
+        await submitSignupForm();
     };
-
-
 
     return (
         <div className="JoinPage">
@@ -63,7 +45,9 @@ const Join = () => {
                             onChange={(e) => updateSignUpData('name', e.target.value)}
                         />
                     </div>
-                    {errors.name && <span className="error">{errors.name}</span>}
+                    <div className='errorWrap'>
+                        {errors.name && <span className="error">{errors.name}</span>}
+                    </div>
 
                     {/* 이메일 입력 */}
                     <div className="join-align">
@@ -76,8 +60,9 @@ const Join = () => {
                             onChange={(e) => updateSignUpData('email', e.target.value)}
                         />
                     </div>
-                    {errors.email && <span className="error">{errors.email}</span>}
-
+                    <div className='errorWrap'>
+                        {errors.email && <span className="error">{errors.email}</span>}
+                    </div>
                     {/* 비밀번호 입력 */}
                     <div className="join-align">
                         <label>비밀번호</label>
@@ -85,12 +70,15 @@ const Join = () => {
                             className="pwdbox"
                             type="password"
                             placeholder="비밀번호를 입력해주세요"
-                            value={signup.password}
+                            value={signup.pwd}
                             maxLength={20}
-                            onChange={(e) => updateSignUpData('password', e.target.value)}
+                            onChange={(e) => updateSignUpData('pwd', e.target.value)}
                         />
                     </div>
-                    {errors.password && <span className="error">{errors.password}</span>}
+
+                    <div className='errorWrap'>
+                        {errors.pwd && <span className="error">{errors.pwd}</span>}
+                    </div>
 
                     {/* 비밀번호 확인 */}
                     <div className="join-align">
@@ -99,12 +87,14 @@ const Join = () => {
                             className="repwdbox"
                             type="password"
                             placeholder="비밀번호를 한번 더 입력해주세요"
-                            value={signup.confirmPassword}
-                            onChange={(e) => updateSignUpData('confirmPassword', e.target.value)}
+                            value={signup.confirmpwd}
+                            onChange={(e) => updateSignUpData('confirmpwd', e.target.value)}
                         />
                     </div>
-                    {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
 
+                    <div className='errorWrap'>
+                        {errors.confirmpwd && <span className="error">{errors.confirmpwd}</span>}
+                    </div>
                     {/* 성별 선택 */}
                     <div className="join-align">
                         <label>성별</label>
@@ -129,7 +119,10 @@ const Join = () => {
                             <label htmlFor="w">여자</label>
                         </div>
                     </div>
-                    {errors.gender && <span className="error">{errors.gender}</span>}
+
+                    <div className='errorWrap'>
+                        {errors.gender && <span className="error">{errors.gender}</span>}
+                    </div>
 
                     {/* 휴대전화 번호 */}
                     <div className="join-align">
@@ -174,7 +167,10 @@ const Join = () => {
                             onClick={handleAddressSearch}
                         />
                     </div>
-                    {errors.zipcode && <span className="error">{errors.zipcode}</span>}
+
+                    <div className='errorWrap'>
+                        {errors.zipcode && <span className="error">{errors.zipcode}</span>}
+                    </div>
 
                     {/* 주소 입력 */}
                     <div className="join-align">
@@ -190,7 +186,10 @@ const Join = () => {
                             onChange={(e) => updateSignUpData('address1', e.target.value)}
                         />
                     </div>
-                    {errors.address1 && <span className="error">{errors.address1}</span>}
+
+                    <div className='errorWrap'>
+                        {errors.address1 && <span className="error">{errors.address1}</span>}
+                    </div>
 
                     <div className="join-align">
                         <label>상세주소</label>
@@ -204,7 +203,10 @@ const Join = () => {
                             onChange={(e) => updateSignUpData('address2', e.target.value)}
                         />
                     </div>
-                    {errors.address2 && <span className="error">{errors.address2}</span>}
+
+                    <div className='errorWrap'>
+                        {errors.address2 && <span className="error">{errors.address2}</span>}
+                    </div>
 
                     {/* 회원가입 버튼 */}
                     <input

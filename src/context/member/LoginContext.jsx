@@ -52,6 +52,7 @@ const LoginProvider = ({ children }) => {
             }
         } catch (error) {
             console.error('Error during login: ', error);
+            setError("아이디 또는 비밀번호를 확인해주세요");
             console.log('로그인 중 오류가 발생했습니다.');
         }
     };

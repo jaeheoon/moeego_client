@@ -1,41 +1,39 @@
-import React, { createContext, useState } from 'react';
-import checkPost from '../../js/daumpost';
-import { useNavigate } from 'react-router-dom';
-import apiAxios from '../../api/apiAxios';
+import React, { createContext, useState } from "react";
+import checkPost from "../../js/daumpost";
+import { useNavigate } from "react-router-dom";
+import apiAxios from "../../api/apiAxios";
 
 const SignUpContext = createContext();
 
 const initialState = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    gender: '',
-    phone: '',
-    authCode: '',
-    zipcode: '',
-    address1: '',
-    address2: '',
-    address: '',
+    name: "",
+    email: "",
+    pwd: "",
+    confirmpwd: "",
+    gender: "",
+    phone: "",
+    zipcode: "",
+    address1: "",
+    address2: "",
+    address: "", // 서버로 통합된 주소를 전송
 };
 
 const initialErrors = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phone: '',
-    gender: '',
-    zipcode: '',
-    address1: '',
-    address2: '',
-    address: '',
+    name: "",
+    email: "",
+    pwd: "",
+    confirmpwd: "",
+    phone: "",
+    gender: "",
+    zipcode: "",
+    address1: "",
+    address2: "",
+    address: "",
 };
 
 const SignUpProvider = ({ children }) => {
     const [signup, setSignup] = useState(initialState);
     const [errors, setErrors] = useState(initialErrors);
-
     const [isReadonly, setIsReadonly] = useState({
         zipcode: false,
         address1: false,
@@ -44,145 +42,141 @@ const SignUpProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
-    const goMain = () => {
-        navigate(`/`);
-    };
+    const goMain = () => navigate(`/`);
+    const goLogin = () => navigate(`/login`);
+    const goSuccess = (name) => navigate(`/signup/success`, { state: { name } });
 
-    const goLogin = () => {
-        navigate(`/`);
-    };
-
-    const updateSignUpData = async (field, value) => {
+    const updateSignUpData = (field, value) => {
         setSignup((prevData) => ({
             ...prevData,
             [field]: value,
         }));
 
-        if (field === 'email') {
-            await checkDuplicateEmail(value);
-        }
-
         validateField(field, value);
     };
 
-    const checkDuplicateEmail = async (email) => {
-        try {
-            const response = await apiAxios.get('/api/signup/check/email', {
-                params: { email },
-            });
-
-            if (response.data) {
-                setErrors((prevErrors) => ({
-                    ...prevErrors,
-                    email: '이미 사용 중인 이메일입니다.',
-                }));
-                return false;
-            } else {
-                setErrors((prevErrors) => ({
-                    ...prevErrors,
-                    email: '',
-                }));
-                return true;
-            }
-        } catch (error) {
-            console.error('이메일 중복체크 실패:', error);
-            return false;
-        }
-    };
-
     const validateField = (field, value) => {
-        let error = '';
+        let error = "";
         switch (field) {
-            case 'name':
+            case "name":
                 if (!value) {
-                    error = '이름을 입력해주세요.';
-                } else if (!/^[가-힣]{3,6}$/.test(value)) {
-                    error = '이름은 한글로 3~6글자여야 합니다.';
+                    error = "이름을 입력해주세요.";
+                } else if (!/^[가-힣]{2,6}$/.test(value)) {
+                    error = "이름은 한글로 2~6글자여야 합니다.";
                 }
                 break;
-            case 'email':
+            case "email":
                 if (!value) {
-                    error = '이메일을 입력해주세요.';
+                    error = "이메일을 입력해주세요.";
                 } else if (!/^[a-z0-9]+@[a-z]+\.[a-z]+$/.test(value)) {
-                    error = '이메일은 올바른 형식이어야 합니다.';
+                    error = "올바른 이메일 형식이 아닙니다.";
                 }
                 break;
-            case 'password':
+            case "pwd":
                 if (!value) {
-                    error = '비밀번호를 입력해주세요.';
-                } else if (/(.)\1{2,}/.test(value)) {
-                    error = '비밀번호에 연속으로 같은 문자를 3번 이상 사용할 수 없습니다.';
-                } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`|}{[\]:;?,.<>]).{12,20}$/.test(value)) {
-                    error = '비밀번호는 대문자, 소문자, 숫자, 특수문자를 포함하며, 12~20자리여야 합니다.';
+                    error = "비밀번호를 입력해주세요.";
+                } else if (
+                    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`|}{[\]:;?,.<>]).{12,20}$/.test(value)
+                ) {
+                    error =
+                        "비밀번호는 대소문자, 숫자, 특수문자를 포함하며, 12~20자리여야 합니다.";
                 }
                 break;
-            case 'confirmPassword':
+            case "confirmpwd":
                 if (!value) {
-                    error = '비밀번호 확인을 입력해주세요.';
-                } else if (value !== signup.password) {
-                    error = '비밀번호가 일치하지 않습니다.';
+                    error = "비밀번호 확인을 입력해주세요.";
+                } else if (value !== signup.pwd) {
+                    error = "비밀번호가 일치하지 않습니다.";
                 }
                 break;
-            case 'phone':
+            case "phone":
                 if (!value) {
-                    error = '휴대전화 번호를 입력해주세요.';
+                    error = "휴대전화 번호를 입력해주세요.";
                 } else if (!/^010-\d{4}-\d{4}$/.test(value)) {
-                    error = '휴대전화 번호는 010-xxxx-xxxx 형식이어야 합니다.';
+                    error = "휴대전화 번호는 010-xxxx-xxxx 형식이어야 합니다.";
                 }
                 break;
-            case 'gender':
+            case "gender":
                 if (!value) {
-                    error = '성별을 선택해주세요.';
+                    error = "성별을 선택해주세요.";
                 }
                 break;
-            case 'zipcode':
+            case "zipcode":
+            case "address1":
+            case "address2":
                 if (!value) {
-                    error = '우편번호를 입력해주세요.';
-                }
-                break;
-            case 'address1':
-                if (!value) {
-                    error = '주소를 입력해주세요.';
-                }
-                break;
-            case 'address2':
-                if (!value) {
-                    error = '상세 주소를 입력해주세요.';
-                }
-                break;
-            case 'address':
-                if (!value) {
-                    error = '주소를 입력해주세요.';
+                    error = `${field === "zipcode" ? "우편번호" : "주소"}를 입력해주세요.`;
                 }
                 break;
             default:
                 break;
         }
 
+        // 오류 상태 업데이트
         setErrors((prevErrors) => ({
             ...prevErrors,
-            [field]: error,
+            [field]: error || "", // 오류 메시지 없으면 빈 문자열로 설정
         }));
+
+        return error || null; // 오류가 없으면 null 반환
     };
 
     const validateForm = () => {
         const fieldsToValidate = Object.keys(signup);
         let isValid = true;
+        let tempErrors = {}; // 임시 오류 객체
 
         fieldsToValidate.forEach((field) => {
             const value = signup[field];
-            validateField(field, value);
+            const fieldError = validateField(field, value); // validateField가 오류 메시지를 반환하도록 변경
 
-            if (!value || errors[field]) {
+            if (fieldError) {
+                tempErrors[field] = fieldError;
                 isValid = false;
             }
         });
 
+        setErrors(tempErrors); // 모든 오류를 한 번에 상태로 업데이트
         return isValid;
     };
 
+    const submitSignupForm = async () => {
+        if (!validateForm()) {
+            alert("입력한 정보를 확인해주세요.");
+            return;
+        }
+
+        try {
+            const combinedAddress = `${signup.address1} ${signup.address2}`.trim();
+            const dataToSubmit = {
+                ...signup,
+                address: combinedAddress,
+                gender: signup.gender === "M" ? 1 : signup.gender === "F" ? 2 : 0
+            };
+
+            const response = await apiAxios.post("/api/join", dataToSubmit);
+
+            if (response.status === 200) {
+                goSuccess(signup.name);
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                const errorMessage = error.response.data || "잘못된 요청입니다.";
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    email: errorMessage,
+                }));
+                alert(errorMessage);
+            } else {
+                console.error("회원가입 요청 실패:", error);
+                alert("회원가입 중 문제가 발생했습니다. 다시 시도해주세요.");
+            }
+        }
+    };
+
+    // 주소 검색 처리
     const handleAddressSearch = () => {
-        if (typeof daum === 'undefined' || !daum.Postcode) {
+        if (typeof daum === "undefined" || !daum.Postcode) {
             console.error("Daum Postcode API가 로드되지 않았습니다.");
             return;
         }
@@ -205,10 +199,11 @@ const SignUpProvider = ({ children }) => {
                 isReadonly,
                 updateSignUpData,
                 handleAddressSearch,
-                validateForm,
+                submitSignupForm,
                 goMain,
                 goLogin,
-            }}>
+            }}
+        >
             {children}
         </SignUpContext.Provider>
     );

@@ -196,7 +196,14 @@
     margin-top: 1em;
 }
 
-.JoinPage .error {
+.JoinPage .errorWrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.JoinPage .errorWrap .error {
     font-size: 0.725rem;
     width: 80%;
     color: red;
@@ -266,5 +273,9 @@
     .JoinPage #join_container .joinbox input[type='email']:not(:placeholder-shown) {
         border-bottom: 2px solid lightcoral;
         box-sizing: border-box;
+    }
+
+    .JoinPage .errorWrap .error {
+        width: 100%;
     }
 }
