@@ -1,45 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import "/src/css/articles/PopularPostList.css";
-import FeedItem from '../FreeBoardForm/FeedItem';
-import apiAxios from '../../../api/apiAxios';
-import Loading from '../../loading/loading';
+import React, { useContext } from "react";
+import { ArticleContext } from "../../../context/article/ArticleContext";
+import FeedItem from "../FreeBoardForm/FeedItem";
+import Loading from "../../loading/loading";
+
 
 const PopularPostList = () => {
-    const [hotArticle, setHotArticle] = useState(null);
-    const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+    const { hotArticle, isLoading, error } = useContext(ArticleContext);
+    console.log("PopularPostList :"+hotArticle);
+    if (isLoading) return <div><Loading/></div>;
+    if (error) return <div>Error: {error.message}</div>;
 
-    
-    useEffect(() => {
-        setIsLoading(true);
-        // 인기 게시글 요청
-        apiAxios
-            .get('/api/article/hot')
-            .then((response) => {
-                const hotArticles = response.data.content;
-                if (hotArticles.length > 0) {
-                    setHotArticle(hotArticles[0]);
-                }
-            })
-            .catch((err) => {
-                console.error("Error fetching hot articles:", err);
-                setError(err);
-            })
-            .finally(() => {
-                setIsLoading(false); // 로딩 완료
-            });
-    }, []);
-
-    if (isLoading) {
-        return <div className='loadingPage'><Loading/></div>;
-    }
     return (
-        <section>
-            <div className="popularPost">
-                <h3>지금 가장 뜨거운🔥커뮤니티 게시글</h3>
-                <FeedItem item={hotArticle} />
-            </div>
-        </section>
+        <div className="popular-post-list">
+            <h3>지금 가장 뜨거운🔥 게시글</h3>
+            <FeedItem item={hotArticle} />
+        </div>
     );
 };
 
