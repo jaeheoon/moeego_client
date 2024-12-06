@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/mypage/MyPage.css';
+import {AuthContext} from '../../context/member/AuthContext';
 
 const MyPage = () => {
+    const {isLoggedIn, loginUser, loginEmail} = useContext(AuthContext);
+
     return (
         <div className='MyPage'>
             <div className='MyPageWrap'>
@@ -14,10 +17,10 @@ const MyPage = () => {
                                 <img src="/image/profile.svg" alt="profile" />
                             </div>
                             <div className='ProfileInfo'>
-                                <div className='NickName'>ooo 고객님</div>
+                                <div className='NickName'>{loginUser} 고객님</div>
                                 <div className='MailWrap'>
                                     <div className="SNSWrap"><img src="/image/naver_sns.png" alt="naver" /></div>
-                                    <div className='Email'>moeego@moeego.com</div>
+                                    <div className='Email'>{loginEmail}</div>
                                 </div>
                             </div>
                         </div>

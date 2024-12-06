@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import {AuthContext} from '../member/AuthContext';
 import apiAxios from '../../api/apiAxios';
 
 const MyPageContext = createContext();
@@ -9,6 +10,7 @@ const MyPageProvider = ({ children }) => {
     const [isToggleWrap1Visible, setIsToggleWrap1Visible] = useState(false);
     const [isToggleWrap2Visible, setIsToggleWrap2Visible] = useState(false);
     const [loading, setLoading] = useState(true);
+    const {isLoggedIn, loginEmail, loginUser, loginStatus} = useContext(AuthContext);
 
     const toggleWrap1 = () => setIsToggleWrap1Visible((prev) => !prev);
     const toggleWrap2 = () => setIsToggleWrap2Visible((prev) => !prev);

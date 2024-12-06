@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Header.css";
 import HeaderModal from "./mypage/HeaderModal";
+import {AuthContext} from '../context/member/AuthContext';
 
 function Header() {
   const [modalType, setModalType] = useState(null);
@@ -9,6 +10,7 @@ function Header() {
   const [isIconToggled, setIsIconToggled] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isSearchButtonVisible, setIsSearchButtonVisible] = useState(true);
+  const {isLoggedIn, loginEmail, loginUser, loginStatus} = useContext(AuthContext);
 
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
@@ -60,6 +62,14 @@ function Header() {
   const GoProSignUp = () => {
     closeMenu();
     navigate('/pro/signup/main');
+  }
+
+  const GoLogin = () => {
+    navigate('/login');
+  }
+
+  const GoLogOut = () => {
+    navigate('/logout');
   }
 
   useEffect(() => {
@@ -118,21 +128,27 @@ function Header() {
               </button>
             </div>
             <ul>
+              {isLoggedIn ? (
               <li className='HamburgerUserInfoWrap'>
                 <Link to="/mypage" className='HamburgerUserInfoLinkWrap' onClick={closeMenu}>
                   <div>
-                    <h3>김태훈 회원님</h3>
-                    <p>moeego@moeego.com</p>
+                    <h3>{loginUser} 회원님</h3>
+                    <p>{loginEmail}</p>
                   </div>
                   <div>
                     <img src="/image/profile.svg" alt="profile" />
                   </div>
                 </Link>
                 <div className='HamburgerUserInfoButtonWrap'>
-                  <input type="button" value="로그아웃" onClick={closeMenu} />
-                  <input type="button" value="달인전환" onClick={closeMenu} />
+                  <input type="button" value="로그아웃" onClick={() => (closeMenu(), GoLogOut())} />
+                  {loginStatus == 'ROLE_USER' ?  (
+                    <input type="button" value="달인전환" onClick={closeMenu} />
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </li>
+              ) : (
               <li className='HamburgerUserInfoWrap'>
                 <Link to="/login" className='HamburgerUserInfoLinkWrap' onClick={closeMenu}>
                   <div>
@@ -144,6 +160,7 @@ function Header() {
                   <input type="button" value="달인가입" onClick={GoProSignUp} />
                 </div>
               </li>
+              )}
               <li>
                 <Link to="/pro/search" onClick={closeMenu}>달인찾기</Link>
               </li>
@@ -189,6 +206,8 @@ function Header() {
 
         {/* 사용자 메뉴 */}
         <div className="user-menu">
+          {isLoggedIn || <span className="GoLogin" onClick={GoLogin}>로그인</span>}
+          {isLoggedIn ? (
           <span className="user-icon" onClick={() => {
             openModal("userMenu"); toggleIcon();
           }}>
@@ -199,6 +218,17 @@ function Header() {
               <svg className='ToggleSvg' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 9.5L12 14.5L7 9.5" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
             )}
           </span>
+          ) : (
+            <span className="user-icon" onClick={() => {
+              openModal("userMenu"); toggleIcon();
+            }}>
+              {isIconToggled ? (
+                <svg className='ToggleSvg' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: "rotate(180deg)", transformOrigin: "center", }}><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 9.5L12 14.5L7 9.5" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+              ) : (
+                <svg className='ToggleSvg' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 9.5L12 14.5L7 9.5" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+              )}
+            </span>
+          )}
 
           {modalType === "userMenu" && (
             <div className="ToggleMenu" onClick={closeModal}>

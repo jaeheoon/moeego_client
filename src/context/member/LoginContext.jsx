@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import apiAxios from '../../api/apiAxios';
+import {jwtDecode} from "jwt-decode";
 
 const LoginContext = createContext();
 
@@ -10,8 +11,8 @@ const LoginProvider = ({ children }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [modalType, setModalType] = useState(null);
+    const { setIsLoggedIn, setLoginEmail, setLoginUser, setLoginStatus } = useContext(AuthContext);
 
-    const { setIsLoggedIn, setLoginUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const prevUrl = location.state || "/";
@@ -38,13 +39,22 @@ const LoginProvider = ({ children }) => {
 
             if (response.status === 200) {
                 console.log('로그인 성공 : ' + response.data.name);
-                const { name } = response.data; // JSON 데이터에서 `name` 가져오기
 
-                window.localStorage.setItem("access", response.headers["access"]);
-                window.localStorage.setItem("name", name);
+                const accessToken = response.data.accessToken || response.headers["access"];
+                window.localStorage.setItem("access", accessToken);
+
+                const decodedToken = jwtDecode(accessToken); // 디코딩된 토큰
+                const { name, email, memberStatus } = decodedToken; // name과 email 추출
+
+                // 로컬 스토리지에 저장
+                window.localStorage.setItem("username", name);
+                window.localStorage.setItem("useremail", email);
+                window.localStorage.setItem("memberStatus", memberStatus);
 
                 setIsLoggedIn(true);
                 setLoginUser(name);
+                setLoginEmail(email);
+                setLoginStatus(memberStatus);
 
                 navigate(prevUrl, { replace: true });
             } else {

@@ -5,7 +5,7 @@ import apiAxios from '../../api/apiAxios';
 
 const Logout = () => {
     const navigate = useNavigate();
-    const { setIsLoggedIn, setLoginUser } = useContext(AuthContext);
+    const { setIsLoggedIn, setLoginUser, setLoginEmail, setLoginStatus } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchLogout = async () => {
@@ -16,11 +16,12 @@ const Logout = () => {
                 if (response.status === 200) {
                     console.log('로그아웃 성공');
                     // access token 삭제 (로컬 스토리지)
-                    window.localStorage.removeItem("access");
-                    window.localStorage.removeItem("name");
+                    window.localStorage.clear();
 
                     setIsLoggedIn(false);
                     setLoginUser(null);
+                    setLoginEmail(null);
+                    setLoginStatus(null);
                 } else {
                     alert("logout failed");
                 }

@@ -1,9 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { MyPageContext } from '../../context/mypage/MyPageContext';
 import { Link } from 'react-router-dom';
+import {AuthContext} from '../../context/member/AuthContext';
 import '../../css/mypage/Account.css';
 
 const Account = () => {
+    const {isLoggedIn, loginEmail, loginUser, loginStatus} = useContext(AuthContext);
+
     const {
         nickname,
         setNickname,
@@ -80,6 +83,7 @@ const Account = () => {
                         </div>
                     )}
                 </form>
+                {loginStatus === 'ROLE_PRO' && (
                 <form className='IntroductionForm'>
                     <div className='Container'>
                         <h3 className="SubTitle">달인 소개</h3>
@@ -107,6 +111,7 @@ const Account = () => {
                         </div>
                     )}
                 </form>
+                )}
                 <div className='DetailInfoContainer'>
                     <Link className="Link" to="/mypage/account/private">
                         <h3 className='Title'>개인정보관리</h3>

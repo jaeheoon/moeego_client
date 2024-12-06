@@ -12,4 +12,7 @@ export default defineConfig({
       },
     },
   },
+  optimizeDeps: {
+    include: ["jwt-decode"], // jwt-decode 모듈을 번들링
+  },
 });

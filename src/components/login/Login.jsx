@@ -46,6 +46,7 @@ const Login = () => {
                             type="password"
                             id="password"
                             placeholder="비밀번호를 입력해 주세요."
+                            autoComplete="off"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />

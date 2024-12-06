@@ -70,6 +70,7 @@ const Join = () => {
                             className="pwdbox"
                             type="password"
                             placeholder="비밀번호를 입력해주세요"
+                            autoComplete="off"
                             value={signup.pwd}
                             maxLength={20}
                             onChange={(e) => updateSignUpData('pwd', e.target.value)}
@@ -87,6 +88,7 @@ const Join = () => {
                             className="repwdbox"
                             type="password"
                             placeholder="비밀번호를 한번 더 입력해주세요"
+                            autoComplete="off"
                             value={signup.confirmpwd}
                             onChange={(e) => updateSignUpData('confirmpwd', e.target.value)}
                         />

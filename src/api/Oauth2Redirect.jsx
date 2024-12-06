@@ -6,7 +6,7 @@ import apiAxios from './apiAxios';
 const OAuth2Redirect = () => {
     const navigate = useNavigate();
     const [queryParams] = useSearchParams();
-    const { setIsLoggedIn, setLoginUser } = useLogin();
+    const { setIsLoggedIn, setLoginUser, setLoginEmail, setLoginStatus } = useLogin();
 
     useEffect(() => {
         const fetchOAuth2JwtHeader = async () => {
@@ -17,15 +17,22 @@ const OAuth2Redirect = () => {
 
                 if (response.status === 200) { // 성공적으로 처리된 경우
                     const accessToken = response.headers['access'];
-                    const name = queryParams.get('name');
+
+                    const decodedToken = jwtDecode(accessToken);
+
+                    const { name, email, memberStatus } = decodedToken;
 
                     // 로컬 스토리지에 토큰과 이름 저장
                     if (accessToken) {
                         window.localStorage.setItem("access", accessToken);
                     }
                     if (name) {
-                        window.localStorage.setItem("name", name);
+                        window.localStorage.setItem("username", name);
+                        window.localStorage.setItem("useremail", email);
+                        window.localStorage.setItem("memberStatus", memberStatus);
                         setLoginUser(name);
+                        setLoginEmail(email);
+                        setLoginStatus(memberStatus);
                     }
 
                     setIsLoggedIn(true);

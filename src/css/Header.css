@@ -95,6 +95,21 @@
     border-radius: 25px;
 }
 
+.header .GoLogin {
+    cursor: pointer;
+}
+
+.header .GoLogin:hover {
+    color: #fcc1cc;
+}
+
+.header .ToggleMenuListLink a,
+.header .ToggleMenuListLink a:link,
+.header .ToggleMenuListLink a:active {
+    cursor: pointer;
+    color: #525252;
+}
+
 /* 드롭다운 메뉴 */
 .dropdown-menu {
     position: absolute;
