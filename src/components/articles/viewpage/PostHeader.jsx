@@ -7,7 +7,8 @@ const PostHeader = ({ articleData, deleteArticle }) => {
     const { loginUser } = useContext(AuthContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const navigate = useNavigate();
-
+    const userNo = localStorage.getItem("userno");
+    
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
@@ -19,7 +20,7 @@ const PostHeader = ({ articleData, deleteArticle }) => {
     const handleDelete = () => {
         deleteArticle(articleData.articleNo) // 삭제 API 호출
     };
-
+    
     return (
         <div className="post-header">
             {/* 카테고리 및 제목 */}
@@ -68,7 +69,7 @@ const PostHeader = ({ articleData, deleteArticle }) => {
                     </button>
 
                     {/* 옵션 버튼 및 드롭다운 */}
-                    {13 === articleData.memberNo && (
+                    {userNo == articleData.memberNo && (           //글 쓴 사람이랑 로그인한 사람 같으면 옵션 버튼 나옴
                         <div className="post-dropdown-container">
                             <button
                                 className="post-action-button"

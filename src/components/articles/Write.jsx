@@ -4,11 +4,13 @@ import { ArticleContext } from '../../context/article/ArticleContext';
 
 const Write = () => {
     const { writeArticle } = useContext(ArticleContext);
+    const userNo = localStorage.getItem("userno");
+    
     const [formData, setFormData] = useState({
         subject: '',
         content: '',
         type: '',
-        memberNo: 13,   //memberNo 내놔!!!!!!!!!!!
+        memberNo: userNo,
     });
 
     const handleChange = (e) => {
@@ -33,14 +35,14 @@ const Write = () => {
             subject: formData.subject,
             content: formData.content,
             type: formData.type,
-            memberNo: formData.memberNo,
+            memberNo: userNo,
         };
         writeArticle(dto);
     };
 
     return (
         <form id='articleWriteForm' onSubmit={handleSubmit}>
-            <input type='hidden' name='memberNo' value={formData.memberNo} />
+            <input type='hidden' name='memberNo' value={userNo} />
             <div className="write-wrap">
                 <div><h1>모이고 글작성</h1></div>
                 <div className="write-container">
