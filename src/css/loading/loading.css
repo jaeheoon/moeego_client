@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 /* 로딩 박스 크기를 이미지에 맞추고 가운데 정렬 */

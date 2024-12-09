@@ -101,9 +101,9 @@ const App = () => {
                         <Route path="/pro" element={<div className='main-content'><ProView /></div>} />
 
                         {/* 작성 페이지 */}
-                        <Route path="/article/Write" element={<div className='main-content'><Write /></div>} />
-                        <Route path="/article/Update" element={<div className='main-content'><Update /></div>} />
-                        <Route path="/mypage/Review" element={<div className='main-content'><Review /></div>} />
+                        <Route path="/article/write" element={<div className='main-content'><Write /></div>} />
+                        <Route path="/article/update/:articleNo" element={<div className='main-content'><Update /></div>} />
+                        <Route path="/mypage/review" element={<div className='main-content'><Review /></div>} />
 
                         {/* 마이페이지 */}
                         <Route path={"/mypage"} element={<div className='main-content'><MyPage /></div>} />
