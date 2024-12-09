@@ -1,34 +1,27 @@
-import fetchReissue from "../services/fetchReissue";
-import apiAxios from './apiAxios';
+import { Cookies } from "react-cookie";
+import apiAxios from "./apiAxios";
 
-// 권한이 있는 페이지 접근 시 access 토큰을 검증
-const fetchAuthorizedPage = async (url, navigate, location) => {
+const fetchReissue = async () => {
+    const cookies = new Cookies();
+
     try {
-        const response = await apiAxios.post(url, null, {
-            headers: {
-                Authorization: `Bearer ${window.localStorage.getItem("access")}`
-            },
-            withCredentials: true,
-        });
+        const response = await apiAxios.post("/api/reissue", null, { withCredentials: true });
 
         if (response.status === 200) {
-            return response.data; // 페이지 데이터를 반환
-        } else {
-            const reissueSuccess = await fetchReissue();
-
-            if (reissueSuccess) {
-                return await fetchAuthorizedPage(url, navigate, location);
-            } else {
-                alert('관리자가 아닙니다.');
-                navigate('/', { state: location.pathname });
+            const accessToken = response.headers["access"];
+            if (accessToken) {
+                window.localStorage.setItem("access", accessToken);
+                return true;
             }
         }
     } catch (error) {
-        console.error('Error: ', error);
-        navigate('/', { state: location.pathname });
+        console.error("Error during token reissue: ", error);
     }
-    return;
+
+    window.localStorage.removeItem("access");
+    cookies.remove("refresh", { path: "/" });
+    alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+    return false;
 };
 
-
-export default fetchAuthorizedPage;
+export default fetchReissue;

@@ -5,7 +5,7 @@ import apiAxios from '../../api/apiAxios';
 
 const Logout = () => {
     const navigate = useNavigate();
-    const { setIsLoggedIn, setLoginUser, setLoginEmail, setLoginStatus } = useContext(AuthContext);
+    const { setIsLoggedIn, setLoginEmail, setLoginUser, setLoginStatus, setLoginAddress, setLoginPhone, setLoginProfile, setLoginNumber } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchLogout = async () => {
@@ -22,6 +22,10 @@ const Logout = () => {
                     setLoginUser(null);
                     setLoginEmail(null);
                     setLoginStatus(null);
+                    setLoginAddress(null);
+                    setLoginPhone(null);
+                    setLoginProfile(null);
+                    setLoginNumber(null);
                 } else {
                     alert("logout failed");
                 }

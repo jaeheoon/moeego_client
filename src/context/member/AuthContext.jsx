@@ -9,6 +9,10 @@ const AuthProvider = ({ children }) => {
     const [loginUser, setLoginUser] = useState(null);
     const [loginEmail, setLoginEmail] = useState(null);
     const [loginStatus, setLoginStatus] = useState(null);
+    const [loginAddress, setLoginAddress] = useState(null);
+    const [loginPhone, setLoginPhone] = useState(null);
+    const [loginProfile, setLoginProfile] = useState(null);
+    const [loginNumber, setLoginNumber] = useState(null);
 
     // 로그아웃 처리
     const handleLogout = () => {
@@ -17,7 +21,10 @@ const AuthProvider = ({ children }) => {
         setLoginUser(null);
         setLoginEmail(null);
         setLoginStatus(null);
-        alert("로그아웃되었습니다.");
+        setLoginAddress(null);
+        setLoginPhone(null);
+        setLoginProfile(null);
+        setLoginNumber(null);
     };
 
     // 엑세스 토큰 확인 및 초기화
@@ -30,7 +37,14 @@ const AuthProvider = ({ children }) => {
 
         try {
             const decodedToken = jwtDecode(accessToken);
-            const { name, email, memberStatus, exp } = decodedToken;
+            const { name, email, memberStatus, address, phone, profile, memberNo } = decodedToken;
+            const exp = decodedToken.exp; // 만료 시간 확인
+
+            if (!exp) {
+                console.error("Token does not contain 'exp' field.");
+                handleLogout();
+                return;
+            }
 
             if (Date.now() >= exp * 1000) {
                 console.warn("Access token expired. Attempting reissue...");
@@ -48,6 +62,10 @@ const AuthProvider = ({ children }) => {
                 setLoginUser(name);
                 setLoginEmail(email);
                 setLoginStatus(memberStatus);
+                setLoginPhone(phone);
+                setLoginAddress(address);
+                setLoginProfile(profile);
+                setLoginNumber(memberNo);
             }
         } catch (error) {
             console.error("Failed to decode token: ", error);
@@ -70,6 +88,14 @@ const AuthProvider = ({ children }) => {
                 setLoginEmail,
                 loginStatus,
                 setLoginStatus,
+                loginAddress,
+                setLoginAddress,
+                loginPhone,
+                setLoginPhone,
+                loginProfile,
+                setLoginProfile,
+                loginNumber,
+                setLoginNumber,
                 handleLogout, // 로그아웃 함수
             }}
         >

@@ -6,7 +6,7 @@ import apiAxios from './apiAxios';
 const OAuth2Redirect = () => {
     const navigate = useNavigate();
     const [queryParams] = useSearchParams();
-    const { setIsLoggedIn, setLoginUser, setLoginEmail, setLoginStatus } = useLogin();
+    const { setIsLoggedIn, setLoginEmail, setLoginUser, setLoginStatus, setLoginAddress, setLoginPhone, setLoginProfile, setLoginNumber } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchOAuth2JwtHeader = async () => {
@@ -23,18 +23,24 @@ const OAuth2Redirect = () => {
                     }
 
                     const decodedToken = jwtDecode(accessToken);
-                    const { name, email, memberStatus } = decodedToken;
+                    const { name, email, memberStatus, address, phone, profile, memberNo } = decodedToken;
 
-                    window.localStorage.setItem("access", accessToken);
                     window.localStorage.setItem("username", name);
                     window.localStorage.setItem("useremail", email);
                     window.localStorage.setItem("memberStatus", memberStatus);
+                    window.localStorage.setItem("useraddress", address);
+                    window.localStorage.setItem("userphone", phone);
+                    window.localStorage.setItem("userprofile", profile);
+                    window.localStorage.setItem("userno", memberNo);
 
+                    setIsLoggedIn(true);
                     setLoginUser(name);
                     setLoginEmail(email);
                     setLoginStatus(memberStatus);
-                    setIsLoggedIn(true);
-
+                    setLoginAddress(address);
+                    setLoginPhone(phone);
+                    setLoginProfile(profile);
+                    setLoginNumber(memberNo);
                     
                 } else {
                     alert('접근할 수 없는 페이지입니다.');

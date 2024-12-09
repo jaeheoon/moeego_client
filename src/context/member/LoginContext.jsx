@@ -11,7 +11,7 @@ const LoginProvider = ({ children }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [modalType, setModalType] = useState(null);
-    const { setIsLoggedIn, setLoginEmail, setLoginUser, setLoginStatus } = useContext(AuthContext);
+    const { setIsLoggedIn, setLoginEmail, setLoginUser, setLoginStatus, setLoginAddress, setLoginPhone, setLoginProfile, setLoginNumber } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -38,23 +38,38 @@ const LoginProvider = ({ children }) => {
             });
 
             if (response.status === 200) {
-                console.log('로그인 성공 : ' + response.data.name);
+                console.log('███╗   ███╗ ██████╗ ███████╗███████╗ ██████╗  ██████╗ ');
+                console.log('████╗ ████║██╔═══██╗██╔════╝██╔════╝██╔════╝ ██╔═══██╗');
+                console.log('██╔████╔██║██║   ██║█████╗  █████╗  ██║  ███╗██║   ██║');
+                console.log('██║╚██╔╝██║██║   ██║██╔══╝  ██╔══╝  ██║   ██║██║   ██║');
+                console.log('██║ ╚═╝ ██║╚██████╔╝███████╗███████╗╚██████╔╝╚██████╔╝');
+                console.log('╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ');
+
+                console.log(response.data.name + '님 환영합니다.');
 
                 const accessToken = response.data.accessToken || response.headers["access"];
                 window.localStorage.setItem("access", accessToken);
 
                 const decodedToken = jwtDecode(accessToken); // 디코딩된 토큰
-                const { name, email, memberStatus } = decodedToken; // name과 email 추출
+                const { name, email, memberStatus, address, phone, profile, memberNo } = decodedToken; // name과 email 추출
 
                 // 로컬 스토리지에 저장
                 window.localStorage.setItem("username", name);
                 window.localStorage.setItem("useremail", email);
                 window.localStorage.setItem("memberStatus", memberStatus);
+                window.localStorage.setItem("useraddress", address);
+                window.localStorage.setItem("userphone", phone);
+                window.localStorage.setItem("userprofile", profile);
+                window.localStorage.setItem("userno", memberNo);
 
                 setIsLoggedIn(true);
                 setLoginUser(name);
                 setLoginEmail(email);
                 setLoginStatus(memberStatus);
+                setLoginAddress(address);
+                setLoginPhone(phone);
+                setLoginProfile(profile);
+                setLoginNumber(memberNo);
 
                 navigate(prevUrl, { replace: true });
             } else {
@@ -70,7 +85,6 @@ const LoginProvider = ({ children }) => {
     const handleLogin = async (e) => {
         e.preventDefault();
         const credentials = { email: email, pwd: password };
-        console.log(credentials);
         fetchLogin(credentials);
     }
 
