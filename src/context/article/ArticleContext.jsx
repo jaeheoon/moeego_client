@@ -105,6 +105,23 @@ const ArticleProvider = ({ children }) => {
             });
     }, []);
 
+    //게시글 쓰기
+    const writeArticle = useCallback((articleData) => {
+        apiAxios
+            .post("/api/article/write", articleData)
+            .then((response) => {
+                fetchArticles();
+                navigate('/article');
+            })
+            .catch((err) => {
+                console.error("Error writing article:", err);
+                setError(err);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, [fetchArticles]);
+    
     // 로그인 글쓰기 버튼
     const GoWrite = () => {
         navigate("/article/write");
@@ -135,6 +152,7 @@ const ArticleProvider = ({ children }) => {
         fetchArticle,
         fetchComments,
         setCurrentPage,
+        writeArticle,
         GoWrite,
         GoLogin
     };

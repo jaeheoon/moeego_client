@@ -11,11 +11,6 @@ const PostContent = ({articleData}) => {
                 {content}
             </p>
             <div className="post-image-wrapper">
-                <img src="/image/home.png" alt="게시글 이미지" className="post-image" />
-                <img src="/image/home.png" alt="게시글 이미지" className="post-image" />
-                <img src="/image/home.png" alt="게시글 이미지" className="post-image" />
-                <img src="/image/home.png" alt="게시글 이미지" className="post-image" />
-                <img src="/image/home.png" alt="게시글 이미지" className="post-image" />
             </div>
         </div>
     );
