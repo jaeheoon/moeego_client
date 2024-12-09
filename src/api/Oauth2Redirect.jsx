@@ -18,24 +18,24 @@ const OAuth2Redirect = () => {
                 if (response.status === 200) { // 성공적으로 처리된 경우
                     const accessToken = response.headers['access'];
 
-                    const decodedToken = jwtDecode(accessToken);
+                    if (!accessToken) {
+                        throw new Error("Access token is missing from the response");
+                    }
 
+                    const decodedToken = jwtDecode(accessToken);
                     const { name, email, memberStatus } = decodedToken;
 
-                    // 로컬 스토리지에 토큰과 이름 저장
-                    if (accessToken) {
-                        window.localStorage.setItem("access", accessToken);
-                    }
-                    if (name) {
-                        window.localStorage.setItem("username", name);
-                        window.localStorage.setItem("useremail", email);
-                        window.localStorage.setItem("memberStatus", memberStatus);
-                        setLoginUser(name);
-                        setLoginEmail(email);
-                        setLoginStatus(memberStatus);
-                    }
+                    window.localStorage.setItem("access", accessToken);
+                    window.localStorage.setItem("username", name);
+                    window.localStorage.setItem("useremail", email);
+                    window.localStorage.setItem("memberStatus", memberStatus);
 
+                    setLoginUser(name);
+                    setLoginEmail(email);
+                    setLoginStatus(memberStatus);
                     setIsLoggedIn(true);
+
+                    
                 } else {
                     alert('접근할 수 없는 페이지입니다.');
                 }

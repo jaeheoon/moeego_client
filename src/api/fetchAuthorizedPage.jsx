@@ -6,7 +6,7 @@ const fetchAuthorizedPage = async (url, navigate, location) => {
     try {
         const response = await apiAxios.post(url, null, {
             headers: {
-                access: window.localStorage.getItem("access"),
+                Authorization: `Bearer ${window.localStorage.getItem("access")}`
             },
             withCredentials: true,
         });
@@ -15,6 +15,7 @@ const fetchAuthorizedPage = async (url, navigate, location) => {
             return response.data; // 페이지 데이터를 반환
         } else {
             const reissueSuccess = await fetchReissue();
+
             if (reissueSuccess) {
                 return await fetchAuthorizedPage(url, navigate, location);
             } else {
