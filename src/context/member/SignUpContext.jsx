@@ -147,7 +147,7 @@ const SignUpProvider = ({ children }) => {
         }
 
         try {
-            const combinedAddress = `${signup.address1} ${signup.address2}`.trim();
+            const combinedAddress = `${signup.address1} ${signup.address2} (${signup.zipcode})`.trim();
             const dataToSubmit = {
                 ...signup,
                 address: combinedAddress,
