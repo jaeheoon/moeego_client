@@ -22,17 +22,25 @@ const MyPage = () => {
                                 <div className='NickName'>{loginUser}님</div>
                                 <div className='MailWrap'>
                                     <div className="SNSWrap">
-                                        {loginEmail?.split('@')[1]?.split('.')[0] === 'naver' ? (
+                                        {loginEmail && loginEmail.split(" ")[0] === 'naver' ? (
                                             <img className='snsProfile' src="/image/naver_sns.png" alt="naver" />
-                                        ) : loginEmail?.split('@')[1]?.split('.')[0] === 'kakao' ? (
+                                        ) : loginEmail && loginEmail.split(" ")[0] === 'kakao' ? (
                                             <img className='snsProfile' src="/image/kakao_sns.png" alt="kakao" />
-                                        ) : loginEmail?.split('@')[1]?.split('.')[0] === 'google' ? (
+                                        ) : loginEmail && loginEmail.split(" ")[0] === 'google' ? (
                                             <img className='snsProfile' src="/image/google_sns.svg" alt="google" />
                                         ) : (
                                             <img className='snsProfile' src="/image/moeego_login.png" alt="moeego" />
                                         )}
                                     </div>
-                                    <div className='Email'>{loginEmail}</div>
+                                    <div className='Email'>
+                                        {loginEmail && loginEmail.split(" ")[0] === "naver"
+                                            ? "naver_email"
+                                            : loginEmail && loginEmail.split(" ")[0] === "kakao"
+                                                ? "kakao_email"
+                                                : loginEmail && loginEmail.split(" ")[0] === "google"
+                                                    ? "google_email" :
+                                                    loginEmail}
+                                    </div>
                                 </div>
                             </div>
                         </div>

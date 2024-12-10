@@ -135,7 +135,15 @@ function Header() {
                   <Link to="/mypage" className='HamburgerUserInfoLinkWrap' onClick={closeMenu}>
                     <div>
                       <h3>{loginUser}님</h3>
-                      <p>{loginEmail}</p>
+                      <p>
+                        {loginEmail && loginEmail.split(" ")[0] === "naver"
+                          ? "naver_email"
+                          : loginEmail && loginEmail.split(" ")[0] === "kakao"
+                            ? "kakao_email"
+                            : loginEmail && loginEmail.split(" ")[0] === "google"
+                              ? "google_email" :
+                              loginEmail}
+                      </p>
                     </div>
                     <div>
                       <img src={profile} alt="profile" />

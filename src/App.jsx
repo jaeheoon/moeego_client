@@ -74,7 +74,7 @@ import { ArticleProvider } from './context/article/ArticleContext.jsx';
 import { ProProvider } from './context/pro/ProContext.jsx';
 
 // OAuth2
-import OAuth2Redirect from './js/Oauth2Redirect.js';
+import Oauth2Redirect from './api/Oauth2Redirect.jsx';
 
 const App = () => {
   return (
@@ -136,7 +136,7 @@ const App = () => {
                         <Route path="/logout" element={<div><Logout /></div>} />
 
                         {/* JWT 인증 페이지 */}
-                        <Route path='oauth2-jwt-header' element={<OAuth2Redirect />} />
+                        <Route path='/oauth2-jwt-header' element={<Oauth2Redirect />} />
 
                         {/* 달인 가입 페이지 */}
                         <Route path="/pro/signup/main" element={<ProjoinMain />} />

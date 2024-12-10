@@ -99,8 +99,9 @@ const LoginProvider = ({ children }) => {
 
     // 소셜 로그인
     const handleSocialLogin = (provider) => {
-        apiAxios.get(`/api/oauth2/authorization/${provider}`);
+        window.location.href = `/api/oauth2/authorization/${provider}`;
     };
+
 
     return (
         <LoginContext.Provider
