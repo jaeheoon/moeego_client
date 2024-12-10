@@ -225,6 +225,45 @@ const ArticleProvider = ({ children }) => {
             return;
         }
     };
+    
+    // 댓글 수정
+    const updateComment = async (commentNo, content) => {
+        try {
+            const response = await apiAxios.patch('api/comment/update', {
+                commentNo: commentNo,   // 수정할 댓글 ID
+                content: content        // 수정할 댓글 내용
+            });
+    
+            // 서버에서 반환된 수정된 댓글 처리
+            if (response.data) {
+                console.log('수정된 댓글:', response.data);
+                window.location.reload();
+            }
+    
+        } catch (error) {
+            console.error('댓글 수정 실패:', error);
+        }
+    };
+
+    // 댓글 삭제
+    const deleteComment = async (commentNo) => {
+        try {
+            // Axios를 사용한 PATCH 요청
+            const response = await apiAxios.patch('/api/comment/delete', { commentNo });
+
+            if (response.status === 200) {
+                console.log("댓글 삭제 성공:", response.data);
+                alert("댓글이 삭제되었습니다.");
+                window.location.reload(); // 페이지 새로고침 (삭제된 댓글 반영)
+            } else {
+                console.error("댓글 삭제 실패:", response);
+                alert("댓글 삭제에 실패했습니다. 다시 시도해주세요.");
+            }
+        } catch (error) {
+            console.error("서버 요청 에러:", error);
+            alert("댓글 삭제 중 오류가 발생했습니다.");
+        }
+    };
 
     // 로그인 글쓰기 버튼
     const GoWrite = () => {
@@ -264,6 +303,8 @@ const ArticleProvider = ({ children }) => {
         commentGoLogin,
         replyGoLogin,
         replyCommentWrite,
+        deleteComment,
+        updateComment,
         GoWrite,
         GoLogin
     };
