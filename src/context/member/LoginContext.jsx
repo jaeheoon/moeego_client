@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import apiAxios from '../../api/apiAxios';
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 const LoginContext = createContext();
 
@@ -51,7 +51,7 @@ const LoginProvider = ({ children }) => {
                 window.localStorage.setItem("access", accessToken);
 
                 const decodedToken = jwtDecode(accessToken); // 디코딩된 토큰
-                const { name, email, memberStatus, address, phone, profile, memberNo } = decodedToken; // name과 email 추출
+                const { name, email, memberStatus, address, phone, profileImage, memberNo } = decodedToken; // name과 email 추출
 
                 // 로컬 스토리지에 저장
                 window.localStorage.setItem("username", name);
@@ -59,7 +59,7 @@ const LoginProvider = ({ children }) => {
                 window.localStorage.setItem("memberStatus", memberStatus);
                 window.localStorage.setItem("useraddress", address);
                 window.localStorage.setItem("userphone", phone);
-                window.localStorage.setItem("userprofile", profile);
+                window.localStorage.setItem("userprofile", profileImage);
                 window.localStorage.setItem("userno", memberNo);
 
                 setIsLoggedIn(true);
@@ -68,7 +68,7 @@ const LoginProvider = ({ children }) => {
                 setLoginStatus(memberStatus);
                 setLoginAddress(address);
                 setLoginPhone(phone);
-                setLoginProfile(profile);
+                setLoginProfile(profileImage);
                 setLoginNumber(memberNo);
 
                 navigate(prevUrl, { replace: true });

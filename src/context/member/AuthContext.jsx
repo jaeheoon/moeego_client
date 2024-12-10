@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import fetchReissue from "../../api/fetchReissue"; // 토큰 재발급 함수
 
 const AuthContext = createContext();
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
 
         try {
             const decodedToken = jwtDecode(accessToken);
-            const { name, email, memberStatus, address, phone, profile, memberNo } = decodedToken;
+            const { name, email, memberStatus, address, phone, profileImage, memberNo } = decodedToken;
             const exp = decodedToken.exp; // 만료 시간 확인
 
             if (!exp) {
@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
                 setLoginStatus(memberStatus);
                 setLoginPhone(phone);
                 setLoginAddress(address);
-                setLoginProfile(profile);
+                setLoginProfile(profileImage);
                 setLoginNumber(memberNo);
             }
         } catch (error) {

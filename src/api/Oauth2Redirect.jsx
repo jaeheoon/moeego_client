@@ -23,14 +23,14 @@ const OAuth2Redirect = () => {
                     }
 
                     const decodedToken = jwtDecode(accessToken);
-                    const { name, email, memberStatus, address, phone, profile, memberNo } = decodedToken;
+                    const { name, email, memberStatus, address, phone, profileImage, memberNo } = decodedToken;
 
                     window.localStorage.setItem("username", name);
                     window.localStorage.setItem("useremail", email);
                     window.localStorage.setItem("memberStatus", memberStatus);
                     window.localStorage.setItem("useraddress", address);
                     window.localStorage.setItem("userphone", phone);
-                    window.localStorage.setItem("userprofile", profile);
+                    window.localStorage.setItem("userprofile", profileImage);
                     window.localStorage.setItem("userno", memberNo);
 
                     setIsLoggedIn(true);
@@ -39,9 +39,9 @@ const OAuth2Redirect = () => {
                     setLoginStatus(memberStatus);
                     setLoginAddress(address);
                     setLoginPhone(phone);
-                    setLoginProfile(profile);
+                    setLoginProfile(profileImage);
                     setLoginNumber(memberNo);
-                    
+
                 } else {
                     alert('접근할 수 없는 페이지입니다.');
                 }

@@ -3,7 +3,7 @@ import apiAxios from '../api/apiAxios';
 
 const fetchReissue = async () => {
     const cookies = new Cookies();
-    
+
     try {
         const response = await apiAxios.post("/api/reissue", null, {
             withCredentials: true,
@@ -23,7 +23,7 @@ const fetchReissue = async () => {
     }
     window.localStorage.removeItem("access");
     cookies.remove("refresh", { path: "/" });
-    alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+    console.log("Access 토큰이 만료되었습니다. 다시 로그인해주세요.");
 
     return false;
 };
