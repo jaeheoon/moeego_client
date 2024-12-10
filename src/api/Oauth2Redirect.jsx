@@ -32,6 +32,7 @@ const OAuth2Redirect = () => {
                     window.localStorage.setItem("userphone", phone);
                     window.localStorage.setItem("userprofile", profileImage);
                     window.localStorage.setItem("userno", memberNo);
+                    window.localStorage.setItem("login", true);
 
                     setIsLoggedIn(true);
                     setLoginUser(name);

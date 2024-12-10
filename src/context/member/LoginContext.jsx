@@ -59,8 +59,13 @@ const LoginProvider = ({ children }) => {
                 window.localStorage.setItem("memberStatus", memberStatus);
                 window.localStorage.setItem("useraddress", address);
                 window.localStorage.setItem("userphone", phone);
-                window.localStorage.setItem("userprofile", profileImage);
+                if (profileImage) {
+                    window.localStorage.setItem("userprofile", profileImage);
+                } else {
+                    window.localStorage.setItem("userprofile", '/image/default.svg');
+                }
                 window.localStorage.setItem("userno", memberNo);
+                window.localStorage.setItem("login", true);
 
                 setIsLoggedIn(true);
                 setLoginUser(name);
@@ -68,7 +73,11 @@ const LoginProvider = ({ children }) => {
                 setLoginStatus(memberStatus);
                 setLoginAddress(address);
                 setLoginPhone(phone);
-                setLoginProfile(profileImage);
+                if (profileImage) {
+                    setLoginProfile(profileImage);
+                } else {
+                    setLoginProfile('/image/default.svg');
+                }
                 setLoginNumber(memberNo);
 
                 navigate(prevUrl, { replace: true });

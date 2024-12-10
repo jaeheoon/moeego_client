@@ -326,7 +326,7 @@
     align-items: center;
 }
 
-.header .user-icon .default-svg {
+.header .user-icon img {
     height: 2.5em;
     width: 2.5em;
 }
