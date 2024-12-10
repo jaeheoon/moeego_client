@@ -31,7 +31,8 @@ const Logout = () => {
                 }
                 navigate("/", { replace: true });
             } catch (error) {
-                console.log("error: ", error);
+                console.log("로그인이 필요합니다.");
+                navigate("/");
             }
         };
 
