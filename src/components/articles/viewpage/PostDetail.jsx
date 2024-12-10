@@ -59,7 +59,7 @@ const PostDetail = () => {
                     currentPage < totalPages - 1 && // 현재 페이지가 마지막 페이지보다 적을 때만 요청
                     commentData.length > 0 // 댓글 데이터가 있으면 더 불러오고 없으면 무한 로딩 방지
                 ) {
-                    setCurrentPage((prevPage) => prevPage + 1);
+                    setCurrentPage((prevPage) => prevPage + 1);  // 현재 페이지 증가
                 }
             }
         };
@@ -69,6 +69,7 @@ const PostDetail = () => {
         };
     }, [isFetchingMore, currentPage, totalPages, commentData, setCurrentPage]);
 
+    // 추가 댓글 요청
     useEffect(() => {
         if (currentPage > 0) {
             fetchComments(articleNo, currentPage); // 추가 댓글 요청
@@ -95,7 +96,7 @@ const PostDetail = () => {
                 <PostHeader articleData={articleData} deleteArticle={deleteArticle}/>
                 <PostContent articleData={articleData} />
                 <PostReactState articleData={articleData} />
-                <PostComment articleData={articleData} />
+                <PostComment articleData={articleData} articleNo={articleNo} />
                 <CommentList
                     commentData={commentData}
                     isCommentLoading={isCommentLoading}

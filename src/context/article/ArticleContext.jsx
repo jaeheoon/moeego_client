@@ -81,10 +81,23 @@ const ArticleProvider = ({ children }) => {
     const fetchComments = useCallback(async (articleNo, page) => {
         setIsFetchingMore(true);
         try {
-            const response = await apiAxios.get(`/api/comment/article?article_no=${articleNo}&page=${page}`);
-            const { content, totalPages } = response.data;
-            setCommentData((prevData) => [...prevData, ...content]);
-            setTotalPages(totalPages);
+            const response = await apiAxios.get(`/api/comment/article?article_no=${articleNo}&pg=${page+1}`);
+            const { content = [], totalPages } = response.data; // content 기본값 설정
+    
+            if (!Array.isArray(content)) {
+                throw new Error("Unexpected content format");
+            }
+    
+            // 댓글 데이터 중복을 방지하고 새로운 댓글만 추가하기
+            setCommentData((prevData) => {
+                if (page === 0) {
+                    return content;  // 첫 번째 페이지는 기존 댓글을 덮어씁니다.
+                } else {
+                    return [...prevData, ...content];  // 두 번째 페이지부터는 새 댓글만 추가
+                }
+            });
+    
+            setTotalPages(totalPages);  // 전체 페이지 수 설정
         } catch (err) {
             console.error("Error fetching comments:", err);
             setError(err);
@@ -156,6 +169,63 @@ const ArticleProvider = ({ children }) => {
         }
     };
 
+    // 댓글 입력
+    const commentGoWrite = async (commentData) => {
+        try {
+            const response = await apiAxios.post('/api/comment/write', commentData);
+            if (response.status === 200) {
+                console.log("댓글 작성 성공:", response.data);
+                alert("댓글을 작성했습니다.");
+                window.location.reload();
+            } else {
+                console.error("댓글 작성 실패:", response);
+                alert("댓글 작성에 실패했습니다. 다시 시도해주세요.");
+            }
+        } catch (error) {
+            console.error("서버 요청 에러:", error);
+            alert("댓글 작성 중 오류가 발생했습니다.");
+        }
+    };
+
+    // 비로그인 댓글 입력
+    const commentGoLogin = (event) => {
+
+        if(event.key === "Enter"){
+            if (confirm('댓글을 작성하기 위해서는 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?')) {
+                navigate("/login");
+            } else {
+                return;
+            }
+        }
+    }
+    
+    // 로그인 대댓글 입력
+    const replyCommentWrite = async (commentData) => {
+        try {
+            const response = await apiAxios.post('/api/comment/write', commentData);
+            if (response.status === 200) {
+                console.log("댓글 작성 성공:", response.data);
+                alert("댓글을 작성했습니다.");
+                window.location.reload();
+            } else {
+                console.error("댓글 작성 실패:", response);
+                alert("댓글 작성에 실패했습니다. 다시 시도해주세요.");
+            }
+        } catch (error) {
+            console.error("서버 요청 에러:", error);
+            alert("댓글 작성 중 오류가 발생했습니다.");
+        }
+    };
+
+    // 비로그인 대댓글 입력
+    const replyGoLogin = () => {
+        if (confirm('답글을 작성하기 위해서는 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?')) {
+            navigate("/login");
+        } else {
+            return;
+        }
+    };
+
     // 로그인 글쓰기 버튼
     const GoWrite = () => {
         navigate("/article/write");
@@ -169,7 +239,7 @@ const ArticleProvider = ({ children }) => {
             return;
         }
     };
-
+    
     const contextValue = {
         articles,
         hotArticle,
@@ -190,6 +260,10 @@ const ArticleProvider = ({ children }) => {
         setCommentData,
         updateArticle,
         deleteArticle,
+        commentGoWrite,
+        commentGoLogin,
+        replyGoLogin,
+        replyCommentWrite,
         GoWrite,
         GoLogin
     };
