@@ -76,6 +76,8 @@ import { MyPageProvider } from './context/mypage/MyPageContext.jsx';
 import { ArticleProvider } from './context/article/ArticleContext.jsx';
 import { ProProvider } from './context/pro/ProContext.jsx';
 
+import { SignOutProvider } from './context/mypage/SignOutContext.jsx';
+
 // OAuth2
 import Oauth2Redirect from './api/Oauth2Redirect.jsx'
 
@@ -88,6 +90,7 @@ const App = () => {
             <SignUpProvider>
               <LoginProvider>
                 <MyPageProvider>
+                  <SignOutProvider>
                   <ArticleProvider>
                     <ProProvider>
                       {/* Header와 Footer를 제외할 조건 */}
@@ -175,6 +178,7 @@ const App = () => {
                       {!window.location.pathname.startsWith('/admin') && <Footer />}
                     </ProProvider>
                   </ArticleProvider>
+                 </SignOutProvider>
                 </MyPageProvider>
               </LoginProvider>
             </SignUpProvider>

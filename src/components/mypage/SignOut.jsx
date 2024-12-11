@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import "../../css/mypage/SignOut.css"
+import { SignOutContext } from '../../context/mypage/SignOutContext';
 
 const SignOut = () => {
+    const {
+        oneintro, setOneintro,
+        pwd, setPwd,
+        repwd, setRepwd,
+        errorMessage, handleSignOut
+    } = useContext(SignOutContext);
+
     return (
         <div className='DeleteUserInfoPage'>
             <div className='DeleteUserWrap'>
@@ -16,29 +24,57 @@ const SignOut = () => {
                     <div className='DeleteUserInfoContainer'>
                         <h3 className="SubTitle">탈퇴사유</h3>
                         <div>
-                            <textarea type="textarea" maxLength='80' placeholder='탈퇴사유를 입력해주세요(80자이내)' />
-                            {/* <input type="text" placeholder='탈퇴사유를 입력해주세요' /> */}
+                            <textarea
+                            value={oneintro} onChange={(e) => setOneintro(e.target.value)} 
+                            type="textarea" maxLength='50' placeholder='탈퇴사유를 입력해주세요(50자이내)' />
                         </div>
+                        {errorMessage.oneintro && (
+                                <div className="error-message">
+                                    <span>{errorMessage.oneintro}</span>
+                                </div>
+                            )}
                     </div>
                     <hr />
                     <div className='DeleteUserInfoContainer'>
                         <h3 className="SubTitle">비밀번호</h3>
                         <div>
-                            <input type="password" placeholder='비밀번호를 입력해주세요' />
+                            <input 
+                            value={pwd} onChange={(e) => setPwd(e.target.value)}
+                            type="password" placeholder='비밀번호를 입력해주세요' />
                         </div>
+                        {errorMessage.pwd && (
+                            <div className="error-message">
+                                <span>{errorMessage.pwd}</span>
+                            </div>
+                        )}
                     </div>
                     <hr />
                     <div className='DeleteUserInfoContainer'>
                         <h3 className="SubTitle">비밀번호 재입력</h3>
                         <div>
-                            <input type="password" placeholder='비밀번호를 한번 더 입력해주세요' />
+                            <input 
+                            value={repwd} onChange={(e) => setRepwd(e.target.value)}
+                            type="password" placeholder='비밀번호를 한번 더 입력해주세요' />
                         </div>
+                        {errorMessage.repwd && (
+                            <div className="error-message">
+                                <span>{errorMessage.repwd}</span>
+                            </div>
+                        )}
                     </div>
                     <hr />
                     <div className='ButtonContainer'>
-                            <input type="button" value="취소" />
-                            <input type="button" value="변경완료" />
+                            <input type="button" value="취소" 
+                            onClick={() => {
+                                setOneintro('');
+                                setPwd('');
+                                setRepwd('');
+                                setErrorMessage({ oneintro: '', pwd: '', repwd: '' });
+                            }} />
+                            <input type="button" value="탈퇴하기" 
+                            onClick={handleSignOut}/>
                     </div>
+                    
                 </form>
             </div>
         </div>
