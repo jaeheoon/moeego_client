@@ -10,7 +10,7 @@ const PostReactState = ({articleData}) => {
                     alt="좋아요"
                     className="react-icon"
                 />
-                <span className="react-text">좋아요</span>
+                <span className="react-text">{articleData.likes}</span>
             </div>
             <div className="react-item">
                 <img

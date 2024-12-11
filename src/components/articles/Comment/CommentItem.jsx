@@ -54,7 +54,8 @@ const CommentItem = ({ item }) => {
     };
 
     // 답글 제출 핸들러
-    const handleReplySubmit = () => {
+    const handleReplySubmit = (e) => {
+        if (e) e.preventDefault(); // 엔터키 제출 시 기본 동작 방지
         const replyCommentData = {
             articleNo: item.articleNo,          // 게시글 번호
             memberNo: userNo,                   // 작성자 ID
@@ -96,6 +97,11 @@ const CommentItem = ({ item }) => {
                                             placeholder="댓글을 수정하세요."
                                             value={commentContent}
                                             onChange={(e) => setCommentContent(e.target.value)} // 상태 업데이트
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    handleUpdateSubmit(); // Enter 키 입력 시 수정 제출
+                                                }
+                                            }}
                                         />
                                     </div>
                                     <button className="replySubmitBtn" onClick={handleUpdateSubmit}>수정</button>
@@ -113,22 +119,26 @@ const CommentItem = ({ item }) => {
                     )}
                 </div>
 
-                {/* 삭제된 댓글인 경우 수정/삭제 버튼 숨기기 */}
-                {!isDeleted && username === item.memberName && (
+                {/* 삭제된 댓글인 경우 수정/삭제/답글 버튼 숨기기 */}
+                {!isDeleted && (
                     <div className='replyBtnWrap'>
-                        {/* 수정 버튼을 취소 버튼으로 바꿈 */}
-                        {isEditing ? (
-                            <button className='replyUpdateBtn' onClick={handleCancelEdit}>취소</button>
-                        ) : (
-                            <button className='replyUpdateBtn' onClick={handleEditClick}>수정</button>
+                        {/* 수정 버튼 */}
+                        {username === item.memberName && (
+                            <>
+                                {isEditing ? (
+                                    <button className='replyUpdateBtn' onClick={handleCancelEdit}>취소</button>
+                                ) : (
+                                    <button className='replyUpdateBtn' onClick={handleEditClick}>수정</button>
+                                )}
+                                <button className='replyDeleteBtn' onClick={() => deleteComment(item.commentNo)}>삭제</button>
+                            </>
                         )}
-
-                        <button className='replyDeleteBtn' onClick={() => deleteComment(item.commentNo)}>
-                            삭제
-                        </button>
-                        <button className='replyBtn' onClick={handleReplyClick}>
-                            답글 달기
-                        </button>
+                        {/* 답글 버튼: 로그인 여부만 확인 */}
+                        {isLoggedIn && (
+                            <button className='replyBtn' onClick={handleReplyClick}>
+                                답글 달기
+                            </button>
+                        )}
                     </div>
                 )}
             </div>
@@ -137,14 +147,19 @@ const CommentItem = ({ item }) => {
             {isReplying && !isDeleted && (
                 <div className='replyInputWrap'>
                     <div className='replyInputDiv'>
-                        <input
-                            type="text"
-                            className="replyInput"
-                            name="comment-content"
-                            placeholder="답글을 남겨보세요."
-                            value={replyContent}
-                            onChange={(e) => setReplyContent(e.target.value)} // 상태 업데이트
-                        />
+                    <input
+                        type="text"
+                        className="replyInput"
+                        name="comment-content"
+                        placeholder="답글을 남겨보세요."
+                        value={replyContent}
+                        onChange={(e) => setReplyContent(e.target.value)} // 상태 업데이트
+                        onKeyUp={(e) => {
+                            if (e.key === 'Enter') {
+                                handleReplySubmit(e); // Enter 키 입력 시 답글 제출
+                            }
+                        }}
+                    />
                     </div>
                     <button className='replySubmitBtn' onClick={handleReplySubmit}>
                         등록

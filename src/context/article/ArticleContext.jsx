@@ -174,8 +174,6 @@ const ArticleProvider = ({ children }) => {
         try {
             const response = await apiAxios.post('/api/comment/write', commentData);
             if (response.status === 200) {
-                console.log("댓글 작성 성공:", response.data);
-                alert("댓글을 작성했습니다.");
                 window.location.reload();
             } else {
                 console.error("댓글 작성 실패:", response);
@@ -197,6 +195,14 @@ const ArticleProvider = ({ children }) => {
                 return;
             }
         }
+        else{
+            if (confirm('댓글을 작성하기 위해서는 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?')) {
+                navigate("/login");
+            }
+            else {
+                return;
+            }
+        }
     }
     
     // 로그인 대댓글 입력
@@ -204,8 +210,6 @@ const ArticleProvider = ({ children }) => {
         try {
             const response = await apiAxios.post('/api/comment/write', commentData);
             if (response.status === 200) {
-                console.log("댓글 작성 성공:", response.data);
-                alert("댓글을 작성했습니다.");
                 window.location.reload();
             } else {
                 console.error("댓글 작성 실패:", response);
@@ -236,7 +240,6 @@ const ArticleProvider = ({ children }) => {
     
             // 서버에서 반환된 수정된 댓글 처리
             if (response.data) {
-                console.log('수정된 댓글:', response.data);
                 window.location.reload();
             }
     
