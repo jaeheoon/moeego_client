@@ -6,8 +6,9 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="ulWrap">
-        <ul>모이고소개
+        <ul>모이고
           <li><Link to="/about">페이지소개</Link></li>
+          <li><Link to="/event">공지/이벤트</Link></li>
         </ul>
         <ul>고객센터
           <li><a href="">챗봇상담</a></li>

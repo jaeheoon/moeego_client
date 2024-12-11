@@ -1,6 +1,8 @@
 import React from 'react';
+import Notice from './Notice';
+import Event from './Event';
 
-const Notice_eventpage = () => {
+const Notice_eventPage = () => {
     return (
         <div className='Notice_eventPage'>
             <div className=''></div>
@@ -11,23 +13,13 @@ const Notice_eventpage = () => {
                 <li>이벤트</li>
             </ul>
             <div className='noticeListWrap'>
-                <p>공지사항</p>
-                <ul>
-                    <li>
-                        map 돌려서 찍기
-                    </li>
-                </ul>
+                <Notice/>
             </div>
             <div className='eventListWrap'>
-                <p>이벤트</p>
-                <ul>
-                    <li>
-                        map 돌려서 찍기
-                    </li>
-                </ul>
+                <Event/>
             </div>
         </div>
     );
 };
 
-export default Notice_eventpage;
+export default Notice_eventPage;

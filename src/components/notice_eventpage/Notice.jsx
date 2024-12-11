@@ -1,10 +1,9 @@
 import React from 'react';
-import Notice_eventMenu from './Notice_eventMenu';
 
 const Notice = () => {
     return (
         <div className='noticePage'>
-            <Notice_eventMenu/>
+            <p>공지사항</p>
             <ul>
                 <li>
                     <div>

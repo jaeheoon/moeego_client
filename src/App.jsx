@@ -9,6 +9,9 @@ import Footer from "./components/Footer";
 // mainPage
 import MainPage from './components/mainPage';
 
+// 이벤트, 공지
+import Notice_eventPage from "./components/notice_eventpage/Notice_eventpage.jsx";
+
 // member
 import Login from "./components/login/Login";
 import Join from "./components/join/Join";
@@ -74,7 +77,7 @@ import { ArticleProvider } from './context/article/ArticleContext.jsx';
 import { ProProvider } from './context/pro/ProContext.jsx';
 
 // OAuth2
-import Oauth2Redirect from './api/Oauth2Redirect.jsx';
+import Oauth2Redirect from './api/Oauth2Redirect.jsx'
 
 const App = () => {
   return (
@@ -94,9 +97,12 @@ const App = () => {
                         {/* 메인페이지 */}
                         <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
 
+                        {/* 소개페이지, 공지/이벤트 */}
+                        <Route path={"/about"} element={<About />} />
+                        <Route path={"/event"} element={<div className='main-content'><Notice_eventPage /></div>} />
+
                         {/* 카테고리 페이지 */}
                         <Route path={"/category/:mainCateNo"} element={<div className='main-content'><SelectCategory /></div>} />
-                        <Route path={"/about"} element={<About />} />
                         <Route path="/pro/search" element={<div className='main-content'><ProSearch /></div>} />
                         <Route path="/pro" element={<div className='main-content'><ProView /></div>} />
 
@@ -126,7 +132,6 @@ const App = () => {
                         <Route path={"/article/pro"} element={<div className='main-content'><FreeBoardForm /></div>} />
                         <Route path={"/article/hot"} element={<div className='main-content'><FreeBoardForm /></div>} />
                         <Route path={"/article/qna"} element={<div className='main-content'><FreeBoardForm /></div>} />
-
                         <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
 
                         {/* 회원가입/로그인/로그아웃 페이지 */}
@@ -146,7 +151,7 @@ const App = () => {
                         <Route path="/pro/signup/sub_study" element={<ProjoinSub_study />} />
                         <Route path="/pro/signup/sub_hobby" element={<ProjoinSub_hobby />} />
                         <Route path="/pro/signup/sub_car" element={<ProjoinSub_car />} />
-                        <Route path="/pro/signup" element={<Prosignup />} />
+                        <Route path="/pro/signup" element={<div className='main-content'><Prosignup /></div>} />
                         <Route path="/pro/proview" element={<ProView />} />
                         <Route path="/pro/ProRequest" element={<ProRequest />} />
 
