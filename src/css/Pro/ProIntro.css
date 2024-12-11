@@ -1,0 +1,128 @@
+.ProIntroPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ProIntroPage .ProIntroWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-sizing: border-box;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 1rem auto;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .title {
+    display: flex;
+    align-content: center;
+    justify-content: left;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .content {
+    overflow-y: hidden;
+    min-height: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    border-bottom: 1px solid #fcc1cc;
+    box-sizing: border-box;
+    color: #525252;
+    resize: none;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .content:focus, 
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .content:not(:placeholder-shown) {
+    border-bottom: 2px solid lightcoral;
+    box-sizing: border-box;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .count {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    color: #525252;
+}
+
+.ProIntroPage .ProIntroWrap .moveBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 60%;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.ProIntroPage .ProIntroWrap .moveBtn .BtnWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .prevBtn, 
+.ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .nextBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;  
+    font-weight: bold;
+    box-sizing: border-box;
+    border: 1px solid #fd9bb9;  
+    background-color: white; 
+    color: #fd9bb9;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 1rem;
+}
+
+.ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .prevBtn:hover,
+.ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .nextBtn:hover {
+    border: 1px solid #fcc1cc;   
+    background-color: #fcc1cc; 
+    color: white;
+}

@@ -1,115 +1,259 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import checkPost from '../../js/daumpost';
+import React, { useContext, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { ProSignUpContext } from '../../context/member/ProSignUpContext';
+import apiAxios from '../../api/apiAxios';
 import "../../css/join/Join.css";
 
 const Projoin = () => {
+    const { state } = useLocation(); // location.state에서 전달된 데이터 받기
+    const { mainCateNo, checkCategories, oneintro, intro } = state || {}; // 필요한 데이터 추출
+
+    const {
+        signup,
+        errors,
+        isReadonly,
+        updateSignUpData,
+        handleAddressSearch,
+        submitSignupForm,
+        isEmailChecked,
+        checkEmailDuplication
+    } = useContext(ProSignUpContext);
 
     useEffect(() => {
         const scriptSrc = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+
+        // Correct script check and append logic
         if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
-            const script = document.createElement('script');
+            const script = document.createElement("script");
             script.src = scriptSrc;
             script.async = true;
             document.body.appendChild(script);
-
-            // Cleanup: 스크립트 제거
-            return () => {
-                document.body.removeChild(script);
-            };
         }
     }, []);
+
+    const handleJoinClick = async () => {
+        const checkCategoriesString = checkCategories.join(','); // 배열을 문자열로 변환
+        const genderValue = signup.gender === 'M' ? 1 : (signup.gender === 'F' ? 2 : 0); // 성별 숫자로 변환
+
+        // state에서 가져온 데이터를 포함해 회원가입 데이터를 서버로 전송
+        const signupData = {
+            mainCateNo,
+            subCategories: checkCategoriesString,  // subCategories로 변환
+            oneIntro: oneintro,
+            intro,
+            email: signup.email,
+            name: signup.name,
+            pwd: signup.pwd,
+            gender: genderValue,
+            phone: signup.phone,
+            address: `${signup.address1} ${signup.address2}`,  // 주소 합치기
+        };
+
+        try {
+            await apiAxios.post("/api/pro/join", signupData);
+            alert("회원가입이 완료되었습니다.");
+        } catch (error) {
+            console.error("회원가입 실패:", error);
+            alert("회원가입 실패");
+            alert(mainCateNo + ", " + checkCategories + ", " + oneintro + ", " + intro);
+        }
+    };
 
     return (
         <div className="JoinPage">
             <div id="join_container">
-                <h1>MoeeGo에 오신 것을 환영합니다.</h1>
-                <form id="joinForm" className="joinbox">
+                <h1>모이고에 오신 것을 환영합니다.</h1>
+                <form id="projoinForm" className="joinbox">
+                    {/* 이름 입력 */}
                     <div className="join-align">
                         <label>이름</label>
+                        <input
+                            className="namebox"
+                            type="text"
+                            placeholder="이름(실명)을 입력해주세요"
+                            value={signup.name}
+                            maxLength={6}
+                            onChange={(e) => updateSignUpData('name', e.target.value)}
+                        />
                     </div>
-                    <div>
-                        <input className="namebox" type="text" placeholder='이름(실명)을 입력해주세요' />
+                    <div className='errorWrap'>
+                        {errors.name && <span className="error">{errors.name}</span>}
                     </div>
-                    <div className="join-align">
-                        <span id="warn">타인 명의로 가입 시 계정이 정지되고 재가입이 불가능합니다.</span>
-                    </div>
-                    <div id="nameDiv"></div>
 
+                    {/* 이메일 입력 */}
                     <div className="join-align">
                         <label>이메일</label>
+                        <input
+                            className="emailbox"
+                            type="email"
+                            placeholder="moeego@example.com"
+                            value={signup.email}
+                            onChange={(e) => updateSignUpData('email', e.target.value)}
+                            onBlur={checkEmailDuplication}
+                        />
                     </div>
-                    <div>
-                        <input className="emailbox" type='email' placeholder='moeego@example.com' />
+                    <div className='errorWrap'>
+                        {errors.email && <span className="error">{errors.email}</span>}
                     </div>
-                    <div id="emailDiv"></div>
-
+                    {/* 비밀번호 입력 */}
                     <div className="join-align">
                         <label>비밀번호</label>
+                        <input
+                            className="pwdbox"
+                            type="password"
+                            placeholder="비밀번호를 입력해주세요"
+                            autoComplete="off"
+                            value={signup.pwd}
+                            maxLength={20}
+                            onChange={(e) => updateSignUpData('pwd', e.target.value)}
+                        />
                     </div>
-                    <div>
-                        <input className="pwdbox" type='password' placeholder='비밀번호를 입력해주세요' />
-                    </div>
-                    <div id="pwdDiv"></div>
 
+                    <div className='errorWrap'>
+                        {errors.pwd && <span className="error">{errors.pwd}</span>}
+                    </div>
+
+                    {/* 비밀번호 확인 */}
                     <div className="join-align">
                         <label>비밀번호 확인</label>
+                        <input
+                            className="repwdbox"
+                            type="password"
+                            placeholder="비밀번호를 한번 더 입력해주세요"
+                            autoComplete="off"
+                            value={signup.confirmpwd}
+                            onChange={(e) => updateSignUpData('confirmpwd', e.target.value)}
+                        />
                     </div>
-                    <div>
-                        <input className="repwdbox" type='password' placeholder='비밀번호를 한번 더 입력해주세요' />
-                    </div>
-                    <div id="repwdDiv"></div>
 
+                    <div className='errorWrap'>
+                        {errors.confirmpwd && <span className="error">{errors.confirmpwd}</span>}
+                    </div>
+                    {/* 성별 선택 */}
                     <div className="join-align">
                         <label>성별</label>
                         <div className="select">
-                            <input type="radio" value="M" id="m" name="gender" /><label htmlFor="m">남자</label>
-                            <input type="radio" value="F" id="w" name="gender" /><label htmlFor="w">여자</label>
+                            <input
+                                type="radio"
+                                value="M"
+                                id="m"
+                                name="gender"
+                                checked={signup.gender === 'M'}
+                                onChange={(e) => updateSignUpData('gender', e.target.value)}
+                            />
+                            <label htmlFor="m">남자</label>
+                            <input
+                                type="radio"
+                                value="F"
+                                id="w"
+                                name="gender"
+                                checked={signup.gender === 'F'}
+                                onChange={(e) => updateSignUpData('gender', e.target.value)}
+                            />
+                            <label htmlFor="w">여자</label>
                         </div>
                     </div>
 
+                    <div className='errorWrap'>
+                        {errors.gender && <span className="error">{errors.gender}</span>}
+                    </div>
+
+                    {/* 휴대전화 번호 */}
                     <div className="join-align">
                         <label>휴대전화 번호</label>
+                        <input
+                            className="phonebox"
+                            type="text"
+                            placeholder="010-0000-0000"
+                            value={signup.phone}
+                            onChange={(e) => updateSignUpData('phone', e.target.value)}
+                        />
                     </div>
-                    <div>
-                        <input className="phonebox" type='text' placeholder='010-1234-5678' />
+                    <div className='errorWrap'>
+                        {errors.phone && <span className="error">{errors.phone}</span>}
                     </div>
-                    <div>
-                        <input type="button" className="checkBtn" value='인증번호 발송' />
+                    <div className='join-align'>
+                        <input
+                            type="button"
+                            className="checkBtn"
+                            value="인증번호 발송"
+                            onClick={() => { /* 인증번호 발송 처리 로직 */ }}
+                        />
                     </div>
 
+                    {/* 우편번호 입력 */}
                     <div className="join-align">
-                        <label>인증번호 입력</label>
-                        <div className='join-align-inside'>
-                            <input className="checknumbox" type='text' placeholder='인증번호' />
-                            <input type="button" className="checknumBtn" value="확인" />
-                        </div>
+                        <label>우편번호</label>
+                    </div>
+                    <div className='zip-box'>
+                        <input
+                            className="zipcodebox"
+                            id="zipcode"
+                            name="zipcode"
+                            type="text"
+                            placeholder="우편번호"
+                            value={signup.zipcode}
+                            readOnly={isReadonly.zipcode}
+                            onChange={(e) => updateSignUpData("zipcode", e.target.value)}
+                        />
+                        <input
+                            type="button"
+                            className="zipcheckBtn"
+                            value="우편번호"
+                            onClick={handleAddressSearch}
+                        />
                     </div>
 
-                    <div className="join-align"><label>우편번호</label></div>
-                    <div>
-                        <input className="zipcodebox" id="zipcode" name="zipcode" type='text' placeholder='우편번호' readOnly />
-                        <input type="button" className="zipcheckBtn" value="우편번호 검색" onClick={() => checkPost("zipcode", "addr1", "addr2")} />
+                    <div className='errorWrap'>
+                        {errors.zipcode && <span className="error">{errors.zipcode}</span>}
                     </div>
 
+                    {/* 주소 입력 */}
                     <div className="join-align">
                         <label>주소</label>
+                        <input
+                            className="addrbox"
+                            id="addr1"
+                            name="addr1"
+                            type="text"
+                            placeholder="주소"
+                            value={signup.address1}
+                            readOnly={isReadonly.address1}
+                            onChange={(e) => updateSignUpData('address1', e.target.value)}
+                        />
                     </div>
-                    <div>
-                        <input className="addrbox" id="addr1" name="addr1" type='text' placeholder='주소' readOnly />
+
+                    <div className='errorWrap'>
+                        {errors.address1 && <span className="error">{errors.address1}</span>}
                     </div>
 
                     <div className="join-align">
                         <label>상세주소</label>
-                    </div>
-                    <div>
-                        <input className="detailaddrbox" id="addr2" name="addr2" type='text' placeholder='상세주소' />
+                        <input
+                            className="detailaddrbox"
+                            id="addr2"
+                            name="addr2"
+                            type="text"
+                            placeholder="상세주소"
+                            value={signup.address2}
+                            onChange={(e) => updateSignUpData('address2', e.target.value)}
+                        />
                     </div>
 
-                    <input type="button" className="joinBtn" value="회원가입" />
+                    <div className='errorWrap'>
+                        {errors.address2 && <span className="error">{errors.address2}</span>}
+                    </div>
+
+                    {/* 회원가입 버튼 */}
+                    <input
+                        type="button"
+                        className="joinBtn"
+                        value="회원가입"
+                        onClick={handleJoinClick}
+                    />
                 </form>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 };
 

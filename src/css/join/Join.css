@@ -11,7 +11,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 400px;
     margin: 0 auto; 
     padding: 20px;
     box-sizing: border-box;
@@ -22,11 +21,11 @@
     flex-direction: column;
     align-items: center;
     border: 2px solid #F4F4F4;
-    width: 400px;
+    width: 60%;
     border-radius: 25px;
     background-color: #F4F4F4;
     box-sizing: border-box;
-    padding-bottom: 2em;
+    padding: 2rem;
 }
 
 .JoinPage #warn {
@@ -44,9 +43,11 @@
     margin-top: 5px; 
 }
 
-.JoinPage .join-align{
-    width: 320px; 
-    align-items: center;
+.JoinPage .join-align {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -56,7 +57,7 @@
     border-style: none;
     padding: 12px 12px; 
     font-size: 16px; 
-    width: 320px; 
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -72,17 +73,22 @@
     outline: 2px solid #fcc1cc;
 }
 
+.JoinPage .checknumbox,.JoinPage .zip-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 0.8rem;
+}
 
 .JoinPage .checknumbox,.JoinPage .zipcodebox{
     border-radius: 10px; 
     border-style: none;
     padding: 12px 12px; 
     font-size: 16px; 
-    width: 220px; 
+    width: 80%;
     box-sizing: border-box;
-}
-
-.JoinPage .zipcodebox {
     margin-right: 5px;
 }
 
@@ -96,7 +102,7 @@
     font-size: 10pt;
     border-radius: 10px;
     color: white;
-    width: 320px;            
+    width: 100%;
     cursor: pointer;  
     border: 1px solid #FFD8E4;   
     background-color: #FFD8E4; 
@@ -107,10 +113,10 @@
 }
 
 .JoinPage .checknumBtn,.JoinPage .zipcheckBtn {
-    width: 95px; 
+    width: 20%;
     height : 45px;
-    float: right;
     box-sizing: border-box;
+    font-size: 0.8rem;
 }
 
 .JoinPage .join-align-inside {
@@ -137,7 +143,7 @@
     font-size: 16px;              
     border-radius: 10px;             
     color: #fd9bb9;   
-    width: 160px;            
+    width: 50%;
     cursor: pointer;  
     border: 1px solid #FFD8E4;   
     background-color: white; 
@@ -170,7 +176,7 @@
     justify-content: center;
     gap: 0.5em;
     cursor: pointer;
-    width: 160px;
+    width: 100%;
     border-radius: 10px;
     line-height: 24px;
     text-align: center;
@@ -205,7 +211,7 @@
 
 .JoinPage .errorWrap .error {
     font-size: 0.725rem;
-    width: 80%;
+    width: 100%;
     color: red;
 }
 
@@ -214,17 +220,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        height: auto;
         box-sizing: border-box;
+        height: auto;
+        width: 100%;
     }
 
     .JoinPage #join_container {
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
-        width: 90%;
+        width: 100%;
     }
 
     .JoinPage #join_container h1 {
@@ -238,7 +243,6 @@
     }
 
     .JoinPage #join_container .joinbox {
-        max-width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -246,11 +250,23 @@
         border: none;
         border-top: 2px solid #f2f2f2;
         border-radius: 0;
+        padding: 0;
         padding-top: 1em;
+        width: 100%;
     }
 
     .JoinPage #join_container .joinbox .zip-box {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .JoinPage #join_container .joinbox .zip-box .join-align {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .JoinPage #join_container .joinbox input[type='text'],
@@ -273,6 +289,10 @@
     .JoinPage #join_container .joinbox input[type='email']:not(:placeholder-shown) {
         border-bottom: 2px solid lightcoral;
         box-sizing: border-box;
+    }
+
+    .JoinPage .errorWrap {
+        width: 100%;
     }
 
     .JoinPage .errorWrap .error {

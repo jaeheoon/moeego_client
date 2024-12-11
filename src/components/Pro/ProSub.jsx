@@ -1,46 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../../css/Pro/ProSubMoblie.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import apiAxios from '../../api/apiAxios';
 
 const ProjoinSub = () => {
+    const [subCategories, setSubCategories] = useState([]);
+    const [checkCategories, setCheckCategories] = useState([]);
+    const { mainCateNo } = useParams();
     const navigate = useNavigate();
 
     const goJoin = () => {
-        navigate("/pro/signup");
-    }
+        // 선택된 체크박스 값들을 상태로 전달하고, mainCateNo만 URL에 포함시킴
+        navigate(`/pro/signup/main/${mainCateNo}/sub`, {
+            state: { checkCategories } // 체크된 카테고리 배열을 state로 전달
+        });
+    };
 
     const goBack = () => {
         navigate("/pro/signup/main");
     }
 
+    useEffect(() => {
+        apiAxios
+            .get(`/api/sub_category/${mainCateNo}`)
+            .then((response) => {
+                setSubCategories(response.data); // 서브 카테고리 데이터 설정
+            })
+            .catch((err) => {
+                console.error("Error fetching subcategories:", err);
+            });
+    }, [mainCateNo]);
+
+    // 체크박스 변경 이벤트 핸들러
+    const handleCheckboxChange = (subCateNo) => {
+        setCheckCategories((prev) => {
+            if (prev.includes(subCateNo)) {
+                return prev.filter((item) => item !== subCateNo);
+            } else {
+                return [...prev, subCateNo];
+            }
+        });
+    };
+
     return (
         <div className="ProJoinSubPage">
             <div id="projoinSub_container">
-                <form id="ProJoinSubForm" className="ProJoinSubbox">
+                <form id="ProJoinSubForm" className="ProJoinSub_box">
                     <br />
-                    <h1>어떤 서비스를 제공할 수 있나요?</h1>
-                    <div className="detail-interior-wrap">
-                        {/* 여기에 포이치 돌려서 메인카테고리 별서브 카테고리 찍을 예정 */}
-                        <div className="detail-interior">
-                            <input type='checkbox' id="1" />
-                            <label htmlFor='1'>이사 / 청소</label>
-                        </div>
-                        <div className="detail-interior">
-                            <input type='checkbox' id="2" />
-                            <label htmlFor='2'>설치 / 수리</label>
-                        </div>
-                        <div className="detail-interior">
-                            <input type='checkbox' />
-                            <label>철거 / 폐기</label>
-                        </div>
-                        <div className="detail-interior">
-                            <input type='checkbox' />
-                            <label>인테리어 / 시공</label>
-                        </div>
-                        <div className="detail-interior">
-                            <input type='checkbox' />
-                            <label>가구 리폼 / 운반</label>
-                        </div>
+                    <h2>어떤 서비스를 제공할 수 있나요?</h2>
+                    <div className="detail-wrap">
+                        {subCategories.map((category) => (
+                            <div key={category.subCateNo} className="detail-item">
+                                <input
+                                    type="checkbox"
+                                    id={`${category.subCateNo}`}
+                                    checked={checkCategories.includes(category.subCateNo)}
+                                    onChange={() => handleCheckboxChange(category.subCateNo)}
+                                />
+                                <label htmlFor={`${category.subCateNo}`}>{category.subCateName}</label>
+                            </div>
+                        ))}
                     </div>
                 </form>
                 <div className='moveBtn'>

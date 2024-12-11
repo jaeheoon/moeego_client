@@ -3,7 +3,7 @@ import checkPost from "../../js/daumpost";
 import { useNavigate } from "react-router-dom";
 import apiAxios from "../../api/apiAxios";
 
-const SignUpContext = createContext();
+const ProSignUpContext = createContext();
 
 const initialState = {
     name: "",
@@ -15,7 +15,7 @@ const initialState = {
     zipcode: "",
     address1: "",
     address2: "",
-    address: "", // 서버로 통합된 주소를 전송
+    address: "",
 };
 
 const initialErrors = {
@@ -31,7 +31,7 @@ const initialErrors = {
     address: "",
 };
 
-const SignUpProvider = ({ children }) => {
+const ProSignUpProvider = ({ children }) => {
     const [signup, setSignup] = useState(initialState);
     const [errors, setErrors] = useState(initialErrors);
     const [isEmailChecked, setIsEmailChecked] = useState(false);
@@ -40,8 +40,6 @@ const SignUpProvider = ({ children }) => {
         address1: false,
         address2: false,
     });
-
-
 
     const navigate = useNavigate();
 
@@ -74,19 +72,18 @@ const SignUpProvider = ({ children }) => {
         }
 
         try {
-            const response = await apiAxios.post("/api/join/exist", { email: signup.email });
-
-            if (response.data.isAvailable) {
-                setIsEmailChecked(true);
-                setErrors((prevErrors) => ({
-                    ...prevErrors,
-                    email: "", // 오류 메시지 제거
-                }));
-            } else {
+            const response = await apiAxios.post("/api/pro/join/exist", { email: signup.email });
+            if (response.data) {
                 setIsEmailChecked(false);
                 setErrors((prevErrors) => ({
                     ...prevErrors,
                     email: "이미 사용 중인 이메일입니다.",
+                }));
+            } else {
+                setIsEmailChecked(true);
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    email: "",
                 }));
             }
         } catch (error) {
@@ -156,23 +153,22 @@ const SignUpProvider = ({ children }) => {
                 break;
         }
 
-        // 오류 상태 업데이트
         setErrors((prevErrors) => ({
             ...prevErrors,
-            [field]: error || "", // 오류 메시지 없으면 빈 문자열로 설정
+            [field]: error || "",
         }));
 
-        return error || null; // 오류가 없으면 null 반환
+        return error || null;
     };
 
     const validateForm = () => {
         const fieldsToValidate = Object.keys(signup);
         let isValid = true;
-        let tempErrors = {}; // 임시 오류 객체
+        let tempErrors = {};
 
         fieldsToValidate.forEach((field) => {
             const value = signup[field];
-            const fieldError = validateField(field, value); // validateField가 오류 메시지를 반환하도록 변경
+            const fieldError = validateField(field, value);
 
             if (fieldError) {
                 tempErrors[field] = fieldError;
@@ -180,7 +176,7 @@ const SignUpProvider = ({ children }) => {
             }
         });
 
-        setErrors(tempErrors); // 모든 오류를 한 번에 상태로 업데이트
+        setErrors(tempErrors);
         return isValid;
     };
 
@@ -197,13 +193,19 @@ const SignUpProvider = ({ children }) => {
 
         try {
             const combinedAddress = `${signup.address1} ${signup.address2} (${signup.zipcode})`.trim();
+            const categoriesString = signup.checkCategories?.join(",") || "";
+
             const dataToSubmit = {
                 ...signup,
                 address: combinedAddress,
-                gender: signup.gender === "M" ? 1 : signup.gender === "F" ? 2 : 0
+                gender: signup.gender === "M" ? 1 : signup.gender === "F" ? 2 : 0,
+                oneintro,
+                intro,
+                mainCateNo,
+                checkCategories: categoriesString,
             };
 
-            const response = await apiAxios.post("/api/join", dataToSubmit);
+            const response = await apiAxios.post("/api/pro/signup", dataToSubmit);
 
             if (response.status === 200) {
                 goSuccess(signup.name);
@@ -223,7 +225,6 @@ const SignUpProvider = ({ children }) => {
         }
     };
 
-    // 주소 검색 처리
     const handleAddressSearch = () => {
         if (typeof daum === "undefined" || !daum.Postcode) {
             console.error("Daum Postcode API가 로드되지 않았습니다.");
@@ -241,24 +242,23 @@ const SignUpProvider = ({ children }) => {
     };
 
     return (
-        <SignUpContext.Provider
+        <ProSignUpContext.Provider
             value={{
                 signup,
                 errors,
-                setIsEmailChecked,
+                isReadonly,
                 updateSignUpData,
                 handleAddressSearch,
                 submitSignupForm,
                 goMain,
                 goLogin,
-                isReadonly,
                 isEmailChecked,
                 checkEmailDuplication
             }}
         >
             {children}
-        </SignUpContext.Provider>
+        </ProSignUpContext.Provider>
     );
 };
 
-export { SignUpProvider, SignUpContext };
+export { ProSignUpProvider, ProSignUpContext };
