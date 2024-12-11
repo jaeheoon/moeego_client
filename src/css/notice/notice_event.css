@@ -1,0 +1,208 @@
+.Notice_eventPage{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.noticePageWrap {
+    box-sizing: border-box;
+    display: flex;
+    width:100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+.noticeLifeWrap{
+    display: flex;
+    align-items: center;
+    width:20%
+}
+.noticeEventListWrap{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.Notice_eventPage>h1{
+    margin-top: 4rem;
+}
+/* 왼쪽 리스트 스타일 */
+.Notice_eventPage .noticeEventMenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 25%; /* 원하는 폭으로 설정 */
+    border-radius: 5px;
+}
+
+.Notice_eventPage .noticeEventMenu li {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.Notice_eventPage .noticeEventMenu li a{
+    color: black;
+}
+.Notice_eventPage .noticeEventMenu li:hover{
+    background-color: #fcc1cc;
+    color:white;
+}
+
+.Notice_eventPage .noticeEventMenu li:hover a{
+    background-color: #fcc1cc;
+    color:white;
+}
+
+/* 오른쪽 콘텐츠 스타일 */
+.noticeListWrap, .eventListWrap {
+    display: flex;
+    flex: 1;
+    background-color: #fff; /* 배경색 */
+    width:45%;
+    height: 45rem;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+.noticePage, .eventPage{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width:100%;
+}
+.noticeList, .eventList{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width:100%;
+}
+.eventItemWrap, .noticeItemWrap {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background-color: #fff; /* 배경색 */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.eventItemWrap p, .noticeItemWrap p {
+
+    flex: 1; /* 남은 공간 차지 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0; /* 기본 p 태그 여백 제거 */
+}
+
+
+.eventList a:link, .noticeList a:link{text-decoration: none; color: black;}
+.eventList a:hover, .noticeList a:hover{text-decoration: none; color: black;}
+.eventList a:active, .noticeList a:active{text-decoration: none; color: black;}
+.eventList a:visited, .noticeList a:visited{text-decoration: none; color: black;}
+
+.noticeList p, .eventList p{
+    width: 100%;
+    margin:0;
+}
+.noticeView h1{
+    font-size: 2.5rem;
+    margin: 0;
+    margin-top: 1rem;
+}
+.noticeView h2 {
+    margin: 0;
+    margin-top: 4rem;
+}
+
+@media (max-width: 1250px) {
+    .noticePageWrap {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .noticeLifeWrap{
+        width:100%;
+    }
+    .noticeEventListWrap{
+        width: 100%;
+        flex-direction: column;
+    }
+    .noticeListWrap, .eventListWrap{
+        width:100%;
+    }
+    .noticeLifeWrap .life-topic-layout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .noticeLifeWrap .life-topic-layout section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .noticeLifeWrap .life-topic-layout section ul {
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        margin-top: 1em;
+        gap: 1em;
+    }
+
+    .noticeLifeWrap .life-topic-layout section ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .noticeLifeWrap .life-topic-layout section ul li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        width: 100%;
+        font-size: 10pt;
+        padding: 0.4em 0;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+
+    .noticeLifeWrap .life-topic-layout section ul li:hover {
+        background-color: transparent;
+        color: #323232;
+    }
+
+    .noticeLifeWrap .life-topic-layout section ul li a:hover {
+        background-color: #fcc1cc;
+    }
+
+    .noticeLifeWrap .life-topic-layout section ul li:hover a {
+        color: #323232;
+    }
+}

@@ -18,7 +18,7 @@ const PostReactState = ({articleData}) => {
                     alt="댓글"
                     className="react-icon"
                 />
-                <span className="react-text">댓글</span>
+                <span className="react-text">{articleData.commentCount}</span>
             </div>
         </div>
     );

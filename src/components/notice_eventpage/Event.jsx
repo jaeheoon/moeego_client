@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { ArticleContext } from '../../context/article/ArticleContext';
+import { Link } from 'react-router-dom';
+import Notice_eventItem from './notice_eventItem';
 
-const Event = () => {
+const Notice = () => {
+    const mainCateNo = 'event'; // 공지사항 카테고리 번호
+    const { fetchArticlesByCategory, eventArticles, isLoading } = useContext(ArticleContext);
+
+    // 컴포넌트가 마운트될 때 공지사항 데이터를 가져옴
+    useEffect(() => {
+        fetchArticlesByCategory(mainCateNo);
+    }, [fetchArticlesByCategory, mainCateNo]);
+
     return (
         <div className='eventPage'>
-            <p>이벤트</p>
-            <div className='eventListWrap'>
-                <div>제목(모이고가 경품 쏜다! 경품 이벤트)</div>
-                <div>4개정도 DB에서 map으로 뽑아서</div>
-            </div>
+            <h1>이벤트</h1>
+            {isLoading ? (
+                <p>로딩 중...</p>
+            ) : (
+                <div className='eventList'>
+                    {eventArticles.length > 0 ? (
+                        eventArticles.map((item) => (
+                            <Link key={item.articleNo} to={`/noticeview?article_no=${item.articleNo}`}>
+                                <Notice_eventItem item = {item}/>
+                            </Link>
+                        ))
+                    ) : (
+                        <p>이벤트가 없습니다.</p>
+                    )}
+                </div>
+            )}
         </div>
     );
 };
 
-export default Event;
+export default Notice;

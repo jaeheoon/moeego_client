@@ -16,7 +16,7 @@ const MyHistory = () => {
     //게시글 불러오기
     useEffect(() => {
         apiAxios
-            .get(`/api/article/myPage?member_no=1`)
+            .get(`/api/article/mypage?member_no=1`)
             .then((response) => {
                 setArticles(response.data.content);
             })

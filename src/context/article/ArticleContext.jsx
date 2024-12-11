@@ -17,6 +17,9 @@ const ArticleProvider = ({ children }) => {
     const [error, setError] = useState(null); // 에러 상태
     const navigate = useNavigate();
 
+    const [noticeArticles, setNoticeArticles] = useState([]);
+    const [eventArticles, setEventArticles] = useState([]);
+
     // 전체 게시글 가져오기
     const fetchArticles = useCallback(async () => {
         setIsLoading(true);
@@ -37,7 +40,11 @@ const ArticleProvider = ({ children }) => {
         const apiUrl = `/api/article/${category}`;
         try {
             const response = await apiAxios.get(apiUrl);
-            setArticles(response.data.content);
+            if (category === 'notices') {
+                setNoticeArticles(response.data.content);
+            } else if (category === 'event') {
+                setEventArticles(response.data.content);
+            }
         } catch (err) {
             console.error(`Error fetching articles for category ${category}:`, err);
             setError(err);
@@ -285,6 +292,8 @@ const ArticleProvider = ({ children }) => {
     const contextValue = {
         articles,
         hotArticle,
+        noticeArticles,
+        eventArticles,
         articleData,
         commentData,
         isLoading,
