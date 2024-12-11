@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../../css/admin/ProApproval.css';
+import { AdminContext } from '../../context/admin/AdminContext';
 
-const GosuApproveTable = () => {
-    const tableData = [
-        { id: 10, name: '윤상수', description: '고수 시작추천요 ㅎㅎ', deprive_count: 0, status: '미승인' },
-        { id: 9, name: '주홍', description: '고수 시작하겠요 열심히!!', deprive_count: 92, status: '미승인' },
-        { id: 8, name: '김태윤', description: '고수 시작하겠요 열심히!!', deprive_count: 5, status: '미승인' },
-        { id: 7, name: '정진미', description: '고수 시작하겠요 열심히!!', deprive_count: 8, status: '미승인' },
-    ];
+const ProApproval = () => {
+    const {
+        getStatusBadgeClass,
+        approvedmember,
+        loading,
+        error,
+        fetchApprovalData,
+        handleApprove,
+        handleRevoke
+    } = useContext(AdminContext);
 
-    // 상태에 따라 다른 배지를 적용하기 위한 함수
-    const getStatusBadgeClass = (status) => {
-        if (status === '승인') {
-            return 'pro-status-badge-approved';
-        } else if (status === '미승인') {
-            return 'pro-status-badge-revoked';
-        }
-        return 'status-badge';
-    };
+    
+    // 컴포넌트 마운트 시 API 호출
+    useEffect(() => {
+        fetchApprovalData();
+    }, []);
+
+    // 로딩 중일 때 UI 표시
+    if (loading) {
+        return <div>로딩 중...</div>;
+    }
+
+    // 오류가 있을 경우 UI 표시
+    if (error) {
+        return <div>오류 발생: {error}</div>;
+    }
 
     const approveMember = (name) => {
         const isConfirmed = window.confirm('고수 승인 하시겠습니까?');
@@ -39,7 +49,7 @@ const GosuApproveTable = () => {
 
     return (
         <div className="proApproval-approve-container">
-            <div className='proApproval-approve-inner-container'>
+            <div className="proApproval-approve-inner-container">
                 <h2 className="proApproval-approve-title">고수 권한 승인 | 고수가 되고 싶은가?</h2>
                 <hr className="proApproval-approve-divider" />
                 <div className="proApproval-table-container">
@@ -52,17 +62,35 @@ const GosuApproveTable = () => {
                                 <th>박탈 횟수</th>
                                 <th>승인 여부</th>
                                 <th>작업</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            {tableData.map((row) => (
-                                <tr key={row.id}>
-                                    <td>{row.id}</td>
+                            {approvedmember.map((row) => (
+                                <tr key={row.memberNo}>
+                                    <td>{row.memberNo}</td>
                                     <td>{row.name}</td>
-                                    <td>{row.description}</td>
-                                    <td>{row.deprive_count}회</td>
+                                    <td>{row.oneIntro}</td>
+                                    <td>{row.count}회</td>
                                     <td>
-                                        <div className={getStatusBadgeClass(row.status)}>{row.status}</div>
+                                        {/* 배지와 상태 텍스트를 둘 다 처리 */}
+                                        <div className={getStatusBadgeClass(row.memberStatus)}>
+                                            {row.memberStatus === 'ROLE_PEND_PRO' ? '미승인' : '승인'}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => handleApprove(row.memberNo , row.name)}
+                                            className="approve-btn"
+                                        >
+                                            승인
+                                        </button>
+                                        <button
+                                            onClick={() => handleRevoke(row.memberNo , row.name)}
+                                            className="revoke-btn"
+                                        >
+                                            취소
+                                        </button>
                                     </td>
                                     <td>
                                         {row.status === '미승인' && (
@@ -107,4 +135,4 @@ const GosuApproveTable = () => {
     );
 };
 
-export default GosuApproveTable;
+export default ProApproval;
