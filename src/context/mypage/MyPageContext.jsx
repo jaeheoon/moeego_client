@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 const MyPageContext = createContext();
 
 const MyPageProvider = ({ children }) => {
-    const [nickname, setNickname] = useState(localStorage.getItem('username'));
-    const [introduction, setIntroduction] = useState(localStorage.getItem('userintro'));
+    const [nickname, setNickname] = useState('');
+    const [introduction, setIntroduction] = useState('');
     const [isToggleWrap1Visible, setIsToggleWrap1Visible] = useState(false);
     const [isToggleWrap2Visible, setIsToggleWrap2Visible] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -15,6 +15,18 @@ const MyPageProvider = ({ children }) => {
     const [isProfileImageChanged, setIsProfileImageChanged] = useState(false);
     const { isLoggedIn, loginEmail, loginUser, loginStatus } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const username = localStorage.getItem('username');
+        const useroneintro = localStorage.getItem('userintro');
+
+        setNickname(username);
+        if (useroneintro) {
+            setIntroduction(useroneintro);
+        } else {
+            setIntroduction('');
+        }
+    }, []);
 
     const toggleWrap1 = () => setIsToggleWrap1Visible((prev) => !prev);
     const toggleWrap2 = () => setIsToggleWrap2Visible((prev) => !prev);
