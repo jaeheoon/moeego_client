@@ -51,7 +51,7 @@ const SignOutProvider = ({ children }) => {
         }
 
         apiAxios
-        .post('/api/mypage/signout', dataToSubmit)
+        .patch('/api/mypage/account/signout', dataToSubmit)
         .then(response => {
             setResult(response.data);
             if(result) {
@@ -62,6 +62,7 @@ const SignOutProvider = ({ children }) => {
         })
         .catch(err => console.log('서버통신 오류 : ' + err));
     };
+    
     
     const contextValue = {
         oneintro, setOneintro,
