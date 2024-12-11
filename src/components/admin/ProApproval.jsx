@@ -92,39 +92,6 @@ const ProApproval = () => {
                                             취소
                                         </button>
                                     </td>
-                                    <td>
-                                        {row.status === '미승인' && (
-                                            <>
-                                                <button
-                                                    onClick={() => approveMember(row.name)}
-                                                    style={{
-                                                        padding: '5px 10px',
-                                                        backgroundColor: '#59B969',
-                                                        color: 'white',
-                                                        border: 'none',
-                                                        borderRadius: '5px',
-                                                        cursor: 'pointer',
-                                                        marginRight: '10px',
-                                                    }}
-                                                >
-                                                    승인
-                                                </button>
-                                                <button
-                                                    onClick={() => cancelApproval(row.name)}
-                                                    style={{
-                                                        padding: '5px 10px',
-                                                        backgroundColor: '#E74C3C',
-                                                        color: 'white',
-                                                        border: 'none',
-                                                        borderRadius: '5px',
-                                                        cursor: 'pointer',
-                                                    }}
-                                                >
-                                                    취소
-                                                </button>
-                                            </>
-                                        )}
-                                    </td>
                                 </tr>
                             ))}
                         </tbody>
