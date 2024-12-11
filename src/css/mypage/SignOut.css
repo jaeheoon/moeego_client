@@ -1,0 +1,96 @@
+.DeleteUserInfoPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.DeleteUserWrap hr {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-width:1px 0 0 0; 
+    border-color:#f2f2f2;
+    opacity: 30%;
+}
+
+.DeleteUserWrap {
+    width: 80%;
+    margin-top: 5%;
+}
+
+.DeleteUserWrap .PageTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.DeleteUserWrap .PageTitle .prev {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 5%;
+}
+
+.DeleteUserWrap .PageTitle .prev img {
+    height: 20px;
+    width: 20px;
+}
+
+.DeleteUserWrap .PageTitle h1 {
+    width: 95%;
+}
+
+.DeleteUserInfoContainer textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 12pt;
+    border-style: solid;
+    outline-style: none;
+    border: 1px solid #b2b2b2;
+    border-radius: 4px;
+    resize: none;
+    min-height: 50px;
+}
+
+.DeleteUserInfoContainer input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 12pt;
+    border-style: solid;
+    outline-style: none;
+    border: 1px solid #ffffff;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.DeleteUserInfoContainer textarea:focus, .DeleteUserInfoContainer textarea:active {
+    border: 1px solid lightcoral;
+    box-sizing: border-box;
+}
+
+.DeleteUserInfoContainer input[type="password"]:focus, .DeleteUserInfoContainer input[type="password"]:active {
+    border-bottom: 1px solid lightcoral;
+    box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 1250px) {
+    .DeleteUserWrap .PageTitle {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .DeleteUserWrap .PageTitle .prev {
+        width: 10%;
+    }
+
+    .DeleteUserWrap .PageTitle h1 {
+        width: 90%;
+    }
+
+    .DeleteUserInfoContainer textarea {
+        font-size: 10.8pt;  
+    }
+}
