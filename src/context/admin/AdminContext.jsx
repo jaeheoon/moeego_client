@@ -5,12 +5,14 @@ import apiAxios from '../../api/apiAxios';
 const AdminContext = createContext();
 
 const AdminProvider = ({ children }) => {
-    // 상태 변수 정의
-    const [events, setEvents] = useState([]);
-    const [notices, setNotices] = useState([]);
-    const [weekData, setWeekData] = useState([]);
-    const [expertData, setExpertData] = useState([]);
-    const [allmemberData, setAllmemberData] = useState(null); // 회원 데이터 추가
+    // 상태 변수 정의 (차트)
+    const [events, setEvents] = useState([]);  //이벤트 게시판
+    const [notices, setNotices] = useState([]); //공지사항 게시판
+    const [weekData, setWeekData] = useState([]); // 이건 아직 ㅋㅋ
+    const [expertData, setExpertData] = useState([]); // 이건 아직 ㅋㅋ
+    const [allmemberData, setAllmemberData] = useState(null); // 회원 데이터 도 아직 ㅋㅋ
+
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
