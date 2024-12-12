@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: auto;
 }
 
 .ProIntroPage .ProIntroWrap {
@@ -13,22 +14,24 @@
     width: 100%;
 }
 
-.ProIntroPage .ProIntroWrap #ProIntroForm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 60%;
-    padding: 1rem;
-    border-radius: 1rem;
-    box-sizing: border-box;
-}
-
-.ProIntroPage .ProIntroWrap #ProIntroForm h2 {
+.ProIntroPage .ProIntroWrap h2 {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 10vh;
+}
+
+.ProIntroPage .ProIntroWrap #ProIntroForm {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 60%;
+    height: 60vh;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-sizing: border-box;
 }
 
 .ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput {
@@ -125,4 +128,27 @@
     border: 1px solid #fcc1cc;   
     background-color: #fcc1cc; 
     color: white;
+}
+
+@media screen and (max-width: 1250px) {
+    
+    .ProIntroPage .ProIntroWrap h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 5vh;
+    }
+
+    .ProIntroPage .ProIntroWrap #ProIntroForm {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        height: 65vh;
+    }
+
+    .ProIntroPage .ProIntroWrap .moveBtn {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem;
+    }
 }
