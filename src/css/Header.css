@@ -331,6 +331,11 @@
     width: 2.5em;
 }
 
+.loginProfileImg {
+    border-radius: 1.25em;
+    object-fit: cover;
+}
+
 .header .user-icon .ToggleSvg {
     height: 1.5em;
     width: 1.5em;

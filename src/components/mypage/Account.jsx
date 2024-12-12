@@ -1,35 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MyPageContext } from '../../context/mypage/MyPageContext';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/member/AuthContext';
 import '../../css/mypage/Account.css';
 
 const Account = () => {
-    const { isLoggedIn, loginEmail, loginUser, loginStatus, loginPhone, loginProfile } = useContext(AuthContext);
-
+    const { loginStatus } = useContext(AuthContext); // 필요한 데이터만 destructuring
     const {
         nickname,
         setNickname,
         introduction,
         setIntroduction,
         isToggleWrap1Visible,
-        setIsToggleWrap1Visible,
-        isToggleWrap2Visible,
         toggleWrap1,
+        isToggleWrap2Visible,
         toggleWrap2,
-        loading,
         handleNicknameCancel,
         handleIntroductionCancel,
-        setIsToggleWrap2Visible,
         handleNicknameSave,
         handleIntroductionSave,
         handleProfileImageChange,
-        setProfileImage,
         profileImage,
-        isProfileImageChanged,
         handleProfileBtnClick
     } = useContext(MyPageContext);
-    const profile = localStorage.getItem('userprofile');
+
+    const [profile, setProfile] = useState('');
+    const [name, setName] = useState('');
+
+    // 상태 초기화
+    useEffect(() => {
+        setProfile(localStorage.getItem('userprofile') || '/image/profile.png');
+        setName(localStorage.getItem('username') || '사용자 이름');
+    }, []);
 
     const handleNicknameChange = (e) => setNickname(e.target.value);
     const handleIntroductionChange = (e) => setIntroduction(e.target.value);
@@ -45,7 +47,7 @@ const Account = () => {
                 </div>
                 <div className='ProfileImageContainer'>
                     <div className="imgWrap">
-                        <img src={profile} alt="profile" />
+                        <img className='loginProfileImg' src={profile} alt="profile" />
                         <button id='profileBtn' onClick={handleProfileBtnClick}>
                             <img src="/image/camera.png" alt="camera" />
                         </button>
@@ -67,7 +69,7 @@ const Account = () => {
                                     <input type="text" value={nickname} onChange={handleNicknameChange} maxLength={20} />
                                 </div>
                             ) : (
-                                <div className='Title'>{nickname}</div>
+                                <div className='Title'>{name}</div>
                             )}
                             <div className="Button">
                                 <input id='toggleBtn1' type="button" value="수정" onClick={() => { handleNicknameCancel(); toggleWrap1(); }} />

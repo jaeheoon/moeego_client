@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/mypage/Private.css';
 import { MyPageContext } from '../../context/mypage/MyPageContext';
@@ -27,9 +27,45 @@ const Private = () => {
         handleProfileBtnClick
     } = useContext(MyPageContext);
 
-    const email = localStorage.getItem('useremail');
-    const phone = localStorage.getItem('userphone');
-    const address = localStorage.getItem('useraddress');
+    const [email, setEmail] = useState(localStorage.getItem('useremail'));
+    const [phone, setPhone] = useState(localStorage.getItem('userphone'));
+    const [address, setAddress] = useState(localStorage.getItem('useraddress'));
+    const [userno, setUserno] = useState(localStorage.getItem('userno'));
+
+    useEffect(() => {
+        const handleStorageChange = () => {
+            setEmail(localStorage.getItem('useremail'));
+            setPhone(localStorage.getItem('userphone'));
+            setAddress(localStorage.getItem('useraddress'));
+            setUserno(localStorage.getItem('userno'));
+        };
+
+        // storage 이벤트 리스너 등록
+        window.addEventListener('storage', handleStorageChange);
+
+        // 컴포넌트 언마운트 시 리스너 제거
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []); // 빈 배열로 한 번만 실행되게 설정
+
+    // SNS 이메일에 맞춰 이메일 출력 수정
+    const formatEmail = (email) => {
+        if (!email) return "이메일 정보 없음";
+
+        const platform = email.split(" ")[0]; // 이메일 앞부분 (SNS 플랫폼 정보)
+
+        switch (platform) {
+            case 'naver':
+                return `naver_user${userno}`;
+            case 'kakao':
+                return `kakao_user${userno}`;
+            case 'google':
+                return `google_user${userno}`;
+            default:
+                return email; // SNS 계정이 아닐 경우, 원래 이메일 그대로 표시
+        }
+    };
 
     return (
         <div className='UserPrivateInfoPage'>
@@ -74,15 +110,7 @@ const Private = () => {
                     <div className='EmailContainer'>
                         <h3 className="SubTitle">이메일</h3>
                         <div className='MainContainer'>
-                            <div>
-                                {email && email.split(" ")[0] === "naver"
-                                    ? "naver_email"
-                                    : email && email.split(" ")[0] === "kakao"
-                                        ? "kakao_email"
-                                        : email && email.split(" ")[0] === "google"
-                                            ? "google_email" :
-                                            email}
-                            </div>
+                            <div>{formatEmail(email)}</div> {/* 이메일 형식 처리 */}
                         </div>
                     </div>
                 </div>
@@ -104,9 +132,16 @@ const Private = () => {
                     <div className='AddressContainer'>
                         <h3 className="SubTitle">주소</h3>
                         <div className='MainContainer'>
-                            <div>{address !== '' ? (address) : (
-                                <span style={{ color: "#727272" }}>주소를 입력해주세요</span>
-                            )}
+                            <div>
+                                {address ? (
+                                    address === 'OAuth2-address' ? (
+                                        <span style={{ color: "#727272" }}>새로운 주소를 입력해주세요</span>
+                                    ) : (
+                                        <span>{address}</span>
+                                    )
+                                ) : (
+                                    <span style={{ color: "#727272" }}>주소를 입력해주세요</span>
+                                )}
                             </div>
                             <div className="Link">
                                 <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>

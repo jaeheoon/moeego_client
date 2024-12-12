@@ -1,12 +1,49 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/mypage/MyPage.css';
 import { AuthContext } from '../../context/member/AuthContext';
 import { MyPageContext } from '../../context/mypage/MyPageContext';
 
 const MyPage = () => {
-    const { isLoggedIn, loginUser, loginEmail, loginAddress, loginProfile, loginPhone, loginNumber, loginStatus } = useContext(AuthContext);
-    const profile = localStorage.getItem('userprofile');
+    const { isLoggedIn, loginUser, loginEmail, loginProfile } = useContext(AuthContext);
+
+    const [userno, setUserno] = useState(localStorage.getItem('userno') || ''); // 초기값 설정
+
+    // 로컬 스토리지의 userno 변경 감지
+    useEffect(() => {
+        const handleStorageChange = () => {
+            const newUserno = localStorage.getItem('userno');
+            setUserno(newUserno || ''); // 값이 없을 경우 빈 문자열로 설정
+        };
+
+        // localStorage 이벤트 리스너 등록
+        window.addEventListener('storage', handleStorageChange);
+
+        // 초기 userno 값 설정
+        handleStorageChange();
+
+        // 컴포넌트 언마운트 시 이벤트 리스너 제거
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
+
+    // SNS 프로필 이미지 및 이메일 변환 함수
+    const getSNSProfile = (email) => {
+        const platform = email?.split(" ")[0];
+        switch (platform) {
+            case 'naver':
+                return { img: "/image/naver_sns.png", email: `naver_user${userno}` };
+            case 'kakao':
+                return { img: "/image/kakao_sns.png", email: `kakao_user${userno}` };
+            case 'google':
+                return { img: "/image/google_sns.svg", email: `google_user${userno}` };
+            default:
+                return { img: "/image/moeego_login.png", email };
+        }
+    };
+
+    const snsProfile = getSNSProfile(loginEmail);
 
     return (
         <div className='MyPage'>
@@ -16,31 +53,23 @@ const MyPage = () => {
                     <Link to='/mypage/account' className='ProfileSettingPage'>
                         <div className='TopWrap'>
                             <div className='ProfileImage'>
-                                <img src={profile} alt="profile" />  {/* 프로필 이미지 표시 */}
+                                <img
+                                    className='loginProfileImg'
+                                    src={loginProfile || "/image/profile.png"} // 기본 프로필 이미지 처리
+                                    alt="profile"
+                                />  {/* 프로필 이미지 표시 */}
                             </div>
                             <div className='ProfileInfo'>
                                 <div className='NickName'>{loginUser}님</div>
                                 <div className='MailWrap'>
                                     <div className="SNSWrap">
-                                        {loginEmail && loginEmail.split(" ")[0] === 'naver' ? (
-                                            <img className='snsProfile' src="/image/naver_sns.png" alt="naver" />
-                                        ) : loginEmail && loginEmail.split(" ")[0] === 'kakao' ? (
-                                            <img className='snsProfile' src="/image/kakao_sns.png" alt="kakao" />
-                                        ) : loginEmail && loginEmail.split(" ")[0] === 'google' ? (
-                                            <img className='snsProfile' src="/image/google_sns.svg" alt="google" />
-                                        ) : (
-                                            <img className='snsProfile' src="/image/moeego_login.png" alt="moeego" />
-                                        )}
+                                        <img
+                                            className='snsProfile'
+                                            src={snsProfile.img}
+                                            alt="SNS"
+                                        />
                                     </div>
-                                    <div className='Email'>
-                                        {loginEmail && loginEmail.split(" ")[0] === "naver"
-                                            ? "naver_email"
-                                            : loginEmail && loginEmail.split(" ")[0] === "kakao"
-                                                ? "kakao_email"
-                                                : loginEmail && loginEmail.split(" ")[0] === "google"
-                                                    ? "google_email" :
-                                                    loginEmail}
-                                    </div>
+                                    <div className='Email'>{snsProfile.email}</div>
                                 </div>
                             </div>
                         </div>
