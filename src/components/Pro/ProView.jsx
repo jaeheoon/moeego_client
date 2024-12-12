@@ -7,6 +7,7 @@ import "../../css/pro/ProView.css";
 //---------------------------------
 import { ProContext } from '../../context/pro/ProContext';
 import { useLocation, useParams } from 'react-router-dom';
+import WeekCalendar from './WeekCalendar';
 
 const ProView = () => {
     const location = useLocation();
