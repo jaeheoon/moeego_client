@@ -23,11 +23,11 @@ const BookMarkPro = () => {
                 params: { memberNo: userno, pg: page },
             });
 
-            if (response.data.content) {
+            if (response.data.success) {
                 setFavoritePro((prev) =>
-                    reset ? response.data.content : [...prev, ...response.data.content]
+                    reset ? response.data.data.content : [...prev, ...response.data.data.content] // 수정된 부분
                 );
-                setHasMore(!response.data.last); // 더 이상 데이터가 없으면 false
+                setHasMore(!response.data.data.content); // 더 이상 데이터가 없으면 false
             } else {
                 setHasMore(false); // 데이터가 없으면 더 이상 데이터가 없다고 설정
             }
@@ -53,17 +53,6 @@ const BookMarkPro = () => {
         },
         [loading, hasMore]
     );
-
-    useEffect(() => {
-        // userno와 page가 변경될 때 fetchFavoritePro 호출
-        if (userno) {
-            if (page === 1) {
-                fetchFavoritePro(true); // 페이지가 1일 때는 초기화
-            } else {
-                fetchFavoritePro(); // 페이지가 변경될 때는 추가 데이터 로드
-            }
-        }
-    }, [userno, page]);
 
     // 체크박스 상태 변경 처리
     const handleCheckboxChange = (proNo) => {
@@ -116,6 +105,13 @@ const BookMarkPro = () => {
             }
         }
     };
+
+    useEffect(() => {
+        // userno와 page가 변경될 때 fetchFavoritePro 호출
+        if (userno) {
+            fetchFavoritePro(true); // 페이지가 1일 때는 초기화
+        }
+    }, [userno, page]);
 
     return (
         <div className='BookMarkProContainer'>
