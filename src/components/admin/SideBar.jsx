@@ -4,8 +4,8 @@ import { useSideBar } from '../../js/useSideBar';
 import { Link } from 'react-router-dom';
 
 const SideBar = () => {
-    const { 
-        isMemberSubmenuOpen, 
+    const {
+        isMemberSubmenuOpen,
         toggleMemberSubmenu,
     } = useSideBar();
 
@@ -21,13 +21,13 @@ const SideBar = () => {
                         <li className="menu-item">고수 권한 승인</li>
                     </Link>
                     <div>
-                        <div 
+                        <div
                             className="submenu-trigger"
                             onClick={toggleMemberSubmenu}
                         >
                             <span>회원 관리</span>
                         </div>
-                        
+
                         {isMemberSubmenuOpen && (
                             <ul className="submenu">
                                 <Link to='/admin/MemberList' className='sideBar-Link'>
@@ -44,6 +44,11 @@ const SideBar = () => {
                     </div>
                     <Link to='/admin/EventList' className='sideBar-Link'>
                         <li className="menu-item">이벤트 및 공지</li>
+                    </Link>
+                </ul>
+                <ul className="menu-list2">
+                    <Link to='/admin/logout' className='sideBar-Link'>
+                        <li className="menu-item">로그아웃</li>
                     </Link>
                 </ul>
             </div>
