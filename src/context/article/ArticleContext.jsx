@@ -130,10 +130,10 @@ const ArticleProvider = ({ children }) => {
     }, [location, setCommentData]);
 
     // 게시글 쓰기
-    const writeArticle = useCallback(async (article) => {
+    const writeArticle = useCallback(async (articleDTO) => {
         setIsLoading(true);
         try {
-            await apiAxios.post("/api/article/write", article);
+            await apiAxios.post("/api/article/write", articleDTO);
             fetchArticles(); // 글 작성 후 목록 업데이트
             navigate('/article');
         } catch (err) {
