@@ -7,13 +7,13 @@ const LeaveMemberList = () => {
     const [error, setError] = useState(null);
     const [leave, setLeave] = useState([]);
 
-
-    // 고수 데이터 불러오기
+    // 탈퇴 데이터 불러오기
     const fetchleaveData = async () => {
         try {
             const response = await apiAxios.get('/api/admin/member/cancel');
-            setLeave(response.data || []);
-            
+            // cancelDate를 기준으로 내림차순 정렬
+            const sortedLeave = response.data ? response.data.sort((a, b) => new Date(b.cancelDate) - new Date(a.cancelDate)) : [];
+            setLeave(sortedLeave);
         } catch (err) {
             console.error('API 호출 오류:', err);
             setError(err.message);

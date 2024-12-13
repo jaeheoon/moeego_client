@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import apiAxios from '../../../api/apiAxios';
-import '../../../css/admin/Membership.css'; 
+import '../../../css/admin/Membership.css';
 
 const ProList = () => {
 
@@ -12,7 +12,8 @@ const ProList = () => {
     const fetchProData = async () => {
         try {
             const response = await apiAxios.get('/api/admin/member/pro');
-            setPro(response.data || []);
+            const sortedPro = response.data ? response.data.sort((a, b) => new Date(b.accessDate) - new Date(a.accessDate)) : [];
+            setPro(sortedPro);
         } catch (err) {
             console.error('API 호출 오류:', err);
             setError(err.message);

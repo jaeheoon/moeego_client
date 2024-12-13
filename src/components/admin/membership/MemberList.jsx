@@ -47,6 +47,7 @@ const MemberList = () => {
                                     <th>이메일</th>
                                     <th>전화번호</th>
                                     <th>주소</th>
+                                    <th>가입 날짜</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,6 +58,7 @@ const MemberList = () => {
                                         <td>{row.email}</td>
                                         <td>{row.phone}</td>
                                         <td>{row.address}</td>
+                                        <td>{row.join_date}</td>
                                     </tr>
                                 ))}
                             </tbody>
