@@ -76,7 +76,7 @@
 } */
 
 
-.day {
+.MonthCalendar-wrap .day {
     text-align: left;  /* 날짜 왼쪽 정렬 */
     vertical-align: top;
     font-size: 18px;
@@ -87,15 +87,15 @@
     height: 55px;
 }
 
-.day:hover {
+.MonthCalendar-wrap .day:hover {
     background-color: #f0f0f0;
 }
 
-.empty-day {
+.MonthCalendar-wrap .empty-day {
     background-color: transparent;
 }
 
-.day-number {
+.MonthCalendar-wrap .day-number {
     font-weight: bold;
     font-size: 20px;
 }
@@ -112,13 +112,13 @@ table th {
     font-weight: bold;
 }
 
-.weekday:nth-child(1),
-.day:nth-child(1) { 
+.MonthCalendar-wrap .weekday:nth-child(1),
+.MonthCalendar-wrap .day:nth-child(1) { 
     color: #d80909; 
 }
 
-.weekday:nth-child(7), 
-.day:nth-child(7) { 
+.MonthCalendar-wrap .weekday:nth-child(7), 
+.MonthCalendar-wrap .day:nth-child(7) { 
     color: rgb(18, 18, 143); 
 }
 
@@ -164,7 +164,19 @@ select {
     gap: 10px; 
   }
   
-
+  .selected-date-info {
+    padding: 10px;
+  }
+  
+  .schedule-date-title {
+    border: 2px solid #fcc1cc; 
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 60px; 
+    background-color: #fcc1cc; 
+    margin-bottom: 10px;
+    color: white;
+  }
 
 @media (max-width: 1280px) {
     .MonthCalendar-wrap {

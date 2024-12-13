@@ -98,6 +98,7 @@ ol li a:hover {
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 30px;
 }
 
 .reservation-timebox {
@@ -411,10 +412,22 @@ cursor: pointer;
 }
 
 @media (max-width: 1250px) {
-    .reservation-controller {
+    /* .reservation-controller {
+        width: 100%;
+    } */
+    .reservation-controller .modal-overlay {
         width: 100%;
     }
 
+    .custom-radio {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .reservation-controller {
+        width: 100%;
+    }
     .reservation-controller .modal-overlay {
         width: 100%;
     }

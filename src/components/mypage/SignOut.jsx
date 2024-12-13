@@ -5,7 +5,7 @@ import { SignOutContext } from '../../context/mypage/SignOutContext';
 
 const SignOut = () => {
     const {
-        oneintro, setOneintro,
+        reason, setReason,
         pwd, setPwd,
         repwd, setRepwd,
         errorMessage, handleSignOut
@@ -25,12 +25,12 @@ const SignOut = () => {
                         <h3 className="SubTitle">탈퇴사유</h3>
                         <div>
                             <textarea
-                            value={oneintro} onChange={(e) => setOneintro(e.target.value)} 
+                            value={reason} onChange={(e) => setReason(e.target.value)} 
                             type="textarea" maxLength='50' placeholder='탈퇴사유를 입력해주세요(50자이내)' />
                         </div>
-                        {errorMessage.oneintro && (
+                        {errorMessage.reason && (
                                 <div className="error-message">
-                                    <span>{errorMessage.oneintro}</span>
+                                    <span>{errorMessage.reason}</span>
                                 </div>
                             )}
                     </div>
@@ -66,10 +66,10 @@ const SignOut = () => {
                     <div className='ButtonContainer'>
                             <input type="button" value="취소" 
                             onClick={() => {
-                                setOneintro('');
+                                setReason('');
                                 setPwd('');
                                 setRepwd('');
-                                setErrorMessage({ oneintro: '', pwd: '', repwd: '' });
+                                setErrorMessage({ reason: '', pwd: '', repwd: '' });
                             }} />
                             <input type="button" value="탈퇴하기" 
                             onClick={handleSignOut}/>

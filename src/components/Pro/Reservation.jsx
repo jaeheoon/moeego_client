@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom'; // Link 컴포넌트 임포트
+import { Link, useLocation, useParams } from 'react-router-dom'; 
 import "../../css/pro/Reservation.css";
 import WeekCalendar from './WeekCalendar';
 
@@ -9,15 +9,15 @@ const Reservation = ({ closeModal }) => {
     //------------------------------------
     const [userno, setUserno] = useState(localStorage.getItem("userno") || '');
     const [proNo, setProNo] = useState('');
-i
+    
     const location = useLocation();
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
         const proNoFromURL = queryParams.get('proNo'); 
         setProNo(proNoFromURL); 
-      }, [location]);
+    }, [location]);
 
-    const [selectedDate, setSelectedDate] = useState(null)
+    const [selectedDate, setSelectedDate] = useState(null);
 
     //------------------------------------
     const [checkedItems, setCheckedItems] = useState({});
@@ -35,7 +35,6 @@ i
             return;
         }
 
-        // 선택된 시간들 배열로 추출 (true인 시간만 필터링)
         const selectedTimes = Object.keys(checkedItems).filter(time => checkedItems[time]);
 
         if (selectedTimes.length === 0) {
@@ -50,7 +49,9 @@ i
             time: selectedTimes,
         };
 
+        console.log('예약 정보:', reservationData);
         alert(reservationData.userno + ", " + reservationData.proNo + ", " + reservationData.date + ", " + reservationData.time)
+
 
         apiAxios
             .post('/api/reservation', reservationData)
@@ -98,40 +99,24 @@ i
                                 </div>
                                 <div className="product-reservation-date">
                                     <WeekCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-                                </div>
-                                <div className="btn-controller">
-                                    <button className="btn-prev">
-                                        {/* Add your SVG here */}
-                                    </button>
-                                    <button className="btn-next">
-                                        {/* Add your SVG here */}
-                                    </button>
-                                </div>
+                                </div>  
                             </div>
                             <div className="reservation-time">
                                 <div className="reservation-timebox">
                                     <ul className="reservation-timelist">
                                         {[
-                                            "09:00",
-                                            "10:00",
-                                            "11:00",
-                                            "12:00",
-                                            "13:00",
-                                            "14:00",
-                                            "15:00",
-                                            "16:00",
-                                            "17:00",
-                                            "18:00",
-                                            "19:00",
-                                            "20:00",
-                                            "21:00",
-                                            "22:00",
-                                            "23:00",
-
+                                            "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", 
+                                            "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
                                         ].map((time, index) => (
                                             <li className="reservation-time-item" key={index} onClick={() => handleTimeSelection(time)} >
                                                 <label className="custom-checkbox">
-                                                    <input type="checkbox" name="product-reservation-time" value={time} checked={checkedItems[time] || false} onChange={() => handleTimeSelection(time)} />
+                                                    <input 
+                                                        type="checkbox" 
+                                                        name="product-reservation-time" 
+                                                        value={time} 
+                                                        checked={checkedItems[time] || false} 
+                                                        onChange={() => handleTimeSelection(time)} 
+                                                    />
                                                     <span className="custom-checkbox-box" style={{ display: "none" }}></span>
                                                     <div className='pull' value={time}>{time}</div>
                                                 </label>

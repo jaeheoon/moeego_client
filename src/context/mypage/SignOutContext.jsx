@@ -9,22 +9,22 @@ const SignOutProvider = ({ children }) => {
     
     const { loginEmail } = useContext(AuthContext);
 
-    const [oneintro, setOneintro] = useState('');
+    const [reason, setReason] = useState('');
     const [pwd, setPwd] = useState('');
     const [repwd, setRepwd] = useState('');
     const [result, setResult] = useState(false);
     const [errorMessage, setErrorMessage] 
-    = useState({ oneintro: '', pwd: '', repwd: '' });
+    = useState({ reason: '', pwd: '', repwd: '' });
     
     const validateForm = () => {
         let isValid = true;
-        let errors = { oneintro: '', pwd: '', repwd: '' };
+        let errors = { reason: '', pwd: '', repwd: '' };
 
-         if (!oneintro.trim()) {
-            errors.oneintro = "탈퇴사유를 입력해주세요.";
+         if (!reason.trim()) {
+            errors.reason = "탈퇴사유를 입력해주세요.";
             isValid = false;
-        } else if (oneintro.length > 50) {
-            errors.oneintro = "탈퇴사유는 50자 이내로 입력해주세요.";
+        } else if (reason.length > 50) {
+            errors.reason = "탈퇴사유는 50자 이내로 입력해주세요.";
             isValid = false;
         }
 
@@ -44,7 +44,7 @@ const SignOutProvider = ({ children }) => {
 
     const handleSignOut = () => {
         const dataToSubmit = {
-            oneintro: oneintro,
+            reason: reason,
             pwd: pwd,
             //repwd: repwd,
             email: loginEmail,
@@ -53,12 +53,11 @@ const SignOutProvider = ({ children }) => {
         if(!validateForm()) {
             return;
         }
-
-        alert(dataToSubmit.oneintro + ", " + dataToSubmit.pwd + ", " + dataToSubmit.email)
         
         apiAxios
         .patch('/api/mypage/account/private/signout', dataToSubmit)
         .then(response => {
+            console.log(reason.data)
             setResult(response.data);
             if(result) {
                 alert(result + ", 탈퇴성공");
@@ -71,7 +70,7 @@ const SignOutProvider = ({ children }) => {
     
     
     const contextValue = {
-        oneintro, setOneintro,
+        reason, setReason,
         pwd, setPwd,
         repwd, setRepwd,
         errorMessage, setErrorMessage,

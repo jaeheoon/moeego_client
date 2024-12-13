@@ -21,13 +21,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 10px; 
+    gap: 0.5%; 
     align-items: center; 
   }
   
 .calendar-wrap .day {
-    width: 38px; 
-    height: 38px; 
+    width: 4%; 
+    height: 4%; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,8 +92,8 @@
       align-items: center;
   }
     .calendar-wrap .day {
-      width: 2.5rem; 
-      height: 1.8rem; 
+      /* width: 2.5rem; 
+      height: 1.8rem;  */
       display: flex;
       justify-content: center;
       align-items: center;
