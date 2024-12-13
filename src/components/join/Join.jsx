@@ -64,8 +64,7 @@ const Join = () => {
                         />
                     </div>
                     <div className='errorWrap'>
-                        {errors.email && <span className="error">{errors.email}</span>}
-                        {isEmailChecked && <span className='error' style={{ color: "green" }}>사용 가능한 이메일입니다.</span>}
+                        {errors.email && <span className={isEmailChecked ? "success" : "error"}>{errors.email}</span>}
                     </div>
                     {/* 비밀번호 입력 */}
                     <div className="join-align">

@@ -75,12 +75,13 @@ const SignUpProvider = ({ children }) => {
 
         try {
             const response = await apiAxios.post("/api/join/exist", { email: signup.email });
+            console.log(response.data);
 
-            if (response.data) {
+            if (!response.data) {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
                     ...prevErrors,
-                    email: "", // 오류 메시지 제거
+                    email: "사용 가능한 이메일입니다.", // 오류 메시지 제거
                 }));
             } else {
                 setIsEmailChecked(false);
