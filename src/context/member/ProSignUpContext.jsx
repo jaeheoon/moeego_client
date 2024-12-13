@@ -83,7 +83,7 @@ const ProSignUpProvider = ({ children }) => {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
                     ...prevErrors,
-                    email: "",
+                    email: "사용 가능한 이메일입니다.",
                 }));
             }
         } catch (error) {
@@ -180,51 +180,6 @@ const ProSignUpProvider = ({ children }) => {
         return isValid;
     };
 
-    const submitSignupForm = async () => {
-        if (!validateForm()) {
-            alert("입력한 정보를 확인해주세요.");
-            return;
-        }
-
-        if (!isEmailChecked) {
-            alert("이메일 중복 체크를 완료해주세요.");
-            return;
-        }
-
-        try {
-            const combinedAddress = `${signup.address1} ${signup.address2} (${signup.zipcode})`.trim();
-            const categoriesString = signup.checkCategories?.join(",") || "";
-
-            const dataToSubmit = {
-                ...signup,
-                address: combinedAddress,
-                gender: signup.gender === "M" ? 1 : signup.gender === "F" ? 2 : 0,
-                oneintro,
-                intro,
-                mainCateNo,
-                checkCategories: categoriesString,
-            };
-
-            const response = await apiAxios.post("/api/pro/signup", dataToSubmit);
-
-            if (response.status === 200) {
-                goSuccess(signup.name);
-            }
-        } catch (error) {
-            if (error.response && error.response.status === 400) {
-                const errorMessage = error.response.data || "잘못된 요청입니다.";
-                setErrors((prevErrors) => ({
-                    ...prevErrors,
-                    email: errorMessage,
-                }));
-                alert(errorMessage);
-            } else {
-                console.error("회원가입 요청 실패:", error);
-                alert("회원가입 중 문제가 발생했습니다. 다시 시도해주세요.");
-            }
-        }
-    };
-
     const handleAddressSearch = () => {
         if (typeof daum === "undefined" || !daum.Postcode) {
             console.error("Daum Postcode API가 로드되지 않았습니다.");
@@ -249,11 +204,12 @@ const ProSignUpProvider = ({ children }) => {
                 isReadonly,
                 updateSignUpData,
                 handleAddressSearch,
-                submitSignupForm,
                 goMain,
                 goLogin,
+                goSuccess,
                 isEmailChecked,
-                checkEmailDuplication
+                checkEmailDuplication,
+                validateForm
             }}
         >
             {children}

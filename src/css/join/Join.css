@@ -215,6 +215,12 @@
     color: red;
 }
 
+.errorWrap .success {
+    font-size: 0.725rem;
+    width: 100%;
+    color: green;
+}
+
 @media screen and (max-width: 1250px) {
     .JoinPage {
         display: flex;

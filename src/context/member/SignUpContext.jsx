@@ -76,7 +76,7 @@ const SignUpProvider = ({ children }) => {
         try {
             const response = await apiAxios.post("/api/join/exist", { email: signup.email });
 
-            if (response.data.isAvailable) {
+            if (response.data) {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
                     ...prevErrors,

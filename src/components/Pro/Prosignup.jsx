@@ -14,9 +14,10 @@ const Projoin = () => {
         isReadonly,
         updateSignUpData,
         handleAddressSearch,
-        submitSignupForm,
+        validateForm,
         isEmailChecked,
-        checkEmailDuplication
+        checkEmailDuplication,
+        goSuccess
     } = useContext(ProSignUpContext);
 
     useEffect(() => {
@@ -32,6 +33,15 @@ const Projoin = () => {
     }, []);
 
     const handleJoinClick = async () => {
+        if (!validateForm()) {
+            return;
+        }
+
+        if (!isEmailChecked) {
+            alert("이메일 중복 체크를 완료해주세요.");
+            return;
+        }
+
         const checkCategoriesString = checkCategories.join(','); // 배열을 문자열로 변환
         const genderValue = signup.gender === 'M' ? 1 : (signup.gender === 'F' ? 2 : 0); // 성별 숫자로 변환
 
@@ -51,11 +61,12 @@ const Projoin = () => {
 
         try {
             await apiAxios.post("/api/pro/join", signupData);
-            alert("회원가입이 완료되었습니다.");
+            console.log("회원가입이 완료되었습니다.");
+            goSuccess(signup.name);
         } catch (error) {
             console.error("회원가입 실패:", error);
-            alert("회원가입 실패");
-            alert(mainCateNo + ", " + checkCategories + ", " + oneintro + ", " + intro);
+            console.log("회원가입 실패");
+            console.log(mainCateNo + ", " + checkCategories + ", " + oneintro + ", " + intro);
         }
     };
 
@@ -93,7 +104,7 @@ const Projoin = () => {
                         />
                     </div>
                     <div className='errorWrap'>
-                        {errors.email && <span className="error">{errors.email}</span>}
+                        {errors.email && <span className={isEmailChecked ? "success" : "error"}>{errors.email}</span>}
                     </div>
                     {/* 비밀번호 입력 */}
                     <div className="join-align">
