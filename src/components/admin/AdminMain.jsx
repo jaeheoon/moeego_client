@@ -14,12 +14,12 @@ const AdminMain = () => {
 
     // 경로별 컴포넌트 매핑
     const componentsMap = {
-      '/admin/DashBoard' : <DashBoard/>,
-      '/admin/MemberList': <MemberList />,
-      '/admin/ProApproval': <ProApproval />,
-      '/admin/ProList': <ProList />,
-      '/admin/LeaveMemberList': <LeaveMemberList/>,
-      '/admin/EventList': <EventList/>,
+      '/admin/dashboard' : <DashBoard/>,
+      '/admin/memberlist': <MemberList />,
+      '/admin/proapproval': <ProApproval />,
+      '/admin/prolist': <ProList />,
+      '/admin/leavememberlist': <LeaveMemberList/>,
+      '/admin/eventlist': <EventList/>,
     };
 
     // 현재 경로에 맞는 컴포넌트 선택

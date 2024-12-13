@@ -177,7 +177,6 @@ const App = () => {
                               <Route path="/admin/prolist" element={<AdminMain />} />
                               <Route path="/admin/leavememberlist" element={<AdminMain />} />
                               <Route path="/admin/eventlist" element={<AdminMain />} />
-                              <Route path="/admin/noticelist" element={<AdminMain />} />
 
                               <Route path="/admin/event-write" element={<EventWrite />} />
                               <Route path="/admin/event-update" element={<EventUpdate />} />
