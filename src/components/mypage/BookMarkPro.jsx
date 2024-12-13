@@ -14,31 +14,6 @@ const BookMarkPro = () => {
     const [allSelected, setAllSelected] = useState(false); // 전체선택 상태
     const observer = useRef();
 
-    const fetchFavoritePro = async (reset = false) => {
-        if (loading) return;
-
-        setLoading(true);
-        try {
-            const response = await apiAxios.get('/api/pro/favorite', {
-                params: { memberNo: userno, pg: page },
-            });
-
-            if (response.data.success) {
-                // 기존 데이터와 새 데이터를 합침
-                setFavoritePro((prev) => 
-                    reset ? response.data.data.content : [...prev, ...response.data.data.content]
-                );
-                setHasMore(response.data.data.content.length > 0); // 데이터가 없으면 더 이상 데이터가 없다고 설정
-            } else {
-                setHasMore(false); // 데이터가 없으면 더 이상 데이터가 없다고 설정
-            }
-        } catch (error) {
-            console.error("즐겨찾기 프로필 로드 실패:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     const lastProElementRef = useCallback(
         (node) => {
             if (loading || !hasMore) return; // 로딩 중이거나 더 이상 데이터가 없으면 반환
@@ -74,12 +49,11 @@ const BookMarkPro = () => {
         setAllSelected(!allSelected);
     };
 
-    // 선택 항목 삭제 처리
     const handleDeleteSelected = async () => {
         if (selectedPro.length === 0) {
             return;
         }
-
+    
         try {
             const response = await apiAxios.delete('/api/pro/favorite', {
                 data: {
@@ -87,12 +61,16 @@ const BookMarkPro = () => {
                     proNo: selectedPro, // 선택된 proNo들
                 },
             });
-
+    
             if (response.status === 200) {
                 alert("선택한 항목이 삭제되었습니다."); // 성공 메시지
-                setPage(1); // 페이지 초기화
+    
+                // 상태 초기화
                 setSelectedPro([]); // 선택된 항목 초기화
-                fetchFavoritePro(true); // 목록 다시 불러오기
+                setFavoritePro([]); // 기존 데이터를 초기화
+                setPage(1); // 페이지 초기화
+                setHasMore(true); // 데이터가 더 있다고 가정
+                fetchFavoritePro(true); // 데이터를 새로 불러옴 (reset 플래그 전달)
             } else {
                 console.log("항목 삭제에 실패했습니다."); // 기타 실패 처리
             }
@@ -106,18 +84,45 @@ const BookMarkPro = () => {
             }
         }
     };
-
+    
+    // 즐겨찾기 데이터를 로드
+    const fetchFavoritePro = async (reset = false) => {
+        if (loading) return;
+    
+        setLoading(true);
+        try {
+            const response = await apiAxios.get('/api/pro/favorite', {
+                params: { memberNo: userno, pg: reset ? 1 : page },
+            });
+    
+            if (response.data.success) {
+                setFavoritePro((prev) =>
+                    reset ? response.data.data.content : [...prev, ...response.data.data.content]
+                );
+                setHasMore(response.data.data.content.length > 0); // 데이터가 없으면 더 이상 데이터가 없다고 설정
+            } else {
+                setHasMore(false); // 데이터가 없으면 더 이상 데이터가 없다고 설정
+            }
+        } catch (error) {
+            console.error("즐겨찾기 프로필 로드 실패:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    
+    // 페이지나 userno가 변경될 때 데이터 로드
     useEffect(() => {
         if (userno) {
-            fetchFavoritePro(true); // 페이지가 1일 때는 초기화
+            fetchFavoritePro(page === 1); // 페이지가 1이면 데이터 초기화, 그렇지 않으면 이어서 로드
         }
-    }, [userno]); // userno가 변경될 때만 호출
-
+    }, [userno, page]);
+    
+    // 초기 로드 시 데이터를 가져옴
     useEffect(() => {
         if (userno) {
-            fetchFavoritePro(); // 페이지가 변경될 때마다 데이터를 불러옵니다.
+            setPage(1); // 페이지를 1로 설정 (초기화)
         }
-    }, [userno, page]); // page가 변경될 때마다 호출
+    }, [userno]);
 
     return (
         <div className='BookMarkProContainer'>
