@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../../css/mypage/MyReservation.css";
-import Calendar from '../../api/Calendar';
+import MonthCalendar from './MonthCalendar';
+// import Calendar from '../../api/Calendar';
 
 const MyReservation = () => {
     return (
@@ -14,7 +15,8 @@ const MyReservation = () => {
                     <h1>예약 내역</h1>
                 </div>
                 <div>
-                    <Calendar />
+                    <MonthCalendar />
+                    {/* <Calendar /> */}
                 </div>
             </div>
         </div>

@@ -1,18 +1,21 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import apiAxios from "../../api/apiAxios";
+import { AuthContext } from '../member/AuthContext';
 
 const SignOutContext = createContext();
 
 const SignOutProvider = ({ children }) => {
     
+    const { loginEmail } = useContext(AuthContext);
+
     const [oneintro, setOneintro] = useState('');
     const [pwd, setPwd] = useState('');
     const [repwd, setRepwd] = useState('');
     const [result, setResult] = useState(false);
     const [errorMessage, setErrorMessage] 
-        = useState({ oneintro: '', pwd: '', repwd: '' });
-  
+    = useState({ oneintro: '', pwd: '', repwd: '' });
+    
     const validateForm = () => {
         let isValid = true;
         let errors = { oneintro: '', pwd: '', repwd: '' };
@@ -43,15 +46,18 @@ const SignOutProvider = ({ children }) => {
         const dataToSubmit = {
             oneintro: oneintro,
             pwd: pwd,
-            repwd: repwd,
+            //repwd: repwd,
+            email: loginEmail,
         }
 
         if(!validateForm()) {
             return;
         }
 
+        alert(dataToSubmit.oneintro + ", " + dataToSubmit.pwd + ", " + dataToSubmit.email)
+        
         apiAxios
-        .patch('/api/mypage/account/signout', dataToSubmit)
+        .patch('/api/mypage/account/private/signout', dataToSubmit)
         .then(response => {
             setResult(response.data);
             if(result) {

@@ -9,12 +9,12 @@ const Reservation = ({ closeModal }) => {
     //------------------------------------
     const [userno, setUserno] = useState(localStorage.getItem("userno") || '');
     const [proNo, setProNo] = useState('');
-
+i
     const location = useLocation();
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
-        const proNoFromURL = queryParams.get('proNo'); // proNo parameter
-        setProNo(proNoFromURL); // Set the proNo state
+        const proNoFromURL = queryParams.get('proNo'); 
+        setProNo(proNoFromURL); 
       }, [location]);
 
     const [selectedDate, setSelectedDate] = useState(null)
