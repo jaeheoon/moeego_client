@@ -21,6 +21,26 @@ const PostHeader = ({ articleData, deleteArticle }) => {
         deleteArticle(articleData.articleNo) // 삭제 API 호출
     };
     
+    const getTypeLabel = (type) => {
+        switch (type) {
+            case 0: return "공지사항";
+            case 1: return "이벤트";
+            case 2: return "자유게시판";
+            case 3: return "Q&A";
+            case 4: return "고수게시판";
+            default: return "알 수 없음";
+        }
+    };
+    const getTypePath = (type) => {
+        switch (type) {
+            case 2: return "/article/free";
+            case 3: return "/article/qna";
+            case 4: return "/article/pro";
+            default: return "/"; // 기본 경로
+        }
+    };
+    
+
     return (
         <div className="post-header">
             {/* 카테고리 및 제목 */}
@@ -33,8 +53,8 @@ const PostHeader = ({ articleData, deleteArticle }) => {
                     </li>
                     <span className="breadcrumb-divider">&gt;</span>
                     <li className="category-breadcrumb-item">
-                        <Link to='' className="category-breadcrumb-link">
-                            <span>Q&A</span>
+                        <Link to={getTypePath(articleData.type)} className="category-breadcrumb-link">
+                            <span>{getTypeLabel(articleData.type)}</span>
                         </Link>
                     </li>
                 </ol>

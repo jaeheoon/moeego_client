@@ -40,10 +40,18 @@ const ArticleProvider = ({ children }) => {
         const apiUrl = `/api/article/${category}`;
         try {
             const response = await apiAxios.get(apiUrl);
-            if (category === 'notices') {
-                setNoticeArticles(response.data.content);
-            } else if (category === 'event') {
-                setEventArticles(response.data.content);
+    
+            // 카테고리에 따라 상태 업데이트
+            switch (category) {
+                case "notices":
+                    setNoticeArticles(response.data.content);
+                    break;
+                case "event":
+                    setEventArticles(response.data.content);
+                    break;
+                default:
+                    setArticles(response.data.content); // 일반 게시글은 articles에 저장
+                    break;
             }
         } catch (err) {
             console.error(`Error fetching articles for category ${category}:`, err);
@@ -51,7 +59,7 @@ const ArticleProvider = ({ children }) => {
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }, []);    
 
     // 인기 게시글 가져오기
     useEffect(() => {
@@ -122,10 +130,10 @@ const ArticleProvider = ({ children }) => {
     }, [location, setCommentData]);
 
     // 게시글 쓰기
-    const writeArticle = useCallback(async (articleData) => {
+    const writeArticle = useCallback(async (article) => {
         setIsLoading(true);
         try {
-            await apiAxios.post("/api/article/write", articleData);
+            await apiAxios.post("/api/article/write", article);
             fetchArticles(); // 글 작성 후 목록 업데이트
             navigate('/article');
         } catch (err) {

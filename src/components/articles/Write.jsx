@@ -37,6 +37,7 @@ const Write = () => {
             type: formData.type,
             memberNo: userNo,
         };
+        console.log(dto);
         writeArticle(dto);
     };
 

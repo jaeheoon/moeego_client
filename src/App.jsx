@@ -11,7 +11,8 @@ import MainPage from './components/mainPage';
 
 // 이벤트, 공지
 import Notice_eventPage from "./components/notice_eventpage/Notice_eventpage.jsx";
-import NoticeView from './components/notice_eventpage/NoticeView.jsx';
+import NoticeView from "./components/notice_eventpage/NoticeView.jsx";
+
 
 // member
 import Login from "./components/login/Login";
