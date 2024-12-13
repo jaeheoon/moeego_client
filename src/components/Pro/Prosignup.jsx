@@ -61,12 +61,9 @@ const Projoin = () => {
 
         try {
             await apiAxios.post("/api/pro/join", signupData);
-            console.log("회원가입이 완료되었습니다.");
             goSuccess(signup.name);
         } catch (error) {
             console.error("회원가입 실패:", error);
-            console.log("회원가입 실패");
-            console.log(mainCateNo + ", " + checkCategories + ", " + oneintro + ", " + intro);
         }
     };
 

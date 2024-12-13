@@ -24,10 +24,11 @@ const BookMarkPro = () => {
             });
 
             if (response.data.success) {
-                setFavoritePro((prev) =>
-                    reset ? response.data.data.content : [...prev, ...response.data.data.content] // 수정된 부분
+                // 기존 데이터와 새 데이터를 합침
+                setFavoritePro((prev) => 
+                    reset ? response.data.data.content : [...prev, ...response.data.data.content]
                 );
-                setHasMore(!response.data.data.content); // 더 이상 데이터가 없으면 false
+                setHasMore(response.data.data.content.length > 0); // 데이터가 없으면 더 이상 데이터가 없다고 설정
             } else {
                 setHasMore(false); // 데이터가 없으면 더 이상 데이터가 없다고 설정
             }
@@ -90,8 +91,8 @@ const BookMarkPro = () => {
             if (response.status === 200) {
                 alert("선택한 항목이 삭제되었습니다."); // 성공 메시지
                 setPage(1); // 페이지 초기화
-                setFavoritePro([]); // 데이터 다시 로드
                 setSelectedPro([]); // 선택된 항목 초기화
+                fetchFavoritePro(true); // 목록 다시 불러오기
             } else {
                 console.log("항목 삭제에 실패했습니다."); // 기타 실패 처리
             }
@@ -107,11 +108,16 @@ const BookMarkPro = () => {
     };
 
     useEffect(() => {
-        // userno와 page가 변경될 때 fetchFavoritePro 호출
         if (userno) {
             fetchFavoritePro(true); // 페이지가 1일 때는 초기화
         }
-    }, [userno, page]);
+    }, [userno]); // userno가 변경될 때만 호출
+
+    useEffect(() => {
+        if (userno) {
+            fetchFavoritePro(); // 페이지가 변경될 때마다 데이터를 불러옵니다.
+        }
+    }, [userno, page]); // page가 변경될 때마다 호출
 
     return (
         <div className='BookMarkProContainer'>
@@ -165,9 +171,7 @@ const BookMarkPro = () => {
                                         />
                                         <div className='label-box'>
                                             <span className='check-icon' aria-hidden="true"></span>
-                                            <label htmlFor={`check${index}`}>
-                                                <Link to={`/pro/proview?proNo=${pro.proNo}`}>{pro.name}</Link>
-                                            </label>
+                                            <label htmlFor={`check${index}`}><Link to={`/pro/proview?proNo=${pro.proNo}`}>{pro.name}</Link></label>
                                         </div>
                                     </div>
                                     <div className='infoContainer'>{pro.oneIntro}</div>
