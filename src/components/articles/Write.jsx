@@ -13,6 +13,10 @@ const Write = () => {
         memberNo: userNo,
     });
 
+    const [selectedFiles, setSelectedFiles] = useState([]); // 선택한 파일 저장
+    const maxFileSize = 20 * 1024 * 1024; // 20MB
+    const maxFileCount = 5; // 최대 5장
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -21,7 +25,38 @@ const Write = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleFileChange = (e) => {
+        const files = Array.from(e.target.files);
+        let newFiles = [];
+        let totalFiles = selectedFiles.length;
+        let isFileTooLarge = false;
+        let exceededFiles = 0;
+
+        files.forEach(file => {
+            if (file.size > maxFileSize) {
+                isFileTooLarge = true;
+            } else if (totalFiles + newFiles.length < maxFileCount) {
+                newFiles.push(file); // 원본 파일 저장
+            } else {
+                exceededFiles++;
+            }
+        });
+
+        if (isFileTooLarge) {
+            alert(`파일 크기는 ${maxFileSize / 1024 / 1024}MB를 초과할 수 없습니다.`);
+        }
+        if (exceededFiles > 0) {
+            alert(`최대 ${maxFileCount}장까지만 업로드 가능합니다.`);
+        }
+
+        setSelectedFiles(prevFiles => [...prevFiles, ...newFiles]);
+    };
+
+    const handleRemoveFile = (fileToRemove) => {
+        setSelectedFiles(prevFiles => prevFiles.filter(file => file !== fileToRemove));
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.type) {
             alert("카테고리를 선택해주세요!");
@@ -31,15 +66,24 @@ const Write = () => {
             alert("제목과 내용을 모두 입력해주세요!");
             return;
         }
-        const dto = {
-            subject: formData.subject,
-            content: formData.content,
-            type: formData.type,
-            memberNo: userNo,
-        };
-        console.log(dto);
-        writeArticle(dto);
+    
+        const data = new FormData();
+        // formData 객체의 각 필드를 FormData에 추가
+        data.append("subject", formData.subject);
+        data.append("content", formData.content);
+        data.append("type", formData.type);
+        data.append("memberNo", formData.memberNo);
+    
+        // 파일 추가
+        selectedFiles.forEach(file => data.append("images", file));
+    
+        try {
+            await writeArticle(data); // 서버로 FormData 전송
+        } catch (error) {
+            console.error("Error submitting the form", error);
+        }
     };
+    
 
     return (
         <form id='articleWriteForm' onSubmit={handleSubmit}>
@@ -68,11 +112,42 @@ const Write = () => {
 
                     {/* 파일 업로드 */}
                     <div className="file-container">
-                        <input type="file" id="file-upload" />
-                        <label htmlFor="file-upload">
-                            <img className="camera-img" src='/image/camera.png' alt="파일 업로드" />
-                        </label>
-                        <span>No file chosen</span>
+                        <input
+                            type="file"
+                            id="file-upload"
+                            multiple
+                            onChange={handleFileChange}
+                        />
+                        <div>
+                            <label htmlFor="file-upload">
+                                <img className="camera-img" src='/image/camera.png' alt="파일 업로드" />
+                            </label>
+                            <div className="file-index">
+                                ({selectedFiles.length} / {maxFileCount})
+                            </div>
+                        </div>
+                        {selectedFiles.length > 0 ? (
+                            <div className="file-preview-container">
+                                {selectedFiles.map((file, index) => (
+                                    <div key={index} className="file-preview-wrapper">
+                                        <img
+                                            src={URL.createObjectURL(file)}
+                                            alt={`미리보기 ${index + 1}`}
+                                            className="file-preview"
+                                        />
+                                        <button
+                                            type="button"
+                                            className="remove-button"
+                                            onClick={() => handleRemoveFile(file)}
+                                        >
+                                            &times;
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <span>No file chosen</span>
+                        )}
                     </div>
 
                     {/* 제목 입력 */}
@@ -85,17 +160,6 @@ const Write = () => {
                             value={formData.subject}
                             onChange={handleChange}
                         />
-                    </div>
-                    <hr />
-
-                    {/* 서비스와 지역 선택 */}
-                    <div className="service-area-wrap">
-                        <button type="button">
-                            <span>(선택) 서비스</span>
-                        </button>
-                        <button type="button">
-                            <span>(선택) 지역</span>
-                        </button>
                     </div>
                     <hr />
 

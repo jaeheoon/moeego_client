@@ -15,6 +15,7 @@ const ArticleProvider = ({ children }) => {
     const [currentPage, setCurrentPage] = useState(0); // 현재 댓글 페이지
     const [totalPages, setTotalPages] = useState(1); // 댓글 총 페이지 수
     const [error, setError] = useState(null); // 에러 상태
+    const [images, setImages] = useState([]);
     const navigate = useNavigate();
 
     const [noticeArticles, setNoticeArticles] = useState([]);
@@ -83,7 +84,8 @@ const ArticleProvider = ({ children }) => {
         setIsLoading(true);
         try {
             const response = await apiAxios.get(`/api/article/viewpage?article_no=${articleNo}`);
-            setArticleData(response.data);
+            setArticleData(response.data.article);
+            setImages(response.data.images);    //이미지 불러오기
         } catch (err) {
             console.error("Error fetching article:", err);
             setError(err);
@@ -130,11 +132,11 @@ const ArticleProvider = ({ children }) => {
     }, [location, setCommentData]);
 
     // 게시글 쓰기
-    const writeArticle = useCallback(async (articleDTO) => {
+    const writeArticle = useCallback(async (formData) => {
         setIsLoading(true);
         try {
-            await apiAxios.post("/api/article/write", articleDTO);
-            fetchArticles(); // 글 작성 후 목록 업데이트
+            await apiAxios.post("/api/article/write", formData);
+            fetchArticles();
             navigate('/article');
         } catch (err) {
             console.error("Error writing article:", err);
@@ -296,7 +298,7 @@ const ArticleProvider = ({ children }) => {
             return;
         }
     };
-    
+
     const contextValue = {
         articles,
         hotArticle,
@@ -310,6 +312,7 @@ const ArticleProvider = ({ children }) => {
         currentPage,
         totalPages,
         error,
+        images,
         fetchArticles,
         fetchArticlesByCategory,
         fetchArticle,

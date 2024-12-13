@@ -27,6 +27,7 @@ const PostDetail = () => {
         setCurrentPage,
         setCommentData,
         deleteArticle,
+        images,
     } = useContext(ArticleContext);
 
     const [isArticleLoaded, setIsArticleLoaded] = useState(false);
@@ -94,7 +95,7 @@ const PostDetail = () => {
         <div className="post-detail">
             <section className="post-detail-container">
                 <PostHeader articleData={articleData} deleteArticle={deleteArticle}/>
-                <PostContent articleData={articleData} />
+                <PostContent articleData={articleData} images={images}/>
                 <PostReactState articleData={articleData} />
                 <PostComment articleData={articleData} articleNo={articleNo} />
                 <CommentList
