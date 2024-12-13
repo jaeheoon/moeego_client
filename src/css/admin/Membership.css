@@ -76,3 +76,15 @@
 .memberList-status-badge.revoked {
     color: #dc3545; /* 빨간색 */
 }
+
+
+.pro-approved {
+    color: #28a745; /* 초록색 */
+    font-weight: bold;
+}
+
+/* 박탈 상태 (빨간색) */
+.pro-revoked {
+    color: #dc3545; /* 빨간색 */
+    font-weight: bold;
+}
