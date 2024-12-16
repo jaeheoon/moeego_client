@@ -9,8 +9,10 @@ const fetchReissue = async () => {
             withCredentials: true,
         });
 
+        console.log(response);
+
         if (response.status === 200) {
-            const accessToken = response.headers["Authorization"];
+            const accessToken = response.headers["access"];
             if (accessToken) {
                 window.localStorage.setItem("access", accessToken);
             }

@@ -8,7 +8,7 @@ const fetchReissue = async () => {
         const response = await apiAxios.post("/api/reissue", null, { withCredentials: true });
 
         if (response.status === 200) {
-            const accessToken = response.headers["Authorization"];
+            const accessToken = response.headers["access"];
             if (accessToken) {
                 window.localStorage.setItem("access", accessToken);
                 return true;

@@ -10,7 +10,7 @@ apiAxios.interceptors.request.use(
     (config) => {
         const accessToken = window.localStorage.getItem("access");
         if (accessToken) {
-            config.headers["Authorization"] = `Bearer ${accessToken}`;
+            config.headers["authorization"] = `Bearer ${accessToken}`;
         }
         return config;
     },
@@ -28,7 +28,7 @@ apiAxios.interceptors.response.use(
             const reissueSuccess = await fetchReissue();
             if (reissueSuccess) {
                 const newAccessToken = window.localStorage.getItem("access");
-                originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+                originalRequest.headers["authorization"] = `Bearer ${newAccessToken}`;
                 return apiAxios(originalRequest);
             }
         }
