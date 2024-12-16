@@ -51,13 +51,12 @@ const Projoin = () => {
             return;
         }
 
-        const checkCategoriesString = checkCategories.join(','); // 배열을 문자열로 변환
         const genderValue = signup.gender === 'M' ? 1 : (signup.gender === 'F' ? 2 : 0); // 성별 숫자로 변환
 
         // state에서 가져온 데이터를 포함해 회원가입 데이터를 서버로 전송
         const signupData = {
             mainCateNo,
-            subCategories: checkCategoriesString,  // subCategories로 변환
+            subCategories: checkCategories,  // subCategories로 변환
             oneIntro: oneintro,
             intro,
             email: signup.email,

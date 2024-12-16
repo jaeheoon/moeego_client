@@ -29,7 +29,7 @@ const MyPageProvider = ({ children }) => {
         } else {
             setIntroduction('');
         }
-    }, []);
+    }, [isLoggedIn]);
 
     const toggleWrap1 = () => setIsToggleWrap1Visible((prev) => !prev);
     const toggleWrap2 = () => setIsToggleWrap2Visible((prev) => !prev);
