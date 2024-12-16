@@ -12,6 +12,7 @@ const MyPageProvider = ({ children }) => {
     const [isToggleWrap2Visible, setIsToggleWrap2Visible] = useState(false);
     const [loading, setLoading] = useState(true);
     const [profileImage, setProfileImage] = useState(localStorage.getItem('userprofile'));
+    const [isSaving, setIsSaving] = useState(false);
     const [isProfileImageChanged, setIsProfileImageChanged] = useState(false);
     const { isLoggedIn, loginEmail, loginUser, loginStatus } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -47,23 +48,66 @@ const MyPageProvider = ({ children }) => {
         setIntroduction(localStorage.getItem('userintro'));
     };
 
-    // 닉네임 저장 처리
+    // 닉네임 유효성 검사 함수
+    const validateNickname = (nickname) => {
+        if (!nickname) {
+            alert('닉네임은 필수입니다.');
+            return false;
+        }
+        if (nickname.length < 3 || nickname.length > 20) {
+            alert('닉네임은 1자 이상 20자 이하로 입력해야 합니다.');
+            return false;
+        }
+
+        // 영어 소문자, 숫자, 한글만 허용하는 정규 표현식
+        const regex = /^[a-z0-9가-힣]+$/;
+        if (!regex.test(nickname)) {
+            alert('닉네임은 영어 소문자, 숫자, 한글만 사용 가능합니다.');
+            return false;
+        }
+
+        return true;
+    };
+
+    // 소개글 유효성 검사 함수
+    const validateIntroduction = (introduction) => {
+        if (introduction.length > 50) {
+            alert('소개글은 50자 이하로 입력해야 합니다.');
+            return false;
+        }
+        return true;
+    };
+
+    // 저장하기 전에 유효성 검사
     const handleNicknameSave = async () => {
+        if (!validateNickname(nickname)) return; // 유효성 검사 통과 안하면 종료
+
+        alert(nickname);
+
         try {
-            await apiAxios.patch('/api/mypage/account/private/update/name', { nickname });
-            setIsToggleWrap1Visible(false);  // 저장 후 닫기
+            const response = await apiAxios.patch('/api/mypage/account/private/update/name', { nickname });
+            if (response.data && response.data.success) {
+                alert(response.data.message);
+                setNickname(response.data.data.updateName);
+                localStorage.setItem('username', response.data.data.updateName);
+                setIsToggleWrap1Visible(false);
+            } else {
+                alert('닉네임 변경에 실패했습니다.');
+            }
         } catch (error) {
-            console.error("Error updating nickname:", error);
+            alert('서버 오류가 발생했습니다. 나중에 다시 시도해주세요.');
+            console.log(error);
         }
     };
 
-    // 소개 저장 처리
     const handleIntroductionSave = async () => {
+        if (!validateIntroduction(introduction)) return; // 유효성 검사 통과 안하면 종료
+
         try {
             await apiAxios.patch('/api/mypage/account/private/update/oneintro', { introduction });
             setIsToggleWrap2Visible(false);  // 저장 후 닫기
         } catch (error) {
-            console.error("Error updating introduction:", error);
+            console.error('소개 변경 실패:', error);
         }
     };
 
