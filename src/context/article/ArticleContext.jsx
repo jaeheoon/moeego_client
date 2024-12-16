@@ -298,6 +298,16 @@ const ArticleProvider = ({ children }) => {
             return;
         }
     };
+    
+    // 조회수
+    const hitUpdate = async (articleNo) => {
+        try {
+            const response = await apiAxios.put(`/api/article/hit?articleNo=${articleNo}`);
+            console.log('조회수 증가 성공:', response.data);
+        } catch (error) {
+            console.error('조회수 증가 실패:', error);
+        }
+    };
 
     const contextValue = {
         articles,
