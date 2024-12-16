@@ -10,6 +10,7 @@ const MyPageProvider = ({ children }) => {
     const [introduction, setIntroduction] = useState('');
     const [isToggleWrap1Visible, setIsToggleWrap1Visible] = useState(false);
     const [isToggleWrap2Visible, setIsToggleWrap2Visible] = useState(false);
+    const [memberNo, setMemberNo] = useState('');
     const [loading, setLoading] = useState(true);
     const [profileImage, setProfileImage] = useState(localStorage.getItem('userprofile'));
     const [isSaving, setIsSaving] = useState(false);
@@ -20,6 +21,7 @@ const MyPageProvider = ({ children }) => {
     useEffect(() => {
         const username = localStorage.getItem('username');
         const useroneintro = localStorage.getItem('userintro');
+        setMemberNo(localStorage.getItem('userno'));
 
         setNickname(username);
         if (useroneintro) {
@@ -118,7 +120,7 @@ const MyPageProvider = ({ children }) => {
     const handleProfileImageChange = (e) => {
         const file = e.target.files[0];
         const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/svg+xml'];
-        const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+        const maxSize = 20 * 1024 * 1024; // 20MB in bytes
 
         if (file) {
             // 파일 형식 검증
@@ -130,24 +132,25 @@ const MyPageProvider = ({ children }) => {
 
             // 파일 크기 검증
             if (file.size > maxSize) {
-                alert('파일 크기는 5MB를 초과할 수 없습니다.');
+                alert('파일 크기는 20MB를 초과할 수 없습니다.');
                 e.target.value = ''; // 파일 입력을 초기화
                 return;
             }
 
             // 파일을 FormData에 추가하여 서버로 전송
             const formData = new FormData();
-            formData.append('profileImage', file);
+            formData.append('image', file);
+            formData.append('memberNo', memberNo);
 
             // 이미지 업로드 요청
-            apiAxios.patch('/api/mypage/account/private/update/profile', formData, {
+            apiAxios.put('/api/image/profileUpload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             })
                 .then((response) => {
                     // 서버 응답을 통해 프로필 이미지 URL을 받음
-                    const newProfileImageUrl = response.data.newProfileImageUrl;
+                    const newProfileImageUrl = response.data.data.image;
 
                     // 성공적으로 업로드된 후, 프로필 이미지 상태와 로컬 스토리지를 업데이트
                     setProfileImage(newProfileImageUrl);
