@@ -54,17 +54,22 @@ const ArticleProvider = ({ children }) => {
     }, []);
 
     // 현재 페이지 변경 함수
-    const changePage = (page) => {
-        const newPage = Math.max(page, 1); // 최소 1로 설정
-        setArticleCurrentPage(newPage); // 게시글 페이지 번호 업데이트
-        fetchArticles(newPage); // 새로운 페이지로 게시글 데이터를 가져옵니다
+    const changePage = (page, category = null) => {
+        setArticleCurrentPage(page);
+        if (category) {
+            // 카테고리별 게시글을 불러오기
+            fetchArticlesByCategory(category, page);
+            return;
+        } else {
+            // 전체 게시글을 불러오기
+            fetchArticles(page);
+        }
     };
-
-
+    
     // 카테고리별 게시글 가져오기
-    const fetchArticlesByCategory = useCallback(async (category) => {
+    const fetchArticlesByCategory = useCallback(async (category, page = 1) => {
         setIsLoading(true);
-        const apiUrl = `/api/article/${category}`;
+        const apiUrl = `/api/article/${category}?pg=${page}`; // 페이지 정보 추가
         try {
             const response = await apiAxios.get(apiUrl);
     
@@ -72,12 +77,15 @@ const ArticleProvider = ({ children }) => {
             switch (category) {
                 case "notices":
                     setNoticeArticles(response.data.content);
+                    setPages(response.data.totalPages);
                     break;
                 case "event":
                     setEventArticles(response.data.content);
+                    setPages(response.data.totalPages);
                     break;
                 default:
                     setArticles(response.data.content); // 일반 게시글은 articles에 저장
+                    setPages(response.data.totalPages);
                     break;
             }
         } catch (err) {
@@ -87,6 +95,7 @@ const ArticleProvider = ({ children }) => {
             setIsLoading(false);
         }
     }, []);
+    
 
     // 인기 게시글 가져오기
     useEffect(() => {
@@ -369,6 +378,7 @@ const ArticleProvider = ({ children }) => {
         deleteComment,
         updateComment,
         fetchLatestArticle,
+        setArticleCurrentPage,
         GoWrite,
         GoLogin
     };

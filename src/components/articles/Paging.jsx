@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { ArticleContext } from "../../context/article/ArticleContext";
 import "../../css/articles/Paging.css";
-const Paging = () => {
+const Paging = ({ categoryId }) => {
     const { pages, articleCurrentPage, changePage } = useContext(ArticleContext);
-
+    
     const pageGroupSize = 5; // 한 그룹에 표시할 페이지 수
     const normalizedCurrentPage = Math.max(articleCurrentPage, 1); // 음수 방지
     const pageGroup = Math.floor((normalizedCurrentPage - 1) / pageGroupSize);
@@ -13,9 +13,10 @@ const Paging = () => {
 
     const handlePageClick = (page) => {
         if (page >= 1 && page <= pages) {
-            changePage(page);
+            // 카테고리가 있으면 해당 카테고리로 페이지 변경, 없으면 전체 게시글
+            changePage(page, categoryId);
         }
-    };
+    };    
 
     const handleNextGroup = () => {
         if (endPage < pages) {
