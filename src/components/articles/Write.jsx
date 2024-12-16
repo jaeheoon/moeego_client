@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import '/src/css/articles/Write.css';
 import { ArticleContext } from '../../context/article/ArticleContext';
+import Service_area from '../ProSearch/Service_area';
 
 const Write = () => {
     const { writeArticle } = useContext(ArticleContext);
@@ -11,7 +12,9 @@ const Write = () => {
         content: '',
         type: '',
         memberNo: userNo,
-    });
+        service: '', // 선택된 서비스
+        area: '',    // 선택된 지역
+    });    
 
     const [selectedFiles, setSelectedFiles] = useState([]); // 선택한 파일 저장
     const maxFileSize = 20 * 1024 * 1024; // 20MB
@@ -73,6 +76,8 @@ const Write = () => {
         data.append("content", formData.content);
         data.append("type", formData.type);
         data.append("memberNo", formData.memberNo);
+        data.append("service", formData.service);
+        data.append("area", formData.area);
     
         // 파일 추가
         selectedFiles.forEach(file => data.append("images", file));
@@ -109,7 +114,41 @@ const Write = () => {
                             등록
                         </button>
                     </div>
+                    <div className='service-area-wrap'>
+                    <Service_area
+                        onServiceAreaChange={(service, area) => {
+                            setFormData((prevData) => ({
+                                ...prevData,
+                                service, // 선택된 서비스 저장
+                                area,    // 선택된 지역 저장
+                            }));
+                        }}
+                    />
+                    </div>
+                    {/* 제목 입력 */}
+                    <div className="subject-container">
+                        <input
+                            type="text"
+                            name="subject"
+                            placeholder="제목을 입력해주세요."
+                            maxLength={50}
+                            value={formData.subject}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <hr />
 
+                    {/* 본문 입력 */}
+                    <div className="content-container">
+                        <textarea
+                            name="content"
+                            placeholder="내용을 입력하세요"
+                            maxLength={5000}
+                            value={formData.content}
+                            onChange={handleChange}
+                        ></textarea>
+                    </div>
+                    <hr/>
                     {/* 파일 업로드 */}
                     <div className="file-container">
                         <input
@@ -148,30 +187,6 @@ const Write = () => {
                         ) : (
                             <span>No file chosen</span>
                         )}
-                    </div>
-
-                    {/* 제목 입력 */}
-                    <div className="subject-container">
-                        <input
-                            type="text"
-                            name="subject"
-                            placeholder="제목을 입력해주세요."
-                            maxLength={50}
-                            value={formData.subject}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <hr />
-
-                    {/* 본문 입력 */}
-                    <div className="content-container">
-                        <textarea
-                            name="content"
-                            placeholder="내용을 입력하세요"
-                            maxLength={5000}
-                            value={formData.content}
-                            onChange={handleChange}
-                        ></textarea>
                     </div>
                 </div>
             </div>

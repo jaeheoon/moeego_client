@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "../../css/pro/Service_area.css";
 import ServiceAreaModal from './ServiceAreaModal'; // 모달 컴포넌트 import
 
-const Service_area = () => {
+const Service_area = ({onServiceAreaChange}) => {
     const [isModalOpen, setModalOpen] = useState(false); // 모달 상태 관리
     const [activeModal, setActiveModal] = useState('service'); // 기본적으로 서비스 모달을 열도록 설정
     const [selectedService, setSelectedService] = useState('서비스'); // 선택한 서비스 텍스트
@@ -23,13 +23,19 @@ const Service_area = () => {
     };
 
     const handleServiceSelect = (service) => {
-        setSelectedService(service); // 선택한 서비스 텍스트 업데이트
-        openAreaModal(); // 지역 모달 열기
+        setSelectedService(service);
+        if (onServiceAreaChange) {
+            onServiceAreaChange(service, selectedArea); // 현재 선택된 지역도 함께 전달
+        }
+        openAreaModal();
     };
 
     const handleAreaSelect = (area) => {
-        setSelectedArea(area); // 선택한 지역 텍스트 업데이트
-        closeModal(); // 모달 닫기
+        setSelectedArea(area);
+        if (onServiceAreaChange) {
+            onServiceAreaChange(selectedService, area); // 현재 선택된 서비스도 함께 전달
+        }
+        closeModal();
     };
 
     const resetFilters = () => {
@@ -55,7 +61,7 @@ const Service_area = () => {
 
     return (
         <section className='service_areaHeader'>
-            <button className={`serviceBtn ${selectedService !== '서비스' ? 'selectedService' : ''}`} onClick={openServiceModal}>
+            <button type='button' className={`serviceBtn ${selectedService !== '서비스' ? 'selectedService' : ''}`} onClick={openServiceModal}>
                 <span>{selectedService}</span> {/* 선택한 서비스 텍스트 표시 */}
                 <span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +69,7 @@ const Service_area = () => {
                     </svg>
                 </span>
             </button>
-            <button className={`areaBtn ${selectedArea !== '지역' ? 'selectedService' : ''}`} onClick={openAreaModal}>
+            <button type='button' className={`areaBtn ${selectedArea !== '지역' ? 'selectedService' : ''}`} onClick={openAreaModal}>
                 <span>{selectedArea}</span> {/* 선택한 지역 텍스트 표시 */}
                 <span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +77,7 @@ const Service_area = () => {
                     </svg>
                 </span>
             </button>
-            <button className='filterResetBtn' onClick={resetFilters}>
+            <button type='button' className='filterResetBtn' onClick={resetFilters}>
                 필터 초기화
             </button>
 

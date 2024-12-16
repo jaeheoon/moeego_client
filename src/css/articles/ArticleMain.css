@@ -151,6 +151,7 @@
     white-space: nowrap;
     box-sizing: border-box;
     word-break: break-word;
+    width: 75%;
 }
 
 .NotionContainer div:nth-child(3) {
@@ -174,28 +175,30 @@
 
 .HotArticleContainer .HotList {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
     gap: 1em;
 }
-
-.HotArticleContainer .HotList .HotWrap {
+.HotArticleContainer .HotList .HotWrapA{
+    display: flex;
+    width: 100%;
+}
+.HotArticleContainer .HotList .HotWrapA .HotWrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(50% - 0.5em);
+    width: calc(100%);
     box-sizing: border-box;
     background-color: rgb(226, 255, 252);
     border-radius: 10px;
     padding: 10px;
 }
 
-.HotArticleContainer .HotList .HotWrap:hover {
+.HotArticleContainer .HotList .HotWrapA .HotWrap:hover {
     cursor: pointer;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -204,14 +207,14 @@
     padding: 20px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(1) {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap div:nth-child(1) {
     width: 90%;
     color: #828282;
     white-space: nowrap;
@@ -220,19 +223,19 @@
     flex-shrink: 1;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(2) {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(2) img {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap div:nth-child(2) img {
     width: 20px;
     height: 20px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -240,7 +243,7 @@
     gap: 1em;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon{
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap .imageWrap-icon{
     display: flex;
     align-items: center;
     justify-content: right;
@@ -248,12 +251,12 @@
     padding: 20px 0px 5px 0px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon img {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap .imageWrap-icon img {
     width: 15px;
     height: 15px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon span {
+.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap .imageWrap-icon span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,28 +274,30 @@
 
 .LatestArticleContainer .LatestList {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
     gap: 1em;
 }
-
-.LatestArticleContainer .LatestList .LatestWrap {
+.LatestArticleContainer .LatestList .LatestWrapA {
+    display: flex;
+    width: 100%;
+}
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(50% - 0.5em);
+    width: calc(100%);
     box-sizing: border-box;
     background-color: #ffdae0;
     border-radius: 10px;
     padding: 10px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap:hover {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap:hover {
     cursor: pointer;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -301,14 +306,14 @@
     padding: 20px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(1) {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap div:nth-child(1) {
     width: 90%;
     color: #828282;
     text-align: left;
@@ -319,19 +324,19 @@
     word-break: break-word;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(2) {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(2) img {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap div:nth-child(2) img {
     width: 20px;
     height: 20px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -339,7 +344,7 @@
     gap: 1em;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap .imageWrap-icon {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -347,12 +352,12 @@
     padding: 20px 0px 5px 0px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon img {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap .imageWrap-icon img {
     width: 15px;
     height: 15px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon span {
+.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap .imageWrap-icon span {
     display: flex;
     align-items: center;
     justify-content: center;

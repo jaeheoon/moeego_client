@@ -63,7 +63,7 @@ const PostHeader = ({ articleData, deleteArticle }) => {
             {/* 게시물 제목 및 정보 */}
             <div className="post-head-title-wrapper has-service">
                 <h1 className="post-title">{articleData.subject}</h1>
-                <p className="post-location">서울/강남구</p>
+                <p className="post-location">{articleData.service}&nbsp;&nbsp;·&nbsp;&nbsp;{articleData.area}</p>
             </div>
 
             {/* 사용자 정보 및 액션 */}
