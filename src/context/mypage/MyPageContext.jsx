@@ -84,15 +84,13 @@ const MyPageProvider = ({ children }) => {
     const handleNicknameSave = async () => {
         if (!validateNickname(nickname)) return; // 유효성 검사 통과 안하면 종료
 
-        alert(nickname);
-
         try {
             const response = await apiAxios.patch('/api/mypage/account/private/update/name', { nickname });
             if (response.data && response.data.success) {
-                alert(response.data.message);
                 setNickname(response.data.data.updateName);
                 localStorage.setItem('username', response.data.data.updateName);
                 setIsToggleWrap1Visible(false);
+                window.location.reload();
             } else {
                 alert('닉네임 변경에 실패했습니다.');
             }
@@ -150,15 +148,15 @@ const MyPageProvider = ({ children }) => {
             })
                 .then((response) => {
                     // 서버 응답을 통해 프로필 이미지 URL을 받음
-                    const newProfileImageUrl = response.data.data.image;
+                    const newProfileImageUrl = response.data.data;
 
                     // 성공적으로 업로드된 후, 프로필 이미지 상태와 로컬 스토리지를 업데이트
-                    setProfileImage(newProfileImageUrl);
-                    localStorage.removeItem('userprofile');
-                    localStorage.setItem('userprofile', newProfileImageUrl);
+                    setProfileImage("https://kr.object.ncloudstorage.com/moeego/profile/" + newProfileImageUrl);
+                    localStorage.setItem('userprofile', "https://kr.object.ncloudstorage.com/moeego/profile/" + newProfileImageUrl);
 
                     // 프로필 이미지 변경 상태를 초기화
                     setIsProfileImageChanged(false);
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.error('프로필 이미지 업로드 오류:', error);

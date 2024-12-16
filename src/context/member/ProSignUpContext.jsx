@@ -43,6 +43,11 @@ const ProSignUpProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
+    const [verificationCode, setVerificationCode] = useState('');
+    const [verificationAttempts, setVerificationAttempts] = useState(0);
+    const [isEmailVerified, setIsEmailVerified] = useState(false);
+    const [errorVerification, setErrorVerification] = useState("");
+
     const goMain = () => navigate(`/`);
     const goLogin = () => navigate(`/login`);
     const goSuccess = (name) => navigate(`/signup/success`, { state: { name } });
@@ -53,6 +58,8 @@ const ProSignUpProvider = ({ children }) => {
             [field]: value,
         }));
 
+        // 오류 초기화 후 유효성 검사
+        setErrors((prevErrors) => ({ ...prevErrors, [field]: "" }));
         validateField(field, value);
     };
 
@@ -72,18 +79,18 @@ const ProSignUpProvider = ({ children }) => {
         }
 
         try {
-            const response = await apiAxios.post("/api/pro/join/exist", { email: signup.email });
-            if (response.data) {
-                setIsEmailChecked(false);
-                setErrors((prevErrors) => ({
-                    ...prevErrors,
-                    email: "이미 사용 중인 이메일입니다.",
-                }));
-            } else {
+            const response = await apiAxios.post("/api/join/exist", { email: signup.email });
+            if (!response.data) {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
                     ...prevErrors,
                     email: "사용 가능한 이메일입니다.",
+                }));
+            } else {
+                setIsEmailChecked(false);
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    email: "이미 사용 중인 이메일입니다.",
                 }));
             }
         } catch (error) {
@@ -93,6 +100,52 @@ const ProSignUpProvider = ({ children }) => {
                 email: "이메일 중복 체크 중 문제가 발생했습니다.",
             }));
             setIsEmailChecked(false);
+        }
+    };
+
+    const handleResendVerification = async () => {
+        if (verificationAttempts >= 3) {
+            setErrorVerification("인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요.");
+            return;
+        }
+
+        try {
+            const response = await apiAxios.post('/api/mypage/account/private/mailSend', { email: signup.email });
+            if (response.status === 200) {
+                setErrorVerification(`${signup.email}로 인증번호가 발송되었습니다.`);
+                setVerificationAttempts(0); // Reset attempts after successful resend
+            } else {
+                setErrorVerification("인증번호 발송 실패. 다시 시도해주세요.");
+            }
+        } catch (error) {
+            console.error("인증번호 재발송 실패:", error);
+            setErrorVerification("인증번호 재발송 중 오류가 발생했습니다.");
+        }
+    };
+
+    const handleEmailVerification = async () => {
+        if (verificationAttempts >= 3) {
+            setErrorVerification("인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요.");
+            return;
+        }
+
+        try {
+            const response = await apiAxios.post('/api/mypage/account/private/mailCheck', {
+                num: verificationCode,
+            });
+
+            console.log(response);
+
+            if (response.data.success) {
+                setIsEmailVerified(true);
+                setErrorVerification("인증번호가 일치합니다.");
+            } else {
+                setErrorVerification("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
+                setVerificationAttempts(prevAttempts => prevAttempts + 1);
+            }
+        } catch (error) {
+            console.error("인증번호 확인 실패:", error);
+            setErrorVerification("인증번호 확인 중 오류가 발생했습니다.");
         }
     };
 
@@ -153,12 +206,13 @@ const ProSignUpProvider = ({ children }) => {
                 break;
         }
 
+        // 오류 상태 업데이트
         setErrors((prevErrors) => ({
             ...prevErrors,
-            [field]: error || "",
+            [field]: error || "", // 오류 메시지 없으면 빈 문자열로 설정
         }));
 
-        return error || null;
+        return error || null; // 오류가 없으면 null 반환
     };
 
     const validateForm = () => {
@@ -202,14 +256,21 @@ const ProSignUpProvider = ({ children }) => {
                 signup,
                 errors,
                 isReadonly,
+                isEmailChecked,
+                errorVerification,
+                isEmailVerified,
+                verificationCode,
+                verificationAttempts,
+                setVerificationCode,
                 updateSignUpData,
                 handleAddressSearch,
                 goMain,
                 goLogin,
                 goSuccess,
-                isEmailChecked,
+                validateForm,
                 checkEmailDuplication,
-                validateForm
+                handleEmailVerification,
+                handleResendVerification,
             }}
         >
             {children}

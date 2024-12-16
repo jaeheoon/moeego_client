@@ -41,7 +41,10 @@ const SignUpProvider = ({ children }) => {
         address2: false,
     });
 
-
+    const [verificationCode, setVerificationCode] = useState('');
+    const [verificationAttempts, setVerificationAttempts] = useState(0);
+    const [isEmailVerified, setIsEmailVerified] = useState(false);
+    const [errorVerification, setErrorVerification] = useState("");
 
     const navigate = useNavigate();
 
@@ -75,13 +78,11 @@ const SignUpProvider = ({ children }) => {
 
         try {
             const response = await apiAxios.post("/api/join/exist", { email: signup.email });
-            console.log(response.data);
-
             if (!response.data) {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
                     ...prevErrors,
-                    email: "사용 가능한 이메일입니다.", // 오류 메시지 제거
+                    email: "사용 가능한 이메일입니다.",
                 }));
             } else {
                 setIsEmailChecked(false);
@@ -97,6 +98,52 @@ const SignUpProvider = ({ children }) => {
                 email: "이메일 중복 체크 중 문제가 발생했습니다.",
             }));
             setIsEmailChecked(false);
+        }
+    };
+
+    const handleResendVerification = async () => {
+        if (verificationAttempts >= 3) {
+            setErrorVerification("인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요.");
+            return;
+        }
+
+        try {
+            const response = await apiAxios.post('/api/mypage/account/private/mailSend', { email: signup.email });
+            if (response.status === 200) {
+                setErrorVerification(`${signup.email}로 인증번호가 발송되었습니다.`);
+                setVerificationAttempts(0); // Reset attempts after successful resend
+            } else {
+                setErrorVerification("인증번호 발송 실패. 다시 시도해주세요.");
+            }
+        } catch (error) {
+            console.error("인증번호 재발송 실패:", error);
+            setErrorVerification("인증번호 재발송 중 오류가 발생했습니다.");
+        }
+    };
+
+    const handleEmailVerification = async () => {
+        if (verificationAttempts >= 3) {
+            setErrorVerification("인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요.");
+            return;
+        }
+
+        try {
+            const response = await apiAxios.post('/api/mypage/account/private/mailCheck', {
+                num: verificationCode,
+            });
+
+            console.log(response);
+
+            if (response.data.success) {
+                setIsEmailVerified(true);
+                setErrorVerification("인증번호가 일치합니다.");
+            } else {
+                setErrorVerification("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
+                setVerificationAttempts(prevAttempts => prevAttempts + 1);
+            }
+        } catch (error) {
+            console.error("인증번호 확인 실패:", error);
+            setErrorVerification("인증번호 확인 중 오류가 발생했습니다.");
         }
     };
 
@@ -186,13 +233,21 @@ const SignUpProvider = ({ children }) => {
     };
 
     const submitSignupForm = async () => {
-        if (!validateForm()) {
-            alert("입력한 정보를 확인해주세요.");
+        // 이메일 중복 체크를 완료했는지 확인
+        if (!isEmailChecked) {
+            alert("이메일 중복 체크를 완료해주세요.");
             return;
         }
 
-        if (!isEmailChecked) {
-            alert("이메일 중복 체크를 완료해주세요.");
+        // 이메일 인증이 완료되지 않았다면
+        if (!isEmailVerified) {
+            alert("이메일 인증을 완료해주세요.");
+            return;
+        }
+
+        // 유효성 검사
+        if (!validateForm()) {
+            alert("입력한 정보를 확인해주세요.");
             return;
         }
 
@@ -246,15 +301,22 @@ const SignUpProvider = ({ children }) => {
             value={{
                 signup,
                 errors,
+                isReadonly,
+                isEmailChecked,
+                isEmailVerified,
+                verificationCode,
+                verificationAttempts,
+                errorVerification,
+                setVerificationCode,
                 setIsEmailChecked,
                 updateSignUpData,
                 handleAddressSearch,
                 submitSignupForm,
+                checkEmailDuplication,
+                handleEmailVerification,
+                handleResendVerification,
                 goMain,
                 goLogin,
-                isReadonly,
-                isEmailChecked,
-                checkEmailDuplication
             }}
         >
             {children}

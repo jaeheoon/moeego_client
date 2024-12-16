@@ -8,11 +8,19 @@ const Join = () => {
         signup,
         errors,
         isReadonly,
+        isEmailChecked,
+        isEmailVerified,
+        verificationCode,
+        verificationAttempts,
+        errorVerification,
+        setVerificationCode,
+        setIsEmailChecked,
         updateSignUpData,
         handleAddressSearch,
         submitSignupForm,
         checkEmailDuplication,
-        isEmailChecked,
+        handleEmailVerification,
+        handleResendVerification,
     } = useContext(SignUpContext);
 
     useEffect(() => {
@@ -60,12 +68,65 @@ const Join = () => {
                             placeholder="moeego@example.com"
                             value={signup.email}
                             onChange={(e) => updateSignUpData('email', e.target.value)}
-                            onBlur={checkEmailDuplication} // blur 이벤트로 중복 체크 실행
+                            onBlur={checkEmailDuplication} // Blur event for email duplication check
                         />
                     </div>
                     <div className='errorWrap'>
                         {errors.email && <span className={isEmailChecked ? "success" : "error"}>{errors.email}</span>}
                     </div>
+
+                    {/* 인증번호 발송 버튼 */}
+                    <div className="join-align">
+                        {isEmailChecked ? (
+                            <input
+                                type="button"
+                                className="checkBtn"
+                                value="인증번호 발송"
+                                onClick={handleResendVerification}
+                                disabled={verificationAttempts >= 3} // Disable if verification attempts are >= 3
+                            />
+                        ) : (
+                            <input
+                                type="button"
+                                className="checkBtn"
+                                value="인증번호 발송"
+                                onClick={handleResendVerification}
+                                disabled={!signup.email || errors.email} // Disable if email input is invalid
+                            />
+                        )}
+                    </div>
+
+                    {/* 이메일 인증번호 관련 입력 */}
+                    {isEmailChecked && (
+                        <div className="join-align">
+                            <input
+                                className="emailbox"
+                                type="text"
+                                placeholder="인증번호를 입력해주세요"
+                                value={verificationCode}
+                                onChange={(e) => setVerificationCode(e.target.value)}
+                            />
+                        </div>
+                    )}
+
+                    {/* 인증번호 관련 에러 메시지 */}
+                    <div className="errorWrap">
+                        {errorVerification && <span className="error">{errorVerification}</span>}
+                    </div>
+
+                    {/* 이메일 인증번호 관련 입력 */}
+                    {isEmailChecked && (
+                        <div className="join-align">
+                            <input
+                                className="checkBtn"
+                                type="button"
+                                value="확인"
+                                onClick={handleEmailVerification}
+                                disabled={verificationAttempts >= 3} // Disable if verification attempts are >= 3
+                            />
+                        </div>
+                    )}
+
                     {/* 비밀번호 입력 */}
                     <div className="join-align">
                         <label>비밀번호</label>
@@ -142,14 +203,6 @@ const Join = () => {
                     </div>
                     <div className='errorWrap'>
                         {errors.phone && <span className="error">{errors.phone}</span>}
-                    </div>
-                    <div className='join-align'>
-                        <input
-                            type="button"
-                            className="checkBtn"
-                            value="인증번호 발송"
-                            onClick={() => { /* 인증번호 발송 처리 로직 */ }}
-                        />
                     </div>
 
                     {/* 우편번호 입력 */}

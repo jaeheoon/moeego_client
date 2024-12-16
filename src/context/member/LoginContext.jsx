@@ -60,7 +60,7 @@ const LoginProvider = ({ children }) => {
                 window.localStorage.setItem("useraddress", address);
                 window.localStorage.setItem("userphone", phone);
                 if (profileImage) {
-                    window.localStorage.setItem("userprofile", profileImage);
+                    window.localStorage.setItem("userprofile", "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
                 } else {
                     window.localStorage.setItem("userprofile", '/image/default.svg');
                 }
@@ -74,7 +74,7 @@ const LoginProvider = ({ children }) => {
                 setLoginAddress(address);
                 setLoginPhone(phone);
                 if (profileImage) {
-                    setLoginProfile(profileImage);
+                    setLoginProfile("https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
                 } else {
                     setLoginProfile('/image/default.svg');
                 }

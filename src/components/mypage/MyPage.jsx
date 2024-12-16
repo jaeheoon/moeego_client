@@ -8,12 +8,14 @@ const MyPage = () => {
     const { isLoggedIn, loginUser, loginEmail, loginProfile } = useContext(AuthContext);
 
     const [userno, setUserno] = useState(localStorage.getItem('userno') || ''); // 초기값 설정
+    const [userprofile, setUserProfile] = useState(localStorage.getItem('userprofile') || ''); // 초기값 설정
 
     // 로컬 스토리지의 userno 변경 감지
     useEffect(() => {
         const handleStorageChange = () => {
             const newUserno = localStorage.getItem('userno');
             setUserno(newUserno || ''); // 값이 없을 경우 빈 문자열로 설정
+            setUserProfile(localStorage.getItem('userprofile') || '');
         };
 
         // localStorage 이벤트 리스너 등록
@@ -55,7 +57,7 @@ const MyPage = () => {
                             <div className='ProfileImage'>
                                 <img
                                     className='loginProfileImg'
-                                    src={loginProfile || "/image/default.svg"} // 기본 프로필 이미지 처리
+                                    src={userprofile || "/image/default.svg"} // 기본 프로필 이미지 처리
                                     alt="profile"
                                 />  {/* 프로필 이미지 표시 */}
                             </div>

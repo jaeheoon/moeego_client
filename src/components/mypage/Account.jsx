@@ -29,9 +29,9 @@ const Account = () => {
 
     // 상태 초기화
     useEffect(() => {
-        setProfile(localStorage.getItem('userprofile') || '/image/profile.png');
+        setProfile(localStorage.getItem('userprofile') || '/image/default.svg');
         setName(localStorage.getItem('username') || '사용자 이름');
-    }, []);
+    }, [profile, name]);
 
     const handleNicknameChange = (e) => setNickname(e.target.value);
     const handleIntroductionChange = (e) => setIntroduction(e.target.value);
