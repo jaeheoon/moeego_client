@@ -176,29 +176,27 @@
 .HotArticleContainer .HotList {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
     gap: 1em;
 }
-.HotArticleContainer .HotList .HotWrapA{
-    display: flex;
-    width: 100%;
-}
-.HotArticleContainer .HotList .HotWrapA .HotWrap {
+
+.HotArticleContainer .HotList .HotWrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(100%);
+    width: calc(50% - 0.5em);
     box-sizing: border-box;
     background-color: rgb(226, 255, 252);
     border-radius: 10px;
     padding: 10px;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap:hover {
+.HotArticleContainer .HotList .HotWrap:hover {
     cursor: pointer;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap {
+.HotArticleContainer .HotList .HotWrap .viewWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -207,14 +205,14 @@
     padding: 20px;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap {
+.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap div:nth-child(1) {
+.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(1) {
     width: 90%;
     color: #828282;
     white-space: nowrap;
@@ -223,19 +221,19 @@
     flex-shrink: 1;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap div:nth-child(2) {
+.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .titleWrap div:nth-child(2) img {
+.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(2) img {
     width: 20px;
     height: 20px;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap {
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -243,7 +241,7 @@
     gap: 1em;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap .imageWrap-icon{
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon{
     display: flex;
     align-items: center;
     justify-content: right;
@@ -251,17 +249,18 @@
     padding: 20px 0px 5px 0px;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap .imageWrap-icon img {
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon img {
     width: 15px;
     height: 15px;
 }
 
-.HotArticleContainer .HotList .HotWrapA .HotWrap .viewWrap .imageWrap .imageWrap-icon span {
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon span {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     margin-left: 0.3em;
+    color: #828282;
 }
 
 .LatestArticleContainer {
@@ -275,29 +274,27 @@
 .LatestArticleContainer .LatestList {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
     gap: 1em;
 }
-.LatestArticleContainer .LatestList .LatestWrapA {
-    display: flex;
-    width: 100%;
-}
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap {
+
+.LatestArticleContainer .LatestList .LatestWrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(100%);
+    width: calc(50% - 0.5em);
     box-sizing: border-box;
     background-color: #ffdae0;
     border-radius: 10px;
     padding: 10px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap:hover {
+.LatestArticleContainer .LatestList .LatestWrap:hover {
     cursor: pointer;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -306,14 +303,14 @@
     padding: 20px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap div:nth-child(1) {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(1) {
     width: 90%;
     color: #828282;
     text-align: left;
@@ -324,19 +321,19 @@
     word-break: break-word;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap div:nth-child(2) {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .titleWrap div:nth-child(2) img {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(2) img {
     width: 20px;
     height: 20px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -344,7 +341,7 @@
     gap: 1em;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap .imageWrap-icon {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -352,17 +349,18 @@
     padding: 20px 0px 5px 0px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap .imageWrap-icon img {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon img {
     width: 15px;
     height: 15px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrapA .LatestWrap .viewWrap .imageWrap .imageWrap-icon span {
+.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon span {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     margin-left: 0.3em;
+    color: #828282;
 }
 
 .AllArticleContainer {

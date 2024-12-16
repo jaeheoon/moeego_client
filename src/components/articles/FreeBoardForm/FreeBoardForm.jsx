@@ -8,6 +8,7 @@ import Service_area from '../../ProSearch/service_area.jsx';
 import { ArticleContext } from '../../../context/article/ArticleContext.jsx';
 import Loading from '../../loading/loading.jsx';
 import { AuthContext } from '../../../context/member/AuthContext.jsx';
+import Paging from '../Paging.jsx';
 
 const FreeBoardForm = () => {
     const navigate = useNavigate();
@@ -65,6 +66,9 @@ const FreeBoardForm = () => {
                         <Service_area />
                         <div className='FeedContainer'>
                             <FeedList articles={articles} />
+                        </div>
+                        <div className='articlePaging'>
+                            <Paging/>
                         </div>
                     </div>
                 </div>

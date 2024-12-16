@@ -7,6 +7,7 @@ const ArticleContext = createContext();
 const ArticleProvider = ({ children }) => {
     const [articles, setArticles] = useState([]); // 게시글 목록
     const [hotArticle, setHotArticle] = useState(null); // 인기 게시글
+    const [latestArticle, setLatestArticle] = useState([]); // 최신 게시글
     const [articleData, setArticleData] = useState(null); // 게시글 상세 정보
     const [commentData, setCommentData] = useState([]); // 댓글 목록
     const [isLoading, setIsLoading] = useState(true); // 게시글 로딩 상태
@@ -16,24 +17,49 @@ const ArticleProvider = ({ children }) => {
     const [totalPages, setTotalPages] = useState(1); // 댓글 총 페이지 수
     const [error, setError] = useState(null); // 에러 상태
     const [images, setImages] = useState([]);
+    const [pages, setPages] = useState(1); // 총 페이지 수
+    const [articleCurrentPage, setArticleCurrentPage] = useState(1); // 현재 페이지
     const navigate = useNavigate();
 
     const [noticeArticles, setNoticeArticles] = useState([]);
     const [eventArticles, setEventArticles] = useState([]);
 
-    // 전체 게시글 가져오기
-    const fetchArticles = useCallback(async () => {
+    // 게시글 가져오기 (페이지네이션 포함)
+    const fetchArticles = useCallback(async (page = 1) => {
         setIsLoading(true);
         try {
-            const response = await apiAxios.get("/api/article");
+            const response = await apiAxios.get(`/api/article?pg=${page}`);
             setArticles(response.data.content);
-        } catch (err) {
+            setPages(response.data.totalPages);
+        } catch (err) { 
             console.error("Error fetching articles:", err);
             setError(err);
         } finally {
             setIsLoading(false);
         }
     }, []);
+
+    // 최신글 가져오기
+    const fetchLatestArticle = useCallback(async () => {
+        setIsLoading(true);
+        try {
+            const response = await apiAxios.get(`/api/article?pg=1`);
+            setLatestArticle(response.data.content);
+        } catch (err) { 
+            console.error("Error fetching articles:", err);
+            setError(err);
+        } finally {
+            setIsLoading(false);
+        }
+    }, []);
+
+    // 현재 페이지 변경 함수
+    const changePage = (page) => {
+        const newPage = Math.max(page, 1); // 최소 1로 설정
+        setArticleCurrentPage(newPage); // 게시글 페이지 번호 업데이트
+        fetchArticles(newPage); // 새로운 페이지로 게시글 데이터를 가져옵니다
+    };
+
 
     // 카테고리별 게시글 가져오기
     const fetchArticlesByCategory = useCallback(async (category) => {
@@ -60,7 +86,7 @@ const ArticleProvider = ({ children }) => {
         } finally {
             setIsLoading(false);
         }
-    }, []);    
+    }, []);
 
     // 인기 게시글 가져오기
     useEffect(() => {
@@ -313,6 +339,7 @@ const ArticleProvider = ({ children }) => {
         articles,
         hotArticle,
         noticeArticles,
+        latestArticle,
         eventArticles,
         articleData,
         commentData,
@@ -323,6 +350,9 @@ const ArticleProvider = ({ children }) => {
         totalPages,
         error,
         images,
+        pages,
+        articleCurrentPage,
+        changePage,
         fetchArticles,
         fetchArticlesByCategory,
         fetchArticle,
@@ -338,6 +368,7 @@ const ArticleProvider = ({ children }) => {
         replyCommentWrite,
         deleteComment,
         updateComment,
+        fetchLatestArticle,
         GoWrite,
         GoLogin
     };
