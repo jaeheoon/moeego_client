@@ -115,6 +115,48 @@
     width: 20px;
 }
 
+.IntroductionWrap2,
+.IntroductionWrap2:link,
+.IntroductionWrap2:active,
+.IntroductionWrap2:visited {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: black;
+}
+
+.IntroductionWrap2 .next {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+}
+
+.IntroductionWrap2 .next img {
+    height: 20px;
+    width: 20px;
+}
+
+.IntroductionWrap2 .prev {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.IntroductionWrap2 .prev img {
+    height: 20px;
+    width: 20px;
+}
+
+.IntroductionWrap2 .title {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
 .UserInfoPage .Container {
     width: 100%;
 }

@@ -33,7 +33,7 @@ const MyPageProvider = ({ children }) => {
 
     const handleCheckProfile = (profile) => {
         if (!profile || profile === 'null' || profile === null || profile === 'undefined' || profile === undefined) {
-            setProfileImage('/image/default.png'); // 기본 프로필 이미지 설정
+            setProfileImage('/image/default.svg'); // 기본 프로필 이미지 설정
         } else {
             setProfileImage(profile);
         }

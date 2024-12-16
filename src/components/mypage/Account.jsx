@@ -103,6 +103,13 @@ const Account = () => {
                                     <input type="button" id='toggleBtn2' value="수정" onClick={() => { handleIntroductionCancel(); toggleWrap2(); }} />
                                 </div>
                             </div>
+                            <br />
+                            <Link className="IntroductionWrap2" to="/pro/serviceintro">
+                                <div className='title'>
+                                    서비스 소개
+                                </div>
+                                <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
+                            </Link>
                         </div>
                         <hr />
                         {isToggleWrap2Visible && (

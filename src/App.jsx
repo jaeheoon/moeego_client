@@ -23,18 +23,13 @@ import Logout from './components/login/Logout.jsx';
 // pro
 import Prosignup from "./components/pro/Prosignup";
 import ProjoinSub from "./components/pro/ProSub.jsx";
-// import ProjoinSub_interoir from "./components/Pro/ProSub_interoir.jsx";
-// import ProjoinSub_si from "./components/Pro/ProSub_si.jsx";
-// import ProjoinSub_car from "./components/Pro/ProSub_car.jsx";
-// import ProjoinSub_hobby from "./components/Pro/ProSub_hobby.jsx";
-// import ProjoinSub_study from "./components/Pro/ProSub_study.jsx";
-// import ProjoinSub_fashion from "./components/Pro/ProSub_fashion.jsx";
 import ProjoinMain from "./components/Pro/ProjoinMain.jsx";
 import ProSearch from "./components/ProSearch/ProSearch";
 import ProRequest from "./components/Pro/ProRequest.jsx";
 import ServiceAreaModal from "./components/ProSearch/ServiceAreaModal.jsx";
 import ProView from "./components/Pro/ProView";
 import ProIntro from './components/Pro/ProIntro.jsx';
+import ProServiceIntro from './components/Pro/ProServiceIntro.jsx';
 
 // article
 import ArticleMain from './components/articles/ArticleMain.jsx';
@@ -50,7 +45,7 @@ import MyHistory from './components/mypage/MyHistory';
 import MyArticles from './components/mypage/MyArticles';
 import MyComments from './components/mypage/MyComments';
 import Private from './components/mypage/Private';
-import Account from './components/mypage/account';
+import Account from './components/mypage/Account.jsx';
 import ChangeAddress from './components/mypage/ChangeAddress';
 import ChangePassword from './components/mypage/ChangePassword';
 import ChangeEmail from './components/mypage/ChangeEmail';
@@ -160,30 +155,22 @@ const App = () => {
                               <Route path="/pro/signup/main/:mainCateNo" element={<div className='main-content'><ProjoinSub /></div>} />
                               <Route path="/pro/signup/main/:mainCateNo/sub" element={<div className='main-content'><ProIntro /></div>} />
                               <Route path="/pro/signup" element={<div className='main-content'><Prosignup /></div>} />
-                              {/* <Route path="/pro/signup/sub_si" element={<ProjoinSub_si />} />
-                            <Route path="/pro/signup/sub_fashion" element={<ProjoinSub_fashion />} />
-                            <Route path="/pro/signup/sub_study" element={<ProjoinSub_study />} />
-                            <Route path="/pro/signup/sub_hobby" element={<ProjoinSub_hobby />} />
-                            <Route path="/pro/signup/sub_car" element={<ProjoinSub_car />} /> */}
                               <Route path="/pro/proview" element={<ProView />} />
                               <Route path="/pro/ProRequest" element={<ProRequest />} />
+                              <Route path='/pro/serviceintro' element={<div className='main-content'><ProServiceIntro /></div>} />
 
                               {/* 관리자 페이지 */}
                               <Route path="/admin/login" element={<AdminLogin />} />
                               <Route path="/admin/logout" element={<AdminLogout />} />
-
                               <Route path="/admin/dashboard" element={<AdminMain />} />
                               <Route path="/admin/proapproval" element={<AdminMain />} />
                               <Route path="/admin/memberlist" element={<AdminMain />} />
                               <Route path="/admin/prolist" element={<AdminMain />} />
                               <Route path="/admin/leavememberlist" element={<AdminMain />} />
                               <Route path="/admin/eventlist" element={<AdminMain />} />
-
                               <Route path="/admin/event-write" element={<EventWrite />} />
                               <Route path="/admin/event-update" element={<EventUpdate />} />
-
                               <Route path="/modal" element={<ServiceAreaModal />} />
-
                             </Routes>
                             {!window.location.pathname.startsWith('/admin') && <Footer />}
                           </ProProvider>

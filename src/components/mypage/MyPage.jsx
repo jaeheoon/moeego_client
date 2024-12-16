@@ -55,7 +55,7 @@ const MyPage = () => {
                             <div className='ProfileImage'>
                                 <img
                                     className='loginProfileImg'
-                                    src={loginProfile || "/image/profile.png"} // 기본 프로필 이미지 처리
+                                    src={loginProfile || "/image/default.svg"} // 기본 프로필 이미지 처리
                                     alt="profile"
                                 />  {/* 프로필 이미지 표시 */}
                             </div>
