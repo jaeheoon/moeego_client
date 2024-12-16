@@ -3,30 +3,41 @@ import "../../css/articles/Write.css";
 import { ArticleContext } from '../../context/article/ArticleContext';
 import { useNavigate } from "react-router-dom";
 import Loading from '../loading/loading';
+import Service_area from '../ProSearch/Service_area';
 
 const Update = () => {
-    const { isLoading, articleData, updateArticle, fetchArticle } = useContext(ArticleContext); // updateArticle, fetchArticle 가져오기
+    const { isLoading, articleData, updateArticle, fetchArticle, images } = useContext(ArticleContext); // updateArticle, fetchArticle 가져오기
     const navigate = useNavigate();
 
-    // 상태 관리 추가 (articleData를 초기값으로 사용)
     const [formData, setFormData] = useState({
         type: '',
         subject: '',
-        content: ''
+        content: '',
+        service: '', // 선택된 서비스
+        area: '',    // 선택된 지역
     });
 
-    // articleData가 변경될 때 formData 초기화
+    const [selectedFiles, setSelectedFiles] = useState([]); // 선택한 파일 저장
+    const maxFileSize = 20 * 1024 * 1024; // 20MB
+    const maxFileCount = 5; // 최대 5장
+
     useEffect(() => {
         if (articleData) {
             setFormData({
                 type: articleData.type || '',
                 subject: articleData.subject || '',
-                content: articleData.content || ''
+                content: articleData.content || '',
+                service: articleData.service || '',
+                area: articleData.area || ''
             });
-        }
-    }, [articleData]);
 
-    // 새로고침 시 데이터를 다시 가져오기
+            // Handle image files (기존 이미지를 미리 보기)
+            if (images && images.length > 0) {
+                setSelectedFiles(images); // images에서 미리보기 이미지 설정
+            }
+        }
+    }, [articleData, images]);
+
     useEffect(() => {
         if (!articleData) {
             const articleNo = window.location.pathname.split('/').pop(); // URL에서 articleNo 추출
@@ -42,6 +53,37 @@ const Update = () => {
         }));
     };
 
+    const handleFileChange = (e) => {
+        const files = Array.from(e.target.files);
+        let newFiles = [];
+        let totalFiles = selectedFiles.length;
+        let isFileTooLarge = false;
+        let exceededFiles = 0;
+
+        files.forEach(file => {
+            if (file.size > maxFileSize) {
+                isFileTooLarge = true;
+            } else if (totalFiles + newFiles.length < maxFileCount) {
+                newFiles.push(file); // 원본 파일 저장
+            } else {
+                exceededFiles++;
+            }
+        });
+
+        if (isFileTooLarge) {
+            alert(`파일 크기는 ${maxFileSize / 1024 / 1024}MB를 초과할 수 없습니다.`);
+        }
+        if (exceededFiles > 0) {
+            alert(`최대 ${maxFileCount}장까지만 업로드 가능합니다.`);
+        }
+
+        setSelectedFiles(prevFiles => [...prevFiles, ...newFiles]);
+    };
+
+    const handleRemoveFile = (fileToRemove) => {
+        setSelectedFiles(prevFiles => prevFiles.filter(file => file !== fileToRemove));
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // 업데이트 요청 보내기
@@ -49,7 +91,19 @@ const Update = () => {
             alert("모든 필드를 입력해주세요.");
             return;
         }
-        updateArticle(articleData.articleNo, formData); // articleData.id와 formData 전달
+
+        // Prepare FormData for submission
+        const data = new FormData();
+        data.append("subject", formData.subject);
+        data.append("content", formData.content);
+        data.append("type", formData.type);
+        data.append("service", formData.service);
+        data.append("area", formData.area);
+
+        // Append files to FormData
+        selectedFiles.forEach(file => data.append("images", file));
+
+        updateArticle(articleData.articleNo, data); // Send data for update
     };
 
     // 로딩 상태이거나 데이터가 준비되지 않았을 때 로딩 컴포넌트 렌더링
@@ -60,14 +114,14 @@ const Update = () => {
     return (
         <form id='articleUpdateForm' onSubmit={handleSubmit}>
             <div className="write-wrap">
-                <div className=''><h1>모이고 글수정</h1></div>
+                <div><h1>모이고 글수정</h1></div>
                 <div className="write-container">
-                    {/* 선택 및 등록 버튼 */}
+                    {/* 카테고리 선택 및 등록 버튼 */}
                     <div className="select-container">
                         <select
                             name="type"
-                            value={formData.type} // formData에서 선택값 가져오기
-                            onChange={handleChange} // 변경 이벤트 처리
+                            value={formData.type}
+                            onChange={handleChange}
                         >
                             <option value="" disabled>
                                 주제 선택
@@ -81,46 +135,85 @@ const Update = () => {
                         </button>
                     </div>
 
-                    {/* 파일 업로드 */}
-                    <div className="file-container">
-                        <input type="file" id="file-upload" />
-                        <label htmlFor="file-upload"><img className={'camera-img'} src='/image/camera.png' alt="카메라" /></label>
-                        <span>No file chosen</span>
+                    {/* 서비스와 지역 선택 */}
+                    <div className='service-area-wrap'>
+                        <Service_area
+                            service={formData.service} // 선택된 서비스 값을 전달
+                            area={formData.area}       // 선택된 지역 값을 전달
+                            onServiceAreaChange={(service, area) => {
+                                setFormData((prevData) => ({
+                                    ...prevData,
+                                    service,
+                                    area,
+                                }));
+                            }}
+                        />
                     </div>
 
                     {/* 제목 입력 */}
                     <div className="subject-container">
-                        <input 
-                            type="text" 
-                            placeholder="제목을 입력해주세요." 
-                            maxLength={50} 
+                        <input
+                            type="text"
+                            placeholder="제목을 입력해주세요."
+                            maxLength={50}
                             name="subject"
-                            value={formData.subject} // 제목 값
-                            onChange={handleChange} // 제목 변경 이벤트 처리
+                            value={formData.subject}
+                            onChange={handleChange}
                         />
-                    </div>
-                    <hr />
-
-                    {/* 서비스와 지역 선택 */}
-                    <div className="service-area-wrap">
-                        <button type="button">
-                            <span>(선택) 서비스</span>
-                        </button>
-                        <button type="button">
-                            <span>(선택) 지역</span>
-                        </button>
                     </div>
                     <hr />
 
                     {/* 본문 입력 */}
                     <div className="content-container">
-                        <textarea 
-                            placeholder="내용을 입력하세요" 
-                            maxLength={5000} 
+                        <textarea
+                            placeholder="내용을 입력하세요"
+                            maxLength={5000}
                             name="content"
-                            value={formData.content} // 본문 값
-                            onChange={handleChange} // 본문 변경 이벤트 처리
+                            value={formData.content}
+                            onChange={handleChange}
                         />
+                    </div>
+                    <hr />
+
+                    {/* 파일 업로드 */}
+                    <div className="file-container">
+                        <input
+                            type="file"
+                            id="file-upload"
+                            multiple
+                            onChange={handleFileChange}
+                        />
+                        <div>
+                            <label htmlFor="file-upload">
+                                <img className="camera-img" src='/image/camera.png' alt="파일 업로드" />
+                            </label>
+                            <div className="file-index">
+                                ({selectedFiles.length} / {maxFileCount})
+                            </div>
+                        </div>
+
+                        {selectedFiles.length > 0 ? (
+                            <div className="file-preview-container">
+                                {selectedFiles.map((file, index) => (
+                                    <div key={index} className="file-preview-wrapper">
+                                        <img
+                                            src={file instanceof File ? URL.createObjectURL(file) : `https://kr.object.ncloudstorage.com/moeego/storage/${file.imageUuidName}`} // 파일이 아닌 경우 (이미지 URL)
+                                            alt={`미리보기 ${index + 1}`}
+                                            className="file-preview"
+                                        />
+                                        <button
+                                            type="button"
+                                            className="remove-button"
+                                            onClick={() => handleRemoveFile(file)}
+                                        >
+                                            &times;
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <span>No file chosen</span>
+                        )}
                     </div>
                 </div>
             </div>

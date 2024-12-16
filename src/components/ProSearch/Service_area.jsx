@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react';
 import "../../css/pro/Service_area.css";
 import ServiceAreaModal from './ServiceAreaModal'; // 모달 컴포넌트 import
 
-const Service_area = ({onServiceAreaChange}) => {
+const Service_area = ({ service, area, onServiceAreaChange }) => {
     const [isModalOpen, setModalOpen] = useState(false); // 모달 상태 관리
     const [activeModal, setActiveModal] = useState('service'); // 기본적으로 서비스 모달을 열도록 설정
-    const [selectedService, setSelectedService] = useState('서비스'); // 선택한 서비스 텍스트
-    const [selectedArea, setSelectedArea] = useState('지역'); // 선택한 지역 텍스트
+    const [selectedService, setSelectedService] = useState(service || '서비스'); // 부모로부터 전달된 서비스 값 또는 기본값
+    const [selectedArea, setSelectedArea] = useState(area || '지역'); // 부모로부터 전달된 지역 값 또는 기본값
+
+    // 부모 컴포넌트에서 전달된 service와 area가 변경될 때 selectedService와 selectedArea를 업데이트
+    useEffect(() => {
+        setSelectedService(service || '서비스');
+    }, [service]);  // service 값이 변경될 때마다 selectedService 업데이트
+
+    useEffect(() => {
+        setSelectedArea(area || '지역');
+    }, [area]);  // area 값이 변경될 때마다 selectedArea 업데이트
 
     const openServiceModal = () => {
         setActiveModal('service'); // 서비스 모달 활성화
