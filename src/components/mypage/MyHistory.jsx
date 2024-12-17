@@ -12,11 +12,11 @@ const MyHistory = () => {
     const [comment, setComment] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true); // 글 로딩 상태
-
+    const memberNo = localStorage.getItem("userno");
     //게시글 불러오기
     useEffect(() => {
         apiAxios
-            .get(`/api/article/mypage?member_no=1`)
+            .get(`/api/article/mypage?member_no=${memberNo}`)
             .then((response) => {
                 setArticles(response.data.content);
             })
@@ -32,7 +32,7 @@ const MyHistory = () => {
     //댓글 불러오기
     useEffect(() => {
         apiAxios
-            .get(`/api/comment/myPage?member_no=1`)
+            .get(`/api/comment/myPage?member_no=${memberNo}`)
             .then((response) => {
                 setComment(response.data.content);
             })
