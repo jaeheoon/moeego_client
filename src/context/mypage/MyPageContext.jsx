@@ -15,8 +15,13 @@ const MyPageProvider = ({ children }) => {
     const [profileImage, setProfileImage] = useState(localStorage.getItem('userprofile'));
     const [isSaving, setIsSaving] = useState(false);
     const [isProfileImageChanged, setIsProfileImageChanged] = useState(false);
-    const { isLoggedIn, loginEmail, loginUser, loginStatus } = useContext(AuthContext);
+    const { isLoggedIn, loginEmail, loginUser, setLoginUser, loginStatus } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setNickname(nickname);
+        setLoginUser(nickname);
+    }, [nickname]);
 
     useEffect(() => {
         const username = localStorage.getItem('username');
