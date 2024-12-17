@@ -89,7 +89,7 @@ const ReviewWrite = () => {
         selectedFiles.forEach(file => data.append("images", file));
     
         try {
-            reviewWrite(formData); // 서버로 데이터 전송
+            reviewWrite(data); // 서버로 데이터 전송
             console.log("Form submitted", data);
         } catch (error) {
             console.error("Error submitting the form", error);
