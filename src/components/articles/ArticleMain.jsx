@@ -75,7 +75,11 @@ const ArticleMain = () => {
                             <div>
                                 <h4>공지</h4>
                             </div>
-                            <div className='MainNotice'>{latestNotice.content}</div>
+                            {latestNotice ? (
+                                <div className='MainNotice'>{latestNotice.content}</div>
+                            ) : (
+                                <div className='MainNotice'>공지사항이 없습니다.</div>
+                            )}
                             <div><img src="/image/next_icon.png" alt="next" /></div>
                         </div>
                         <div className='HotArticleContainer'>
@@ -162,7 +166,7 @@ const ArticleMain = () => {
                         </div>
                         <div className='AllArticleContainer'>
                             <h3>전체글 모이고</h3>
-                            {
+                            {articles.length > 0 ? (
                                 articles.map(item => (
                                     <div className='FeedItemWrap' key={item.articleNo}>
                                         <Link className='FeedItemLink' to={`/article/viewpage?article_no=${item.articleNo}`}>
@@ -170,7 +174,9 @@ const ArticleMain = () => {
                                         </Link>
                                     </div>
                                 ))
-                            }
+                            ) : (
+                                <p>게시글이 없습니다.</p>
+                            )}
                         </div>
                         <div className='articlePaging'>
                             <Paging/>

@@ -40,6 +40,7 @@ import ViewPage from "./components/articles/ViewPage/ViewPage.jsx";
 
 // myPage
 import Review from "./components/mypage/Review";
+import ReviewWrite from "./components/mypage/ReviewWrite.jsx";
 import MyPage from './components/mypage/MyPage';
 import MyHistory from './components/mypage/MyHistory';
 import MyArticles from './components/mypage/MyArticles';
@@ -117,6 +118,7 @@ const App = () => {
                               <Route path="/article/write" element={<div className='main-content'><Write /></div>} />
                               <Route path="/article/update/:articleNo" element={<div className='main-content'><Update /></div>} />
                               <Route path="/mypage/review" element={<div className='main-content'><Review /></div>} />
+                              <Route path="/mypage/review/write" element={<div className='main-content'><ReviewWrite /></div>} />
 
                               {/* 마이페이지 */}
                               <Route path={"/mypage"} element={<div className='main-content'><MyPage /></div>} />

@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: 95%;
     padding: 0;
     margin: 0 auto;
     box-sizing: border-box;
@@ -69,8 +69,6 @@
     background-color: pink; /* 선택된 항목 배경을 핑크로 */
     color: #fff; /* 글씨 색상 흰색 */
 }
-
-
 
 .submit-button {
     padding: 10px 20px;
@@ -161,7 +159,7 @@
 
 /* 제목 입력 스타일 */
 .subject-container input {
-    width: 96%;
+    width: 95%;
     padding: 10px;
     border: none; /* 기본 테두리 */
     border-radius: 4px;
@@ -169,8 +167,6 @@
     margin-bottom: -15px;
     outline: none; /* 포커스 시 기본 테두리 제거 */
 }
-
-
 
 .subject-container input::placeholder {
     color: #aaa;
