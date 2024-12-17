@@ -18,6 +18,7 @@ const Update = () => {
     });
 
     const [selectedFiles, setSelectedFiles] = useState([]); // 선택한 파일 저장
+    const [removedImageIds, setRemovedImageIds] = useState([]);
     const maxFileSize = 20 * 1024 * 1024; // 20MB
     const maxFileCount = 5; // 최대 5장
 
@@ -81,31 +82,43 @@ const Update = () => {
     };
 
     const handleRemoveFile = (fileToRemove) => {
-        setSelectedFiles(prevFiles => prevFiles.filter(file => file !== fileToRemove));
+        setSelectedFiles((prevFiles) => prevFiles.filter((file) => file !== fileToRemove));
+    
+        // 기존 이미지의 경우 삭제 목록에 추가
+        if (fileToRemove.imageUuidName) {
+            setRemovedImageIds((prevIds) => [...prevIds, fileToRemove.imageUuidName]);
+        }
     };
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        // 업데이트 요청 보내기
-        if (!formData.type || !formData.subject || !formData.content) {
-            alert("모든 필드를 입력해주세요.");
-            return;
-        }
-
-        // Prepare FormData for submission
+    
         const data = new FormData();
+    
+        // 게시글 데이터
         data.append("subject", formData.subject);
         data.append("content", formData.content);
         data.append("type", formData.type);
         data.append("service", formData.service);
         data.append("area", formData.area);
-
-        // Append files to FormData
-        selectedFiles.forEach(file => data.append("images", file));
-
-        updateArticle(articleData.articleNo, data); // Send data for update
+    
+        // 유지할 기존 이미지 ID 추가
+        images.forEach((image) => {
+            if (image.imageUuidName) {
+                data.append("existingImages", image.imageUuidName);
+            }
+        });
+    
+        // 삭제할 이미지 ID 추가
+        removedImageIds.forEach((id) => data.append("removedImages", id));
+    
+        // 새 이미지 추가
+        selectedFiles.forEach((file) => data.append("images", file));
+    
+        // 서버 요청
+        updateArticle(articleData.articleNo, data);
     };
-
+    
     // 로딩 상태이거나 데이터가 준비되지 않았을 때 로딩 컴포넌트 렌더링
     if (isLoading || !articleData) {
         return <Loading />;

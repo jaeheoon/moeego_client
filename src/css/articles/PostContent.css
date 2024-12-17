@@ -20,7 +20,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    width: 100%;
+    width: 99%;
 }
 
 .post-image-wrapper img:nth-child(n+5) {
@@ -46,7 +46,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-        width: 100%;
+        width: 99%;
     }
     
     .post-image-wrapper img:nth-child(n+5) {
