@@ -36,6 +36,7 @@ import ArticleMain from './components/articles/ArticleMain.jsx';
 import Write from "./components/articles/Write";
 import Update from "./components/articles/Update";
 import FreeBoardForm from "./components/articles/FreeBoardForm/FreeBoardForm.jsx";
+import LatestReview from "./components/articles/FreeBoardForm/LatestReview.jsx";
 import ViewPage from "./components/articles/ViewPage/ViewPage.jsx";
 
 // myPage
@@ -117,8 +118,6 @@ const App = () => {
                               {/* 작성 페이지 */}
                               <Route path="/article/write" element={<div className='main-content'><Write /></div>} />
                               <Route path="/article/update/:articleNo" element={<div className='main-content'><Update /></div>} />
-                              <Route path="/mypage/review" element={<div className='main-content'><Review /></div>} />
-                              <Route path="/mypage/review/write" element={<div className='main-content'><ReviewWrite /></div>} />
 
                               {/* 마이페이지 */}
                               <Route path={"/mypage"} element={<div className='main-content'><MyPage /></div>} />
@@ -127,6 +126,8 @@ const App = () => {
                               <Route path={"/mypage/myhistory"} element={<div className='main-content'><MyHistory /></div>} />
                               <Route path={"/mypage/myhistory/myarticle"} element={<div className='main-content'><MyArticles /></div>} />
                               <Route path={"/mypage/myhistory/mycomment"} element={<div className='main-content'><MyComments /></div>} />
+                              <Route path={"/mypage/review/:num"} element={<div className='main-content'><Review /></div>} />
+                              <Route path={"/mypage/review/write"} element={<div className='main-content'><ReviewWrite /></div>} />
                               <Route path={"/mypage/account"} element={<div className='main-content'><Account /></div>} />
                               <Route path={"/mypage/account/private"} element={<div className='main-content'><Private /></div>} />
                               <Route path={"/mypage/account/private/email"} element={<div className='main-content'><ChangeEmail /></div>} />
@@ -141,6 +142,7 @@ const App = () => {
                               <Route path={"/article/pro"} element={<div className='main-content'><FreeBoardForm /></div>} />
                               <Route path={"/article/hot"} element={<div className='main-content'><FreeBoardForm /></div>} />
                               <Route path={"/article/qna"} element={<div className='main-content'><FreeBoardForm /></div>} />
+                              <Route path={"/article/review"} element={<div className='main-content'><LatestReview /></div>} />
                               <Route path={"/article/viewpage"} element={<div className='main-content'><ViewPage /></div>} />
 
                               {/* 회원가입/로그인/로그아웃 페이지 */}

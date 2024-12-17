@@ -19,6 +19,7 @@ const ArticleProvider = ({ children }) => {
     const [images, setImages] = useState([]);
     const [pages, setPages] = useState(1); // 총 페이지 수
     const [articleCurrentPage, setArticleCurrentPage] = useState(1); // 현재 페이지
+    const [reviews, setReviews] = useState([]);
     const navigate = useNavigate();
 
     const [noticeArticles, setNoticeArticles] = useState([]);
@@ -333,7 +334,21 @@ const ArticleProvider = ({ children }) => {
             return;
         }
     };
-    
+    // 전체 리뷰 조회
+    const fetchReviews = useCallback(async () => {
+        setIsLoading(true);
+        try {
+            const response = await apiAxios.get(`/api/review`);
+            setReviews(response.data.content);
+        } catch (err) { 
+            console.error("Error fetching articles:", err);
+            setError(err);
+        } finally {
+            setIsLoading(false);
+        }
+    }, []);
+
+    // 리뷰 쓰기
     const reviewWrite = useCallback(async (formData) => {
         setIsLoading(true);
         try {
@@ -364,6 +379,7 @@ const ArticleProvider = ({ children }) => {
         latestArticle,
         eventArticles,
         articleData,
+        reviews,
         commentData,
         isLoading,
         isCommentLoading,
@@ -393,6 +409,7 @@ const ArticleProvider = ({ children }) => {
         fetchLatestArticle,
         setArticleCurrentPage,
         reviewWrite,
+        fetchReviews,
         GoWrite,
         GoLogin
     };

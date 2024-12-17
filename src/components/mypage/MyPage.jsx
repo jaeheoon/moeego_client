@@ -101,7 +101,7 @@ const MyPage = () => {
                             <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>
                         <br />
-                        <Link to='/mypage/review' className='Link'>
+                        <Link to='/mypage/review/0' className='Link'>
                             <div className="Title">모이고 리뷰 내역</div>
                             <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                         </Link>

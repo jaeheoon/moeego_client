@@ -64,31 +64,38 @@ const ReviewWrite = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+    
+        // 유효성 검사: 평점이 입력되지 않은 경우
+        if (rating === 0) {
+            alert("평점을 입력해주세요!");
+            return;
+        }
+    
+        // 유효성 검사: 내용이 입력되지 않은 경우
         if (!formData.content) {
             alert("내용을 입력해주세요!");
             return;
         }
-
+    
         const data = new FormData();
         // Add form data fields
         data.append("star", rating); // 평점 추가
-        data.append("mainCateNo", formData.mainCateNo); // 평점 추가
+        data.append("mainCateNo", formData.mainCateNo);
         data.append("memberNo", formData.memberNo);
-        data.append("proItemNo", formData.proItemNo); // 평점 추가
+        data.append("proItemNo", formData.proItemNo);
         data.append("reviewContent", formData.content);
-        
-
+    
         // Add files to FormData
         selectedFiles.forEach(file => data.append("images", file));
-
+    
         try {
-            reviewWrite(formData);
+            reviewWrite(formData); // 서버로 데이터 전송
             console.log("Form submitted", data);
         } catch (error) {
             console.error("Error submitting the form", error);
         }
     };
-
+    
     // 평점 설정 함수
     const handleRatingClick = (value) => {
         setRating(value);
