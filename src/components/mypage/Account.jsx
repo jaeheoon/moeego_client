@@ -3,25 +3,28 @@ import { MyPageContext } from '../../context/mypage/MyPageContext';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/member/AuthContext';
 import '../../css/mypage/Account.css';
+import apiAxios from '../../api/apiAxios';
 
 const Account = () => {
     const { loginStatus } = useContext(AuthContext); // 필요한 데이터만 destructuring
     const {
         nickname,
         setNickname,
-        introduction,
-        setIntroduction,
         isToggleWrap1Visible,
         toggleWrap1,
         isToggleWrap2Visible,
         toggleWrap2,
         handleNicknameCancel,
+        introduction,
+        setIntroduction,
         handleIntroductionCancel,
         handleNicknameSave,
         handleIntroductionSave,
         handleProfileImageChange,
         profileImage,
-        handleProfileBtnClick
+        handleProfileBtnClick,
+        setOneintroduction,
+        oneintroduction,
     } = useContext(MyPageContext);
 
     const [profile, setProfile] = useState('');
@@ -32,6 +35,22 @@ const Account = () => {
         setProfile(localStorage.getItem('userprofile') || '/image/default.svg');
         setName(localStorage.getItem('username') || '사용자 이름');
     }, [profile, name]);
+
+    useEffect(() => {
+        if (loginStatus === "ROLE_PRO") {
+            apiAxios.get('/api/mypage/account/intro')
+                .then((response) => {
+                    // API 요청에 대한 응답을 처리
+                    const intro = response.data.intro;
+                    const oneintro = response.data.onintro;
+                    setIntroduction(intro);
+                    setOneintroduction(oneintro);
+                })
+                .catch((error) => {
+                    console.error("소개 불러오기 실패:", error);
+                });
+        }
+    }, [loginStatus]);
 
     const handleNicknameChange = (e) => setNickname(e.target.value);
     const handleIntroductionChange = (e) => setIntroduction(e.target.value);
@@ -90,19 +109,13 @@ const Account = () => {
                 {loginStatus === 'ROLE_PRO' && (
                     <form className='IntroductionForm'>
                         <div className='Container'>
-                            <h3 className="SubTitle">달인 소개</h3>
-                            <div className='IntroductionWrap'>
-                                {!isToggleWrap2Visible ? (
-                                    <div className='content'>{introduction}</div>
-                                ) : (
-                                    <div className='content'>
-                                        <textarea type="text" value={introduction} onChange={handleIntroductionChange} maxLength={50}></textarea>
-                                    </div>
-                                )}
-                                <div className='buttonwrap'>
-                                    <input type="button" id='toggleBtn2' value="수정" onClick={() => { handleIntroductionCancel(); toggleWrap2(); }} />
+                            <h3 className="SubTitle">달인 관리</h3>
+                            <Link className="IntroductionWrap2" to="/pro/intro">
+                                <div className='title'>
+                                    달인 소개
                                 </div>
-                            </div>
+                                <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
+                            </Link>
                             <br />
                             <Link className="IntroductionWrap2" to="/pro/serviceintro">
                                 <div className='title'>

@@ -8,6 +8,7 @@ const MyPageContext = createContext();
 const MyPageProvider = ({ children }) => {
     const [nickname, setNickname] = useState('');
     const [introduction, setIntroduction] = useState('');
+    const [oneintroduction, setOneIntroduction] = useState('');
     const [isToggleWrap1Visible, setIsToggleWrap1Visible] = useState(false);
     const [isToggleWrap2Visible, setIsToggleWrap2Visible] = useState(false);
     const [memberNo, setMemberNo] = useState('');
@@ -25,15 +26,9 @@ const MyPageProvider = ({ children }) => {
 
     useEffect(() => {
         const username = localStorage.getItem('username');
-        const useroneintro = localStorage.getItem('userintro');
         setMemberNo(localStorage.getItem('userno'));
 
         setNickname(username);
-        if (useroneintro) {
-            setIntroduction(useroneintro);
-        } else {
-            setIntroduction('');
-        }
     }, [isLoggedIn]);
 
     const toggleWrap1 = () => setIsToggleWrap1Visible((prev) => !prev);
@@ -203,7 +198,9 @@ const MyPageProvider = ({ children }) => {
             handleProfileImageChange,
             setProfileImage,
             profileImage,
-            handleProfileBtnClick
+            handleProfileBtnClick,
+            oneintroduction,
+            setOneIntroduction
         }}>
             {children}
         </MyPageContext.Provider>

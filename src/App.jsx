@@ -55,6 +55,7 @@ import SignOut from './components/mypage/SignOut';
 import MyReservation from './components/mypage/MyReservation';
 import Success from './components/mypage/Success';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
+import ChangeIntro from './components/mypage/ChangeIntro.jsx';
 
 // category
 import SelectCategory from './components/detail_category/SelectCategory';
@@ -135,6 +136,7 @@ const App = () => {
                               <Route path={"/mypage/account/private/address"} element={<div className='main-content'><ChangeAddress /></div>} />
                               <Route path={"/mypage/account/private/signout"} element={<div className='main-content'><SignOut /></div>} />
                               <Route path={"/mypage/account/private/success"} element={<div className='main-content'><Success /></div>} />
+                              <Route path={"/pro/intro"} element={<div className='main-content'><ChangeIntro /></div>} />
 
                               {/* 커뮤니티 페이지 */}
                               <Route path={"/article"} element={<div className='main-content'><ArticleMain /></div>} />
