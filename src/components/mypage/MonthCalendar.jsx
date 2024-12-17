@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/mypage/MonthCalendar.css';
+import apiAxios from "../../api/apiAxios";
 
 const MonthCalendar = () => {
   const today = new Date();
@@ -9,6 +10,31 @@ const MonthCalendar = () => {
   const [showMonthSelector, setShowMonthSelector] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null); 
   const [scheduleStatus, setScheduleStatus] = useState(''); 
+  const [list, setList] = useState([]);
+
+
+
+  useEffect(() => {
+    const memberNo = localStorage.getItem('userno'); 
+    const datelist = {
+      memberNo: memberNo,
+      month: currentMonth + 1, 
+      year: currentYear,  
+    };
+    console.log('서버로 가져갈 내용:', datelist);
+    alert(datelist.memberNo + ", " + datelist.year + ", " + datelist.month )
+    
+    apiAxios.get('/api/mypage/reservation', datelist)
+      .then((response) => {
+        if (response.data.success) {
+          setList(response.data); 
+        }
+      })
+      .catch((error) => {
+        console.error('일정을 불러오는 중 오류가 발생했습니다.', error);
+      });
+  }, [currentMonth, currentYear]);
+
 
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -68,11 +94,15 @@ const MonthCalendar = () => {
   const checkSchedule = (day) => {
     // 예시 일정이 있는 날짜 설정
     const schedules = {
-      '2024-12-23': '김태훈, 코딩조아, 18:00',
+        '2024-12-23': [
+          '김태훈, 코딩조아, 18:00',
+          '이수지, 디자인조아, 20:00',
+        ],
       '2025-01-06': '정세묵, 발표조아, 15:00',
     };
 
-    const selectedDateString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    const selectedDateString = 
+    `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
     if (schedules[selectedDateString]) {
       setScheduleStatus(schedules[selectedDateString]);
@@ -104,6 +134,11 @@ const MonthCalendar = () => {
           onClick={() => handleDayClick(day)}
         >
           {dayCount}
+          {/* {list.day === dayCount ? (
+              <span>{dayCount}<span style={{color: 'red'}}>●</span></span>
+            ) : (
+              {dayCount}
+            )} */}
         </td>
       );
       dayCount++;
@@ -203,12 +238,23 @@ const MonthCalendar = () => {
           <div className="selected-date-info">
             <p>
               <strong  className="schedule-date-title">
-                {`${currentMonth + 1}월 ${selectedDate}일의 일정`}
+                {`${currentMonth + 1}월 ${selectedDate}일 일정`}
               </strong>
             </p>
-            <p className={scheduleStatus === '일정 있음' ? 'schedule-available' : 'schedule-unavailable'}>
-              {scheduleStatus}
-            </p>
+            <div>
+              {/* scheduleStatus가 배열일 경우만 .map()을 사용 */}
+              {Array.isArray(scheduleStatus) ? (
+                scheduleStatus.map((schedule, index) => (
+                  <p key={index} className={schedule === '일정 없음' ? 'schedule-unavailable' : 'schedule-available'}>
+                    {schedule}
+                  </p>
+                ))
+              ) : (
+                <p className={scheduleStatus === '일정 없음' ? 'schedule-unavailable' : 'schedule-available'}>
+                  {scheduleStatus}
+                </p>
+              )}
+            </div>
           </div>
         )}
       </div>

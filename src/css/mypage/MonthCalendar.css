@@ -1,3 +1,4 @@
+
 .MonthCalendar-wrap {
     display: flex;
     align-items: center;
@@ -123,7 +124,6 @@ table th {
     color: rgb(18, 18, 143); 
 }
 
- /* 드롭다운 스타일 */
 .MonthCalendar-wrap select {
     font-weight: bold;
     color: #ffffff;
