@@ -22,6 +22,26 @@ const ProList = () => {
         }
     };
 
+    // 박탈 상태 변경
+    const revokePro = async (memberNo) => {
+        try {
+            await apiAxios.post(`/api/admin/member/pro/cancel/${memberNo}`);  // 박탈 처리 API 호출
+            setPro(pro.map((row) => 
+                row.memberNo === memberNo ? { ...row, depriveDate: new Date().toISOString() } : row
+            ));
+        } catch (err) {
+            console.error('박탈 처리 오류:', err);
+            setError(err.message);
+        }
+    };
+
+    //날짜 포맷팅
+    const formatDate = (date) => {
+        if (!date) return '';  // date가 null 또는 undefined일 경우 빈 문자열 반환
+        const formattedDate = new Date(date).toLocaleDateString();  // 원하는 포맷으로 날짜 변환
+        return formattedDate;
+    };
+
     // 컴포넌트 마운트 시 API 호출
     useEffect(() => {
         fetchProData(); // 데이터 초기 로드
@@ -53,6 +73,7 @@ const ProList = () => {
                                 <th>승인 날짜</th>
                                 <th>박탈 날짜</th>
                                 <th>상태</th>
+                                <th>작업</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,10 +83,19 @@ const ProList = () => {
                                     <td>{row.name}</td>
                                     <td>{row.mainCateName}</td>
                                     <td>⭐ {row.star}</td>
-                                    <td>{row.accessDate}</td>
-                                    <td>{row.depriveDate}</td>
+                                    <td>{formatDate(row.accessDate)}</td> {/* 승인 날짜 포맷 적용 */}
+                                    <td>{formatDate(row.depriveDate)}</td> {/* 박탈 날짜 포맷 적용 */}
                                     <td className={getStatusClass(row.depriveDate)}>
                                         {row.depriveDate ? '박탈' : '승인'}
+                                    </td>
+                                    <td>
+                                        {!row.depriveDate && (
+                                            <button 
+                                                onClick={() => revokePro(row.memberNo)} 
+                                                className="revoke-btn">
+                                                박탈
+                                            </button>
+                                        )}
                                     </td>
                                 </tr>
                             ))}
