@@ -12,10 +12,47 @@ function Header() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isSearchButtonVisible, setIsSearchButtonVisible] = useState(true);
   const { isLoggedIn, loginEmail, loginUser, loginStatus, loginProfile } = useContext(AuthContext);
-  const profile = localStorage.getItem('userprofile');
+  const [userno, setUserno] = useState(localStorage.getItem('userno') || ''); // 초기값 설정
+  const [profile, setUserProfile] = useState(localStorage.getItem('userprofile') || ''); // 초기값 설정
 
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const newUserno = localStorage.getItem('userno');
+      setUserno(newUserno || ''); // 값이 없을 경우 빈 문자열로 설정
+      setUserProfile(localStorage.getItem('userprofile') || '');
+    };
+
+    // localStorage 이벤트 리스너 등록
+    window.addEventListener('storage', handleStorageChange);
+
+    // 초기 userno 값 설정
+    handleStorageChange();
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [isLoggedIn]);
+
+  // SNS 프로필 이미지 및 이메일 변환 함수
+  const getSNSProfile = (email) => {
+    const platform = email?.split(" ")[0];
+    switch (platform) {
+      case 'naver':
+        return { img: "/image/naver_sns.png", email: `naver_user${userno}` };
+      case 'kakao':
+        return { img: "/image/kakao_sns.png", email: `kakao_user${userno}` };
+      case 'google':
+        return { img: "/image/google_sns.svg", email: `google_user${userno}` };
+      default:
+        return { img: "/image/moeego_login.png", email };
+    }
+  };
+
+  const snsProfile = getSNSProfile(loginEmail);
 
   const navigate = useNavigate();
 
@@ -134,19 +171,21 @@ function Header() {
                 <li className='HamburgerUserInfoWrap'>
                   <Link to="/mypage" className='HamburgerUserInfoLinkWrap' onClick={closeMenu}>
                     <div>
-                      <h3>{loginUser}님</h3>
-                      <p>
-                        {loginEmail && loginEmail.split(" ")[0] === "naver"
-                          ? "naver_email"
-                          : loginEmail && loginEmail.split(" ")[0] === "kakao"
-                            ? "kakao_email"
-                            : loginEmail && loginEmail.split(" ")[0] === "google"
-                              ? "google_email" :
-                              loginEmail}
-                      </p>
-                    </div>
-                    <div>
-                      <img className='loginProfileImg' src={profile} alt="profile" />
+                      <div>
+                        <h3>{loginUser}님</h3>
+                        <div>
+                          <div>
+                            <img
+                              src={snsProfile.img}
+                              alt="SNS"
+                            />
+                          </div>
+                          <div>{snsProfile.email}</div>
+                        </div>
+                      </div>
+                      <div>
+                        <img className='loginProfileImg' src={profile} alt="profile" />
+                      </div>
                     </div>
                   </Link>
                   <div className='HamburgerUserInfoButtonWrap'>

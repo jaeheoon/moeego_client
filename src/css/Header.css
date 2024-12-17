@@ -138,7 +138,8 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 80%;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .dropdown-menu ul li a {
@@ -197,7 +198,8 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    gap: 1rem;
+    margin: 0;
+    padding: 0;
 }
 
 /* 드롭다운 메뉴 회원정보 */
@@ -208,29 +210,81 @@
     flex-direction: column;
     border-bottom: 1px solid #cecece;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .HamburgerUserInfoLinkWrap {
-    font-size: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    font-size: 1rem;
     transition: all 0.3s ease;
     width: 100%;
 }
 
-.HamburgerUserInfoLinkWrap div:nth-child(1) {
+.HamburgerUserInfoLinkWrap div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
+}
+
+.HamburgerUserInfoLinkWrap div div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: column;
+    width: 80%;
+}
+
+.HamburgerUserInfoLinkWrap div div:nth-child(1) h3 {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.HamburgerUserInfoLinkWrap div div:nth-child(1) div {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.HamburgerUserInfoLinkWrap div div:nth-child(1) div div:nth-child(1) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 20px;
+}
+
+.HamburgerUserInfoLinkWrap div div:nth-child(1) div div:nth-child(1) img {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 15px;
+    height: 15px;
+    border-radius: 7.5px;
+}
+
+.HamburgerUserInfoLinkWrap div div:nth-child(1) div div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: calc(100% - 20px);
+    font-size: 0.725rem;
+    color:#828282;
 }
 
 .HamburgerUserInfoLinkWrap div:nth-child(2) {
     display: flex;
     align-items: center;
-    justify-content: right;
-    width: 100%;
+    justify-content: center;
+    width: 20%;
 }
 
-.HamburgerUserInfoLinkWrap img {
+.HamburgerUserInfoLinkWrap div div:nth-child(2) img {
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -571,10 +625,6 @@
 
     .HamburgerUserInfoWrap div:nth-child(1) h3 {
         font-size: 1.2rem;
-    }
-
-    .HamburgerUserInfoWrap div:nth-child(1) p {
-        font-size: 0.825rem;
     }
 
     .header .logo a img {
