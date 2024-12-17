@@ -202,13 +202,13 @@ select {
         font-size: 1rem; 
     }
 
-    .day {
+    .MonthCalendar-wrap .day {
         font-size: 14px; 
         padding: 1.5%; 
         height: 50px;
     }
 
-    .weekday {
+    .MonthCalendar-wrap .weekday {
         font-size: 14px; 
         
     }

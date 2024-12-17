@@ -26,8 +26,10 @@
   }
   
 .calendar-wrap .day {
-    width: 4%; 
-    height: 4%; 
+    /* width: 4%; 
+    height: 4%;  */
+    width: 35px;
+    height: 34px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +61,7 @@
   
   /* 네비게이션 버튼 스타일 */
 .calendar-wrap button {
-    padding: 0.7rem 0.7rem;
+    padding: 0.5rem 0.7rem;
     font-size: 16px;
     cursor: pointer;
     background-color: #522823;
@@ -84,20 +86,25 @@
     gap: 10px; /* 날짜와 버튼 사이의 간격 */
   }
   
-@media (max-width: 1250px) {
+@media (max-width: 380px) {
     .calendar-wrap {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
   }
+  .calendar-wrap .calendar-header {
+    margin-top: 2px;
+    margin-bottom: 10px;
+ }
+
     .calendar-wrap .day {
-      /* width: 2.5rem; 
-      height: 1.8rem;  */
+      width: 2.0rem; 
+      height: 1.8rem; 
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 14px;
+      /* font-size: 14px; */
       border: 1px solid #ddd;
       border-radius: 50%;
       cursor: pointer;
@@ -105,7 +112,7 @@
     }
     
   .calendar-wrap .day .day-name {
-      font-size: 12px;
+      font-size: 14.2px;
       color: #777;
       position: absolute;
       top: -18px; /* 요일을 원 밖으로 위로 올립니다 */
@@ -114,7 +121,53 @@
     }
 
     .calendar-wrap button {
-      padding: 0.2rem 0.3rem;
+      padding: 0.38rem 0.38rem;
+      font-size: 13px;
+      cursor: pointer;
+      background-color: #522823;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: opacity 0.3s;
+    }  
+  }
+  
+  @media (max-width: 1250px) {
+    .calendar-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .calendar-wrap .calendar-header {
+    margin-top: 2px;
+    margin-bottom: 10px;
+ }
+
+    .calendar-wrap .day {
+      width: 2.0rem; 
+      height: 1.8rem; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* font-size: 14px; */
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+    }
+    
+  .calendar-wrap .day .day-name {
+      font-size: 14.2px;
+      color: #777;
+      position: absolute;
+      top: -18px; /* 요일을 원 밖으로 위로 올립니다 */
+      left: 50%;
+      transform: translateX(-50%); /* 가운데 정렬 */
+    }
+
+    .calendar-wrap button {
+      padding: 0.38rem 0.38rem;
       font-size: 13px;
       cursor: pointer;
       background-color: #522823;
