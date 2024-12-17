@@ -1,9 +1,11 @@
+
 .MonthCalendar-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     width: 100%;
+    margin-top: 2%;
     margin-bottom: 5%;
 }
 
@@ -18,7 +20,7 @@
     font-family: Arial, sans-serif;
     box-sizing: border-box;
     width: 100%;
-    padding: 3%;
+    /* padding: 3%; */
     height: 100%;
 }
 
@@ -124,51 +126,48 @@ table th {
 
  /* 드롭다운 스타일 */
 select {
-    padding: 10px 15px;  /* 안쪽 여백 */
-    font-size: 16px;  /* 글씨 크기 */
-    border: 2px solid #ccc;  /* 테두리 색 */
-    border-radius: 5px;  /* 테두리 둥글게 */
-    background-color: #f9f9f9;  /* 배경색 */
-    appearance: none; /* 기본 드롭다운 화살표 제거 */
-    cursor: pointer;  /* 마우스 커서 스타일 */
-    transition: all 0.3s ease-in-out;  /* 부드러운 전환 효과 */
-  }
-  .year-dropdown {
-    width: 85px; 
-    margin-right: 8px; 
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #fcc1cc;
+    font-size: 24px;  
+    /* appearance: none;  */
+    cursor: pointer; 
+    border: none;
+    transition: all 0.3s ease-in-out;  
   }
   
-  .month-dropdown {
-    width: 65px; 
-  }
-  
-  select:hover {
-    background-color: #e9f2ff;  
-  }
   
   select:focus {
     border-color: #fcc1cc;  /* 포커스 시 테두리 색상 */
     outline: none;  /* 포커스 시 기본 외곽선 제거 */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);  /* 그림자 추가 */
   }
   
-  /* 선택된 옵션 스타일 */
-  select::-ms-expand {
-    display: none;  /* IE에서 기본 드롭다운 화살표 숨기기 */
-  }
+  .year-dropdown::-ms-expand {
+    display: none; /* Internet Explorer에서 드롭다운 화살표 숨기기 */
+}
+
+
+.year-dropdown option {
+    font-size: 15px; 
+    background-color: #fff; 
+    color: #333; 
+    font-weight: bold;
+    text-align: center;
+}
+
+.month-dropdown option {
+    font-size: 15px; 
+    background-color: #fff; 
+    color: #333; 
+    font-weight: bold;
+    text-align: center;
+}
   
-  /* 드롭다운을 감싸는 wrapper 스타일 (선택사항) */
-  .select-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-  }
-  
-  .selected-date-info {
+.selected-date-info {
     padding: 10px;
-  }
-  
-  .schedule-date-title {
+}
+
+.schedule-date-title {
     border: 2px solid #fcc1cc; 
     padding: 10px;
     font-weight: bold;
@@ -176,11 +175,12 @@ select {
     background-color: #fcc1cc; 
     margin-bottom: 10px;
     color: white;
-  }
+}
 
 @media (max-width: 1280px) {
     .MonthCalendar-wrap {
-        width:100%
+        width:100%;
+        margin-bottom:8%;
     }
 
     .month-year {
@@ -188,6 +188,17 @@ select {
         font-weight: bold;
         color: #ffffff;
     }
+
+    select {
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #fcc1cc;
+        font-size: 20px;  
+        appearance: none; 
+        cursor: pointer; 
+        border: none;
+        transition: all 0.3s ease-in-out;  
+      }
 
     .prev-btn,
     .next-btn {

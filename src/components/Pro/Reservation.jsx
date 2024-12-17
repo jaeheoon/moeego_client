@@ -16,7 +16,7 @@ const Reservation = ({ closeModal }) => {
         const proNoFromURL = queryParams.get('proNo'); 
         setProNo(proNoFromURL); 
     }, [location]);
-
+    
     const [selectedDate, setSelectedDate] = useState(null);
 
     //------------------------------------
