@@ -58,6 +58,7 @@
     font-size: 1rem;
     border: 1px solid #b1b1b1;
     outline: none;
+    resize: none;
 }
 
 .ServiceIntroPage .ServiceIntroWrap .ServiceIntro input[type='number'] {
@@ -92,7 +93,7 @@
     margin-bottom: 2rem;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntroButtonWrap input[type='button'] {
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntroButtonWrap button {
     display: flex;
     align-content: center;
     justify-content: center;
@@ -107,8 +108,8 @@
     transition: 0.3s ease;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntroButtonWrap input[type='button']:hover,
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntroButtonWrap input[type='button']:active {
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntroButtonWrap button:hover,
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntroButtonWrap button:active {
     background-color: #fcc1cc;
     color: #fff;
 }
