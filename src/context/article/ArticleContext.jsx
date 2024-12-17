@@ -362,6 +362,27 @@ const ArticleProvider = ({ children }) => {
         }
     }, [navigate]);
 
+    // 리뷰 삭제
+    const deleteReview = async (reviewNo) => {
+        try {
+            // 사용자 확인
+            if (!window.confirm("정말로 이 리뷰를 삭제하시겠습니까?")) {
+                return;
+            }
+    
+            // 삭제 요청
+            const response = await apiAxios.delete(`/api/review/delete/${reviewNo}`);
+            if (response.status === 200) {
+                alert("리뷰가 삭제되었습니다.");
+                // 삭제 후 필요한 작업 (예: 게시글 목록 갱신 또는 페이지 이동)
+                window.location.href = "/mypage/review/0"; // 목록 페이지로 이동
+            }
+        } catch (err) {
+            console.error("Error deleting article:", err);
+            alert("리뷰 삭제 중 오류가 발생했습니다.");
+        }
+    };
+
     // 조회수
     const hitUpdate = async (articleNo) => {
         try {
