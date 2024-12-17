@@ -334,6 +334,19 @@ const ArticleProvider = ({ children }) => {
         }
     };
     
+    const reviewWrite = useCallback(async (formData) => {
+        setIsLoading(true);
+        try {
+            await apiAxios.post("/api/review/write", formData);
+            navigate('/mypage/review');
+        } catch (err) {
+            console.error("Error writing article:", err);
+            setError(err);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [navigate]);
+
     // 조회수
     const hitUpdate = async (articleNo) => {
         try {
@@ -379,6 +392,7 @@ const ArticleProvider = ({ children }) => {
         updateComment,
         fetchLatestArticle,
         setArticleCurrentPage,
+        reviewWrite,
         GoWrite,
         GoLogin
     };
