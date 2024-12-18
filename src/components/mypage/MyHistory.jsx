@@ -8,17 +8,31 @@ import apiAxios from '../../api/apiAxios';
 
 const MyHistory = () => {
     const [activeTab, setActiveTab] = useState('myarticle'); // 기본 탭을 'myarticle'로 설정
-    const [articles, setArticles] = useState([]);
-    const [comment, setComment] = useState([]);
+    const [articleData, setArticleData] = useState({
+        content: [],
+        totalPages: 0,
+        currentPage: 1,
+    });
+    const [commentData, setCommentData] = useState({
+        content: [],
+        totalPages: 0,
+        currentPage: 1,
+    });
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true); // 글 로딩 상태
     const memberNo = localStorage.getItem("userno");
-    //게시글 불러오기
-    useEffect(() => {
+
+    // 게시글 불러오기
+    const fetchArticles = (page = 1) => {
+        setIsLoading(true);
         apiAxios
-            .get(`/api/article/mypage?member_no=${memberNo}`)
+            .get(`/api/article/mypage?member_no=${memberNo}&pg=${page}`)
             .then((response) => {
-                setArticles(response.data.content);
+                setArticleData({
+                    content: response.data.content,
+                    totalPages: response.data.totalPages,
+                    currentPage: response.data.currentPage,
+                });
             })
             .catch((err) => {
                 console.error("Error fetching articles:", err);
@@ -27,24 +41,34 @@ const MyHistory = () => {
             .finally(() => {
                 setIsLoading(false); // 로딩 완료
             });
-    }, []);
+    };
 
-    //댓글 불러오기
-    useEffect(() => {
+    // 댓글 불러오기
+    const fetchComments = (page = 1) => {
+        setIsLoading(true);
         apiAxios
-            .get(`/api/comment/myPage?member_no=${memberNo}`)
+            .get(`/api/comment/myPage?member_no=${memberNo}&pg=${page}`)
             .then((response) => {
-                setComment(response.data.content);
+                setCommentData({
+                    content: response.data.content,
+                    totalPages: response.data.totalPages,
+                    currentPage: response.data.currentPage,
+                });
             })
             .catch((err) => {
-                console.error("Error fetching articles:", err);
+                console.error("Error fetching comments:", err);
                 setError(err);
             })
             .finally(() => {
                 setIsLoading(false); // 로딩 완료
             });
+    };
+    useEffect(() => {
+        // 기본적으로 첫 페이지의 데이터를 불러옴
+        fetchArticles();
+        fetchComments();
     }, []);
-
+    
     if (isLoading) {
         return (
             <div className="loadingPage">
@@ -56,9 +80,23 @@ const MyHistory = () => {
     const renderContent = () => {
         switch (activeTab) {
             case 'myarticle':
-                return <MyArticles articles={articles}/>;
+                return (
+                    <MyArticles
+                        articles={articleData.content}
+                        totalPages={articleData.totalPages}
+                        currentPage={articleData.currentPage}
+                        onPageChange={fetchArticles}
+                    />
+                );
             case 'mycomment':
-                return <MyComments comment={comment}/>;
+                return (
+                    <MyComments
+                        comments={commentData.content}
+                        totalPages={commentData.totalPages}
+                        currentPage={commentData.currentPage}
+                        onPageChange={fetchComments}
+                    />
+                );
             default:
                 return null;
         }
