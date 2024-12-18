@@ -117,6 +117,7 @@
     display: flex; /* Flexbox 사용 */
     align-items: center; /* 세로 중앙 정렬 */
     justify-content: center;
+    flex-direction: column;
     box-sizing: border-box;
     width: 100%;
     margin: 15px; /* 항목 간 간격 */

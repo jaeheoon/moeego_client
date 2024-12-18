@@ -1,31 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SearchList = ({ item }) => {
+    const [isToggled, setIsToggled] = useState(false); // 토글 상태 관리
+    const navigate = useNavigate();
+
+    const handleProViewNavigation = (serviceItem) => {
+        navigate('/pro/proview', {
+            state: { item, serviceItem },
+            // search: `?proNo=${item.proNo}`
+        });
+    };
+
+    const toggleDetails = () => {
+        setIsToggled(!isToggled); // 상태 변경으로 요소 토글
+    };
+
     return (
         <article className='proSearchListWrap'>
-            <div className='proSearchListAWrap'>
-                <Link className='proSearchListLink' to={`/pro/proview?proNo=${item.proNo}`}>
+            <div className='proSearchListAWrap' onClick={toggleDetails}>
+                <div className='proSearchListLink'>
                     <div className='proSearchListContentWrap'>
-                        {/* 제목 */}
                         <div className='proSearchListTitleWrap'>
-                            <h3>
-                                {item.name}
-                            </h3>
+                            <h3>{item.name}</h3>
                         </div>
-
-                        {/* 상세정보 */}
                         <div className='proSearchListProInfoWrap'>
                             <span>⭐️ 5.0</span>
                         </div>
-
-                        {/* 소개 내용 */}
-                        <p className='proSearchListIntro'>
-                            {item.oneIntro}dddddddddddddddddddddddddddddddddddddd
-                        </p>
+                        <p className='proSearchListIntro'>{item.oneIntro}</p>
                     </div>
-                </Link>
-                {/* 프로필 이미지 */}
+                </div>
                 <div className='proSearchListProfileWrap'>
                     <div className="user-profile-picture">
                         <img
@@ -36,6 +40,21 @@ const SearchList = ({ item }) => {
                         />
                     </div>
                 </div>
+            </div>
+            {/* 토글된 상세 정보 부분 */}
+            <div className={`proSearchListDetailWrap ${isToggled ? 'active' : ''}`}>
+                {isToggled && item.proItems.map((serviceItem) => (
+                    <div key={serviceItem.proItemNo} className="servicePage" onClick={() => handleProViewNavigation(serviceItem)}>
+                        <div className="serviceWrap">
+                            <div className='serviceSubject'>
+                                {serviceItem.subject} ({serviceItem.subCategory.subCateName})
+                            </div>
+                            <div className="serviceStar">
+                                ⭐️ {serviceItem.star} ({serviceItem.reviewCount})
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </article>
     );

@@ -1,0 +1,56 @@
+.proSearchListDetailWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;        /* 처음에는 내용이 보이지 않도록 설정 */
+    height: 0;     /* 처음에는 내용이 보이지 않도록 max-height를 0으로 설정 */
+    transition: opacity 0.3s ease, height 0.3s ease; /* 전환 효과 설정 */
+}
+
+.proSearchListDetailWrap.active {
+    opacity: 1;        /* 활성화되면 내용이 보이도록 opacity를 1로 설정 */
+    height: auto; /* 내용이 펼쳐질 때 충분한 높이를 설정 (적절한 값으로 설정) */
+}
+
+.proSearchListDetailWrap .servicePage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.proSearchListDetailWrap .servicePage .serviceWrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid #e2e2e2;
+}
+
+.proSearchListDetailWrap .servicePage .serviceWrap .serviceSubject {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    font-size: 0.865rem;
+    color: #222;
+    box-sizing: border-box;
+    padding: 0.25rem;
+}
+
+.proSearchListDetailWrap .servicePage .serviceWrap .serviceStar {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    font-size: 0.785rem;
+    color: #222;
+    box-sizing: border-box;
+    padding: 0.25rem
+}

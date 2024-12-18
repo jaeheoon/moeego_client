@@ -4,27 +4,42 @@ import ProDetail from './ProDetail';
 import ProReview from './ProReview';
 import Reservation from './Reservation';
 import "../../css/pro/ProView.css";
-//---------------------------------
+import "../../css/pro/SearchList.css";
 import { ProContext } from '../../context/pro/ProContext';
-import { useLocation, useParams } from 'react-router-dom';
-import WeekCalendar from './WeekCalendar';
+import { useLocation } from 'react-router-dom';
+import apiAxios from '../../api/apiAxios'; // apiAxios import 추가
 
 const ProView = () => {
     const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const proNo = queryParams.get('proNo');
-    //const { id } = useParams(); 
-    const { pro, updatePro } = useContext(ProContext); 
+    const { item: routeStateItem, serviceItem } = location.state || {};
 
     const [modalType, setModalType] = useState(null);
+    const [proItem, setProItem] = useState(null);
+    const [service, setService] = useState(null);
+
+    useEffect(() => {
+        const fetchProDetails = async () => {
+            try {
+                setProItem(routeStateItem);
+                const response = await apiAxios.get(`/api/pro/item/detail`, {
+                    params: {
+                        proItemNo: serviceItem.proItemNo,
+                        pg: 1,
+                    }
+                });
+                const fetchedItem = response.data.data;
+                setService(fetchedItem);
+            } catch (error) {
+                console.error("프로 상세 정보 가져오기 실패:", error);
+            }
+        };
+
+        fetchProDetails();
+    }, []);
 
     const openModal = (type) => {
         setModalType((prevType) => (prevType === type ? null : type));
-        if (type) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
+        document.body.style.overflow = type ? "hidden" : "auto";
     };
 
     const closeModal = () => {
@@ -37,35 +52,28 @@ const ProView = () => {
         document.body.style.overflow = "auto";
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            // 예시 데이터 (API에서 데이터를 가져오는 로직으로 대체 가능)
-            const fetchedData = {
-                id: proNo,
-                title: `프로필 제목 ${proNo}`,
-                description: `상세 정보 for ${proNo}`,
-                rating: 4.5,
-                reviews: 1234
-            };
-            updatePro(fetchedData); // 데이터를 ProContext에 업데이트
-        };
-
-        fetchData();
-    }, [proNo]);
-
-    if (!pro) {
-        return <div>로딩 중...</div>; // pro 데이터가 없으면 로딩 중 화면 표시
+    if (!proItem) {
+        return <div>로딩 중...</div>;
     }
 
     return (
         <section className="detail-view">
+            {/* 기존 코드 유지 */}
             <section className="dalin-photo">
                 <div className="dalin-photo-background">
-                    {/* <img src="../src/image/mc.jpg" alt="긴딩동" width="100" /> */}
-                    <img src="/src/image/mc.jpg" alt="긴딩동" width="100" />
+                    <img
+                        src={`https://kr.object.ncloudstorage.com/moeego/profile/${proItem.profileImage}`}
+                        alt={proItem.name}
+                        width="100"
+                    />
                 </div>
                 <div className="dalin-photo-main">
-                    <img src="/src/image/mc.jpg" alt="딩동" width="100" height="100" />
+                    <img
+                        src={`https://kr.object.ncloudstorage.com/moeego/profile/${proItem.profileImage}`}
+                        alt={proItem.name}
+                        width="100"
+                        height="100"
+                    />
                 </div>
             </section>
             <section className='detail-view-wrap'>
@@ -78,18 +86,13 @@ const ProView = () => {
                         </div>
                         <div className={`ModalWrap ${modalType ? 'show' : ''}`} onClick={handleModalClose}>
                             {modalType === "reservation" && (
-                                <Reservation closeModal={closeModal} />
+                                <Reservation closeModal={closeModal} proItem={proItem} serviceItem={serviceItem} service={service} />
                             )}
                         </div>
-                        <ProInfo pro={pro}/>
-                        <ProDetail pro={pro}/>
-                        <ProReview pro={pro}/>
+                        <ProInfo proItem={proItem} serviceItem={serviceItem} service={service} />
+                        <ProDetail proItem={proItem} serviceItem={serviceItem} service={service} />
+                        <ProReview proItem={proItem} serviceItem={serviceItem} service={service} />
                     </div>
-                    {/* <div className='rightWrap'>
-                        <div className='relativeWrap'>
-                            <Reservation />
-                        </div>
-                    </div> */}
                 </section>
             </section>
         </section>

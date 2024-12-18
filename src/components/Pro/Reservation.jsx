@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom'; 
+import { Link, useLocation, useParams } from 'react-router-dom';
 import "../../css/pro/Reservation.css";
 import WeekCalendar from './WeekCalendar';
 
 import apiAxios from "../../api/apiAxios";
 
-const Reservation = ({ closeModal }) => {
+const Reservation = ({ closeModal, proItem, serviceItem, service }) => {
     //------------------------------------
     const [userno, setUserno] = useState(localStorage.getItem("userno") || '');
-    const [proNo, setProNo] = useState('');
-    
-    const location = useLocation();
-    useEffect(() => {
-        const queryParams = new URLSearchParams(location.search);
-        const proNoFromURL = queryParams.get('proNo'); 
-        setProNo(proNoFromURL); 
-    }, [location]);
-    
-    const [selectedDate, setSelectedDate] = useState(null);
 
-    //------------------------------------
+    const [selectedDate, setSelectedDate] = useState(null);
     const [checkedItems, setCheckedItems] = useState({});
 
     const handleTimeSelection = (time) => {
@@ -44,7 +34,7 @@ const Reservation = ({ closeModal }) => {
 
         const reservationData = {
             userno: userno,
-            proNo: proNo,
+            proNo: proItem.proNo,
             date: selectedDate,
             time: selectedTimes,
         };
@@ -88,34 +78,36 @@ const Reservation = ({ closeModal }) => {
                         </section>
                         <section className="product-title">
                             <h3>
-                                [유튜브 4,000만 조회수]
-                                운동하는 물리치료사 김동우의 진짜 헬스케어
+                                {service.subject}
                             </h3>
                         </section>
                         <section>
                             <div className="product-options">
                                 <div className="options-wrapper">
-                                    [모이고 한정] 체험 수업 1회 (55,000 원)
+                                    {service.content}
+                                </div>
+                                <div className="options-wrapper">
+                                    {service.price}원
                                 </div>
                                 <div className="product-reservation-date">
                                     <WeekCalendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-                                </div>  
+                                </div>
                             </div>
                             <div className="reservation-time">
                                 <div className="reservation-timebox">
                                     <ul className="reservation-timelist">
                                         {[
-                                            "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", 
+                                            "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00",
                                             "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
                                         ].map((time, index) => (
                                             <li className="reservation-time-item" key={index} onClick={() => handleTimeSelection(time)} >
                                                 <label className="custom-checkbox">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        name="product-reservation-time" 
-                                                        value={time} 
-                                                        checked={checkedItems[time] || false} 
-                                                        onChange={() => handleTimeSelection(time)} 
+                                                    <input
+                                                        type="checkbox"
+                                                        name="product-reservation-time"
+                                                        value={time}
+                                                        checked={checkedItems[time] || false}
+                                                        onChange={() => handleTimeSelection(time)}
                                                     />
                                                     <span className="custom-checkbox-box" style={{ display: "none" }}></span>
                                                     <div className='pull' value={time}>{time}</div>
