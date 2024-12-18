@@ -6,21 +6,21 @@ import { AuthContext } from '../member/AuthContext';
 const SignOutContext = createContext();
 
 const SignOutProvider = ({ children }) => {
-    
-    const { loginEmail } = useContext(AuthContext);
+    const { loginEmail, loginUser } = useContext(AuthContext);
 
     const [reason, setReason] = useState('');
     const [pwd, setPwd] = useState('');
-    const [repwd, setRepwd] = useState('');
     const [result, setResult] = useState(false);
-    const [errorMessage, setErrorMessage] 
-    = useState({ reason: '', pwd: '', repwd: '' });
-    
+    const [errorMessage, setErrorMessage]
+        = useState({ reason: '', pwd: '', });
+
+    const navigate = useNavigate();
+
     const validateForm = () => {
         let isValid = true;
-        let errors = { reason: '', pwd: '', repwd: '' };
+        let errors = { reason: '', pwd: '', };
 
-         if (!reason.trim()) {
+        if (!reason.trim()) {
             errors.reason = "탈퇴사유를 입력해주세요.";
             isValid = false;
         } else if (reason.length > 50) {
@@ -33,52 +33,51 @@ const SignOutProvider = ({ children }) => {
             isValid = false;
         }
 
-        if (pwd !== repwd) {
-            errors.repwd = "비밀번호가 일치하지 않습니다.";
-            isValid = false;
-        }
-
-        setErrorMessage(errors); 
+        setErrorMessage(errors);
         return isValid;
     };
 
-    const handleSignOut = () => {
-        const dataToSubmit = {
-            reason: reason,
-            pwd: pwd,
-            //repwd: repwd,
-            email: loginEmail,
-        }
-
-        if(!validateForm()) {
+    // 탈퇴 처리
+    const handleSignOut = async () => {
+        if (!reason || !pwd) {
+            setErrorMessage({
+                reason: reason ? '' : '탈퇴 사유를 입력해주세요.',
+                pwd: pwd ? '' : '비밀번호를 입력해주세요.'
+            });
             return;
         }
-        
-        apiAxios
-        .patch('/api/mypage/account/private/signout', dataToSubmit)
-        .then(response => {
-            console.log(reason.data)
-            setResult(response.data);
-            if(result) {
-                alert(result + ", 탈퇴성공");
+
+        try {
+            const signOutDTO = {
+                email: loginEmail, // 로그인한 사용자의 이메일을 로컬스토리지에서 가져옴
+                pwd,
+                reason
+            };
+
+            const response = await apiAxios.patch('/api/mypage/account/private/signout', signOutDTO);
+
+            if (response.status === 200) {
+                alert(loginUser + '님 모이고 회원 탈퇴가 완료되었습니다.');
+                navigate('/logout');
             } else {
-                alert(result + ", 탈퇴실패");
+                // 서버에서 반환한 에러 메시지 처리
+                setErrorMessage({ ...response.data });
             }
-        })
-        .catch(err => console.log('서버통신 오류 : ' + err));
+        } catch (error) {
+            console.error('탈퇴 처리 중 오류 발생:', error);
+            alert('탈퇴 처리 중 오류가 발생했습니다.');
+        }
     };
-    
-    
+
     const contextValue = {
         reason, setReason,
         pwd, setPwd,
-        repwd, setRepwd,
         errorMessage, setErrorMessage,
         handleSignOut
     };
     return (
         <SignOutContext.Provider value={contextValue}>
-            { children }
+            {children}
         </SignOutContext.Provider>
     );
 };

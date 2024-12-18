@@ -11,6 +11,8 @@ const Account = () => {
         nickname,
         setNickname,
         isToggleWrap1Visible,
+        setIsToggleWrap1Visible,
+        setIsToggleWrap2Visible,
         toggleWrap1,
         isToggleWrap2Visible,
         toggleWrap2,

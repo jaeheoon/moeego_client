@@ -38,49 +38,55 @@ const LoginProvider = ({ children }) => {
             });
 
             if (response.status === 200) {
-                console.log('███╗   ███╗ ██████╗ ███████╗███████╗ ██████╗  ██████╗ ');
-                console.log('████╗ ████║██╔═══██╗██╔════╝██╔════╝██╔════╝ ██╔═══██╗');
-                console.log('██╔████╔██║██║   ██║█████╗  █████╗  ██║  ███╗██║   ██║');
-                console.log('██║╚██╔╝██║██║   ██║██╔══╝  ██╔══╝  ██║   ██║██║   ██║');
-                console.log('██║ ╚═╝ ██║╚██████╔╝███████╗███████╗╚██████╔╝╚██████╔╝');
-                console.log('╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ');
-
-                console.log(response.data.name + '님 환영합니다.');
-
                 const accessToken = response.data.accessToken || response.headers["access"];
                 window.localStorage.setItem("access", accessToken);
 
                 const decodedToken = jwtDecode(accessToken); // 디코딩된 토큰
                 const { name, email, memberStatus, address, phone, profileImage, memberNo } = decodedToken; // name과 email 추출
 
-                // 로컬 스토리지에 저장
-                window.localStorage.setItem("username", name);
-                window.localStorage.setItem("useremail", email);
-                window.localStorage.setItem("memberStatus", memberStatus);
-                window.localStorage.setItem("useraddress", address);
-                window.localStorage.setItem("userphone", phone);
-                if (profileImage) {
-                    window.localStorage.setItem("userprofile", "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
+                if (memberStatus === 'ROLE_CANCEL') {
+                    alert("탈퇴한 계정입니다.");
+                    navigate('/logout');
                 } else {
-                    window.localStorage.setItem("userprofile", '/image/default.svg');
-                }
-                window.localStorage.setItem("userno", memberNo);
-                window.localStorage.setItem("login", true);
 
-                setIsLoggedIn(true);
-                setLoginUser(name);
-                setLoginEmail(email);
-                setLoginStatus(memberStatus);
-                setLoginAddress(address);
-                setLoginPhone(phone);
-                if (profileImage) {
-                    setLoginProfile("https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
-                } else {
-                    setLoginProfile('/image/default.svg');
-                }
-                setLoginNumber(memberNo);
+                    console.log('███╗   ███╗ ██████╗ ███████╗███████╗ ██████╗  ██████╗ ');
+                    console.log('████╗ ████║██╔═══██╗██╔════╝██╔════╝██╔════╝ ██╔═══██╗');
+                    console.log('██╔████╔██║██║   ██║█████╗  █████╗  ██║  ███╗██║   ██║');
+                    console.log('██║╚██╔╝██║██║   ██║██╔══╝  ██╔══╝  ██║   ██║██║   ██║');
+                    console.log('██║ ╚═╝ ██║╚██████╔╝███████╗███████╗╚██████╔╝╚██████╔╝');
+                    console.log('╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ');
 
-                navigate(prevUrl, { replace: true });
+                    console.log(response.data.name + '님 환영합니다.');
+
+                    // 로컬 스토리지에 저장
+                    window.localStorage.setItem("username", name);
+                    window.localStorage.setItem("useremail", email);
+                    window.localStorage.setItem("memberStatus", memberStatus);
+                    window.localStorage.setItem("useraddress", address);
+                    window.localStorage.setItem("userphone", phone);
+                    if (profileImage) {
+                        window.localStorage.setItem("userprofile", "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
+                    } else {
+                        window.localStorage.setItem("userprofile", '/image/default.svg');
+                    }
+                    window.localStorage.setItem("userno", memberNo);
+                    window.localStorage.setItem("login", true);
+
+                    setIsLoggedIn(true);
+                    setLoginUser(name);
+                    setLoginEmail(email);
+                    setLoginStatus(memberStatus);
+                    setLoginAddress(address);
+                    setLoginPhone(phone);
+                    if (profileImage) {
+                        setLoginProfile("https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
+                    } else {
+                        setLoginProfile('/image/default.svg');
+                    }
+                    setLoginNumber(memberNo);
+
+                    navigate(prevUrl, { replace: true });
+                }
             } else {
                 alert(`Login failed: ${response.data.message || 'Invalid credentials'}`);
             }

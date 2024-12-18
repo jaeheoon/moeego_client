@@ -77,15 +77,15 @@ const Private = () => {
                     <h1>개인 정보 관리</h1>
                 </div>
                 {phone !== "" ? (
-                    <Link className='LinkTag' to="/mypage/account/private/update/phone">
+                    <Link className='LinkTag' to="/mypage/account/private/phone">
                         <div className='EmailContainer'>
                             <h3 className="SubTitle">휴대전화 번호</h3>
                             <div className='MainContainer'>
                                 <div className='Text'>
                                     {phone}
                                 </div>
-                                <div className='Button'>
-                                    <input type="button" value="변경" />
+                                <div className="Link">
+                                    <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                                 </div>
                             </div>
                         </div>
@@ -96,17 +96,17 @@ const Private = () => {
                             <h3 className="SubTitle">휴대전화 번호</h3>
                             <div className='MainContainer'>
                                 <div className='Text'>
-                                    미인증
+                                    번호를 입력해주세요
                                 </div>
-                                <div className='Button'>
-                                    <input type="button" value="본인인증" />
+                                <div className="Link">
+                                    <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
                                 </div>
                             </div>
                         </div>
                     </Link>
                 )}
                 <hr />
-                <div className='LinkTag' to="/mypage/account/private/email">
+                <div className='LinkTag'>
                     <div className='EmailContainer'>
                         <h3 className="SubTitle">이메일</h3>
                         <div className='MainContainer'>

@@ -31,6 +31,105 @@
     margin-bottom: 3rem;
 }
 
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro ul {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro ul li {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #fcc1cc;
+    color: #525252;
+    transition: 0.3s ease-out;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro ul li:hover,
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro ul li:active,
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro ul li:focus {
+    background-color: #fcc1cc;
+    color:#fff;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro label {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+/* 커스텀 드롭다운 스타일 */
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select {
+    position: relative;
+    width: 80%;
+    font-size: 0.825rem;
+    cursor: pointer;
+    border:none;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #fcc1cc;
+    padding: 10px;
+    color: #333;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option img {
+    display: flex;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    top: 80%;
+    left: 0;
+    right: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options .option {
+    box-sizing: border-box;
+    cursor: pointer;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding: 10px;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options .option:hover {
+    background-color: #fcc1cc;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options {
+    display: none;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select.open .selected-option .options {
+    display: block;
+}
+
 .ServiceIntroPage .ServiceIntroWrap .ServiceIntro .ServiceContentLength {
     display: flex;
     align-items: center;

@@ -14,7 +14,6 @@ const Logout = () => {
                 const response = await apiAxios.post("/api/logout");
 
                 if (response.status === 200) {
-                    console.log('로그아웃 성공');
                     // access token 삭제 (로컬 스토리지)
                     window.localStorage.clear();
 

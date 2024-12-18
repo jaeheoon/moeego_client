@@ -50,7 +50,7 @@ import Private from './components/mypage/Private';
 import Account from './components/mypage/Account.jsx';
 import ChangeAddress from './components/mypage/ChangeAddress';
 import ChangePassword from './components/mypage/ChangePassword';
-import ChangeEmail from './components/mypage/ChangeEmail';
+import ChangePhone from './components/mypage/ChangePhone';
 import SignOut from './components/mypage/SignOut';
 import MyReservation from './components/mypage/MyReservation';
 import Success from './components/mypage/Success';
@@ -131,7 +131,7 @@ const App = () => {
                               <Route path={"/mypage/review/write"} element={<div className='main-content'><ReviewWrite /></div>} />
                               <Route path={"/mypage/account"} element={<div className='main-content'><Account /></div>} />
                               <Route path={"/mypage/account/private"} element={<div className='main-content'><Private /></div>} />
-                              <Route path={"/mypage/account/private/email"} element={<div className='main-content'><ChangeEmail /></div>} />
+                              <Route path={"/mypage/account/private/phone"} element={<div className='main-content'><ChangePhone /></div>} />
                               <Route path={"/mypage/account/private/password"} element={<div className='main-content'><ChangePassword /></div>} />
                               <Route path={"/mypage/account/private/address"} element={<div className='main-content'><ChangeAddress /></div>} />
                               <Route path={"/mypage/account/private/signout"} element={<div className='main-content'><SignOut /></div>} />

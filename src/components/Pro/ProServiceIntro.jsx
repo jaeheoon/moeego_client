@@ -23,7 +23,7 @@ const ProServiceIntro = () => {
                 const response = await apiAxios.get('/api/pro/item/init', { params: { memberNo: userno } });
                 if (response.data.success) {
                     const { proNo, proItems } = response.data.data;
-                    setProno(proNo || "");  // API 응답으로 받은 proNo 값을 setProno로 설정
+                    setProno(proNo || "");
                     setProItems(proItems || []); // proItems 전체 목록 저장
 
                     // 첫 번째 카테고리 선택 및 값 초기화 (API 호출이 성공한 후에 설정)
@@ -42,15 +42,14 @@ const ProServiceIntro = () => {
             }
         };
         fetchData();
-    }, [userno]);  // userno 값이 변경될 때마다 데이터를 다시 불러옴
+    }, [userno]);
 
     // 드롭다운 변경 시 선택된 값으로 데이터 초기화
-    const handleSelectChange = (e) => {
-        const newSubCateNo = e.target.value;
-        setSubcateno(newSubCateNo); // 선택된 subCateNo 업데이트
+    const handleSelectChange = (value) => {
+        setSubcateno(value); // 선택된 subCateNo 업데이트
 
         // 선택된 카테고리에 맞는 값으로 상태를 업데이트
-        const selectedItem = proItems.find(item => item.subCategory.subCateNo === parseInt(newSubCateNo)); // subCateNo를 정수로 비교
+        const selectedItem = proItems.find(item => item.subCategory.subCateNo === parseInt(value));
         if (selectedItem) {
             setServiceName(selectedItem.subject || "");
             setServiceContent(selectedItem.content || "");
@@ -62,6 +61,19 @@ const ProServiceIntro = () => {
             setServicePrice("");
         }
     };
+
+    // 드롭다운 toggle
+    const toggleDropdown = () => {
+        setDropdownOpen(prev => !prev);
+    };
+
+    // 드롭다운 항목 클릭 시
+    const handleOptionClick = (value) => {
+        handleSelectChange(value);
+        setDropdownOpen(false);
+    };
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     // 입력 핸들러
     const handleInputChange = (e) => {
@@ -85,7 +97,6 @@ const ProServiceIntro = () => {
 
     // 등록 버튼 클릭 핸들러
     const handleSubmit = async () => {
-        // 서버에 전달할 객체
         const requestData = {
             proNo: prono,
             subCateNo: subcateno,
@@ -95,7 +106,6 @@ const ProServiceIntro = () => {
         };
 
         try {
-            // API 요청
             const response = await apiAxios.put('/api/pro/item', requestData);
             if (response.data.success) {
                 setServiceName("");
@@ -115,16 +125,27 @@ const ProServiceIntro = () => {
         <div className='ServiceIntroPage'>
             <h2>서비스 입력</h2>
             <div className='ServiceIntroWrap'>
-                {/* SubCateNo 드롭다운 */}
+                {/* SubCateNo 커스텀 드롭다운 */}
                 <div className='ServiceIntro'>
                     <label htmlFor="subCateNo">카테고리 선택</label>
-                    <select id="subCateNo" value={subcateno} onChange={handleSelectChange}>
-                        {proItems.map(item => (
-                            <option key={item.proItemNo} value={item.subCategory.subCateNo}>
-                                {item.subCategory.subCateName}
-                            </option>
-                        ))}
-                    </select>
+                    <div className="custom-select">
+                        <div className="selected-option" onClick={toggleDropdown}>
+                            {proItems.find(item => item.subCategory.subCateNo === parseInt(subcateno))?.subCategory.subCateName || "카테고리 선택"}
+                        </div>
+                        {dropdownOpen && (
+                            <ul className="options">
+                                {proItems.map(item => (
+                                    <li
+                                        key={item.proItemNo}
+                                        className="option"
+                                        onClick={() => handleOptionClick(item.subCategory.subCateNo)}
+                                    >
+                                        {item.subCategory.subCateName}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
                 </div>
 
                 {/* 서비스 이름 */}
@@ -172,7 +193,7 @@ const ProServiceIntro = () => {
                     <button onClick={handleSubmit}>등록</button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
