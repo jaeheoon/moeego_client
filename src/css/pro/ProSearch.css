@@ -176,7 +176,8 @@
 .proSearchListTitleWrap {
     font-weight: bold; /* 제목 강조 */
 }
-.proSearchListTitleWrap h3{
+
+.proSearchListTitleWrap h3 {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 10px;
@@ -191,17 +192,30 @@
 }
 
 .proSearchListProInfoWrap {
-    margin: 0 0 5px 0; /* 상세정보 간격 */
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
 }
-.proSearchListProInfoWrap span{
-    font-size: 12pt;
-    color: black;
+
+.proSearchListProInfoWrap span {
+    font-size: 0.825rem;
+    color: #626262;
+    font-weight: bold;
 }
+
 .proSearchListIntro {
     white-space: pre-wrap; /* 줄 바꿈 및 공백 유지 */
-    font-size: 11pt;
+    font-size: 0.9rem;
     color: #898888;
-    margin-top: 5px; /* 소개 내용 간격 */
+    margin-bottom: 0.2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
 }
 
 .ServiceAreaModal .closeButton {

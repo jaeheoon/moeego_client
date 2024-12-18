@@ -1,30 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SearchList = ({ id, name, rating, reviews, experience, intro, img_main }) => {
+const SearchList = ({ item }) => {
     return (
         <article className='proSearchListWrap'>
             <div className='proSearchListAWrap'>
-                {/* <Link className='proSearchListLink' to={`/pro/proview/proNo=${id}`}> */}
-                <Link className='proSearchListLink' to={`/pro/proview?proNo=${id}`}>
+                <Link className='proSearchListLink' to={`/pro/proview?proNo=${item.proNo}`}>
                     <div className='proSearchListContentWrap'>
                         {/* 제목 */}
                         <div className='proSearchListTitleWrap'>
                             <h3>
-                                {name}
+                                {item.name}
                             </h3>
                         </div>
 
                         {/* 상세정보 */}
                         <div className='proSearchListProInfoWrap'>
-                            <span>⭐️ {rating}</span>
-                            <span>({reviews})</span>
-                            <span>경력 {experience}년</span>
+                            <span>⭐️ 5.0</span>
                         </div>
 
                         {/* 소개 내용 */}
                         <p className='proSearchListIntro'>
-                            {intro}
+                            {item.oneIntro}dddddddddddddddddddddddddddddddddddddd
                         </p>
                     </div>
                 </Link>
@@ -32,10 +29,10 @@ const SearchList = ({ id, name, rating, reviews, experience, intro, img_main }) 
                 <div className='proSearchListProfileWrap'>
                     <div className="user-profile-picture">
                         <img
-                            src={img_main}
+                            src={`https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}`}
                             width={150}
                             height={150}
-                            alt={name}
+                            alt={item.name}
                         />
                     </div>
                 </div>
