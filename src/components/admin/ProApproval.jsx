@@ -79,9 +79,9 @@ const ProApproval = () => {
                             <tr>
                                 <th>번호</th>
                                 <th>이름</th>
+                                <th>카테고리명</th>
                                 <th>한줄 소개</th>
-                                <th>박탈 횟수</th>
-                                <th>승인 여부</th>
+                                <th>서비스 소개</th>
                                 <th>작업</th>
                             </tr>
                         </thead>
@@ -95,13 +95,9 @@ const ProApproval = () => {
                                     <tr key={row.memberNo}>
                                         <td>{row.memberNo}</td>
                                         <td>{row.name}</td>
+                                        <td>{row.cate_name}</td>
                                         <td>{row.oneIntro}</td>
-                                        <td>{row.count}회</td>
-                                        <td>
-                                            <div className={getStatusBadgeClass(row.memberStatus)}>
-                                                {row.memberStatus === 'ROLE_PEND_PRO' ? '미승인' : '승인'}
-                                            </div>
-                                        </td>
+                                        <td>{row.intro}</td>
                                         <td>
                                             <button
                                                 onClick={() => handleApprove(row.memberNo, row.name)}

@@ -23,22 +23,25 @@ const ProList = () => {
     };
 
     // 박탈 상태 변경
-    const revokePro = async (memberNo) => {
-        try {
-            await apiAxios.post(`/api/admin/member/pro/cancel/${memberNo}`);  // 박탈 처리 API 호출
-            setPro(pro.map((row) => 
-                row.memberNo === memberNo ? { ...row, depriveDate: new Date().toISOString() } : row
-            ));
-        } catch (err) {
-            console.error('박탈 처리 오류:', err);
-            setError(err.message);
+    const revokePro = async (memberNo, name) => {
+        const confirm = window.confirm(`${name}님을 박탈하시겠습니까?`);
+        if (confirm) {
+            try {
+                await apiAxios.post(`/api/admin/member/pro/cancel/${memberNo}`); // 박탈 처리 API 호출
+                setPro(pro.map((row) => 
+                    row.memberNo === memberNo ? { ...row, depriveDate: new Date().toISOString() } : row
+                ));
+            } catch (err) {
+                console.error('박탈 처리 오류:', err);
+                setError(err.message);
+            }
         }
     };
 
-    //날짜 포맷팅
+    // 날짜 포맷팅
     const formatDate = (date) => {
-        if (!date) return '';  // date가 null 또는 undefined일 경우 빈 문자열 반환
-        const formattedDate = new Date(date).toLocaleDateString();  // 원하는 포맷으로 날짜 변환
+        if (!date) return ''; // date가 null 또는 undefined일 경우 빈 문자열 반환
+        const formattedDate = new Date(date).toLocaleDateString(); // 원하는 포맷으로 날짜 변환
         return formattedDate;
     };
 
@@ -51,14 +54,9 @@ const ProList = () => {
     if (loading) return <div>로딩 중...</div>;
     if (error) return <div>오류: {error}</div>;
 
-    // 박탈 날짜에 따른 상태 출력
-    const getStatusClass = (depriveDate) => {
-        return depriveDate ? 'pro-revoked' : 'pro-approved';
-    };
-
     return (
         <div className="membership-container">
-            <div className='membership-inner-container'>
+            <div className="membership-inner-container">
                 <h2 className="membership-title">👑 고수 관리 👑</h2>
 
                 <div className="membership-table-wrapper">
@@ -71,8 +69,6 @@ const ProList = () => {
                                 <th>카테고리</th>
                                 <th>별점</th>
                                 <th>승인 날짜</th>
-                                <th>박탈 날짜</th>
-                                <th>상태</th>
                                 <th>작업</th>
                             </tr>
                         </thead>
@@ -83,15 +79,11 @@ const ProList = () => {
                                     <td>{row.name}</td>
                                     <td>{row.mainCateName}</td>
                                     <td>⭐ {row.star}</td>
-                                    <td>{formatDate(row.accessDate)}</td> {/* 승인 날짜 포맷 적용 */}
-                                    <td>{formatDate(row.depriveDate)}</td> {/* 박탈 날짜 포맷 적용 */}
-                                    <td className={getStatusClass(row.depriveDate)}>
-                                        {row.depriveDate ? '박탈' : '승인'}
-                                    </td>
+                                    <td>{formatDate(row.accessDate)}</td>
                                     <td>
                                         {!row.depriveDate && (
-                                            <button 
-                                                onClick={() => revokePro(row.memberNo)} 
+                                            <button
+                                                onClick={() => revokePro(row.memberNo, row.name)} // 이름도 전달
                                                 className="revoke-btn">
                                                 박탈
                                             </button>
