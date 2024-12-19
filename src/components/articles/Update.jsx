@@ -3,7 +3,7 @@ import "../../css/articles/Write.css";
 import { ArticleContext } from '../../context/article/ArticleContext';
 import { useNavigate } from "react-router-dom";
 import Loading from '../loading/loading';
-import Service_area from '../ProSearch/Service_area';
+import ServiceArea from '../ProSearch/ServiceArea';
 
 const Update = () => {
     const { isLoading, articleData, updateArticle, fetchArticle, images } = useContext(ArticleContext); // updateArticle, fetchArticle 가져오기
@@ -83,42 +83,42 @@ const Update = () => {
 
     const handleRemoveFile = (fileToRemove) => {
         setSelectedFiles((prevFiles) => prevFiles.filter((file) => file !== fileToRemove));
-    
+
         // 기존 이미지의 경우 삭제 목록에 추가
         if (fileToRemove.imageUuidName) {
             setRemovedImageIds((prevIds) => [...prevIds, fileToRemove.imageUuidName]);
         }
     };
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-    
+
         const data = new FormData();
-    
+
         // 게시글 데이터
         data.append("subject", formData.subject);
         data.append("content", formData.content);
         data.append("type", formData.type);
         data.append("service", formData.service);
         data.append("area", formData.area);
-    
+
         // 유지할 기존 이미지 ID 추가
         images.forEach((image) => {
             if (image.imageUuidName) {
                 data.append("existingImages", image.imageUuidName);
             }
         });
-    
+
         // 삭제할 이미지 ID 추가
         removedImageIds.forEach((id) => data.append("removedImages", id));
-    
+
         // 새 이미지 추가
         selectedFiles.forEach((file) => data.append("images", file));
-    
+
         // 서버 요청
         updateArticle(articleData.articleNo, data);
     };
-    
+
     // 로딩 상태이거나 데이터가 준비되지 않았을 때 로딩 컴포넌트 렌더링
     if (isLoading || !articleData) {
         return <Loading />;
@@ -150,7 +150,7 @@ const Update = () => {
 
                     {/* 서비스와 지역 선택 */}
                     <div className='service-area-wrap'>
-                        <Service_area
+                        <ServiceArea
                             service={formData.service} // 선택된 서비스 값을 전달
                             area={formData.area}       // 선택된 지역 값을 전달
                             onServiceAreaChange={(service, area) => {

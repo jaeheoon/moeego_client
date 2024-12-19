@@ -4,11 +4,11 @@ import LifeTopic from "./LifeTopic.jsx";
 import "../../../css/articles/FreeBoardForm.css";
 import GuideBanner from "./GuideBanner.jsx";
 import FeedList from "./FeedList.jsx";
-import Service_area from '../../ProSearch/service_area.jsx';
 import { ArticleContext } from '../../../context/article/ArticleContext.jsx';
 import Loading from '../../loading/loading.jsx';
 import { AuthContext } from '../../../context/member/AuthContext.jsx';
 import Paging from '../Paging.jsx';
+import ServiceArea from '../../ProSearch/ServiceArea.jsx';
 
 const FreeBoardForm = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
@@ -18,7 +18,7 @@ const FreeBoardForm = () => {
         articles,
         fetchArticlesByCategory,
         isLoading,
-        GoWrite, 
+        GoWrite,
         GoLogin,
         articleCurrentPage,
         setArticleCurrentPage // articleCurrentPage 초기화 할 함수 추가
@@ -75,7 +75,7 @@ const FreeBoardForm = () => {
 
                     <div className="Main-RightContainer">
                         <GuideBanner />
-                        <Service_area />
+                        <ServiceArea />
                         <div className='FeedContainer'>
                             <FeedList articles={articles} />
                         </div>

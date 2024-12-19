@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "../../css/Pro/Service_area.css";
 import ServiceAreaModal from './ServiceAreaModal'; // 모달 컴포넌트 import
 
-const Service_area = ({ service, area, onServiceAreaChange }) => {
+const ServiceArea = ({ service, area, onServiceAreaChange }) => {
     const [isModalOpen, setModalOpen] = useState(false); // 모달 상태 관리
     const [activeModal, setActiveModal] = useState('service'); // 기본적으로 서비스 모달을 열도록 설정
     const [selectedService, setSelectedService] = useState(service || '서비스'); // 부모로부터 전달된 서비스 값 또는 기본값
@@ -103,4 +103,4 @@ const Service_area = ({ service, area, onServiceAreaChange }) => {
     );
 };
 
-export default Service_area;
+export default ServiceArea;

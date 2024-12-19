@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import '/src/css/articles/Write.css';
 import { ArticleContext } from '../../context/article/ArticleContext';
-import Service_area from '../ProSearch/Service_area';
+import ServiceArea from '../ProSearch/ServiceArea';
 
 const Write = () => {
     const { writeArticle } = useContext(ArticleContext);
     const userNo = localStorage.getItem("userno");
-    
+
     const [formData, setFormData] = useState({
         subject: '',
         content: '',
@@ -14,7 +14,7 @@ const Write = () => {
         memberNo: userNo,
         service: '', // 선택된 서비스
         area: '',    // 선택된 지역
-    });    
+    });
 
     const [selectedFiles, setSelectedFiles] = useState([]); // 선택한 파일 저장
     const maxFileSize = 20 * 1024 * 1024; // 20MB
@@ -69,7 +69,7 @@ const Write = () => {
             alert("제목과 내용을 모두 입력해주세요!");
             return;
         }
-    
+
         const data = new FormData();
         // formData 객체의 각 필드를 FormData에 추가
         data.append("subject", formData.subject);
@@ -78,17 +78,17 @@ const Write = () => {
         data.append("memberNo", formData.memberNo);
         data.append("service", formData.service);
         data.append("area", formData.area);
-    
+
         // 파일 추가
         selectedFiles.forEach(file => data.append("images", file));
-    
+
         try {
             await writeArticle(data); // 서버로 FormData 전송
         } catch (error) {
             console.error("Error submitting the form", error);
         }
     };
-    
+
 
     return (
         <form id='articleWriteForm' onSubmit={handleSubmit}>
@@ -115,15 +115,15 @@ const Write = () => {
                         </button>
                     </div>
                     <div className='service-area-wrap'>
-                    <Service_area
-                        onServiceAreaChange={(service, area) => {
-                            setFormData((prevData) => ({
-                                ...prevData,
-                                service, // 선택된 서비스 저장
-                                area,    // 선택된 지역 저장
-                            }));
-                        }}
-                    />
+                        <ServiceArea
+                            onServiceAreaChange={(service, area) => {
+                                setFormData((prevData) => ({
+                                    ...prevData,
+                                    service, // 선택된 서비스 저장
+                                    area,    // 선택된 지역 저장
+                                }));
+                            }}
+                        />
                     </div>
                     {/* 제목 입력 */}
                     <div className="subject-container">
@@ -148,7 +148,7 @@ const Write = () => {
                             onChange={handleChange}
                         ></textarea>
                     </div>
-                    <hr/>
+                    <hr />
                     {/* 파일 업로드 */}
                     <div className="file-container">
                         <input
