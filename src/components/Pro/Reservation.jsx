@@ -6,8 +6,11 @@ import WeekCalendar from './WeekCalendar';
 import apiAxios from "../../api/apiAxios";
 
 const Reservation = ({ closeModal, proItem, reivew, service }) => {
-    //------------------------------------
-    const [userno, setUserno] = useState(localStorage.getItem("userno") || '');
+    const [userno, setUserno] = useState('');
+
+    useEffect(() => {
+        setUserno(localStorage.getItem("userno") || '');
+    }, []);
 
     const [selectedDate, setSelectedDate] = useState(null);
     const [checkedItems, setCheckedItems] = useState({});
@@ -32,19 +35,26 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
             return;
         }
 
+        const formattedDate = new Date(selectedDate);
+        const day = String(formattedDate.getDate()).padStart(2, '0'); // 2자리로 맞추기
+        const month = String(formattedDate.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
+        const year = String(formattedDate.getFullYear()).slice(2); // 연도에서 마지막 2자리만 사용
+
+        const formattedDateString = `${day}-${month}-${year}`;
+
         const reservationData = {
-            userno: userno,
-            proNo: proItem.proNo,
-            date: selectedDate,
-            time: selectedTimes,
+            memberNo: userno,
+            proItemNo: service.proItemNo,
+            startDate: formattedDateString,
+            startTimes: selectedTimes,
         };
 
         console.log('예약 정보:', reservationData);
-        alert(reservationData.userno + ", " + reservationData.proNo + ", " + reservationData.date + ", " + reservationData.time)
+        alert(reservationData.memberNo + ", " + reservationData.proItemNo + ", " + reservationData.startDate + ", " + reservationData.startTimes)
 
 
         apiAxios
-            .post('/api/pro/reservation', reservationData)
+            .post('/api/reservation', reservationData)
             .then(response => {
                 console.log('예약 성공:', response.data);
                 alert('예약이 완료되었습니다.');

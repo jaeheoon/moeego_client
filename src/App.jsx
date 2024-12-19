@@ -7,7 +7,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
 // mainPage
-import MainPage from './components/mainPage.jsx';
+import MainPage from './components/MainPage.jsx';
 
 // 이벤트, 공지
 import Notice_eventPage from "./components/notice_eventpage/Notice_eventpage.jsx";

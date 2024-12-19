@@ -39,7 +39,7 @@ const ProReview = ({ proItem, review, service }) => {
                         <ul className="review-container">
                             {review.map((reviewItem) => (
                                 <li key={reviewItem.reviewNo}>
-                                    <article className="user-reivew">
+                                    <article className="user-review">
                                         <section>
                                             <span className="author">{reviewItem.memberName}</span>
                                             <div>
