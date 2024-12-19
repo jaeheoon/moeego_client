@@ -3,25 +3,24 @@ import React from "react";
 import { Router, Route, Routes, BrowserRouter } from "react-router-dom";
 
 // 헤더 푸터
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 
 // mainPage
-import MainPage from './components/mainPage';
+import MainPage from './components/mainPage.jsx';
 
 // 이벤트, 공지
 import Notice_eventPage from "./components/notice_eventpage/Notice_eventpage.jsx";
 import NoticeView from "./components/notice_eventpage/NoticeView.jsx";
 
-
 // member
-import Login from "./components/login/Login";
-import Join from "./components/join/Join";
+import Login from "./components/login/Login.jsx";
+import Join from "./components/join/Join.jsx";
 import JoinSuccess from './components/join/JoinSuccess.jsx';
 import Logout from './components/login/Logout.jsx';
 
 // pro
-import Prosignup from "./components/pro/Prosignup";
+import Prosignup from "./components/pro/Prosignup.jsx";
 import ProjoinSub from "./components/pro/ProSub.jsx";
 import ProjoinMain from "./components/Pro/ProjoinMain.jsx";
 import ProSearch from "./components/ProSearch/ProSearch";
@@ -33,35 +32,35 @@ import ProServiceIntro from './components/Pro/ProServiceIntro.jsx';
 
 // article
 import ArticleMain from './components/articles/ArticleMain.jsx';
-import Write from "./components/articles/Write";
-import Update from "./components/articles/Update";
+import Write from "./components/articles/Write.jsx";
+import Update from "./components/articles/Update.jsx";
 import FreeBoardForm from "./components/articles/FreeBoardForm/FreeBoardForm.jsx";
 import LatestReview from "./components/articles/FreeBoardForm/LatestReview.jsx";
 import ViewPage from "./components/articles/ViewPage/ViewPage.jsx";
 
 // myPage
-import Review from "./components/mypage/Review";
+import Review from "./components/mypage/Review.jsx";
 import ReviewWrite from "./components/mypage/ReviewWrite.jsx";
-import MyPage from './components/mypage/MyPage';
-import MyHistory from './components/mypage/MyHistory';
-import MyArticles from './components/mypage/MyArticles';
-import MyComments from './components/mypage/MyComments';
-import Private from './components/mypage/Private';
+import MyPage from './components/mypage/MyPage.jsx';
+import MyHistory from './components/mypage/MyHistory.jsx';
+import MyArticles from './components/mypage/MyArticles.jsx';
+import MyComments from './components/mypage/MyComments.jsx';
+import Private from './components/mypage/Private.jsx';
 import Account from './components/mypage/Account.jsx';
-import ChangeAddress from './components/mypage/ChangeAddress';
-import ChangePassword from './components/mypage/ChangePassword';
-import ChangePhone from './components/mypage/ChangePhone';
-import SignOut from './components/mypage/SignOut';
-import MyReservation from './components/mypage/MyReservation';
-import Success from './components/mypage/Success';
+import ChangeAddress from './components/mypage/ChangeAddress.jsx';
+import ChangePassword from './components/mypage/ChangePassword.jsx';
+import ChangePhone from './components/mypage/ChangePhone.jsx';
+import SignOut from './components/mypage/SignOut.jsx';
+import MyReservation from './components/mypage/MyReservation.jsx';
+import Success from './components/mypage/Success.jsx';
 import BookMarkPro from './components/mypage/BookMarkPro.jsx';
 import ChangeIntro from './components/mypage/ChangeIntro.jsx';
 
 // category
-import SelectCategory from './components/detail_category/SelectCategory';
+import SelectCategory from './components/detail_category/SelectCategory.jsx';
 
 // about
-import About from './components/about/About';
+import About from './components/about/About.jsx';
 
 // admin
 import EventWrite from "./components/admin/EventWrite.jsx";
