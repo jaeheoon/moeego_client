@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: "211.188.63.137", // 호스트를 localhost로 설정
+    host: "0.0.0.0", // 호스트를 localhost로 설정
     proxy: {
       "/api": {
         target: "http://localhost:8080", // Spring Boot 서버 주소
