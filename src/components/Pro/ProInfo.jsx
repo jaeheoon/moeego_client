@@ -5,26 +5,18 @@ const ProInfo = ({ proItem, serviceItem, service }) => {
     const [address, setAddress] = useState('');
 
     useEffect(() => {
-        const setAddressFunction = () => {
-            try {
-                if (service?.address) {
-                    // 정규식으로 주소에서 "서울 서대문구 통일로39가길 57"까지만 추출
-                    const match = service.address.match(/.+?( \d+(?:-\d+)?)/);
-                    if (match) {
-                        setAddress(match[0].trim());
-                    } else {
-                        // 정규식에 매칭되지 않을 경우 전체 주소 사용
-                        setAddress(service.address);
-                    }
-                }
-            } catch (error) {
-                console.error('주소 처리 중 오류 발생:', error);
-                setAddress('주소 정보 없음'); // 오류 발생 시 기본값
-            }
-        };
+        if (proItem?.address) {
+            // 정규식으로 주소에서 "서울 서대문구 통일로39가길 57"까지만 추출
+            const match = proItem.address.match(/.+?( \d+(?:-\d+)?)/);
 
-        setAddressFunction();
-    }, [service]);
+            if (match) {
+                setAddress(match[0].trim());
+            } else {
+                // 정규식에 매칭되지 않을 경우 전체 주소 사용
+                setAddress(proItem.address);
+            }
+        }
+    }, []);
 
     return (
         <div className="infoWrap">
@@ -50,14 +42,14 @@ const ProInfo = ({ proItem, serviceItem, service }) => {
                 <div className="statistics-info">
                     <div className="statistics-info-item">
                         <div className="statistics-info-item-header">고용</div>
-                        <div className="statistics-info-item-contents">{proItem.reservation}</div>
+                        <div className="statistics-info-item-contents">{proItem.reservationCount}</div>
                     </div>
                     <div className="statistics-info-item">
                         <div className="statistics-info-item-header">리뷰</div>
                         <div className="statistics-info-item-contents">
                             ⭐
                             <span className="rate">{proItem.star}</span>
-                            <span className="count">(15)</span>
+                            <span className="count">({proItem.reviewCount})</span>
                         </div>
                     </div>
                 </div>

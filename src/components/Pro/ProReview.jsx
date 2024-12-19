@@ -2,22 +2,22 @@ import React, { useEffect } from 'react';
 import "../../css/pro/ProReview.css";
 import { Link } from 'react-router-dom';
 
-const ProReview = ({ proItem, serviceItem, service }) => {
+const ProReview = ({ proItem, review, service }) => {
     return (
-        <section className="reviews">
-            <div className="review-wrap">
-                <div className="review-list">
+        <section className="reviewsPage">
+            <div className="reviewWrap">
+                <div className="reviewList">
                     <h3>리뷰</h3>
                     <div className="summary">
-                        <div className="avg">5.0</div>
+                        <div className="avg">{review.length > 0 ? review[0].star : 0}</div>
                         <ul className="rate-star">
-                            <li>⭐</li>
-                            <li>⭐</li>
-                            <li>⭐</li>
-                            <li>⭐</li>
-                            <li>⭐</li>
+                            {[...Array(5)].map((_, index) => (
+                                <li key={index}>
+                                    {index < (review.length > 0 ? review[0].star : 0) ? '★' : '☆'}
+                                </li>
+                            ))}
                         </ul>
-                        <div className="review-count">15개 리뷰</div>
+                        <div className="review-count">{review.length} 리뷰</div>
                     </div>
                     <hr />
 
@@ -37,160 +37,30 @@ const ProReview = ({ proItem, serviceItem, service }) => {
 
                     <div className="all-review">
                         <ul className="review-container">
-                            <li>
-                                <article className="user-reivew">
-                                    <section>
-                                        <span className="author">홍**</span>
-                                        <div>
-                                            <p>행사MC</p>
-                                            ⭐ 5.0
-                                        </div>
-                                    </section>
-                                    <section>
-                                        <div className="review-content">
-                                            덕분에 너무 즐거운 체육대회였습니다^^<br />
-                                            진행을 재밌게 잘 해주셨어요<br />
-                                            많이 웃고 즐기는 체육대회가 되었습니다
-                                        </div>
-                                        <div className="review-photo">
-                                            <img src="/src/image/review1.webp" alt="리뷰사진1" />
-                                        </div>
-                                    </section>
-                                    <div><span className="date">2024.10.15</span></div>
-                                </article>
-                            </li>
-                            <li>
-                                <article className="user-reivew">
-                                    <section>
-                                        <span className="author">홍**</span>
-                                        <div>
-                                            <p>행사MC</p>
-                                            ⭐ 5.0
-                                        </div>
-                                    </section>
-                                    <section>
-                                        <div className="review-content">
-                                            덕분에 너무 즐거운 체육대회였습니다^^<br />
-                                            진행을 재밌게 잘 해주셨어요<br />
-                                            많이 웃고 즐기는 체육대회가 되었습니다
-                                        </div>
-                                        <div className="review-photo">
-                                            <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
-                                        </div>
-                                    </section>
-                                    <div><span className="date">2024.10.15</span></div>
-                                </article>
-                            </li>
-                            <li>
-                                <article className="user-reivew">
-                                    <section>
-                                        <span className="author">홍재헌</span>
-                                        <div>
-                                            <p>행사MC</p>
-                                            ⭐ 5.0
-                                        </div>
-                                    </section>
-                                    <section>
-                                        <div className="review-content">
-                                            덕분에 너무 즐거운 체육대회였습니다^^<br />
-                                            진행을 재밌게 잘 해주셨어요<br />
-                                            많이 웃고 즐기는 체육대회가 되었습니다
-                                        </div>
-                                        <div className="review-photo">
-                                            <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
-                                        </div>
-                                    </section>
-                                    <div><span className="date">2024.10.15</span></div>
-                                </article>
-                            </li>
-                            <li>
-                                <article className="user-reivew">
-                                    <section>
-                                        <span className="author">홍**</span>
-                                        <div>
-                                            <p>행사MC</p>
-                                            ⭐ 5.0
-                                        </div>
-                                    </section>
-                                    <section>
-                                        <div className="review-content">
-                                            덕분에 너무 즐거운 체육대회였습니다^^<br />
-                                            진행을 재밌게 잘 해주셨어요<br />
-                                            많이 웃고 즐기는 체육대회가 되었습니다
-                                        </div>
-                                        <div className="review-photo">
-                                            <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
-                                        </div>
-                                    </section>
-                                    <div><span className="date">2024.10.15</span></div>
-                                </article>
-                            </li>
-                            <li>
-                                <article className="user-reivew">
-                                    <section>
-                                        <span className="author">홍**</span>
-                                        <div>
-                                            <p>행사MC</p>
-                                            ⭐ 5.0
-                                        </div>
-                                    </section>
-                                    <section>
-                                        <div className="review-content">
-                                            덕분에 너무 즐거운 체육대회였습니다^^<br />
-                                            진행을 재밌게 잘 해주셨어요<br />
-                                            많이 웃고 즐기는 체육대회가 되었습니다
-                                        </div>
-                                        <div className="review-photo">
-                                            <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
-                                        </div>
-                                    </section>
-                                    <div><span className="date">2024.10.15</span></div>
-                                </article>
-                            </li>
-                            <li>
-                                <article className="user-reivew">
-                                    <section>
-                                        <span className="author">홍**</span>
-                                        <div>
-                                            <p>행사MC</p>
-                                            ⭐ 5.0
-                                        </div>
-                                    </section>
-                                    <section>
-                                        <div className="review-content">
-                                            덕분에 너무 즐거운 체육대회였습니다^^<br />
-                                            진행을 재밌게 잘 해주셨어요<br />
-                                            많이 웃고 즐기는 체육대회가 되었습니다
-                                        </div>
-                                        <div className="review-photo">
-                                            <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
-                                        </div>
-                                    </section>
-                                    <div><span className="date">2024.10.15</span></div>
-                                </article>
-                            </li>
-                            <li>
-                                <article className="user-reivew">
-                                    <section>
-                                        <span className="author">홍**</span>
-                                        <div>
-                                            <p>행사MC</p>
-                                            ⭐ 5.0
-                                        </div>
-                                    </section>
-                                    <section>
-                                        <div className="review-content">
-                                            덕분에 너무 즐거운 체육대회였습니다^^<br />
-                                            진행을 재밌게 잘 해주셨어요<br />
-                                            많이 웃고 즐기는 체육대회가 되었습니다
-                                        </div>
-                                        <div className="review-photo">
-                                            <img src="/src/image/review1.webp" alt="리뷰사진1" width="100" height="100" />
-                                        </div>
-                                    </section>
-                                    <div><span className="date">2024.10.15</span></div>
-                                </article>
-                            </li>
+                            {review.map((reviewItem) => (
+                                <li key={reviewItem.reviewNo}>
+                                    <article className="user-reivew">
+                                        <section>
+                                            <span className="author">{reviewItem.memberName}</span>
+                                            <div>
+                                                <p>{reviewItem.subject}</p>
+                                                ⭐ {reviewItem.star}
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <div className="review-content">
+                                                {reviewItem.reviewContent}
+                                            </div>
+                                            <div className="review-photo">
+                                                {reviewItem.imageUuidNames && reviewItem.imageUuidNames.length > 0 && (
+                                                    <img src={`https://kr.object.ncloudstorage.com/moeego/storage/${reviewItem.imageUuidNames[0]}`} alt="리뷰사진" />
+                                                )}
+                                            </div>
+                                        </section>
+                                        <div><span className="date">{reviewItem.elapsedTime}</span></div>
+                                    </article>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

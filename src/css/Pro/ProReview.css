@@ -1,4 +1,4 @@
-.reviews {
+.reviewsPage {
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -14,22 +14,26 @@
     margin-bottom: 2em;
 }
 
-.reviews div {
+.reviewsPage .reviewWrap {
     width: 100%;
 }
 
-.reviews h3 {
+.reviewsPage .reviewWrap .reviewList {
+    width: 100%;
+}
+
+.reviewsPage .reviewWrap .reviewList h3 {
     color: #444;
     margin-bottom: 15px;
 }
 
-.reviews .summary {
+.reviewsPage .reviewWrap .reviewList .summary {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.reviews .avg {
+.reviewsPage .reviewWrap .reviewList .summary .avg {
     font-size: 32px;
     font-weight: bold;
     color: #222;
@@ -37,25 +41,25 @@
     margin-left: 14px;
 }
 
-.reviews .rate-star {
+.reviewsPage .reviewWrap .reviewList .summary .rate-star {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
 }
 
-.reviews .rate-star li {
+.reviewsPage .reviewWrap .reviewList .summary .rate-star li {
     color: #f39c12;
     font-size: 20px;
 }
 
-.reviews .review-count {
+.reviewsPage .reviewWrap .reviewList .summary .review-count {
     font-size: 14px;
     color: #888;
     margin-left: 20px;
 }
 
-.reviews .checkbox {
+.reviewsPage .checkbox {
     display: flex;
     align-items: center;
     font-size: 14px;
@@ -64,17 +68,17 @@
     margin-bottom: 10px;
 }
 
-.reviews .checkbox svg {
+.reviewsPage .checkbox svg {
     margin-right: 10px;
 }
 
-.reviews .dropdown-btn {
+.reviewsPage .dropdown-btn {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.reviews .sort-btn {
+.reviewsPage .dropdown-btn div .sort-btn {
     background-color: transparent;
     border: 1px solid #ccc;
     padding: 8px 15px;
@@ -88,11 +92,11 @@
     position: relative;
 }
 
-.reviews .sort-btn:hover {
+.reviewsPage .dropdown-btn div .sort-btn:hover {
     background-color: #f1f1f1;
 }
 
-.reviews .dropdown-menu {
+.reviewsPage .dropdown-btn div .dropdown-menu {
     display: none;
     list-style: none;
     position: absolute;
@@ -107,40 +111,40 @@
     height: 8rem;
 }
 
-.reviews .dropdown-menu li a {
+.reviewsPage .dropdown-btn div .dropdown-menu li a {
     font-size: 0.825rem;
     color: #323232;
 }
 
-.reviews .dropdown-btn:hover .dropdown-menu {
+.reviewsPage .dropdown-btn:hover .dropdown-menu {
     display: block;
 }
 
-.reviews .sort-item {
+.reviewsPage .sort-item {
     padding: 8px;
     cursor: pointer;
 }
 
-.reviews .sort-item:hover {
+.reviewsPage .sort-item:hover {
     background-color: #f1f1f1;
 }
 
-.reviews .all-review {
+.reviewsPage .all-review {
     width: 100%;
     margin-top: 20px;
 }
 
-.reviews .review-container {
+.reviewsPage .review-container {
     list-style: none;
     padding: 0;
     margin-bottom: 20px;
 }
 
-.reviews .review-container li {
+.reviewsPage .review-container li {
     margin-bottom: 1em;
 }
 
-.reviews .user-reivew {
+.reviewsPage .user-review {
     background-color: #fff;
     padding: 25px;
     border-radius: 10px;
@@ -149,18 +153,18 @@
     flex-direction: column;
 }
 
-.reviews .user-reivew section:nth-child(1) {
+.reviewsPage .user-review section:nth-child(1) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 
-.reviews .user-reivew section:nth-child(1) span {
+.reviewsPage .user-review section:nth-child(1) span {
     width: 20%;
 }
 
-.reviews .user-reivew section:nth-child(1) div {
+.reviewsPage .user-review section:nth-child(1) div {
     display: flex;
     align-items: center;
     gap: 1em;
@@ -168,7 +172,7 @@
     justify-content: right;
 }
 
-.reviews .user-reivew section:nth-child(2) {
+.reviewsPage .user-review section:nth-child(2) {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -176,37 +180,32 @@
     gap: 1em;
 }
 
-.reviews .author {
+.reviewsPage .author {
     font-weight: bold;
     color: #333;
 }
 
-.reviews .review-photo {
+.reviewsPage .review-photo {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 15%;
 }
 
-/* .reviews .review-photo img {
-    width: 100%;
-    height: 5.485em;
-    border-radius: 20%;
-} */
-.reviews .review-photo img {
+.reviewsPage .review-photo img {
     width: 5rem;
     height: 100%;
     border-radius: 20%;
 }
 
-.reviews .review-content {
+.reviewsPage .review-content {
     width: 85%;
     font-size: 14px;
     color: #555;
     line-height: 1.6;
 }
 
-.reviews .date {
+.reviewsPage .date {
     font-size: 12px;
     color: #888;
     margin-top: 10px;
@@ -214,7 +213,7 @@
 
 @media (max-width: 1250px){
 
-    .reviews {
+    .reviewsPage {
         padding: 20px;
         background-color: #f9f9f9;
         border-radius: 10px;
@@ -229,30 +228,24 @@
         flex-direction: column;
     }
 
-    .review-list {
+    .reviewsPage .review-list {
         width: 100%;
     }
 
-    .reviews .review-content {
+    .reviewsPage .review-content {
         width: 75%;
         font-size: 14px;
         color: #555;
         line-height: 1.6;
     }
 
-    /* .reviews .review-photo img {
-        width: 100%;
-        height: 5.485em;
-        border-radius: 20%;
-    } */
-
-    .reviews .review-photo img {
+    .reviewsPage .review-photo img {
         width: 5rem;
         height: 5rem;
         border-radius: 20%;
     }
 
-    .reviews .user-reivew section:nth-child(2) {
+    .reviewsPage .user-reivew section:nth-child(2) {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -260,14 +253,14 @@
         /* gap: 1em; */
     }
 
-    .reviews .review-photo {
+    .reviewsPage .review-photo {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 40%;
     }
 
-    .reviews .dropdown-menu {
+    .reviewsPage .dropdown-menu {
         display: none;
         list-style: none;
         position: absolute;
@@ -282,14 +275,14 @@
         height: 7.55rem;
     }
 
-    .reviews .avg {
+    .reviewsPage .avg {
         font-size: 32px;
         font-weight: bold;
         color: #222;
         margin-right: 15px;
     }
 
-    .reviews .user-reivew {
+    .reviewsPage .user-reivew {
         background-color: #fff;
         padding: 20px;
         border-radius: 10px;

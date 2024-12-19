@@ -7,7 +7,7 @@ const SearchList = ({ item }) => {
 
     const handleProViewNavigation = (serviceItem) => {
         navigate('/pro/proview', {
-            state: { item, serviceItem },
+            state: { item: item, serviceItem },
             // search: `?proNo=${item.proNo}`
         });
     };
@@ -25,7 +25,7 @@ const SearchList = ({ item }) => {
                             <h3>{item.name}</h3>
                         </div>
                         <div className='proSearchListProInfoWrap'>
-                            <span>⭐️ 5.0</span>
+                            <span>⭐️ {item.star} ({item.reviewCount})</span>
                         </div>
                         <p className='proSearchListIntro'>{item.oneIntro}</p>
                     </div>
@@ -33,7 +33,7 @@ const SearchList = ({ item }) => {
                 <div className='proSearchListProfileWrap'>
                     <div className="user-profile-picture">
                         <img
-                            src={`https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}`}
+                            src={item.profileImage ? `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}` : '/image/default.svg'}
                             width={150}
                             height={150}
                             alt={item.name}

@@ -5,7 +5,7 @@ import WeekCalendar from './WeekCalendar';
 
 import apiAxios from "../../api/apiAxios";
 
-const Reservation = ({ closeModal, proItem, serviceItem, service }) => {
+const Reservation = ({ closeModal, proItem, reivew, service }) => {
     //------------------------------------
     const [userno, setUserno] = useState(localStorage.getItem("userno") || '');
 
@@ -44,7 +44,7 @@ const Reservation = ({ closeModal, proItem, serviceItem, service }) => {
 
 
         apiAxios
-            .post('/api/reservation', reservationData)
+            .post('/api/pro/reservation', reservationData)
             .then(response => {
                 console.log('예약 성공:', response.data);
                 alert('예약이 완료되었습니다.');
