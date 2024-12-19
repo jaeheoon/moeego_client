@@ -7,7 +7,7 @@ import ProDetail from './ProDetail';
 import ProReview from './ProReview';
 import Reservation from './Reservation';
 import ProSearchPaging from './ProSearchPaging';
-import "../../css/Pro/ProView.css";
+import "../../css/Pro/Proview.css";
 import "../../css/Pro/SearchList.css";
 
 const ProView = () => {
