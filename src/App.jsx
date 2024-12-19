@@ -20,8 +20,8 @@ import JoinSuccess from './components/join/JoinSuccess.jsx';
 import Logout from './components/login/Logout.jsx';
 
 // pro
-import Prosignup from "./components/pro/Prosignup.jsx";
-import ProjoinSub from "./components/pro/ProSub.jsx";
+import Prosignup from "./components/Pro/Prosignup.jsx";
+import ProjoinSub from "./components/Pro/ProSub.jsx";
 import ProjoinMain from "./components/Pro/ProjoinMain.jsx";
 import ProSearch from "./components/ProSearch/ProSearch";
 import ProRequest from "./components/Pro/ProRequest.jsx";
