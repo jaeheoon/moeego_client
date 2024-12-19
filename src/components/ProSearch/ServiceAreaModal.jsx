@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceModal from './ServiceModal';
 import AreaModal from './AreaModal';
-import '../../css/pro/ServiceAreaModal.css';
+import '../../css/Pro/ServiceAreaModal.css';
 
 const ServiceAreaModal = ({ onClose, activeModal, setActiveModal, handleServiceSelect, handleAreaSelect }) => {
     const handleOverlayClick = () => {
