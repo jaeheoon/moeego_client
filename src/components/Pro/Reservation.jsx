@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../../css/Pro/Reservation.css";
 import WeekCalendar from './WeekCalendar';
-
 import apiAxios from "../../api/apiAxios";
 
 const Reservation = ({ closeModal, proItem, reivew, service }) => {
@@ -28,7 +27,7 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
             return;
         }
 
-        const selectedTimes = Object.keys(checkedItems).filter(time => checkedItems[time]);
+        const selectedTimes = Object.keys(checkedItems).filter((time) => checkedItems[time]);
 
         if (selectedTimes.length === 0) {
             alert('시간을 선택해주세요!');
@@ -36,31 +35,43 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
         }
 
         const formattedDate = new Date(selectedDate);
-        const day = String(formattedDate.getDate()).padStart(2, '0'); // 2자리로 맞추기
-        const month = String(formattedDate.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
-        const year = String(formattedDate.getFullYear()).slice(2); // 연도에서 마지막 2자리만 사용
+        const year = formattedDate.getFullYear();
+        const month = String(formattedDate.getMonth() + 1).padStart(2, '0');
+        const day = String(formattedDate.getDate()).padStart(2, '0');
+        const formattedDateString = `${year}-${month}-${day}`;
 
-        const formattedDateString = `${day}-${month}-${year}`;
+        // "HH:mm" 형식으로 전달받은 시간을 "HH:mm:ss"로 변환
+        const formattedTimes = selectedTimes.map((time) => {
+            const [hour, minute] = time.split(':');
+            return `${hour}:${minute}:00`; // HH:mm:ss 형식으로 변경
+        });
 
         const reservationData = {
             memberNo: userno,
             proItemNo: service.proItemNo,
             startDate: formattedDateString,
-            startTimes: selectedTimes,
+            startTimes: formattedTimes, // 시간값을 ["09:00:00", "10:00:00"] 이런 형식으로 전달
         };
 
         console.log('예약 정보:', reservationData);
-        alert(reservationData.memberNo + ", " + reservationData.proItemNo + ", " + reservationData.startDate + ", " + reservationData.startTimes)
-
+        console.log(
+            reservationData.memberNo +
+            ', ' +
+            reservationData.proItemNo +
+            ', ' +
+            reservationData.startDate +
+            ', ' +
+            reservationData.startTimes
+        );
 
         apiAxios
             .post('/api/reservation', reservationData)
-            .then(response => {
+            .then((response) => {
                 console.log('예약 성공:', response.data);
                 alert('예약이 완료되었습니다.');
                 closeModal();
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('예약 실패:', error);
                 alert('예약에 실패했습니다. 다시 시도해주세요.');
             });
@@ -87,9 +98,7 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                             </ol>
                         </section>
                         <section className="product-title">
-                            <h3>
-                                {service.subject}
-                            </h3>
+                            <h3>{service.subject}</h3>
                         </section>
                         <section>
                             <div className="product-options">
@@ -110,7 +119,7 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                                             "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00",
                                             "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
                                         ].map((time, index) => (
-                                            <li className="reservation-time-item" key={index} onClick={() => handleTimeSelection(time)} >
+                                            <li className="reservation-time-item" key={index} onClick={() => handleTimeSelection(time)}>
                                                 <label className="custom-checkbox">
                                                     <input
                                                         type="checkbox"
