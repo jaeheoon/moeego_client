@@ -36,7 +36,7 @@ import Write from "./components/articles/Write.jsx";
 import Update from "./components/articles/Update.jsx";
 import FreeBoardForm from "./components/articles/FreeBoardForm/FreeBoardForm.jsx";
 import LatestReview from "./components/articles/FreeBoardForm/LatestReview.jsx";
-import ViewPage from './components/articles/viewPage/ViewPage.jsx';
+import ViewPage from './components/articles/viewpage/ViewPage.jsx';
 
 // myPage
 import Review from "./components/mypage/Review.jsx";
