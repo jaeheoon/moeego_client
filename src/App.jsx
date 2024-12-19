@@ -83,6 +83,7 @@ import { SignOutProvider } from './context/mypage/SignOutContext.jsx';
 
 // OAuth2
 import Oauth2Redirect from './api/Oauth2Redirect.jsx'
+import KakaoMap from "./components/ProSearch/KakaoMap.jsx";
 
 const App = () => {
   return (
@@ -176,6 +177,10 @@ const App = () => {
                               <Route path="/admin/event-write" element={<EventWrite />} />
                               <Route path="/admin/event-update" element={<EventUpdate />} />
                               <Route path="/modal" element={<ServiceAreaModal />} />
+
+                              {/* 카카오맵 */}
+                              <Route path="/map" element={<KakaoMap />} />
+
                             </Routes>
                             {!window.location.pathname.startsWith('/admin') && <Footer />}
                           </ProProvider>
