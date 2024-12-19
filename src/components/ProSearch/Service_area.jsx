@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "../../css/pro/Service_area.css";
+import "../../css/Pro/Service_area.css";
 import ServiceAreaModal from './ServiceAreaModal'; // 모달 컴포넌트 import
 
 const Service_area = ({ service, area, onServiceAreaChange }) => {
@@ -61,7 +61,7 @@ const Service_area = ({ service, area, onServiceAreaChange }) => {
         } else {
             document.body.style.overflow = 'auto'; // 모달 닫힐 때 스크롤 활성화
         }
-        
+
         // 컴포넌트 언마운트 시 overflow 원래대로 복구
         return () => {
             document.body.style.overflow = 'auto';
@@ -91,10 +91,10 @@ const Service_area = ({ service, area, onServiceAreaChange }) => {
             </button>
 
             {isModalOpen && (
-                <ServiceAreaModal 
-                    onClose={closeModal} 
-                    activeModal={activeModal} 
-                    setActiveModal={setActiveModal} 
+                <ServiceAreaModal
+                    onClose={closeModal}
+                    activeModal={activeModal}
+                    setActiveModal={setActiveModal}
                     handleServiceSelect={handleServiceSelect} // 서비스 선택 핸들러 전달
                     handleAreaSelect={handleAreaSelect} // 지역 선택 핸들러 전달
                 />

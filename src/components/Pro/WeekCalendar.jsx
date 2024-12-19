@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import "../../css/pro/WeekCalendar.css";
+import "../../css/Pro/WeekCalendar.css";
 
-const WeekCalendar = ({selectedDate, setSelectedDate }) => {
+const WeekCalendar = ({ selectedDate, setSelectedDate }) => {
   const [date, setDate] = useState(new Date()); // 현재 날짜
   const [days, setDays] = useState([]); // 7일 간의 날짜 배열
 
   const today = new Date();
-  const threeWeeksLater = new Date(today.getTime() + 27 * 86400000); 
+  const threeWeeksLater = new Date(today.getTime() + 27 * 86400000);
 
   const getDayOfWeek = (date) => {
     const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
@@ -16,10 +16,10 @@ const WeekCalendar = ({selectedDate, setSelectedDate }) => {
   // 오늘부터 시작해서 7일 간의 날짜 배열을 생성하는 함수
   const makeSevenDaysArr = (startDate) => {
     const daysArr = [];
-    for (let i = 0; i < 7; i++) { 
+    for (let i = 0; i < 7; i++) {
       const newDate = new Date(startDate);
       newDate.setDate(startDate.getDate() + i);
-      
+
       if (newDate <= threeWeeksLater) {
         daysArr.push(newDate);
       }
@@ -35,9 +35,9 @@ const WeekCalendar = ({selectedDate, setSelectedDate }) => {
   }, []);
 
   const moveWeek = (direction) => {
-    const newDate = new Date(date.valueOf() + direction * 86400000 * 7); 
+    const newDate = new Date(date.valueOf() + direction * 86400000 * 7);
     const newDays = makeSevenDaysArr(newDate);
-    
+
     if (newDays.length > 0) {
       setDate(newDate);
       setDays(newDays);
@@ -55,7 +55,7 @@ const WeekCalendar = ({selectedDate, setSelectedDate }) => {
   };
 
   // 선택된 날짜 또는 기본 날짜를 기준으로 년월 표시
-  const currentMonthYear = selectedDate 
+  const currentMonthYear = selectedDate
     ? `${selectedDate.getFullYear()}년 ${selectedDate.getMonth() + 1}월`
     : `${date.getFullYear()}년 ${date.getMonth() + 1}월`;
 
@@ -64,13 +64,13 @@ const WeekCalendar = ({selectedDate, setSelectedDate }) => {
       <div className="calendar-header">
         <h3>{currentMonthYear}</h3>
       </div>
-      
+
       <div className="week">
         <button
           onClick={() => moveWeek(-1)}
           disabled={date <= today}
         >
-          &lt; 
+          &lt;
         </button>
 
         {days.map((date, index) => (
@@ -80,7 +80,7 @@ const WeekCalendar = ({selectedDate, setSelectedDate }) => {
             onClick={() => handleSelectDate(date)}
             style={{
               cursor: 'pointer', // 모든 날짜 클릭 가능
-              backgroundColor: isDateSelected(date) ? '#522823' : '', 
+              backgroundColor: isDateSelected(date) ? '#522823' : '',
               color: isDateSelected(date) ? '#fff' : ''
             }}
           >
@@ -88,7 +88,7 @@ const WeekCalendar = ({selectedDate, setSelectedDate }) => {
             <span>{date.getDate()}</span>
           </div>
         ))}
-        
+
         <button
           onClick={() => moveWeek(1)}
           disabled={date >= threeWeeksLater}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Service_area from './service_area';
+import Service_area from './Service_area';
 
 const SearchHeader = () => {
     return (

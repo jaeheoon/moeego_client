@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import "../../css/pro/Reservation.css";
+import "../../css/Pro/Reservation.css";
 import WeekCalendar from './WeekCalendar';
 
 import apiAxios from "../../api/apiAxios";

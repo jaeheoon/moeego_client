@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/pro/ProDetail.css";
+import "../../css/Pro/ProDetail.css";
 
 const ProDetail = ({ proItem, serviceItem, service }) => {
     return (

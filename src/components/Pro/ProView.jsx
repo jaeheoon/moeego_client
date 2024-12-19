@@ -7,8 +7,8 @@ import ProDetail from './ProDetail';
 import ProReview from './ProReview';
 import Reservation from './Reservation';
 import ProSearchPaging from './ProSearchPaging';
-import "../../css/pro/ProView.css";
-import "../../css/pro/SearchList.css";
+import "../../css/Pro/ProView.css";
+import "../../css/Pro/SearchList.css";
 
 const ProView = () => {
     const location = useLocation();

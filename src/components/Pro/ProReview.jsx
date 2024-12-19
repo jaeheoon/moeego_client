@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import "../../css/pro/ProReview.css";
+import "../../css/Pro/ProReview.css";
 import { Link } from 'react-router-dom';
 
 const ProReview = ({ proItem, review, service }) => {

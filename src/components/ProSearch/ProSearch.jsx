@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchHeader from './SearchHeader';
 import Content from './Content';
-import '../../css/pro/ProSearch.css';
+import '../../css/Pro/ProSearch.css';
 const ProSearch = () => {
     return (
         <div className='proSearchPage'>

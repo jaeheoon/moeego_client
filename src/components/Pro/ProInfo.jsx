@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import "../../css/pro/ProInfo.css";
+import "../../css/Pro/ProInfo.css";
 
 const ProInfo = ({ proItem, serviceItem, service }) => {
     const [address, setAddress] = useState('');
