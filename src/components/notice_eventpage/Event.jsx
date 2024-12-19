@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { ArticleContext } from '../../context/article/ArticleContext';
 import { Link } from 'react-router-dom';
-import Notice_eventItem from './notice_eventItem';
+import Notice_eventItem from './Notice_eventItem';
 
 const Notice = () => {
     const mainCateNo = 'event'; // 공지사항 카테고리 번호
@@ -22,7 +22,7 @@ const Notice = () => {
                     {eventArticles.length > 0 ? (
                         eventArticles.map((item) => (
                             <Link key={item.articleNo} to={`/noticeview?article_no=${item.articleNo}`}>
-                                <Notice_eventItem item = {item}/>
+                                <Notice_eventItem item={item} />
                             </Link>
                         ))
                     ) : (
