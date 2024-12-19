@@ -13,7 +13,6 @@ const ReviewWrite = () => {
     // State for form data
     const [formData, setFormData] = useState({
         rating:'',
-        mainCateNo: 1,      // 이전 페이지에서 데이터 받아옴
         memberNo: userNo,
         proItemNo:4,        // 이전 페이지에서 데이터 받아옴
         content: '',
@@ -80,7 +79,6 @@ const ReviewWrite = () => {
         const data = new FormData();
         // Add form data fields
         data.append("star", rating); // 평점 추가
-        data.append("mainCateNo", formData.mainCateNo);
         data.append("memberNo", formData.memberNo);
         data.append("proItemNo", formData.proItemNo);
         data.append("reviewContent", formData.content);

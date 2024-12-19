@@ -1,19 +1,19 @@
-.LatestReviewPage {
+.free-board-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 100%;
 }
-.LatestReviewPage .LatestReviewTop{
+.free-board-container .LatestReviewTop{
     width:100%;
 }
-.LatestReviewPage .ReviewWrap {
-    width: 80%;
+.free-board-container .ReviewWrap {
+    width: 100%;
     margin-top: 5%;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap {
+.free-board-container .ReviewWrap .ReviewListWrap {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -43,22 +43,22 @@
     width: 95%;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst {
     width: 100%;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul {
     width: 100%;
     list-style: none;
     margin-left: 0;
     padding-left: 0;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li {
     width: 100%;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article {
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -71,51 +71,27 @@
     padding-bottom: 2em;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(1) {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(1) {
     display: flex;
     align-items: center;
     justify-content: left;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(1) span {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(1) span {
     font-weight: 600;
     color: #232323;
     font-size: 12pt;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-}
-
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) .ImageFeat {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    height: 9em;
-}
-
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) > *:nth-child(n + 7) {
-    display: none;
-}
-
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) .ImageFeat img {
-    width: 110px;
-    height: 110px;
-    border-radius: 10px;
-}
-
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: left;
     width: 100%;
-    margin-top: -1em;
+    margin-top: 0;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) p {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) p {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -123,24 +99,54 @@
     font-size: 10pt;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(4) {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) .ImageFeat {
+    display: flex;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) > *:nth-child(n + 7) {
+    display: none;
+}
+
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) .ImageFeat img {
+    width: 110px;
+    height: 110px;
+    border-radius: 10px;
+}
+
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(4) {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(4) .content {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(4) .content {
     white-space: pre-wrap;
     width: 100%;
     color: #323232;
     font-size: 12pt;
 }
 
-.LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(5) span {
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(5){
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(5) span {
     color: #323232;
     font-size: 11pt;
 }
-.LatestReviewPage .myReviewPageGo{
+.free-board-container .myReviewPageGo{
     display: flex;
     align-items: center;
     width: 100%;
@@ -152,7 +158,7 @@
     color:black;
 }
 
-.LatestReviewPage .myReviewPageGo div:nth-child(1) {
+.free-board-container .myReviewPageGo div:nth-child(1) {
     display: flex;
     align-items: center;
     text-align: left;
@@ -164,31 +170,37 @@
     width: 95%
 }
 
-.LatestReviewPage .myReviewPageGo div:nth-child(2) {
+.free-board-container .myReviewPageGo div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 5%;
 }
 
-.LatestReviewPage .myReviewPageGo div:nth-child(2) img {
+.free-board-container .myReviewPageGo div:nth-child(2) img {
     width: 20px;
     height: 20px;
 }
 
 @media screen and (max-width: 1250px) {
-    .LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) {
+    .free-board-container{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3){
         width: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) .ImageFeat img {
+    .free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) .ImageFeat img {
         width: 100%;
         border-radius: 10px;
     }
 
-    .LatestReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) > *:nth-child(n + 4) {
+    .free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) > *:nth-child(n + 4) {
         display: none;
     }
 
