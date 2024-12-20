@@ -323,7 +323,7 @@ cursor: pointer;
     text-align: center;
 }
 
-.modal-overlay {
+.reservation-wrap .modal-overlay {
     width: 35%;
     display: flex;
     align-items: center;
@@ -336,7 +336,7 @@ cursor: pointer;
     box-sizing: border-box;
 }
 
-.modal-content {
+.reservation-wrap .modal-content {
     width: 100%;
     display: flex;
     align-items: center;
@@ -344,14 +344,14 @@ cursor: pointer;
     flex-direction: column;
 }
 
-.modal-content .closeBtn {
+.reservation-wrap .modal-content .closeBtn {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: right;
 }
 
-.modal-content section {
+.reservation-wrap .modal-content section {
     width: 100%;
     display: flex;
     align-items: center;
@@ -359,7 +359,7 @@ cursor: pointer;
     flex-direction: column;
 }
 
-.modal-content section ol {
+.reservation-wrap .modal-content section ol {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -368,7 +368,7 @@ cursor: pointer;
     margin: 0 auto;
 }
 
-.modal-content section .product-options {
+.reservation-wrap .modal-content section .product-options {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -376,14 +376,14 @@ cursor: pointer;
     width: 100%;
 }
 
-.modal-content section .product-options .options-wrapper {
+.reservation-wrap .modal-content section .product-options .options-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 90%;
 }
 
-.modal-content section .product-options .product-reservation-date {
+.reservation-wrap .modal-content section .product-options .product-reservation-date {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -391,7 +391,7 @@ cursor: pointer;
     width: 100%;
 }
 
-.modal-content section .product-options .product-reservation-date .picker-items {
+.reservation-wrap .modal-content section .product-options .product-reservation-date .picker-items {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -400,14 +400,14 @@ cursor: pointer;
     margin: 0 auto;
 }
 
-.modal-content section .product-options .product-reservation-date .picker-items .picker-item {
+.reservation-wrap .modal-content section .product-options .product-reservation-date .picker-items .picker-item {
     display: flex;
     justify-content: center;
     align-items: center;
     width: calc(100% / 7);
 }
 
-.modal-content section .product-options .product-reservation-date .picker-items .picker-item .custom-radio {
+.reservation-wrap .modal-content section .product-options .product-reservation-date .picker-items .picker-item .custom-radio {
     width: 100%;
 }
 

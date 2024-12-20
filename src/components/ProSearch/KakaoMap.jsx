@@ -5,7 +5,7 @@ const { kakao } = window;
 
 const KakaoMap = () => {
   const container = useRef(null); 
-  const [map, setMap] = useState(null); // map 상태 관리
+  const [map, setMap] = useState(null); 
 
   useEffect(() => {
     // Geolocation API로 사용자의 현재 위치 가져오기
@@ -28,10 +28,9 @@ const KakaoMap = () => {
           // map 상태로 설정
           setMap(kakaoMap);
 
-          // 마커 추가 (선택 사항)
           const marker = new kakao.maps.Marker({
-            position: userPosition, // 마커 위치
-            map: kakaoMap, // 지도에 마커 표시
+            position: userPosition, 
+            map: kakaoMap, 
           });
         },
         (error) => {
@@ -48,6 +47,7 @@ const KakaoMap = () => {
     } else {
       alert("현재 위치를 가져올 수 없습니다.");
     }
+
   }, []);
 
   return <div className="mapPage" ref={container}></div>;
