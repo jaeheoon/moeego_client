@@ -355,7 +355,7 @@ const ArticleProvider = ({ children }) => {
         setIsLoading(true);
         try {
             await apiAxios.post("/api/review/write", formData);
-            navigate('/mypage/review');
+            navigate('/mypage/review/0');
         } catch (err) {
             console.error("Error writing article:", err);
             setError(err);
@@ -386,12 +386,22 @@ const ArticleProvider = ({ children }) => {
     };
 
     // 조회수
-    const hitUpdate = async (articleNo) => {
+    const viewUpdate = async (articleNo) => {
         try {
             const response = await apiAxios.put(`/api/article/hit?articleNo=${articleNo}`);
             console.log('조회수 증가 성공:', response.data);
         } catch (error) {
             console.error('조회수 증가 실패:', error);
+        }
+    };
+
+    // 좋아요
+    const likeUpdate = async (articleNo) => {
+        try {
+            const response = await apiAxios.put(`/api/article/like?articleNo=${articleNo}`);
+            console.log('좋아요 증가 성공:', response.data);
+        } catch (error) {
+            console.error('좋아요 증가 실패:', error);
         }
     };
 
@@ -433,6 +443,9 @@ const ArticleProvider = ({ children }) => {
         setArticleCurrentPage,
         reviewWrite,
         reviewImage,
+        deleteReview,
+        viewUpdate,
+        likeUpdate,
         GoWrite,
         GoLogin
     };

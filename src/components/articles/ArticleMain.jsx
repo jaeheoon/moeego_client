@@ -19,9 +19,11 @@ const ArticleMain = () => {
             isLoading,
             GoWrite,
             GoLogin,
+            viewUpdate, //조회수 증가 함수
             articleCurrentPage  } = useContext(ArticleContext);
     const {isLoggedIn, loginEmail, loginUser, loginStatus} = useContext(AuthContext);
     const [hotArticles, setHotArticles] = useState([]);
+    const navigate = useNavigate();
 
     // 인기 게시글
     useEffect(() => {
@@ -48,6 +50,41 @@ const ArticleMain = () => {
     if (isLoading) return <div><Loading /></div>;
 
     const latestNotice = noticeArticles.length > 0 ? noticeArticles[0] : null;
+
+    // 조회수 증가 후 상세보기 이동
+    const handleArticleClick = async (articleNo) => {
+        const localStorageKey = "viewedArticles"; // 로컬 스토리지 키
+        const currentTime = new Date().toISOString(); // 현재 시간 ISO 형식
+    
+        // 1. 로컬 스토리지에서 데이터 가져오기
+        const viewedArticles = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+    
+        // 2. 해당 게시글의 마지막 조회 시간 가져오기
+        const lastViewedTime = viewedArticles[articleNo];
+    
+        // 3. 마지막 조회 시간이 존재하고 24시간 이내인 경우 조회수 증가 차단
+        if (lastViewedTime) {
+            const lastViewedDate = new Date(lastViewedTime);
+            const timeDifference = (new Date() - lastViewedDate) / (1000 * 60 * 60); // 시간 차이 계산
+    
+            if (timeDifference < 24) {
+                navigate(`/article/viewpage?article_no=${articleNo}`); // 바로 상세 페이지 이동
+                return;
+            }
+        }
+    
+        // 4. 24시간이 지났거나 첫 조회인 경우 조회수 증가
+        try {
+            await viewUpdate(articleNo); // 조회수 증가 요청
+            // 로컬 스토리지 갱신
+            viewedArticles[articleNo] = currentTime;
+            localStorage.setItem(localStorageKey, JSON.stringify(viewedArticles));
+    
+            navigate(`/article/viewpage?article_no=${articleNo}`); // 상세보기 페이지로 이동
+        } catch (error) {
+            console.error("Error updating view count:", error);
+        }
+    };
 
     return (
         <div className='ArticleMainContainer'>
@@ -88,7 +125,7 @@ const ArticleMain = () => {
                             {articles.length > 0 ? (
                                     <>
                                         {hotArticles[0] && (
-                                            <Link className='HotWrap' to={`/article/viewpage?article_no=${hotArticles[0].articleNo}`}>
+                                            <div className='HotWrap' onClick={ () => handleArticleClick(hotArticles[0].articleNo)}>
                                                 <div className='viewWrap'>
                                                     <div className='titleWrap'>
                                                         <div>{hotArticles[0].subject}</div>
@@ -100,10 +137,10 @@ const ArticleMain = () => {
                                                         <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>{hotArticles[0].commentCount}</span></div>
                                                     </div>
                                                 </div>
-                                            </Link>
+                                            </div>
                                         )}
                                         {hotArticles[1] && (
-                                            <Link className='HotWrap' to={`/article/viewpage?article_no=${hotArticles[1].articleNo}`}>
+                                            <div className='HotWrap' onClick={ () => handleArticleClick(hotArticles[1].articleNo)}>
                                                 <div className='viewWrap'>
                                                     <div className='titleWrap'>
                                                         <div>{hotArticles[1].subject}</div>
@@ -115,7 +152,7 @@ const ArticleMain = () => {
                                                         <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>{hotArticles[1].commentCount}</span></div>
                                                     </div>
                                                 </div>
-                                            </Link>
+                                            </div>
                                         )}
                                     </>
                                 ) : (
@@ -129,7 +166,7 @@ const ArticleMain = () => {
                                 {latestArticle.length > 0 ? (
                                     <>
                                         {latestArticle[0] && (
-                                            <Link className='LatestWrap' to={`/article/viewpage?article_no=${latestArticle[0].articleNo}`}>
+                                            <div className='LatestWrap' onClick={ () => handleArticleClick(latestArticle[0].articleNo)}>
                                                 <div className='viewWrap'>
                                                     <div className='titleWrap'>
                                                         <div>{latestArticle[0].subject}</div>
@@ -141,10 +178,10 @@ const ArticleMain = () => {
                                                         <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>{latestArticle[0].commentCount}</span></div>
                                                     </div>
                                                 </div>
-                                            </Link>
+                                            </div>
                                         )}
                                         {latestArticle[1] && (
-                                            <Link className='LatestWrap' to={`/article/viewpage?article_no=${latestArticle[1].articleNo}`}>
+                                            <div className='LatestWrap' onClick={ () => handleArticleClick(latestArticle[1].articleNo)}>
                                                 <div className='viewWrap'>
                                                     <div className='titleWrap'>
                                                         <div>{latestArticle[1].subject}</div>
@@ -156,7 +193,7 @@ const ArticleMain = () => {
                                                         <div className='imageWrap-icon'><img src='/image/chat_icon.svg' alt='chat' /><span>{latestArticle[1].commentCount}</span></div>
                                                     </div>
                                                 </div>
-                                            </Link>
+                                            </div>
                                         )}
                                     </>
                                 ) : (
@@ -169,9 +206,9 @@ const ArticleMain = () => {
                             {articles.length > 0 ? (
                                 articles.map(item => (
                                     <div className='FeedItemWrap' key={item.articleNo}>
-                                        <Link className='FeedItemLink' to={`/article/viewpage?article_no=${item.articleNo}`}>
+                                        <div className='FeedItemLink' onClick={ () => handleArticleClick(item.articleNo)}>
                                             <FeedItem item={item} />
-                                        </Link>
+                                        </div>
                                     </div>
                                 ))
                             ) : (

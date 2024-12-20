@@ -5,7 +5,9 @@
     border-bottom: 1px solid #eee;
 
 }
-
+.react-item:nth-child(1) svg{
+    cursor: pointer;
+}
 .react-item {
     display: flex;
     align-items: center;

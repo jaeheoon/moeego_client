@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import apiAxios from '../../api/apiAxios';
+import React, { useContext, useState } from 'react';
+import { ArticleContext } from '../../context/article/ArticleContext';
 
 const ReviewItem = ({ item }) => {
     const [images, setImages] = useState([]); // 서버에서 불러온 이미지 목록
+    const { deleteReview } = useContext(ArticleContext);
+
+    // 리뷰 삭제 핸들러
+    const handleDelete = () => {
+        deleteReview(item.id); // 해당 리뷰 ID를 deleteReview 함수에 전달
+    };
 
     return (
         <article>
@@ -34,7 +40,7 @@ const ReviewItem = ({ item }) => {
                 </div>
             </section>
             <section>
-                <p className='content'>
+                <p className="content">
                     {/* 리뷰 내용 */}
                     {item.reviewContent}
                 </p>
@@ -43,6 +49,12 @@ const ReviewItem = ({ item }) => {
                 {/* 리뷰 작성자와 작성 시간 */}
                 <span>작성자 : {item.memberName}</span>
                 <span>{item.elapsedTime}</span>
+            </section>
+            <section>
+                {/* 삭제 버튼 */}
+                <button onClick={handleDelete} className="deleteReviewBtn">
+                    삭제
+                </button>
             </section>
         </article>
     );

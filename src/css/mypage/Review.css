@@ -132,12 +132,30 @@
     color: #323232;
     font-size: 12pt;
 }
-
+.ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(5){
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(5) span {
     color: #323232;
     font-size: 11pt;
 }
 
+.ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(6) {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    margin-top: 0.5rem;
+}
+.ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(6) .deleteReviewBtn {
+    border: none;
+    background-color: white;
+    color: #6a7685;
+    cursor: pointer;
+    margin:0;
+    padding: 0;
+}
 @media screen and (max-width: 1250px) {
     .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(2) {
         width: 100%;
