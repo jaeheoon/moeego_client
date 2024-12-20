@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: "0.0.0.0", // 호스트를 localhost로 설정
-    port: 5173, // 포트 설정
+    port: 80, // 포트 설정
     proxy: {
       "/api": {
         target: "http://localhost:8080", // Spring Boot 서버 주소
