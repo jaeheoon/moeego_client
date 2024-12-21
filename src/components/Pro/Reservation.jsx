@@ -165,10 +165,12 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                 console.log("예약 성공:", response.data);
                 alert("예약이 완료되었습니다.");
                 closeModal();
+                window.location.reload();
             })
             .catch((error) => {
                 console.error("예약 실패:", error);
                 alert("예약에 실패했습니다. 다시 시도해주세요.");
+                window.location.reload();
             });
     };
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import SearchBar from './SearchBar';
-import SearchList from './SearchList';
-import apiAxios from '../../api/apiAxios';
-import ProSearchPaging from './ProSearchPaging';
+import React, { useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
+import SearchList from "./SearchList";
+import apiAxios from "../../api/apiAxios";
+import ProSearchPaging from "./ProSearchPaging";
 
 const Content = () => {
     const [searchListItems, setSearchListItems] = useState([]);
@@ -36,11 +36,15 @@ const Content = () => {
     };
 
     return (
-        <div className='ContentWrap'>
+        <div className="ContentWrap">
             <section>
                 <SearchBar />
-                {searchListItems.map(item => (
-                    <SearchList key={item.proNo} item={item} />
+                {searchListItems.map((item) => (
+                    <SearchList
+                        key={item.proNo}
+                        item={item}
+                        proNo={item.proNo}
+                    />
                 ))}
                 {/* Paging 컴포넌트를 삽입 */}
                 <ProSearchPaging
