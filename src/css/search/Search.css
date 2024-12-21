@@ -1,0 +1,278 @@
+.searchPage{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.searchPageHeader{
+    margin-top: 5%;
+}
+.searchPageWrap{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.searchProListHeader h2, .articleListHeader h2{
+    font-size: 1.3rem;
+}
+.searchListWrap {
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.searchListAWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #ddd; /* 테두리 추가 (선택 사항) */
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 10px; /* 내부 여백 */
+}
+
+.searchListLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 9rem);
+}
+
+.searchListLink:visited{text-decoration: none; color: black;}
+.searchListLink:hover{text-decoration: none; color: black;}
+.searchListLink:link{text-decoration: none; color: black;}
+.searchListLink:active{text-decoration: none; color: black;}
+
+.searchListContentWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.searchListProfileWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 8rem;
+}
+
+.searchListProfileWrap .user-profile-picture {
+    width: 100%;
+    height: 100%;
+}
+
+.searchListProfileWrap .user-profile-picture img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.searchListTitleWrap {
+    font-weight: bold; /* 제목 강조 */
+}
+
+.searchListTitleWrap h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.service_areaHeader button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchListProInfoWrap {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.searchListProInfoWrap span {
+    font-size: 0.825rem;
+    color: #626262;
+    font-weight: bold;
+}
+
+.searchListIntro {
+    white-space: pre-wrap; /* 줄 바꿈 및 공백 유지 */
+    font-size: 0.9rem;
+    color: #898888;
+    margin-bottom: 0.2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.searchBtnWrap button{
+    border: 1px solid #626262;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* 검색 게시글 부분 */
+.searchArticleListWrap {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+}
+.searchArticleListWrap .searchArticleItemWrap{
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.searchArticleTitleContentWrap{
+    display: flex;
+    flex-direction: column;
+    width:80%
+}
+.searchArticleImageWrap{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width:20%;
+}
+.searchArticleImageWrap img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+.searchArticleListWrap .searchArticleTitleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.searchArticleListWrap .searchArticleTitleWrap div:nth-child(1) {
+    width: 95%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+.searchArticleListWrap .searchArticleTitleWrap div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+.searchArticleListWrap .searchArticleTitleWrap div:nth-child(2) img {
+    width: 20px;
+    height: 20px;
+}
+
+.searchArticleListWrap .searchArticleContentWrap {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width:90%;
+}
+
+.searchArticleListWrap .searchArticleContentWrap div {
+    width: 95%;
+    color: #828282;
+    vertical-align: text-top;
+    margin-top: 1em;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+.searchArticleListWrap .searchArticleAreaWrap {
+    display: flex;
+    justify-content: left; /* 왼쪽 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    color:#b2b2b2;
+}
+
+.searchArticleListWrap .imageWrap {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    margin-left: 0;
+}
+.searchArticleListWrap .searchArticleReactWrap {
+    display: flex;
+    justify-content: space-between; /* 두 요소를 양쪽 끝으로 배치 */
+    align-items: center; /* 수직 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+    margin-top: 10px; /* 필요에 따라 마진 추가 */
+    margin-bottom: 1rem;
+}
+
+.searchArticleListWrap .imageWrap div {
+    display: flex;
+    align-items: center; /* span과 이미지 수직 정렬 */
+    margin-right: 10px; /* 요소 간 간격 */
+    gap: 0.3em;
+}
+.searchArticleListWrap .imageWrap div span{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color:#b2b2b2;
+    width:5em;
+}
+.searchArticleListWrap .imageWrap div svg{
+    width:15px;
+    height:15px;
+}
+.searchArticleListWrap .searchArticleAreaWrap {
+    margin-bottom: 5px; /* 위치와 아래 요소 간의 간격 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+.searchArticleListWrap .searchArticleDateWrap{
+    display: flex;
+    width:30%;
+    justify-content: right;
+    margin-right: 0.5em;
+    color:#b2b2b2;
+    font-size:11pt;
+}
+
+@media screen and (max-width: 1250px) {
+    .searchPageWrap{
+        width: 90%;
+    }
+    .searchArticleListWrap .imageWrap div span{
+        width:2em;
+    }
+}

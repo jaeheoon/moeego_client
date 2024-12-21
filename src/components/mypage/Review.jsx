@@ -80,7 +80,7 @@ const Review = () => {
                             {reviews.length > 0 ? (
                                 reviews.map((review, index) => (
                                     <li key={index}>
-                                        <ReviewItem item={review} />
+                                        <ReviewItem item={review} showDeleteButton={true} />
                                     </li>
                                 ))
                             ) : (

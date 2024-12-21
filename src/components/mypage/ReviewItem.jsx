@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { ArticleContext } from '../../context/article/ArticleContext';
 
-const ReviewItem = ({ item }) => {
+const ReviewItem = ({ item, showDeleteButton }) => {
     const [images, setImages] = useState([]); // 서버에서 불러온 이미지 목록
     const { deleteReview } = useContext(ArticleContext);
 
     // 리뷰 삭제 핸들러
     const handleDelete = () => {
-        deleteReview(item.id); // 해당 리뷰 ID를 deleteReview 함수에 전달
+        deleteReview(item.reviewNo); // 해당 리뷰 ID를 deleteReview 함수에 전달
     };
 
     return (
@@ -50,12 +50,13 @@ const ReviewItem = ({ item }) => {
                 <span>작성자 : {item.memberName}</span>
                 <span>{item.elapsedTime}</span>
             </section>
-            <section>
-                {/* 삭제 버튼 */}
-                <button onClick={handleDelete} className="deleteReviewBtn">
-                    삭제
-                </button>
-            </section>
+            {showDeleteButton && ( // showDeleteButton이 true일 때만 삭제 버튼 표시
+                <section>
+                    <button onClick={handleDelete} className="deleteReviewBtn">
+                        삭제
+                    </button>
+                </section>
+            )}
         </article>
     );
 };

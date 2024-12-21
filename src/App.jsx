@@ -9,6 +9,9 @@ import Footer from "./components/Footer.jsx";
 // mainPage
 import MainPage from './components/MainPage.jsx';
 
+// 검색결과
+import SearchPage from "./components/search/SearchPage.jsx";
+
 // 이벤트, 공지
 import Notice_eventPage from "./components/notice_eventpage/Notice_eventpage.jsx";
 import NoticeView from "./components/notice_eventpage/NoticeView.jsx";
@@ -105,6 +108,8 @@ const App = () => {
                             <Routes>
                               {/* 메인페이지 */}
                               <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
+                              {/* 검색결과 페이지 */}
+                              <Route path={"/search"} element={<div className='main-content'><SearchPage /></div>} />
 
                               {/* 소개페이지, 공지/이벤트 */}
                               <Route path={"/about"} element={<About />} />
