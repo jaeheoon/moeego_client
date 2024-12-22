@@ -217,8 +217,9 @@ const BookMarkPro = () => {
                                     <div className="ProProfile">
                                         <img
                                             src={
-                                                pro.profileImage ||
-                                                "/image/profile.svg"
+                                                "https://kr.object.ncloudstorage.com/moeego/profile/" +
+                                                    pro.profileImage ||
+                                                "/image/default.svg"
                                             }
                                             alt={pro.name}
                                         />

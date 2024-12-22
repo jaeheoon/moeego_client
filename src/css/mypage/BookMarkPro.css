@@ -210,12 +210,17 @@
 }
 
 .BookMarkProContainer .BookMarkProWrap .ProListContainer .infoContainer {
-    width: 100%;
-    display: flex;
     box-sizing: border-box;
+    display: flex;
     vertical-align: text-top;
+    width: 100%;
     padding: 10px;
     height: 5em;
+
+    display: -webkit-box; /* Flexbox 대체로 설정 */
+    -webkit-line-clamp: 2; /* 표시할 줄 수 (예: 2줄) */
+    -webkit-box-orient: vertical; /* 텍스트 방향 설정 */
+    overflow: hidden;
 }
 
 .BookMarkProContainer .BookMarkProWrap .ProListContainer .scoreContainer {
