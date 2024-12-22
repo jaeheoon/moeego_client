@@ -57,6 +57,7 @@
     margin: 0 10px; /* 이미지와 입력창 간격 */
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .proSearchInputBarWrap input {
@@ -67,15 +68,20 @@
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
+    outline: none;
 }
-.proSearchInputBarWrap:focus-within{
+.proSearchInputBarWrap:focus-within {
     border: 2px solid #fcc1cc;
     background-color: white;
+    outline: none;
     box-sizing: border-box;
 }
+
 .proSearchInputBarWrap input:focus {
-    outline: none;
+    width: 100%;
     background-color: white;
+    outline: none;
+    box-sizing: border-box;
 }
 
 .mapBtnWrap {
@@ -95,7 +101,7 @@
     background-color: rgb(89, 185, 105);
     border-radius: 10px;
     cursor: pointer;
-    color:white;
+    color: white;
 }
 
 .mapBtn .icon {
@@ -142,10 +148,22 @@
     width: calc(100% - 9rem);
 }
 
-.proSearchListLink:visited{text-decoration: none; color: black;}
-.proSearchListLink:hover{text-decoration: none; color: black;}
-.proSearchListLink:link{text-decoration: none; color: black;}
-.proSearchListLink:active{text-decoration: none; color: black;}
+.proSearchListLink:visited {
+    text-decoration: none;
+    color: black;
+}
+.proSearchListLink:hover {
+    text-decoration: none;
+    color: black;
+}
+.proSearchListLink:link {
+    text-decoration: none;
+    color: black;
+}
+.proSearchListLink:active {
+    text-decoration: none;
+    color: black;
+}
 
 .proSearchListContentWrap {
     display: flex;
@@ -167,7 +185,7 @@
     height: 100%;
 }
 
-.proSearchListProfileWrap .user-profile-picture img{
+.proSearchListProfileWrap .user-profile-picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -254,6 +272,14 @@
         height: 40px;
     }
 
+    .proSearchInputBarWrap input:focus {
+        width: 100%;
+        height: 1rem;
+        background-color: white;
+        outline: none;
+        box-sizing: border-box;
+    }
+
     .mapBtn {
         width: 100%; /* 버튼 너비를 100%로 설정 */
         height: 40px;
@@ -303,7 +329,7 @@
         justify-content: center;
         margin-bottom: 0.5rem;
     }
-    section .proSearchListWrap .proSearchListLink{
+    section .proSearchListWrap .proSearchListLink {
         width: calc(100% - 7rem);
     }
 
@@ -312,7 +338,7 @@
         height: 6rem;
     }
 
-    .proSearchListAWrap{
+    .proSearchListAWrap {
         width: 100%;
         box-sizing: border-box;
     }

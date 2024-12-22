@@ -1,10 +1,10 @@
-import React from 'react';
-import SearchHeader from './SearchHeader';
-import Content from './Content';
-import '../../css/Pro/ProSearch.css';
+import React from "react";
+import SearchHeader from "./SearchHeader";
+import Content from "./Content";
+import "../../css/Pro/ProSearch.css";
 const ProSearch = () => {
     return (
-        <div className='proSearchPage'>
+        <div className="proSearchPage">
             <SearchHeader />
             <Content />
         </div>
