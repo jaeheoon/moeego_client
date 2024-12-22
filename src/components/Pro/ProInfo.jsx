@@ -194,7 +194,10 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
                     <div className="statistics-info-item">
                         <div className="statistics-info-item-header">리뷰</div>
                         <div className="statistics-info-item-contents">
-                            ⭐<span className="rate">{proItem.star}</span>
+                            <span style={{ color: "#f39c12" }}>★</span>
+                            <span className="rate">
+                                {Math.floor(proItem.star * 10) / 10}
+                            </span>
                             <span className="count">
                                 ({proItem.reviewCount})
                             </span>

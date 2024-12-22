@@ -25,7 +25,23 @@ const SearchList = ({ item, proNo }) => {
                         </div>
                         <div className="proSearchListProInfoWrap">
                             <span>
-                                ⭐️ {item.star} ({item.reviewCount})
+                                <span
+                                    style={{
+                                        color: "#f39c12",
+                                        marginRight: "0.25rem",
+                                    }}
+                                >
+                                    <span
+                                        style={{
+                                            color: "#f39c12",
+                                            marginRight: "0.15rem",
+                                        }}
+                                    >
+                                        ★
+                                    </span>
+                                    {Math.floor(item.star * 10) / 10}
+                                </span>
+                                ({item.reviewCount})
                             </span>
                         </div>
                         <p className="proSearchListIntro">{item.oneIntro}</p>
@@ -65,8 +81,16 @@ const SearchList = ({ item, proNo }) => {
                                     {serviceItem.subCategory.subCateName})
                                 </div>
                                 <div className="serviceStar">
-                                    ⭐️ {serviceItem.star} (
-                                    {serviceItem.reviewCount})
+                                    <span
+                                        style={{
+                                            color: "#f39c12",
+                                            marginRight: "0.25rem",
+                                        }}
+                                    >
+                                        ★{" "}
+                                        {Math.floor(serviceItem.star * 10) / 10}
+                                    </span>{" "}
+                                    ({serviceItem.reviewCount})
                                 </div>
                             </div>
                         </div>

@@ -125,7 +125,11 @@
     color: #828282;
 }
 
-.BookMarkProContainer .BookMarkProWrap .CheckContainer .LinkContainer button:hover {
+.BookMarkProContainer
+    .BookMarkProWrap
+    .CheckContainer
+    .LinkContainer
+    button:hover {
     color: #fcc1cc;
     cursor: pointer;
 }
@@ -148,25 +152,40 @@
     width: 100%;
 }
 
-.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-LeftContainer {
+.BookMarkProContainer
+    .BookMarkProWrap
+    .ProListContainer
+    .ProList-LeftContainer {
     flex: 0 0 80%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-RightContainer {
+.BookMarkProContainer
+    .BookMarkProWrap
+    .ProListContainer
+    .ProList-RightContainer {
     flex: 0 0 20%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-RightContainer .ProProfile {
+.BookMarkProContainer
+    .BookMarkProWrap
+    .ProListContainer
+    .ProList-RightContainer
+    .ProProfile {
     width: 70%;
 }
 
-.BookMarkProContainer .BookMarkProWrap .ProListContainer .ProList-RightContainer .ProProfile img {
+.BookMarkProContainer
+    .BookMarkProWrap
+    .ProListContainer
+    .ProList-RightContainer
+    .ProProfile
+    img {
     max-width: 100%;
     max-height: 100%;
     border-radius: 50%;
@@ -200,11 +219,36 @@
 }
 
 .BookMarkProContainer .BookMarkProWrap .ProListContainer .scoreContainer {
-    width: 100%;
     display: flex;
-    box-sizing: border-box;
     align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1rem;
     padding: 10px;
+    gap: 0.3rem;
+}
+
+.BookMarkProContainer .BookMarkProWrap .ProListContainer .scoreContainer .star {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: #f39c12;
+    width: 1rem;
+}
+
+.BookMarkProContainer
+    .BookMarkProWrap
+    .ProListContainer
+    .scoreContainer
+    .score {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    color: #525252;
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
 }
 
 .lodingWrap {

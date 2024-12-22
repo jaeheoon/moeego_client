@@ -6,7 +6,7 @@ import ProInfo from "./ProInfo";
 import ProDetail from "./ProDetail";
 import ProReview from "./ProReview";
 import Reservation from "./Reservation";
-import ProSearchPaging from "./ProSearchPaging";
+import ProViewPaging from "../Pro/ProViewPaging";
 import "../../css/Pro/Proview.css";
 import "../../css/Pro/SearchList.css";
 
@@ -32,7 +32,7 @@ const ProView = () => {
                 const response = await apiAxios.get(`/api/pro/item/detail`, {
                     params: {
                         proItemNo: serviceItem.proItemNo,
-                        page: currentPage, // Include the current page in the request
+                        pg: currentPage, // Include the current page in the request
                     },
                 });
 
@@ -45,10 +45,10 @@ const ProView = () => {
             }
         };
 
-        if (serviceItem && serviceItem.proItemNo) {
+        if (serviceItem.proItemNo) {
             fetchProDetails();
         }
-    }, [serviceItem, routeStateItem, currentPage]); // Add currentPage to dependency array
+    }, [currentPage]); // Add currentPage to dependency array
 
     const openModal = (type) => {
         setModalType((prevType) => (prevType === type ? null : type));
@@ -136,7 +136,7 @@ const ProView = () => {
                         />
 
                         {/* Pagination Component */}
-                        <ProSearchPaging
+                        <ProViewPaging
                             pages={totalPages}
                             currentPage={currentPage}
                             onPageChange={handlePageChange}
