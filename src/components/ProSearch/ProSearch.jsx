@@ -1,23 +1,27 @@
-import React from "react";
-import SearchHeader from "./SearchHeader";
+import React, { useState } from "react";
 import Content from "./Content";
 import "../../css/Pro/ProSearch.css";
+import ProSearchFunction from "./ProSearchFunction";
+
 const ProSearch = () => {
+    const [service, setService] = useState("서비스");
+    const [area, setArea] = useState("지역");
+
+    const handleServiceAreaChange = (selectedService, selectedArea) => {
+        setService(selectedService);
+        setArea(selectedArea);
+    };
+
     return (
         <div className="proSearchPage">
-            <SearchHeader />
-            <Content />
+            <ProSearchFunction
+                service={service}
+                area={area}
+                onServiceAreaChange={handleServiceAreaChange}
+            />
+            <Content service={service} area={area} />
         </div>
     );
 };
 
 export default ProSearch;
-
-/*
-    Prosearch
-        ㄴ SearchHeader
-            ㄴ Service_area
-        ㄴ content
-            ㄴ SearchBar
-            ㄴ SearchList
-*/

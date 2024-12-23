@@ -1,10 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ProContext } from "../../context/pro/ProContext";
 import KakaoMap from './KakaoMap';
 
 const SearchBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [items, setItems] = useState([]);  
-  const [selectedLocation, setSelectedLocation] = useState(null); 
+  const [items, setItems] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const { keyword, setKeyword } = useContext(ProContext);
+
+  const handleSearch = (event) => {
+    setKeyword(event.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      // 엔터가 눌렸을 때 추가로 요청을 보내도록 합니다
+      setKeyword(event.target.value); // 키워드를 업데이트
+    }
+  };
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -25,9 +38,9 @@ const SearchBar = () => {
       { name: '서울 송파구/네트워크 보안/박성호/해킹방어 능력 키우기!', lat: 37.510318, lng: 127.100942 },
       { name: '서울 송파구/수비천재/오지환/모든 공은 나에게로', lat: 37.508507, lng: 127.106872 }
     ];
-    
+
     setItems(fetchedItems);
-  }, []);  
+  }, []);
 
   // 마커 클릭 시 해당 위치로 지도 이동
   const handleMarkerClick = (item) => {
@@ -44,7 +57,14 @@ const SearchBar = () => {
     <div className='proSearchBarWrap'>
       <div className='proSearchInputBarWrap'>
         <img src="../../src/image/search.png" alt="검색버튼" />
-        <input type="text" placeholder='어떤 서비스가 필요하세요?' maxLength={30} />
+        <input
+          type="text"
+          placeholder='어떤 서비스가 필요하세요?'
+          maxLength={30}
+          value={keyword}
+          onChange={handleSearch}
+          onKeyDown={handleKeyPress} // 엔터 키 눌렀을 때 검색 실행
+        />
       </div>
       <div className='mapBtnWrap'>
         <button className='mapBtn' onClick={toggleModal}>
@@ -65,7 +85,7 @@ const SearchBar = () => {
               <button onClick={closeModal}>닫기</button>
             </div>
             <KakaoMap items={items} onMarkerClick={handleMarkerClick} />
-            
+
             <ul className="map-content-wrap">
               {items.map((item, index) => (
                 <li key={index} className="map-list" onClick={() => handleMarkerClick(item)}>
