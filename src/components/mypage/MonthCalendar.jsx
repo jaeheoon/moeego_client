@@ -8,33 +8,49 @@ const MonthCalendar = () => {
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [showYearSelector, setShowYearSelector] = useState(false);
   const [showMonthSelector, setShowMonthSelector] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null); 
-  const [scheduleStatus, setScheduleStatus] = useState(''); 
-  const [list, setList] = useState([]);
-
-
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [scheduleStatus, setScheduleStatus] = useState('');
+  const [list, setList] = useState({}); // 날짜별 일정 저장
 
   useEffect(() => {
-    const memberNo = localStorage.getItem('userno'); 
+    const memberNo = localStorage.getItem('userno');
     const datelist = {
       memberNo: memberNo,
-      month: currentMonth + 1, 
-      year: currentYear,  
+      month: currentMonth + 1,
+      year: currentYear,
     };
     console.log('서버로 가져갈 내용:', datelist);
-    alert(datelist.memberNo + ", " + datelist.year + ", " + datelist.month )
-    
-    apiAxios.get('/api/mypage/reservation', datelist)
+
+    apiAxios.get('/api/reservation/mypage', { params: datelist }) // GET 요청에서는 params를 사용
       .then((response) => {
         if (response.data.success) {
-          setList(response.data); 
+          const receivedReservations = response.data.data.receivedReservations;
+
+          // 날짜별로 일정 데이터 매핑
+          const scheduleMap = {};
+          receivedReservations.forEach((reservation) => {
+            const { startDate, startTimes, memberName, proItemName } = reservation;
+
+            if (!scheduleMap[startDate]) {
+              scheduleMap[startDate] = [];
+            }
+
+            // 일정 내용을 추가
+            const scheduleDetails = startTimes.map((time) => {
+              return `${memberName}, ${proItemName || '내용없음'}, ${time}`;
+            });
+
+            scheduleMap[startDate] = [...scheduleMap[startDate], ...scheduleDetails];
+          });
+
+          setList(scheduleMap); // 상태로 설정
+          console.log('일정 데이터 매핑 완료:', scheduleMap);
         }
       })
       .catch((error) => {
         console.error('일정을 불러오는 중 오류가 발생했습니다.', error);
       });
   }, [currentMonth, currentYear]);
-
 
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -66,48 +82,19 @@ const MonthCalendar = () => {
     resetSelectedDate();
   };
 
-  const handleMonthChange = (e) => {
-    const newMonth = Number(e.target.value);
-    setCurrentMonth(newMonth);
-
-    resetSelectedDate();
-  };
-
-  const handleYearChange = (e) => {
-    const newYear = Number(e.target.value);
-    setCurrentYear(newYear);
-
-    resetSelectedDate();
-  };
-
-  const resetSelectedDate = () => {
-    setSelectedDate(null);
-    setScheduleStatus('');
-  };
-
-
   const handleDayClick = (day) => {
-    setSelectedDate(day); 
-    checkSchedule(day); 
+    setSelectedDate(day);
+    checkSchedule(day);
   };
 
   const checkSchedule = (day) => {
-    // 예시 일정이 있는 날짜 설정
-    const schedules = {
-        '2024-12-23': [
-          '김태훈, 코딩조아, 18:00',
-          '이수지, 디자인조아, 20:00',
-        ],
-      '2025-01-06': '정세묵, 발표조아, 15:00',
-    };
+    const selectedDateString =
+      `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
-    const selectedDateString = 
-    `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-
-    if (schedules[selectedDateString]) {
-      setScheduleStatus(schedules[selectedDateString]);
+    if (list[selectedDateString]) {
+      setScheduleStatus(list[selectedDateString]); // 해당 날짜의 일정 설정
     } else {
-      setScheduleStatus('일정 없음');
+      setScheduleStatus(['일정 없음']); // 일정이 없을 경우
     }
   };
 
@@ -127,18 +114,16 @@ const MonthCalendar = () => {
     // 현재 달의 날짜 렌더링
     for (let i = firstDay; i < 7; i++) {
       const day = dayCount;
+      const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
       row.push(
         <td
-          className={`day ${selectedDate === day ? 'selected' : ''}`}
+          className={`day ${selectedDate === day ? 'selected' : ''} ${list[dateKey] ? 'has-schedule' : ''}`}
           key={day}
           onClick={() => handleDayClick(day)}
         >
           {dayCount}
-          {/* {list.day === dayCount ? (
-              <span>{dayCount}<span style={{color: 'red'}}>●</span></span>
-            ) : (
-              {dayCount}
-            )} */}
+          {list[dateKey] && <span className="schedule-dot">●</span>}
         </td>
       );
       dayCount++;
@@ -150,14 +135,17 @@ const MonthCalendar = () => {
     while (dayCount <= daysInMonth) {
       row = [];
       for (let i = 0; i < 7 && dayCount <= daysInMonth; i++) {
-        const day = dayCount
+        const day = dayCount;
+        const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
         row.push(
           <td
-            className={`day ${selectedDate === day ? 'selected' : ''}`}
+            className={`day ${selectedDate === day ? 'selected' : ''} ${list[dateKey] ? 'has-schedule' : ''}`}
             key={day}
             onClick={() => handleDayClick(day)}
           >
             {dayCount}
+            {list[dateKey] && <span className="schedule-dot"></span>}
           </td>
         );
         dayCount++;
@@ -176,41 +164,7 @@ const MonthCalendar = () => {
             &#60;
           </button>
           <div className="month-year">
-              {showYearSelector ? (
-                <select
-                  className="year-dropdown"
-                  value={currentYear}
-                  onChange={handleYearChange} 
-                >
-                  {Array.from({ length: 11 }, (_, i) => currentYear - 5 + i).map((year) => (
-                    <option key={year} value={year}>
-                      {year}년
-                    </option>
-                  ))}
-                </select>
-              ) : (
-                <span onClick={() => setShowYearSelector(!showYearSelector)}>
-                {`${currentYear}년`}
-                </span>
-              )}
-            {' '}
-              {showMonthSelector ? (
-                <select
-                  className="month-dropdown"
-                  value={currentMonth}
-                  onChange={handleMonthChange}
-                >
-                  {['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'].map((month, index) => (
-                    <option key={index} value={index}>
-                      {month}
-                    </option>
-                  ))}
-                </select>
-              ) : (
-                <span onClick={() => setShowMonthSelector(!showMonthSelector)}>
-                {`${currentMonth + 1}월`}
-                </span>
-              )}
+            <span>{`${currentYear}년 ${currentMonth + 1}월`}</span>
           </div>
           <button className="next-btn" onClick={handleNextMonth}>
             &#62;
@@ -221,13 +175,13 @@ const MonthCalendar = () => {
           <table className="calendar-table">
             <thead>
               <tr>
-                <th className="weekday">일</th>
-                <th className="weekday">월</th>
-                <th className="weekday">화</th>
-                <th className="weekday">수</th>
-                <th className="weekday">목</th>
-                <th className="weekday">금</th>
-                <th className="weekday">토</th>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
               </tr>
             </thead>
             <tbody>{renderDays()}</tbody>
@@ -236,25 +190,10 @@ const MonthCalendar = () => {
 
         {selectedDate && (
           <div className="selected-date-info">
-            <p>
-              <strong  className="schedule-date-title">
-                {`${currentMonth + 1}월 ${selectedDate}일 일정`}
-              </strong>
-            </p>
-            <div>
-              {/* scheduleStatus가 배열일 경우만 .map()을 사용 */}
-              {Array.isArray(scheduleStatus) ? (
-                scheduleStatus.map((schedule, index) => (
-                  <p key={index} className={schedule === '일정 없음' ? 'schedule-unavailable' : 'schedule-available'}>
-                    {schedule}
-                  </p>
-                ))
-              ) : (
-                <p className={scheduleStatus === '일정 없음' ? 'schedule-unavailable' : 'schedule-available'}>
-                  {scheduleStatus}
-                </p>
-              )}
-            </div>
+            <p>{`${currentMonth + 1}월 ${selectedDate}일 일정`}</p>
+            {scheduleStatus.map((schedule, index) => (
+              <p key={index}>{schedule}</p>
+            ))}
           </div>
         )}
       </div>
