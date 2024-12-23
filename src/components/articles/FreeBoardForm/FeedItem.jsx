@@ -20,7 +20,7 @@ const FeedItem = ({ item }) => {
                 </div>
             </div>
             <div className='itemWrap-location'>
-                서울
+                {item.area == '지역' ? "" : item.area}
             </div>
 
             <div className='itemWrap-bot'>

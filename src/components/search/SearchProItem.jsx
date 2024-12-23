@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SearchProItem = () => {
+const SearchProItem = ({item}) => {
     const [isToggled, setIsToggled] = useState(false); // 토글 상태 관리
 
     const toggleDetails = () => {
@@ -12,20 +12,31 @@ const SearchProItem = () => {
                 <div className="searchListLink">
                     <div className="searchListContentWrap">
                         <div className="searchListTitleWrap">
-                            <h3>전문가 이름</h3>
+                            <h3>{item.name}</h3>
                         </div>
                         <div className="searchListProInfoWrap">
-                            <span>⭐️ 평점 (리뷰 수)</span>
+                            <span>
+                                <span
+                                    style={{
+                                        color: "#f39c12",
+                                        marginRight: "0.25rem",
+                                    }}
+                                >★</span>
+                                {Math.floor(item.star * 10) / 10} ({item.reviewCount})</span>
                         </div>
                         <p className="searchListIntro">
-                            한 줄 소개 텍스트가 들어갑니다.
+                            {item.oneIntro}
                         </p>
                     </div>
                 </div>
                 <div className="searchListProfileWrap">
                     <div className="user-profile-picture">
                         <img
-                            src="/image/default.svg"
+                            src={
+                                item.profileImage
+                                    ? `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}`
+                                    : "/image/default.svg"
+                            }
                             width={150}
                             height={150}
                             alt="전문가 이름"
@@ -40,18 +51,33 @@ const SearchProItem = () => {
                     isToggled ? 'active' : ''
                 }`}
             >
-                {isToggled && (
-                    <div className="servicePage">
-                        <div className="serviceWrap">
-                            <div className="serviceSubject">
-                                서비스 이름 (서브 카테고리)
-                            </div>
-                            <div className="serviceStar">
-                                ⭐️ 평점 (리뷰 수)
+                {isToggled &&
+                    item.proItems.map((serviceItem) => (
+                        <div
+                            key={serviceItem.proItemNo}
+                            className="servicePage"
+                            onClick={() => handleProViewNavigation(serviceItem)}
+                        >
+                            <div className="serviceWrap">
+                                <div className="serviceSubject">
+                                    {serviceItem.subject} (
+                                    {serviceItem.subCategory.subCateName})
+                                </div>
+                                <div className="serviceStar">
+                                    <span
+                                        style={{
+                                            color: "#f39c12",
+                                            marginRight: "0.25rem",
+                                        }}
+                                    >
+                                        ★{" "}
+                                        {Math.floor(serviceItem.star * 10) / 10}
+                                    </span>{" "}
+                                    ({serviceItem.reviewCount})
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )}
+                    ))}
             </div>
         </div>
     );

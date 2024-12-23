@@ -63,7 +63,16 @@ const PostHeader = ({ articleData, deleteArticle }) => {
             {/* 게시물 제목 및 정보 */}
             <div className="post-head-title-wrapper has-service">
                 <h1 className="post-title">{articleData.subject}</h1>
-                <p className="post-location">{articleData.service}&nbsp;&nbsp;·&nbsp;&nbsp;{articleData.area}</p>
+                <p className="post-location">
+                {(!articleData.service || articleData.service === '서비스') &&
+                (!articleData.area || articleData.area === '지역')
+                    ? "" 
+                    : !articleData.service || articleData.service === '서비스'
+                    ? articleData.area 
+                    : !articleData.area || articleData.area === '지역'
+                    ? articleData.service 
+                    : `${articleData.service}  ·  ${articleData.area}`}
+                </p>
             </div>
 
             {/* 사용자 정보 및 액션 */}
