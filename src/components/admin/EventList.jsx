@@ -11,14 +11,15 @@ const EventList = () => {
 
     const [formData, setFormData] = useState({
         subject: '',
-        type: 1, 
+        type: 1,
         content: '',
         memberNo: userNo,
         images: [],
     });
 
-    // 삭제할 이미지 UUID를 저장할 배열
     const [removeImages, setRemoveImages] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedType, setSelectedType] = useState('all');
 
     const fetchEvents = async () => {
         try {
@@ -34,17 +35,17 @@ const EventList = () => {
     }, []);
 
     const openModal = (event = null) => {
-        setSelectedEvent(event);  // event 객체가 제대로 전달되는지 확인
-
-        const images = event && event.imageUuidNames ? event.imageUuidNames : []; 
-
+        setSelectedEvent(event);
+        
         setFormData({
             subject: event ? event.subject : '',
             type: event ? (event.type === '이벤트' ? 1 : 0) : 1,
             content: event ? event.content : '',
-            images: images, 
+            images: event && event.imageUuidNames ? event.imageUuidNames : [],
+            memberNo: userNo
         });
-
+        
+        setRemoveImages([]); // 삭제할 이미지 배열 초기화
         setModalOpen(true);
     };
 
@@ -95,7 +96,6 @@ const EventList = () => {
 
     const handleRemoveFile = (fileToRemove) => {
         if (typeof fileToRemove === 'string') {
-            // 기존 이미지를 삭제할 경우 removeImages에 추가
             setRemoveImages(prevRemoveImages => [...prevRemoveImages, fileToRemove]);
         }
         setFormData(prevData => ({
@@ -118,12 +118,10 @@ const EventList = () => {
             data.append(key, articleDto[key]);
         });
 
-        // 삭제할 이미지 UUID를 removeImages로 관리
         removeImages.forEach(image => {
             data.append('removeImages', image);
         });
 
-        // 새로 업로드된 이미지들 추가
         formData.images.forEach(image => {
             if (typeof image === 'string') {
                 data.append('existingImageIds', image);
@@ -134,9 +132,6 @@ const EventList = () => {
 
         try {
             if (selectedEvent) {
-                // articleNo 값을 selectedEvent.articleNo로 전달
-                console.log("selectedEvent:", selectedEvent); // 디버깅용 로그
-                console.log("articleNo:", selectedEvent.articleNo); // 디버깅용 로그
                 await apiAxios.put(`/api/admin/article/update/${selectedEvent.articleNo}`, data, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
@@ -169,8 +164,7 @@ const EventList = () => {
 
     const formatDate = (date) => {
         if (!date) return ''; 
-        const formattedDate = new Date(date).toLocaleDateString('ko-KR');
-        return formattedDate;
+        return new Date(date).toLocaleDateString('ko-KR');
     };
 
     const groupedData = tableData.reduce((acc, item) => {
@@ -183,52 +177,69 @@ const EventList = () => {
 
     const groupedDataArray = Object.values(groupedData);
 
+    const filteredData = groupedDataArray.filter(item => {
+        const matchesSearchTerm = item.subject.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesType = selectedType === 'all' || (selectedType === 'event' && item.type === 1) || (selectedType === 'notice' && item.type === 0);
+        return matchesSearchTerm && matchesType;
+    });
+
     return (
         <div className="eventList-container">
             <div className="eventList-inner-container">
                 <h1 className="eventList-title">이벤트 및 공지 게시판</h1>
                 <hr className="eventList-divider" />
+                <div className="eventList-search-container">
+                    <select 
+                        value={selectedType}
+                        onChange={(e) => setSelectedType(e.target.value)}
+                        className="eventList-select"
+                    >
+                        <option value="all">전체</option>
+                        <option value="event">이벤트</option>
+                        <option value="notice">공지</option>
+                    </select>
+                    <input
+                        type="text"
+                        placeholder="검색"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
                 <table className="eventList-table">
                     <thead>
                         <tr>
                             <th>번호</th>
                             <th>카테고리</th>
-                            <th>사진</th>
                             <th>제목</th>
                             <th>등록일</th>
                             <th>수정/삭제</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {groupedDataArray.map((row) => (
-                            <tr key={row.articleNo}>
+                        {filteredData.map((row) => (
+                            <tr key={row.articleNo} onClick={() => openModal(row)}>
                                 <td>{row.articleNo}</td>
                                 <td>{row.type === 1 ? '이벤트' : '공지'}</td>
-                                <td>
-                                    {row.images.length > 0 ? (
-                                        row.images.map((image, index) => (
-                                            <img
-                                                key={index}
-                                                src={ImagePath + image}
-                                                alt={`이미지 ${index + 1}`}
-                                                className="event-image"
-                                            />
-                                        ))
-                                    ) : (
-                                        <span>이미지 없음</span>
-                                    )}
-                                </td>
                                 <td>{row.subject}</td>
                                 <td>{formatDate(row.writeDate)}</td>
                                 <td>
-                                    <button className="eventList-edit-button" onClick={() => openModal(row)}>편집</button>
-                                    <button className="eventList-delete-button" onClick={() => handleDelete(row.articleNo)}>삭제</button>
+                                    <button 
+                                        className="eventList-delete-button" 
+                                        onClick={(e) => { 
+                                            e.stopPropagation(); 
+                                            handleDelete(row.articleNo); 
+                                        }}
+                                    >
+                                        삭제
+                                    </button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <button className="eventList-register-button" onClick={() => openModal()}>새 이벤트 및 공지 등록</button>
+                <button className="eventList-register-button" onClick={() => openModal()}>
+                    새 이벤트 및 공지 등록
+                </button>
             </div>
 
             {modalOpen && (
@@ -241,76 +252,75 @@ const EventList = () => {
                             <div className="modal-body-content">
                                 <div className="left-section">
                                     <div className="title-section">
-                                        <label>제목
-                                            <input
-                                                type="text"
-                                                name="subject"
-                                                value={formData.subject}
-                                                onChange={handleChange}
-                                                required
-                                            />
-                                        </label>
+                                        <label>제목</label>
+                                        <input
+                                            type="text"
+                                            name="subject"
+                                            value={formData.subject}
+                                            onChange={handleChange}
+                                            required
+                                        />
                                     </div>
                                     <div className="category-section">
-                                        <label>카테고리
-                                            <select
-                                                name="type"
-                                                value={formData.type === 1 ? 'event' : 'notice'}
-                                                onChange={handleChange}
-                                                required
-                                            >
-                                                <option value="event">이벤트</option>
-                                                <option value="notice">공지</option>
-                                            </select>
-                                        </label>
+                                        <label>카테고리</label>
+                                        <select
+                                            name="type"
+                                            value={formData.type === 1 ? 'event' : 'notice'}
+                                            onChange={handleChange}
+                                            required
+                                        >
+                                            <option value="event">이벤트</option>
+                                            <option value="notice">공지</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="eventList-upload-section">
+                                        <label>사진 업로드</label>
+                                        <input
+                                            type="file"
+                                            multiple
+                                            accept="image/*"
+                                            onChange={handleFileChange}
+                                        />
+                                        <div className="eventList-upload-preview">
+                                            {formData.images.map((image, index) => (
+                                                <div key={index} className="eventList-upload-preview-item">
+                                                    {typeof image === 'string' ? (
+                                                        <img
+                                                            src={ImagePath + image}
+                                                            alt={`미리보기 ${index + 1}`}
+                                                            className="event-image"
+                                                        />
+                                                    ) : (
+                                                        <img
+                                                            src={URL.createObjectURL(image)}
+                                                            alt={`미리보기 ${index + 1}`}
+                                                            className="event-image"
+                                                        />
+                                                    )}
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => handleRemoveFile(image)}
+                                                        className="eventList-remove-button"
+                                                    >
+                                                        제거
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
+
                                 <div className="right-section">
                                     <div className="content-section">
-                                        <label>내용
-                                            <textarea
-                                                name="content"
-                                                value={formData.content}
-                                                onChange={handleChange}
-                                                required
-                                            />
-                                        </label>
+                                        <label>내용</label>
+                                        <textarea
+                                            name="content"
+                                            value={formData.content}
+                                            onChange={handleChange}
+                                            required
+                                        />
                                     </div>
-                                </div>
-                            </div>
-                            <div className="eventList-upload-section">
-                                <label>사진 업로드</label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    accept="image/*"
-                                    onChange={handleFileChange}
-                                />
-                                <div className="eventList-upload-preview">
-                                    {formData.images.map((image, index) => (
-                                        <div key={index} className="eventList-upload-preview-item">
-                                            {typeof image === 'string' ? (
-                                                <img
-                                                    src={ImagePath + image}
-                                                    alt={`미리보기 ${index + 1}`}
-                                                    className="event-image"
-                                                />
-                                            ) : (
-                                                <img
-                                                    src={URL.createObjectURL(image)}
-                                                    alt={`미리보기 ${index + 1}`}
-                                                    className="event-image"
-                                                />
-                                            )}
-                                            <button
-                                                type="button"
-                                                onClick={() => handleRemoveFile(image)}
-                                                className="eventList-remove-button"
-                                            >
-                                                제거
-                                            </button>
-                                        </div>
-                                    ))}
                                 </div>
                             </div>
                             <div className="eventList-modal-footer">

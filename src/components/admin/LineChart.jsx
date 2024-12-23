@@ -11,7 +11,6 @@ const LineChart = ({ weekMemberData, weekProData , weekLeaveMemberData}) => {
     const reversedWeekProData = weekProData.reverse();
     const reversedWeekLeaveMemberData = weekLeaveMemberData.reverse();
 
-
     const chartData = {
         labels: reversedWeekMemberData.map(item => item.date), // 날짜 (X축)
         datasets: [
@@ -60,6 +59,8 @@ const LineChart = ({ weekMemberData, weekProData , weekLeaveMemberData}) => {
                         scales: {
                             y: {
                                 beginAtZero: true, // Y축 시작점을 0으로 설정
+                                max: 20, // Y축 최대값을 50으로 설정
+                                stepsize:10,
                             },
                         },
                     }}

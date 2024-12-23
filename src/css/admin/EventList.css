@@ -143,6 +143,7 @@
     border-radius: 8px;
     width: 90%;
     max-width: 1000px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .eventList-modal-header {
@@ -165,8 +166,8 @@
 
 /* 이미지 크기 통일 */
 .event-image {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 4px;
     margin: 5px;
@@ -189,17 +190,34 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px; /* 항목 간 간격 */
+    padding-right: 20px; /* 오른쪽 여백 추가 */
 }
 
-.title-section input,
-.category-section select {
-    width: 100%;
+/* 제목 입력 */
+.title-section input {
+    width: 70%; /* 제목 입력은 70% 너비 */
     padding: 10px;
     margin-top: 8px;
+    margin-bottom: 15px; /* 입력 필드 아래쪽 여백 */
     border: 1px solid #ddd;
     border-radius: 4px;
+    display: block; /* 라벨 아래로 위치 */
+    text-align: center;
 }
+
+/* 카테고리 선택 */
+.category-section select {
+    width: 30%; /* 카테고리 선택은 50% 너비 */
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px; /* 선택 필드 아래쪽 여백 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block; /* 라벨 아래로 위치 */
+    text-align: center;
+}
+
 
 .right-section {
     flex: 1;
@@ -295,37 +313,71 @@
     border: 1px solid #ddd;
 }
 
-/* 사진 미리보기 영역 */
-.eventList-upload-preview {
+/* 페이지 네비게이션 스타일 */
+.EventList-pagination {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-/* CSS 개선 사항 */
-.eventList-upload-preview-item {
-    display: inline-flex;
-    flex-direction: row;
+.EventList-pagination button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.EventList-pagination button:hover {
+    background-color: #ddd;
+}
+
+.EventList-pagination button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.EventList-pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 검색과 드롭다운을 위한 스타일 */
+.eventList-search-container {
+    display: flex;
     align-items: center;
-    position: relative;
+    gap: 10px; /* 검색과 드롭다운 사이의 간격 */
+    margin-bottom: 20px; /* 검색 영역과 테이블 사이의 간격 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
 }
 
-.event-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 4px;
+.eventList-select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.eventList-remove-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: rgba(0, 0, 0, 0.5);
+.eventList-search-container input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px; /* 고정된 너비로 설정 */
+}
+
+.eventList-search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 50%;
-    padding: 4px 8px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.eventList-search-container button:hover {
+    background-color: #45a049;
 }

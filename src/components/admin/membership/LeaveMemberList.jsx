@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import apiAxios from '../../../api/apiAxios';
-import '../../../css/admin/Membership.css'; 
+import '../../../css/admin/Membership.css';
 
 const LeaveMemberList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [leave, setLeave] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
+    const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
+    const pageSize = 30; // 페이지 당 아이템 수 고정
 
     // 탈퇴 데이터 불러오기
-    const fetchleaveData = async () => {
+    const fetchLeaveData = async (page = 1) => {
         try {
-            const response = await apiAxios.get('/api/admin/member/cancel');
-            // cancelDate를 기준으로 내림차순 정렬
-            const sortedLeave = response.data ? response.data.sort((a, b) => new Date(b.cancelDate) - new Date(a.cancelDate)) : [];
+            const response = await apiAxios.get(`/api/admin/member/cancel?page=${page}&size=${pageSize}`);
+            const sortedLeave = response.data ? response.data.content.sort((a, b) => new Date(b.cancelDate) - new Date(a.cancelDate)) : [];
             setLeave(sortedLeave);
+            setTotalPages(response.data.totalPages); // 전체 페이지 수 설정
+            setCurrentPage(page); // 현재 페이지 업데이트
         } catch (err) {
             console.error('API 호출 오류:', err);
             setError(err.message);
@@ -29,10 +33,17 @@ const LeaveMemberList = () => {
         return formattedDate;
     };
 
+    // 페이지 변경 함수
+    const handlePageChange = (page) => {
+        if (page >= 1 && page <= totalPages) {
+            fetchLeaveData(page); // 페이지 변경 시 데이터 불러오기
+        }
+    };
+
     // 컴포넌트 마운트 시 API 호출
     useEffect(() => {
-        fetchleaveData(); // 데이터 초기 로드
-    }, []);
+        fetchLeaveData(currentPage); // 데이터 초기 로드
+    }, [currentPage]);
 
     // 로딩 중일 때 UI 표시
     if (loading) return <div>로딩 중...</div>;
@@ -71,6 +82,27 @@ const LeaveMemberList = () => {
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                {/* 페이지 네비게이션 추가 */}
+                <div className="membership-pagination">
+                    <button 
+                        onClick={() => handlePageChange(currentPage - 1)} 
+                        disabled={currentPage === 1}>이전</button>
+
+                    {/* 페이지 번호 버튼 */}
+                    {[...Array(totalPages).keys()].map((i) => (
+                        <button
+                            key={i}
+                            onClick={() => handlePageChange(i + 1)}
+                            className={currentPage === i + 1 ? 'active' : ''}>
+                            {i + 1}
+                        </button>
+                    ))}
+
+                    <button 
+                        onClick={() => handlePageChange(currentPage + 1)} 
+                        disabled={currentPage === totalPages}>다음</button>
                 </div>
             </div>
         </div>

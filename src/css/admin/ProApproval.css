@@ -112,3 +112,34 @@
 .revoke-btn:hover {
     background-color: #ff7f7f; /* 다크 빨간색 */
 }
+
+
+/* 페이지 네비게이션 스타일 */
+.proApproval-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.proApproval-pagination button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.proApproval-pagination button:hover {
+    background-color: #ddd;
+}
+
+.proApproval-pagination button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.proApproval-pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
