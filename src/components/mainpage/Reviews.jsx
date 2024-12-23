@@ -25,7 +25,7 @@ function Reviews() {
 
   return (
     <div className="reviewsWrap">
-      <h2>최신 ★ 5개 리뷰</h2>
+      <h2>최신 리뷰</h2>
       <Link to="/pro/proview" className="review-cards">
         {reviews.length > 0 ? (
           reviews.map((review, index) => (

@@ -18,6 +18,22 @@ function Header() {
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
 
+  const [searchValue, setSearchValue] = useState(""); // 검색어 상태 관리
+  const navigate = useNavigate();
+
+  const handleSearch = (value) => {
+      if (value.trim()) { // 검색어가 비어있지 않을 경우에만 이동
+          navigate(`/search?value=${value}`); // 쿼리 파라미터에 검색어 포함
+      } else {
+          alert("검색어를 입력해주세요.");
+      }
+  };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") { // 엔터키 감지
+        handleSearch(searchValue);
+    }
+};
+
   useEffect(() => {
     const handleStorageChange = () => {
       const newUserno = localStorage.getItem('userno');
@@ -53,8 +69,6 @@ function Header() {
   };
 
   const snsProfile = getSNSProfile(loginEmail);
-
-  const navigate = useNavigate();
 
   const openModal = (type) => {
     setModalType((prevType) => (prevType === type ? null : type));
@@ -236,8 +250,13 @@ function Header() {
 
         {/* 검색창 */}
         <div className="search-bar">
-          <input type="text" placeholder="검색할 내용을 입력하세요" className="search-input" />
-          <button className="search-button">
+          <input type="text" 
+                 placeholder="검색할 내용을 입력하세요"
+                 className="search-input"
+                 value={searchValue}
+                 onChange={(e) => setSearchValue(e.target.value)}
+                 onKeyDown={handleKeyPress}/>
+          <button className="search-button" onClick={() => handleSearch(searchValue)}>
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z" fill="#ffffff"></path> </g></svg>
           </button>
         </div>
@@ -294,8 +313,9 @@ function Header() {
       <div className='moblie-search-insert'>
         {isSearchVisible && (
           <div className="moblie-search-bar">
-            <input ref={searchRef} type="text" placeholder="검색할 내용을 입력하세요" className="moblie-search-input" onBlur={handleFocusOut} />
-            <button className="moblie-search-button">
+            <input ref={searchRef} type="text" placeholder="검색할 내용을 입력하세요" className="moblie-search-input" onBlur={handleFocusOut} 
+            value={searchValue} onChange={(e) => setSearchValue(e.target.value)} onKeyDown={handleKeyPress}/>
+            <button className="moblie-search-button" onClick={() => handleSearch(searchValue)}>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z" fill="#ffffff"></path> </g></svg>
             </button>
           </div>

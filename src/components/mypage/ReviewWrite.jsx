@@ -4,17 +4,17 @@ import { ArticleContext } from '../../context/article/ArticleContext';
 
 const ReviewWrite = () => {
     const userNo = localStorage.getItem("userno");
-    const {reviewWrite} = useContext(ArticleContext);
+    const { reviewWrite } = useContext(ArticleContext);
 
     // 평점 상태 추가
-    const [rating, setRating] = useState(0); // 선택된 평점
-    const [hoverRating, setHoverRating] = useState(0); // 마우스 오버한 평점
+    const [rating, setRating] = useState(0);
+    const [hoverRating, setHoverRating] = useState(0);
 
     // State for form data
     const [formData, setFormData] = useState({
-        rating:'',
+        rating: '',
         memberNo: userNo,
-        proItemNo:4,        // 이전 페이지에서 데이터 받아옴
+        proItemNo: 4, // 이전 페이지에서 데이터 받아옴
         content: '',
     });
 
@@ -22,8 +22,15 @@ const ReviewWrite = () => {
     const maxFileSize = 20 * 1024 * 1024; // 20MB
     const maxFileCount = 5; // Maximum 5 files
 
+    const maxContentLength = 300; // 내용 글자수 제한
+
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+        if (name === "content" && value.length > maxContentLength) {
+            return; // 글자수 제한 초과 시 더 이상 입력하지 않음
+        }
+
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
@@ -37,7 +44,7 @@ const ReviewWrite = () => {
         let isFileTooLarge = false;
         let exceededFiles = 0;
 
-        files.forEach(file => {
+        files.forEach((file) => {
             if (file.size > maxFileSize) {
                 isFileTooLarge = true;
             } else if (totalFiles + newFiles.length < maxFileCount) {
@@ -54,66 +61,61 @@ const ReviewWrite = () => {
             alert(`최대 ${maxFileCount}장까지만 업로드 가능합니다.`);
         }
 
-        setSelectedFiles(prevFiles => [...prevFiles, ...newFiles]);
+        setSelectedFiles((prevFiles) => [...prevFiles, ...newFiles]);
     };
 
     const handleRemoveFile = (fileToRemove) => {
-        setSelectedFiles(prevFiles => prevFiles.filter(file => file !== fileToRemove));
+        setSelectedFiles((prevFiles) => prevFiles.filter((file) => file !== fileToRemove));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        // 유효성 검사: 평점이 입력되지 않은 경우
+
         if (rating === 0) {
             alert("평점을 입력해주세요!");
             return;
         }
-    
-        // 유효성 검사: 내용이 입력되지 않은 경우
+
         if (!formData.content) {
             alert("내용을 입력해주세요!");
             return;
         }
-    
+
         const data = new FormData();
-        // Add form data fields
-        data.append("star", rating); // 평점 추가
+        data.append("star", rating);
         data.append("memberNo", formData.memberNo);
         data.append("proItemNo", formData.proItemNo);
         data.append("reviewContent", formData.content);
-    
-        // Add files to FormData
-        selectedFiles.forEach(file => data.append("images", file));
-    
+
+        selectedFiles.forEach((file) => data.append("images", file));
+
         try {
-            reviewWrite(data); // 서버로 데이터 전송
+            reviewWrite(data);
             console.log("Form submitted", data);
         } catch (error) {
             console.error("Error submitting the form", error);
         }
     };
-    
-    // 평점 설정 함수
+
     const handleRatingClick = (value) => {
         setRating(value);
     };
 
-    // 마우스 오버 시 평점 설정 함수
     const handleRatingHover = (value) => {
         setHoverRating(value);
     };
 
-    // 마우스 아웃 시 평점 리셋 함수
     const handleRatingOut = () => {
         setHoverRating(0);
     };
 
     return (
-        <form id='reviewWritePage' onSubmit={handleSubmit}>
-            <input type='hidden' name='memberNo' value={userNo} />
+        <form id="reviewWritePage" onSubmit={handleSubmit}>
+            <input type="hidden" name="memberNo" value={userNo} />
             <div className="review-write-wrap">
-                <div><h1>모이고 리뷰작성</h1></div>
+                <div>
+                    <h1>모이고 리뷰작성</h1>
+                </div>
 
                 {/* 평점 입력 */}
                 <div className="rating-container">
@@ -141,10 +143,13 @@ const ReviewWrite = () => {
                     <textarea
                         name="content"
                         placeholder="리뷰내용을 입력하세요"
-                        maxLength={5000}
+                        maxLength={maxContentLength}
                         value={formData.content}
                         onChange={handleChange}
                     ></textarea>
+                    <div className="content-counter">
+                        ({formData.content.length} / {maxContentLength})
+                    </div>
                 </div>
                 <hr />
 
@@ -158,7 +163,7 @@ const ReviewWrite = () => {
                     />
                     <div>
                         <label htmlFor="file-upload">
-                            <img className="camera-img" src='/image/camera.png' alt="파일 업로드" />
+                            <img className="camera-img" src="/image/camera.png" alt="파일 업로드" />
                         </label>
                         <div className="file-index">
                             ({selectedFiles.length} / {maxFileCount})
@@ -188,7 +193,9 @@ const ReviewWrite = () => {
                     )}
                 </div>
 
-                <button type="submit" className="review-submit-button">작성 완료</button>
+                <button type="submit" className="review-submit-button">
+                    작성 완료
+                </button>
             </div>
         </form>
     );

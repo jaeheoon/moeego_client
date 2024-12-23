@@ -28,6 +28,7 @@
     width: 100px;
     height: 100px;
     border-radius: 10px;
+    object-fit: cover;
 }
 .itemWrap .itemTitleWrap {
     display: flex;
@@ -63,6 +64,7 @@
     align-items: center;
     justify-content: left;
     width:90%;
+    margin-bottom: 1rem;
 }
 
 .itemWrap .itemContentWrap div {
@@ -72,8 +74,8 @@
     margin-top: 1em;
     text-align: left;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임표로 표시 */
+    white-space: nowrap !important; /* 충돌 방지를 위해 강제 적용 */
     box-sizing: border-box;
     word-break: break-word;
 }
