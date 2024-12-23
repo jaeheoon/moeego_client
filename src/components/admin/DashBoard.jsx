@@ -20,6 +20,13 @@ const DashBoard = () => {
     const [proData, setProData] = useState([]);
     const [leaveData, setLeaveData] = useState([]);
 
+    // 날짜 포맷팅 함수
+    const formatDate = (date) => {
+        if (!date) return '';  // 날짜가 없는 경우 빈 문자열 반환
+        const formattedDate = new Date(date).toLocaleDateString('ko-KR'); // 'ko-KR'로 설정하여 한국식 날짜 형식으로 포맷
+        return formattedDate;
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -109,7 +116,7 @@ const DashBoard = () => {
                                             <td>{event.subject}</td>
                                             <td>{event.content}</td>
                                             <td>{event.view}</td>
-                                            <td>{event.writeDate}</td>
+                                            <td>{formatDate(event.writeDate)}</td> {/* 날짜 포맷 적용 */}
                                         </tr>
                                     )) : <tr><td colSpan="4">데이터가 없습니다.</td></tr>}
                             </tbody>
@@ -145,7 +152,7 @@ const DashBoard = () => {
                                             <td>{notice.subject}</td>
                                             <td>{notice.content}</td>
                                             <td>{notice.view}</td>
-                                            <td>{notice.writeDate}</td>
+                                            <td>{formatDate(notice.writeDate)}</td> {/* 날짜 포맷 적용 */}
                                         </tr>
                                     )) : <tr><td colSpan="4">데이터가 없습니다.</td></tr>}
                             </tbody>

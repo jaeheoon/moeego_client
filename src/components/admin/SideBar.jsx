@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSideBar } from '../../js/useSideBar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../css/admin/SideBarStyle.css';
 
 const SideBar = () => {
@@ -9,10 +9,18 @@ const SideBar = () => {
         toggleMemberSubmenu,
     } = useSideBar();
 
+    const navigate = useNavigate();
+
+    const goHome = () => {
+        navigate("/");
+    }
+
     return (
         <div className="sidebar">
             <div>
-                <div className="sidelogo">MoeeGo</div>
+                <div className="sidelogo-link" onClick={goHome}>
+                    <div className="sidelogo">MoeeGo</div>
+                </div>
                 <ul className="menu-list">
                     <Link to='/admin/dashboard' className='sideBar-Link'>
                         <li className="menu-item">대시보드</li>
@@ -45,8 +53,6 @@ const SideBar = () => {
                     <Link to='/admin/eventlist' className='sideBar-Link'>
                         <li className="menu-item">이벤트 및 공지</li>
                     </Link>
-                </ul>
-                <ul className="menu-list2">
                     <Link to='/admin/logout' className='sideBar-Link'>
                         <li className="menu-item">로그아웃</li>
                     </Link>

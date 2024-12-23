@@ -102,14 +102,15 @@
 }
 
 .menu-list2 .sideBar-Link .menu-item {
+    position: absolute;  /* 절대 위치로 설정 */
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: left;
     width: 100%;
 }
 
-.menu-list2 .sideBar-Link:has(.menu-item:hover)  {
-    color: red;
+.menu-list2 .sideBar-Link .menu-item:hover {
+    background-color: #3f3f46;  /* 배경 색상 변경 */
+    color: white;  /* 글자색 변경 */
 }
-
-/* 수정 */

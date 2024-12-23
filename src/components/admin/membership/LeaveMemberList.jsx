@@ -22,6 +22,13 @@ const LeaveMemberList = () => {
         }
     };
 
+    // 날짜 포맷팅 함수
+    const formatDate = (date) => {
+        if (!date) return '';  // 날짜가 없는 경우 빈 문자열 반환
+        const formattedDate = new Date(date).toLocaleDateString('ko-KR'); // 'ko-KR'로 설정하여 한국식 날짜 형식으로 포맷
+        return formattedDate;
+    };
+
     // 컴포넌트 마운트 시 API 호출
     useEffect(() => {
         fetchleaveData(); // 데이터 초기 로드
@@ -58,7 +65,7 @@ const LeaveMemberList = () => {
                                         <td>{row.email}</td>
                                         <td>{row.phone}</td>
                                         <td>{row.reason}</td>
-                                        <td>{row.cancelDate}</td>
+                                        <td>{formatDate(row.cancelDate)}</td> {/* 날짜 포맷 적용 */}
                                     </tr>
                                 ))}
                             </tbody>
