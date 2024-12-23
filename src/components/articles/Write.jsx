@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import '/src/css/articles/Write.css';
 import { ArticleContext } from '../../context/article/ArticleContext';
-import ServiceArea from '../ProSearch/ServiceArea';
+import ServiceArea from '../articles/modal/ServiceArea';
+import '/src/css/articles/Write.css';
 
 const Write = () => {
     const { writeArticle } = useContext(ArticleContext);
