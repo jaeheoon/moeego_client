@@ -1,4 +1,3 @@
-/* 공통 스타일 */
 .indexPage {
     width: 100%;
     height: 100%;
@@ -331,7 +330,14 @@ h1{
     gap:5px;
 }
 
-.city-listWrap span {
+.city-listWrap .city-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+.city-listWrap .city-item {
     width:auto;
     height: auto;
     padding: 10px;
@@ -341,6 +347,23 @@ h1{
     white-space: nowrap;
     color:#00C7AE;
 }
+
+.city-box-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .city-box {
+    width: 100%;
+    height: 450px;
+    border-radius: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid #3e8e41;  */
+  }
 
 /* 반응형 스타일 */
 @media (max-width: 1250px) {
@@ -501,3 +524,5 @@ h1{
       font-size: 1rem;
     }
   }
+
+
