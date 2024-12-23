@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import SearchBar from "./SearchBar";
-import SearchList from "./SearchList";
-import apiAxios from "../../api/apiAxios";
-import ProSearchPaging from "./ProSearchPaging";
+import React, { useEffect, useState } from 'react';
+import SearchBar from './SearchBar';
+import SearchList from './SearchList';
+import apiAxios from '../../api/apiAxios';
+import ProSearchPaging from './ProSearchPaging';
 
 const Content = () => {
     const [searchListItems, setSearchListItems] = useState([]);
@@ -10,61 +10,39 @@ const Content = () => {
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
     const [isLoading, setIsLoading] = useState(false);
 
-    const [service, setService] = useState("서비스");
-    const [area, setArea] = useState("지역");
-    const [keyword, setKeyword] = useState("");
-
     // 데이터를 가져오는 함수
-    const fetchItems = async (page = 1) => {
+    const fetchItems = async (page) => {
         setIsLoading(true);
         try {
-            const response = await apiAxios.get("/api/pro/item", {
-                params: {
-                    subCateNo: service !== "서비스" ? service : undefined,
-                    location: area !== "지역" ? area : undefined,
-                    keyword: keyword || undefined,
-                    pg: page,
-                },
-            });
+            const response = await apiAxios.get(`/api/pro/item?pg=${page}`);
             const { content, totalPages, currentPage } = response.data.data;
-            setSearchListItems(content || []);
-            setPages(totalPages);
-            setCurrentPage(currentPage + 1); // 페이지 번호 조정 (1부터 시작)
+            setSearchListItems(content); // 전문가 리스트 저장
+            setPages(totalPages); // 전체 페이지 수 저장
+            setCurrentPage(currentPage + 1); // 0-based -> 1-based 변환
         } catch (error) {
-            console.error("Error fetching items:", error);
+            console.error("Error fetching items:", error); // 에러 로그 출력
         } finally {
-            setIsLoading(false);
+            setIsLoading(false); // 로딩 상태 해제
         }
     };
 
-    const handleServiceAreaChange = (selectedService, selectedArea) => {
-        setService(selectedService);
-        setArea(selectedArea);
-    };
-
-    const handleSearch = (searchKeyword) => {
-        setKeyword(searchKeyword);
-    };
-
     useEffect(() => {
-        fetchItems(1);
-    }, [service, area, keyword]); // service, area, keyword 값이 변경되면 API 호출
+        fetchItems(1); // 컴포넌트 처음 렌더링 시 1페이지 데이터 가져옴
+    }, []);
 
+    // 페이지 변경 핸들러
     const handlePageChange = (page) => {
-        fetchItems(page);
+        fetchItems(page); // 해당 페이지 데이터 가져오기
     };
 
     return (
-        <div className="ContentWrap">
+        <div className='ContentWrap'>
             <section>
-                <SearchBar onSearch={handleSearch} />
-                {searchListItems.map((item) => (
-                    <SearchList
-                        key={item.proNo}
-                        item={item}
-                        proNo={item.proNo}
-                    />
+                <SearchBar />
+                {searchListItems.map(item => (
+                    <SearchList key={item.proNo} item={item} />
                 ))}
+                {/* Paging 컴포넌트를 삽입 */}
                 <ProSearchPaging
                     pages={pages}
                     currentPage={currentPage}

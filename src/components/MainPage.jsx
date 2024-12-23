@@ -11,8 +11,6 @@ const MainPage = () => {
         <section className='indexPage'>
             <MainBanner />
 
-            <Banner />
-
             <Reviews />
 
             <KeywordSection />
