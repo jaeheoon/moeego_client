@@ -191,7 +191,7 @@ const ArticleProvider = ({ children }) => {
             if (response.status === 200) {
                 alert("게시글이 성공적으로 수정되었습니다.");
                 fetchArticles(); // 수정 후 게시글 목록 갱신
-                navigate(`/article/viewpage?article_no=${articleData.articleNo}`); // 수정 완료 후 상세 페이지로 이동
+                navigate(`/article/viewpage?article_no=${articleNo}`); // 수정 완료 후 상세 페이지로 이동
             }
         } catch (err) {
             console.error("Error updating article:", err);

@@ -8,7 +8,7 @@ import { ArticleContext } from '../../../context/article/ArticleContext.jsx';
 import Loading from '../../loading/loading.jsx';
 import { AuthContext } from '../../../context/member/AuthContext.jsx';
 import Paging from '../Paging.jsx';
-import ServiceArea from '../../ProSearch/ServiceArea.jsx';
+import ServiceArea from '../modal/ServiceArea.jsx';
 
 const FreeBoardForm = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
@@ -75,7 +75,7 @@ const FreeBoardForm = () => {
 
                     <div className="Main-RightContainer">
                         <GuideBanner />
-                        <ServiceArea />
+                        {/* <ServiceArea /> */}
                         <div className='FeedContainer'>
                             <FeedList articles={articles} />
                         </div>

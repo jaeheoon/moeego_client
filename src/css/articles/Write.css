@@ -158,8 +158,12 @@
 }
 
 /* 제목 입력 스타일 */
+.subject-container {
+    display: flex;
+    width: 100%;
+}
 .subject-container input {
-    width: 95%;
+    width: 90%;
     padding: 10px;
     border: none; /* 기본 테두리 */
     border-radius: 4px;

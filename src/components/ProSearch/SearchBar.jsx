@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ProContext } from "../../context/pro/ProContext";
 import apiAxios from '../../api/apiAxios';
 import KakaoMap from './KakaoMap';
+import apiAxios from '../../api/apiAxios';
 
 const SearchBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

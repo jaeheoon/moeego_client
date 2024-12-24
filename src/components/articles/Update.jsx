@@ -3,7 +3,7 @@ import "../../css/articles/Write.css";
 import { ArticleContext } from '../../context/article/ArticleContext';
 import { useNavigate } from "react-router-dom";
 import Loading from '../loading/loading';
-import ServiceArea from '../ProSearch/ServiceArea';
+import ServiceArea from './modal/ServiceArea';
 
 const Update = () => {
     const { isLoading, articleData, updateArticle, fetchArticle, images } = useContext(ArticleContext); // updateArticle, fetchArticle 가져오기
@@ -22,6 +22,10 @@ const Update = () => {
     const maxFileSize = 20 * 1024 * 1024; // 20MB
     const maxFileCount = 5; // 최대 5장
 
+    // 글자수 상태 추가
+    const [subjectLength, setSubjectLength] = useState(0);
+    const [contentLength, setContentLength] = useState(0);
+
     useEffect(() => {
         if (articleData) {
             setFormData({
@@ -36,6 +40,10 @@ const Update = () => {
             if (images && images.length > 0) {
                 setSelectedFiles(images); // images에서 미리보기 이미지 설정
             }
+
+            // 글자 수 초기화
+            setSubjectLength(articleData.subject.length);
+            setContentLength(articleData.content.length);
         }
     }, [articleData, images]);
 
@@ -52,6 +60,13 @@ const Update = () => {
             ...prevData,
             [name]: value,
         }));
+
+        // 글자 수 업데이트
+        if (name === 'subject') {
+            setSubjectLength(value.length);
+        } else if (name === 'content') {
+            setContentLength(value.length);
+        }
     };
 
     const handleFileChange = (e) => {
@@ -173,6 +188,9 @@ const Update = () => {
                             value={formData.subject}
                             onChange={handleChange}
                         />
+                        <div className="char-count">
+                            {subjectLength} / 50
+                        </div>
                     </div>
                     <hr />
 
@@ -185,6 +203,9 @@ const Update = () => {
                             value={formData.content}
                             onChange={handleChange}
                         />
+                        <div className="char-count">
+                            {contentLength} / 5000
+                        </div>
                     </div>
                     <hr />
 

@@ -2,11 +2,14 @@ import React, { useContext, useState } from 'react';
 import { ArticleContext } from '../../context/article/ArticleContext';
 import ServiceArea from '../articles/modal/ServiceArea';
 import '/src/css/articles/Write.css';
+import { AuthContext } from '../../context/member/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Write = () => {
     const { writeArticle } = useContext(ArticleContext);
     const userNo = localStorage.getItem("userno");
-
+    const {isLoggedIn} = useContext(AuthContext);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         subject: '',
         content: '',
@@ -60,7 +63,15 @@ const Write = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // 폼 제출 방지
+        if (!isLoggedIn){
+            if (confirm('글을 작성하기 위해서는 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?')) {
+                navigate("/login");
+                return;
+            } else {
+                return;
+            }
+        }
         if (!formData.type) {
             alert("카테고리를 선택해주세요!");
             return;
@@ -89,6 +100,9 @@ const Write = () => {
         }
     };
 
+    const handleModalClick = (e) => {
+        e.stopPropagation(); // 이벤트 전파 방지
+    };
 
     return (
         <form id='articleWriteForm' onSubmit={handleSubmit}>
@@ -114,7 +128,7 @@ const Write = () => {
                             등록
                         </button>
                     </div>
-                    <div className='service-area-wrap'>
+                    <div className='service-area-wrap' onClick={handleModalClick}>
                         <ServiceArea
                             onServiceAreaChange={(service, area) => {
                                 setFormData((prevData) => ({
@@ -135,6 +149,9 @@ const Write = () => {
                             value={formData.subject}
                             onChange={handleChange}
                         />
+                        <div className="char-count">
+                            {formData.subject.length} / 50
+                        </div>
                     </div>
                     <hr />
 
@@ -143,10 +160,13 @@ const Write = () => {
                         <textarea
                             name="content"
                             placeholder="내용을 입력하세요"
-                            maxLength={5000}
+                            maxLength={500}
                             value={formData.content}
                             onChange={handleChange}
                         ></textarea>
+                        <div className="char-count">
+                            {formData.content.length} / 500
+                        </div>
                     </div>
                     <hr />
                     {/* 파일 업로드 */}

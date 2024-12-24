@@ -5,8 +5,8 @@ import apiAxios from '../../api/apiAxios';
 
 const Detail_category = () => {
     const [categories, setCategories] = useState([]);
-    const [error, setError] = useState(null); // 에러 상태 추가
-    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         apiAxios
@@ -19,24 +19,47 @@ const Detail_category = () => {
                 setError(err);
             })
             .finally(() => {
-                setIsLoading(false); // 로딩 완료
+                setIsLoading(false);
             });
     }, []);
+
+    // 카테고리 번호에 따른 이미지 경로 매핑
+    const getImageSrc = (mainCateNo) => {
+        switch (mainCateNo) {
+            case 1:
+                return "https://kr.object.ncloudstorage.com/moeego/image/home.png";
+            case 2:
+                return "https://kr.object.ncloudstorage.com/moeego/image/si.png";
+            case 3:
+                return "https://kr.object.ncloudstorage.com/moeego/image/fashion.png";
+            case 4:
+                return "https://kr.object.ncloudstorage.com/moeego/image/study.png";
+            case 5:
+                return "https://kr.object.ncloudstorage.com/moeego/image/hobby.png";
+            case 6:
+                return "https://kr.object.ncloudstorage.com/moeego/image/car.png";
+            default:
+                return "/image/default.jpg"; // 기본 이미지
+        }
+    };
 
     return (
         <div className='detailCategoryPage'>
             <div className="categories">
-                {isLoading ? ( // 로딩 중일 때
+                {isLoading ? (
                     <p>데이터를 불러오는 중입니다...</p>
-                ) : error ? ( // 에러 발생 시
+                ) : error ? (
                     <p>서버 연결이 불안정합니다. 잠시 후 다시 시도해주세요.</p>
-                ) : categories.length === 0 ? ( // 데이터가 없을 때
+                ) : categories.length === 0 ? (
                     <p>카테고리가 없습니다.</p>
-                ) : ( // 데이터가 있을 때
+                ) : (
                     categories.map(item => (
                         <Link to={`/category/${item.mainCateNo}`} key={item.mainCateNo}>
                             <div className="category-item">
-                                <img src="/image/home.png" alt={item.mainCateName} />
+                                <img 
+                                    src={getImageSrc(item.mainCateNo)} 
+                                    alt={item.mainCateName} 
+                                />
                                 <span>{item.mainCateName}</span>
                             </div>
                         </Link>

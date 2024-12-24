@@ -6,11 +6,17 @@ import MyPaging from './MyPaging';
 const MyArticles = ({ articles, totalPages, currentPage, onPageChange }) => {
     return (
         <div className="myArticlesPage">
-            {articles.map(item => (
-                <Link key={item.articleNo} to={`/article/viewpage?article_no=${item.articleNo}`}>
-                    <MyArticleItem item={item} />
-                </Link>
-            ))}
+            {/* 글이 없을 경우 메시지 출력 */}
+            {articles.length === 0 ? (
+                <p>작성한 글이 없습니다.</p>
+            ) : (
+                articles.map(item => (
+                    <Link key={item.articleNo} to={`/article/viewpage?article_no=${item.articleNo}`}>
+                        <MyArticleItem item={item} />
+                    </Link>
+                ))
+            )}
+            {/* 페이징 */}
             <MyPaging
                 totalItems={totalPages}
                 currentPage={currentPage}

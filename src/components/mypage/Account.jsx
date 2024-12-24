@@ -108,7 +108,7 @@ const Account = () => {
                         </div>
                     )}
                 </form>
-                {loginStatus === 'ROLE_PRO' && (
+                {loginStatus !== 'ROLE_PRO' ? (<div><button>달인 신청</button></div>) : (
                     <form className='IntroductionForm'>
                         <div className='Container'>
                             <h3 className="SubTitle">달인 관리</h3>

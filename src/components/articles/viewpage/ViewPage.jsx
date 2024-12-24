@@ -11,9 +11,6 @@ const ViewPage = () => {
             <div>
                 <PostDetail articleNo={articleNo}/>
             </div>
-            <div>
-
-            </div>
         </div>
     );
 };

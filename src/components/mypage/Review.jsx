@@ -96,7 +96,7 @@ const Review = () => {
                                     </li>
                                 ))
                             ) : (
-                                <li>No reviews found.</li>
+                                <li>작성한 리뷰가 없습니다.</li>
                             )}
                         </ul>
                         {/* 페이징 컴포넌트 */}

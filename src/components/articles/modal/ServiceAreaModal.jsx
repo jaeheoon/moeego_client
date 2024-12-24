@@ -16,12 +16,12 @@ const ServiceAreaModal = ({ onClose, activeModal, setActiveModal, handleServiceS
                         <button className='closeButton' onClick={onClose}>✖</button> {/* 닫기 버튼 추가 */}
                     </div>
                     <div className='ServiceAreaModalHeader'>
-                        <button onClick={() => setActiveModal('service')} className={`modalButton ${activeModal === 'service' ? 'active' : ''}`}>
+                        <div onClick={() => setActiveModal('service')} className={`modalButton ${activeModal === 'service' ? 'active' : ''}`}>
                             서비스
-                        </button>
-                        <button onClick={() => setActiveModal('area')} className={`modalButton ${activeModal === 'area' ? 'active' : ''}`}>
+                        </div>
+                        <div onClick={() => setActiveModal('area')} className={`modalButton ${activeModal === 'area' ? 'active' : ''}`}>
                             지역
-                        </button>
+                        </div>
                     </div>
                     {/* 현재 활성화된 모달에 따라 렌더링 */}
                     {activeModal === 'service' && <ServiceModal handleServiceSelect={handleServiceSelect} />}

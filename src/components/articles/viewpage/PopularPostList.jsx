@@ -6,11 +6,10 @@ import Loading from "../../loading/loading";
 
 const PopularPostList = () => {
     const { hotArticle, isLoading, error } = useContext(ArticleContext);
-    console.log("PopularPostList :"+hotArticle);
     if (isLoading) return <div><Loading/></div>;
-    if (error) return <div>Error: {error.message}</div>;
+    if (error) return <div>서버 연결이 불안정합니다. 잠시 후 다시 시도해주세요.</div>;
     if (!hotArticle) {
-        return <div></div>; // 대체 로딩 UI
+        return <div><Loading/></div>; // 대체 로딩 UI
     }
     return (
         <div className="popular-post-list">
