@@ -1,10 +1,17 @@
 import React, { useContext, useState } from 'react';
 import '/src/css/mypage/ReviewWrite.css';
 import { ArticleContext } from '../../context/article/ArticleContext';
+import { useParams } from 'react-router-dom';
 
 const ReviewWrite = () => {
     const userNo = localStorage.getItem("userno");
     const { reviewWrite } = useContext(ArticleContext);
+
+    const searchParams = new URLSearchParams(location.search);
+    const proItemNo = searchParams.get('proItemNo');
+
+    // proItemNo을 Long 타입으로 변환 (JavaScript에서 숫자형으로 처리)
+    const proItemNoLong = proItemNo ? parseInt(proItemNo, 10) : null;
 
     // 평점 상태 추가
     const [rating, setRating] = useState(0);
@@ -14,7 +21,7 @@ const ReviewWrite = () => {
     const [formData, setFormData] = useState({
         rating: '',
         memberNo: userNo,
-        proItemNo: 4, // 이전 페이지에서 데이터 받아옴
+        proItemNo: proItemNoLong, // 이전 페이지에서 데이터 받아옴
         content: '',
     });
 

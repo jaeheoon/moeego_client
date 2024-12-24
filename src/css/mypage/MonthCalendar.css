@@ -204,9 +204,38 @@
 .reservationUl .reservationLi {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
     width: 100%;
-    padding: 0.25rem 0.25rem 0.25rem 0;
+    padding: 0.25rem 0rem 0.25rem 0;
+}
+
+/* 버튼 공통 스타일 */
+.reservationUl button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 취소 버튼 스타일 */
+.reservationUl .cancel-btn {
+    background-color: transparent;
+    color: #828282;
+}
+
+.reservationUl .cancel-btn:hover {
+    color: #222;
+}
+
+/* 리뷰 버튼 스타일 */
+.reservationUl .review-btn {
+    background-color: transparent;
+    color: #828282;
+}
+
+.reservationUl .review-btn:hover {
+    color: #222;
 }
 
 /* 반응형 스타일 */
