@@ -2,111 +2,114 @@ import React, { useContext, useEffect, useState } from 'react';
 import apiAxios from "../../api/apiAxios";
 import dayjs from 'dayjs';
 import { AuthContext } from '../../context/member/AuthContext';
-import '../../css/mypage/MonthCalendar.css';
 import { useNavigate } from 'react-router-dom';
+import '../../css/mypage/MonthCalendar.css';
 
 const MonthCalendar = () => {
   const today = new Date();
   const { isLoggedIn } = useContext(AuthContext);
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
-  const [selectedDate, setSelectedDate] = useState(today.getDate());  // 초기값을 오늘 날짜로 설정
+  const [selectedDate, setSelectedDate] = useState(today.getDate());
   const [scheduleStatus, setScheduleStatus] = useState({ received: [], my: [] });
-  const [list, setList] = useState({}); // 날짜별 일정 저장
+  const [list, setList] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
+  // 첫 페이지 로딩 시, 오늘의 예약 정보를 자동으로 불러오기
   useEffect(() => {
     if (isLoggedIn) {
-      setList({});
-      setScheduleStatus({ received: [], my: [] });
-    }
-  }, [isLoggedIn]);  // 로그인 상태가 변경될 때마다 실행
+      const datelist = {
+        month: currentMonth + 1,
+        year: currentYear,
+      };
 
+      setIsLoading(true);
+      apiAxios.get('/api/reservation/mypage', { params: datelist })
+        .then((response) => {
+          if (response.data.success) {
+            const receivedReservations = response.data.data.receivedReservations || [];
+            const myReservations = response.data.data.myReservations;
+
+            const scheduleMap = {};
+
+            receivedReservations.forEach((reservation) => {
+              const { startDate, startTimes, memberName, proItemName } = reservation;
+              if (!scheduleMap[startDate]) {
+                scheduleMap[startDate] = { received: [], my: [] };
+              }
+
+              const scheduleDetails = startTimes.map((time) => {
+                return `${memberName}, ${proItemName || '내용없음'}, ${time}`;
+              });
+
+              scheduleMap[startDate].received = [
+                ...scheduleMap[startDate].received,
+                ...scheduleDetails,
+              ];
+            });
+
+            myReservations.forEach((reservation) => {
+              const { startDate, startTimes, proName, proItemName, reservationNo, proItemNo, proNo } = reservation;
+              if (!scheduleMap[startDate]) {
+                scheduleMap[startDate] = { received: [], my: [] };
+              }
+
+              const scheduleDetails = startTimes.map((time) => {
+                return {
+                  proName,
+                  proItemNo: proItemNo || "",
+                  proItemName: proItemName || '내용없음',
+                  time,
+                  reservationNo,
+                  proNo
+                };
+              });
+
+              scheduleMap[startDate].my = [
+                ...scheduleMap[startDate].my,
+                ...scheduleDetails,
+              ];
+            });
+
+            setList(scheduleMap);
+
+            // 데이터 로딩 완료 후 isLoading false로 설정
+            setIsLoading(false);
+          }
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          console.error('일정을 불러오는 중 오류가 발생했습니다.', error);
+        });
+    }
+  }, [currentMonth, currentYear, isLoggedIn]);
 
   useEffect(() => {
-    const datelist = {
-      month: currentMonth + 1,
-      year: currentYear,
-    };
+    // 로딩이 완료된 후에만 오늘 일정 확인
+    if (!isLoading) {
+      checkSchedule(today.getDate());
+    }
+  }, [isLoading]); // isLoading이 false일 때만 실행
 
-    apiAxios.get('/api/reservation/mypage', { params: datelist }) // GET 요청에서는 params를 사용
-      .then((response) => {
-        if (response.data.success) {
-          const receivedReservations = response.data.data.receivedReservations || [];  // 기본값 빈 배열 처리
-          const myReservations = response.data.data.myReservations;
-
-          // 날짜별로 일정 데이터 매핑
-          const scheduleMap = {};
-
-          // receivedReservations가 있을 경우에만 처리
-          receivedReservations.forEach((reservation) => {
-            const { startDate, startTimes, memberName, proItemName } = reservation;
-
-            if (!scheduleMap[startDate]) {
-              scheduleMap[startDate] = { received: [], my: [] };
-            }
-
-            // 예약 추가 (받은 예약)
-            const scheduleDetails = startTimes.map((time) => {
-              return `${memberName}, ${proItemName || '내용없음'}, ${time}`;
-            });
-
-            scheduleMap[startDate].received = [
-              ...scheduleMap[startDate].received,
-              ...scheduleDetails,
-            ];
-          });
-
-          // myReservations는 항상 존재하므로 무조건 처리
-          myReservations.forEach((reservation) => {
-            const { startDate, startTimes, proName, proItemName, reservationNo, proItemNo, proNo } = reservation;
-
-            if (!scheduleMap[startDate]) {
-              scheduleMap[startDate] = { received: [], my: [] };
-            }
-
-            // 예약 추가 (내가 한 예약)
-            const scheduleDetails = startTimes.map((time) => {
-              return {
-                proName,
-                proItemNo: proItemNo || "",
-                proItemName: proItemName || '내용없음',
-                time,
-                reservationNo,
-                proNo
-              };
-            });
-
-            scheduleMap[startDate].my = [
-              ...scheduleMap[startDate].my,
-              ...scheduleDetails,
-            ];
-          });
-
-          setList(scheduleMap); // 상태로 설정
-
-          // 초기 선택 날짜 확인 및 일정 가져오기
-          checkSchedule(selectedDate); // 추가된 코드
-          setIsLoading(false);
-        }
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error('일정을 불러오는 중 오류가 발생했습니다.', error);
-      });
-  }, [currentMonth, currentYear]);
-
-  if (isLoading) {
-    return <p>로딩 중...</p>;
-  }
-
+  // 선택된 날짜 변경 시 예약 정보 체크
   useEffect(() => {
     if (selectedDate) {
       checkSchedule(selectedDate);
     }
-  }, [selectedDate]);  // 단순히 선택된 날짜만 감지
+  }, [selectedDate]);
+
+  const checkSchedule = (day) => {
+    const selectedDateString =
+      `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+    if (list[selectedDateString]) {
+      setScheduleStatus(list[selectedDateString]);
+    } else {
+      setScheduleStatus({ received: [], my: [] });
+    }
+  };
 
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -118,7 +121,7 @@ const MonthCalendar = () => {
 
   const resetSelectedDate = () => {
     setSelectedDate(null);
-    setScheduleStatus({ received: [], my: [] }); // 일정 상태 초기화
+    setScheduleStatus({ received: [], my: [] });
   };
 
   const handlePrevMonth = () => {
@@ -148,30 +151,15 @@ const MonthCalendar = () => {
     checkSchedule(day);
   };
 
-  const checkSchedule = (day) => {
-    const selectedDateString =
-      `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-
-    if (list[selectedDateString]) {
-      setScheduleStatus(list[selectedDateString]); // 해당 날짜의 일정 설정
-    } else {
-      setScheduleStatus({ received: [], my: [] }); // 일정이 없을 경우 빈 배열로 설정
-    }
-  };
-
-  // 예약 삭제 함수
   const handleDeleteReservation = (reservationDetails) => {
     const { reservationNo } = reservationDetails;
 
     apiAxios
-      .delete('/api/reservation', {
-        params: { reservationNo },
-      })
+      .delete('/api/reservation', { params: { reservationNo } })
       .then((response) => {
         if (response.data.success) {
           alert('예약이 취소되었습니다.');
 
-          // 상태 업데이트: 예약 목록에서 삭제
           const updatedMySchedules = scheduleStatus.my.filter(
             (schedule) => schedule.reservationNo !== reservationNo
           );
@@ -180,7 +168,6 @@ const MonthCalendar = () => {
             my: updatedMySchedules,
           }));
 
-          // list 업데이트
           const selectedDateString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(selectedDate).padStart(2, '0')}`;
           if (list[selectedDateString]) {
             const updatedList = { ...list };
@@ -238,12 +225,10 @@ const MonthCalendar = () => {
     let dayCount = 1;
     let row = [];
 
-    // 빈 칸 렌더링
     for (let i = 0; i < firstDay; i++) {
       row.push(<td className="empty-day" key={`empty-${i}`} />);
     }
 
-    // 날짜 렌더링
     while (dayCount <= daysInMonth) {
       while (row.length < 7 && dayCount <= daysInMonth) {
         row.push(renderDayCell(dayCount));
@@ -302,7 +287,7 @@ const MonthCalendar = () => {
                 <p><strong>고객 목록 :</strong></p>
                 <ul className='reservationUl'>
                   {scheduleStatus.received.map((schedule, index) => (
-                    <li className='reservationLi' key={index}>[고객] {schedule}</li>
+                    <li className='reservationLi' key={index}>{schedule}</li>
                   ))}
                 </ul>
               </div>
@@ -314,16 +299,14 @@ const MonthCalendar = () => {
                 <ul className="reservationUl">
                   {scheduleStatus.my.map((schedule, index) => (
                     <li className="reservationLi" key={index}>
-                      [예약] {schedule.proName}, {schedule.proItemName} ({schedule.time})
+                      {schedule.proName}, {schedule.proItemName} ({schedule.time})
 
-                      {/* 삭제 버튼 표시 조건 */}
                       {isCancelable(schedule.time) && (
                         <button className='cancel-btn' onClick={() => handleDeleteReservation(schedule)}>
                           취소
                         </button>
                       )}
 
-                      {/* 리뷰 버튼 표시 조건 */}
                       {isPastReservation(schedule.time) && (
                         <button className='review-btn' onClick={() => handleWriteReview(schedule.proItemNo)}>
                           리뷰
