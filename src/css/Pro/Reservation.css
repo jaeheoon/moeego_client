@@ -139,7 +139,7 @@
 }
 
 .reservation-time-item:hover {
-    background-color: #522823;
+    background-color: #d5b8b4;
     color: white;
 }
 
@@ -149,6 +149,11 @@
     opacity: 0.5; /* 흐리게 표시 */
     background-color: #e6e6e6; /* 비활성화된 배경색 */
     color: #999; /* 비활성화된 글자색 */
+    cursor: not-allowed; /* 클릭 불가 */
+}
+
+.reservation-time-item.disabled input {
+    pointer-events: none; /* 클릭 불가 */
 }
 
 /* 날짜를 선택했을 때 적용되는 스타일 */

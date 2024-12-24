@@ -38,10 +38,9 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
     });
 
     useEffect(() => {
-        // 예약 창이 열릴 때 selectedDate를 오늘 날짜로 설정
         const today = new Date();
         setSelectedDate(today);
-    }, []); // 컴포넌트가 마운트될 때 한 번만 실행
+    }, []);
 
     const handleTimeSelection = (time) => {
         if (!selectedDate) {
@@ -62,14 +61,11 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                 ...prevCheckedItems,
                 [time]: !prevCheckedItems[time],
             };
-
-            // 선택된 시간이 체크된 경우 'selected' 클래스를 추가
             return updatedCheckedItems;
         });
     };
 
     useEffect(() => {
-        // 날짜가 변경될 때마다 예약 시간 체크 초기화
         const initialCheckedItems = {};
         [
             "09:00",
@@ -88,35 +84,35 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
             "22:00",
             "23:00",
         ].forEach((time) => {
-            initialCheckedItems[time] = false; // 체크 초기화
+            initialCheckedItems[time] = false;
         });
         setCheckedItems(initialCheckedItems);
-    }, [selectedDate]); // selectedDate가 변경될 때마다 실행
+    }, [selectedDate]);
 
     useEffect(() => {
         apiAxios
             .get("/api/reservation", {
                 params: {
-                    proItemNo: service.proItemNo,
+                    proNo: proItem.proNo,
                 },
             })
             .then((response) => {
                 const data = response.data.data;
-
-                // 날짜별로 시간 그룹화
                 const groupedTimes = data.reduce((acc, curr) => {
-                    const { startDate, startTime } = curr;
-                    const time = startTime.slice(0, 5); // "HH:mm" 형식으로만 저장
+                    const { startDate, startTimes } = curr;
+                    const times = startTimes.map((startTime) =>
+                        startTime.slice(0, 5)
+                    ); // 시간만 저장
 
                     if (!acc[startDate]) {
                         acc[startDate] = [];
                     }
-                    acc[startDate].push(time); // 시간 문자열 "HH:mm:ss" -> "HH:mm"
+                    acc[startDate] = [...acc[startDate], ...times]; // 시간 목록 업데이트
 
                     return acc;
                 }, {});
 
-                setReservedTimes(groupedTimes); // 상태에 저장
+                setReservedTimes(groupedTimes); // 상태에 예약 시간 저장
             })
             .catch((error) => {
                 console.error("예약 정보 로드 실패:", error);
@@ -139,14 +135,12 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
             return;
         }
 
-        // 날짜 포맷 조정 (yyyy-MM-dd)
         const formattedDate = new Date(selectedDate);
         const year = formattedDate.getFullYear();
         const month = String(formattedDate.getMonth() + 1).padStart(2, "0");
         const day = String(formattedDate.getDate()).padStart(2, "0");
         const formattedDateString = `${year}-${month}-${day}`;
 
-        // 시간 포맷 조정 (HH:mm:ss)
         const formattedTimes = selectedTimes.map((time) => {
             const [hour, minute] = time.split(":");
             return `${hour.padStart(2, "0")}:${minute}:00`; // "HH:mm:ss" 형식으로 변환
@@ -169,7 +163,8 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
             })
             .catch((error) => {
                 if (error.response) {
-                    const errorMessage = error.response.data.message || '예약에 실패했습니다. 다시 시도해주세요.';
+                    const errorMessage =
+                        error.response.data.message || "예약에 실패했습니다.";
                     alert(`예약 실패: ${errorMessage}`);
                 } else if (error.request) {
                     alert("서버 응답 없음. 나중에 다시 시도해주세요.");
@@ -239,9 +234,9 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
 
                                             const isReserved =
                                                 formattedDate &&
-                                                reservedTimes[
-                                                    formattedDate
-                                                ]?.includes(time);
+                                                reservedTimes[formattedDate]?.includes(
+                                                    time
+                                                );
 
                                             const isSelected =
                                                 checkedItems[time] || false;
@@ -262,9 +257,7 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                                                             type="checkbox"
                                                             name="product-reservation-time"
                                                             value={time}
-                                                            disabled={
-                                                                isReserved
-                                                            }
+                                                            disabled={isReserved}
                                                             checked={isSelected}
                                                             onChange={() =>
                                                                 handleTimeSelection(
