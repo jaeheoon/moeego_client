@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import apiAxios from "../../api/apiAxios";
+import { AuthContext } from '../../context/member/AuthContext';
 import '../../css/mypage/MonthCalendar.css';
 
 const MonthCalendar = () => {
   const today = new Date();
+  const { isLoggedIn } = useContext(AuthContext);
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [selectedDate, setSelectedDate] = useState(today.getDate());  // 초기값을 오늘 날짜로 설정
@@ -11,9 +13,15 @@ const MonthCalendar = () => {
   const [list, setList] = useState({}); // 날짜별 일정 저장
 
   useEffect(() => {
-    const memberNo = localStorage.getItem('userno');
+    if (isLoggedIn) {
+      setList({});
+      setScheduleStatus({ received: [], my: [] });
+    }
+  }, [isLoggedIn]);  // 로그인 상태가 변경될 때마다 실행
+
+
+  useEffect(() => {
     const datelist = {
-      memberNo: memberNo,
       month: currentMonth + 1,
       year: currentYear,
     };
@@ -21,7 +29,7 @@ const MonthCalendar = () => {
     apiAxios.get('/api/reservation/mypage', { params: datelist }) // GET 요청에서는 params를 사용
       .then((response) => {
         if (response.data.success) {
-          const receivedReservations = response.data.data.receivedReservations;
+          const receivedReservations = response.data.data.receivedReservations || [];  // 기본값 빈 배열 처리
           const myReservations = response.data.data.myReservations;
 
           console.log(receivedReservations);
@@ -29,6 +37,8 @@ const MonthCalendar = () => {
 
           // 날짜별로 일정 데이터 매핑
           const scheduleMap = {};
+
+          // receivedReservations가 있을 경우에만 처리
           receivedReservations.forEach((reservation) => {
             const { startDate, startTimes, memberName, proItemName } = reservation;
 
@@ -47,6 +57,7 @@ const MonthCalendar = () => {
             ];
           });
 
+          // myReservations는 항상 존재하므로 무조건 처리
           myReservations.forEach((reservation) => {
             const { startDate, startTimes, proName, proItemName, reservationNo, proNo } = reservation;
 

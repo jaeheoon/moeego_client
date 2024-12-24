@@ -39,6 +39,8 @@
     width: 95%;
 }
 
+/* 뭐가 문제임?? */
+
 @media screen and (max-width: 1250px) {
     .MyReservationPage .MyReservationWrap .PageTitle {
         display: flex;
