@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import apiAxios from "../../api/apiAxios";
-import axios from 'axios';
+
+const { kakao } = window;
 
 function Locations() {
-  const [activeCity, setActiveCity] = useState(null);
-  const [map, setMap] = useState(null); // DB에서 가져올 데이터
-  const [userinfo, setUserinfo] = useState(null);
+  const [userInfo, setUserInfo] = useState(null); 
+  const [activeCity, setActiveCity] = useState(null); 
 
   const citiesData = {
     서울: { lat: 37.566855, lng: 126.9786938, region: "서울" },
@@ -27,109 +27,72 @@ function Locations() {
     제주: { lat: 33.4996, lng: 126.5312, region: "제주" },
   };
 
-  // DB에서 데이터 가져오기
   useEffect(() => {
     apiAxios.get("/api/pro/item", {
       params: {
-        location: "서울",
+        location: "서울", 
       },
     })
       .then((response) => {
         console.log("받은 데이터:", response.data.data);
-        setUserinfo("response.data.data"); // 받아온 데이터 map에 저장
-        //setMap("서울특별시 서대문구 통일로39가길 57"); 
+        setUserInfo(response.data.data); // 받아온 데이터 userInfo에 저장
       })
       .catch((error) => {
         console.error("데이터를 가져오는데 실패했습니다.", error);
       });
-  }, []);
-
-  // 주소를 위도, 경도로 변환
-  const convertAddressToLatLng = async (address) => {
-    try {
-      if (!address || address.trim() === "") {
-        console.error("잘못된 주소가 전달되었습니다. 주소를 확인해 주세요.");
-        return null;  // 빈 주소일 경우 처리
-      }
-
-      console.log("요청한 주소:", address); // 주소가 제대로 전달되는지 확인
-
-      const response = await axios.get(
-        `https://cors-anywhere.herokuapp.com/https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURIComponent(address)}`,
-  
-      //const response = await apiAxios.get(
-        //`https://dapi.kakao.com/v2/local/search/address.json?query=${address}`,
-        {
-          headers: {
-            Authorization: `KakaoAK ${import.meta.env.VITE_REACT_APP_JAVA_SCRIPT_KEY}`,
-          },
-        }
-      );
-      if (response.data.documents.length > 0) {
-        const { x, y } = response.data.documents[0]; // x는 경도, y는 위도
-        return { lat: parseFloat(y), lng: parseFloat(x) };
-      } else {
-        console.error("주소를 찾을 수 없습니다.");
-        return null;
-      }
-    } catch (error) {
-      console.error("주소 변환 실패:", error);
-      return null;
-    }
-  };
-
-  // 지도 초기화 함수
-  const initializeMap = (lat, lng) => {
-    const container = document.getElementById("map"); // 지도를 표시할 div
-    const options = {
-      center: new window.kakao.maps.LatLng(lat, lng), // 중심 좌표
-      level: 6, // 줌 레벨
-    };
-    const mapInstance = new window.kakao.maps.Map(container, options);
-
-    // DB에서 가져온 마커 데이터로 마커 추가
-    if (map && activeCity) {
-      const cityData = map[activeCity];  // 첫 번째 데이터가 기본적으로 선택되도록 처리
-      if (cityData && cityData.address) {
-        // DB에서 가져온 주소를 위도/경도로 변환하여 지도에 표시
-        convertAddressToLatLng(cityData.address).then((coordinates) => {
-          if (coordinates) {
-            const markerPosition = new window.kakao.maps.LatLng(coordinates.lat, coordinates.lng);
-            const marker = new window.kakao.maps.Marker({
-              position: markerPosition,
-            });
-            marker.setMap(mapInstance);
-          }
-        });
-      }
-    }
-  };
+  }, []); 
 
   const handleCityClick = (city) => {
-    setActiveCity(city === activeCity ? null : city);
+    setActiveCity(city); 
   };
 
-  // activeCity가 변경될 때마다 지도 업데이트
   useEffect(() => {
-    if (activeCity) {
-      const { lat, lng } = citiesData[activeCity];
-      initializeMap(lat, lng); // 클릭된 도시의 지도 표시
-    }
-  }, [activeCity]);
+    if (!activeCity || !citiesData[activeCity]) return; // activeCity가 없거나, 해당 도시 정보가 없으면 리턴
 
-  // DB에서 가져온 주소를 변환하여 지도에 표시
-  useEffect(() => {
-    if (map && activeCity) {
-      const cityData = map[activeCity]; // 첫 번째 데이터로 처리
-      if (cityData && cityData.address) {
-        convertAddressToLatLng(cityData.address).then((coordinates) => {
-          if (coordinates) {
-            initializeMap(coordinates.lat, coordinates.lng);
+    const { lat, lng } = citiesData[activeCity];
+    const initialPosition = new kakao.maps.LatLng(lat, lng);
+    const options = {
+      center: initialPosition, 
+      level: 9, 
+    };
+
+    // 카카오 맵 초기화
+    const container = document.getElementById("map");
+    const kakaoMap = new kakao.maps.Map(container, options);
+
+    // Geocoder 사용하여 주소로 위도, 경도 검색
+    const geocoder = new kakao.maps.services.Geocoder();
+
+    // DB에서 받은 여러 항목에 대해 마커 생성
+    if (userInfo && userInfo.content) {
+      userInfo.content.forEach((item) => {
+        const address = item.address;
+
+        // 주소를 위도, 경도로 변환
+        geocoder.addressSearch(address, (result, status) => {
+          if (status === kakao.maps.services.Status.OK) {
+            const position = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            // 마커 생성
+            const marker = new kakao.maps.Marker({
+              position: position,
+              map: kakaoMap,
+            });
+
+            // 마커 클릭 시 해당 위치로 이동 (필요시 다른 동작 추가 가능)
+            kakao.maps.event.addListener(marker, "click", () => {
+              console.log(`마커 클릭됨: ${item.name},${item.mainCateName},${item.address}`);
+              // 클릭된 위치로 지도 이동 (panTo)
+              kakaoMap.panTo(position);
+              //kakaoMap.setLevel(2);
+            });
+          } else {
+            console.error("주소 변환 실패:", address);
           }
         });
-      }
+      });
     }
-  }, [activeCity, map]);
+  }, [activeCity, userInfo]); // activeCity 또는 userInfo가 변경될 때마다 실행
 
   return (
     <div className="locationsWrap">
@@ -146,7 +109,7 @@ function Locations() {
           </div>
         ))}
       </div>
-
+      
       <div className="city-box-container">
         {activeCity && (
           <div className="city-box">
