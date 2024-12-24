@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import LifeTopic from './FreeBoardForm/LifeTopic';
 import "../../css/articles/ArticleMain.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FeedItem from './FreeBoardForm/FeedItem';
 import { ArticleContext } from '../../context/article/ArticleContext';
 import Loading from '../loading/loading';
@@ -19,28 +19,25 @@ const ArticleMain = () => {
             isLoading,
             GoWrite,
             GoLogin,
-            viewUpdate, //조회수 증가 함수
             articleCurrentPage  } = useContext(ArticleContext);
-    const {isLoggedIn, loginEmail, loginUser, loginStatus} = useContext(AuthContext);
+    const {isLoggedIn} = useContext(AuthContext);
     const [hotArticles, setHotArticles] = useState([]);
-    const navigate = useNavigate();
 
     // 인기 게시글
     useEffect(() => {
         const fetchHotArticles = async () => {
             try {
                 const response = await apiAxios.get("/api/article/hot");
-                const hotArticles = response.data.content;
-                setHotArticles(hotArticles); // 상태 업데이트
+                console.log('핫 게시글 응답:', response.data); // 데이터 구조 확인용
+                setHotArticles(Array.isArray(response.data) ? response.data : response.data.content);
             } catch (err) {
                 console.error("Error fetching hot articles:", err);
-                setError(err);
             }
         };
         fetchHotArticles();
     }, []);
 
-    // 전체 게시글 데이터 요청 (페이지 변경 시 자동 호출)
+    // 전체 게시글 데이터 요청
     useEffect(() => {
         fetchLatestArticle();
         fetchArticles(articleCurrentPage);
@@ -49,7 +46,7 @@ const ArticleMain = () => {
 
     if (isLoading) return <div><Loading /></div>;
 
-    const latestNotice = noticeArticles.length > 0 ? noticeArticles[0] : null;
+    const latestNotice = noticeArticles?.length > 0 ? noticeArticles[0] : null;
 
     // 조회수 증가 후 상세보기 이동
     const handleArticleClick = async (articleNo) => {
