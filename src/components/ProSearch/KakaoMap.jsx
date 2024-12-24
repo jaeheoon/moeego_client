@@ -3,7 +3,7 @@ import "../../css/Pro/KakaoMap.css";
 
 const { kakao } = window;
 
-const KakaoMap = ({ items, onMarkerClick }) => {
+const KakaoMap = ({ selectedLocation, items, onMarkerClick }) => {
   const container = useRef(null);
   const [map, setMap] = useState(null);
 
@@ -25,11 +25,11 @@ const KakaoMap = ({ items, onMarkerClick }) => {
           const kakaoMap = new kakao.maps.Map(container.current, options);
           setMap(kakaoMap);
 
-          // 사용자의 위치에 마커 추가
-          const marker = new kakao.maps.Marker({
-            position: userPosition,
-            map: kakaoMap,
-          });
+          // // 사용자의 위치에 마커 추가
+          // const marker = new kakao.maps.Marker({
+          //   position: userPosition,
+          //   map: kakaoMap,
+          // });
 
           // fetchedItems로부터 마커 추가
           items.forEach((item, index) => {
@@ -60,6 +60,14 @@ const KakaoMap = ({ items, onMarkerClick }) => {
       alert("현재 위치를 가져올 수 없습니다.");
     }
   }, [items, onMarkerClick]);
+
+  useEffect(() => {
+    if (selectedLocation && map) {
+      const { lat, lng } = selectedLocation;
+      const newPosition = new kakao.maps.LatLng(lat, lng);
+      map.panTo(newPosition); // 지도 이동
+    }
+  }, [selectedLocation, map]);
 
   return <div className="mapPage" ref={container}></div>;
 };
