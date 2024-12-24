@@ -29,29 +29,37 @@ const SearchBar = () => {
     document.body.style.overflow = "auto";
   };
 
+  // DB에서 데이터 가져오기
   useEffect(() => {
-    const fetchedItems = [
-      { name: '서울 송파구/코딩달인/정세묵/수업 안들어도 코딩고수 가능!' },
-      { name: '서울 강남구/웹 개발/김소영/비전공자도 고수 될 수 있어!' },
-      { name: '서울 마포구/UX디자인/김태훈/디자인 실력 향상!' },
-      { name: '서울 서초구/데이터 분석/이민지/통계로 세상을 변화시킨다!' },
-      { name: '서울 송파구/네트워크 보안/박성호/해킹방어 능력 키우기!' },
-      { name: '서울 송파구/수비천재/오지환/모든 공은 나에게로' }
-    ];
-
-    setItems(fetchedItems);
+    apiAxios.get("/api/pro/item", {
+      params: {
+        location: "서울",
+      },
+    })
+      .then((response) => {
+        console.log("받은 데이터:", response.data.data);
+        setUserInfo(response.data.data); // 받아온 데이터 userInfo에 저장
+      })
+      .catch((error) => {
+        console.error("데이터를 가져오는데 실패했습니다.", error);
+      });
   }, []);
 
   // 마커 클릭 시 해당 위치로 지도 이동
   const handleMarkerClick = (item) => {
     setSelectedLocation(item); // 선택된 위치 업데이트
-    if (window.kakao && window.kakao.maps) {
-      const { lat, lng } = item;
-      const newPosition = new window.kakao.maps.LatLng(lat, lng);
-      const kakaoMap = window.kakao.maps.Map.getMap();
-      kakaoMap.panTo(newPosition); // 지도 이동
-    }
+    setItems([item]); // 클릭된 항목을 items로 업데이트
   };
+
+  // const handleMarkerClick = (item) => {
+  //   setSelectedLocation(item); // 선택된 위치 업데이트
+  //   if (window.kakao && window.kakao.maps) {
+  //     const { lat, lng } = item;
+  //     const newPosition = new window.kakao.maps.LatLng(lat, lng);
+  //     const kakaoMap = window.kakao.maps.Map.getMap();
+  //     kakaoMap.panTo(newPosition); // 지도 이동
+  //   }
+  // };
 
   return (
     <div className='proSearchBarWrap'>
@@ -87,12 +95,12 @@ const SearchBar = () => {
             <KakaoMap items={items} onMarkerClick={handleMarkerClick} />
 
             <ul className="map-content-wrap">
-              {items.map((item, index) => (
+              {/* {items.map((item, index) => (
                 <li key={index} className="map-list" onClick={() => handleMarkerClick(item)}>
                   <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" ke-linecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#9e9e9e"></path> </g></svg>
                   {item.name}
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
         </div>
