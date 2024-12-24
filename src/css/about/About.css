@@ -12,15 +12,15 @@
     align-items: center;
     justify-content: center;
 }
-.infoWrap .infoMissionWrap h1{
+.aboutInfoWrap .infoMissionWrap h1{
     color:white;
     font-size:2.5em;
 }
-.homepageInfoPage .infoWrap{
+.homepageInfoPage .aboutInfoWrap{
     display: flex;
     flex-direction: column;
 }
-.infoWrap p{
+.aboutInfoWrap p{
     font-size:1.2rem;
     color:white;
     margin-top: -1em;
@@ -127,7 +127,7 @@
 .aboutBtnWrap {
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: center;
     gap: 2em;
     margin-bottom: 2em;
     margin-top: 2em;
@@ -159,13 +159,13 @@
         background-position: center; 
         height: 280px; 
     }
-    .infoWrap {
+    .aboutInfoWrap {
         display: flex;
         flex-direction: column;
         margin-top: 1em;
     }
 
-    .infoWrap p {
+    .aboutInfoWrap p {
         box-sizing: border-box;
         padding: 1em;
         text-align: center;

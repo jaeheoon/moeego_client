@@ -56,7 +56,7 @@ const SearchBar = () => {
   return (
     <div className='proSearchBarWrap'>
       <div className='proSearchInputBarWrap'>
-        <img src="../../src/image/search.png" alt="검색버튼" />
+        <img src="/image/search.png" alt="검색버튼" />
         <input
           type="text"
           placeholder='어떤 서비스가 필요하세요?'

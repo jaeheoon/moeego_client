@@ -24,11 +24,11 @@ const ReviewModal = ({ review, onClose, showDeleteButton }) => {
 
     return (
         <div
-            className="modal-overlay"
+            className="review-modal-overlay"
             onClick={onClose} // 모달 바깥 클릭 시 닫기
         >
             <div
-                className="modal-content"
+                className="review-modal-content"
                 onClick={(e) => e.stopPropagation()} // 내부 클릭 이벤트 전파 막기
             >
                 <article>

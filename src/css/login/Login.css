@@ -110,7 +110,7 @@
 }
 
 .LoginPage .kakaoLoginBtn:hover .kakaoImg {
-    content: url("../../src/image/kakao_wine.svg");
+    content: url("/image/kakao_wine.svg");
 }
 
 .LoginPage .naverLoginBtn {    
@@ -125,7 +125,7 @@
 }
 
 .LoginPage .naverLoginBtn:hover .naverImg {
-    content: url("../../src/image/naver_green.svg");
+    content: url("/image/naver_green.svg");
 }
 
 .LoginPage .googleLoginBtn {
@@ -140,7 +140,7 @@
 }
 
 .LoginPage .googleLoginBtn:hover .googleImg {
-    content: url("../../src/image/google_blue.svg");
+    content: url("/image/google_blue.svg");
 }
 
 .LoginPage .find {
