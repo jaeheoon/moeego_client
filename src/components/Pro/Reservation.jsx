@@ -168,9 +168,14 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                 window.location.reload();
             })
             .catch((error) => {
-                console.error("예약 실패:", error);
-                alert("예약에 실패했습니다. 다시 시도해주세요.");
-                window.location.reload();
+                if (error.response) {
+                    const errorMessage = error.response.data.message || '예약에 실패했습니다. 다시 시도해주세요.';
+                    alert(`예약 실패: ${errorMessage}`);
+                } else if (error.request) {
+                    alert("서버 응답 없음. 나중에 다시 시도해주세요.");
+                } else {
+                    alert("예약 실패: 시스템 오류. 다시 시도해주세요.");
+                }
             });
     };
 
@@ -228,8 +233,8 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
 
                                             const formattedDate = selectedDate
                                                 ? selectedDate
-                                                      .toISOString()
-                                                      .split("T")[0]
+                                                    .toISOString()
+                                                    .split("T")[0]
                                                 : null;
 
                                             const isReserved =
@@ -243,15 +248,13 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
 
                                             return (
                                                 <li
-                                                    className={`reservation-time-item ${
-                                                        isReserved
-                                                            ? "disabled"
-                                                            : ""
-                                                    } ${
-                                                        isSelected
+                                                    className={`reservation-time-item ${isReserved
+                                                        ? "disabled"
+                                                        : ""
+                                                        } ${isSelected
                                                             ? "selected"
                                                             : ""
-                                                    }`}
+                                                        }`}
                                                     key={index}
                                                 >
                                                     <label className="custom-checkbox">

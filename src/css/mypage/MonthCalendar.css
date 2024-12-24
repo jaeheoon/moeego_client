@@ -89,8 +89,8 @@
 }
 
 .calendar-table .selected {
-    background-color: #fcc1cc;
-    color: white;
+    background-color: #ffe8ec;
+    z-index: 100;
     font-weight: bold;
 }
 

@@ -17,13 +17,15 @@ const MonthCalendar = () => {
       month: currentMonth + 1,
       year: currentYear,
     };
-    console.log('서버로 가져갈 내용:', datelist);
 
     apiAxios.get('/api/reservation/mypage', { params: datelist }) // GET 요청에서는 params를 사용
       .then((response) => {
         if (response.data.success) {
           const receivedReservations = response.data.data.receivedReservations;
           const myReservations = response.data.data.myReservations;
+
+          console.log(receivedReservations);
+          console.log(myReservations);
 
           // 날짜별로 일정 데이터 매핑
           const scheduleMap = {};
@@ -46,7 +48,7 @@ const MonthCalendar = () => {
           });
 
           myReservations.forEach((reservation) => {
-            const { startDate, startTimes, proName, proItemName } = reservation;
+            const { startDate, startTimes, proName, proItemName, reservationNo, proNo } = reservation;
 
             if (!scheduleMap[startDate]) {
               scheduleMap[startDate] = { received: [], my: [] };
@@ -54,7 +56,13 @@ const MonthCalendar = () => {
 
             // 예약 추가 (내가 한 예약)
             const scheduleDetails = startTimes.map((time) => {
-              return `${proName}, ${proItemName || '내용없음'}, ${time}`;
+              return {
+                proName,
+                proItemName: proItemName || '내용없음',
+                time,
+                reservationNo,
+                proNo
+              };
             });
 
             scheduleMap[startDate].my = [
@@ -64,7 +72,9 @@ const MonthCalendar = () => {
           });
 
           setList(scheduleMap); // 상태로 설정
-          console.log('일정 데이터 매핑 완료:', scheduleMap);
+
+          // 초기 선택 날짜 확인 및 일정 가져오기
+          checkSchedule(selectedDate); // 추가된 코드
         }
       })
       .catch((error) => {
@@ -73,9 +83,11 @@ const MonthCalendar = () => {
   }, [currentMonth, currentYear]);
 
   useEffect(() => {
-    // 초기 선택 날짜 확인 및 일정 가져오기
-    checkSchedule(selectedDate);
-  }, [selectedDate, currentMonth, currentYear]);
+    // `selectedDate`가 변경될 때마다 해당 날짜에 대한 일정을 확인
+    if (selectedDate) {
+      checkSchedule(selectedDate);
+    }
+  }, [selectedDate, currentMonth, currentYear, list]);  // `list`가 변경될 때마다 일정을 확인
 
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -87,7 +99,7 @@ const MonthCalendar = () => {
 
   const resetSelectedDate = () => {
     setSelectedDate(null);
-    setScheduleStatus('');
+    setScheduleStatus({ received: [], my: [] }); // 일정 상태 초기화
   };
 
   const handlePrevMonth = () => {
@@ -126,6 +138,35 @@ const MonthCalendar = () => {
     } else {
       setScheduleStatus({ received: [], my: [] }); // 일정이 없을 경우 빈 배열로 설정
     }
+  };
+
+  // 예약 삭제 함수
+  const handleDeleteReservation = (reservationDetails) => {
+    const { reservationNo } = reservationDetails;
+
+    apiAxios.delete('/api/reservation', {
+      params: {
+        reservationNo: reservationNo,
+      }
+    })  // 수정된 부분
+      .then((response) => {
+        if (response.data.success) {
+          alert('예약이 취소되었습니다.');
+
+          // 예약 삭제 후 상태에서 해당 예약을 제거
+          const updatedSchedule = { ...scheduleStatus };
+          updatedSchedule.my = updatedSchedule.my.filter((schedule) => schedule.reservationNo !== reservationNo);
+          setScheduleStatus(updatedSchedule);  // 상태 갱신
+
+          window.location.reload();
+        } else {
+          alert('예약 삭제에 실패했습니다.');
+        }
+      })
+      .catch((error) => {
+        console.error('예약 삭제 중 오류 발생', error);
+        alert('예약 삭제 중 오류가 발생했습니다.');
+      });
   };
 
   const renderDays = () => {
@@ -256,7 +297,12 @@ const MonthCalendar = () => {
                 <p><strong>나의 예약 :</strong></p>
                 <ul className='reservationUl'>
                   {scheduleStatus.my.map((schedule, index) => (
-                    <li className='reservationLi' key={index}>[예약] {schedule}</li>
+                    <li className='reservationLi' key={index}>
+                      [예약] {schedule.proName}, {schedule.proItemName} ({schedule.time})
+                      <button onClick={() => handleDeleteReservation(schedule)}>
+                        삭제
+                      </button>
+                    </li>
                   ))}
                 </ul>
               </div>

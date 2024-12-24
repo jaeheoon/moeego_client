@@ -9,8 +9,6 @@ const fetchReissue = async () => {
             withCredentials: true,
         });
 
-        console.log(response);
-
         if (response.status === 200) {
             const accessToken = response.headers["access"];
             if (accessToken) {
