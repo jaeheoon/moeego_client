@@ -4,7 +4,9 @@
     justify-content: center;
     width: 100%;
 }
-
+.reviewItem{
+    cursor: pointer;
+}
 .ReviewPage .ReviewWrap {
     display: flex;
     width: 80%;
@@ -99,15 +101,15 @@
 .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
 }
-
 .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) .ImageFeat {
-    display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     height: 9em;
+    width: 100%;
 }
 
 .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) > *:nth-child(n + 7) {
@@ -115,9 +117,10 @@
 }
 
 .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) .ImageFeat img {
-    width: 110px;
+    width: 100%;
     height: 110px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(4) {
