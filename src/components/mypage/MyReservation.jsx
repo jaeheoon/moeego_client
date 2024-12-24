@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "../../css/mypage/MyReservation.css";
 import MonthCalendar from './MonthCalendar';
-// import Calendar from '../../api/Calendar';
+import "../../css/mypage/MyReservation.css";
 
 const MyReservation = () => {
     return (
@@ -16,7 +15,6 @@ const MyReservation = () => {
                 </div>
                 <div>
                     <MonthCalendar />
-                    {/* <Calendar /> */}
                 </div>
             </div>
         </div>

@@ -27,6 +27,7 @@
     padding: 15px;
     background-color: #fcc1cc;
     color: white;
+    flex-wrap: wrap; /* 버튼이 줄바꿈 되어도 보이도록 추가 */
 }
 
 .prev-btn,
@@ -47,6 +48,8 @@
 .month-year {
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
+    flex-grow: 1; /* 공간을 유동적으로 채우도록 설정 */
 }
 
 .calendar-table {
@@ -91,15 +94,48 @@
     font-weight: bold;
 }
 
+.calendar-table .has-schedule {
+    background-color: #ffe5ea;
+    color: #333; /* 배경색과 텍스트 색상 조화 */
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+/* 공통 스타일 */
 .calendar-table .has-schedule .schedule-dot {
-    position: absolute;
+    position: relative;
     bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 8px;
     height: 8px;
-    background-color: #fcc1cc;
     border-radius: 50%;
+    display: block; /* display:block으로 설정하여 보이지 않는 dot이 있을 경우 숨기도록 처리 */
+}
+
+/* 일정 점들이 나란히 배치되도록 설정 */
+.calendar-table .has-schedule .schedule-dots-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    bottom: 8px;
+    gap: 1rem; /* 간격을 조정할 수 있습니다 */
+    left: 0;
+}
+
+/* 나의 예약 일정 표시 */
+.calendar-table .has-schedule .my-dot {
+    background-color: #6495ed; /* 나의 일정 색상 */
+}
+
+/* 받은 예약 일정 표시 */
+.calendar-table .has-schedule .received-dot {
+    background-color: #ffa07a !important; /* received-dot에 스타일 우선순위 강화 */
+}
+
+/* 두 개의 일정이 있을 경우, 한 줄로 표시하기 위해 수정 */
+.calendar-table .has-schedule {
+    position: relative; /* relative로 설정하여 내부의 absolute 위치가 부모 요소에 대해 계산되도록 함 */
 }
 
 .calendar-table .empty-day {
@@ -108,6 +144,7 @@
     cursor: default;
 }
 
+/* 일요일과 토요일의 날짜 색상 */
 .calendar-table .weekday:nth-child(1),
 .calendar-table .day:nth-child(1) {
     color: #d80909; /* Sunday */
@@ -144,14 +181,42 @@
     margin-bottom: 10px;
 }
 
+.reservationTitle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.reservationUl {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.reservationUl .reservationLi {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    padding: 0.25rem 0.25rem 0.25rem 0;
+}
+
 /* 반응형 스타일 */
 @media (max-width: 768px) {
     .MonthCalendar-container {
-        max-width: 90%;
+        max-width: 100%;
     }
 
     .MonthCalendar-controller {
-        flex-direction: column;
+        flex-direction: row;
         gap: 10px;
     }
 
@@ -184,5 +249,13 @@
     .prev-btn,
     .next-btn {
         font-size: 18px;
+    }
+
+    .month-year {
+        font-size: 16px;
+    }
+
+    .calendar-table .has-schedule .schedule-dots-container {
+        gap: 0.25rem;
     }
 }

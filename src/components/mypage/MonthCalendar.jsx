@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import '../../css/mypage/MonthCalendar.css';
 import apiAxios from "../../api/apiAxios";
+import '../../css/mypage/MonthCalendar.css';
 
 const MonthCalendar = () => {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
-  const [showYearSelector, setShowYearSelector] = useState(false);
-  const [showMonthSelector, setShowMonthSelector] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [scheduleStatus, setScheduleStatus] = useState('');
+  const [selectedDate, setSelectedDate] = useState(today.getDate());  // 초기값을 오늘 날짜로 설정
+  const [scheduleStatus, setScheduleStatus] = useState({ received: [], my: [] });
   const [list, setList] = useState({}); // 날짜별 일정 저장
 
   useEffect(() => {
@@ -25,6 +23,7 @@ const MonthCalendar = () => {
       .then((response) => {
         if (response.data.success) {
           const receivedReservations = response.data.data.receivedReservations;
+          const myReservations = response.data.data.myReservations;
 
           // 날짜별로 일정 데이터 매핑
           const scheduleMap = {};
@@ -32,15 +31,36 @@ const MonthCalendar = () => {
             const { startDate, startTimes, memberName, proItemName } = reservation;
 
             if (!scheduleMap[startDate]) {
-              scheduleMap[startDate] = [];
+              scheduleMap[startDate] = { received: [], my: [] };
             }
 
-            // 일정 내용을 추가
+            // 예약 추가 (받은 예약)
             const scheduleDetails = startTimes.map((time) => {
               return `${memberName}, ${proItemName || '내용없음'}, ${time}`;
             });
 
-            scheduleMap[startDate] = [...scheduleMap[startDate], ...scheduleDetails];
+            scheduleMap[startDate].received = [
+              ...scheduleMap[startDate].received,
+              ...scheduleDetails,
+            ];
+          });
+
+          myReservations.forEach((reservation) => {
+            const { startDate, startTimes, proName, proItemName } = reservation;
+
+            if (!scheduleMap[startDate]) {
+              scheduleMap[startDate] = { received: [], my: [] };
+            }
+
+            // 예약 추가 (내가 한 예약)
+            const scheduleDetails = startTimes.map((time) => {
+              return `${proName}, ${proItemName || '내용없음'}, ${time}`;
+            });
+
+            scheduleMap[startDate].my = [
+              ...scheduleMap[startDate].my,
+              ...scheduleDetails,
+            ];
           });
 
           setList(scheduleMap); // 상태로 설정
@@ -52,12 +72,22 @@ const MonthCalendar = () => {
       });
   }, [currentMonth, currentYear]);
 
+  useEffect(() => {
+    // 초기 선택 날짜 확인 및 일정 가져오기
+    checkSchedule(selectedDate);
+  }, [selectedDate, currentMonth, currentYear]);
+
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
   };
 
   const getFirstDayOfMonth = (month, year) => {
     return new Date(year, month, 1).getDay();
+  };
+
+  const resetSelectedDate = () => {
+    setSelectedDate(null);
+    setScheduleStatus('');
   };
 
   const handlePrevMonth = () => {
@@ -94,7 +124,7 @@ const MonthCalendar = () => {
     if (list[selectedDateString]) {
       setScheduleStatus(list[selectedDateString]); // 해당 날짜의 일정 설정
     } else {
-      setScheduleStatus(['일정 없음']); // 일정이 없을 경우
+      setScheduleStatus({ received: [], my: [] }); // 일정이 없을 경우 빈 배열로 설정
     }
   };
 
@@ -123,7 +153,16 @@ const MonthCalendar = () => {
           onClick={() => handleDayClick(day)}
         >
           {dayCount}
-          {list[dateKey] && <span className="schedule-dot">●</span>}
+          {list[dateKey] && (
+            <div className="schedule-dots-container">
+              {list[dateKey].received.length > 0 && (
+                <span className="schedule-dot received-dot" />
+              )}
+              {list[dateKey].my.length > 0 && (
+                <span className="schedule-dot my-dot" />
+              )}
+            </div>
+          )}
         </td>
       );
       dayCount++;
@@ -145,7 +184,16 @@ const MonthCalendar = () => {
             onClick={() => handleDayClick(day)}
           >
             {dayCount}
-            {list[dateKey] && <span className="schedule-dot"></span>}
+            {list[dateKey] && (
+              <div className="schedule-dots-container">
+                {list[dateKey].received.length > 0 && (
+                  <span className="schedule-dot received-dot" />
+                )}
+                {list[dateKey].my.length > 0 && (
+                  <span className="schedule-dot my-dot" />
+                )}
+              </div>
+            )}
           </td>
         );
         dayCount++;
@@ -191,9 +239,32 @@ const MonthCalendar = () => {
         {selectedDate && (
           <div className="selected-date-info">
             <p>{`${currentMonth + 1}월 ${selectedDate}일 일정`}</p>
-            {scheduleStatus.map((schedule, index) => (
-              <p key={index}>{schedule}</p>
-            ))}
+
+            {scheduleStatus.received.length > 0 && (
+              <div className='reservationTitle'>
+                <p><strong>고객 목록 :</strong></p>
+                <ul className='reservationUl'>
+                  {scheduleStatus.received.map((schedule, index) => (
+                    <li className='reservationLi' key={index}>[고객] {schedule}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {scheduleStatus.my.length > 0 && (
+              <div className='reservationTitle'>
+                <p><strong>나의 예약 :</strong></p>
+                <ul className='reservationUl'>
+                  {scheduleStatus.my.map((schedule, index) => (
+                    <li className='reservationLi' key={index}>[예약] {schedule}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {scheduleStatus.received.length === 0 && scheduleStatus.my.length === 0 && (
+              <p>해당 날짜에 예약된 일정이 없습니다.</p>
+            )}
           </div>
         )}
       </div>
