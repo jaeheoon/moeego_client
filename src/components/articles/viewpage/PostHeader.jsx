@@ -94,11 +94,11 @@ const PostHeader = ({ articleData, deleteArticle }) => {
             <div className="user-profile-bar-container">
                 <div className="user-info">
                     <div className="user-profile">
-                        <img
-                            src="/image/home.png"
-                            alt="사용자 프로필"
-                            className="user-profile-image"
-                        />
+                    <img 
+                        src={articleData.profileImage ? `https://kr.object.ncloudstorage.com/moeego/profile/${articleData.profileImage}` : 'https://kr.object.ncloudstorage.com/moeego/profile/default.svg'} 
+                        alt="프로필사진" 
+                        className="user-profile-image"
+                    />
                     </div>
                     <div className="user-details">
                         <span className="user-name">{articleData.memberName}</span>
