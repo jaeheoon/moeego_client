@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../css/Pro/Reservation.css";
 import WeekCalendar from "./WeekCalendar";
@@ -98,19 +98,50 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
             })
             .then((response) => {
                 const data = response.data.data;
+                const today = new Date();
+                const currentFormattedDate = today.toISOString().split("T")[0];
+                const currentHour = today.getHours();
+
+                // 예약 시간 및 현재 시간 이전의 시간 처리
                 const groupedTimes = data.reduce((acc, curr) => {
                     const { startDate, startTimes } = curr;
+
+                    // 예약된 시간만 추출
                     const times = startTimes.map((startTime) =>
                         startTime.slice(0, 5)
-                    ); // 시간만 저장
+                    );
 
+                    // 해당 날짜가 없으면 초기화
                     if (!acc[startDate]) {
                         acc[startDate] = [];
                     }
-                    acc[startDate] = [...acc[startDate], ...times]; // 시간 목록 업데이트
 
+                    // 현재 시간 기준 이전 시간 추가
+                    if (startDate === currentFormattedDate) {
+                        const filteredTimes = times.filter(
+                            (time) => parseInt(time.split(":")[0], 10) <= currentHour
+                        );
+                        acc[startDate] = [
+                            ...acc[startDate],
+                            ...filteredTimes,
+                        ];
+                    }
+
+                    acc[startDate] = [...acc[startDate], ...times]; // 예약 시간 업데이트
                     return acc;
                 }, {});
+
+                // 현재 날짜 이전의 시간 비활성화 처리
+                if (!groupedTimes[currentFormattedDate]) {
+                    groupedTimes[currentFormattedDate] = [];
+                }
+                const pastTimes = [];
+                for (let i = 0; i <= currentHour; i++) {
+                    pastTimes.push(`${i.toString().padStart(2, "0")}:00`);
+                }
+                groupedTimes[currentFormattedDate] = [
+                    ...new Set([...groupedTimes[currentFormattedDate], ...pastTimes]),
+                ];
 
                 setReservedTimes(groupedTimes); // 상태에 예약 시간 저장
             })

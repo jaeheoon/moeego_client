@@ -215,6 +215,10 @@
     line-height: 1.6;
 }
 
+.reviewsPage .review-content .review-content-detail {
+    overflow-wrap: anywhere;
+}
+
 .reviewsPage .date {
     display: flex;
     align-items: center;

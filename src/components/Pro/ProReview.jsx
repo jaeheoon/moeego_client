@@ -18,7 +18,7 @@ const ProReview = ({ proItem, review, service }) => {
                             {[...Array(5)].map((_, index) => (
                                 <li key={index}>
                                     {index <
-                                    (review.length > 0 ? review[0].star : 0)
+                                        (review.length > 0 ? review[0].star : 0)
                                         ? "★"
                                         : "☆"}
                                 </li>
@@ -27,52 +27,6 @@ const ProReview = ({ proItem, review, service }) => {
                         <div className="review-count">{review.length} 리뷰</div>
                     </div>
                     <hr />
-
-                    <div className="dropdown-btn">
-                        <div>
-                            <button className="sort-btn">
-                                <span className="current-sort">최신순</span>
-                                <svg
-                                    width="30"
-                                    height="30"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <g
-                                        id="SVGRepo_bgCarrier"
-                                        strokeWidth="0"
-                                    ></g>
-                                    <g
-                                        id="SVGRepo_tracerCarrier"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    ></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        {" "}
-                                        <path
-                                            d="M7 10L12 15L17 10"
-                                            stroke="#242424"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        ></path>{" "}
-                                    </g>
-                                </svg>
-                            </button>
-                            <ul className="dropdown-menu">
-                                <li className="sort-item">
-                                    <Link to="">최신순</Link>
-                                </li>
-                                <li className="sort-item">
-                                    <Link to="">별점 높은 순</Link>
-                                </li>
-                                <li className="sort-item">
-                                    <Link to="">별점 낮은 순</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
 
                     <div className="all-review">
                         <ul className="review-container">
@@ -95,7 +49,9 @@ const ProReview = ({ proItem, review, service }) => {
                                         <section>
                                             <div className="review-content">
                                                 <p>{reviewItem.subject}</p>
-                                                {reviewItem.reviewContent}
+                                                <div className='review-content-detail'>
+                                                    {reviewItem.reviewContent}
+                                                </div>
                                             </div>
                                             <div className="review-photo">
                                                 {reviewItem.imageUuidNames &&

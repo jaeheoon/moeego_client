@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import apiAxios from "../../api/apiAxios";
 import "../../css/Pro/ProInfo.css";
+import { AuthContext } from '../../context/member/AuthContext';
 
 const ProInfo = ({ proItem, serviceItem, service, prono }) => {
     const [address, setAddress] = useState("");
@@ -9,6 +10,7 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
     const [favoritePro, setFavoritePro] = useState([prono]);
 
     const userno = localStorage.getItem("userno");
+    const { loginNumber } = useContext(AuthContext);
 
     // 주소 추출
     useEffect(() => {
@@ -85,13 +87,13 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
         const data =
             method === "delete"
                 ? {
-                      memberNo: userno,
-                      proNo: proNoList, // 삭제할 proNo는 배열로 전달
-                  }
+                    memberNo: userno,
+                    proNo: proNoList, // 삭제할 proNo는 배열로 전달
+                }
                 : {
-                      memberNo: userno,
-                      proNo: proNoList[0], // POST는 단일 proNo 전달
-                  };
+                    memberNo: userno,
+                    proNo: proNoList[0], // POST는 단일 proNo 전달
+                };
 
         apiAxios({
             method: method,
@@ -113,9 +115,8 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
                 <div className="icon-buttons">
                     <div
                         role="button"
-                        className={`heart ${
-                            isFavorite ? "favorited" : "not-favorited"
-                        }`} // Conditionally add the class based on isFavorite
+                        className={`heart ${isFavorite ? "favorited" : "not-favorited"
+                            }`} // Conditionally add the class based on isFavorite
                         onClick={handleFavoriteToggle} // 버튼 클릭 시 찜하기/해제 처리
                     >
                         <svg
