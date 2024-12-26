@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import '../../css/mypage/ChangeIntro.css';
 import { AuthContext } from '../../context/member/AuthContext';
+import apiAxios from '../../api/apiAxios';
+import '../../css/mypage/ChangeIntro.css';
 
 const ChangeIntro = () => {
     const [oneIntro, setOneIntro] = useState('');
@@ -31,12 +32,19 @@ const ChangeIntro = () => {
     useEffect(() => {
         const fetchIntroData = async () => {
             try {
-                const response = await apiAxios.get(`/api/pro/intro/${loginUser}`); // 로그인된 사용자 정보에 맞는 데이터 요청
-                const { oneIntro: apiOneIntro, intro: apiIntro } = response.data;
+                const response = await apiAxios.get(`/api/pro/intro`); // 로그인된 사용자 정보에 맞는 데이터 요청
+                const { oneIntro: apiOneIntro, intro: apiIntro } = response.data.data;
 
-                setOneIntro(apiOneIntro || ''); // API에서 데이터가 있으면 설정, 없으면 빈 문자열
-                setIntro(apiIntro || '');       // API에서 데이터가 있으면 설정, 없으면 빈 문자열
+                if (response.data.data) {
+                    setOneIntro(apiOneIntro || ''); // API에서 데이터가 있으면 설정, 없으면 빈 문자열
+                    setIntro(apiIntro || '');       // API에서 데이터가 있으면 설정, 없으면 빈 문자열
+                } else {
+                    setOneIntro('');
+                    setIntro('');
+                }
             } catch (error) {
+                setOneIntro('');
+                setIntro('');
                 console.error('소개 정보를 불러오는 데 실패했습니다:', error);
             }
         };
