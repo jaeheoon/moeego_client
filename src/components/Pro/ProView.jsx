@@ -12,7 +12,7 @@ import "../../css/Pro/SearchList.css";
 
 const ProView = () => {
     const location = useLocation();
-    const { item: routeStateItem, serviceItem, proNo } = location.state || {};
+    const { item: routeStateItem = [], serviceItem = {}, proNo = null } = location.state || {};
 
     const [modalType, setModalType] = useState(null);
     const [proItem, setProItem] = useState(routeStateItem || {});
@@ -23,6 +23,9 @@ const ProView = () => {
     const [totalPages, setTotalPages] = useState(1); // Track total pages
 
     useEffect(() => {
+        // Scroll to the top of the page when the component is loaded
+        window.scrollTo(0, 0);
+
         const fetchProDetails = async () => {
             try {
                 setProItem(routeStateItem);
@@ -48,7 +51,7 @@ const ProView = () => {
         if (serviceItem.proItemNo) {
             fetchProDetails();
         }
-    }, [currentPage]); // Add currentPage to dependency array
+    }, [currentPage, routeStateItem, serviceItem, proNo]); // Add necessary dependencies
 
     const openModal = (type) => {
         setModalType((prevType) => (prevType === type ? null : type));

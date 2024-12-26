@@ -11,46 +11,45 @@ const SearchBar = () => {
   const [map, setMap] = useState(null);
   const { userInfo } = useUserInfo();
 
-  
+
   const handleSearch = (event) => {
     setKeyword(event.target.value);
   };
-  
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       // 엔터가 눌렸을 때 추가로 요청을 보내도록 합니다
       setKeyword(event.target.value); // 키워드를 업데이트
     }
   };
-  
+
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
     document.body.style.overflow = isModalOpen ? "auto" : "hidden";
   };
-  
+
   const closeModal = () => {
     setIsModalOpen(false);
     document.body.style.overflow = "auto";
   };
-  
+
   // 마커 클릭 시 해당 위치로 지도 이동
   // const handleMarkerClick = (item) => {
-    //   setSelectedLocation(item); // 선택된 위치 업데이트
-    //   setItems([item]); // 클릭된 항목을 items로 업데이트
-    // };
-    
-    const handleMarkerClick = (item) => {
-      setSelectedLocation(item); // 선택된 위치 업데이트
-      if (map) {
-        const { lat, lng } = item;
-        const newPosition = new window.kakao.maps.LatLng(lat, lng);
-        const kakaoMap = window.kakao.maps.Map.getMap();
-        kakaoMap.panTo(newPosition); // 지도 이동
+  //   setSelectedLocation(item); // 선택된 위치 업데이트
+  //   setItems([item]); // 클릭된 항목을 items로 업데이트
+  // };
+
+  const handleMarkerClick = (item) => {
+    setSelectedLocation(item); // 선택된 위치 업데이트
+    if (map) {
+      const { lat, lng } = item;
+      const newPosition = new window.kakao.maps.LatLng(lat, lng);
+      const kakaoMap = window.kakao.maps.Map.getMap();
+      kakaoMap.panTo(newPosition); // 지도 이동
       kakaoMap.setLevel(6);
     }
   };
-  console.log(userInfo);
-  
+
   return (
     <div className='proSearchBarWrap'>
       <div className='proSearchInputBarWrap'>
@@ -84,10 +83,10 @@ const SearchBar = () => {
             </div>
             <KakaoMap items={items} onMarkerClick={handleMarkerClick} />
             <ul className="map-content-wrap">
-            {userInfo && userInfo.content && userInfo.content.map((item, index) => (
+              {userInfo && userInfo.content && userInfo.content.map((item, index) => (
                 <li key={index}>
-                  
-                  {item.name}/{item.address} 
+
+                  {item.name}/{item.address}
                 </li>
               ))}
             </ul>

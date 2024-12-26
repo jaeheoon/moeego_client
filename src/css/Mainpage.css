@@ -264,7 +264,7 @@ h1{
     position: relative;
 }
   
-.keyword-image div {
+.keyword-image .pro-info {
     height: 100%;
     display: flex;
     font-size: 1.5em;
@@ -276,9 +276,159 @@ h1{
     transition: opacity 0.3s;
 }
   
-.keyword-image:hover div {
+.keyword-image:hover .pro-info {
     opacity: 1;
     background-color: rgba(50, 50, 50, 0.7);
+}
+
+/* 모달 오버레이 */
+.indexPage .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* 어두운 반투명 배경 */
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 모달 */
+.indexPage .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 80%;
+    max-width: 450px;
+    height: 50%;
+    border-radius: 12px; /* 더 부드러운 둥근 모서리 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+    position: relative;
+    animation: modal-show 0.3s ease-in-out;
+    overflow-y: scroll;
+    border: 1px solid #eee;
+}
+
+/* 모달 헤더 */
+.indexPage .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0; /* 가는 경계선 */
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.indexPage .modal-header h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin: 0;
+}
+
+/* 모달 닫기 버튼 */
+.indexPage .modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.indexPage .modal-close:hover {
+    color: #333;
+}
+
+/* 모달 본문 */
+.indexPage .modal-body {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.indexPage .modal .service-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.indexPage .modal .service-list .service-item {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 90%;
+    padding: 0.8rem 0.25rem;
+}
+
+.indexPage .modal .service-list .service-item:hover {
+    cursor: pointer;
+    color: #fcc1cc;
+    border-bottom: 1px solid #fcc1cc;
+}
+
+/* 모달 푸터 */
+.indexPage .modal-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.indexPage .modal-footer button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.indexPage .modal-footer button.primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.indexPage .modal-footer button.primary:hover {
+    background-color: #2980b9;
+    transform: scale(1.05); /* 마우스 오버 시 크기 증가 */
+}
+
+.indexPage .modal-footer button.secondary {
+    background-color: #ddd;
+    color: #555;
+}
+
+.indexPage .modal-footer button.secondary:hover {
+    background-color: #bbb;
+    transform: scale(1.05); /* 마우스 오버 시 크기 증가 */
+}
+
+/* 모달 애니메이션 */
+@keyframes modal-show {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .carousel {

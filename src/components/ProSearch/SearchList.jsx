@@ -64,36 +64,37 @@ const SearchList = ({ item, proNo }) => {
             </div>
             {/* 토글된 상세 정보 부분 */}
             <div
-                className={`proSearchListDetailWrap ${isToggled ? "active" : ""
-                    }`}
+                className={`proSearchListDetailWrap ${isToggled ? "active" : ""}`}
             >
                 {isToggled &&
-                    item.proItems.map((serviceItem) => (
-                        <div
-                            key={serviceItem.proItemNo}
-                            className="servicePage"
-                            onClick={() => handleProViewNavigation(serviceItem)}
-                        >
-                            <div className="serviceWrap">
-                                <div className="serviceSubject">
-                                    {serviceItem.subject} (
-                                    {serviceItem.subCategory.subCateName})
-                                </div>
-                                <div className="serviceStar">
-                                    <span
-                                        style={{
-                                            color: "#f39c12",
-                                            marginRight: "0.25rem",
-                                        }}
-                                    >
-                                        ★{" "}
-                                        {Math.floor(serviceItem.star * 10) / 10}
-                                    </span>{" "}
-                                    ({serviceItem.reviewCount})
+                    item.proItems
+                        .filter((serviceItem) => serviceItem && serviceItem.subject) // null 또는 subject가 없는 항목 제외
+                        .map((serviceItem) => (
+                            <div
+                                key={serviceItem.proItemNo}
+                                className="servicePage"
+                                onClick={() => handleProViewNavigation(serviceItem)}
+                            >
+                                <div className="serviceWrap">
+                                    <div className="serviceSubject">
+                                        {serviceItem.subject} (
+                                        {serviceItem.subCategory.subCateName})
+                                    </div>
+                                    <div className="serviceStar">
+                                        <span
+                                            style={{
+                                                color: "#f39c12",
+                                                marginRight: "0.25rem",
+                                            }}
+                                        >
+                                            ★{" "}
+                                            {Math.floor(serviceItem.star * 10) / 10}
+                                        </span>{" "}
+                                        ({serviceItem.reviewCount})
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
             </div>
         </article>
     );
