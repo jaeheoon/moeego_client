@@ -6,20 +6,37 @@
     width: 100%;
 }
 
-.ServiceIntroPage h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 1rem;
-}
-
 .ServiceIntroPage .ServiceIntroWrap {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    width: 100%;
+    width: 90%;
+    margin-top: 5%;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .PageTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+    margin-bottom: 3rem;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .PageTitle .prev {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 5%;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .PageTitle .prev img {
+    height: 20px;
+    width: 20px;
+}
+
+.ServiceIntroPage .ServiceIntroWrap .PageTitle h1 {
+    width: 95%;
 }
 
 .ServiceIntroPage .ServiceIntroWrap .ServiceIntro {
@@ -223,4 +240,22 @@
 
 .ServiceIntroPage .errorCode div {
     width: 100%;
+}
+
+@media screen and (max-width: 1250px) {
+    .ServiceIntroPage .ServiceIntroWrap .PageTitle {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .ServiceIntroPage .ServiceIntroWrap .PageTitle .prev {
+        width: 10%;
+    }
+
+    .ServiceIntroPage .ServiceIntroWrap .PageTitle h1 {
+        width: 90%;
+        display: flex;
+        align-items: center;
+    }
 }

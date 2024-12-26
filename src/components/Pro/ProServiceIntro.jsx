@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import '../../css/Pro/ProServiceIntro.css';
 import apiAxios from '../../api/apiAxios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import '../../css/Pro/ProServiceIntro.css';
 
 const ProServiceIntro = () => {
     const [serviceName, setServiceName] = useState("");
@@ -23,22 +23,38 @@ const ProServiceIntro = () => {
                 const response = await apiAxios.get('/api/pro/item/init', { params: { memberNo: userno } });
                 if (response.data.success) {
                     const { proNo, proItems } = response.data.data;
-                    setProno(proNo || "");
-                    setProItems(proItems || []); // proItems 전체 목록 저장
+                    setProno(proNo || ""); // proNo가 없으면 빈 값 설정
+                    setProItems(proItems || []); // proItems가 없으면 빈 배열 설정
 
                     // 첫 번째 카테고리 선택 및 값 초기화 (API 호출이 성공한 후에 설정)
-                    if (proItems.length > 0) {
+                    if (proItems && proItems.length > 0) {
                         const defaultItem = proItems[0];
                         setSubcateno(defaultItem.subCategory?.subCateNo || "");
                         setServiceName(defaultItem.subject || "");
                         setServiceContent(defaultItem.content || "");
                         setServicePrice(defaultItem.price || "");
+                    } else {
+                        // proItems가 없으면 모든 값을 초기화
+                        setSubcateno("");
+                        setServiceName("");
+                        setServiceContent("");
+                        setServicePrice("");
                     }
                 } else {
                     console.error("데이터 로딩 실패");
+                    // 서버에서 반환된 데이터가 없을 경우 초기화
+                    setSubcateno("");
+                    setServiceName("");
+                    setServiceContent("");
+                    setServicePrice("");
                 }
             } catch (error) {
                 console.error("서버 오류:", error);
+                // 오류 발생 시에도 초기값 설정
+                setSubcateno("");
+                setServiceName("");
+                setServiceContent("");
+                setServicePrice("");
             }
         };
         fetchData();
@@ -123,8 +139,13 @@ const ProServiceIntro = () => {
 
     return (
         <div className='ServiceIntroPage'>
-            <h2>서비스 입력</h2>
             <div className='ServiceIntroWrap'>
+                <div className='PageTitle'>
+                    <Link className="prev" to="/mypage/account">
+                        <img src="/image/prev_icon.png" alt="prev" />
+                    </Link>
+                    <h1>서비스 입력</h1>
+                </div>
                 {/* SubCateNo 커스텀 드롭다운 */}
                 <div className='ServiceIntro'>
                     <label htmlFor="subCateNo">카테고리 선택</label>

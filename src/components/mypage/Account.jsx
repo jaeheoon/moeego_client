@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { MyPageContext } from '../../context/mypage/MyPageContext';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/member/AuthContext';
-import '../../css/mypage/Account.css';
 import apiAxios from '../../api/apiAxios';
+import '../../css/mypage/Account.css';
 
 const Account = () => {
     const { loginStatus } = useContext(AuthContext); // 필요한 데이터만 destructuring
@@ -38,24 +38,7 @@ const Account = () => {
         setName(localStorage.getItem('username') || '사용자 이름');
     }, [profile, name]);
 
-    useEffect(() => {
-        if (loginStatus === "ROLE_PRO") {
-            apiAxios.get('/api/mypage/account/intro')
-                .then((response) => {
-                    // API 요청에 대한 응답을 처리
-                    const intro = response.data.intro;
-                    const oneintro = response.data.onintro;
-                    setIntroduction(intro);
-                    setOneintroduction(oneintro);
-                })
-                .catch((error) => {
-                    console.error("소개 불러오기 실패:", error);
-                });
-        }
-    }, [loginStatus]);
-
     const handleNicknameChange = (e) => setNickname(e.target.value);
-    const handleIntroductionChange = (e) => setIntroduction(e.target.value);
 
     return (
         <div className='UserInfoPage'>
