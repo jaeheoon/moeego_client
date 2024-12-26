@@ -110,6 +110,12 @@
     color: #525252;
 }
 
+.header .ToggleMenuListLink a:hover {
+    cursor: pointer;
+    color: #2d2228;
+    font-weight: bold;
+}
+
 /* 드롭다운 메뉴 */
 .dropdown-menu {
     position: absolute;
@@ -434,29 +440,65 @@
     background-color: #ffe4ea;
     border-radius: 1em;
     box-sizing: border-box;
-    padding: 2em 2em 2em 2em;
-    width: 13em;
-    height: 12em;
+    padding: 2rem 2rem 2rem 2rem;
+    width: 13rem;
+    height: auto;
     margin-right: 17em;
-    gap: 1em;
+    gap: 1rem;
 }
 
 .ToggleMenu .ToggleMenuList div:nth-child(1) {
     color: #525252;
-    margin-left: -0.5em;
+    align-items: center;
+}
+
+.ToggleMenu .ToggleMenuList .userInfoName:hover {
+    cursor: pointer;
+    color: #2d2228;
+    font-weight: bold;
+}
+
+.ToggleMenu .ToggleMenuList div:nth-child(2),
+.ToggleMenu .ToggleMenuList div:nth-child(3) {
+    text-decoration: none;
+    width: 100%;
+    align-items: center;
+    justify-content: left;
 }
 
 .ToggleMenu .ToggleMenuList div:nth-child(2) a,
 .ToggleMenu .ToggleMenuList div:nth-child(3) a {
-    margin-left: -0.5em;
-    text-decoration: none;
     color: #525252;
+    cursor: pointer;
+}
+
+.ToggleMenu .ToggleMenuList div:nth-child(2) a:hover,
+.ToggleMenu .ToggleMenuList div:nth-child(3) a:hover {
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .ToggleMenu .ToggleMenuList .Logout {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.proAccess {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    color: #525252;
+}
+
+.proAccess:hover {
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .ToggleMenu .ToggleMenuList .Logout a {

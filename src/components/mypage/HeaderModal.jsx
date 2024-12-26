@@ -2,16 +2,22 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/member/AuthContext';
 
-const HeaderModal = ({ closeModal }) => {
+const HeaderModal = ({ closeModal, closeAndAccessMenu, GoProAccess, loginStatus }) => {
     const { isLoggedIn, loginUser } = useContext(AuthContext);
 
     return (
         <div className='ToggleMenuListWrap' onClick={closeModal}>
             {isLoggedIn ? (
                 <div className='ToggleMenuList' onClick={(e) => e.stopPropagation()}>
-                    <div>{loginUser}님</div>
+                    <div className='userInfoName'>{loginUser}님</div>
                     <div><Link to='/pro/search'>달인 찾기</Link></div>
                     <div><Link to='/mypage'>마이페이지</Link></div>
+                    {loginStatus !== "ROLE_PRO" && loginStatus !== "ROLE_PEND_PRO" && loginStatus !== "ROLE_ADMIN" &&
+                        <div className='proAccess' div onClick={() => { GoProAccess() }}>달인 신청</div>
+                    }
+                    {loginStatus === "ROLE_PEND_PRO" &&
+                        <div className='proAccess' onClick={() => { closeAndAccessMenu() }}>승인 대기</div>
+                    }
                     <div className='Logout'>
                         <div><Link to='/logout'>로그아웃</Link></div>
                     </div>
@@ -22,8 +28,9 @@ const HeaderModal = ({ closeModal }) => {
                     <div><Link to='/signup'>회원가입</Link></div>
                     <div><Link to='/pro/signup/main'>달인가입</Link></div>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 

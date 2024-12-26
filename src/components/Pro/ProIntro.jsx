@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../../css/Pro/ProIntro.css';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import apiAxios from '../../api/apiAxios'; // 사용자 설정 Axios 인스턴스
+import { AuthContext } from '../../context/member/AuthContext';
 
 const ProIntro = () => {
+    const { isLoggedIn, setLoginStatus } = useContext(AuthContext);
     const [oneintro, setOneintro] = useState('');
     const [intro, setIntro] = useState('');
     const { mainCateNo } = useParams();
@@ -12,15 +15,42 @@ const ProIntro = () => {
 
     const navigate = useNavigate();
 
-    const goJoin = () => {
-        navigate('/pro/signup', {
-            state: {
-                mainCateNo,
-                checkCategories: checkCategoriesArray, // 변환된 카테고리 배열 전달
-                oneintro,
-                intro,
-            },
-        });
+    const goJoin = async () => {
+        if (!isLoggedIn) {
+            // 로그인 안 되어 있을 때, 기존 로직 실행
+            navigate('/pro/signup', {
+                state: {
+                    mainCateNo,
+                    checkCategories: checkCategoriesArray, // 변환된 카테고리 배열 전달
+                    oneintro,
+                    intro,
+                },
+            });
+        } else {
+            // 로그인 되어 있을 때, API 요청 후 "/"로 리디렉션
+            try {
+                const accessData = {
+                    mainCateNo,
+                    subCategories: checkCategories,  // subCategories로 변환
+                    oneIntro: oneintro,
+                    intro,
+                };
+
+                const response = await apiAxios.post('/api/pro/access', accessData);
+
+                if (response.data.success) {
+                    alert("달인 권한 요청에 성공했습니다.");
+                    setLoginStatus("ROLE_PEND_PRO");
+                    localStorage.setItem("memberStatus", "ROLE_PEND_PRO");
+                    navigate('/');
+                } else {
+                    alert('서버에서 오류가 발생했습니다.');
+                }
+            } catch (error) {
+                console.error('서버 오류:', error);
+                alert('서버 요청 중 오류가 발생했습니다.');
+            }
+        }
     };
 
     const goBack = () => {
@@ -104,8 +134,8 @@ const ProIntro = () => {
                         </button>
                     </span>
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 };
 

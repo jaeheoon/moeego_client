@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/member/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import apiAxios from '../../api/apiAxios';
 import '../../css/mypage/ChangeIntro.css';
 
@@ -8,6 +9,8 @@ const ChangeIntro = () => {
     const [intro, setIntro] = useState('');
     const [isMobile, setIsMobile] = useState(false); // 모바일 여부 상태 추가
     const { loginUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     // 화면 크기에 따라 isMobile 상태를 변경
     const handleResize = () => {
@@ -83,14 +86,14 @@ const ChangeIntro = () => {
     // 등록 버튼 클릭 시 API 요청
     const handleSubmit = async () => {
         const data = {
-            MemberNo: loginUser,  // userno를 포함
-            OneIntro: oneIntro,  // 한줄 소개
-            Intro: intro,        // 상세 소개
+            oneIntro: oneIntro,  // 한줄 소개
+            intro: intro,        // 상세 소개
         };
 
         try {
             await apiAxios.put('/api/pro/intro', data); // API 호출
-            alert('정보가 성공적으로 업데이트되었습니다.');
+            alert('달인 소개가 수정되었습니다');
+            navigate("/mypage/account");
         } catch (error) {
             console.error('등록 실패:', error);
             alert('정보 업데이트에 실패했습니다.');
@@ -99,8 +102,7 @@ const ChangeIntro = () => {
 
     // 초기화 버튼 클릭 시 입력 필드 초기화
     const handleReset = () => {
-        setOneIntro('');
-        setIntro('');
+        window.location.reload();
     };
 
     return (
