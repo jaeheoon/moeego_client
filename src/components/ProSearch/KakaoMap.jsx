@@ -43,7 +43,12 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
                   const markerContent = `
                     <div class="custom-marker">
                       <div class="marker-circle">
-                        <img src="${image ? `https://kr.object.ncloudstorage.com/profile/${image}` : '/image/default.svg'}" class="marker-image" />
+                        <img src="${item.profileImage 
+                          ? item.profileImage.startsWith("https://") 
+                            ? item.profileImage 
+                            : `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}` 
+                          : '/image/default.svg'}" 
+                          class="marker-image" />
                       </div>
                       <div class="marker-arrow"></div>
                     </div>
@@ -97,7 +102,12 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
            const markerContent = `
                     <div class="custom-marker">
                       <div class="marker-circle">
-                        <img src="${image ? `https://kr.object.ncloudstorage.com/profile/${image}` : '/image/default.svg'}" class="marker-image" />
+                        <img src="${selectedLocation.profileImage 
+                          ? selectedLocation.profileImage.startsWith("https://") 
+                            ? selectedLocation.profileImage 
+                            : `https://kr.object.ncloudstorage.com/moeego/profile/${selectedLocation.profileImage}` 
+                          : '/image/default.svg'}" 
+                          class="marker-image" />
                       </div>
                       <div class="marker-arrow"></div>
                     </div>

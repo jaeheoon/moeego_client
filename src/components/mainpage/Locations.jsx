@@ -80,16 +80,34 @@ function Locations() {
           if (status === kakao.maps.services.Status.OK) {
             const position = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-            // 마커 생성
-            const marker = new kakao.maps.Marker({
+            // 마커 생성 (커스텀 마커)
+            const markerContent = `
+              <div class="custom-marker">
+                <div class="marker-circle">
+                  <img src="${item.profileImage 
+                          ? item.profileImage.startsWith("https://") 
+                            ? item.profileImage 
+                            : `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}` 
+                          : '/image/default.svg'}" 
+                          class="marker-image" />
+                </div>
+                <div class="marker-arrow"></div>
+              </div>
+            `;
+
+            const customOverlay = new kakao.maps.CustomOverlay({
               position: position,
-              map: kakaoMap,
+              content: markerContent,
+              yAnchor: 1,
             });
 
+            customOverlay.setMap(kakaoMap);
+
             // 마커 클릭 시 해당 위치로 이동
-            kakao.maps.event.addListener(marker, "click", () => {
+            kakao.maps.event.addListener(customOverlay, "click", () => {
               console.log(`마커 클릭됨: ${item.name}, ${item.mainCateName}, ${item.address}`);
               kakaoMap.panTo(position);
+              kakaoMap.setLevel(5);
             });
           } else {
             console.error("주소 변환 실패:", address, status);
@@ -120,7 +138,7 @@ function Locations() {
         {activeCity && (
           <div className="city-box">
             {/* {error && <p style={{ color: "red" }}>{error}</p>}  */}
-            <div id="map" style={{ width: "100%", height: "400px" }}></div>
+            <div id="map"></div>
           </div>
         )}
       </div>
