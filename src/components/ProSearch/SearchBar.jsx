@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ProContext } from "../../context/pro/ProContext";
 import { useUserInfo } from "../../context/pro/UserInfoContext";
 import KakaoMap from './KakaoMap';
+import "../../css/Pro/KakaoMap.css";
 
 const SearchBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,16 +11,15 @@ const SearchBar = () => {
   const { keyword, setKeyword } = useContext(ProContext);
   const [map, setMap] = useState(null);
   const { userInfo } = useUserInfo();
-
-
+  const [activeItem, setActiveItem] = useState(null);
+  
   const handleSearch = (event) => {
     setKeyword(event.target.value);
   };
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      // 엔터가 눌렸을 때 추가로 요청을 보내도록 합니다
-      setKeyword(event.target.value); // 키워드를 업데이트
+      setKeyword(event.target.value);
     }
   };
 
@@ -33,22 +33,31 @@ const SearchBar = () => {
     document.body.style.overflow = "auto";
   };
 
-  // 마커 클릭 시 해당 위치로 지도 이동
-  // const handleMarkerClick = (item) => {
-  //   setSelectedLocation(item); // 선택된 위치 업데이트
-  //   setItems([item]); // 클릭된 항목을 items로 업데이트
-  // };
-
   const handleMarkerClick = (item) => {
     setSelectedLocation(item); // 선택된 위치 업데이트
+    setActiveItem(item); // 클릭된 항목을 activeItem으로 설정
     if (map) {
       const { lat, lng } = item;
       const newPosition = new window.kakao.maps.LatLng(lat, lng);
       const kakaoMap = window.kakao.maps.Map.getMap();
-      kakaoMap.panTo(newPosition); // 지도 이동
+      kakaoMap.panTo(newPosition); 
       kakaoMap.setLevel(6);
     }
   };
+
+  const handleItemClick = (item) => {
+    setSelectedLocation(item); // 선택된 위치 업데이트
+    setActiveItem(item); // 클릭된 항목을 activeItem으로 설정
+    setIsModalOpen(true); // 모달 열기
+  };
+
+  // activeItem을 맨 위로 이동
+  const sortedItems = userInfo?.content
+    ? [
+        ...(activeItem ? [activeItem] : []),
+        ...userInfo.content.filter(item => item !== activeItem),
+      ]
+    : [];
 
   return (
     <div className='proSearchBarWrap'>
@@ -81,12 +90,21 @@ const SearchBar = () => {
               <h2>주변 달인</h2>
               <button onClick={closeModal}>닫기</button>
             </div>
-            <KakaoMap items={items} onMarkerClick={handleMarkerClick} />
+            <KakaoMap selectedLocation={selectedLocation} onMarkerClick={handleMarkerClick} />
             <ul className="map-content-wrap">
-              {userInfo && userInfo.content && userInfo.content.map((item, index) => (
-                <li key={index}>
-
-                  {item.name}/{item.address}
+              {sortedItems.map((item, index) => (
+                <li
+                  key={index}
+                  className={`map-content-wrap-list ${activeItem === item ? 'active' : ''}`}
+                  onClick={() => handleItemClick(item)}
+                >
+                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.37892 10.2236L8 16L12.6211 10.2236C13.5137 9.10788 14 7.72154 14 6.29266V6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6V6.29266C2 7.72154 2.4863 9.10788 3.37892 10.2236ZM8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#9e9e9e"></path>
+                  </svg>
+                  <span className="item-name">{item.name}</span> • 
+                  <span className="item-category">{item.mainCateName}</span> • 
+                  <span className="item-star"><span className='rating-star'>★</span>{item.star}</span> • 
+                  <span className="item-address">{item.address}</span>
                 </li>
               ))}
             </ul>

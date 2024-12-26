@@ -119,7 +119,7 @@ function Locations() {
       <div className="city-box-container">
         {activeCity && (
           <div className="city-box">
-            {error && <p style={{ color: "red" }}>{error}</p>} {/* 에러 메시지 표시 */}
+            {/* {error && <p style={{ color: "red" }}>{error}</p>}  */}
             <div id="map" style={{ width: "100%", height: "400px" }}></div>
           </div>
         )}
