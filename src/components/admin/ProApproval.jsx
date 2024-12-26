@@ -15,8 +15,9 @@ const ProApproval = () => {
     const fetchApprovalData = async (page = 1) => {
         try {
             const response = await apiAxios.get(`/api/admin/pro/approval?page=${page}&size=${pageSize}`);
-            setApprovedMember(response.data.content || []);
-            setTotalPages(response.data.totalPages); // 전체 페이지 수 설정
+            console.log('API 응답 데이터:', response.data); // API 응답 데이터 확인
+            setApprovedMember(response.data || []); // 바로 response.data로 설정
+            setTotalPages(response.data.totalPages || 1); // 전체 페이지 수 설정
             setCurrentPage(page); // 현재 페이지 업데이트
         } catch (err) {
             console.error('API 호출 오류:', err);
@@ -25,6 +26,8 @@ const ProApproval = () => {
             setLoading(false);
         }
     };
+    
+    
 
     // 승인 처리 함수
     const handleApprove = async (memberNo, name) => {
@@ -71,7 +74,7 @@ const ProApproval = () => {
     // 로딩 중일 때 UI 표시
     if (loading) return <div>로딩 중...</div>;
     if (error) return <div>오류: {error}</div>;
-
+    
     return (
         <div className="proApproval-approve-container">
             <div className="proApproval-approve-inner-container">
@@ -90,7 +93,7 @@ const ProApproval = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {approvedMember && approvedMember.length === 0 ? (
+                            {approvedMember.length === 0 ? (
                                 <tr>
                                     <td colSpan="6">승인 대기 중인 회원이 없습니다.</td>
                                 </tr>
