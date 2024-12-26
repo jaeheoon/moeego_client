@@ -1,0 +1,137 @@
+.popularItemWrap {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+}
+.popularItemWrap .popularItemWrap-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.popularItemWrap-title_content{
+    display: flex;
+    flex-direction: column;
+    width:80%
+}
+.popularItemWrap-img{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width:20%;
+}
+.popularItemWrap-img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.popularItemWrap .popularItemTitleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.popularItemWrap .popularItemTitleWrap div:nth-child(1) {
+    width: 95%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+.popularItemWrap .popularItemTitleWrap div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+.popularItemWrap .popularItemTitleWrap div:nth-child(2) img {
+    width: 20px;
+    height: 20px;
+}
+
+.popularItemWrap .popularItemContentWrap {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width:90%;
+    margin-bottom: 1rem;
+}
+
+.popularItemWrap .popularItemContentWrap div {
+    width: 95%;
+    color: #828282;
+    vertical-align: text-top;
+    margin-top: 1em;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임표로 표시 */
+    white-space: nowrap !important; /* 충돌 방지를 위해 강제 적용 */
+    box-sizing: border-box;
+    word-break: break-word;
+}
+.popularItemWrap .popularItemWrap-location {
+    display: flex;
+    justify-content: left; /* 왼쪽 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    color:#b2b2b2;
+}
+
+.popularItemWrap .popularImageWrap {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 70%;
+    margin-left: 0;
+}
+.popularItemWrap .popularItemWrap-bot {
+    display: flex;
+    justify-content: space-between; /* 두 요소를 양쪽 끝으로 배치 */
+    align-items: center; /* 수직 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+    margin-top: 10px; /* 필요에 따라 마진 추가 */
+}
+
+.popularItemWrap .popularImageWrap div {
+    display: flex;
+    align-items: center; /* span과 이미지 수직 정렬 */
+    margin-right: 10px; /* 요소 간 간격 */
+    gap: 0.3em;
+}
+.popularItemWrap .popularImageWrap div span{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color:#b2b2b2;
+    width:3em;
+}
+.popularItemWrap .popularImageWrap div svg{
+    width:15px;
+    height:15px;
+}
+.popularItemWrap .popularItemWrap-location {
+    margin-bottom: 5px; /* 위치와 아래 요소 간의 간격 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+.popularItemWrap .popularItem-written-time-warp{
+    display: flex;
+    width:30%;
+    justify-content: right;
+    margin-right: 0.5em;
+    color:#b2b2b2;
+    font-size:11pt;
+}
+.popularItemWrap .popularItem-written-time-warp div{
+    display: flex;
+    width:100%
+}

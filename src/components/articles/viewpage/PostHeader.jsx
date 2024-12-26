@@ -39,6 +39,21 @@ const PostHeader = ({ articleData, deleteArticle }) => {
             default: return "/"; // 기본 경로
         }
     };
+
+    const handleShare = () => {
+        if (navigator.share) {
+            navigator.share({
+                title: articleData.subject,
+                text: `${articleData.subject} - ${articleData.memberName}님의 게시글`,
+                url: window.location.href,
+            })
+            .catch((error) => console.error("공유 실패", error));
+        } else {
+            // 공유 기능이 없는 경우 대체 UI 제공
+            const fallbackUrl = window.location.href;
+            alert(`공유 기능이 지원되지 않는 브라우저입니다. 아래 URL을 복사하세요:\n${fallbackUrl}`);
+        }
+    };
     
 
     return (
@@ -93,7 +108,7 @@ const PostHeader = ({ articleData, deleteArticle }) => {
 
                 <div className="post-actions">
                     {/* 공유 버튼 */}
-                    <button className="post-action-button">
+                    <button className="post-action-button" onClick={handleShare}>
                         <img src="/image/share.png" alt="공유" className="action-icon" />
                     </button>
 

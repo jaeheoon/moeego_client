@@ -192,12 +192,14 @@
     .free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3){
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap:10px;
     }
 
     .free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) .ImageFeat img {
         width: 100%;
         border-radius: 10px;
+        object-fit: cover;
     }
 
     .free-board-container .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) > *:nth-child(n + 4) {

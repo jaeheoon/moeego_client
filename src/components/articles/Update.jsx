@@ -20,7 +20,7 @@ const Update = () => {
     const [selectedFiles, setSelectedFiles] = useState([]); // 선택한 파일 저장
     const [removedImageIds, setRemovedImageIds] = useState([]);
     const maxFileSize = 20 * 1024 * 1024; // 20MB
-    const maxFileCount = 5; // 최대 5장
+    const maxFileCount = 4; // 최대 4장
 
     // 글자수 상태 추가
     const [subjectLength, setSubjectLength] = useState(0);

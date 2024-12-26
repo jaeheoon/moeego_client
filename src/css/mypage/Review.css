@@ -165,6 +165,9 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
+    .ReviewPage .ReviewWrap .ReviewListWrap .ReviewLIst ul li article section:nth-child(3) {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 최소 크기 120px */
+    }
     .TopContainer{
         top:0;
     }

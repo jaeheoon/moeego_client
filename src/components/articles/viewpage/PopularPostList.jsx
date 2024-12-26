@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ArticleContext } from "../../../context/article/ArticleContext";
-import FeedItem from "../FreeBoardForm/FeedItem";
 import Loading from "../../loading/loading";
+import PopularPostItem from "./PopularPostItem";
 
 
 const PopularPostList = () => {
@@ -14,7 +14,7 @@ const PopularPostList = () => {
     return (
         <div className="popular-post-list">
             <h3>지금 가장 뜨거운🔥 게시글</h3>
-            <FeedItem item={hotArticle} />
+            <PopularPostItem item={hotArticle} />
         </div>
     );
 };

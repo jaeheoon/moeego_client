@@ -21,7 +21,7 @@ const Write = () => {
 
     const [selectedFiles, setSelectedFiles] = useState([]); // 선택한 파일 저장
     const maxFileSize = 20 * 1024 * 1024; // 20MB
-    const maxFileCount = 5; // 최대 5장
+    const maxFileCount = 4; // 최대 4장
 
     const handleChange = (e) => {
         const { name, value } = e.target;

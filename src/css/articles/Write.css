@@ -163,7 +163,7 @@
     width: 100%;
 }
 .subject-container input {
-    width: 90%;
+    width: 80%;
     padding: 10px;
     border: none; /* 기본 테두리 */
     border-radius: 4px;
@@ -175,7 +175,11 @@
 .subject-container input::placeholder {
     color: #aaa;
 }
-
+.char-count{
+    display: flex;
+    justify-content: right;
+    width: 22%;
+}
 /* 서비스와 지역 컨테이너 */
 .service-area-wrap {
     margin-bottom: 20px;
@@ -211,7 +215,7 @@
 }
 
 /* 구분선 */
-hr {
+.write-wrap hr {
     border: none;
     border-top: 1px solid #ddd;
     margin: 20px 0;
