@@ -88,10 +88,12 @@ import { SignOutProvider } from './context/mypage/SignOutContext.jsx';
 import Oauth2Redirect from './api/Oauth2Redirect.jsx'
 import KakaoMap from "./components/ProSearch/KakaoMap.jsx";
 import { UserInfoProvider } from "./context/pro/UserInfoContext.jsx";
+import ChannelIO from "./components/ChannelIO.jsx";
 
 const App = () => {
   return (
     <div className='App'>
+      <ChannelIO/>
       <BrowserRouter>
         <AuthProvider>
           <AdminProvider>
@@ -110,6 +112,7 @@ const App = () => {
                             <Routes>
                               {/* 메인페이지 */}
                               <Route path={"/"} element={<div className='main-content'><MainPage /></div>} />
+
                               {/* 검색결과 페이지 */}
                               <Route path={"/search"} element={<div className='main-content'><SearchPage /></div>} />
 

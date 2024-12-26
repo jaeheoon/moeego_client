@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import LifeTopic from './FreeBoardForm/LifeTopic';
 import "../../css/articles/ArticleMain.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FeedItem from './FreeBoardForm/FeedItem';
 import { ArticleContext } from '../../context/article/ArticleContext';
 import Loading from '../loading/loading';
@@ -19,10 +19,11 @@ const ArticleMain = () => {
             isLoading,
             GoWrite,
             GoLogin,
+            viewUpdate,
             articleCurrentPage  } = useContext(ArticleContext);
     const {isLoggedIn} = useContext(AuthContext);
     const [hotArticles, setHotArticles] = useState([]);
-
+    const navigate = useNavigate();
     // 인기 게시글
     useEffect(() => {
         const fetchHotArticles = async () => {
