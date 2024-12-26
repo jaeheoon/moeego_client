@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Content from "./Content";
-import "../../css/Pro/ProSearch.css";
 import ProSearchFunction from "./ProSearchFunction";
+import "../../css/Pro/ProSearch.css";
 
 const ProSearch = () => {
     const [service, setService] = useState("서비스");

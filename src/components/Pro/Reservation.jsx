@@ -224,10 +224,10 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                         <section>
                             <ol>
                                 <li>
-                                    <Link to="#">이벤트</Link>
+                                    <Link to="#">{proItem.mainCateName}</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">행사MC</Link>
+                                    <Link to="#">{service.subCategory.subCateName}</Link>
                                 </li>
                             </ol>
                         </section>
@@ -240,7 +240,7 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                                     {service.content}
                                 </div>
                                 <div className="options-wrapper">
-                                    {service.price}원
+                                    {service.price.toLocaleString()}원
                                 </div>
                                 <div className="product-reservation-date">
                                     <WeekCalendar

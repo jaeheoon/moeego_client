@@ -65,10 +65,15 @@ const LoginProvider = ({ children }) => {
                     window.localStorage.setItem("useraddress", address);
                     window.localStorage.setItem("userphone", phone);
                     if (profileImage) {
-                        window.localStorage.setItem("userprofile", "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
+                        const imageUrl = profileImage.startsWith("https://")
+                            ? profileImage // https://로 시작하면 그대로 사용
+                            : "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage; // 아니면 경로 추가
+
+                        window.localStorage.setItem("userprofile", imageUrl);
                     } else {
-                        window.localStorage.setItem("userprofile", '/image/default.svg');
+                        window.localStorage.setItem("userprofile", '/image/default.svg'); // profileImage가 없으면 기본 이미지 사용
                     }
+
                     window.localStorage.setItem("userno", memberNo);
                     window.localStorage.setItem("login", true);
 

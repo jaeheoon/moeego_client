@@ -51,7 +51,14 @@ const OAuth2Redirect = () => {
                     window.localStorage.setItem("memberStatus", memberStatus);
                     window.localStorage.setItem("useraddress", address);
                     window.localStorage.setItem("userphone", phone);
-                    window.localStorage.setItem("userprofile", profileImage || '/image/default.svg');
+                    window.localStorage.setItem(
+                        "userprofile",
+                        profileImage && profileImage.startsWith("https://")
+                            ? profileImage // https://로 시작하면 그대로 사용
+                            : profileImage
+                                ? "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage // 아니면 경로 추가
+                                : '/image/default.svg' // profileImage가 없으면 기본 이미지 사용
+                    );
                     window.localStorage.setItem("userno", memberNo);
                     window.localStorage.setItem("login", true);
 
@@ -62,7 +69,13 @@ const OAuth2Redirect = () => {
                     setLoginStatus(memberStatus);
                     setLoginAddress(address);
                     setLoginPhone(phone);
-                    setLoginProfile(profileImage || '/image/default.svg');
+                    setLoginProfile(
+                        profileImage && profileImage.startsWith("https://")
+                            ? profileImage // https://로 시작하면 그대로 사용
+                            : profileImage
+                                ? "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage // 아니면 경로 추가
+                                : '/image/default.svg' // profileImage가 없으면 기본 이미지 사용
+                    );
                     setLoginNumber(memberNo);
                 } else {
                     console.error("OAuth2 인증 실패: ", response);

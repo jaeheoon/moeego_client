@@ -81,14 +81,27 @@ const ProView = () => {
             <section className="dalin-photo">
                 <div className="dalin-photo-background">
                     <img
-                        src={`https://kr.object.ncloudstorage.com/moeego/profile/${proItem.profileImage}`}
+                        src={
+                            proItem.profileImage
+                                ? proItem.profileImage.startsWith("https://")
+                                    ? proItem.profileImage  // https://로 시작하면 그대로 사용
+                                    : `https://kr.object.ncloudstorage.com/moeego/profile/${proItem.profileImage}`  // 아니면 경로 추가
+                                : "/image/default.svg"  // profileImage가 없으면 기본 이미지 사용
+                        }
                         alt={proItem.name}
                         width="100"
                     />
                 </div>
                 <div className="dalin-photo-main">
                     <img
-                        src={`https://kr.object.ncloudstorage.com/moeego/profile/${proItem.profileImage}`}
+                        src={
+                            proItem.profileImage
+                                ? proItem.profileImage.startsWith("https://")
+                                    ? proItem.profileImage  // https://로 시작하면 그대로 사용
+                                    : `https://kr.object.ncloudstorage.com/moeego/profile/${proItem.profileImage}`  // 아니면 경로 추가
+                                : "/image/default.svg"  // profileImage가 없으면 기본 이미지 사용
+                        }
+                        style={{ backgroundColor: "#fff" }}
                         alt={proItem.name}
                         width="100"
                         height="100"

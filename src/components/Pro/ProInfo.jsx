@@ -226,7 +226,7 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
                                 {Math.floor(proItem.star * 10) / 10}
                             </span>
                             <span className="count">
-                                ({proItem.reviewCount})
+                                ({proItem.reviewCount || 0})
                             </span>
                         </div>
                     </div>
