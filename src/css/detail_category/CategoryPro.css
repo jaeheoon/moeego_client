@@ -1,0 +1,44 @@
+.categoryProWrap {
+    padding: 20px;
+}
+
+.categoryProWrap h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.categoryProWrap .pro-list {
+    display: flex;
+    flex-direction: column; /* 카드들을 수직으로 나열 */
+    gap: 20px;
+}
+
+.categoryProWrap .pro-card {
+    width: 100%; /* 한 카드가 화면 너비를 차지하도록 */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+}
+
+.categoryProWrap .pro-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.categoryProWrap .pro-card h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.categoryProWrap .pro-card p {
+    font-size: 14px;
+    color: #666;
+}

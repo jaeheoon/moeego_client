@@ -1,40 +1,32 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Detail_category from "./Detail_category";
 import "../../css/detail_category/Detail_category.css";
-import DetailCardList from "./DetailCardList";
 import { useParams } from "react-router-dom";
 import apiAxios from "../../api/apiAxios";
+import CategoryPro from "./CategoryPro";
 
 const SelectCategory = () => {
     const { mainCateNo } = useParams();
-    const [activeIndex, setActiveIndex] = useState(0);
-    const sectionsRef = useRef([]);
-    const menuRef = useRef(null);
     const [subCategories, setSubCategories] = useState([]); // 서브 카테고리 상태
+    const [selectedCategory, setSelectedCategory] = useState(null); // 선택된 카테고리 상태
 
     useEffect(() => {
-        // mainCateNo 변경 시 첫 번째 메뉴를 활성화하고 오른쪽 화면 맨 위로 스크롤
-        setActiveIndex(0);
-
-        window.scrollTo(0, 0);
-
-        // mainCateNo를 기반으로 서브 카테고리 데이터 받아오기
+        // mainCateNo 변경 시 서브 카테고리 데이터 받아오기
         apiAxios
             .get(`/api/sub_category/${mainCateNo}`)
             .then((response) => {
                 setSubCategories(response.data); // 서브 카테고리 데이터 설정
+                if (response.data.length > 0) {
+                    setSelectedCategory(response.data[0]); // 첫 번째 카테고리 기본 선택
+                }
             })
             .catch((err) => {
                 console.error("Error fetching subcategories:", err);
             });
     }, [mainCateNo]); // mainCateNo가 변경될 때마다 실행
 
-    const handleMenuClick = (index) => {
-        setActiveIndex(index); // 클릭한 메뉴 활성화
-        sectionsRef.current[index].scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-        });
+    const handleMenuClick = (category) => {
+        setSelectedCategory(category); // 선택된 카테고리 업데이트
     };
 
     return (
@@ -45,13 +37,15 @@ const SelectCategory = () => {
                     <Detail_category />
                 </div>
                 <div className="detailContentWrap">
-                    <div className="detailCategoryListWrap" ref={menuRef}>
+                    <div className="detailCategoryListWrap">
                         <ul>
-                            {subCategories.map((category, index) => (
+                            {subCategories.map((category) => (
                                 <li
                                     key={category.subCateNo}
-                                    className={`menu-item ${activeIndex === index ? "active" : ""}`}
-                                    onClick={() => handleMenuClick(index)}
+                                    className={`menu-item ${
+                                        selectedCategory?.subCateNo === category.subCateNo ? "active" : ""
+                                    }`}
+                                    onClick={() => handleMenuClick(category)}
                                 >
                                     {category.subCateName}
                                 </li>
@@ -59,17 +53,7 @@ const SelectCategory = () => {
                         </ul>
                     </div>
                     <div className="detailRightWrap">
-                        {subCategories.map((category, index) => (
-                            <div
-                                key={category.subCateNo}
-                                ref={(el) => (sectionsRef.current[index] = el)}
-                                className="detailSection"
-                                id={`section-${index}`}
-                            >
-                                <h2>{category.subCateName}</h2>
-                                <DetailCardList subCateNo={category.subCateNo} />
-                            </div>
-                        ))}
+                        {selectedCategory && <CategoryPro item={selectedCategory} />}
                     </div>
                 </div>
             </div>
