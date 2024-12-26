@@ -299,7 +299,9 @@ const MonthCalendar = () => {
                 <ul className="reservationUl">
                   {scheduleStatus.my.map((schedule, index) => (
                     <li className="reservationLi" key={index}>
-                      {schedule.proName}, {schedule.proItemName} ({schedule.time})
+                      <div className='reservationItem'>
+                        {schedule.proName}, {schedule.proItemName} ({schedule.time})
+                      </div>
 
                       {isCancelable(schedule.time) && (
                         <button className='cancel-btn' onClick={() => handleDeleteReservation(schedule)}>

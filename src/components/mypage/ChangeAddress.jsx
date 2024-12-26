@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import "../../css/mypage/ChangeAddress.css";
 import apiAxios from '../../api/apiAxios';
 import { AuthContext } from '../../context/member/AuthContext';
+import "../../css/mypage/ChangeAddress.css";
 
 const ChangeAddress = () => {
     const [address, setAddress] = useState({
@@ -33,12 +33,15 @@ const ChangeAddress = () => {
                 document.body.removeChild(script);
             };
         }
+    }, []); // loginAddress가 변경될 때마다 실행
 
+    useEffect(() => {
         if (loginAddress) {
             const parsedAddress = parseAddress(loginAddress);
             setAddress(parsedAddress); // 로그인 주소로 상태 설정
         }
-    }, [loginAddress]); // loginAddress가 변경될 때마다 실행
+    }, [loginAddress]);
+
 
     // 주소 파싱 함수
     const parseAddress = (fullAddress) => {

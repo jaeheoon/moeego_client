@@ -11,8 +11,10 @@ const SignOutProvider = ({ children }) => {
     const [reason, setReason] = useState('');
     const [pwd, setPwd] = useState('');
     const [result, setResult] = useState(false);
-    const [errorMessage, setErrorMessage]
-        = useState({ reason: '', pwd: '', });
+    const [errorMessage, setErrorMessage] = useState({
+        reason: '',
+        pwd: ''
+    });
 
     const navigate = useNavigate();
 
@@ -70,9 +72,12 @@ const SignOutProvider = ({ children }) => {
     };
 
     const contextValue = {
-        reason, setReason,
-        pwd, setPwd,
-        errorMessage, setErrorMessage,
+        reason,
+        setReason,
+        pwd,
+        setPwd,
+        errorMessage,
+        setErrorMessage,
         handleSignOut
     };
     return (

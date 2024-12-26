@@ -205,12 +205,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
+    gap: 0.25rem;
     width: 100%;
     padding: 0.25rem 0rem 0.25rem 0;
 }
 
+.reservationUl .reservationLi .reservationItem {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: calc(100% - (25% + 0.25rem));
+    overflow-wrap: anywhere;
+}
+
 /* 버튼 공통 스타일 */
 .reservationUl button {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    box-sizing: border-box;
+    width: 25%;
     padding: 8px 12px;
     font-size: 0.8rem;
     border: none;

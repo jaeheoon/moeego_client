@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import "../../css/mypage/SignOut.css"
 import { SignOutContext } from '../../context/mypage/SignOutContext';
+import "../../css/mypage/SignOut.css"
 
 const SignOut = () => {
     const {
-        reason, setReason,
-        pwd, setPwd,
-        errorMessage, handleSignOut
+        reason,
+        setReason,
+        pwd,
+        setPwd,
+        errorMessage,
+        setErrorMessage,
+        handleSignOut
     } = useContext(SignOutContext);
 
     return (
@@ -53,7 +57,7 @@ const SignOut = () => {
                             onClick={() => {
                                 setReason('');
                                 setPwd('');
-                                setErrorMessage({ reason: '', pwd: '', });
+                                setErrorMessage({ reason: '', pwd: '' });
                             }} />
                         <input type="button" value="탈퇴하기"
                             onClick={handleSignOut} />
