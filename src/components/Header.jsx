@@ -135,7 +135,7 @@ function Header() {
       const response = await apiAxios.get("/api/admin/emailstatus");
 
       if (response.status === 200) {
-        const access = 0;
+        let access = 0;
 
         access = Number(response.data);
 
