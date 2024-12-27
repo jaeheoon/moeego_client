@@ -72,6 +72,11 @@
     justify-content: center;
 }
 
+.BoxContainer .label-box label .proName {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
 .BoxContainer .check-icon {
     width: 1.4em;
     height: 1.4em;

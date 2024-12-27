@@ -32,22 +32,33 @@ const BookMarkPro = () => {
 
     // 체크박스 상태 변경 처리
     const handleCheckboxChange = (proNo) => {
-        setSelectedPro((prevSelected) =>
-            prevSelected.includes(proNo)
+        setSelectedPro((prevSelected) => {
+            const newSelected = prevSelected.includes(proNo)
                 ? prevSelected.filter((id) => id !== proNo)
-                : [...prevSelected, proNo]
-        );
+                : [...prevSelected, proNo];
+
+            // 모든 항목이 선택되었는지 확인하여 전체선택 체크박스 상태 업데이트
+            setAllSelected(newSelected.length === favoritePro.length);
+            return newSelected;
+        });
     };
 
     // 전체 선택/해제 처리
     const handleSelectAll = () => {
         if (allSelected) {
-            setSelectedPro([]);
+            setSelectedPro([]); // 전체 해제
         } else {
-            setSelectedPro(favoritePro.map((pro) => pro.proNo));
+            setSelectedPro(favoritePro.map((pro) => pro.proNo)); // 전체 선택
         }
-        setAllSelected(!allSelected);
+        setAllSelected(!allSelected); // 전체 선택 상태 반전
     };
+
+    // favoritePro가 변경될 때 전체 선택 체크박스 상태를 업데이트
+    useEffect(() => {
+        setAllSelected(
+            favoritePro.length > 0 && selectedPro.length === favoritePro.length
+        );
+    }, [favoritePro, selectedPro]);
 
     const handleDeleteSelected = async () => {
         if (selectedPro.length === 0) {
@@ -195,11 +206,9 @@ const BookMarkPro = () => {
                                                 aria-hidden="true"
                                             ></span>
                                             <label htmlFor={`check${index}`}>
-                                                <Link
-                                                    to={`/pro/proview?proNo=${pro.proNo}`}
-                                                >
+                                                <div className='proName'>
                                                     {pro.name}
-                                                </Link>
+                                                </div>
                                             </label>
                                         </div>
                                     </div>
