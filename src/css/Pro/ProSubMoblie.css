@@ -28,6 +28,7 @@
     background-color: #F4F4F4;
     box-sizing: border-box;
     padding-bottom: 2em;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3); /* 그림자 효과 */
 }
 
 .ProJoinSubPage .detail-item {
@@ -42,6 +43,11 @@
     padding: 1rem;
     margin: 11px;
     font-weight: bold;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15); /* 그림자 효과 */
+}
+
+.ProJoinSubPage .detail-item:hover {
+    background-color: #fcc1cc;
 }
 
 
@@ -114,6 +120,7 @@
         border-radius: 0;
         margin: 0;
         padding: 0;
+        box-shadow: none;
     }
 
     .ProJoinSubPage #projoinSub_container .ProJoinSub_box .detail-wrap {
@@ -131,6 +138,7 @@
         margin: 1em 0;
         padding: 1em;
         width: 100%;
+        box-shadow: none;
     }
 
     .ProJoinSubPage #projoinSub_container .moveBtn {

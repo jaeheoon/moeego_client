@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../../css/Pro/ProIntro.css';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import apiAxios from '../../api/apiAxios'; // 사용자 설정 Axios 인스턴스
 import { AuthContext } from '../../context/member/AuthContext';
+import '../../css/Pro/ProIntro.css';
 
 const ProIntro = () => {
     const { isLoggedIn, setLoginStatus } = useContext(AuthContext);

@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    overflow-y: auto;
 }
 
 .UserInfoPage hr {
@@ -16,7 +17,10 @@
 
 .UserInfoWrap {
     width: 80%;
-    margin-top: 5%;
+    height: 80vh;
+    padding-top: 5%;
+    overflow-y: scroll;
+    box-sizing: border-box;
 }
 
 .UserInfoWrap .PageTitle {

@@ -1,9 +1,9 @@
 .MyPage {
-    margin-top: 5%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .MyPage hr {
@@ -15,6 +15,10 @@
 
 .MyPageWrap {
     width: 80%;
+    height: 80vh;
+    padding-top: 5%;
+    overflow-y: scroll;
+    box-sizing: border-box;
 }
 
 .ProfileContainer {

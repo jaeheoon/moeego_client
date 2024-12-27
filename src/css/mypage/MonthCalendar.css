@@ -15,7 +15,7 @@
     max-width: 900px;
     height: auto;
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -159,7 +159,7 @@
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #fcc1cc;
-    border-radius: 8px;
+    border-radius: 1rem;
     background-color: #fff7f8;
 }
 

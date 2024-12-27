@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    overflow-y: auto; /* ReviewPage에서 스크롤 처리 */
 }
 .reviewItem{
     cursor: pointer;
@@ -10,7 +11,10 @@
 .ReviewPage .ReviewWrap {
     display: flex;
     width: 80%;
-    margin-top: 5%;
+    padding-top: 5%;
+    height: 80vh;
+    box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 .ReviewPage .ReviewWrap .ReviewListWrap {

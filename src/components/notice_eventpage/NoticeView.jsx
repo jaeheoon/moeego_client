@@ -46,39 +46,41 @@ const NoticeView = () => {
     }
 
     return (
-        <div className="noticeView">
-            <Link to='/event' className='noticeCategory'>
-                <h2>{articleData.type === 0 ? '공지사항' : '이벤트'}</h2>
-            </Link>
-            <div style={{fontSize:'2rem',fontWeight:'700'}}>{formatDate(articleData.writeDate)} {articleData.subject}</div>
-            
-            <div className="content">
-                {articleData.content}
-            </div>
-            <div className="post-image-wrapper">
-                {
-                    images.map(item => (
-                        <img 
-                            className='post-image'
-                            key={item.imageNo} 
-                            src={`https://kr.object.ncloudstorage.com/moeego/storage/${item.imageUuidName}`} 
-                            alt={item.imageName}
-                            onClick={() => openModal(`https://kr.object.ncloudstorage.com/moeego/storage/${item.imageUuidName}`)} // 클릭 시 모달 열기
-                        />
-                    ))
-                }
-            </div>
-            <p style={{textAlign:'right '}}>조회수: {articleData.view}</p>
+        <div className="noticeViewPage">
+            <div className="noticeView">
+                <Link to='/event' className='noticeCategory'>
+                    <h2>{articleData.type === 0 ? '공지사항' : '이벤트'}</h2>
+                </Link>
+                <div className='subject'>{formatDate(articleData.writeDate)} {articleData.subject}</div>
 
-            {/* 모달 */}
-            {isModalOpen && (
-                <div className="modal" onClick={closeModal}>
-                    <div className="modal-content" onClick={e => e.stopPropagation()}>
-                        <img src={modalImage} alt="Enlarged view" />
-                        <button className="close-btn" onClick={closeModal}>X</button>
-                    </div>
+                <div className="content">
+                    {articleData.content}
                 </div>
-            )}
+                <div className="post-image-wrapper">
+                    {
+                        images.map(item => (
+                            <img
+                                className='post-image'
+                                key={item.imageNo}
+                                src={`https://kr.object.ncloudstorage.com/moeego/storage/${item.imageUuidName}`}
+                                alt={item.imageName}
+                                onClick={() => openModal(`https://kr.object.ncloudstorage.com/moeego/storage/${item.imageUuidName}`)} // 클릭 시 모달 열기
+                            />
+                        ))
+                    }
+                </div>
+                <p style={{ textAlign: 'left ' }}>조회수: {articleData.view}</p>
+
+                {/* 모달 */}
+                {isModalOpen && (
+                    <div className="modal" onClick={closeModal}>
+                        <div className="modal-content" onClick={e => e.stopPropagation()}>
+                            <img src={modalImage} alt="Enlarged view" />
+                            <button className="close-btn" onClick={closeModal}>X</button>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

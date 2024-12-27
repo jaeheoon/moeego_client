@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import "../../css/mypage/ChangeEmail.css";
 import apiAxios from '../../api/apiAxios'; // 사용자 정의 Axios 인스턴스를 불러온다고 가정
 import { AuthContext } from '../../context/member/AuthContext';
+import "../../css/mypage/ChangeEmail.css";
 
 const ChangePhone = () => {
     const [phone, setPhone] = useState(""); // 사용자가 입력한 전화번호 상태

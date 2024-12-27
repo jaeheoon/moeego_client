@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 20em;
+    overflow-y: auto;
 }
 
 .ChangeEmailWrap hr {
@@ -17,7 +17,10 @@
 
 .ChangeEmailWrap {
     width: 80%;
-    margin-top: 5%;
+    height: 80vh;
+    padding-top: 5%;
+    overflow-y: scroll;
+    box-sizing: border-box;
 }
 
 .ChangeEmailWrap .PageTitle {

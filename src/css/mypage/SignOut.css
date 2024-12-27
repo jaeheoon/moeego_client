@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    overflow-y: auto;
 }
 
 .DeleteUserWrap hr {
@@ -15,7 +16,10 @@
 
 .DeleteUserWrap {
     width: 80%;
-    margin-top: 5%;
+    padding-top: 5%;
+    height: 80vh;
+    box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 .DeleteUserWrap .PageTitle {

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyArticles from './MyArticles';
 import MyComments from './MyComments';
-import '../../css/mypage/MyHistory.css';
 import Loading from '../loading/loading';
 import apiAxios from '../../api/apiAxios';
+import '../../css/mypage/MyHistory.css';
 
 const MyHistory = () => {
     const [activeTab, setActiveTab] = useState('myarticle'); // 기본 탭을 'myarticle'로 설정
@@ -68,7 +68,7 @@ const MyHistory = () => {
         fetchArticles();
         fetchComments();
     }, []);
-    
+
     if (isLoading) {
         return (
             <div className="loadingPage">

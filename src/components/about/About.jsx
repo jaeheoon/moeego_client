@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/member/AuthContext';
 import apiAxios from '../../api/apiAxios';
 
 const About = () => {
-    const { isLoggedIn } = useContext(AuthContext);
+    const { isLoggedIn, loginStatus } = useContext(AuthContext);
     const [proCounts, setProCounts] = useState([]);
 
     useEffect(() => {
@@ -85,9 +85,13 @@ const About = () => {
                             <Link to="/pro/signup/main"><input type='button' value='달인 회원 가입' /></Link>
                         </div>
                     )}
+                    {isLoggedIn && loginStatus === "ROLE_USER" && (
+                        <div className='aboutBtnWrap'>
+                            <Link to="/pro/signup/main"><input type='button' value='달인 전환' /></Link>
+                        </div>)}
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

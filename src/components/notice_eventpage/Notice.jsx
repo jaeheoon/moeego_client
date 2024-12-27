@@ -60,6 +60,7 @@ const Notice = () => {
                             <div
                                 key={item.articleNo}
                                 className='noticeItem'
+                                style={{ cursor: "pointer" }}
                                 onClick={() => handleNoticeClick(item.articleNo)}
                             >
                                 <Notice_eventItem item={item} />

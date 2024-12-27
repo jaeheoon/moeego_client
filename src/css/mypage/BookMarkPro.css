@@ -8,6 +8,8 @@
 .BookMarkProContainer .BookMarkProWrap {
     margin-top: 5%;
     width: 80%;
+    height: 80vh;
+    overflow-y: scroll;
 }
 
 .BookMarkProWrap .PageTitle {

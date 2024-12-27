@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import "../../css/mypage/Review.css";
 import { Link, useParams } from 'react-router-dom';
 import ReviewItem from './ReviewItem';
 import apiAxios from '../../api/apiAxios';
 import LatestReviewPaging from '../articles/FreeBoardForm/LatestReviewPaging';
 import Loading from '../loading/loading';
 import ReviewModal from './ReviewModal'; // 모달 컴포넌트 추가
+import "../../css/mypage/Review.css";
 
 const Review = () => {
     const { num } = useParams();
@@ -113,7 +113,7 @@ const Review = () => {
 
             {/* 모달 컴포넌트 */}
             {isModalOpen && selectedReview && (
-                <ReviewModal review={selectedReview} onClose={handleCloseModal} showDeleteButton={true}/>
+                <ReviewModal review={selectedReview} onClose={handleCloseModal} showDeleteButton={true} />
             )}
         </div>
     );

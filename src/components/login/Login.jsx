@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import "../../css/login/Login.css";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../../context/member/LoginContext";
 import SearchPwd from "./SearchPwd";
 import SearchEmail from "./SearchEmail";
+import "../../css/login/Login.css";
 
 const Login = () => {
     const {
@@ -62,30 +62,17 @@ const Login = () => {
                         </button>
                     </div>
 
-                    <div className="login-function">
-                        <div className="find">
-                            <input type="button" value="이메일 찾기" onClick={() => openModal("email")} />
-                        </div>
-                        <div className="find">
-                            <input type="button" value="비밀번호 찾기" onClick={() => openModal("password")} />
-                        </div>
-                        <div className="find">
-                            <Link to="/signup">회원가입</Link>
-                        </div>
-                    </div>
-                    <br />
-
-                    <div className='snsWrap'>
-                        <button type="button" className="naverLoginBtn" onClick={() => handleSocialLogin("naver")}>
-                            <img className="naverImg" src="/image/naver_white.svg" alt="네이버" width="18" height="16" />
-                            네이버로 시작
-                        </button>
-                    </div>
-                    <br />
                     <div className='snsWrap'>
                         <button type="button" className="kakaoLoginBtn" onClick={() => handleSocialLogin("kakao")}>
                             <img className="kakaoImg" src="/image/kakao_white.svg" alt="카카오" width="18" height="16" />
                             카카오로 시작
+                        </button>
+                    </div>
+                    <br />
+                    <div className='snsWrap'>
+                        <button type="button" className="naverLoginBtn" onClick={() => handleSocialLogin("naver")}>
+                            <img className="naverImg" src="/image/naver_white.svg" alt="네이버" width="18" height="16" />
+                            네이버로 시작
                         </button>
                     </div>
                     <br />
@@ -95,6 +82,13 @@ const Login = () => {
                             지메일로 시작
                         </button>
                     </div>
+                    <br />
+                    <div className="login-function">
+                        <div className="find">
+                            <Link to="/signup">회원가입</Link>
+                        </div>
+                    </div>
+                    <br />
                 </form>
                 <div
                     className={`ModalWrap ${modalType ? "show" : ""}`}
