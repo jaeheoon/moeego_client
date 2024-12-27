@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from 'react';
 import { AuthContext } from "../../context/member/AuthContext";
 import apiAxios from '../../api/apiAxios';
@@ -28,7 +28,9 @@ const Logout = () => {
                 } else {
                     alert("logout failed");
                 }
+
                 navigate("/", { replace: true });
+                window.location.reload()
             } catch (error) {
                 console.log("로그인이 필요합니다.");
                 navigate("/");

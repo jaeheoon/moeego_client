@@ -11,7 +11,7 @@ const AdminLoginProvider = ({ children }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const { setIsLoggedIn, setLoginEmail, setLoginUser, setLoginStatus, setLoginAddress, setLoginPhone, setLoginProfile, setLoginNumber } = useContext(AuthContext);
-
+    const [isLogout, setIsLogout] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const prevUrl = location.state || "/admin/dashboard";
@@ -38,6 +38,12 @@ const AdminLoginProvider = ({ children }) => {
 
                 const decodedToken = jwtDecode(accessToken); // 디코딩된 토큰
                 const { name, email, memberStatus, address, phone, profileImage, memberNo } = decodedToken; // name과 email 추출
+
+                if (memberStatus !== "ROLE_ADMIN") {
+                    alert("관리자아이디가 필요합니다.");
+                    navigate('/logout'); // isLogout 상태를 함께 전달
+                    return;
+                }
 
                 // 로컬 스토리지에 저장
                 window.localStorage.setItem("username", name);

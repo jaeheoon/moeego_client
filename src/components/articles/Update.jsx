@@ -198,13 +198,13 @@ const Update = () => {
                     <div className="content-container">
                         <textarea
                             placeholder="내용을 입력하세요"
-                            maxLength={5000}
+                            maxLength={500}
                             name="content"
                             value={formData.content}
                             onChange={handleChange}
                         />
-                        <div className="char-count">
-                            {contentLength} / 5000
+                        <div className="content-count">
+                            {contentLength} / 500
                         </div>
                     </div>
                     <hr />

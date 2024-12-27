@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import apiAxios from '../../../api/apiAxios';
 import '../../../css/admin/Membership.css';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/member/AuthContext';
 
 const ProList = () => {
     const [loading, setLoading] = useState(true);
@@ -9,6 +11,29 @@ const ProList = () => {
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
     const pageSize = 30; // 페이지 당 아이템 수 고정
+
+    const navigate = useNavigate();
+    const { setIsLoggedIn, setLoginStatus } = useContext(AuthContext);
+    const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 상태
+    useEffect(() => {
+        const checkLoginStatus = () => {
+            const isLoggedIn = window.localStorage.getItem("login") === 'true'; // 로그인 상태 확인
+            const memberStatus = window.localStorage.getItem("memberStatus"); // 관리자 여부 확인
+
+            if (!isLoggedIn) {
+                // 로그인하지 않은 경우
+                navigate('/admin/login'); // 로그인 페이지로 리디렉션
+            } else if (memberStatus !== "ROLE_ADMIN") {
+                // 관리자가 아닌 경우
+                alert("관리자만 접근할 수 있습니다.");
+                navigate('/'); // 대시보드가 아닌 다른 페이지로 리디렉션
+            } else {
+                setIsAdmin(true); // 관리자인 경우
+            }
+        };
+
+        checkLoginStatus();
+    }, [navigate]); // `navigate`가 변경될 때마다 실행되도록 의존성 추가
 
     // 고수 데이터 불러오기
     const fetchProData = async (page = 1) => {

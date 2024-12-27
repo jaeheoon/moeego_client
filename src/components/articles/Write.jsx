@@ -164,7 +164,7 @@ const Write = () => {
                             value={formData.content}
                             onChange={handleChange}
                         ></textarea>
-                        <div className="char-count">
+                        <div className="content-count">
                             {formData.content.length} / 500
                         </div>
                     </div>
