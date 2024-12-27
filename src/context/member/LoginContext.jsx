@@ -65,7 +65,7 @@ const LoginProvider = ({ children }) => {
                     window.localStorage.setItem("useraddress", address);
                     window.localStorage.setItem("userphone", phone);
                     if (profileImage) {
-                        const imageUrl = profileImage.startsWith("https://")
+                        const imageUrl = profileImage.startsWith("https://") || profileImage.startsWith("http://")
                             ? profileImage // https://로 시작하면 그대로 사용
                             : "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage; // 아니면 경로 추가
 
@@ -83,11 +83,18 @@ const LoginProvider = ({ children }) => {
                     setLoginStatus(memberStatus);
                     setLoginAddress(address);
                     setLoginPhone(phone);
-                    if (profileImage) {
-                        setLoginProfile("https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage);
+                    const DEFAULT_PROFILE_IMAGE = '/image/default.svg';
+
+                    if (profileImage && typeof profileImage === "string") {
+                        const imageUrl = profileImage.startsWith("https://") || profileImage.startsWith("http://")
+                            ? profileImage
+                            : "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage;
+
+                        setLoginProfile(imageUrl);
                     } else {
-                        setLoginProfile('/image/default.svg');
+                        setLoginProfile(DEFAULT_PROFILE_IMAGE);
                     }
+
                     setLoginNumber(memberNo);
 
                     navigate(prevUrl, { replace: true });
@@ -96,9 +103,11 @@ const LoginProvider = ({ children }) => {
                 alert(`Login failed: ${response.data.message || 'Invalid credentials'}`);
             }
         } catch (error) {
-            console.error('Error during login: ', error);
-            setError("아이디 또는 비밀번호를 확인해주세요");
-            console.log('로그인 중 오류가 발생했습니다.');
+            if (error.response.data.code === 400) {
+                setError("탈퇴한 회원입니다.");
+            } else {
+                setError("아이디 또는 비밀번호를 확인해주세요");
+            }
         }
     };
 

@@ -4,6 +4,7 @@ import HeaderModal from "./mypage/HeaderModal";
 import { AuthContext } from '../context/member/AuthContext';
 import { MyPageContext } from '../context/mypage/MyPageContext';
 import "../css/Header.css";
+import apiAxios from '../api/apiAxios';
 
 function Header() {
   const [modalType, setModalType] = useState(null);
@@ -130,7 +131,7 @@ function Header() {
   }
 
   const closeAndAccessMenu = () => {
-    alert("승인 대기중 입니다.")
+    apiAxios.get()
     setIsMenuOpen(false);
     document.body.style.overflow = "auto";
   };
@@ -214,7 +215,7 @@ function Header() {
                   </Link>
                   <div className='HamburgerUserInfoButtonWrap'>
                     <input type="button" value="로그아웃" onClick={() => (closeMenu(), GoLogOut())} />
-                    {loginStatus !== "ROLE_PRO" && loginStatus !== "ROLE_PEND_PRO" && loginStatus !== "ROLE_ADMIN" && (
+                    {loginStatus !== "ROLE_PRO" && loginStatus !== "ROLE_PEND_PRO" && loginStatus !== "ROLE_ADMIN" && loginStatus !== "ROLE_CANCEL_PRO" && (
                       <input type="button" value="달인전환" onClick={() => { closeMenu(), GoProAccess() }} />
                     )}
 

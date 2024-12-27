@@ -30,13 +30,40 @@ const Account = () => {
     } = useContext(MyPageContext);
 
     const [profile, setProfile] = useState('');
+    const [userno, setUserno] = useState(localStorage.getItem('userno'));
     const [name, setName] = useState('');
+    const [email, setEmail] = useState(localStorage.getItem('useremail'));
+    const [isSocialUser, setIsSocialUser] = useState(false); // SNS 사용자 여부 상태 추가
 
-    // 상태 초기화
+    const formatEmail = (email) => {
+        if (!email) return "이메일 정보 없음";
+
+        const platform = email.split(" ")[0]; // 이메일 앞부분 (SNS 플랫폼 정보)
+
+        switch (platform) {
+            case 'naver':
+                return `naver_user${userno}`;
+            case 'kakao':
+                return `kakao_user${userno}`;
+            case 'google':
+                return `google_user${userno}`;
+            default:
+                return email; // SNS 계정이 아닐 경우, 원래 이메일 그대로 표시
+        }
+    };
+
+    // 상태 초기화 및 SNS 사용자 여부 확인
     useEffect(() => {
         setProfile(localStorage.getItem('userprofile') || '/image/default.svg');
         setName(localStorage.getItem('username') || '사용자 이름');
-    }, [profile, name]);
+
+        const formattedEmail = formatEmail(email); // 이메일 포맷팅
+        if (formattedEmail.startsWith("naver") || formattedEmail.startsWith("kakao") || formattedEmail.startsWith("google")) {
+            setIsSocialUser(true); // SNS 사용자인 경우 상태를 true로 설정
+        } else {
+            setIsSocialUser(false); // 일반 사용자
+        }
+    }, [profile, name, email]);
 
     const handleNicknameChange = (e) => setNickname(e.target.value);
 
@@ -52,7 +79,7 @@ const Account = () => {
                 <div className='ProfileImageContainer'>
                     <div className="imgWrap">
                         <img className='loginProfileImg' src={profile} alt="profile" />
-                        <button id='profileBtn' onClick={handleProfileBtnClick}>
+                        <button id='profileBtn' onClick={handleProfileBtnClick} disabled={isSocialUser}>
                             <img src="/image/camera.png" alt="camera" />
                         </button>
                         <input
@@ -61,6 +88,7 @@ const Account = () => {
                             style={{ display: 'none' }}
                             onChange={handleProfileImageChange}
                             id="fileInput"
+                            disabled={isSocialUser} // SNS 사용자는 프로필 사진 변경 불가
                         />
                     </div>
                 </div>
@@ -70,13 +98,25 @@ const Account = () => {
                         <div>
                             {isToggleWrap1Visible ? (
                                 <div className='Title'>
-                                    <input type="text" value={nickname} onChange={handleNicknameChange} maxLength={20} />
+                                    <input
+                                        type="text"
+                                        value={nickname}
+                                        onChange={handleNicknameChange}
+                                        maxLength={20}
+                                        disabled={isSocialUser} // SNS 사용자는 활동명 변경 불가
+                                    />
                                 </div>
                             ) : (
                                 <div className='Title'>{name}</div>
                             )}
                             <div className="Button">
-                                <input id='toggleBtn1' type="button" value="수정" onClick={() => { handleNicknameCancel(); toggleWrap1(); }} />
+                                <input
+                                    id='toggleBtn1'
+                                    type="button"
+                                    value="수정"
+                                    onClick={() => { handleNicknameCancel(); toggleWrap1(); }}
+                                    disabled={isSocialUser} // SNS 사용자는 수정 불가
+                                />
                             </div>
                         </div>
                     </div>
@@ -85,13 +125,23 @@ const Account = () => {
                         <div className='ToggleWrap' id='ToggleWrap1'>
                             <div>{nickname.length}/20</div>
                             <div className='ToggleButton'>
-                                <input type="button" value="취소" onClick={() => { handleNicknameCancel(); setIsToggleWrap1Visible(false); }} />
-                                <input type="button" value="저장하기" onClick={() => { handleNicknameSave(); }} />
+                                <input
+                                    type="button"
+                                    value="취소"
+                                    onClick={() => { handleNicknameCancel(); setIsToggleWrap1Visible(false); }}
+                                    disabled={isSocialUser}
+                                />
+                                <input
+                                    type="button"
+                                    value="저장하기"
+                                    onClick={() => { handleNicknameSave(); }}
+                                    disabled={isSocialUser}
+                                />
                             </div>
                         </div>
                     )}
                 </form>
-                {loginStatus !== 'ROLE_PRO' ? (<div><button>달인 신청</button></div>) : (
+                {loginStatus !== 'ROLE_PRO' || (
                     <form className='IntroductionForm'>
                         <div className='Container'>
                             <h3 className="SubTitle">달인 관리</h3>
@@ -114,8 +164,18 @@ const Account = () => {
                             <div className='ToggleWrap' id='ToggleWrap2'>
                                 <div>{introduction.length}/50</div>
                                 <div className='ToggleButton'>
-                                    <input type="button" value="취소" onClick={() => { handleIntroductionCancel(); setIsToggleWrap2Visible(false); }} />
-                                    <input type="button" value="저장하기" onClick={() => { handleIntroductionSave(); }} />
+                                    <input
+                                        type="button"
+                                        value="취소"
+                                        onClick={() => { handleIntroductionCancel(); setIsToggleWrap2Visible(false); }}
+                                        disabled={isSocialUser}
+                                    />
+                                    <input
+                                        type="button"
+                                        value="저장하기"
+                                        onClick={() => { handleIntroductionSave(); }}
+                                        disabled={isSocialUser}
+                                    />
                                 </div>
                             </div>
                         )}

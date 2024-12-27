@@ -52,7 +52,7 @@ const SignOutProvider = ({ children }) => {
         try {
             const signOutDTO = {
                 email: loginEmail, // 로그인한 사용자의 이메일을 로컬스토리지에서 가져옴
-                pwd,
+                pwd: pwd === "OAuth2" ? "OAuth2" : pwd, // SNS 사용자는 "OAuth2"로 고정
                 reason
             };
 

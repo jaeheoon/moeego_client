@@ -19,7 +19,9 @@ const fetchReissue = async () => {
             console.error("Reissue failed: Invalid response");
         }
     } catch (error) {
-        console.error("Error during token reissue: ", error);
+        if (error.response && error.response.status === 500) {
+            return false; // 500 오류일 경우 아무것도 출력하지 않음
+        }
     }
     window.localStorage.removeItem("access");
     cookies.remove("refresh", { path: "/" });

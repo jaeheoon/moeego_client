@@ -227,7 +227,7 @@ const BookMarkPro = () => {
                                         <img
                                             src={
                                                 pro.profileImage
-                                                    ? pro.profileImage.startsWith("https://")
+                                                    ? (pro.profileImage.startsWith("https://") || pro.profileImage.startsWith("https//"))
                                                         ? pro.profileImage  // https://로 시작하면 그대로 사용
                                                         : `https://kr.object.ncloudstorage.com/moeego/profile/${pro.profileImage}`  // 아니면 경로 추가
                                                     : "/image/default.svg"  // profileImage가 없으면 기본 이미지 사용

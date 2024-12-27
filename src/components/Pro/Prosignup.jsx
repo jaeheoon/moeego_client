@@ -241,14 +241,6 @@ const Projoin = () => {
                     <div className='errorWrap'>
                         {errors.phone && <span className="error">{errors.phone}</span>}
                     </div>
-                    <div className='join-align'>
-                        <input
-                            type="button"
-                            className="checkBtn"
-                            value="인증번호 발송"
-                            onClick={() => { /* 인증번호 발송 처리 로직 */ }}
-                        />
-                    </div>
 
                     {/* 우편번호 입력 */}
                     <div className="join-align">

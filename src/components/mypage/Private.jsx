@@ -116,18 +116,27 @@ const Private = () => {
                 </div>
 
                 <hr />
-                <Link className='LinkTag' to="/mypage/account/private/password">
-                    <div className='PasswordContainer'>
-                        <h3 className="SubTitle">비밀번호</h3>
-                        <div className='MainContainer'>
-                            <div>•••••••</div>
-                            <div className="Link">
-                                <div className='next'><img src="/image/next_icon.png" alt="nextIcon" /></div>
+                {formatEmail(email).startsWith("naver") ||
+                    formatEmail(email).startsWith("kakao") ||
+                    formatEmail(email).startsWith("google") ? null : (
+                    <>
+                        <Link className="LinkTag" to="/mypage/account/private/password">
+                            <div className="PasswordContainer">
+                                <h3 className="SubTitle">비밀번호</h3>
+                                <div className="MainContainer">
+                                    <div>•••••••</div>
+                                    <div className="Link">
+                                        <div className="next">
+                                            <img src="/image/next_icon.png" alt="nextIcon" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </Link>
-                <hr />
+                        </Link>
+                        <hr />
+                    </>
+                )}
+
                 <Link className='LinkTag' to="/mypage/account/private/address">
                     <div className='AddressContainer'>
                         <h3 className="SubTitle">주소</h3>

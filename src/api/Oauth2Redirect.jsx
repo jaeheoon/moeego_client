@@ -53,7 +53,7 @@ const OAuth2Redirect = () => {
                     window.localStorage.setItem("userphone", phone);
                     window.localStorage.setItem(
                         "userprofile",
-                        profileImage && profileImage.startsWith("https://")
+                        profileImage && (profileImage.startsWith("https://") || profileImage.startsWith("http://"))
                             ? profileImage // https://로 시작하면 그대로 사용
                             : profileImage
                                 ? "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage // 아니면 경로 추가
@@ -70,7 +70,7 @@ const OAuth2Redirect = () => {
                     setLoginAddress(address);
                     setLoginPhone(phone);
                     setLoginProfile(
-                        profileImage && profileImage.startsWith("https://")
+                        profileImage && (profileImage.startsWith("https://") || profileImage.startsWith("http://"))
                             ? profileImage // https://로 시작하면 그대로 사용
                             : profileImage
                                 ? "https://kr.object.ncloudstorage.com/moeego/profile/" + profileImage // 아니면 경로 추가
