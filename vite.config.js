@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: "211.188.56.236", // 호스트를 localhost로 설정
+    host: "http://211.188.56.236", // 호스트를 localhost로 설정
     port: 80, // 포트 설정
 
     proxy: {
