@@ -49,12 +49,22 @@ function Reviews() {
               className="review-card"
               onClick={() => handleReviewClick(review)} // 리뷰 클릭 시 모달 열기
             >
-              <img 
-                src={review.profileImage ? `https://kr.object.ncloudstorage.com/moeego/profile/${review.profileImage}` : 'https://kr.object.ncloudstorage.com/moeego/profile/default.svg'} 
-                alt="프로필사진" 
-              />
-              <strong>{review.proName || "성함 없음"}</strong>
-              <strong>{review.subject || "받으신 선택한 세부 카테고리명"}</strong>
+              <div className="review-card-header">
+                <div>
+                  <img 
+                    src={review.profileImage 
+                          ? review.profileImage.startsWith("https://") || review.profileImage.startsWith("http://")
+                            ? review.profileImage 
+                            : `https://kr.object.ncloudstorage.com/moeego/profile/${review.profileImage}`
+                          : 'https://kr.object.ncloudstorage.com/moeego/profile/default.svg'} 
+                    alt="프로필사진" 
+                  />
+                </div>
+                <div>
+                  <strong>{review.proName || "성함 없음"}</strong>
+                  <strong>{review.subject || "받으신 선택한 세부 카테고리명"}</strong>
+                </div>
+              </div>
               <p>
                 <span
                     style={{

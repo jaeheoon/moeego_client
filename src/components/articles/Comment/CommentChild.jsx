@@ -12,6 +12,7 @@ const CommentChild = ({ item }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [commentContent, setCommentContent] = useState(item.content);
     const [replyContent, setReplyContent] = useState("");
+    const maxCharacters = 200; // 최대 글자 수
 
     const handleReplyClick = () => {
         if (isLoggedIn) {
@@ -33,7 +34,7 @@ const CommentChild = ({ item }) => {
     };
 
     const handleUpdateSubmit = () => {
-        if (commentContent !== item.content) {
+        if (commentContent.trim() && commentContent !== item.content) {
             updateComment(item.commentNo, commentContent);
         }
         setIsEditing(false);
@@ -41,12 +42,19 @@ const CommentChild = ({ item }) => {
 
     const handleReplySubmit = (e) => {
         if (e) e.preventDefault();
+
+        if (replyContent.length > maxCharacters) {
+            alert("답글은 200자 이하로 작성해주세요.");
+            return;
+        }
+
         const replyCommentData = {
             articleNo: item.articleNo,
             memberNo: userNo,
             parentCommentNo: item.commentNo,
             content: replyContent,
         };
+
         replyCommentWrite(replyCommentData);
         setReplyContent('');
         setIsReplying(false);
@@ -67,10 +75,16 @@ const CommentChild = ({ item }) => {
         });
     };
 
-    // 프로필 이미지 처리 로직
-    const profileImageUrl = item.memberProfileImage.includes('phinf.pstatic.net')
-        ? item.memberProfileImage
-        : `https://kr.object.ncloudstorage.com/moeego/profile/${item.memberProfileImage}`;
+    // 프로필 이미지 로직
+    const DEFAULT_PROFILE_IMAGE = '/image/default.svg';
+    let profileImageUrl = DEFAULT_PROFILE_IMAGE;
+
+    if (item.memberProfileImage && typeof item.memberProfileImage === "string") {
+        const imageUrl = item.memberProfileImage.startsWith("https://") || item.memberProfileImage.startsWith("http://")
+            ? item.memberProfileImage
+            : "https://kr.object.ncloudstorage.com/moeego/profile/" + item.memberProfileImage;
+        profileImageUrl = imageUrl;
+    }
 
     return (
         <div className='childCommentWrap'>
@@ -95,6 +109,7 @@ const CommentChild = ({ item }) => {
                                                 name="comment-content"
                                                 placeholder="댓글을 수정하세요."
                                                 value={commentContent}
+                                                maxLength={maxCharacters} // 최대 글자 수 제한
                                                 onChange={(e) => setCommentContent(e.target.value)}
                                                 onKeyDown={(e) => {
                                                     if (e.key === 'Enter') {
@@ -118,22 +133,20 @@ const CommentChild = ({ item }) => {
                         )}
                     </div>
 
-                    {!isDeleted && username === item.memberName && (
+                    {!isDeleted && (
                         <div className='replyBtnWrap'>
-                            {isEditing ? (
-                                <button className='replyUpdateBtn' onClick={handleCancelEdit}>취소</button>
-                            ) : (
-                                <button className='replyUpdateBtn' onClick={handleEditClick}>수정</button>
+                            {username === item.memberName && (
+                                <>
+                                    {isEditing ? (
+                                        <button className='replyUpdateBtn' onClick={handleCancelEdit}>취소</button>
+                                    ) : (
+                                        <button className='replyUpdateBtn' onClick={handleEditClick}>수정</button>
+                                    )}
+                                    <button className='replyDeleteBtn' onClick={() => deleteComment(item.commentNo)} >
+                                        삭제
+                                    </button>
+                                </>
                             )}
-                            <button className='replyDeleteBtn' onClick={() => deleteComment(item.commentNo)}>
-                                삭제
-                            </button>
-                            <button className='replyBtn' onClick={handleReplyClick}>답글 달기</button>
-                        </div>
-                    )}
-
-                    {!isDeleted && username !== item.memberName && (
-                        <div className='replyBtnWrap'>
                             <button className='replyBtn' onClick={handleReplyClick}>답글 달기</button>
                         </div>
                     )}
@@ -143,19 +156,20 @@ const CommentChild = ({ item }) => {
             {isReplying && !isDeleted && (
                 <div className='replyInputWrap'>
                     <div className='replyInputDiv'>
-                    <input
-                        type="text"
-                        className="replyInput"
-                        name="comment-content"
-                        placeholder="답글을 남겨보세요."
-                        value={replyContent}
-                        onChange={(e) => setReplyContent(e.target.value)}
-                        onKeyUp={(e) => {
-                            if (e.key === 'Enter') {
-                                handleReplySubmit(e);
-                            }
-                        }}
-                    />
+                        <input
+                            type="text"
+                            className="replyInput"
+                            name="comment-content"
+                            placeholder="답글을 남겨보세요."
+                            value={replyContent}
+                            maxLength={maxCharacters} // 최대 글자 수 제한
+                            onChange={(e) => setReplyContent(e.target.value)}
+                            onKeyUp={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleReplySubmit(e);
+                                }
+                            }}
+                        />
                     </div>
                     <button className='replySubmitBtn' onClick={handleReplySubmit}>등록</button>
                 </div>

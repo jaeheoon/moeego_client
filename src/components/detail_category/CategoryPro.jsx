@@ -15,15 +15,14 @@ const CategoryPro = ({ item }) => {
                 .then((response) => {
                     setProContent(response.data.data.content);
                     const content = response.data.data.content;
-                    setProList(
-                        content.filter((pro) =>
-                            pro.proItems.some(
-                                (proItem) =>
-                                    proItem.subCategory.subCateNo === item.subCateNo &&
-                                    proItem.subject
-                            )
+                    const filteredProList = content.filter((pro) =>
+                        pro.proItems.some(
+                            (proItem) =>
+                                proItem.subCategory.subCateNo === item.subCateNo &&
+                                proItem.subject
                         )
-                    ); // subject가 있는 전문가만 설정
+                    );
+                    setProList(filteredProList); // subject가 있는 전문가만 설정
                 })
                 .catch((err) => {
                     console.error("Error fetching professionals:", err);
@@ -44,40 +43,47 @@ const CategoryPro = ({ item }) => {
             <h2>{item.subCateName}</h2>
 
             <div className="pro-list">
-                {proList.map((pro, index) => {
-                    // proItems에서 item.subCateNo와 일치하는 항목을 찾기
-                    const matchingItem = pro.proItems.find(
-                        (proItem) =>
-                            proItem.subCategory.subCateNo === item.subCateNo &&
-                            proItem.subject
-                    );
+                {proList.length === 0 ? (
+                    <p>전문가가 없습니다.</p> // 전문가가 없을 경우 메시지 표시
+                ) : (
+                    proList.map((pro, index) => {
+                        // proItems에서 item.subCateNo와 일치하는 항목을 찾기
+                        const matchingItem = pro.proItems.find(
+                            (proItem) =>
+                                proItem.subCategory.subCateNo === item.subCateNo &&
+                                proItem.subject
+                        );
 
-                    const subject = matchingItem?.subject;
+                        const subject = matchingItem?.subject;
 
-                    // 프로필 이미지 URL 설정
-                    const profileImageUrl = pro.profileImage?.includes(
-                        "phinf.pstatic.net"
-                    )
-                        ? pro.profileImage
-                        : `https://kr.object.ncloudstorage.com/moeego/profile/${pro.profileImage || "default.svg"}`;
+                        // 프로필 이미지 URL 설정
+                        const DEFAULT_PROFILE_IMAGE = '/image/default.svg';
+                        let profileImageUrl = DEFAULT_PROFILE_IMAGE;
 
-                    return (
-                        <div
-                            className="pro-card"
-                            key={index}
-                            onClick={() => handleProViewNavigation(pro, matchingItem)} // 클릭된 전문가와 matchingItem을 넘김
-                        >
-                            <img
-                                src={profileImageUrl}
-                                alt={`${pro.name} 프로필 이미지`}
-                                className="pro-image"
-                            />
-                            <h4>{pro.name}</h4>
-                            <p>{subject}</p>
-                            <p>{pro.intro || "소개 정보 없음"}</p>
-                        </div>
-                    );
-                })}
+                        if (pro.profileImage && typeof pro.profileImage === "string") {
+                            profileImageUrl = pro.profileImage.startsWith("https://") || pro.profileImage.startsWith("http://")
+                                ? pro.profileImage
+                                : `https://kr.object.ncloudstorage.com/moeego/profile/${pro.profileImage}`;
+                        }
+
+                        return (
+                            <div
+                                className="pro-card"
+                                key={index}
+                                onClick={() => handleProViewNavigation(pro, matchingItem)} // 클릭된 전문가와 matchingItem을 넘김
+                            >
+                                <img
+                                    src={profileImageUrl}
+                                    alt={`${pro.name} 프로필 이미지`}
+                                    className="pro-image"
+                                />
+                                <h4>{pro.name}</h4>
+                                <p>{subject}</p>
+                                <p>{pro.intro || "소개 정보 없음"}</p>
+                            </div>
+                        );
+                    })
+                )}
             </div>
         </div>
     );

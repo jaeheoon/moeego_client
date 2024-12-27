@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ArticleContext } from '../../context/article/ArticleContext';
 
 const NoticeView = () => {
@@ -47,7 +47,9 @@ const NoticeView = () => {
 
     return (
         <div className="noticeView">
-            <h2>{articleData.type === 0 ? '공지사항' : '이벤트'}</h2>
+            <Link to='/event' className='noticeCategory'>
+                <h2>{articleData.type === 0 ? '공지사항' : '이벤트'}</h2>
+            </Link>
             <h1>{formatDate(articleData.writeDate)}{articleData.subject}</h1>
             <p>작성자: {articleData.memberName}</p>
             <div className="content">

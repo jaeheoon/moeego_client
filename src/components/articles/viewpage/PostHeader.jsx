@@ -18,7 +18,7 @@ const PostHeader = ({ articleData, deleteArticle }) => {
     };
 
     const handleDelete = () => {
-        deleteArticle(articleData.articleNo) // 삭제 API 호출
+        deleteArticle(articleData.articleNo); // 삭제 API 호출
     };
     
     const getTypeLabel = (type) => {
@@ -95,7 +95,11 @@ const PostHeader = ({ articleData, deleteArticle }) => {
                 <div className="user-info">
                     <div className="user-profile">
                     <img 
-                        src={articleData.profileImage ? `https://kr.object.ncloudstorage.com/moeego/profile/${articleData.profileImage}` : 'https://kr.object.ncloudstorage.com/moeego/profile/default.svg'} 
+                        src={articleData.profileImage 
+                            ? articleData.profileImage.startsWith("https://") || articleData.profileImage.startsWith("http://")
+                                ? articleData.profileImage 
+                                : `https://kr.object.ncloudstorage.com/moeego/profile/${articleData.profileImage}`
+                            : 'https://kr.object.ncloudstorage.com/moeego/profile/default.svg'} 
                         alt="프로필사진" 
                         className="user-profile-image"
                     />

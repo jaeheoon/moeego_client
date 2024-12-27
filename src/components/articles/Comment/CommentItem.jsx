@@ -14,6 +14,8 @@ const CommentItem = ({ item }) => {
     const [commentContent, setCommentContent] = useState(item.content);
     const [replyContent, setReplyContent] = useState('');
 
+    const maxCharacters = 200; // 최대 글자 수
+
     const handleReplyClick = () => {
         if (isLoggedIn) {
             setIsReplying(!isReplying);
@@ -48,6 +50,7 @@ const CommentItem = ({ item }) => {
 
     const handleReplySubmit = (e) => {
         if (e) e.preventDefault();
+        if (replyContent.length > maxCharacters) return; // 글자 수 초과 시 제출 방지
         const replyCommentData = {
             articleNo: item.articleNo,
             memberNo: userNo,
@@ -62,10 +65,16 @@ const CommentItem = ({ item }) => {
     const isDeleted = item.commentStatus === 'DELETED';
     const isEdited = item.commentStatus === 'EDITED';
 
-    // 프로필 이미지 처리 로직
-    const profileImageUrl = item.memberProfileImage.includes('phinf.pstatic.net')
-        ? item.memberProfileImage
-        : `https://kr.object.ncloudstorage.com/moeego/profile/${item.memberProfileImage}`;
+    // 프로필 이미지 URL 처리 로직
+    const DEFAULT_PROFILE_IMAGE = '/image/default.svg';
+    let profileImageUrl = DEFAULT_PROFILE_IMAGE;
+
+    if (item.memberProfileImage && typeof item.memberProfileImage === "string") {
+        const imageUrl = item.memberProfileImage.startsWith("https://") || item.memberProfileImage.startsWith("http://")
+            ? item.memberProfileImage
+            : "https://kr.object.ncloudstorage.com/moeego/profile/" + item.memberProfileImage;
+        profileImageUrl = imageUrl;
+    }
 
     return (
         <div className='commentItemWrap'>
@@ -88,6 +97,7 @@ const CommentItem = ({ item }) => {
                                             name="comment-content"
                                             placeholder="댓글을 수정하세요."
                                             value={commentContent}
+                                            maxLength={maxCharacters} // 글자 수 제한
                                             onChange={(e) => setCommentContent(e.target.value)}
                                             onKeyDown={(e) => {
                                                 if (e.key === 'Enter') {
@@ -95,6 +105,9 @@ const CommentItem = ({ item }) => {
                                                 }
                                             }}
                                         />
+                                    </div>
+                                    <div className="charCounter">
+                                        {commentContent.length} / {maxCharacters}
                                     </div>
                                     <button className="replySubmitBtn" onClick={handleUpdateSubmit}>수정</button>
                                 </div>
@@ -140,6 +153,7 @@ const CommentItem = ({ item }) => {
                             name="comment-content"
                             placeholder="답글을 남겨보세요."
                             value={replyContent}
+                            maxLength={maxCharacters} // 글자 수 제한
                             onChange={(e) => setReplyContent(e.target.value)}
                             onKeyUp={(e) => {
                                 if (e.key === 'Enter') {
