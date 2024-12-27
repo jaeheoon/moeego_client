@@ -22,11 +22,11 @@
     visibility: hidden;
 }
 
-.map-modalContent {
+.map-modalOverlay .map-modalContent {
     background-color: white;
-    width: 70%; 
+    width: 95%; 
     max-width: 800px; 
-    height: 65%; 
+    height: 70%; 
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -34,23 +34,23 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.mapPage {
+.map-modalOverlay .mapPage {
     width: 100%;
-    height: 70%;
+    height: 60%;
     overflow: hidden;
 }
 
-.mapName {
+.map-modalOverlay .mapName {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    padding: 2%; 
+    padding: 2.1%; 
     flex-shrink: 0; 
     width: 100%; 
     box-sizing: border-box;
 }
 
-.mapName h2 {
+.map-modalOverlay .mapName h2 {
     margin: 0; 
     font-size: 20px;
     font-weight: bold;
@@ -58,7 +58,7 @@
     overflow: hidden; /* 텍스트가 넘칠 경우 숨김 */
 }
 
-.mapName button {
+.map-modalOverlay .mapName button {
     padding: 8px 15px;
     background-color: #fd9bb9;
     color: white;
@@ -69,11 +69,11 @@
     font-weight: bold;
 }
 
-.mapName button:hover {
+.map-modalOverlay .mapName button:hover {
     background-color: #522823;
 }
 
-.map-content-wrap {
+.map-modalOverlay .map-content-wrap {
     padding: 0.8% 1.5%; 
     flex-grow: 1; 
     overflow-y: auto; /* 내용이 많으면 세로 스크롤 가능 */
@@ -81,14 +81,14 @@
     box-sizing: border-box;
     list-style-type: none;
     margin: 0;
-    height: 30%;
+    height: 37%;
     font-size: 14.5px;
 }
 
-.map-content-wrap-list {
+.map-content-wrap .map-content-wrap-list {
     display: flex;
     align-items: center;
-    padding: 1.3% 0; 
+    padding: 0.8% 0; 
     border-bottom: 1px solid #ccc; 
     cursor: pointer; 
     gap: 3px;
@@ -101,6 +101,40 @@
   .map-content-wrap-list:last-child {
     border-bottom: none; /* 마지막 항목에는 구분선이 생기지 않도록 설정 */
   }
+
+.map-content-wrap .item-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .map-content-wrap-list .item-wrap-in span {
+    margin-right: 4px; 
+    margin-left: 4px; 
+  }
+
+.item-wrap-in {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    box-sizing: border-box;
+    padding: 0.4rem 1rem;
+    width: 100%;
+}
+
+.item-wrap .item-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: white;
+    color: #fd9bb9;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
 
 .map-list {
     padding: 10px;
@@ -119,45 +153,41 @@
     font-size: 18px;
   }
 
-  .map-content-wrap-list.active {
-    background-color: #fd9bb9;
+  
+  .map-content-wrap-list.selected {
+    background-color: #fd9bb9; 
     color: white;
     border-radius: 6px;
   }
 
-  .mapPage .custom-marker {
+  .item-image-img {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 60px;
-    position: relative;
-    text-align: center;
-    cursor: pointer;
+    justify-content: left;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
   }
-  
-  .mapPage .marker-circle {
-    width: 40px;
-    height: 40px;
+
+  .item-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
     background-color: white;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #fd9bb9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .mapPage .marker-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .mapPage .marker-arrow {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 12px solid #fd9bb9;
-  }
+    color: #fd9bb9;
+    border: 2px solid #fd9bb9;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.item-button:hover {
+    background-color: #522823;
+    color: white;
+    border: 2px solid #522823;
+}
 
 @media (max-width: 1200px) {
     .map-modalContent {
@@ -200,6 +230,7 @@
         margin-top: 3px; 
     }
 
+    .map-content-wrap-list .item-image,
     .map-content-wrap-list .item-name,
     .map-content-wrap-list .item-category,
     .map-content-wrap-list .item-star {
