@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import HeaderModal from "./mypage/HeaderModal";
 import { AuthContext } from '../context/member/AuthContext';
 import { MyPageContext } from '../context/mypage/MyPageContext';
-import "../css/Header.css";
 import apiAxios from '../api/apiAxios';
+import "../css/Header.css";
 
 function Header() {
   const [modalType, setModalType] = useState(null);
@@ -130,10 +130,35 @@ function Header() {
     navigate('/pro/signup/main');
   }
 
-  const closeAndAccessMenu = () => {
-    apiAxios.get()
-    setIsMenuOpen(false);
-    document.body.style.overflow = "auto";
+  const closeAndAccessMenu = async () => {
+    try {
+      const response = await apiAxios.get("/api/admin/emailstatus");
+
+      if (response.status === 200) {
+        const access = Number(response.data);
+
+        navigate(`/pro/result?access=${access}`);
+
+      } else {
+        console.warn("Unexpected response status:", response.status);
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 404) {
+          console.error("Error: 사용자 정보를 찾을 수 없거나 이메일 상태를 찾을 수 없습니다.");
+          alert("사용자를 찾을 수 없거나 이메일 상태를 찾을 수 없습니다.");
+        } else {
+          console.error(`Error: ${error.response.data || "An error occurred"}`);
+          alert(`오류가 발생했습니다: ${error.response.data || "알 수 없는 오류"}`);
+        }
+      } else {
+        console.error("Network error or other issue:", error);
+        alert("네트워크 오류가 발생했습니다. 다시 시도해주세요.");
+      }
+    } finally {
+      setIsMenuOpen(false);
+      document.body.style.overflow = "auto";
+    }
   };
 
   useEffect(() => {
@@ -215,7 +240,7 @@ function Header() {
                   </Link>
                   <div className='HamburgerUserInfoButtonWrap'>
                     <input type="button" value="로그아웃" onClick={() => (closeMenu(), GoLogOut())} />
-                    {loginStatus !== "ROLE_PRO" && loginStatus !== "ROLE_PEND_PRO" && loginStatus !== "ROLE_ADMIN" && loginStatus !== "ROLE_CANCEL_PRO" && (
+                    {loginStatus !== "ROLE_PRO" && loginStatus !== "ROLE_PEND_PRO" && loginStatus !== "ROLE_ADMIN" && loginStatus !== "ROLE_CANCEL_PRO" && loginStatus !== "ROLE_CANCEL" && (
                       <input type="button" value="달인전환" onClick={() => { closeMenu(), GoProAccess() }} />
                     )}
 

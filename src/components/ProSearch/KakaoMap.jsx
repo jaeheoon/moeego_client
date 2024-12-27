@@ -9,7 +9,7 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
   const [map, setMap] = useState(null);
   const { userInfo } = useUserInfo();
   const [image, setImage] = useState("");
-  
+
   useEffect(() => {
     // Geolocation API로 사용자의 현재 위치 가져오기
     if (navigator.geolocation) {
@@ -18,8 +18,8 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
           const { latitude, longitude } = position.coords;
           const userPosition = new kakao.maps.LatLng(latitude, longitude);
           const options = {
-            center: userPosition, 
-            level: 6, 
+            center: userPosition,
+            level: 6,
           };
 
           // 카카오 맵 초기화
@@ -39,15 +39,15 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
               geocoder.addressSearch(address, (result, status) => {
                 if (status === kakao.maps.services.Status.OK) {
                   const position = new kakao.maps.LatLng(result[0].y, result[0].x);
-                  
+
                   const markerContent = `
                     <div class="custom-marker">
                       <div class="marker-circle">
-                        <img src="${item.profileImage 
-                          ? item.profileImage.startsWith("https://") 
-                            ? item.profileImage 
-                            : `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}` 
-                          : '/image/default.svg'}" 
+                        <img src="${item.profileImage
+                      ? item.profileImage.startsWith("https://")
+                        ? item.profileImage
+                        : `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}`
+                      : '/image/default.svg'}" 
                           class="marker-image" />
                       </div>
                       <div class="marker-arrow"></div>
@@ -66,7 +66,7 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
                   kakao.maps.event.addListener(customOverlay, "click", () => {
                     onMarkerClick(item); // 부모 컴포넌트로 클릭된 항목을 전달
                     const newPosition = new kakao.maps.LatLng(result[0].y, result[0].x);
-                    kakaoMap.panTo(newPosition); 
+                    kakaoMap.panTo(newPosition);
                     kakaoMap.setLevel(5);
                   });
                 } else {
@@ -74,7 +74,7 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
                 }
               });
             });
-        }
+          }
         },
         (error) => {
           console.error("위치 정보를 가져오는 데 실패했습니다.", error);
@@ -90,7 +90,7 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
     } else {
       alert("현재 위치를 가져올 수 없습니다.");
     }
-}, [userInfo, selectedLocation]); 
+  }, [userInfo, selectedLocation]);
 
   useEffect(() => {
     if (selectedLocation && map) {
@@ -99,14 +99,14 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
         if (status === kakao.maps.services.Status.OK) {
           const position = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-           const markerContent = `
+          const markerContent = `
                     <div class="custom-marker">
                       <div class="marker-circle">
-                        <img src="${selectedLocation.profileImage 
-                          ? selectedLocation.profileImage.startsWith("https://") 
-                            ? selectedLocation.profileImage 
-                            : `https://kr.object.ncloudstorage.com/moeego/profile/${selectedLocation.profileImage}` 
-                          : '/image/default.svg'}" 
+                        <img src="${selectedLocation.profileImage
+              ? selectedLocation.profileImage.startsWith("https://")
+                ? selectedLocation.profileImage
+                : `https://kr.object.ncloudstorage.com/moeego/profile/${selectedLocation.profileImage}`
+              : '/image/default.svg'}" 
                           class="marker-image" />
                       </div>
                       <div class="marker-arrow"></div>
@@ -125,7 +125,7 @@ const KakaoMap = ({ selectedLocation, onMarkerClick }) => {
       });
     }
   }, [selectedLocation, map, userInfo]);
-  
+
   return <div className="mapPage" ref={container}></div>;
 };
 

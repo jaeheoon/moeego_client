@@ -13,7 +13,6 @@ const PostReactState = ({ articleData }) => {
 
         // 24시간 이내에 좋아요를 클릭했다면 아무 작업도 하지 않음
         if (lastLikeTime && currentTime - lastLikeTime < 24 * 60 * 60 * 1000) {
-            alert('좋아요는 24시간 후에 다시 클릭할 수 있습니다.\n이 알람은 쓸지말지 고민중 아마 안쓸것같은데 그럼 눌렀을 때 아무반응 없으면 이상하지않나..');
             return;
         }
 

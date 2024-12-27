@@ -84,11 +84,11 @@ function Locations() {
             const markerContent = `
               <div class="custom-marker">
                 <div class="marker-circle">
-                  <img src="${item.profileImage 
-                          ? item.profileImage.startsWith("https://") 
-                            ? item.profileImage 
-                            : `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}` 
-                          : '/image/default.svg'}" 
+                  <img src="${item.profileImage
+                ? item.profileImage.startsWith("https://")
+                  ? item.profileImage
+                  : `https://kr.object.ncloudstorage.com/moeego/profile/${item.profileImage}`
+                : '/image/default.svg'}" 
                           class="marker-image" />
                 </div>
                 <div class="marker-arrow"></div>
