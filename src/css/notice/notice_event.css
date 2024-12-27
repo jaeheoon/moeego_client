@@ -158,7 +158,10 @@
         justify-content: center;
         width: 100%;
     }
-
+    .noticeView{
+        width:90%;
+        margin: 0 auto;
+    }
     .noticeLifeWrap .life-topic-layout section {
         display: flex;
         align-items: center;

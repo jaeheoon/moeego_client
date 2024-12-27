@@ -50,8 +50,8 @@ const NoticeView = () => {
             <Link to='/event' className='noticeCategory'>
                 <h2>{articleData.type === 0 ? '공지사항' : '이벤트'}</h2>
             </Link>
-            <h1>{formatDate(articleData.writeDate)}{articleData.subject}</h1>
-            <p>작성자: {articleData.memberName}</p>
+            <div style={{fontSize:'2rem',fontWeight:'700'}}>{formatDate(articleData.writeDate)} {articleData.subject}</div>
+            
             <div className="content">
                 {articleData.content}
             </div>
@@ -68,6 +68,7 @@ const NoticeView = () => {
                     ))
                 }
             </div>
+            <p style={{textAlign:'right '}}>조회수: {articleData.view}</p>
 
             {/* 모달 */}
             {isModalOpen && (
