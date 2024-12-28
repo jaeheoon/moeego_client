@@ -9,7 +9,7 @@
 .MyReservationPage .MyReservationWrap {
     padding-top: 5%;
     width: 80%;
-    height: 80vh;
+    min-height: 80vh;
     box-sizing: border-box;
     overflow-y: scroll;
 }

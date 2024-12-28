@@ -12,6 +12,7 @@
     justify-content: center;
     flex-flow: column;
     width: 90%;
+    min-height: 80vh;
     margin-top: 5%;
 }
 
@@ -76,7 +77,7 @@
 .ServiceIntroPage .ServiceIntroWrap .ServiceIntro ul li:active,
 .ServiceIntroPage .ServiceIntroWrap .ServiceIntro ul li:focus {
     background-color: #fcc1cc;
-    color:#fff;
+    color: #fff;
 }
 
 .ServiceIntroPage .ServiceIntroWrap .ServiceIntro label {
@@ -92,10 +93,14 @@
     width: 80%;
     font-size: 0.825rem;
     cursor: pointer;
-    border:none;
+    border: none;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    .custom-select
+    .selected-option {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -107,11 +112,21 @@
     color: #333;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option img {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    .custom-select
+    .selected-option
+    img {
     display: flex;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    .custom-select
+    .selected-option
+    .options {
     display: block;
     position: absolute;
     background-color: #fff;
@@ -126,7 +141,13 @@
     margin: 0;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options .option {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    .custom-select
+    .selected-option
+    .options
+    .option {
     box-sizing: border-box;
     cursor: pointer;
     list-style: none;
@@ -135,15 +156,31 @@
     padding: 10px;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options .option:hover {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    .custom-select
+    .selected-option
+    .options
+    .option:hover {
     background-color: #fcc1cc;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select .selected-option .options {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    .custom-select
+    .selected-option
+    .options {
     display: none;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro .custom-select.open .selected-option .options {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    .custom-select.open
+    .selected-option
+    .options {
     display: block;
 }
 
@@ -177,7 +214,7 @@
     resize: none;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro input[type='number'] {
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro input[type="number"] {
     display: flex;
     align-items: center;
     width: 80%;
@@ -191,12 +228,18 @@
 }
 
 .ServiceIntroPage .ServiceIntroWrap .ServiceIntro textarea:focus,
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro textarea:not(:placeholder-shown) {
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    textarea:not(:placeholder-shown) {
     border: 1px solid #fcc1cc;
 }
 
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro input[type='number']:focus,
-.ServiceIntroPage .ServiceIntroWrap .ServiceIntro input[type='number']:not(:placeholder-shown) {
+.ServiceIntroPage .ServiceIntroWrap .ServiceIntro input[type="number"]:focus,
+.ServiceIntroPage
+    .ServiceIntroWrap
+    .ServiceIntro
+    input[type="number"]:not(:placeholder-shown) {
     border-bottom: 1px solid #fcc1cc;
 }
 

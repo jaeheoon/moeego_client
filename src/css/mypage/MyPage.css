@@ -9,13 +9,14 @@
 .MyPage hr {
     margin-top: 5%;
     margin-bottom: 5%;
-    border-width:1px 0 0 0; border-color:#f2f2f2;
+    border-width: 1px 0 0 0;
+    border-color: #f2f2f2;
     opacity: 30%;
 }
 
 .MyPageWrap {
     width: 80%;
-    height: 80vh;
+    min-height: 80vh;
     padding-top: 5%;
     overflow-y: scroll;
     box-sizing: border-box;
@@ -208,7 +209,13 @@
         width: 100%;
     }
 
-    .MyPageWrap .ProfileContainer .ProfileSettingPage .TopWrap .ProfileInfo .MailWrap .SNSWrap {
+    .MyPageWrap
+        .ProfileContainer
+        .ProfileSettingPage
+        .TopWrap
+        .ProfileInfo
+        .MailWrap
+        .SNSWrap {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -219,11 +226,23 @@
         background-color: #fff;
     }
 
-    .MyPageWrap .ProfileContainer .ProfileSettingPage .TopWrap .ProfileInfo .MailWrap .Email {
+    .MyPageWrap
+        .ProfileContainer
+        .ProfileSettingPage
+        .TopWrap
+        .ProfileInfo
+        .MailWrap
+        .Email {
         display: 90%;
     }
-    
-    .MyPageWrap .ProfileContainer .ProfileSettingPage .ProfileInfo .MailWrap .SNSWrap .snsProfile {
+
+    .MyPageWrap
+        .ProfileContainer
+        .ProfileSettingPage
+        .ProfileInfo
+        .MailWrap
+        .SNSWrap
+        .snsProfile {
         width: 100%;
         height: 100%;
         border-radius: 9px;
@@ -239,7 +258,11 @@
         width: 100%;
     }
 
-    .MyPageWrap .ProfileContainer .ProfileSettingPage .ProfileButton input[type='button'] {
+    .MyPageWrap
+        .ProfileContainer
+        .ProfileSettingPage
+        .ProfileButton
+        input[type="button"] {
         width: 100%;
         font-size: 9pt;
         display: flex;

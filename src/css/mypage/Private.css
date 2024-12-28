@@ -8,7 +8,7 @@
 
 .UserPrivateInfoWrap {
     width: 80%;
-    height: 80vh;
+    min-height: 80vh;
     padding-top: 5%;
     overflow-y: scroll;
     box-sizing: border-box;
@@ -17,7 +17,8 @@
 .UserPrivateInfoWrap hr {
     margin-top: 5%;
     margin-bottom: 5%;
-    border-width:1px 0 0 0; border-color:#f2f2f2;
+    border-width: 1px 0 0 0;
+    border-color: #f2f2f2;
     opacity: 30%;
 }
 
@@ -183,13 +184,30 @@
         width: 100%;
     }
 
-    .UserPrivateInfoWrap .LinkTag .EmailContainer .MainContainer div:nth-child(1),
-    .UserPrivateInfoWrap .LinkTag .PasswordContainer .MainContainer div:nth-child(1),
-    .UserPrivateInfoWrap .LinkTag .AddressContainer .MainContainer div:nth-child(1) {
+    .UserPrivateInfoWrap
+        .LinkTag
+        .EmailContainer
+        .MainContainer
+        div:nth-child(1),
+    .UserPrivateInfoWrap
+        .LinkTag
+        .PasswordContainer
+        .MainContainer
+        div:nth-child(1),
+    .UserPrivateInfoWrap
+        .LinkTag
+        .AddressContainer
+        .MainContainer
+        div:nth-child(1) {
         width: 80%;
     }
 
-    .UserPrivateInfoWrap .LinkTag .EmailContainer .MainContainer .Button input[type='button'] {
+    .UserPrivateInfoWrap
+        .LinkTag
+        .EmailContainer
+        .MainContainer
+        .Button
+        input[type="button"] {
         width: 100%;
         font-size: 0.725rem;
         padding: 0;

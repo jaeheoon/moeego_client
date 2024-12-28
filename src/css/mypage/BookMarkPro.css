@@ -3,13 +3,15 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    overflow: auto;
 }
 
 .BookMarkProContainer .BookMarkProWrap {
     margin-top: 5%;
     width: 80%;
-    height: 80vh;
+    min-height: 80vh;
     overflow-y: scroll;
+    box-sizing: border-box;
 }
 
 .BookMarkProWrap .PageTitle {

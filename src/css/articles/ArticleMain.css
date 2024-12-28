@@ -8,6 +8,7 @@
 .ArticleMainWrap {
     width: 100%;
     margin-top: 5%;
+    min-height: 80vh;
 }
 
 .TopContainer {
@@ -31,7 +32,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .TopContainer .ButtonWrap svg {
@@ -64,7 +64,7 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    height: 100%;    
+    height: 100%;
 }
 
 .MainContainer .Main-LeftContainer {
@@ -229,7 +229,13 @@
     width: 10%;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(2) img {
+.HotArticleContainer
+    .HotList
+    .HotWrap
+    .viewWrap
+    .titleWrap
+    div:nth-child(2)
+    img {
     width: 20px;
     height: 20px;
 }
@@ -242,7 +248,7 @@
     gap: 1em;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon{
+.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -250,12 +256,24 @@
     padding: 20px 0px 5px 0px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon img {
+.HotArticleContainer
+    .HotList
+    .HotWrap
+    .viewWrap
+    .imageWrap
+    .imageWrap-icon
+    img {
     width: 15px;
     height: 15px;
 }
 
-.HotArticleContainer .HotList .HotWrap .viewWrap .imageWrap .imageWrap-icon span {
+.HotArticleContainer
+    .HotList
+    .HotWrap
+    .viewWrap
+    .imageWrap
+    .imageWrap-icon
+    span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -311,7 +329,12 @@
     width: 100%;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(1) {
+.LatestArticleContainer
+    .LatestList
+    .LatestWrap
+    .viewWrap
+    .titleWrap
+    div:nth-child(1) {
     width: 90%;
     color: #828282;
     text-align: left;
@@ -322,14 +345,25 @@
     word-break: break-word;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(2) {
+.LatestArticleContainer
+    .LatestList
+    .LatestWrap
+    .viewWrap
+    .titleWrap
+    div:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .titleWrap div:nth-child(2) img {
+.LatestArticleContainer
+    .LatestList
+    .LatestWrap
+    .viewWrap
+    .titleWrap
+    div:nth-child(2)
+    img {
     width: 20px;
     height: 20px;
 }
@@ -342,7 +376,12 @@
     gap: 1em;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon {
+.LatestArticleContainer
+    .LatestList
+    .LatestWrap
+    .viewWrap
+    .imageWrap
+    .imageWrap-icon {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -350,12 +389,24 @@
     padding: 20px 0px 5px 0px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon img {
+.LatestArticleContainer
+    .LatestList
+    .LatestWrap
+    .viewWrap
+    .imageWrap
+    .imageWrap-icon
+    img {
     width: 15px;
     height: 15px;
 }
 
-.LatestArticleContainer .LatestList .LatestWrap .viewWrap .imageWrap .imageWrap-icon span {
+.LatestArticleContainer
+    .LatestList
+    .LatestWrap
+    .viewWrap
+    .imageWrap
+    .imageWrap-icon
+    span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -371,15 +422,27 @@
     margin-top: 1em;
     margin-bottom: 1em;
 }
-.AllArticleContainer .FeedItemWrap .FeedItemLink{
+.AllArticleContainer .FeedItemWrap .FeedItemLink {
     width: 100%;
 }
-.AllArticleContainer .FeedItemLink:link{text-decoration: none; color: black}
-.AllArticleContainer .FeedItemLink:hover{text-decoration: none; color: black}
-.AllArticleContainer .FeedItemLink:active{text-decoration: none; color: black}
-.AllArticleContainer .FeedItemLink:visited{text-decoration: none; color: black}
+.AllArticleContainer .FeedItemLink:link {
+    text-decoration: none;
+    color: black;
+}
+.AllArticleContainer .FeedItemLink:hover {
+    text-decoration: none;
+    color: black;
+}
+.AllArticleContainer .FeedItemLink:active {
+    text-decoration: none;
+    color: black;
+}
+.AllArticleContainer .FeedItemLink:visited {
+    text-decoration: none;
+    color: black;
+}
 
-.FeedItemWrap{
+.FeedItemWrap {
     width: 100%;
     cursor: pointer;
 }
@@ -467,11 +530,23 @@
         color: #323232;
     }
 
-    .MainContainer .Main-LeftContainer .life-topic-layout section ul li a:hover {
+    .MainContainer
+        .Main-LeftContainer
+        .life-topic-layout
+        section
+        ul
+        li
+        a:hover {
         background-color: #fcc1cc;
     }
 
-    .MainContainer .Main-LeftContainer .life-topic-layout section ul li:hover a {
+    .MainContainer
+        .Main-LeftContainer
+        .life-topic-layout
+        section
+        ul
+        li:hover
+        a {
         color: #323232;
     }
 
@@ -483,29 +558,61 @@
         width: 100%;
     }
 
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer {
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .NotionContainer {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer div:nth-child(1),
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer div:nth-child(3) {
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .NotionContainer
+        div:nth-child(1),
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .NotionContainer
+        div:nth-child(3) {
         width: 20%;
     }
 
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .NotionContainer div:nth-child(2) {
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .NotionContainer
+        div:nth-child(2) {
         width: 60%;
     }
 
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer,
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .LatestArticleContainer {
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .HotArticleContainer,
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .LatestArticleContainer {
         width: 100%;
         overflow: hidden;
     }
 
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer .HotList {
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .HotArticleContainer
+        .HotList {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         align-content: center;
@@ -513,8 +620,20 @@
         width: 100%;
     }
 
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer .HotList .HotWrap,
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .LatestArticleContainer .LatestList .LatestWrap {
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .HotArticleContainer
+        .HotList
+        .HotWrap,
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .LatestArticleContainer
+        .LatestList
+        .LatestWrap {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -522,8 +641,22 @@
         width: 100%;
     }
 
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .HotArticleContainer .HotList .HotWrap .viewWrap,
-    .ArticleMainContainer .ArticleMainWrap .MainContainer .Main-RightContainer .LatestArticleContainer .LatestList .LatestWrap .viewWrap {
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .HotArticleContainer
+        .HotList
+        .HotWrap
+        .viewWrap,
+    .ArticleMainContainer
+        .ArticleMainWrap
+        .MainContainer
+        .Main-RightContainer
+        .LatestArticleContainer
+        .LatestList
+        .LatestWrap
+        .viewWrap {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -569,12 +702,12 @@
         width: 60%;
     }
 
-    .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap div{
-        width:20%;
+    .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap div {
+        width: 20%;
     }
 
-    .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap div svg{
-        width:100%;
+    .AllArticleContainer .itemWrap .itemWrap-bot .imageWrap div svg {
+        width: 100%;
     }
 
     .AllArticleContainer .itemWrap .itemWrap-bot .written-time-warp {

@@ -15,7 +15,7 @@
     overflow-y: scroll;
     padding-top: 5%;
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .ProIntroPage .ProIntroWrap h2 {
@@ -60,7 +60,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI",
+        Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
     margin-bottom: 1rem;
 }
@@ -77,8 +79,12 @@
     resize: none;
 }
 
-.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .content:focus, 
-.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .content:not(:placeholder-shown) {
+.ProIntroPage .ProIntroWrap #ProIntroForm .ProIntroInput .content:focus,
+.ProIntroPage
+    .ProIntroWrap
+    #ProIntroForm
+    .ProIntroInput
+    .content:not(:placeholder-shown) {
     border-bottom: 2px solid lightcoral;
     box-sizing: border-box;
 }
@@ -110,17 +116,17 @@
     width: 100%;
 }
 
-.ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .prevBtn, 
+.ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .prevBtn,
 .ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .nextBtn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    cursor: pointer;  
+    cursor: pointer;
     font-weight: bold;
     box-sizing: border-box;
-    border: 1px solid #fd9bb9;  
-    background-color: white; 
+    border: 1px solid #fd9bb9;
+    background-color: white;
     color: #fd9bb9;
     font-size: 1rem;
     padding: 10px 20px;
@@ -129,13 +135,12 @@
 
 .ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .prevBtn:hover,
 .ProIntroPage .ProIntroWrap .moveBtn .BtnWrap .nextBtn:hover {
-    border: 1px solid #fcc1cc;   
-    background-color: #fcc1cc; 
+    border: 1px solid #fcc1cc;
+    background-color: #fcc1cc;
     color: white;
 }
 
 @media screen and (max-width: 1250px) {
-    
     .ProIntroPage .ProIntroWrap h2 {
         display: flex;
         align-items: center;

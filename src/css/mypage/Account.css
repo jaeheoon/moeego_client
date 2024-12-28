@@ -10,14 +10,14 @@
 .UserInfoPage hr {
     margin-top: 5%;
     margin-bottom: 5%;
-    border-width:1px 0 0 0; 
-    border-color:#f2f2f2;
+    border-width: 1px 0 0 0;
+    border-color: #f2f2f2;
     opacity: 30%;
 }
 
 .UserInfoWrap {
     width: 80%;
-    height: 80vh;
+    min-height: 80vh;
     padding-top: 5%;
     overflow-y: scroll;
     box-sizing: border-box;
@@ -178,17 +178,17 @@
     justify-items: center;
 }
 
-.UserInfoPage .Container div .Title input[type='text'] {
+.UserInfoPage .Container div .Title input[type="text"] {
     width: 100%;
     box-sizing: border-box;
     padding: 0.5em 0em 0.7em 0em;
     border: none;
     outline: none;
-    font-size: 1.00rem;
+    font-size: 1rem;
 }
 
-.UserInfoPage .Container div .Title input[type='text']:focus,
-.UserInfoPage .Container div .Title input[type='text']:not(:placeholder-shown) {
+.UserInfoPage .Container div .Title input[type="text"]:focus,
+.UserInfoPage .Container div .Title input[type="text"]:not(:placeholder-shown) {
     border-bottom: 1px solid #fcc1cc;
 }
 
@@ -199,7 +199,7 @@
     justify-content: right;
 }
 
-.UserInfoPage .Container div .Button input[type='button'] {
+.UserInfoPage .Container div .Button input[type="button"] {
     font-size: 9pt;
     border-style: none;
     padding: 5px 20px;
@@ -212,13 +212,14 @@
     transition: all 0.25s ease-out;
 }
 
-.UserInfoPage .Container div .Button input[type='button']:hover {
+.UserInfoPage .Container div .Button input[type="button"]:hover {
     cursor: pointer;
     background-color: lightcoral;
     color: #ffffff;
 }
 
-.NickNameForm .ToggleWrap, .IntroductionForm .ToggleWrap {
+.NickNameForm .ToggleWrap,
+.IntroductionForm .ToggleWrap {
     margin-top: -20px;
     display: flex;
     align-items: end;
@@ -226,14 +227,16 @@
     margin-bottom: 30px;
 }
 
-.NickNameForm .ToggleWrap .ToggleButton, .IntroductionForm .ToggleWrap .ToggleButton {
+.NickNameForm .ToggleWrap .ToggleButton,
+.IntroductionForm .ToggleWrap .ToggleButton {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-top: 10px;
 }
 
-.NickNameForm .ToggleWrap input[type='button']:nth-child(1), .IntroductionForm .ToggleWrap input[type='button']:nth-child(1) {
+.NickNameForm .ToggleWrap input[type="button"]:nth-child(1),
+.IntroductionForm .ToggleWrap input[type="button"]:nth-child(1) {
     font-size: 9pt;
     border-style: none;
     padding: 5px 20px;
@@ -247,7 +250,8 @@
     transition: all 0.25s ease-out;
 }
 
-.NickNameForm .ToggleWrap input[type='button']:nth-child(2), .IntroductionForm .ToggleWrap input[type='button']:nth-child(2) {
+.NickNameForm .ToggleWrap input[type="button"]:nth-child(2),
+.IntroductionForm .ToggleWrap input[type="button"]:nth-child(2) {
     font-size: 9pt;
     border-style: none;
     padding: 5px 20px;
@@ -260,13 +264,15 @@
     transition: all 0.25s ease-out;
 }
 
-.NickNameForm .ToggleWrap input[type='button']:nth-child(2):hover, .IntroductionForm .ToggleWrap input[type='button']:nth-child(2):hover {
+.NickNameForm .ToggleWrap input[type="button"]:nth-child(2):hover,
+.IntroductionForm .ToggleWrap input[type="button"]:nth-child(2):hover {
     cursor: pointer;
     background-color: lightcoral;
     color: #ffffff;
 }
 
-.NickNameForm .ToggleWrap input[type='button']:nth-child(1):hover, .IntroductionForm .ToggleWrap input[type='button']:nth-child(1):hover {
+.NickNameForm .ToggleWrap input[type="button"]:nth-child(1):hover,
+.IntroductionForm .ToggleWrap input[type="button"]:nth-child(1):hover {
     cursor: pointer;
     background-color: #8f8f8f;
     border-color: #8f8f8f;
@@ -299,17 +305,23 @@
     width: 100%;
     border: none;
     outline: none;
-    font-size: 1.00rem;
+    font-size: 1rem;
     box-sizing: border-box;
     resize: none;
     overflow: auto;
     min-height: 1rem;
     max-height: 3rem;
-    font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI",
+        Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .IntroductionForm .Container .IntroductionWrap .content textarea:focus,
-.IntroductionForm .Container .IntroductionWrap .content textarea:not(:placeholder-shown) {
+.IntroductionForm
+    .Container
+    .IntroductionWrap
+    .content
+    textarea:not(:placeholder-shown) {
     border-bottom: 1px solid #fcc1cc;
 }
 
@@ -320,7 +332,11 @@
     width: 15%;
 }
 
-.IntroductionForm .Container .IntroductionWrap .buttonwrap input[type="button"] {
+.IntroductionForm
+    .Container
+    .IntroductionWrap
+    .buttonwrap
+    input[type="button"] {
     font-size: 9pt;
     border-style: none;
     padding: 5px 20px;
@@ -333,12 +349,15 @@
     transition: all 0.25s ease-out;
 }
 
-.IntroductionForm .Container .IntroductionWrap .buttonwrap input[type="button"]:hover {
+.IntroductionForm
+    .Container
+    .IntroductionWrap
+    .buttonwrap
+    input[type="button"]:hover {
     cursor: pointer;
     background-color: lightcoral;
     color: #ffffff;
 }
-
 
 .DetailInfoContainer .Link {
     display: flex;
@@ -369,7 +388,7 @@
         justify-content: center;
         width: 100%;
     }
-    
+
     .IntroductionForm .Container .IntroductionWrap .content {
         width: 80%;
     }
@@ -382,7 +401,11 @@
         width: 20%;
     }
 
-    .IntroductionForm .Container .IntroductionWrap .buttonwrap input[type='button'] {
+    .IntroductionForm
+        .Container
+        .IntroductionWrap
+        .buttonwrap
+        input[type="button"] {
         width: 100%;
         box-sizing: border-box;
         padding: 0;
@@ -396,7 +419,12 @@
         width: 100%;
     }
 
-    .UserInfoPage .UserInfoWrap .NickNameForm .Container .Title input[type='text'] {
+    .UserInfoPage
+        .UserInfoWrap
+        .NickNameForm
+        .Container
+        .Title
+        input[type="text"] {
         width: 90%;
     }
 

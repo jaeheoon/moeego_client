@@ -1,4 +1,4 @@
-.reviewWritePage{
+.reviewWritePage {
     display: flex;
     justify-content: flex-start;
     width: 100%;
@@ -13,13 +13,13 @@
     width: 90%;
     padding: 0;
     padding-top: 5%;
-    height: 80vh;
+    min-height: 80vh;
     overflow-y: scroll;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
-.review-write-wrap>div:nth-child(1) {
+.review-write-wrap > div:nth-child(1) {
     margin-top: 10%;
     box-sizing: border-box;
 }
@@ -46,7 +46,7 @@
     font-weight: bold;
 }
 
-.review-subject-container{
+.review-subject-container {
     width: 100%;
     display: flex;
     justify-content: left;
@@ -77,6 +77,6 @@
     margin-bottom: 1rem;
 }
 
-.review-submit-button:hover{
+.review-submit-button:hover {
     background-color: lightcoral;
 }

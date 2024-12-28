@@ -9,7 +9,7 @@
 .myHistoryPage .myHistoryWrap {
     padding-top: 5%;
     width: 90%;
-    height: 80vh;
+    min-height: 80vh;
     box-sizing: border-box;
     overflow-y: scroll;
 }
@@ -74,88 +74,88 @@
 }
 
 /* 작성글 CSS */
-.myArticleItemPage{
+.myArticleItemPage {
     padding-left: 1em;
     border-bottom: 1px solid rgb(200, 200, 200);
     padding-bottom: 0.4rem;
     margin-bottom: 1em;
 }
-.myArticleItemCategory{
+.myArticleItemCategory {
     display: inline-block;
     border: 1px solid #eee;
     background-color: #eee;
     font-weight: bold;
     font-size: 10pt;
     padding: 3px 5px;
-    color:rgb(150,150,150);
+    color: rgb(150, 150, 150);
     border-radius: 5px;
     margin-bottom: 1em;
 }
-.myArticleItemContentWrap .myArticleItemTitle{
+.myArticleItemContentWrap .myArticleItemTitle {
     font-size: 12pt;
     font-weight: bold;
-    color:black;
+    color: black;
 }
-.myArticleItemContentWrap .myArticleItemContent{
+.myArticleItemContentWrap .myArticleItemContent {
     font-size: 11pt;
-    color:rgb(150,150,150);
+    color: rgb(150, 150, 150);
     margin: 0.8em 0 1.1em 0;
 }
-.myArticleItemContentWrap .myArticleItemDate{
+.myArticleItemContentWrap .myArticleItemDate {
     font-size: 11pt;
-    color:rgb(150,150,150);
+    color: rgb(150, 150, 150);
 }
-.myArticleItemPage .myArticleDeleteBtnWrap{
+.myArticleItemPage .myArticleDeleteBtnWrap {
     display: flex;
     width: 100%;
     justify-content: right;
 }
-.myArticleItemPage .myArticleDeleteBtnWrap .myArticleDeleteBtn{
-    border:none;
+.myArticleItemPage .myArticleDeleteBtnWrap .myArticleDeleteBtn {
+    border: none;
     background-color: white;
     cursor: pointer;
     align-items: center;
     height: 1.75rem;
-    padding: 0 .5rem;
-    font-size: .75rem;
+    padding: 0 0.5rem;
+    font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.125rem;
     color: #6a7685;
 }
 /* 작성댓글 CSS */
-.MyCommentItem{
+.MyCommentItem {
     padding-left: 1em;
     border-bottom: 1px solid rgb(200, 200, 200);
     padding-bottom: 0.4rem;
     margin-bottom: 1em;
 }
-.MyCommentItem .MyCommentItemContent{
+.MyCommentItem .MyCommentItemContent {
     font-size: 12pt;
     font-weight: bold;
-    color:black;
+    color: black;
 }
-.MyCommentItem .MyCommentItemTitle{
+.MyCommentItem .MyCommentItemTitle {
     font-size: 11pt;
-    color:rgb(150,150,150);
+    color: rgb(150, 150, 150);
     margin: 0.8em 0 1.1em 0;
 }
-.MyCommentItem .MyCommentItemDate{
+.MyCommentItem .MyCommentItemDate {
     font-size: 11pt;
-    color:rgb(150,150,150);
+    color: rgb(150, 150, 150);
 }
-.MyCommentItem .MyCommentDeleteBtnWrap{
+.MyCommentItem .MyCommentDeleteBtnWrap {
     display: flex;
     width: 100%;
     justify-content: right;
 }
-.MyCommentItem .MyCommentDeleteBtnWrap .MyCommentDeleteBtn{
-    border:none;
+.MyCommentItem .MyCommentDeleteBtnWrap .MyCommentDeleteBtn {
+    border: none;
     background-color: white;
     cursor: pointer;
     align-items: center;
     height: 1.75rem;
-    padding: 0 .5rem;
-    font-size: .75rem;
+    padding: 0 0.5rem;
+    font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.125rem;
     color: #6a7685;

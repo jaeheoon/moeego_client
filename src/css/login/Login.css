@@ -15,15 +15,15 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
     overflow-y: scroll;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
 }
 
 .ModalWrap {
-    display: none; 
+    display: none;
 }
 
 .ModalWrap.show {
@@ -35,12 +35,12 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 9999; 
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
 }
 
-.LoginPage .login-align{
-    width: 320px; 
+.LoginPage .login-align {
+    width: 320px;
     align-items: center;
 }
 
@@ -48,60 +48,65 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #F4F4F4;
+    border: 2px solid #f4f4f4;
     width: 400px;
     border-radius: 25px;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     box-sizing: border-box;
     padding-top: 1em;
     padding-bottom: 1.5em;
 }
 
-.LoginPage .emailbox, .LoginPage .pwdbox {
-    border-radius: 10px; 
+.LoginPage .emailbox,
+.LoginPage .pwdbox {
+    border-radius: 10px;
     border-style: none;
-    padding: 12px 12px; 
-    font-size: 16px; 
-    width: 320px; 
+    padding: 12px 12px;
+    font-size: 16px;
+    width: 320px;
     border: 2px solid #ffffff;
     box-sizing: border-box;
 }
 
-.LoginPage .emailbox:focus,.LoginPage .pwdbox:focus {
+.LoginPage .emailbox:focus,
+.LoginPage .pwdbox:focus {
     box-sizing: border-box;
     outline: #fcc1cc;
     border: 2px solid #fcc1cc;
     box-sizing: border-box;
 }
 
-.LoginPage .emailLoginBtn, .LoginPage .kakaoLoginBtn, .LoginPage .naverLoginBtn, .LoginPage .googleLoginBtn {
+.LoginPage .emailLoginBtn,
+.LoginPage .kakaoLoginBtn,
+.LoginPage .naverLoginBtn,
+.LoginPage .googleLoginBtn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5em;
     box-sizing: border-box;
-    padding: 10px 20px;           
-    font-size: 16px;              
-    border-radius: 10px;             
-    color: white;   
-    width: 320px;            
-    cursor: pointer;  
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    color: white;
+    width: 320px;
+    cursor: pointer;
     font-weight: bold;
 }
 
-.LoginPage .emailLoginBtn {    
-    border: 1px solid #FFD8E4;   
-    background-color: #FFD8E4;       
+.LoginPage .emailLoginBtn {
+    border: 1px solid #ffd8e4;
+    background-color: #ffd8e4;
 }
 
 .LoginPage .emailLoginBtn:hover {
-    background-color: white; 
-    color: #fd9bb9; 
+    background-color: white;
+    color: #fd9bb9;
 }
 
-.LoginPage .kakaoLoginBtn { 
-    border: 1px solid #FEE500;   
-    background-color: #FEE500;       
+.LoginPage .kakaoLoginBtn {
+    border: 1px solid #fee500;
+    background-color: #fee500;
     color: #ffffff;
 }
 
@@ -115,15 +120,15 @@
     content: url("/image/kakao_wine.svg");
 }
 
-.LoginPage .naverLoginBtn {    
-    border: 1px solid #03C75A;   
-    background-color: #03C75A;       
+.LoginPage .naverLoginBtn {
+    border: 1px solid #03c75a;
+    background-color: #03c75a;
 }
 
 .LoginPage .naverLoginBtn:hover {
     background-color: #ffffff;
-    border-color: #03C75A;
-    color:#03C75A;
+    border-color: #03c75a;
+    color: #03c75a;
 }
 
 .LoginPage .naverLoginBtn:hover .naverImg {
@@ -131,14 +136,14 @@
 }
 
 .LoginPage .googleLoginBtn {
-    border: 1px solid #2e9dff;   
-    background-color: #2e9dff;  
+    border: 1px solid #2e9dff;
+    background-color: #2e9dff;
 }
 
 .LoginPage .googleLoginBtn:hover {
     background-color: #ffffff;
     border-color: #2e9dff;
-    color:#2e9dff;
+    color: #2e9dff;
 }
 
 .LoginPage .googleLoginBtn:hover .googleImg {
@@ -159,26 +164,26 @@
 }
 
 .LoginPage .find a:hover {
-    color: lightcoral; 
+    color: lightcoral;
 }
 
 .LoginPage .find a {
     border: none;
-    text-decoration: none; 
-    color: #737373; 
-    font-size: 11px; 
+    text-decoration: none;
+    color: #737373;
+    font-size: 11px;
 }
 
 .LoginPage .find a:hover {
-    color: lightcoral; 
+    color: lightcoral;
 }
 
 .LoginPage .LoginPage input[type="password"] {
-    margin-top: 5px; 
+    margin-top: 5px;
 }
 
 .LoginPage .LoginPage input[type="email"] {
-    margin-top: 5px; 
+    margin-top: 5px;
 }
 
 .LoginPage .box {
@@ -206,8 +211,8 @@
 
 @media screen and (min-width: 1250px) {
     .LoginPage #login_container .loginbox {
-        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15), /* 메인 그림자 */
-        -5px -5px 15px rgba(255, 255, 255, 0.7); /* 상단 하이라이트 그림자 */
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15),
+            /* 메인 그림자 */ -5px -5px 15px rgba(255, 255, 255, 0.7); /* 상단 하이라이트 그림자 */
     }
 }
 
@@ -261,13 +266,13 @@
     }
 
     .LoginPage #login_container .loginbox .box button,
-    .LoginPage #login_container .loginbox .box  {
+    .LoginPage #login_container .loginbox .box {
         width: 100%;
     }
 
-    .LoginPage #login_container .loginbox input[type='text'],
-    .LoginPage #login_container .loginbox input[type='password'],
-    .LoginPage #login_container .loginbox input[type='email'] {
+    .LoginPage #login_container .loginbox input[type="text"],
+    .LoginPage #login_container .loginbox input[type="password"],
+    .LoginPage #login_container .loginbox input[type="email"] {
         width: 100%;
         border: none;
         outline: none;
@@ -278,12 +283,21 @@
         color: #626262;
     }
 
-    .LoginPage #login_container .loginbox input[type='text']:focus,
-    .LoginPage #login_container .loginbox input[type='text']:not(:placeholder-shown),
-    .LoginPage #login_container .loginbox input[type='password']:focus,
-    .LoginPage #login_container .loginbox input[type='password']:not(:placeholder-shown),
-    .LoginPage #login_container .loginbox input[type='email']:focus,
-    .LoginPage #login_container .loginbox input[type='email']:not(:placeholder-shown) {
+    .LoginPage #login_container .loginbox input[type="text"]:focus,
+    .LoginPage
+        #login_container
+        .loginbox
+        input[type="text"]:not(:placeholder-shown),
+    .LoginPage #login_container .loginbox input[type="password"]:focus,
+    .LoginPage
+        #login_container
+        .loginbox
+        input[type="password"]:not(:placeholder-shown),
+    .LoginPage #login_container .loginbox input[type="email"]:focus,
+    .LoginPage
+        #login_container
+        .loginbox
+        input[type="email"]:not(:placeholder-shown) {
         border-bottom: 2px solid lightcoral;
         box-sizing: border-box;
     }
