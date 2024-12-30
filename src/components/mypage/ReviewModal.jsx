@@ -75,7 +75,7 @@ const ReviewModal = ({ review, onClose, showDeleteButton }) => {
                             </button>
                         </section>
                     )}
-                    <button onClick={onClose} className="closeModalBtn">닫기</button>
+                    <button onClick={onClose} className="closeModalBtn">&times;</button>
                 </article>
 
                 {/* 큰 이미지 모달 */}

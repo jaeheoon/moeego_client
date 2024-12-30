@@ -9,6 +9,8 @@ const Write = () => {
     const { writeArticle } = useContext(ArticleContext);
     const userNo = localStorage.getItem("userno");
     const {isLoggedIn} = useContext(AuthContext);
+    const memberStatus = localStorage.getItem("memberStatus");
+
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         subject: '',
@@ -122,7 +124,9 @@ const Write = () => {
                             </option>
                             <option value="2">자유 게시판</option>
                             <option value="3">QnA</option>
+                            {(memberStatus === 'ROLE_PRO' || memberStatus === 'ROLE_ADMIN') && (
                             <option value="4">달인 게시판</option>
+                            )}
                         </select>
                         <button type="submit" className="submit-button">
                             등록

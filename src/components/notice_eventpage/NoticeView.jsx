@@ -45,6 +45,8 @@ const NoticeView = () => {
         return <p>게시글을 불러올 수 없습니다.</p>;
     }
 
+    const content = `${articleData.content}`;
+
     return (
         <div className="noticeViewPage">
             <div className="noticeView">
@@ -53,8 +55,8 @@ const NoticeView = () => {
                 </Link>
                 <div className='subject'>{formatDate(articleData.writeDate)} {articleData.subject}</div>
 
-                <div className="content">
-                    {articleData.content}
+                <div style={{ whiteSpace: 'pre-wrap' }} className="content">
+                    {content}
                 </div>
                 <div className="post-image-wrapper">
                     {

@@ -317,12 +317,12 @@ h1{
 .indexPage .modal {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     background-color: #fff;
     width: 80%;
     max-width: 450px;
-    height: 50%;
+    height: 40%;
     border-radius: 12px; /* 더 부드러운 둥근 모서리 */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 30px 20px;

@@ -14,13 +14,12 @@
     padding: 0;
     padding-top: 5%;
     min-height: 80vh;
-    overflow-y: scroll;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
 .review-write-wrap > div:nth-child(1) {
-    margin-top: 10%;
+    margin-top: 5%;
     box-sizing: border-box;
 }
 

@@ -377,6 +377,16 @@
     justify-content: center;
     width: 90%;
 }
+.reservation-wrap .modal-content section .product-options .options-wrapper:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* 여러 줄로 배치 */
+    width: 90%;
+    overflow-y: scroll; /* 스크롤 활성화 */
+    line-height: 1.5; /* 한 줄의 높이 설정 */
+    max-height: calc(1em * 2); /* 2줄로 제한 */
+}
 
 .reservation-wrap
     .modal-content

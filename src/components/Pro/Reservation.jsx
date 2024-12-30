@@ -8,6 +8,8 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
     const [userno, setUserno] = useState("");
     const [reservedTimes, setReservedTimes] = useState({});
 
+    const content = `${service.content}`;
+    
     useEffect(() => {
         setUserno(localStorage.getItem("userno") || "");
     }, []);
@@ -236,8 +238,8 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                         </section>
                         <section>
                             <div className="product-options">
-                                <div className="options-wrapper">
-                                    {service.content}
+                                <div style={{ whiteSpace: 'pre-wrap' }} className="options-wrapper">
+                                    {content}
                                 </div>
                                 <div className="options-wrapper">
                                     {service.price.toLocaleString()}원
