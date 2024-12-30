@@ -12,7 +12,7 @@ const SideBar = () => {
     const navigate = useNavigate();
 
     const goHome = () => {
-        navigate("/");
+        navigate("/admin/dashboard");
     }
 
     return (

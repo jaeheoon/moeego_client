@@ -55,18 +55,30 @@ const ProList = () => {
     // 박탈 상태 변경
     const revokePro = async (memberNo, name) => {
         const confirm = window.confirm(`${name}님을 박탈하시겠습니까?`);
+        
         if (confirm) {
-            try {
-                await apiAxios.post(`/api/admin/member/pro/cancel/${memberNo}`); // 박탈 처리 API 호출
-                setPro(pro.map((row) => 
-                    row.memberNo === memberNo ? { ...row, depriveDate: new Date().toISOString() } : row
-                ));
-            } catch (err) {
-                console.error('박탈 처리 오류:', err);
-                setError(err.message);
+            const reason = window.prompt("박탈 사유를 입력해주세요:", "불량 회원"); // 이유 입력받기
+            
+            if (reason) {  // 사용자가 이유를 입력한 경우에만 처리
+                try {
+                    // 박탈 처리 API 호출, 이유도 함께 전송
+                    await apiAxios.post(`/api/admin/member/pro/cancel/${memberNo}`, { reason });
+                    setPro(pro.map((row) => 
+                        row.memberNo === memberNo ? { ...row, depriveDate: new Date().toISOString() } : row
+                    ));
+
+                    // 박탈 성공 메세지
+                    alert(`${name}님이 박탈 되었습니다.`);
+                } catch (err) {
+                    console.error('박탈 처리 오류:', err);
+                    setError(err.message);
+                }
+            } else {
+                alert("박탈 사유를 입력해야 합니다.");
             }
         }
     };
+    
 
     // 날짜 포맷팅
     const formatDate = (date) => {
