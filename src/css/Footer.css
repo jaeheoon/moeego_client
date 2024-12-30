@@ -101,6 +101,7 @@
 
     .footer .ulWrap .info.visible {
         display: block; /* 모바일에서 토글된 상태 */
+        background-color: transparent;
     }
 
     .footer .ulWrap .info-toggle-button {
