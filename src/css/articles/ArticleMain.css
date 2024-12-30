@@ -48,7 +48,7 @@
     box-sizing: border-box;
     background-color: #fcc1cc;
     font-weight: bold;
-    color: #f1f1f1;
+    color: white;
     border-radius: 10px;
     transition: all 0.25s ease-out;
 }

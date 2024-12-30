@@ -85,7 +85,7 @@
     box-sizing: border-box;
     background-color: #ffffff;
     font-weight: bold;
-    color: #b2b2b2;
+    color: #676464;
     border: 1px solid #b2b2b2;
     border-radius: 10px;
     transition: all 0.25s ease-out;
@@ -99,7 +99,7 @@
     box-sizing: border-box;
     background-color: #fcc1cc;
     font-weight: bold;
-    color: #f1f1f1;
+    color: white;
     border-radius: 10px;
     transition: all 0.25s ease-out;
 }

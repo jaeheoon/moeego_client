@@ -55,6 +55,7 @@
     justify-content: center;
     width: 100%;
     gap: 1rem;
+    margin-bottom: 60px;
 }
 
 .SuccessPage .SuccessWrap .buttonWrap input[type="button"] {
@@ -77,6 +78,10 @@
     background-color: #fff;
     color: #fcc1cc;
     border: 1px solid #fcc1cc;
+}
+
+.SuccessPage h3 {
+    margin-bottom: -50px; 
 }
 
 @media screen and (max-width: 1250px) {
