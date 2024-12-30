@@ -89,53 +89,57 @@ function KeywordSection() {
   return (
     <div className="keywordWrap">
       <h2>오늘은 청소하는 날!</h2>
-      <div className="carousel">
-        {/* 이전 버튼 */}
-        <button
-          className="carousel-button prev"
-          onClick={handlePrev}
-          disabled={currentIndex === 0}
-        >
-          &lt;
-        </button>
-
-        {/* 슬라이드 */}
-        <div className="carousel-track">
-          <div
-            className="keyword-images"
-            style={{
-              transform: `translateX(-${(currentIndex * 100) / slidesToShow}%)`,
-              transition: "transform 0.5s ease-in-out",
-            }}
+      {item.length > 0 ? (
+        <div className="carousel">
+          {/* 이전 버튼 */}
+          <button
+            className="carousel-button prev"
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
           >
-            {item.map((pro) => (
-              pro.proItems && pro.proItems.some(item => item.subject) && (
-                <div
-                  key={pro.proNo}
-                  className="keyword-image"
-                  style={{
-                    backgroundImage: `url(${pro.profileImage ? "https://kr.object.ncloudstorage.com/moeego/profile/" + pro.profileImage : "/image/default.svg"})`,
-                  }}
-                  onClick={() => openModal(pro)}  // 클릭된 pro를 모달에 전달
-                >
-                  <div className="pro-info">
-                    <h3>{pro.name}</h3>
-                  </div>
-                </div>
-              )
-            ))}
-          </div>
-        </div>
+            &lt;
+          </button>
 
-        {/* 다음 버튼 */}
-        <button
-          className="carousel-button next"
-          onClick={handleNext}
-          disabled={isNextDisabled || currentIndex === Math.ceil(item.length / slidesToShow) - 1}
-        >
-          &gt;
-        </button>
-      </div>
+          {/* 슬라이드 */}
+          <div className="carousel-track">
+            <div
+              className="keyword-images"
+              style={{
+                transform: `translateX(-${(currentIndex * 100) / slidesToShow}%)`,
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
+              {item.map((pro) => (
+                pro.proItems && pro.proItems.some(item => item.subject) && (
+                  <div
+                    key={pro.proNo}
+                    className="keyword-image"
+                    style={{
+                      backgroundImage: `url(${pro.profileImage ? "https://kr.object.ncloudstorage.com/moeego/profile/" + pro.profileImage : "/image/default.svg"})`,
+                    }}
+                    onClick={() => openModal(pro)}  // 클릭된 pro를 모달에 전달
+                  >
+                    <div className="pro-info">
+                      <h3>{pro.name}</h3>
+                    </div>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+
+          {/* 다음 버튼 */}
+          <button
+            className="carousel-button next"
+            onClick={handleNext}
+            disabled={isNextDisabled || currentIndex === Math.ceil(item.length / slidesToShow) - 1}
+          >
+            &gt;
+          </button>
+        </div>
+      ) : (
+        <div className="no-data">표시할 데이터가 없습니다.</div>
+      )}
 
       {/* 모달에서 클릭된 서비스로 페이지 이동 */}
       {isModalOpen && selectedPro && (

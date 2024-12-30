@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const SearchProItem = ({item}) => {
+const SearchProItem = ({ item, proNo }) => {
     const [isToggled, setIsToggled] = useState(false); // 토글 상태 관리
+    const navigate = useNavigate();
 
     const toggleDetails = () => {
         setIsToggled(!isToggled); // 토글 상태 변경
     };
+
+    const handleProViewNavigation = (serviceItem) => {
+        navigate("/pro/proview", {
+            state: { item: item, serviceItem, proNo },
+        });
+    };
+
     return (
         <div className="searchListWrap">
             <div className="searchListAWrap" onClick={toggleDetails}>
@@ -22,7 +31,11 @@ const SearchProItem = ({item}) => {
                                         marginRight: "0.25rem",
                                     }}
                                 >★</span>
-                                {Math.floor(item.star * 10) / 10} ({item.reviewCount})</span>
+                                {Math.floor(item.star * 10) / 10} (
+                                {item.reviewCount !== null && item.reviewCount !== undefined
+                                    ? item.reviewCount
+                                    : 0})
+                            </span>
                         </div>
                         <p className="searchListIntro">
                             {item.oneIntro}
@@ -47,37 +60,40 @@ const SearchProItem = ({item}) => {
 
             {/* 토글된 상세 정보 부분 */}
             <div
-                className={`searchListDetailWrap ${
-                    isToggled ? 'active' : ''
-                }`}
+                className={`searchListDetailWrap ${isToggled ? 'active' : ''}`}
             >
                 {isToggled &&
-                    item.proItems.map((serviceItem) => (
-                        <div
-                            key={serviceItem.proItemNo}
-                            className="servicePage"
-                            onClick={() => handleProViewNavigation(serviceItem)}
-                        >
-                            <div className="serviceWrap">
-                                <div className="serviceSubject">
-                                    {serviceItem.subject} (
-                                    {serviceItem.subCategory.subCateName})
-                                </div>
-                                <div className="serviceStar">
-                                    <span
-                                        style={{
-                                            color: "#f39c12",
-                                            marginRight: "0.25rem",
-                                        }}
-                                    >
-                                        ★{" "}
-                                        {Math.floor(serviceItem.star * 10) / 10}
-                                    </span>{" "}
-                                    ({serviceItem.reviewCount})
+                    item.proItems
+                        .filter((serviceItem) => serviceItem.subject) // subject가 있는 경우만 렌더링
+                        .map((serviceItem) => (
+                            <div
+                                key={serviceItem.proItemNo}
+                                className="servicePage"
+                                onClick={() => handleProViewNavigation(serviceItem)}
+                            >
+                                <div className="serviceWrap">
+                                    <div className="serviceSubject">
+                                        {serviceItem.subject} (
+                                        {serviceItem.subCategory.subCateName})
+                                    </div>
+                                    <div className="serviceStar">
+                                        <span
+                                            style={{
+                                                color: "#f39c12",
+                                                marginRight: "0.25rem",
+                                            }}
+                                        >
+                                            ★{" "}
+                                            {Math.floor(serviceItem.star * 10) / 10}
+                                        </span>{" "}
+                                        ({serviceItem.reviewCount !== null &&
+                                        serviceItem.reviewCount !== undefined
+                                            ? serviceItem.reviewCount
+                                            : 0})
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
             </div>
         </div>
     );

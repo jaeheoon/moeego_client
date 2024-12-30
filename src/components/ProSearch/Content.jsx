@@ -63,7 +63,7 @@ const Content = () => {
         <div className="ContentWrap">
             <section>
                 <SearchBar />
-                {searchListItems === "" ? (searchListItems.map((item) => (
+                {searchListItems.length > 0 ? (searchListItems.map((item) => (
                     <SearchList key={item.proNo} item={item} proNo={item.proNo} />
                 ))) : (
                     <div style={noneStyle}>등록된 달인과 서비스가 없습니다.</div>

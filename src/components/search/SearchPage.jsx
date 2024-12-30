@@ -140,7 +140,7 @@ const SearchPage = () => {
                 <div>
                     {proResults.length > 0 ? (
                         proResults.map((pro, index) => (
-                            <SearchProItem key={index} item={pro} />
+                            <SearchProItem key={index} item={pro} proNo={pro.proNo} />
                         ))
                     ) : (
                         <p>검색된 전문가가 없습니다.</p>

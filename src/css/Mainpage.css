@@ -252,7 +252,15 @@ h1{
     max-width: 1200px;
     margin: 0 auto;
 }
-  
+
+.keywordWrap h2{
+    margin-left: 1.5%;
+}
+.keywordWrap .no-data{
+    margin-left: 1.5%;
+    color: rgb(126, 124, 124);
+    font-size: 0.9rem;
+}
 .carousel-track {
     overflow: hidden;
     width: 100%;
@@ -648,7 +656,7 @@ h1{
     }
 
     .reviewsWrap {
-        width:95%;
+        width:90%;
         margin: 0 auto;
         padding: 20px 0; /* 리뷰 패딩 조정 */
     }
@@ -728,7 +736,9 @@ h1{
     .keywordWrap{
         width: 80%;
     }
-
+    .keywordWrap h2{
+        margin-left: -7%;
+    }
     .keyword-image {
         flex: 0 0 calc(50% - 19.5px); /* 2개씩 표시 */
     }
