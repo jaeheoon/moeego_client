@@ -216,6 +216,10 @@
     width: 100%;
     color: green;
 }
+.errorWrap .success {
+    color: green;
+}
+
 
 @media screen and (max-width: 1250px) {
     .JoinPage {

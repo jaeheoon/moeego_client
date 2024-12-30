@@ -11,19 +11,18 @@ const Projoin = () => {
     const {
         signup,
         errors,
+        success, // success state added
         isReadonly,
         isEmailChecked,
-        errorVerification,
         isEmailVerified,
-        setVerificationCode,
         verificationCode,
         verificationAttempts,
+        errorVerification,
+        setVerificationCode,
+        setIsEmailChecked,
         updateSignUpData,
         handleAddressSearch,
-        goMain,
-        goLogin,
-        goSuccess,
-        validateForm,
+        submitSignupForm,
         checkEmailDuplication,
         handleEmailVerification,
         handleResendVerification,
@@ -32,7 +31,6 @@ const Projoin = () => {
     useEffect(() => {
         const scriptSrc = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
 
-        // Correct script check and append logic
         if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
             const script = document.createElement("script");
             script.src = scriptSrc;
@@ -42,44 +40,14 @@ const Projoin = () => {
     }, []);
 
     const handleJoinClick = async () => {
-        if (!validateForm()) {
-            return;
-        }
-
-        if (!isEmailChecked) {
-            alert("이메일 중복 체크를 완료해주세요.");
-            return;
-        }
-
-        const genderValue = signup.gender === 'M' ? 1 : (signup.gender === 'F' ? 2 : 0); // 성별 숫자로 변환
-
-        // state에서 가져온 데이터를 포함해 회원가입 데이터를 서버로 전송
-        const signupData = {
-            mainCateNo,
-            subCategories: checkCategories,  // subCategories로 변환
-            oneIntro: oneintro,
-            intro,
-            email: signup.email,
-            name: signup.name,
-            pwd: signup.pwd,
-            gender: genderValue,
-            phone: signup.phone,
-            address: `${signup.address1} ${signup.address2}`,  // 주소 합치기
-        };
-
-        try {
-            await apiAxios.post("/api/pro/join", signupData);
-            goSuccess(signup.name);
-        } catch (error) {
-            console.error("회원가입 실패:", error);
-        }
+        await submitSignupForm(mainCateNo, checkCategories, oneintro, intro);
     };
 
     return (
         <div className="JoinPage">
             <div id="join_container">
                 <h1>모이고에 오신 것을 환영합니다.</h1>
-                <form id="projoinForm" className="joinbox">
+                <form id="joinForm" className="joinbox">
                     {/* 이름 입력 */}
                     <div className="join-align">
                         <label>이름</label>
@@ -94,6 +62,7 @@ const Projoin = () => {
                     </div>
                     <div className='errorWrap'>
                         {errors.name && <span className="error">{errors.name}</span>}
+                        {success.name && <span className="success">{success.name}</span>}
                     </div>
 
                     {/* 이메일 입력 */}
@@ -110,11 +79,12 @@ const Projoin = () => {
                     </div>
                     <div className='errorWrap'>
                         {errors.email && <span className={isEmailChecked ? "success" : "error"}>{errors.email}</span>}
+                        {success.email && <span className="success">{success.email}</span>}
                     </div>
 
                     {/* 인증번호 발송 버튼 */}
                     <div className="join-align">
-                        {isEmailChecked ? (
+                        {isEmailChecked && !isEmailVerified ? (
                             <input
                                 type="button"
                                 className="checkBtn"
@@ -134,7 +104,7 @@ const Projoin = () => {
                     </div>
 
                     {/* 이메일 인증번호 관련 입력 */}
-                    {isEmailChecked && (
+                    {isEmailChecked && !isEmailVerified && (
                         <div className="join-align">
                             <input
                                 className="emailbox"
@@ -148,11 +118,17 @@ const Projoin = () => {
 
                     {/* 인증번호 관련 에러 메시지 */}
                     <div className="errorWrap">
-                        {errorVerification && <span className="error">{errorVerification}</span>}
+                        {errorVerification && errorVerification !== "인증번호가 일치합니다" && <span className="error">{errorVerification}</span>}
                     </div>
 
+                    {isEmailVerified && (
+                        <div className="errorWrap">
+                            <span className="success">인증번호가 일치합니다</span>
+                        </div>
+                    )}
+
                     {/* 이메일 인증번호 관련 입력 */}
-                    {isEmailChecked && (
+                    {isEmailChecked && !isEmailVerified && (
                         <div className="join-align">
                             <input
                                 className="checkBtn"
@@ -198,6 +174,7 @@ const Projoin = () => {
                     <div className='errorWrap'>
                         {errors.confirmpwd && <span className="error">{errors.confirmpwd}</span>}
                     </div>
+
                     {/* 성별 선택 */}
                     <div className="join-align">
                         <label>성별</label>
@@ -312,10 +289,13 @@ const Projoin = () => {
                         value="회원가입"
                         onClick={handleJoinClick}
                     />
+                    <div className="dalin">
+                        <Link to="/pro/signup/main">달인으로 가입하시나요?</Link>
+                    </div>
                 </form>
             </div>
         </div>
     );
-};
+}
 
 export default Projoin;

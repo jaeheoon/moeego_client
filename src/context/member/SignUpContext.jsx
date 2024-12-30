@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
-import checkPost from "../../js/daumpost";
 import { useNavigate } from "react-router-dom";
 import apiAxios from "../../api/apiAxios";
+import checkPost from "../../js/daumpost";
 
 const SignUpContext = createContext();
 
@@ -31,16 +31,29 @@ const initialErrors = {
     address: "",
 };
 
+const initialSuccess = {
+    name: "",
+    email: "",
+    pwd: "",
+    confirmpwd: "",
+    phone: "",
+    gender: "",
+    zipcode: "",
+    address1: "",
+    address2: "",
+    address: "",
+};
+
 const SignUpProvider = ({ children }) => {
     const [signup, setSignup] = useState(initialState);
     const [errors, setErrors] = useState(initialErrors);
+    const [success, setSuccess] = useState(initialSuccess);
     const [isEmailChecked, setIsEmailChecked] = useState(false);
     const [isReadonly, setIsReadonly] = useState({
         zipcode: false,
         address1: false,
         address2: false,
     });
-
     const [verificationCode, setVerificationCode] = useState('');
     const [verificationAttempts, setVerificationAttempts] = useState(0);
     const [isEmailVerified, setIsEmailVerified] = useState(false);
@@ -53,13 +66,22 @@ const SignUpProvider = ({ children }) => {
     const goSuccess = (name) => navigate(`/signup/success`, { state: { name } });
 
     const updateSignUpData = (field, value) => {
+        if (field === 'email') {
+            // 이메일이 변경되면 인증 상태를 초기화
+            setIsEmailVerified(false);  // 이메일 인증 상태 리셋
+            setVerificationCode('');  // 인증 코드 리셋
+            setVerificationAttempts(0);  // 인증 시도 횟수 리셋
+            setErrorVerification('');  // 인증 오류 메시지 리셋
+            setIsEmailChecked(false);  // 이메일 중복 체크 초기화
+        }
+
         setSignup((prevData) => ({
             ...prevData,
             [field]: value,
         }));
-
         validateField(field, value);
     };
+
 
     const checkEmailDuplication = async () => {
         if (!signup.email) {
@@ -82,6 +104,10 @@ const SignUpProvider = ({ children }) => {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
                     ...prevErrors,
+                    email: "",
+                }));
+                setSuccess((prevSuccess) => ({
+                    ...prevSuccess,
                     email: "사용 가능한 이메일입니다.",
                 }));
             } else {
@@ -136,14 +162,22 @@ const SignUpProvider = ({ children }) => {
 
             if (response.data.success) {
                 setIsEmailVerified(true);
-                setErrorVerification("인증번호가 일치합니다.");
+                setErrorVerification("");
+                setSuccess((prevSuccess) => ({
+                    ...prevSuccess,
+                    email: "인증번호가 일치합니다.",
+                }));
             } else {
                 setErrorVerification("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
                 setVerificationAttempts(prevAttempts => prevAttempts + 1);
             }
         } catch (error) {
             console.error("인증번호 확인 실패:", error);
-            setErrorVerification("인증번호 확인 중 오류가 발생했습니다.");
+            if (error.response.status === 400) {
+                setErrorVerification(error.response.data.message);
+            } else {
+                setErrorVerification("인증번호 확인 중 오류가 발생했습니다.");
+            }
         }
     };
 
@@ -274,6 +308,10 @@ const SignUpProvider = ({ children }) => {
                 alert(errorMessage);
             } else {
                 console.error("회원가입 요청 실패:", error);
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    email: "회원가입 중 문제가 발생했습니다.",
+                }));
                 alert("회원가입 중 문제가 발생했습니다. 다시 시도해주세요.");
             }
         }
@@ -301,6 +339,7 @@ const SignUpProvider = ({ children }) => {
             value={{
                 signup,
                 errors,
+                success,  // Success 상태 추가
                 isReadonly,
                 isEmailChecked,
                 isEmailVerified,

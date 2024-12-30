@@ -7,6 +7,7 @@ const Join = () => {
     const {
         signup,
         errors,
+        success, // success state added
         isReadonly,
         isEmailChecked,
         isEmailVerified,
@@ -57,6 +58,7 @@ const Join = () => {
                     </div>
                     <div className='errorWrap'>
                         {errors.name && <span className="error">{errors.name}</span>}
+                        {success.name && <span className="success">{success.name}</span>}
                     </div>
 
                     {/* 이메일 입력 */}
@@ -73,11 +75,12 @@ const Join = () => {
                     </div>
                     <div className='errorWrap'>
                         {errors.email && <span className={isEmailChecked ? "success" : "error"}>{errors.email}</span>}
+                        {success.email && <span className="success">{success.email}</span>}
                     </div>
 
                     {/* 인증번호 발송 버튼 */}
                     <div className="join-align">
-                        {isEmailChecked ? (
+                        {isEmailChecked && !isEmailVerified ? (
                             <input
                                 type="button"
                                 className="checkBtn"
@@ -97,7 +100,7 @@ const Join = () => {
                     </div>
 
                     {/* 이메일 인증번호 관련 입력 */}
-                    {isEmailChecked && (
+                    {isEmailChecked && !isEmailVerified && (
                         <div className="join-align">
                             <input
                                 className="emailbox"
@@ -111,11 +114,17 @@ const Join = () => {
 
                     {/* 인증번호 관련 에러 메시지 */}
                     <div className="errorWrap">
-                        {errorVerification && <span className="error">{errorVerification}</span>}
+                        {errorVerification && errorVerification !== "인증번호가 일치합니다" && <span className="error">{errorVerification}</span>}
                     </div>
 
+                    {isEmailVerified && (
+                        <div className="errorWrap">
+                            <span className="success">인증번호가 일치합니다</span>
+                        </div>
+                    )}
+
                     {/* 이메일 인증번호 관련 입력 */}
-                    {isEmailChecked && (
+                    {isEmailChecked && !isEmailVerified && (
                         <div className="join-align">
                             <input
                                 className="checkBtn"
@@ -161,6 +170,7 @@ const Join = () => {
                     <div className='errorWrap'>
                         {errors.confirmpwd && <span className="error">{errors.confirmpwd}</span>}
                     </div>
+
                     {/* 성별 선택 */}
                     <div className="join-align">
                         <label>성별</label>

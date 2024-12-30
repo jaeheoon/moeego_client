@@ -1,7 +1,7 @@
-import React, { createContext, useState } from "react";
-import checkPost from "../../js/daumpost";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import apiAxios from "../../api/apiAxios";
+import checkPost from "../../js/daumpost";
 
 const ProSignUpContext = createContext();
 
@@ -15,7 +15,12 @@ const initialState = {
     zipcode: "",
     address1: "",
     address2: "",
-    address: "",
+    address: "", // 서버로 통합된 주소를 전송
+    // Add new fields for the signup data coming from previous page
+    mainCateNo: "",
+    checkCategories: [],
+    oneintro: "",
+    intro: "",
 };
 
 const initialErrors = {
@@ -31,35 +36,65 @@ const initialErrors = {
     address: "",
 };
 
+const initialSuccess = {
+    name: "",
+    email: "",
+    pwd: "",
+    confirmpwd: "",
+    phone: "",
+    gender: "",
+    zipcode: "",
+    address1: "",
+    address2: "",
+    address: "",
+};
+
 const ProSignUpProvider = ({ children }) => {
     const [signup, setSignup] = useState(initialState);
     const [errors, setErrors] = useState(initialErrors);
+    const [success, setSuccess] = useState(initialSuccess);
     const [isEmailChecked, setIsEmailChecked] = useState(false);
     const [isReadonly, setIsReadonly] = useState({
         zipcode: false,
         address1: false,
         address2: false,
     });
-
-    const navigate = useNavigate();
-
     const [verificationCode, setVerificationCode] = useState('');
     const [verificationAttempts, setVerificationAttempts] = useState(0);
     const [isEmailVerified, setIsEmailVerified] = useState(false);
     const [errorVerification, setErrorVerification] = useState("");
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    // Extract state data passed from the previous page
+    const { mainCateNo, checkCategories, oneintro, intro } = location.state || {};
+
+    useEffect(() => {
+        // If state data is available, update the signup form state
+        if (mainCateNo) setSignup(prev => ({ ...prev, mainCateNo }));
+        if (checkCategories) setSignup(prev => ({ ...prev, checkCategories }));
+        if (oneintro) setSignup(prev => ({ ...prev, oneintro }));
+        if (intro) setSignup(prev => ({ ...prev, intro }));
+    }, [mainCateNo, checkCategories, oneintro, intro]);
 
     const goMain = () => navigate(`/`);
     const goLogin = () => navigate(`/login`);
     const goSuccess = (name) => navigate(`/signup/success`, { state: { name } });
 
     const updateSignUpData = (field, value) => {
+        if (field === 'email') {
+            setIsEmailVerified(false);
+            setVerificationCode('');
+            setVerificationAttempts(0);
+            setErrorVerification('');
+            setIsEmailChecked(false);
+        }
+
         setSignup((prevData) => ({
             ...prevData,
             [field]: value,
         }));
-
-        // 오류 초기화 후 유효성 검사
-        setErrors((prevErrors) => ({ ...prevErrors, [field]: "" }));
         validateField(field, value);
     };
 
@@ -75,7 +110,7 @@ const ProSignUpProvider = ({ children }) => {
 
         if (errors.email) {
             setIsEmailChecked(false);
-            return; // 이메일 형식 오류가 있으면 실행하지 않음
+            return;
         }
 
         try {
@@ -84,6 +119,10 @@ const ProSignUpProvider = ({ children }) => {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
                     ...prevErrors,
+                    email: "",
+                }));
+                setSuccess((prevSuccess) => ({
+                    ...prevSuccess,
                     email: "사용 가능한 이메일입니다.",
                 }));
             } else {
@@ -134,18 +173,24 @@ const ProSignUpProvider = ({ children }) => {
                 num: verificationCode,
             });
 
-            console.log(response);
-
             if (response.data.success) {
                 setIsEmailVerified(true);
-                setErrorVerification("인증번호가 일치합니다.");
+                setErrorVerification("");
+                setSuccess((prevSuccess) => ({
+                    ...prevSuccess,
+                    email: "인증번호가 일치합니다.",
+                }));
             } else {
                 setErrorVerification("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
                 setVerificationAttempts(prevAttempts => prevAttempts + 1);
             }
         } catch (error) {
             console.error("인증번호 확인 실패:", error);
-            setErrorVerification("인증번호 확인 중 오류가 발생했습니다.");
+            if (error.response.status === 400) {
+                setErrorVerification(error.response.data.message);
+            } else {
+                setErrorVerification("인증번호 확인 중 오류가 발생했습니다.");
+            }
         }
     };
 
@@ -170,10 +215,10 @@ const ProSignUpProvider = ({ children }) => {
                 if (!value) {
                     error = "비밀번호를 입력해주세요.";
                 } else if (
-                    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`|}{[\]:;?,.<>]).{12,20}$/.test(value)
+                    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`|}{[\]:;?,.<>]).{8,20}$/.test(value)
                 ) {
                     error =
-                        "비밀번호는 대소문자, 숫자, 특수문자를 포함하며, 12~20자리여야 합니다.";
+                        "비밀번호는 대소문자, 숫자, 특수문자를 포함하며, 8~20자리여야 합니다.";
                 }
                 break;
             case "confirmpwd":
@@ -206,13 +251,12 @@ const ProSignUpProvider = ({ children }) => {
                 break;
         }
 
-        // 오류 상태 업데이트
         setErrors((prevErrors) => ({
             ...prevErrors,
-            [field]: error || "", // 오류 메시지 없으면 빈 문자열로 설정
+            [field]: error || "",
         }));
 
-        return error || null; // 오류가 없으면 null 반환
+        return error || null;
     };
 
     const validateForm = () => {
@@ -232,6 +276,58 @@ const ProSignUpProvider = ({ children }) => {
 
         setErrors(tempErrors);
         return isValid;
+    };
+
+    const submitSignupForm = async (mainCateNo, checkCategories, oneintro, intro) => {
+        if (!isEmailChecked) {
+            alert("이메일 중복 체크를 완료해주세요.");
+            return;
+        }
+
+        if (!isEmailVerified) {
+            alert("이메일 인증을 완료해주세요.");
+            return;
+        }
+
+        if (!validateForm()) {
+            alert("입력한 정보를 확인해주세요.");
+            return;
+        }
+
+        try {
+            const combinedAddress = `${signup.address1} ${signup.address2} (${signup.zipcode})`.trim();
+            const dataToSubmit = {
+                ...signup,
+                address: combinedAddress,
+                gender: signup.gender === "M" ? 1 : signup.gender === "F" ? 2 : 0, // 성별을 숫자 형식으로 변환
+                mainCateNo: mainCateNo, // 페이지에서 전달받은 mainCateNo
+                subCategories: checkCategories, // 선택한 하위 카테고리들
+                oneIntro: oneintro, // 페이지에서 전달받은 oneIntro
+                intro: intro, // 페이지에서 전달받은 intro
+            };
+
+            const response = await apiAxios.post("/api/pro/join", dataToSubmit);
+
+            if (response.status === 200) {
+                goSuccess(signup.name);
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                const errorMessage = error.response.data || "잘못된 요청입니다.";
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    email: errorMessage,
+                }));
+                alert(errorMessage);
+            } else {
+                console.error("회원가입 요청 실패:", error);
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    email: "회원가입 중 문제가 발생했습니다.",
+                }));
+                alert("회원가입 중 문제가 발생했습니다. 다시 시도해주세요.");
+            }
+        }
     };
 
     const handleAddressSearch = () => {
@@ -255,22 +351,23 @@ const ProSignUpProvider = ({ children }) => {
             value={{
                 signup,
                 errors,
+                success,
                 isReadonly,
                 isEmailChecked,
-                errorVerification,
                 isEmailVerified,
                 verificationCode,
                 verificationAttempts,
+                errorVerification,
                 setVerificationCode,
+                setIsEmailChecked,
                 updateSignUpData,
                 handleAddressSearch,
-                goMain,
-                goLogin,
-                goSuccess,
-                validateForm,
+                submitSignupForm,
                 checkEmailDuplication,
                 handleEmailVerification,
                 handleResendVerification,
+                goMain,
+                goLogin,
             }}
         >
             {children}
