@@ -22,14 +22,14 @@ apiAxios.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        if (error.response && error.response.status === 401 && !originalRequest._retry) {
+        if (error.response && error.response.status === 401 && originalRequest && !originalRequest._retry) {
             originalRequest._retry = true;
 
             const reissueSuccess = await fetchReissue();
             if (reissueSuccess) {
                 const newAccessToken = window.localStorage.getItem("access");
                 originalRequest.headers["authorization"] = `Bearer ${newAccessToken}`;
-                return apiAxios(originalRequest);
+                return apiAxios(originalRequest); // 재요청
             }
         }
         return Promise.reject(error);

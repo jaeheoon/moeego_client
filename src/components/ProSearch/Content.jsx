@@ -12,6 +12,16 @@ const Content = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
 
+    const noneStyle = {
+        marginTop: "2rem",
+        borderTop: "1px solid #ccc",
+        borderBottom: "1px solid #ccc",
+        padding: "1rem",
+        display: "flex",
+        width: "95%",
+        boxSizing: "borderBox",
+    }
+
     const fetchItems = async (page = 1) => {
         setIsLoading(true);
         try {
@@ -53,9 +63,11 @@ const Content = () => {
         <div className="ContentWrap">
             <section>
                 <SearchBar />
-                {searchListItems.map((item) => (
+                {searchListItems === "" ? (searchListItems.map((item) => (
                     <SearchList key={item.proNo} item={item} proNo={item.proNo} />
-                ))}
+                ))) : (
+                    <div style={noneStyle}>등록된 달인과 서비스가 없습니다.</div>
+                )}
                 <ProSearchPaging
                     pages={pages}
                     currentPage={currentPage}
