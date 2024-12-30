@@ -15,6 +15,7 @@ const ProList = () => {
     const navigate = useNavigate();
     const { setIsLoggedIn, setLoginStatus } = useContext(AuthContext);
     const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 상태
+
     useEffect(() => {
         const checkLoginStatus = () => {
             const isLoggedIn = window.localStorage.getItem("login") === 'true'; // 로그인 상태 확인
@@ -81,6 +82,19 @@ const ProList = () => {
         }
     };
 
+    // 페이지 범위 계산 함수
+    const getPageRange = () => {
+        const pageNumbers = [];
+        const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
+        const endPage = Math.min(startPage + 4, totalPages);
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(i);
+        }
+
+        return pageNumbers;
+    };
+
     // 컴포넌트 마운트 시 API 호출
     useEffect(() => {
         fetchProData(currentPage); // 데이터 초기 로드
@@ -138,12 +152,12 @@ const ProList = () => {
                         disabled={currentPage === 1}>이전</button>
 
                     {/* 페이지 번호 버튼 */}
-                    {[...Array(totalPages).keys()].map((i) => (
+                    {getPageRange().map((i) => (
                         <button
                             key={i}
-                            onClick={() => handlePageChange(i + 1)}
-                            className={currentPage === i + 1 ? 'active' : ''}>
-                            {i + 1}
+                            onClick={() => handlePageChange(i)}
+                            className={currentPage === i ? 'active' : ''}>
+                            {i}
                         </button>
                     ))}
 

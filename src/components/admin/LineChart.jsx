@@ -59,7 +59,7 @@ const LineChart = ({ weekMemberData, weekProData , weekLeaveMemberData}) => {
                         scales: {
                             y: {
                                 beginAtZero: true, // Y축 시작점을 0으로 설정
-                                max: 20, // Y축 최대값을 50으로 설정
+                                max: 1000, // Y축 최대값을 50으로 설정
                                 stepsize:10,
                             },
                         },

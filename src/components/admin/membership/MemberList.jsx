@@ -1,20 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
 import apiAxios from '../../../api/apiAxios';
-import '../../../css/admin/Membership.css'; 
+import '../../../css/admin/Membership.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/member/AuthContext';
 
 const MemberList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [member, setMember] = useState([]);
+    const [member, setMember] = useState([]); // 회원 데이터
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-    const pageSize = 30; // 페이지 당 아이템 수 고정
+    const pageSize = 20; // 페이지 당 20개 아이템
 
     const navigate = useNavigate();
     const { setIsLoggedIn, setLoginStatus } = useContext(AuthContext);
     const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 상태
+
     useEffect(() => {
         const checkLoginStatus = () => {
             const isLoggedIn = window.localStorage.getItem("login") === 'true'; // 로그인 상태 확인
@@ -33,7 +34,7 @@ const MemberList = () => {
         };
 
         checkLoginStatus();
-    }, [navigate]); // `navigate`가 변경될 때마다 실행되도록 의존성 추가
+    }, [navigate]);
 
     // 회원 데이터 불러오기
     const fetchMemberData = async (page = 1) => {
@@ -82,6 +83,19 @@ const MemberList = () => {
         }
     };
 
+    // 페이지 범위 계산 함수
+    const getPageRange = () => {
+        const pageNumbers = [];
+        const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
+        const endPage = Math.min(startPage + 4, totalPages);
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(i);
+        }
+
+        return pageNumbers;
+    };
+
     return (
         <div className="membership-container">
             <div className='membership-inner-container'>
@@ -89,49 +103,49 @@ const MemberList = () => {
 
                 <div className="membership-table-wrapper">
                     <hr className="membership-divider" />
-                        <table className="membership-table">
-                            <thead>
-                                <tr>
-                                    <th>번호</th>
-                                    <th>이름</th>
-                                    <th>이메일</th>
-                                    <th>전화번호</th>
-                                    <th>주소</th>
-                                    <th>가입 날짜</th>
+                    <table className="membership-table">
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>이름</th>
+                                <th>이메일</th>
+                                <th>전화번호</th>
+                                <th>주소</th>
+                                <th>가입 날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {member.map((row) => (
+                                <tr key={row.memberNo}>
+                                    <td>{row.memberNo}</td>
+                                    <td>{row.name}</td>
+                                    <td>{parseEmail(row.email)}</td> {/* 이메일 파싱 */}
+                                    <td>{row.phone}</td>
+                                    <td>{row.address}</td>
+                                    <td>{formatDate(row.joinDate)}</td> {/* 날짜 형식 변환 */}
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {member.map((row) => (
-                                    <tr key={row.memberNo}>
-                                        <td>{row.memberNo}</td>
-                                        <td>{row.name}</td>
-                                        <td>{parseEmail(row.email)}</td> {/* 이메일 파싱 */} 
-                                        <td>{row.phone}</td>
-                                        <td>{row.address}</td>
-                                        <td>{formatDate(row.joinDate)}</td> {/* 날짜 형식 변환 */}
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                            ))}
+                        </tbody>
+                    </table>
 
                     {/* 페이지 네비게이션 추가 */}
                     <div className="membership-pagination">
-                        <button 
-                            onClick={() => handlePageChange(currentPage - 1)} 
+                        <button
+                            onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}>이전</button>
 
                         {/* 페이지 번호 버튼 */}
-                        {[...Array(totalPages).keys()].map((i) => (
+                        {getPageRange().map((i) => (
                             <button
                                 key={i}
-                                onClick={() => handlePageChange(i + 1)}
-                                className={currentPage === i + 1 ? 'active' : ''}>
-                                {i + 1}
+                                onClick={() => handlePageChange(i)}
+                                className={currentPage === i ? 'active' : ''}>
+                                {i}
                             </button>
                         ))}
 
-                        <button 
-                            onClick={() => handlePageChange(currentPage + 1)} 
+                        <button
+                            onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}>다음</button>
                     </div>
                 </div>
