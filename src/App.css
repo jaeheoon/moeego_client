@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   flex-direction: column;
+  background-color: white;
 }
 
 /* 메인 콘텐츠를 담는 컨테이너 */
