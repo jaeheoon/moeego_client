@@ -117,12 +117,6 @@ const Join = () => {
                         {errorVerification && errorVerification !== "인증번호가 일치합니다" && <span className="error">{errorVerification}</span>}
                     </div>
 
-                    {isEmailVerified && (
-                        <div className="errorWrap">
-                            <span className="success">인증번호가 일치합니다</span>
-                        </div>
-                    )}
-
                     {/* 이메일 인증번호 관련 입력 */}
                     {isEmailChecked && !isEmailVerified && (
                         <div className="join-align">

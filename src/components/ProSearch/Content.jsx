@@ -29,16 +29,18 @@ const Content = () => {
                 pg: page,
             };
 
-            // 'service', 'area', 'keyword' 값에 따라 동적으로 params 생성
+            // 'service'가 있으면 params에 추가
             if (service !== "") {
                 params.subCateNo = service;
             }
 
-            if (area !== "지역") {
+            // 'area'가 '지역' 또는 '전국'이 아니면 params에 추가
+            if (area !== "지역" && area !== "전국") {
                 params.location = area;
             }
 
-            if (keyword) { // keyword가 있을 때만 포함
+            // 'keyword'가 있으면 params에 추가
+            if (keyword) {
                 params.value = keyword;
             }
 

@@ -158,8 +158,6 @@ const SignUpProvider = ({ children }) => {
                 num: verificationCode,
             });
 
-            console.log(response);
-
             if (response.data.success) {
                 setIsEmailVerified(true);
                 setErrorVerification("");

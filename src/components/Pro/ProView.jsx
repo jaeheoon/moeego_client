@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ProContext } from "../../context/pro/ProContext";
 import apiAxios from "../../api/apiAxios"; // apiAxios import 추가
 import ProInfo from "./ProInfo";
@@ -9,6 +9,7 @@ import Reservation from "./Reservation";
 import ProViewPaging from "../Pro/ProViewPaging";
 import "../../css/Pro/Proview.css";
 import "../../css/Pro/SearchList.css";
+import { AuthContext } from '../../context/member/AuthContext';
 
 const ProView = () => {
     const location = useLocation();
@@ -22,7 +23,16 @@ const ProView = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [totalPages, setTotalPages] = useState(1); // Track total pages
 
+    const { isLoggedIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
     useEffect(() => {
+        if (!isLoggedIn) {
+            alert("로그인이 필요합니다.");
+            navigate('/login');
+            return;
+        }
         // Scroll to the top of the page when the component is loaded
         window.scrollTo(0, 0);
 

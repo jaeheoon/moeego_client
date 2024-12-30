@@ -189,6 +189,16 @@
     border: 2px solid #522823;
 }
 
+.proSearchBarWrap .no-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 5rem;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
 @media (max-width: 1200px) {
     .map-modalContent {
         width: 95%;
@@ -235,5 +245,172 @@
     .map-content-wrap-list .item-category,
     .map-content-wrap-list .item-star {
         display: inline-block; /* 나머지 항목들은 한 줄에 배치 */
+    }
+}
+
+/* 상세보기 모달: Overlay */
+.detail-modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* 더 어두운 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1010; /* 첫 번째 모달보다 위에 표시되도록 설정 */
+    transition: all 0.3s ease-in-out;
+}
+
+.detail-modalOverlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.detail-modalOverlay.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 상세보기 모달 콘텐츠 */
+.detail-modalOverlay .detail-modalContent {
+    background-color: white;
+    width: 90%;
+    max-width: 700px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.detail-modalOverlay .detail-mapName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.detail-modalOverlay .detail-mapName h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.detail-modalOverlay .detail-mapName button {
+    padding: 10px 20px;
+    background-color: #fd9bb9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.detail-modalOverlay .detail-mapName button:hover {
+    background-color: #522823;
+}
+
+/* 상세보기 모달 서비스 목록 */
+.detail-modalOverlay .detail-map-content-wrap {
+    padding: 2% 3%;
+    flex-grow: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    list-style-type: none;
+    margin: 0;
+    font-size: 15px;
+}
+
+.detail-map-content-wrap .detail-map-content-wrap-list {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-map-content-wrap-list:hover {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.detail-map-content-wrap .service-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.detail-map-content-wrap-list .detail-item-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* 모달 내부에서 버튼 */
+.detail-map-content-wrap .goProViewButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fd9bb9;
+    color: white;
+    border: 2px solid #fd9bb9;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.detail-map-content-wrap .goProViewButton:hover {
+    background-color: #522823;
+    border: 2px solid #522823;
+    color: white;
+}
+
+/* 모바일에서 모달 크기 조정 */
+@media (max-width: 768px) {
+    .detail-modalOverlay .detail-modalContent {
+        width: 95%;
+        height: 60%;
+    }
+
+    .detail-modalOverlay .detail-mapName {
+        padding: 3.5%;
+    }
+
+    .detail-map-content-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: top;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 2% 1.5%;
+    }
+
+    .detail-map-content-wrap-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 14px;
+    }
+
+    .detail-map-content-wrap .service-name {
+        font-size: 14px;
+    }
+
+    .detail-map-content-wrap .goProViewButton {
+        font-size: 12px;
+        padding: 6px 12px;
     }
 }
