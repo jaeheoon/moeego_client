@@ -8,6 +8,7 @@
     padding: 0;
     margin: 0 auto;
     box-sizing: border-box;
+    min-height: 80vh;
 }
 
 .write-wrap>div:nth-child(1) {
@@ -20,10 +21,11 @@
     padding: 20px;
     width: 80%;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     color: #333;
     box-sizing: border-box;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15), /* 메인 그림자 */
+                -5px -5px 15px rgba(255, 255, 255, 0.7); /* 상단 하이라이트 그림자 */
 }
 
 /* 셀렉트 박스와 버튼 컨테이너 */
@@ -238,6 +240,7 @@
     .write-container {
         width: 100%;
         height: 100%;
+        box-shadow: none;
     }
 
     .write-container .content-container {
