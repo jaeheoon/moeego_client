@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import apiAxios from '../../api/apiAxios';
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 const LoginContext = createContext();
 
