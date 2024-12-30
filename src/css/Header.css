@@ -415,7 +415,6 @@
     display: flex;
     flex-direction: column;
     min-width: 150px;
-    font-weight: bold;
     background-color: #ffffff; /* 배경색 */
 }
 
@@ -453,7 +452,6 @@
     flex-direction: column;
     background-color: #ffffff; 
     border: 6px solid #ffe4ea; 
-    font-weight: bold;
     border-radius: 1em;
     box-sizing: border-box;
     padding: 2rem 2rem 2rem 2rem;
@@ -465,14 +463,20 @@
 
 .ToggleMenu .ToggleMenuList div:nth-child(1) {
     color: #525252;
-    align-items: center;
 }
 
-.ToggleMenu .ToggleMenuList .userInfoName:hover {
-    cursor: pointer;
-    color: #2d2228;
+.ToggleMenu .ToggleMenuList .userInfoName {
+    font-size: 1rem;
+}
+
+.ToggleMenu .ToggleMenuList .userInfoName,
+.ToggleMenu .ToggleMenuList .ToggleMenuListLink {
     font-weight: bold;
 }
+/* .ToggleMenu .ToggleMenuList .userInfoName:hover {
+    color: #2d2228;
+    font-weight: bold;
+} */
 
 .ToggleMenu .ToggleMenuList div:nth-child(2),
 .ToggleMenu .ToggleMenuList div:nth-child(3) {
@@ -495,11 +499,31 @@
     cursor: pointer;
     text-decoration: underline;
 }
+/* .ToggleMenu .ToggleMenuList .Togglecss ,
+.ToggleMenu .ToggleMenuList .proAccess{
+    border-radius: 10px;
+    border:3px solid #eee;
+} */
 
 .ToggleMenu .ToggleMenuList .Logout {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.ToggleMenu .ToggleMenuList .Logout div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ToggleMenu .ToggleMenuList .Logout div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .proAccess {
@@ -517,13 +541,24 @@
     text-decoration: underline;
 }
 
-.ToggleMenu .ToggleMenuList .Logout a {
+.ToggleMenu .ToggleMenuList .Logout div a {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border:3px solid #eee;
     text-decoration: none;
     color: #b3b3b3;
     font-weight: normal;
 }
 
-.ToggleMenu .ToggleMenuList .Logout a:hover {
+.ToggleMenu .ToggleMenuList .Logout div a:hover {
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 3px solid red;
     color: red;
 }
 
