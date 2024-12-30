@@ -407,7 +407,7 @@
 
 .ToggleMenu {
     position: absolute; /* user-menu 아래에 위치 */
-    top: 100%; /* user-menu 아래로 배치 */
+    top: 101%; /* user-menu 아래로 배치 */
     right: 0;
     z-index: 9999;
     border-radius: 0.5em;
@@ -415,6 +415,20 @@
     display: flex;
     flex-direction: column;
     min-width: 150px;
+    font-weight: bold;
+    background-color: #ffffff; /* 배경색 */
+}
+
+.ToggleMenu::after {
+    content: '';
+    position: absolute;
+    top: 5px; 
+    left: 23%; 
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent; /* 삼각형 왼쪽 */
+    border-right: 10px solid transparent; /* 삼각형 오른쪽 */
+    border-bottom: 10px solid #ffe4ea; /* 삼각형 색상 */
 }
 
 /* 모달 외부를 클릭하면 닫히도록 배경 처리 */
@@ -437,7 +451,9 @@
 .ToggleMenu .ToggleMenuListWrap .ToggleMenuList {
     display: flex;
     flex-direction: column;
-    background-color: #ffe4ea;
+    background-color: #ffffff; 
+    border: 6px solid #ffe4ea; 
+    font-weight: bold;
     border-radius: 1em;
     box-sizing: border-box;
     padding: 2rem 2rem 2rem 2rem;
