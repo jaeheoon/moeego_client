@@ -16,7 +16,7 @@ const MyPageProvider = ({ children }) => {
     const [profileImage, setProfileImage] = useState(localStorage.getItem('userprofile'));
     const [isSaving, setIsSaving] = useState(false);
     const [isProfileImageChanged, setIsProfileImageChanged] = useState(false);
-    const { isLoggedIn, loginEmail, loginUser, setLoginUser, loginStatus } = useContext(AuthContext);
+    const { isLoggedIn, loginEmail, loginUser, setLoginUser, loginStatus, setLoginProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -151,6 +151,7 @@ const MyPageProvider = ({ children }) => {
                     const newProfileImageUrl = response.data.data;
 
                     // 성공적으로 업로드된 후, 프로필 이미지 상태와 로컬 스토리지를 업데이트
+                    setLoginProfile("https://kr.object.ncloudstorage.com/moeego/profile/" + newProfileImageUrl);
                     setProfileImage("https://kr.object.ncloudstorage.com/moeego/profile/" + newProfileImageUrl);
                     localStorage.setItem('userprofile', "https://kr.object.ncloudstorage.com/moeego/profile/" + newProfileImageUrl);
 
