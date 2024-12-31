@@ -25,7 +25,7 @@
     width: 100%;
     border-radius: 10px;
     box-sizing: border-box;
-    background-color: #FCF5EA;
+    background-color: var(--guideBackground-color);
     padding: 1.3em 1em;
     margin-bottom: 2em;
 }

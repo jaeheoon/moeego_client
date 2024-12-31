@@ -8,6 +8,7 @@ import Loading from '../loading/loading';
 import {AuthContext} from '../../context/member/AuthContext';
 import apiAxios from '../../api/apiAxios';
 import Paging from './Paging';
+import { useDarkMode } from '../../context/darkmode/DarkModeContext';
 
 const ArticleMain = () => {
     const { articles,
@@ -24,6 +25,14 @@ const ArticleMain = () => {
     const {isLoggedIn} = useContext(AuthContext);
     const [hotArticles, setHotArticles] = useState([]);
     const navigate = useNavigate();
+
+    const { isDarkMode } = useDarkMode(); // 다크 모드 상태 가져오기
+
+    useEffect(() => {
+        const theme = isDarkMode ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [isDarkMode]);
+
     // 인기 게시글
     useEffect(() => {
         const fetchHotArticles = async () => {

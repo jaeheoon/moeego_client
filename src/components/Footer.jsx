@@ -33,7 +33,7 @@ function Footer() {
           사업자등록번호:000-00-00000 · 통신판매업신고증:제 2024-서울강남-00000 호 · 직업정보제공사업 신고번호:J1200020240000
         </div>
       </div>
-      <p>이메일: moeego@moeego.com | Copyright ©모이고</p>
+      <p>이메일: bit.moeego@gmail.com | Copyright ©모이고</p>
     </footer>
   );
 }

@@ -102,8 +102,11 @@
 .ChangeAddressContainer #zipcode:active,
 .ChangeAddressWrap input[type="text"]:not(:placeholder-shown),
 .ChangeAddressContainer #zipcode:not(:placeholder-shown) {
+    border: none;
     border-bottom: 1px solid lightcoral;
     box-sizing: border-box;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .ChangeAddressWrap .error-message {

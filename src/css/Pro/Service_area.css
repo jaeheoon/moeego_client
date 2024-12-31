@@ -16,8 +16,8 @@
 }
 
 .service_areaHeader .selectedService {
-    background-color: black; /* 배경색을 검은색으로 설정 */
-    color: white; /* 글자색을 흰색으로 설정 */
+    background-color: var(--background-color); /* 배경색을 검은색으로 설정 */
+    color: var(--text-color); /* 글자색을 흰색으로 설정 */
 }
 
 .service_areaHeader .serviceBtn, .service_areaHeader .filterResetBtn {

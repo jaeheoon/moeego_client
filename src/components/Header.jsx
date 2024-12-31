@@ -24,12 +24,14 @@ function Header() {
   const navigate = useNavigate();
 
   // 다크모드
-  // const { isDarkMode, toggleDarkMode } = useDarkMode();
-
-  // React.useEffect(() => {
-  //   const theme = isDarkMode ? "dark" : "light";
-  //   document.documentElement.setAttribute("data-theme", theme);
-  // }, [isDarkMode]);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const [isDark,setIsDark] = useState("");
+  React.useEffect(() => {
+    const theme = isDarkMode ? "dark" : "light";
+    setIsDark(theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    console.log("Theme applied:", theme); // 디버깅용
+  }, [isDarkMode]);
   //
   
   useEffect(() => {
@@ -224,10 +226,6 @@ function Header() {
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
           )}
         </div>
-        {/* 다크모드 버튼 */}
-        {/* <button onClick={toggleDarkMode} style={{ position: "fixed", top: 10, right: 10 }}>
-        {isDarkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
-        </button> */}
         {/* 드롭다운 메뉴 */}
         {isMenuOpen && (
           <div className='dropdown-menu' ref={dropdownRef}>
@@ -319,6 +317,19 @@ function Header() {
           <button className="search-button" onClick={() => handleSearch(searchValue)}>
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z" fill="#ffffff"></path> </g></svg>
           </button>
+        </div>
+
+        {/* 다크모드 버튼 */}
+        <div className="toggle-switch">
+          <input 
+            type="checkbox" 
+            id="darkModeToggle" 
+            checked={isDarkMode} 
+            onChange={toggleDarkMode} 
+          />
+          <label className="toggle-slider" htmlFor="darkModeToggle">
+            {isDark}
+          </label>
         </div>
 
         {/* 검색 버튼 */}

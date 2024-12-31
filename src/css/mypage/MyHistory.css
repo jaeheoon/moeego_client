@@ -50,18 +50,18 @@
 
 .myHistoryLinkWrap a {
     text-decoration: none; /* 기본적으로 밑줄 제거 */
-    color: rgb(200, 200, 200); /* 기본 글씨 색상 */
+    color: var(--text-color); /* 기본 글씨 색상 */
 }
 
 .myHistoryLinkWrap a:hover {
-    color: rgb(150, 150, 150); /* 호버 시 색상 */
+    color: var(--text-color); /* 호버 시 색상 */
 }
 
 /* 활성화된 탭 스타일 */
 .myHistoryLinkWrap div.active {
-    color: black; /* 활성화된 탭 글씨 색상 */
+    color: var(--pinkText-color); /* 활성화된 탭 글씨 색상 */
     font-weight: bold; /* 글씨 두껍게 */
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--pinkText-color);
 }
 
 /* hr 스타일 */
@@ -82,8 +82,8 @@
 }
 .myArticleItemCategory {
     display: inline-block;
-    border: 1px solid #eee;
-    background-color: #eee;
+    border: 1px solid var(--locationBackground-color);
+    background-color: var(--locationBackground-color);
     font-weight: bold;
     font-size: 10pt;
     padding: 3px 5px;
@@ -94,7 +94,7 @@
 .myArticleItemContentWrap .myArticleItemTitle {
     font-size: 12pt;
     font-weight: bold;
-    color: black;
+    color: var(--text-color);
 }
 .myArticleItemContentWrap .myArticleItemContent {
     font-size: 11pt;
@@ -112,7 +112,7 @@
 }
 .myArticleItemPage .myArticleDeleteBtnWrap .myArticleDeleteBtn {
     border: none;
-    background-color: white;
+    background-color: var(--background-color);
     cursor: pointer;
     align-items: center;
     height: 1.75rem;
@@ -132,7 +132,7 @@
 .MyCommentItem .MyCommentItemContent {
     font-size: 12pt;
     font-weight: bold;
-    color: black;
+    color: var(--text-color);
 }
 .MyCommentItem .MyCommentItemTitle {
     font-size: 11pt;
@@ -150,7 +150,7 @@
 }
 .MyCommentItem .MyCommentDeleteBtnWrap .MyCommentDeleteBtn {
     border: none;
-    background-color: white;
+    background-color: var(--background-color);
     cursor: pointer;
     align-items: center;
     height: 1.75rem;

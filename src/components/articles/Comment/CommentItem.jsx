@@ -106,9 +106,6 @@ const CommentItem = ({ item }) => {
                                             }}
                                         />
                                     </div>
-                                    <div className="charCounter">
-                                        {commentContent.length} / {maxCharacters}
-                                    </div>
                                     <button className="replySubmitBtn" onClick={handleUpdateSubmit}>수정</button>
                                 </div>
                             ) : (

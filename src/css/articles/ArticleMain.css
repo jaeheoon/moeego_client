@@ -3,6 +3,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .ArticleMainWrap {
@@ -17,7 +19,7 @@
     justify-content: space-between;
     position: sticky;
     top: 50px;
-    background-color: #ffffff;
+    background-color: var(--background-color);
     z-index: 9990;
 }
 
@@ -116,12 +118,12 @@
 
 .life-topic-layout section ul li a {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
     box-sizing: border-box;
 }
 
 .life-topic-layout section ul li:hover {
-    background-color: #fcc1cc;
+    background-color: var(--pinkBackground-color);
     border-radius: 10px;
 }
 
@@ -135,8 +137,8 @@
     width: 100%;
     border-radius: 10px;
     box-sizing: border-box;
-    background-color: #f1f1f1;
-    color: black;
+    background-color: var(--noticeBackground-color);
+    color: var(--text-color);
 }
 
 .NotionContainer div:nth-child(1) {
@@ -189,7 +191,7 @@
     justify-content: center;
     width: calc(50% - 0.5em);
     box-sizing: border-box;
-    background-color: rgb(226, 255, 252);
+    background-color: var(--HotBackground-color);
     border-radius: 10px;
     padding: 10px;
 }
@@ -216,7 +218,7 @@
 
 .HotArticleContainer .HotList .HotWrap .viewWrap .titleWrap div:nth-child(1) {
     width: 90%;
-    color: #828282;
+    color: var(--white82Text-color);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -305,7 +307,7 @@
     justify-content: center;
     width: calc(50% - 0.5em);
     box-sizing: border-box;
-    background-color: #ffdae0;
+    background-color: var(--latestBackground-color);
     border-radius: 10px;
     padding: 10px;
 }
@@ -337,7 +339,7 @@
     .titleWrap
     div:nth-child(1) {
     width: 90%;
-    color: #828282;
+    color: var(--white82Text-color);
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -432,7 +434,7 @@
 }
 .AllArticleContainer .FeedItemLink:hover {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 .AllArticleContainer .FeedItemLink:active {
     text-decoration: none;

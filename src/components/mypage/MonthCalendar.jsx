@@ -242,8 +242,10 @@ const MonthCalendar = () => {
     return days;
   };
 
-  const handleWriteReview = (proItemNo) => {
-    navigate(`/mypage/review/write?proItemNo=${proItemNo}`);
+  const handleWriteReview = (proItemNo, proName, proItemName) => {
+    navigate(`/mypage/review/write?proItemNo=${proItemNo}`,{
+      state: {proName: proName, proItemName : proItemName}
+    });
   };
 
   return (
@@ -310,7 +312,7 @@ const MonthCalendar = () => {
                       )}
 
                       {isPastReservation(schedule.time) && (
-                        <button className='review-btn' onClick={() => handleWriteReview(schedule.proItemNo)}>
+                        <button className='review-btn' onClick={() => handleWriteReview(schedule.proItemNo, schedule.proName, schedule.proItemName)}>
                           리뷰
                         </button>
                       )}

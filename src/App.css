@@ -5,7 +5,6 @@
   padding: 0;
   margin: 0;
   flex-direction: column;
-  background-color: white;
 }
 
 /* 메인 콘텐츠를 담는 컨테이너 */
@@ -16,21 +15,73 @@
 }
 
 /* 다크모드 */
-/* :root {
+:root {
   --background-color: #ffffff;
+  --grayBackground-color: #cacaca;
+  --locationBackground-color:#EFF9F9;
+  --searchbarBackground-color:#eee;
+  --calenderBackground-color:#ffe8ec;
+  --loginBackground-color:#f4f4f4;
+  --loginBtnBackground-color:#FFD8E4;
+  --pinkBackground-color:#fcc1cc;
+  --white32Background-color:#fff;
+  --whiteE8Background-color:#e8e8e8;
+  --noticeBackground-color:#F1F1F1;
+  --HotBackground-color:#E2FFFC;
+  --latestBackground-color:#ffdae0;
+  --guideBackground-color:#FCF5EA;
+  --commentBackground-color:#f9f9f9;
+  --whiteC2Background-color:#c2c2c2;
   --text-color: #000000;
+  --white23Text-color: #232323;
+  --white34Text-color: #343434;
+  --white44Text-color: #444;
+  --white82Text-color: #828282;
+  --white50Text-color: #504e4e;
+  --white55Text-color: #555555;
+  --grayText-color: #323232;
+  --reviewText-color: #626262;
+  --blackText-color: #fff;
+  --pinkText-color: black;
+  --locationText-color: #00C7AE;
 }
 
 [data-theme="dark"] {
-  --background-color: #121212;
+  --background-color: #282828;
+  --grayBackground-color:#585858;
+  --locationBackground-color:#323232;
+  --searchbarBackground-color:#282828;
+  --calenderBackground-color:#323232;
+  --loginBackground-color:#323232;
+  --loginBtnBackground-color:#323232;
+  --pinkBackground-color:#323232;
+  --white32Background-color:#323232;
+  --whiteE8Background-color:#2f2f2f;
+  --noticeBackground-color:#323232;
+  --HotBackground-color:#323232;
+  --latestBackground-color:#323232;
+  --guideBackground-color:#323232;
+  --commentBackground-color:#323232;
+  --whiteC2Background-color:#2f2f2f;
   --text-color: #ffffff;
-} */
+  --white23Text-color: #ffffff;
+  --white34Text-color: #ffffff;
+  --white44Text-color: #ffffff;
+  --white82Text-color: #ffffff;
+  --white50Text-color: #ffffff;
+  --white55Text-color: #ffffff;
+  --grayText-color: #ffffff;
+  --reviewText-color: #ffffff;
+  --blackText-color: #282828;
+  --pinkText-color: #fcc1cc;
+  --locationText-color: #EDEDED;
+}
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
 }
+
 
 @media (max-width: 1250px) {
   .main-content{

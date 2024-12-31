@@ -95,7 +95,7 @@ import { DarkModeProvider } from "./context/darkmode/DarkModeContext.jsx";
 const App = () => {
   return (
     <div className='App'>
-      {/* <DarkModeProvider> */}
+      <DarkModeProvider>
         <ChannelIO />
         <BrowserRouter>
           <AuthProvider>
@@ -205,7 +205,7 @@ const App = () => {
             </AdminProvider>
           </AuthProvider>
         </BrowserRouter>
-      {/* </DarkModeProvider> */}
+      </DarkModeProvider>
     </div>
   );
 };

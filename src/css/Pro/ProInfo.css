@@ -8,7 +8,7 @@
     flex-direction: column;
     width: 90%;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: var(--loginBackground-color);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
@@ -28,7 +28,7 @@
 .nickname {
     font-size: 24px;
     font-weight: bold;
-    color: #222;
+    color: var(--white23Text-color);
 }
 
 .icon-buttons .heart {
@@ -52,13 +52,13 @@
 
 /* Favorited heart (when isFavorite is true) */
 .icon-buttons .heart.favorited {
-    background-color: #fff; /* Light red background for favorited state */
+    background-color: var(--background-color); /* Light red background for favorited state */
     color: #ffbbb3; /* Red color */
 }
 
 /* Not favorited heart */
 .icon-buttons .heart.not-favorited {
-    background-color: #fff; /* White background for non-favorited state */
+    background-color: var(--background-color); /* White background for non-favorited state */
     color: #f2f2f2; /* Gray color */
 }
 
@@ -90,7 +90,7 @@
     font-weight: bold;
     color: #555;
     padding: 5px 10px;
-    background-color: #e8e8e8;
+    background-color: var(--whiteE8Background-color);
     border-radius: 20px;
 }
 
@@ -112,13 +112,13 @@
     width: 90%;
     font-size: 18px;
     font-weight: bold;
-    color: #444;
+    color: var(--white44Text-color);
     margin-bottom: 20px;
 }
 
 .detail-info {
     width: 90%;
-    background-color: #fff;
+    background-color: var(--background-color);
     border-radius: 10px;
     padding: 13px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -147,7 +147,7 @@
 .statistics-info-item-contents {
     font-size: 16px;
     font-weight: bold;
-    color: #222;
+    color: var(--white23Text-color);
 }
 
 .statistics-info-item-contents .rate {

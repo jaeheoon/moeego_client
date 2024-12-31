@@ -9,7 +9,7 @@
     width: 95%;
     max-width: 600px;
     margin: 10px auto;
-    background-color: #f9f9f9;
+    background-color: var(--commentBackground-color);
 }
 
 .comment-input-container {
@@ -38,7 +38,7 @@
     border: none;
     outline: none;
     font-size: 14px;
-    color: #333;
+    color: var(--grayText-color);
     background-color: transparent;
     padding: 5px;
 }
@@ -105,7 +105,7 @@
 /* 답글 버튼 */
 .replyBtn, .replyUpdateBtn, .replyDeleteBtn{
     border:none;
-    background-color: white;
+    background-color: var(--background-color);
     margin-bottom: 0.4rem;
     cursor: pointer;
     align-items: center;
@@ -149,7 +149,7 @@
     width: 95%;
     max-width: 600px;
     margin: 10px auto;
-    background-color: #f9f9f9;
+    background-color: var(--commentBackground-color);
 }
 .replyInputDiv{
     display: flex;
@@ -162,15 +162,15 @@
     border: none;
     outline: none;
     font-size: 14px;
-    color: #333;
+    color: var(--grayText-color);
     background-color: transparent;
     padding: 5px;
 }
 .replySubmitBtn, .commentSubmitBtn{
     width:10%;
     border:none;
-    background-color: #f9f9f9;
-    color:#504e4e;
+    background-color: var(--commentBackground-color);
+    color: var(--white50Text-color);
     font-size:0.8rem;
     margin:0;
     padding:0;
@@ -209,7 +209,7 @@
 .commentContent {
     margin: 0.2rem 0;
     display: flex;
-    color: #333;
+    color: var(--grayText-color);
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -228,7 +228,7 @@
 }
 /* mention 스타일 */
 .mention {
-    background-color: #f2f2f2;
+    background-color: var(--loginBackground-color);
     padding: 0.2rem;
     border-radius: 5px;
     color: #007bff;
@@ -246,6 +246,5 @@
         width: 90%;
         max-width: 600px;
         margin: 10px auto;
-        background-color: #f9f9f9;
     }
 }

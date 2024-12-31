@@ -15,7 +15,12 @@ const SearchArticleItem = ({item}) => {
                     </div>
                 </div>
                 <div className="searchArticleImageWrap">
-                    <img src="/image/cleaning.png" alt="Cleaning" />
+                    {item.imageUuids && item.imageUuids.length > 0 && (
+                        <img
+                            src={`https://kr.object.ncloudstorage.com/moeego/storage/${item.imageUuids[0]}`}
+                            alt='Feed Image'
+                        />
+                    )}
                 </div>
             </div>
             <div className="searchArticleAreaWrap">{item.area == '지역' ? "" : item.area}</div>

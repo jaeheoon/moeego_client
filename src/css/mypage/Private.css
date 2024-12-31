@@ -5,7 +5,9 @@
     justify-content: center;
     overflow-y: auto;
 }
-
+.UserPrivateInfoPage .SubTitle{
+    color: var(--text-color);
+}
 .UserPrivateInfoWrap {
     width: 80%;
     min-height: 80vh;
@@ -81,6 +83,7 @@
 }
 
 .UserPrivateInfoPage .MainContainer div {
+    color: var(--text-color);
     width: 95%;
 }
 
@@ -114,7 +117,7 @@
 }
 
 .UserPrivateInfoPage .LinkTag2:nth-child(1):hover {
-    color: black;
+    color: var(--text-color);
 }
 
 .UserPrivateInfoPage .LinkTag2:nth-child(2):hover {

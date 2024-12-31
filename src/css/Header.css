@@ -9,8 +9,8 @@
     box-sizing: border-box;
     flex-direction: column;
     padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--grayBackground-color);
     z-index: 9999;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .hamburger-menu svg:hover {
-    background-color: #cacaca;
+    background-color: var(--grayBackground-color);
     border-radius: 25px;
 }
 
@@ -107,12 +107,12 @@
 .header .ToggleMenuListLink a:link,
 .header .ToggleMenuListLink a:active {
     cursor: pointer;
-    color: #525252;
+    color: var(--text-color);
 }
 
 .header .ToggleMenuListLink a:hover {
     cursor: pointer;
-    color: #2d2228;
+    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -122,7 +122,8 @@
     top: 0;
     left: 0;
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--background-color);
+    color: var(--text-color);
     box-sizing: border-box;
     padding: 20px;
     width: 80%;
@@ -150,7 +151,7 @@
 
 .dropdown-menu ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-size: 1rem;
 }
 
@@ -188,7 +189,7 @@
 }
 
 .dropdown-menu .dropdown-menu-close-wrap .close-button:hover svg {
-    background-color: #cacaca;
+    background-color: var(--grayBackground-color);
     fill: #cacaca;
 }
 
@@ -308,7 +309,7 @@
 .HamburgerUserInfoButtonWrap input[type='button'] {
     width: 50%;
     border: 1px solid #f2f2f2;
-    background-color: #ffffff;
+    background-color: var(--background-color);
     padding: 0.3em 1em;
     box-sizing: border-box;
     transition: all 0.3s ease;
@@ -342,11 +343,11 @@
     background-color: transparent;
     padding: 5px 10px;
     font-size: 14px;
-    color: #ffffff;
+    color: var(--blackText-color);
 }
 
 .header .search-input::placeholder {
-    color: #ffffff;
+    color: var(--blackText-color);
     font-weight: 500;
 }
 
@@ -400,11 +401,76 @@
     height: 1.5em;
     width: 1.5em;
 }
-
+.header .user-icon .ToggleSvg path{
+    stroke: var(--text-color);
+}
 .header .chat {
     cursor: pointer;
 }
 
+/* 토글 버튼 */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 160px;
+    height: 40px;
+}
+
+.toggle-switch input {
+    display: none;
+}
+  
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toggle-switch {
+    width: 5rem;
+    height: 1.5rem;
+}
+
+.toggle-slider {
+    background-color: #ccc;
+    font-size: 0.8rem;
+}
+
+.toggle-slider::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    display: block;
+}
+
+input:checked + .toggle-slider {
+    background-color: #2196F3;
+}
+
+input:checked + .toggle-slider::before {
+    transform: translateX(56px);
+}
+
+/* 유저 토글 메뉴 */
 .ToggleMenu {
     position: absolute; /* user-menu 아래에 위치 */
     top: 101%; /* user-menu 아래로 배치 */
@@ -415,14 +481,14 @@
     display: flex;
     flex-direction: column;
     min-width: 150px;
-    background-color: #ffffff; /* 배경색 */
+    background-color: transparent; /* 배경색 */
 }
 
 .ToggleMenu::after {
     content: '';
     position: absolute;
     top: 5px; 
-    left: 23%; 
+    left: 9%; 
     width: 0;
     height: 0;
     border-left: 10px solid transparent; /* 삼각형 왼쪽 */
@@ -450,7 +516,7 @@
 .ToggleMenu .ToggleMenuListWrap .ToggleMenuList {
     display: flex;
     flex-direction: column;
-    background-color: #ffffff; 
+    background-color: var(--background-color);
     border: 6px solid #ffe4ea; 
     border-radius: 1em;
     box-sizing: border-box;
@@ -462,7 +528,7 @@
 }
 
 .ToggleMenu .ToggleMenuList div:nth-child(1) {
-    color: #525252;
+    color: var(--grayText-color);
 }
 
 .ToggleMenu .ToggleMenuList .userInfoName {
@@ -488,13 +554,13 @@
 
 .ToggleMenu .ToggleMenuList div:nth-child(2) a,
 .ToggleMenu .ToggleMenuList div:nth-child(3) a {
-    color: #525252;
+    color: var(--grayText-color);
     cursor: pointer;
 }
 
 .ToggleMenu .ToggleMenuList div:nth-child(2) a:hover,
 .ToggleMenu .ToggleMenuList div:nth-child(3) a:hover {
-    color: #333;
+    color: var(--grayText-color);
     font-weight: bold;
     cursor: pointer;
     text-decoration: underline;
@@ -531,11 +597,11 @@
     align-items: center;
     justify-content: left;
     width: 100%;
-    color: #525252;
+    color: var(--grayText-color);
 }
 
 .proAccess:hover {
-    color: #333;
+    color: var(--grayText-color);
     font-weight: bold;
     cursor: pointer;
     text-decoration: underline;
@@ -722,5 +788,23 @@
 
     .header .logo a img {
         width: 80%;
+    }
+
+    .toggle-switch {
+        width: 5rem;
+        height: 1.5rem;
+    }
+    
+    .toggle-slider::before {
+        display: none; /* 모바일에서는 슬라이딩 원을 숨김 */
+    }
+    
+    .toggle-slider:active {
+        transform: scale(0.98);
+    }
+    
+    input:checked + .toggle-slider {
+        background-color: #2196F3;
+        color: white;
     }
 }

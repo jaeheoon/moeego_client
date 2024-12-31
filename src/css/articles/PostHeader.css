@@ -22,12 +22,12 @@
 
 .category-breadcrumb-item {
     font-size: 14px;
-    color: #666;
+    color: var(--reviewText-color);
 }
 
 .category-breadcrumb-link {
     text-decoration: none;
-    color: #666;
+    color: var(--reviewText-color);
 }
 
 .breadcrumb-divider {

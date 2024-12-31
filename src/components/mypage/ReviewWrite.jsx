@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
 import '/src/css/mypage/ReviewWrite.css';
 import { ArticleContext } from '../../context/article/ArticleContext';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const ReviewWrite = () => {
     const userNo = localStorage.getItem("userno");
     const { reviewWrite } = useContext(ArticleContext);
 
+    const location = useLocation();
+    const { proName, proItemName } = location.state;
+    
     const searchParams = new URLSearchParams(location.search);
     const proItemNo = searchParams.get('proItemNo');
 
@@ -126,7 +129,7 @@ const ReviewWrite = () => {
 
                 {/* 평점 입력 */}
                 <div className="rating-container">
-                    <h3>개쩌는 엄청난 달인 - 서비스 이름</h3>
+                    <h3>{proName} - {proItemName}</h3>
                     <div>평점</div>
                     <div className="rating-stars">
                         {[1, 2, 3, 4, 5].map((star) => (

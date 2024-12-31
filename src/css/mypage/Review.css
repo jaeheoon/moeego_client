@@ -98,7 +98,7 @@
     section:nth-child(1)
     span {
     font-weight: 600;
-    color: #232323;
+    color: var(--text-color);
     font-size: 12pt;
 }
 .ReviewPage
@@ -128,7 +128,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    color: #343434;
+    color: var(--text-color);
     font-size: 10pt;
     margin-top:1.5rem;
 }
@@ -214,7 +214,7 @@
     .content {
     white-space: pre-wrap;
     width: 100%;
-    color: #323232;
+    color: var(--text-color);
     font-size: 12pt;
 }
 .ReviewPage
@@ -238,7 +238,7 @@
     article
     section:nth-child(5)
     span {
-    color: #323232;
+    color: var(--text-color);
     font-size: 11pt;
 }
 
@@ -265,7 +265,7 @@
     section:nth-child(6)
     .deleteReviewBtn {
     border: none;
-    background-color: white;
+    background-color: var(--background-color);
     color: #6a7685;
     cursor: pointer;
     margin: 0;

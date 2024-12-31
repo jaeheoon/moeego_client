@@ -4,7 +4,7 @@
     display: flex;
     margin: 0 auto;
     text-align: center;
-    background-color: white;
+    background-color: var(--background-color);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -26,7 +26,7 @@
 
 .footer .ulWrap ul {
     list-style: none;
-    color: #2b2b2b;
+    color: var(--grayText-color);
     font-weight: bold;
 }
 

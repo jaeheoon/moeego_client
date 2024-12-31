@@ -93,6 +93,7 @@
     align-items: center;
     width: 85%;
     text-align: left;
+    color: var(--text-color);
 }
 
 .Link .next {
@@ -127,7 +128,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    color: black;
+    color: var(--text-color);
 }
 
 .IntroductionWrap2 .next {
@@ -176,6 +177,7 @@
     display: flex;
     align-items: center;
     justify-items: center;
+    background-color: var(--background-color);
 }
 
 .UserInfoPage .Container div .Title input[type="text"] {
@@ -185,6 +187,8 @@
     border: none;
     outline: none;
     font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .UserInfoPage .Container div .Title input[type="text"]:focus,
@@ -322,6 +326,7 @@
     .IntroductionWrap
     .content
     textarea:not(:placeholder-shown) {
+    background-color: var(--background-color);
     border-bottom: 1px solid #fcc1cc;
 }
 
@@ -416,6 +421,7 @@
     }
 
     .UserInfoPage .UserInfoWrap .NickNameForm .Container .Title {
+        background-color: var(--background-color);
         width: 100%;
     }
 

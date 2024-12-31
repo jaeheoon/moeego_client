@@ -14,7 +14,7 @@
     width: 100%;
     max-width: 900px;
     height: auto;
-    background-color: #ffffff;
+    background-color: var(--background-color);
     border-radius: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -80,7 +80,7 @@
 }
 
 .calendar-table .day {
-    background-color: white;
+    background-color: var(--background-color);
     transition: background-color 0.2s;
 }
 
@@ -89,9 +89,10 @@
 }
 
 .calendar-table .selected {
-    background-color: #ffe8ec;
+    background-color: #fae8eb;
     z-index: 100;
     font-weight: bold;
+    color: black;
 }
 
 .calendar-table .has-schedule {
@@ -160,13 +161,13 @@
     padding: 15px;
     border: 1px solid #fcc1cc;
     border-radius: 1rem;
-    background-color: #fff7f8;
+    background-color: var(--calenderBackground-color);
 }
 
 .selected-date-info p {
     margin: 5px 0;
     font-size: 14px;
-    color: #333;
+    color: var(--text-color);
     word-break: break-word;
 }
 
@@ -250,7 +251,7 @@
 }
 
 .reservationUl .review-btn:hover {
-    color: #222;
+    color: var(--white23Text-color);
 }
 
 /* 반응형 스타일 */

@@ -33,7 +33,7 @@
     text-decoration: none;
     width: 100%;
     height: 100%;
-    color: black;
+    color: var(--text-color);
 }
 
 .ProfileSettingPage .ProfileImage {
@@ -116,7 +116,7 @@
     box-sizing: border-box;
     background-color: #fcc1cc;
     font-weight: bold;
-    color: white;
+    color: var(--text-color);
     border-radius: 10px;
     transition: all 0.25s ease-out;
 }
@@ -133,7 +133,7 @@
     justify-content: center;
     flex-direction: row;
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 
 .MyPage .Container div .Link .Title {

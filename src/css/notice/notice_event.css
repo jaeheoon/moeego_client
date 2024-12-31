@@ -77,7 +77,7 @@
 .noticeListWrap, .eventListWrap {
     display: flex;
     flex: 1;
-    background-color: #fff; /* 배경색 */
+    background-color: var(--background-color); /* 배경색 */
     width:45%;
     height: 45rem;
     padding: 15px;
@@ -104,7 +104,7 @@
     display: flex;
     align-items: center;
     flex: 1;
-    background-color: #fff; /* 배경색 */
+    background-color: var(--white32Background-color); /* 배경색 */
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -158,9 +158,9 @@
 }
 
 .noticeView h2 {
-    color:black;
+    color: var(--text-color);
     margin: 0;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .noticeView .content {

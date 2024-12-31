@@ -192,7 +192,7 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                 console.log("예약 성공:", response.data);
                 alert("예약이 완료되었습니다.");
                 closeModal();
-                window.location.reload();
+                // window.location.reload();
             })
             .catch((error) => {
                 if (error.response) {

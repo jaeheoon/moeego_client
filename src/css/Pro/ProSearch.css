@@ -150,19 +150,19 @@
 
 .proSearchListLink:visited {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 .proSearchListLink:hover {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 .proSearchListLink:link {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 .proSearchListLink:active {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 
 .proSearchListContentWrap {
@@ -219,7 +219,7 @@
 
 .proSearchListProInfoWrap span {
     font-size: 0.825rem;
-    color: #626262;
+    color: var(--reviewText-color);
     font-weight: bold;
 }
 
@@ -238,7 +238,8 @@
 }
 
 .ServiceAreaModal .closeButton {
-    color: black;
+    background-color: var(--background-color);
+    color: var(--text-color);
     border: none;
     border-radius: 5px;
     padding: 10px;

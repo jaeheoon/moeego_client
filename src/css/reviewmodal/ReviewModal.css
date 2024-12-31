@@ -32,7 +32,7 @@
 
 /* 모달 콘텐츠 */
 .review-modal-content {
-    background-color: #fff;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column; /* 세로로 정렬 */
     padding: 20px;
@@ -78,7 +78,7 @@
 .review-modal-content .content {
     font-size: 1rem;
     line-height: 1.6;
-    color: #333;
+    color: var(--grayText-color);
     word-wrap: break-word; /* 내용이 길어지면 자동으로 줄 바꿈 */
     white-space: normal; /* 긴 내용이 잘리지 않도록 설정 */
 }

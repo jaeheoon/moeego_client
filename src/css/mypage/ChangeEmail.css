@@ -46,6 +46,7 @@
 }
 
 .EmailWrap {
+    background-color: var(--background-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,8 +59,10 @@
     font-size: 12pt;
     border-style: solid;
     outline-style: none;
-    border: 1px solid #ffffff;
+    border: none;
     border-bottom: 1px solid #b2b2b2;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .EmailWrap input[type="text"]:focus,

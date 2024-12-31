@@ -8,7 +8,7 @@ h1{
 }
 .indexPage h1, .indexPage h2 {
     font-size: 24px;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
@@ -49,7 +49,7 @@ h1{
 .mainBannerWrap {
     text-align: center;
     padding: 40px 0;
-    background-color: white;
+    background-color: var(--background-color);
 }
 
 .mainBannerWrap h1 {
@@ -62,7 +62,7 @@ h1{
     align-items: center;
 }
 .searchBarWrap {
-    background-color: #eee;
+    background-color: var(--searchbarBackground-color);
     width: 70%;
     height: 50px;
     display: flex; /* Flexbox 사용 */
@@ -75,7 +75,7 @@ h1{
 }
 .searchBarWrap:focus-within{
     border: 2px solid #fcc1cc;
-    background-color: white;
+    background-color: #fff;
     box-sizing: border-box;
 }
 .searchBarWrap img {
@@ -88,7 +88,7 @@ h1{
     flex: 1; /* 입력창이 남은 공간 채우도록 설정 */
     padding: 10px;
     height: 30px;
-    background-color: #eee;
+    background-color: var(--searchbarBackground-color);
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
@@ -99,7 +99,7 @@ h1{
 
 .searchCategoryWrap input:focus {
     outline: none;
-    background-color: white;
+    background-color:#fff;
     box-sizing: border-box;
 }
 
@@ -109,10 +109,10 @@ h1{
     display: flex;
     gap: 20px;
 }
-.categories a:active{text-decoration: none; color:black;}
-.categories a:link{text-decoration: none; color:black;}
-.categories a:hover{text-decoration: none; color:black;}
-.categories a:visited{text-decoration: none; color:black;}
+.categories a:active{text-decoration: none; color: var(--text-color);}
+.categories a:link{text-decoration: none; color: var(--text-color);}
+.categories a:hover{text-decoration: none; color: var(--text-color);}
+.categories a:visited{text-decoration: none; color: var(--text-color);}
 
 .category-item {
     display: flex;
@@ -143,7 +143,7 @@ h1{
     width: 100%;
     flex-direction: column;
     padding: 40px;
-    background-color: white;
+    background-color: var(--background-color);
 }
 
 .reviewsWrap h2 {
@@ -154,14 +154,14 @@ h1{
     display: flex;
     width: 100%;
     gap: 20px;
-    color:black;
+    color: var(--text-color);
     height: auto;
 }
 
 .review-card {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--background-color);
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 8px;
@@ -286,7 +286,7 @@ h1{
     height: 100%;
     display: flex;
     font-size: 1.5em;
-    color: white;
+    color: var(--text-color);
     justify-content: center;
     align-items: center;
     opacity: 0;
@@ -419,7 +419,7 @@ h1{
 
 .indexPage .modal-footer button.primary {
     background-color: #3498db;
-    color: white;
+    color: var(--text-color);
 }
 
 .indexPage .modal-footer button.primary:hover {
@@ -465,7 +465,7 @@ h1{
     width: 50px;
     font-size: 24px;
     cursor: pointer;
-    background-color: white;
+    background-color: var(--background-color);
     color: #333;
     z-index: 10;
     position: absolute; /* 절대 위치 지정 */
@@ -497,7 +497,7 @@ h1{
 .locationsWrap {
     margin: 0 auto;
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--background-color);
     padding: 0 40px 20px 40px;
 }
 
@@ -527,11 +527,11 @@ h1{
     width:auto;
     height: auto;
     padding: 10px;
-    background-color: #EFF9F9;
+    background-color: var(--locationBackground-color);
     border-radius: 20px;
     font-size: 16px;
     white-space: nowrap;
-    color:#00C7AE;
+    color: var(--locationText-color);
 }
 
 .city-box-container {
@@ -568,7 +568,7 @@ h1{
   #map .marker-circle {
     width: 40px;
     height: 40px;
-    background-color: white;
+    background-color: var(--background-color);
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid #fd9bb9;
