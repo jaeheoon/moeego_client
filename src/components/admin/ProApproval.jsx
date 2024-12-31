@@ -42,7 +42,8 @@ const ProApproval = () => {
         try {
             const response = await apiAxios.get(`/api/admin/pro/approval?page=${page}&size=${pageSize}`);
             console.log('API 응답 데이터:', response.data); // API 응답 데이터 확인
-            setApprovedMember(response.data.content || []); // 바로 response.data로 설정
+            // 데이터가 배열 형태로 바로 전달되는 경우
+            setApprovedMember(response.data.content || []); // 바로 response.data.content로 설정
             setTotalPages(response.data.totalPages || 1); // 전체 페이지 수 설정
             setCurrentPage(page); // 현재 페이지 업데이트
         } catch (err) {
