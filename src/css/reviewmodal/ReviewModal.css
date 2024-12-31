@@ -131,10 +131,13 @@
     display: flex;
     justify-content: center;
 }
-.imageModalContent img {
+.imageModalContent{
+    display: flex;
     width: 100%;
+}
+.imageModalContent img {
     height: 100%;
-    min-width: 1200px;
+    min-width: 50%;
     max-width: 1400px;
     max-height: 800px;
     border-radius: 8px;

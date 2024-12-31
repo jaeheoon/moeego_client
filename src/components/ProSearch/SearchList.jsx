@@ -94,7 +94,7 @@ const SearchList = ({ item, proNo }) => {
                                                     ★{" "}
                                                     {Math.floor(serviceItem.star * 10) / 10}
                                                 </span>{" "}
-                                                ({serviceItem.reviewCount})
+                                                ({serviceItem.reviewCount || "0"})
                                             </div>
                                         </div>
                                     </div>

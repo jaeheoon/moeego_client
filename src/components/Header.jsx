@@ -5,6 +5,7 @@ import { AuthContext } from '../context/member/AuthContext';
 import { MyPageContext } from '../context/mypage/MyPageContext';
 import apiAxios from '../api/apiAxios';
 import "../css/Header.css";
+import { useDarkMode } from "../context/darkmode/DarkModeContext";
 
 function Header() {
   const [modalType, setModalType] = useState(null);
@@ -22,6 +23,15 @@ function Header() {
   const [searchValue, setSearchValue] = useState(""); // 검색어 상태 관리
   const navigate = useNavigate();
 
+  // 다크모드
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+
+  React.useEffect(() => {
+    const theme = isDarkMode ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [isDarkMode]);
+  //
+  
   useEffect(() => {
     const profile = localStorage.getItem('userprofile');
     setUserProfile(profile);
@@ -214,7 +224,9 @@ function Header() {
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
           )}
         </div>
-
+        <button onClick={toggleDarkMode} style={{ position: "fixed", top: 10, right: 10 }}>
+        {isDarkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
+      </button>
         {/* 드롭다운 메뉴 */}
         {isMenuOpen && (
           <div className='dropdown-menu' ref={dropdownRef}>
