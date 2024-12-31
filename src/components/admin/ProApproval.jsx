@@ -11,7 +11,7 @@ const ProApproval = () => {
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-    const pageSize = 5; // 페이지 당 아이템 수 고정
+    const pageSize = 30; // 페이지 당 아이템 수 고정
 
     const navigate = useNavigate();
     const { setIsLoggedIn, setLoginStatus } = useContext(AuthContext);
@@ -147,7 +147,7 @@ const ProApproval = () => {
                                     <tr key={row.memberNo}>
                                         <td>{row.memberNo}</td>
                                         <td>{row.name}</td>
-                                        <td>{row.mainCateName}</td>  {/* cate_name에서 mainCateName으로 수정 */}
+                                        <td>{row.cate_name}</td>  {/* cate_name에서 mainCateName으로 수정 */}
                                         <td>{row.oneIntro}</td>
                                         <td>{row.intro}</td>
                                         <td>
