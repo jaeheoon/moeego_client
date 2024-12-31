@@ -40,13 +40,18 @@ const ProApproval = () => {
     // 승인 대기 중인 데이터 불러오기
     const fetchApprovalData = async (page = 1) => {
         try {
-            const response = await apiAxios.get(`/api/admin/pro/approval`);
-            //const response = await apiAxios.get(`/api/admin/pro/approval?page=${page}&size=${pageSize}`);
-            console.log('API 응답 데이터:', response.data); // API 응답 데이터 확인
-            // 데이터가 배열 형태로 바로 전달되는 경우
-            setApprovedMember(response.data.content || []); // 바로 response.data.content로 설정
-            setTotalPages(response.data.totalPages || 1); // 전체 페이지 수 설정
-            setCurrentPage(page); // 현재 페이지 업데이트
+            // 페이지네이션 파라미터를 포함하여 API 호출
+            const response = await apiAxios.get(`/api/admin/pro/approval?page=${page}&size=${pageSize}`);
+            console.log('API 응답 데이터:', response.data);
+            
+            // 응답이 배열 형태로 오므로 직접 설정
+            setApprovedMember(Array.isArray(response.data) ? response.data : []);
+            
+            // 전체 데이터 개수로 페이지 수 계산
+            const totalItems = response.data.length;
+            const calculatedTotalPages = Math.ceil(totalItems / pageSize);
+            setTotalPages(calculatedTotalPages || 1);
+            setCurrentPage(page);
         } catch (err) {
             console.error('API 호출 오류:', err);
             setError(err.message);
@@ -142,7 +147,7 @@ const ProApproval = () => {
                                     <tr key={row.memberNo}>
                                         <td>{row.memberNo}</td>
                                         <td>{row.name}</td>
-                                        <td>{row.cate_name}</td>
+                                        <td>{row.mainCateName}</td>  {/* cate_name에서 mainCateName으로 수정 */}
                                         <td>{row.oneIntro}</td>
                                         <td>{row.intro}</td>
                                         <td>
