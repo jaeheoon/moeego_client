@@ -40,7 +40,8 @@ const ProApproval = () => {
     // 승인 대기 중인 데이터 불러오기
     const fetchApprovalData = async (page = 1) => {
         try {
-            const response = await apiAxios.get(`/api/admin/pro/approval?page=${page}&size=${pageSize}`);
+            const response = await apiAxios.get(`/api/admin/pro/approval`);
+            //const response = await apiAxios.get(`/api/admin/pro/approval?page=${page}&size=${pageSize}`);
             console.log('API 응답 데이터:', response.data); // API 응답 데이터 확인
             // 데이터가 배열 형태로 바로 전달되는 경우
             setApprovedMember(response.data.content || []); // 바로 response.data.content로 설정
