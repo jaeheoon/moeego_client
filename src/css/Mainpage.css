@@ -319,7 +319,7 @@ h1{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--background-color);
     width: 80%;
     max-width: 450px;
     height: 40%;

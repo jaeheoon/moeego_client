@@ -70,6 +70,7 @@
     font-weight: bold;
     margin-bottom: 10px;
     box-sizing: border-box;
+    color: var(--text-color);
 }
 
 .serviceModal .modalMainMenu, .serviceModal .modalSubMenu {
@@ -105,6 +106,7 @@
     font-weight: bold;
     padding: 10px; /* 메뉴 항목 패딩 */
     border-bottom: 1px solid #b2b2b2;
+    color: var(--text-color);
     transition: background-color 0.3s; /* 부드러운 전환 효과 */
 }
 
@@ -118,6 +120,7 @@
     border-bottom: 1px solid #b2b2b2; /* 하위 메뉴 항목 구분선 */
     padding: 10px; /* 하위 메뉴 항목 패딩 */
     cursor: pointer; /* 기본 커서 */
+    color: var(--text-color);
 }
 .serviceModal .modalSubMenu li:hover{
     background-color: #e0e0e0; /* Hover 효과 */
@@ -145,6 +148,7 @@
     margin-top: 0;
     margin-bottom: 10px;
     box-sizing: border-box;
+    color: var(--text-color);
 }
 .areaModal .modalMainMenu {
     display: flex;
@@ -168,6 +172,7 @@
     font-size: 16px;
     box-sizing: border-box;
     border-bottom: 1px solid #b2b2b2;
+    color: var(--text-color);
 }
 .areaModal .modalMainMenu li:hover{
     background-color: #e0e0e0; /* Hover 효과 */
