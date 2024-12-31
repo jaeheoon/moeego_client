@@ -19,7 +19,7 @@
     margin: 0 auto;
     padding: 20px;
     width: 80%;
-    background-color: #fff;
+    background-color: var(--background-color);
     font-family: Arial, sans-serif;
     color: #333;
     box-sizing: border-box;
@@ -38,7 +38,8 @@
 
 .select-container select {
     text-align: left;
-    background-color: #fff;
+    background-color: var(--white32Background-color);
+    color: var(--text-color);
     width: 150px;
     padding: 10px;
     font-size: 14px;
@@ -62,8 +63,8 @@
 
 /* 선택된 항목 스타일 */
 .select-container select option {
-    color: #333;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--white32Background-color);
 }
 
 .select-container select option:checked {
@@ -73,7 +74,7 @@
 
 .submit-button {
     padding: 10px 20px;
-    background-color: pink;
+    background-color: var(--pinkBackground-color);
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -167,6 +168,8 @@
     width: 80%;
     padding: 10px;
     border: none; /* 기본 테두리 */
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-radius: 4px;
     font-size: 14px;
     margin-bottom: -15px;

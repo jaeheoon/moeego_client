@@ -84,7 +84,7 @@ a {
         justify-content: center;
         flex-direction: column;
         width: 100%;
-        background-color: #ffffff;
+        background-color: var(--background-color);
         border: none;
         border-radius: 0;
     }
@@ -158,7 +158,7 @@ a {
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        background-color: #efefef;
+        background-color: var(--loginBackground-color);
         color: #424242;
     }
 }

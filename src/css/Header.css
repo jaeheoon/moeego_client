@@ -88,8 +88,11 @@
     width: 50px;
     padding: 10px;
     box-sizing: border-box;
+    
 }
-
+.hamburger-menu svg path{
+    stroke: var(--text-color);
+}
 .hamburger-menu svg:hover {
     background-color: var(--grayBackground-color);
     border-radius: 25px;
@@ -198,7 +201,9 @@
     width: 36px;
     height: 36px;
 }
-
+.dropdown-menu .dropdown-menu-close-wrap .close-button svg path{
+    stroke: var(--text-color);
+}
 .dropdown-menu ul {
     display: flex;
     align-items: center;
@@ -708,7 +713,7 @@ input:checked + .toggle-slider::before {
     }
 
     .moblieSearchButton svg path {
-        fill: #000000;
+        fill: var(--text-color);
         box-sizing: border-box;
     }
 

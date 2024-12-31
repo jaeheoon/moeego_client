@@ -189,8 +189,8 @@
 }
 
 .JoinPage .select input[type=radio]+label{
-    background-color: var(--background-color);
     color: #fd9bb9; 
+    background-color: var(--background-color);
 }
 
 .JoinPage .select input[type=radio]:checked+label{
@@ -247,7 +247,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        color: #525252;
+        background-color: var(--white55Background-color);
         font-size: 1rem;
         margin-bottom: 1.2em;
     }
@@ -256,7 +256,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #ffffff;
+        background-color: var(--background-color);
         border: none;
         border-top: 2px solid #f2f2f2;
         border-radius: 0;
