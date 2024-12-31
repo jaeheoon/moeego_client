@@ -15,8 +15,8 @@
   margin: 0 auto; /* 가운데 정렬 */
 }
 
-/* App.css */
-:root {
+/* 다크모드 */
+/* :root {
   --background-color: #ffffff;
   --text-color: #000000;
 }
@@ -24,7 +24,7 @@
 [data-theme="dark"] {
   --background-color: #121212;
   --text-color: #ffffff;
-}
+} */
 
 body {
   background-color: var(--background-color);

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginContext } from "../../context/member/LoginContext";
 import SearchPwd from "./SearchPwd";
 import SearchEmail from "./SearchEmail";
@@ -18,6 +18,13 @@ const Login = () => {
         modalType,
         closeModal,
     } = useContext(LoginContext);
+
+    // 로그인 시 링크로 로그인으로 와서 재로그인 하는거 방지
+    const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem("login");
+    if(isLoggedIn){
+        navigate('/');
+    }
 
     return (
         <div className="LoginPage">
