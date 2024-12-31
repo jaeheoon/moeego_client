@@ -234,7 +234,7 @@
         flex-direction: column;
         width: 90%;
         height: 100%;
-        background-color: #ffffff;
+        background-color: var(--background-color);
         border: none;
         border-top: 2px solid #f2f2f2;
         border-radius: 0;
