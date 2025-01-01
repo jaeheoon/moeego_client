@@ -7,9 +7,9 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const LineChart = ({ weekMemberData, weekProData , weekLeaveMemberData}) => {
 
-    const reversedWeekMemberData = weekMemberData.reverse();
-    const reversedWeekProData = weekProData.reverse();
-    const reversedWeekLeaveMemberData = weekLeaveMemberData.reverse();
+    const sortedWeekMemberData = [...weekMemberData].sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
+    const sortedWeekProData = [...weekProData].sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
+    const sortedWeekLeaveMemberData = [...weekLeaveMemberData].sort((a, b) => new Date(a.date) - new Date(b.date)).reverse();
 
     const chartData = {
         labels: reversedWeekMemberData.map(item => item.date), // 날짜 (X축)
