@@ -88,9 +88,8 @@
     width: 50px;
     padding: 10px;
     box-sizing: border-box;
-    
 }
-.hamburger-menu svg path{
+.hamburger-menu svg path {
     stroke: var(--text-color);
 }
 .hamburger-menu svg:hover {
@@ -201,7 +200,7 @@
     width: 36px;
     height: 36px;
 }
-.dropdown-menu .dropdown-menu-close-wrap .close-button svg path{
+.dropdown-menu .dropdown-menu-close-wrap .close-button svg path {
     stroke: var(--text-color);
 }
 .dropdown-menu ul {
@@ -286,7 +285,7 @@
     justify-content: left;
     width: calc(100% - 20px);
     font-size: 0.725rem;
-    color:#828282;
+    color: #828282;
 }
 
 .HamburgerUserInfoLinkWrap div:nth-child(2) {
@@ -311,7 +310,7 @@
     gap: 1em;
 }
 
-.HamburgerUserInfoButtonWrap input[type='button'] {
+.HamburgerUserInfoButtonWrap input[type="button"] {
     width: 50%;
     border: 1px solid #f2f2f2;
     background-color: var(--background-color);
@@ -324,7 +323,7 @@
     color: #a1a1a1;
 }
 
-.HamburgerUserInfoButtonWrap input[type='button']:hover {
+.HamburgerUserInfoButtonWrap input[type="button"]:hover {
     color: #fcc1cc;
     border-color: #fcc1cc;
 }
@@ -368,7 +367,7 @@
 .header .search-button svg {
     position: absolute;
     width: 20px;
-    height: 20px;    
+    height: 20px;
     top: -0.5em;
     right: 0;
 }
@@ -406,7 +405,7 @@
     height: 1.5em;
     width: 1.5em;
 }
-.header .user-icon .ToggleSvg path{
+.header .user-icon .ToggleSvg path {
     stroke: var(--text-color);
 }
 .header .chat {
@@ -424,7 +423,7 @@
 .toggle-switch input {
     display: none;
 }
-  
+
 .toggle-slider {
     position: absolute;
     cursor: pointer;
@@ -441,7 +440,7 @@
     font-size: 14px;
     font-weight: bold;
     color: #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .toggle-switch {
@@ -468,7 +467,7 @@
 }
 
 input:checked + .toggle-slider {
-    background-color: #2196F3;
+    background-color: #2196f3;
 }
 
 input:checked + .toggle-slider::before {
@@ -490,10 +489,10 @@ input:checked + .toggle-slider::before {
 }
 
 .ToggleMenu::after {
-    content: '';
+    content: "";
     position: absolute;
-    top: 5px; 
-    left: 9%; 
+    top: 5px;
+    left: 9%;
     width: 0;
     height: 0;
     border-left: 10px solid transparent; /* 삼각형 왼쪽 */
@@ -503,7 +502,7 @@ input:checked + .toggle-slider::before {
 
 /* 모달 외부를 클릭하면 닫히도록 배경 처리 */
 .ToggleMenu::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
@@ -522,7 +521,7 @@ input:checked + .toggle-slider::before {
     display: flex;
     flex-direction: column;
     background-color: var(--background-color);
-    border: 6px solid #ffe4ea; 
+    border: 6px solid #ffe4ea;
     border-radius: 1em;
     box-sizing: border-box;
     padding: 2rem 2rem 2rem 2rem;
@@ -620,7 +619,7 @@ input:checked + .toggle-slider::before {
     width: 100%;
     box-sizing: border-box;
     border-radius: 10px;
-    border:3px solid #eee;
+    border: 3px solid #eee;
     text-decoration: none;
     color: #b3b3b3;
     font-weight: normal;
@@ -796,20 +795,27 @@ input:checked + .toggle-slider::before {
     }
 
     .toggle-switch {
+        display: none;
+    }
+
+    .toggle-switch-hamburger {
+        position: absolute;
+        display: flex;
+        left: 1rem;
         width: 5rem;
         height: 1.5rem;
     }
-    
+
     .toggle-slider::before {
         display: none; /* 모바일에서는 슬라이딩 원을 숨김 */
     }
-    
+
     .toggle-slider:active {
         transform: scale(0.98);
     }
-    
+
     input:checked + .toggle-slider {
-        background-color: #2196F3;
+        background-color: #2196f3;
         color: white;
     }
 }

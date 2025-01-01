@@ -54,7 +54,7 @@ const SignUpProvider = ({ children }) => {
         address1: false,
         address2: false,
     });
-    const [verificationCode, setVerificationCode] = useState('');
+    const [verificationCode, setVerificationCode] = useState("");
     const [verificationAttempts, setVerificationAttempts] = useState(0);
     const [isEmailVerified, setIsEmailVerified] = useState(false);
     const [errorVerification, setErrorVerification] = useState("");
@@ -63,16 +63,17 @@ const SignUpProvider = ({ children }) => {
 
     const goMain = () => navigate(`/`);
     const goLogin = () => navigate(`/login`);
-    const goSuccess = (name) => navigate(`/signup/success`, { state: { name } });
+    const goSuccess = (name) =>
+        navigate(`/signup/success`, { state: { name } });
 
     const updateSignUpData = (field, value) => {
-        if (field === 'email') {
+        if (field === "email") {
             // 이메일이 변경되면 인증 상태를 초기화
-            setIsEmailVerified(false);  // 이메일 인증 상태 리셋
-            setVerificationCode('');  // 인증 코드 리셋
-            setVerificationAttempts(0);  // 인증 시도 횟수 리셋
-            setErrorVerification('');  // 인증 오류 메시지 리셋
-            setIsEmailChecked(false);  // 이메일 중복 체크 초기화
+            setIsEmailVerified(false); // 이메일 인증 상태 리셋
+            setVerificationCode(""); // 인증 코드 리셋
+            setVerificationAttempts(0); // 인증 시도 횟수 리셋
+            setErrorVerification(""); // 인증 오류 메시지 리셋
+            setIsEmailChecked(false); // 이메일 중복 체크 초기화
         }
 
         setSignup((prevData) => ({
@@ -81,7 +82,6 @@ const SignUpProvider = ({ children }) => {
         }));
         validateField(field, value);
     };
-
 
     const checkEmailDuplication = async () => {
         if (!signup.email) {
@@ -99,7 +99,9 @@ const SignUpProvider = ({ children }) => {
         }
 
         try {
-            const response = await apiAxios.post("/api/join/exist", { email: signup.email });
+            const response = await apiAxios.post("/api/join/exist", {
+                email: signup.email,
+            });
             if (!response.data) {
                 setIsEmailChecked(true);
                 setErrors((prevErrors) => ({
@@ -129,14 +131,21 @@ const SignUpProvider = ({ children }) => {
 
     const handleResendVerification = async () => {
         if (verificationAttempts >= 3) {
-            setErrorVerification("인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요.");
+            setErrorVerification(
+                "인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요."
+            );
             return;
         }
 
         try {
-            const response = await apiAxios.post('/api/mypage/account/private/mailSend', { email: signup.email });
+            const response = await apiAxios.post(
+                "/api/mypage/account/private/mailSend",
+                { email: signup.email }
+            );
             if (response.status === 200) {
-                setErrorVerification(`${signup.email}로 인증번호가 발송되었습니다.`);
+                setErrorVerification(
+                    `${signup.email}로 인증번호가 발송되었습니다.`
+                );
                 setVerificationAttempts(0); // Reset attempts after successful resend
             } else {
                 setErrorVerification("인증번호 발송 실패. 다시 시도해주세요.");
@@ -149,14 +158,19 @@ const SignUpProvider = ({ children }) => {
 
     const handleEmailVerification = async () => {
         if (verificationAttempts >= 3) {
-            setErrorVerification("인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요.");
+            setErrorVerification(
+                "인증번호 확인을 3회 이상 틀렸습니다. 재발송을 눌러주세요."
+            );
             return;
         }
 
         try {
-            const response = await apiAxios.post('/api/mypage/account/private/mailCheck', {
-                num: verificationCode,
-            });
+            const response = await apiAxios.post(
+                "/api/mypage/account/private/mailCheck",
+                {
+                    num: verificationCode,
+                }
+            );
 
             if (response.data.success) {
                 setIsEmailVerified(true);
@@ -166,8 +180,10 @@ const SignUpProvider = ({ children }) => {
                     email: "인증번호가 일치합니다.",
                 }));
             } else {
-                setErrorVerification("인증번호가 일치하지 않습니다. 다시 확인해주세요.");
-                setVerificationAttempts(prevAttempts => prevAttempts + 1);
+                setErrorVerification(
+                    "인증번호가 일치하지 않습니다. 다시 확인해주세요."
+                );
+                setVerificationAttempts((prevAttempts) => prevAttempts + 1);
             }
         } catch (error) {
             console.error("인증번호 확인 실패:", error);
@@ -200,7 +216,9 @@ const SignUpProvider = ({ children }) => {
                 if (!value) {
                     error = "비밀번호를 입력해주세요.";
                 } else if (
-                    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`|}{[\]:;?,.<>]).{8,20}$/.test(value)
+                    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`|}{[\]:;?,.<>]).{8,20}$/.test(
+                        value
+                    )
                 ) {
                     error =
                         "비밀번호는 대소문자, 숫자, 특수문자를 포함하며, 8~20자리여야 합니다.";
@@ -229,7 +247,9 @@ const SignUpProvider = ({ children }) => {
             case "address1":
             case "address2":
                 if (!value) {
-                    error = `${field === "zipcode" ? "우편번호" : "주소"}를 입력해주세요.`;
+                    error = `${
+                        field === "zipcode" ? "우편번호" : "주소"
+                    }를 입력해주세요.`;
                 }
                 break;
             default:
@@ -284,11 +304,13 @@ const SignUpProvider = ({ children }) => {
         }
 
         try {
-            const combinedAddress = `${signup.address1} ${signup.address2} (${signup.zipcode})`.trim();
+            const combinedAddress =
+                `${signup.address1} ${signup.address2} (${signup.zipcode})`.trim();
             const dataToSubmit = {
                 ...signup,
                 address: combinedAddress,
-                gender: signup.gender === "M" ? 1 : signup.gender === "F" ? 2 : 0
+                gender:
+                    signup.gender === "M" ? 1 : signup.gender === "F" ? 2 : 0,
             };
 
             const response = await apiAxios.post("/api/join", dataToSubmit);
@@ -298,7 +320,8 @@ const SignUpProvider = ({ children }) => {
             }
         } catch (error) {
             if (error.response && error.response.status === 400) {
-                const errorMessage = error.response.data || "잘못된 요청입니다.";
+                const errorMessage =
+                    error.response.data || "잘못된 요청입니다.";
                 setErrors((prevErrors) => ({
                     ...prevErrors,
                     email: errorMessage,
@@ -337,7 +360,7 @@ const SignUpProvider = ({ children }) => {
             value={{
                 signup,
                 errors,
-                success,  // Success 상태 추가
+                success, // Success 상태 추가
                 isReadonly,
                 isEmailChecked,
                 isEmailVerified,
