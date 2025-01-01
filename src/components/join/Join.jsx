@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { SignUpContext } from '../../context/member/SignUpContext';
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { SignUpContext } from "../../context/member/SignUpContext";
 import "../../css/join/Join.css";
 
 const Join = () => {
@@ -25,7 +25,8 @@ const Join = () => {
     } = useContext(SignUpContext);
 
     useEffect(() => {
-        const scriptSrc = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+        const scriptSrc =
+            "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
 
         if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
             const script = document.createElement("script");
@@ -34,6 +35,17 @@ const Join = () => {
             document.body.appendChild(script);
         }
     }, []);
+
+    const navigate = useNavigate();
+
+    // 로그인 상태 확인 후 리다이렉트 처리
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem("login");
+        if (isLoggedIn) {
+            alert("로그아웃 후 회원가입이 가능합니다.");
+            navigate("/");
+        }
+    }, [navigate]);
 
     const handleJoinClick = async () => {
         await submitSignupForm();
@@ -53,12 +65,18 @@ const Join = () => {
                             placeholder="이름(실명)을 입력해주세요"
                             value={signup.name}
                             maxLength={6}
-                            onChange={(e) => updateSignUpData('name', e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("name", e.target.value)
+                            }
                         />
                     </div>
-                    <div className='errorWrap'>
-                        {errors.name && <span className="error">{errors.name}</span>}
-                        {success.name && <span className="success">{success.name}</span>}
+                    <div className="errorWrap">
+                        {errors.name && (
+                            <span className="error">{errors.name}</span>
+                        )}
+                        {success.name && (
+                            <span className="success">{success.name}</span>
+                        )}
                     </div>
 
                     {/* 이메일 입력 */}
@@ -69,13 +87,23 @@ const Join = () => {
                             type="email"
                             placeholder="moeego@example.com"
                             value={signup.email}
-                            onChange={(e) => updateSignUpData('email', e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("email", e.target.value)
+                            }
                             onBlur={checkEmailDuplication} // Blur event for email duplication check
                         />
                     </div>
-                    <div className='errorWrap'>
-                        {errors.email && <span className={isEmailChecked ? "success" : "error"}>{errors.email}</span>}
-                        {success.email && <span className="success">{success.email}</span>}
+                    <div className="errorWrap">
+                        {errors.email && (
+                            <span
+                                className={isEmailChecked ? "success" : "error"}
+                            >
+                                {errors.email}
+                            </span>
+                        )}
+                        {success.email && (
+                            <span className="success">{success.email}</span>
+                        )}
                     </div>
 
                     {/* 인증번호 발송 버튼 */}
@@ -107,14 +135,21 @@ const Join = () => {
                                 type="text"
                                 placeholder="인증번호를 입력해주세요"
                                 value={verificationCode}
-                                onChange={(e) => setVerificationCode(e.target.value)}
+                                onChange={(e) =>
+                                    setVerificationCode(e.target.value)
+                                }
                             />
                         </div>
                     )}
 
                     {/* 인증번호 관련 에러 메시지 */}
                     <div className="errorWrap">
-                        {errorVerification && errorVerification !== "인증번호가 일치합니다" && <span className="error">{errorVerification}</span>}
+                        {errorVerification &&
+                            errorVerification !== "인증번호가 일치합니다" && (
+                                <span className="error">
+                                    {errorVerification}
+                                </span>
+                            )}
                     </div>
 
                     {/* 이메일 인증번호 관련 입력 */}
@@ -140,12 +175,16 @@ const Join = () => {
                             autoComplete="off"
                             value={signup.pwd}
                             maxLength={20}
-                            onChange={(e) => updateSignUpData('pwd', e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("pwd", e.target.value)
+                            }
                         />
                     </div>
 
-                    <div className='errorWrap'>
-                        {errors.pwd && <span className="error">{errors.pwd}</span>}
+                    <div className="errorWrap">
+                        {errors.pwd && (
+                            <span className="error">{errors.pwd}</span>
+                        )}
                     </div>
 
                     {/* 비밀번호 확인 */}
@@ -157,12 +196,16 @@ const Join = () => {
                             placeholder="비밀번호를 한번 더 입력해주세요"
                             autoComplete="off"
                             value={signup.confirmpwd}
-                            onChange={(e) => updateSignUpData('confirmpwd', e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("confirmpwd", e.target.value)
+                            }
                         />
                     </div>
 
-                    <div className='errorWrap'>
-                        {errors.confirmpwd && <span className="error">{errors.confirmpwd}</span>}
+                    <div className="errorWrap">
+                        {errors.confirmpwd && (
+                            <span className="error">{errors.confirmpwd}</span>
+                        )}
                     </div>
 
                     {/* 성별 선택 */}
@@ -174,8 +217,10 @@ const Join = () => {
                                 value="M"
                                 id="m"
                                 name="gender"
-                                checked={signup.gender === 'M'}
-                                onChange={(e) => updateSignUpData('gender', e.target.value)}
+                                checked={signup.gender === "M"}
+                                onChange={(e) =>
+                                    updateSignUpData("gender", e.target.value)
+                                }
                             />
                             <label htmlFor="m">남자</label>
                             <input
@@ -183,15 +228,19 @@ const Join = () => {
                                 value="F"
                                 id="w"
                                 name="gender"
-                                checked={signup.gender === 'F'}
-                                onChange={(e) => updateSignUpData('gender', e.target.value)}
+                                checked={signup.gender === "F"}
+                                onChange={(e) =>
+                                    updateSignUpData("gender", e.target.value)
+                                }
                             />
                             <label htmlFor="w">여자</label>
                         </div>
                     </div>
 
-                    <div className='errorWrap'>
-                        {errors.gender && <span className="error">{errors.gender}</span>}
+                    <div className="errorWrap">
+                        {errors.gender && (
+                            <span className="error">{errors.gender}</span>
+                        )}
                     </div>
 
                     {/* 휴대전화 번호 */}
@@ -202,18 +251,22 @@ const Join = () => {
                             type="text"
                             placeholder="010-0000-0000"
                             value={signup.phone}
-                            onChange={(e) => updateSignUpData('phone', e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("phone", e.target.value)
+                            }
                         />
                     </div>
-                    <div className='errorWrap'>
-                        {errors.phone && <span className="error">{errors.phone}</span>}
+                    <div className="errorWrap">
+                        {errors.phone && (
+                            <span className="error">{errors.phone}</span>
+                        )}
                     </div>
 
                     {/* 우편번호 입력 */}
                     <div className="join-align">
                         <label>우편번호</label>
                     </div>
-                    <div className='zip-box'>
+                    <div className="zip-box">
                         <input
                             className="zipcodebox"
                             id="zipcode"
@@ -222,7 +275,9 @@ const Join = () => {
                             placeholder="우편번호"
                             value={signup.zipcode}
                             readOnly={isReadonly.zipcode}
-                            onChange={(e) => updateSignUpData("zipcode", e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("zipcode", e.target.value)
+                            }
                         />
                         <input
                             type="button"
@@ -232,8 +287,10 @@ const Join = () => {
                         />
                     </div>
 
-                    <div className='errorWrap'>
-                        {errors.zipcode && <span className="error">{errors.zipcode}</span>}
+                    <div className="errorWrap">
+                        {errors.zipcode && (
+                            <span className="error">{errors.zipcode}</span>
+                        )}
                     </div>
 
                     {/* 주소 입력 */}
@@ -247,12 +304,16 @@ const Join = () => {
                             placeholder="주소"
                             value={signup.address1}
                             readOnly={isReadonly.address1}
-                            onChange={(e) => updateSignUpData('address1', e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("address1", e.target.value)
+                            }
                         />
                     </div>
 
-                    <div className='errorWrap'>
-                        {errors.address1 && <span className="error">{errors.address1}</span>}
+                    <div className="errorWrap">
+                        {errors.address1 && (
+                            <span className="error">{errors.address1}</span>
+                        )}
                     </div>
 
                     <div className="join-align">
@@ -264,12 +325,16 @@ const Join = () => {
                             type="text"
                             placeholder="상세주소"
                             value={signup.address2}
-                            onChange={(e) => updateSignUpData('address2', e.target.value)}
+                            onChange={(e) =>
+                                updateSignUpData("address2", e.target.value)
+                            }
                         />
                     </div>
 
-                    <div className='errorWrap'>
-                        {errors.address2 && <span className="error">{errors.address2}</span>}
+                    <div className="errorWrap">
+                        {errors.address2 && (
+                            <span className="error">{errors.address2}</span>
+                        )}
                     </div>
 
                     {/* 회원가입 버튼 */}
@@ -280,7 +345,9 @@ const Join = () => {
                         onClick={handleJoinClick}
                     />
                     <div className="dalin">
-                        <Link to="/pro/signup/main">달인으로 가입하시나요?</Link>
+                        <Link to="/pro/signup/main">
+                            달인으로 가입하시나요?
+                        </Link>
                     </div>
                 </form>
             </div>

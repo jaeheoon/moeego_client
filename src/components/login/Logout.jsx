@@ -1,11 +1,20 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/member/AuthContext";
-import apiAxios from '../../api/apiAxios';
+import apiAxios from "../../api/apiAxios";
 
 const Logout = () => {
     const navigate = useNavigate();
-    const { setIsLoggedIn, setLoginEmail, setLoginUser, setLoginStatus, setLoginAddress, setLoginPhone, setLoginProfile, setLoginNumber } = useContext(AuthContext);
+    const {
+        setIsLoggedIn,
+        setLoginEmail,
+        setLoginUser,
+        setLoginStatus,
+        setLoginAddress,
+        setLoginPhone,
+        setLoginProfile,
+        setLoginNumber,
+    } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchLogout = async () => {
@@ -26,11 +35,19 @@ const Logout = () => {
                     setLoginProfile(null);
                     setLoginNumber(null);
                 } else {
-                    alert("logout failed");
+                    console.log("logout failed");
+                    setIsLoggedIn(false);
+                    setLoginUser(null);
+                    setLoginEmail(null);
+                    setLoginStatus(null);
+                    setLoginAddress(null);
+                    setLoginPhone(null);
+                    setLoginProfile(null);
+                    setLoginNumber(null);
                 }
 
                 navigate("/", { replace: true });
-                window.location.reload()
+                window.location.reload();
             } catch (error) {
                 console.log("로그인이 필요합니다.");
                 navigate("/");
@@ -41,6 +58,6 @@ const Logout = () => {
     }, [navigate, setIsLoggedIn, setLoginUser]);
 
     return null; // 컴포넌트 UI가 필요 없다면 null 반환
-}
+};
 
 export default Logout;

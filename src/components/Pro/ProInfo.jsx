@@ -1,18 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import apiAxios from "../../api/apiAxios";
 import "../../css/Pro/ProInfo.css";
-import { AuthContext } from '../../context/member/AuthContext';
+import { AuthContext } from "../../context/member/AuthContext";
 
 const ProInfo = ({ proItem, serviceItem, service, prono }) => {
     const [address, setAddress] = useState("");
     const [reservationCount, setReservationCount] = useState(0); // 기본값을 0으로 설정
     const [isFavorite, setIsFavorite] = useState(false); // 찜 여부 상태 추가
     const [favoritePro, setFavoritePro] = useState([prono]);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 추가
 
     const userno = localStorage.getItem("userno");
 
+    // 로그인 상태 확인
+    useEffect(() => {
+        const loginStatus = localStorage.getItem("login");
+        setIsLoggedIn(!!loginStatus); // 로그인 상태 설정
+    }, []);
+
     // 주소 추출
     useEffect(() => {
+        if (!isLoggedIn) return; // 로그인 상태가 아니라면 실행하지 않음
         if (proItem?.address) {
             const match = proItem.address.match(/.+?( \d+(?:-\d+)?)/);
             if (match) {
@@ -21,10 +29,11 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
                 setAddress(proItem.address);
             }
         }
-    }, [proItem?.proItemNo]);
+    }, [isLoggedIn, proItem?.proItemNo]);
 
     // 예약 수 조회 API 호출
     useEffect(() => {
+        if (!isLoggedIn) return; // 로그인 상태가 아니라면 실행하지 않음
         if (proItem && service) {
             apiAxios
                 .get(`/api/reservation/total`, {
@@ -44,10 +53,11 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
                     setReservationCount(0);
                 });
         }
-    }, [proItem, service]);
+    }, [isLoggedIn, proItem, service]);
 
     // 즐겨찾기 로드 API 호출
     useEffect(() => {
+        if (!isLoggedIn) return; // 로그인 상태가 아니라면 실행하지 않음
         const loadFavoritePro = async () => {
             try {
                 const response = await apiAxios.get("/api/pro/favorite", {
@@ -69,7 +79,7 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
         };
 
         loadFavoritePro(); // 비동기 함수 호출
-    }, [userno, service.proItemNo]);
+    }, [isLoggedIn, userno, service.proItemNo]);
 
     // 찜하기 / 찜 해제 처리
     const handleFavoriteToggle = async () => {
@@ -86,13 +96,13 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
         const data =
             method === "delete"
                 ? {
-                    memberNo: userno,
-                    proNo: proNoList, // 삭제할 proNo는 배열로 전달
-                }
+                      memberNo: userno,
+                      proNo: proNoList, // 삭제할 proNo는 배열로 전달
+                  }
                 : {
-                    memberNo: userno,
-                    proNo: proNoList[0], // POST는 단일 proNo 전달
-                };
+                      memberNo: userno,
+                      proNo: proNoList[0], // POST는 단일 proNo 전달
+                  };
 
         try {
             // Axios 요청
@@ -118,14 +128,17 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
                     alert("요청한 자원을 찾을 수 없습니다.");
                 } else {
                     alert(
-                        `서버 오류: ${data.message || "알 수 없는 오류가 발생했습니다."
+                        `서버 오류: ${
+                            data.message || "알 수 없는 오류가 발생했습니다."
                         }`
                     );
                 }
             } else if (error.request) {
                 // 요청이 서버에 도달하지 못한 경우
                 console.error("요청 전송 실패:", error.request);
-                alert("서버로부터 응답이 없습니다. 네트워크 상태를 확인하세요.");
+                alert(
+                    "서버로부터 응답이 없습니다. 네트워크 상태를 확인하세요."
+                );
             } else {
                 // 그 외 오류 (예: 설정 문제)
                 console.error("요청 구성 오류:", error.message);
@@ -141,8 +154,9 @@ const ProInfo = ({ proItem, serviceItem, service, prono }) => {
                 <div className="icon-buttons">
                     <div
                         role="button"
-                        className={`heart ${isFavorite ? "favorited" : "not-favorited"
-                            }`} // Conditionally add the class based on isFavorite
+                        className={`heart ${
+                            isFavorite ? "favorited" : "not-favorited"
+                        }`} // Conditionally add the class based on isFavorite
                         onClick={handleFavoriteToggle} // 버튼 클릭 시 찜하기/해제 처리
                     >
                         <svg

@@ -9,7 +9,7 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
     const [reservedTimes, setReservedTimes] = useState({});
 
     const content = `${service.content}`;
-    
+
     useEffect(() => {
         setUserno(localStorage.getItem("userno") || "");
     }, []);
@@ -121,12 +121,10 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                     // 현재 시간 기준 이전 시간 추가
                     if (startDate === currentFormattedDate) {
                         const filteredTimes = times.filter(
-                            (time) => parseInt(time.split(":")[0], 10) <= currentHour
+                            (time) =>
+                                parseInt(time.split(":")[0], 10) <= currentHour
                         );
-                        acc[startDate] = [
-                            ...acc[startDate],
-                            ...filteredTimes,
-                        ];
+                        acc[startDate] = [...acc[startDate], ...filteredTimes];
                     }
 
                     acc[startDate] = [...acc[startDate], ...times]; // 예약 시간 업데이트
@@ -142,7 +140,10 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                     pastTimes.push(`${i.toString().padStart(2, "0")}:00`);
                 }
                 groupedTimes[currentFormattedDate] = [
-                    ...new Set([...groupedTimes[currentFormattedDate], ...pastTimes]),
+                    ...new Set([
+                        ...groupedTimes[currentFormattedDate],
+                        ...pastTimes,
+                    ]),
                 ];
 
                 setReservedTimes(groupedTimes); // 상태에 예약 시간 저장
@@ -189,7 +190,6 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
         apiAxios
             .post("/api/reservation", reservationData)
             .then((response) => {
-                console.log("예약 성공:", response.data);
                 alert("예약이 완료되었습니다.");
                 closeModal();
                 // window.location.reload();
@@ -229,7 +229,9 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                                     <Link to="#">{proItem.mainCateName}</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">{service.subCategory.subCateName}</Link>
+                                    <Link to="#">
+                                        {service.subCategory.subCateName}
+                                    </Link>
                                 </li>
                             </ol>
                         </section>
@@ -238,7 +240,10 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                         </section>
                         <section>
                             <div className="product-options">
-                                <div style={{ whiteSpace: 'pre-wrap' }} className="options-wrapper">
+                                <div
+                                    style={{ whiteSpace: "pre-wrap" }}
+                                    className="options-wrapper"
+                                >
                                     {content}
                                 </div>
                                 <div className="options-wrapper">
@@ -261,28 +266,30 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
 
                                             const formattedDate = selectedDate
                                                 ? selectedDate
-                                                    .toISOString()
-                                                    .split("T")[0]
+                                                      .toISOString()
+                                                      .split("T")[0]
                                                 : null;
 
                                             const isReserved =
                                                 formattedDate &&
-                                                reservedTimes[formattedDate]?.includes(
-                                                    time
-                                                );
+                                                reservedTimes[
+                                                    formattedDate
+                                                ]?.includes(time);
 
                                             const isSelected =
                                                 checkedItems[time] || false;
 
                                             return (
                                                 <li
-                                                    className={`reservation-time-item ${isReserved
-                                                        ? "disabled"
-                                                        : ""
-                                                        } ${isSelected
+                                                    className={`reservation-time-item ${
+                                                        isReserved
+                                                            ? "disabled"
+                                                            : ""
+                                                    } ${
+                                                        isSelected
                                                             ? "selected"
                                                             : ""
-                                                        }`}
+                                                    }`}
                                                     key={index}
                                                 >
                                                     <label className="custom-checkbox">
@@ -290,7 +297,9 @@ const Reservation = ({ closeModal, proItem, reivew, service }) => {
                                                             type="checkbox"
                                                             name="product-reservation-time"
                                                             value={time}
-                                                            disabled={isReserved}
+                                                            disabled={
+                                                                isReserved
+                                                            }
                                                             checked={isSelected}
                                                             onChange={() =>
                                                                 handleTimeSelection(
