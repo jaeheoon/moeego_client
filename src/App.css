@@ -45,6 +45,7 @@
   --reviewText-color: #626262;
   --blackText-color: #fff;
   --pinkText-color: black;
+  --blackGrayText-color: black;
   --locationText-color: #00C7AE;
 }
 
@@ -77,6 +78,7 @@
   --reviewText-color: #ffffff;
   --blackText-color: #282828;
   --pinkText-color: #fcc1cc;
+  --blackGrayText-color: #c2c2c2;
   --locationText-color: #EDEDED;
 }
 

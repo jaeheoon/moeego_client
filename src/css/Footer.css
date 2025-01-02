@@ -43,7 +43,7 @@
 
 .footer .ulWrap li a:hover {
     cursor: pointer;
-    color: #383838;
+    color: var(--grayText-color);
 }
 
 .footer .ulWrap .info {

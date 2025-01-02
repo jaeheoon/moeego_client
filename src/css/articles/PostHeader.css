@@ -117,10 +117,8 @@
     justify-content: center;
 }
 
-.action-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
+.post-action-button svg path{
+    fill: var(--blackGrayText-color);
 }
 
 /* 드롭다운 컨테이너 */
