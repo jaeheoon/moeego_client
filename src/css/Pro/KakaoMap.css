@@ -96,6 +96,7 @@
   
   .map-content-wrap-list:hover {
     background-color: #f0f0f0;
+    color:black;
     border-radius: 6px;
   }
   .map-content-wrap-list:last-child {
