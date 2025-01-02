@@ -51,11 +51,12 @@
     display: flex;
     align-items: center;
     justify-content: right;
-    width: 15%;
+    width: 25%;
     color: white;
 }
 
 #zipcodeBtn {
+    width: 80%;
     font-size: 9pt;
     border-style: none;
     padding: 5px 20px;
@@ -149,6 +150,6 @@
 
     .ChangeAddressContainer .zipWrap .zipButton {
         box-sizing: border-box;
-        width: 50%;
+        width: 80%;
     }
 }

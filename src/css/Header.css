@@ -69,7 +69,7 @@
 }
 
 .header .nav ul li a {
-    color: #525252;
+    color: var(--white55Text-color);
     text-decoration: none;
 }
 

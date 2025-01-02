@@ -116,7 +116,7 @@
     box-sizing: border-box;
     background-color: #fcc1cc;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--blackText-color);
     border-radius: 10px;
     transition: all 0.25s ease-out;
 }

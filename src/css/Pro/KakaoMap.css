@@ -23,7 +23,7 @@
 }
 
 .map-modalOverlay .map-modalContent {
-    background-color: white;
+    background-color: var(--background-color);
     width: 95%; 
     max-width: 800px; 
     height: 70%; 

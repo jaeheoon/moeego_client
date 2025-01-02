@@ -224,6 +224,7 @@ h1{
     line-height: 1.5; /* 줄 간격 조정 */
     height: calc(1.5em * 3); /* 3줄 높이를 고정 */
     white-space: normal; /* 텍스트 줄바꿈 허용 */
+    color: var(--reviewText-color);
 }
 
 .mainReviewContentWrap .mainReviewImageWrap{
@@ -293,7 +294,11 @@ h1{
     border-radius: 10px;
     transition: opacity 0.3s;
 }
-  
+
+.keyword-image .pro-info h3 {
+    color: white;
+}
+
 .keyword-image:hover .pro-info {
     opacity: 1;
     background-color: rgba(50, 50, 50, 0.7);
