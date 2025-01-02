@@ -18,6 +18,7 @@
 /* 다크모드 */
 :root {
   --background-color: #ffffff;
+  --fff32Background-color: #ffffff;
   --grayBackground-color: #cacaca;
   --locationBackground-color:#EFF9F9;
   --searchbarBackground-color:#eee;
@@ -49,6 +50,7 @@
 
 [data-theme="dark"] {
   --background-color: #282828;
+  --fff32Background-color: #323232;
   --grayBackground-color:#585858;
   --locationBackground-color:#323232;
   --searchbarBackground-color:#282828;

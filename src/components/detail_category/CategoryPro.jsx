@@ -55,6 +55,7 @@ const CategoryPro = ({ item }) => {
                         );
 
                         const subject = matchingItem?.subject;
+                        const content = matchingItem?.content;
 
                         // 프로필 이미지 URL 설정
                         const DEFAULT_PROFILE_IMAGE = '/image/default.svg';
@@ -79,7 +80,7 @@ const CategoryPro = ({ item }) => {
                                 />
                                 <h4>{pro.name}</h4>
                                 <p>{subject}</p>
-                                <p>{pro.intro || "소개 정보 없음"}</p>
+                                <p>{content || "소개 정보 없음"}</p>
                             </div>
                         );
                     })
