@@ -88,6 +88,10 @@
         align-items: center;
     }
 
+    .footer .info {
+        box-shadow: none;
+    }
+
     .footer .ulWrap {
         flex-direction: column;
         align-items: center;
