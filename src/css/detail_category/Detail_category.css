@@ -9,6 +9,7 @@
 }
 .detail_categoryWrap {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -22,7 +23,11 @@
     overflow: hidden;
 }
 .detailCategoryPage{
+    display: flex;
     margin:0 auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .detail_categoryWrap hr{
@@ -120,9 +125,6 @@
     }
     .detail_categoryWrap{
         top: 0px;
-    }
-    .detail_categoryWrap .categories{
-        grid-template-columns: repeat(6, 1fr);
     }
     .detail_categoryWrap .categories span{
         font-size:1rem;
