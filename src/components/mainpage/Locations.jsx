@@ -32,7 +32,7 @@ function Locations() {
     setActiveCity(city);
     setError(""); // 새로운 도시 클릭 시 이전 에러 메시지 초기화
 
-    apiAxios.get("/api/pro/item", {
+    apiAxios.get("/api/pro/item/main", {
       params: {
         location: city,
       },
