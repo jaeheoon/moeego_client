@@ -102,7 +102,7 @@ const Account = () => {
                                         type="text"
                                         value={nickname}
                                         onChange={handleNicknameChange}
-                                        maxLength={20}
+                                        maxLength={8}
                                         disabled={isSocialUser} // SNS 사용자는 활동명 변경 불가
                                     />
                                 </div>
@@ -123,7 +123,7 @@ const Account = () => {
                     <hr />
                     {isToggleWrap1Visible && (
                         <div className='ToggleWrap' id='ToggleWrap1'>
-                            <div>{nickname.length}/20</div>
+                            <div>{nickname.length}/8</div>
                             <div className='ToggleButton'>
                                 <input
                                     type="button"

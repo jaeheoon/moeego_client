@@ -56,8 +56,8 @@ const MyPageProvider = ({ children }) => {
             alert('닉네임은 필수입니다.');
             return false;
         }
-        if (nickname.length < 3 || nickname.length > 20) {
-            alert('닉네임은 1자 이상 20자 이하로 입력해야 합니다.');
+        if (nickname.length < 2 || nickname.length > 8) {
+            alert('닉네임은 2자 이상 8자 이하로 입력해야 합니다.');
             return false;
         }
 
