@@ -449,4 +449,8 @@
         display: flex;
         align-items: center;
     }
+
+    .NickNameForm .ToggleWrap {
+        margin-top: 1rem;
+    }
 }
