@@ -286,7 +286,7 @@
 
 /* 상세보기 모달 콘텐츠 */
 .detail-modalOverlay .detail-modalContent {
-    background-color: white;
+    background-color: var(--background-color);
     width: 90%;
     max-width: 700px;
     height: 50%;
@@ -351,6 +351,7 @@
 
 .detail-map-content-wrap-list:hover {
     background-color: #f9f9f9;
+    color:black;
     border-radius: 8px;
 }
 
