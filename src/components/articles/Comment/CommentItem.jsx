@@ -122,7 +122,7 @@ const CommentItem = ({ item }) => {
 
                 {!isDeleted && (
                     <div className='replyBtnWrap'>
-                        {username === item.memberName && (
+                        {userNo === item.memberNo && (
                             <>
                                 {isEditing ? (
                                     <button className='replyUpdateBtn' onClick={handleCancelEdit}>취소</button>
