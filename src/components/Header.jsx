@@ -30,7 +30,6 @@ function Header() {
         const theme = isDarkMode ? "dark" : "light";
         setIsDark(theme);
         document.documentElement.setAttribute("data-theme", theme);
-        console.log("Theme applied:", theme); // 디버깅용
     }, [isDarkMode]);
     //
 
