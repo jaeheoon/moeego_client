@@ -84,13 +84,18 @@ import { MyPageProvider } from './context/mypage/MyPageContext.jsx';
 import { ArticleProvider } from './context/article/ArticleContext.jsx';
 import { ProProvider } from './context/pro/ProContext.jsx';
 import { SignOutProvider } from './context/mypage/SignOutContext.jsx';
+import { UserInfoProvider } from "./context/pro/UserInfoContext.jsx";
 
 // OAuth2
 import Oauth2Redirect from './api/Oauth2Redirect.jsx'
 import KakaoMap from "./components/ProSearch/KakaoMap.jsx";
-import { UserInfoProvider } from "./context/pro/UserInfoContext.jsx";
 import ChannelIO from "./components/ChannelIO.jsx";
+
+// DarkMod
 import { DarkModeProvider } from "./context/darkmode/DarkModeContext.jsx";
+
+// ScrollOn
+import ResetScrollOnNavigate from './api/ResetScrollOnNavigate.jsx';
 
 const App = () => {
   return (
@@ -109,6 +114,7 @@ const App = () => {
                           <ArticleProvider>
                             <ProProvider>
                               <UserInfoProvider>
+                                <ResetScrollOnNavigate />
                                 {/* Header와 Footer를 제외할 조건 */}
                                 {!window.location.pathname.startsWith('/admin') && <Header />}
 
