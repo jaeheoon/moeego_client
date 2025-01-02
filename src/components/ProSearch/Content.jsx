@@ -64,7 +64,11 @@ const Content = () => {
     return (
         <div className="ContentWrap">
             <section>
-                <SearchBar />
+                <SearchBar
+                    pages={pages}
+                    currentPage={currentPage}
+                    onPageChange={(page) => fetchItems(page)}
+                    searchListItems={searchListItems} />
                 {searchListItems.length > 0 ? (searchListItems.map((item) => (
                     <SearchList key={item.proNo} item={item} proNo={item.proNo} />
                 ))) : (

@@ -1,30 +1,37 @@
 import React from "react";
-import "../../css/articles/Paging.css"; // CSS 파일 경로 수정 필요
+import "../../css/articles/Paging.css";
 
-const MapPaging = ({ pages, currentPage, onPageChange }) => {
+const MapPaging = ({ totalPages, currentPage, onPageChange }) => {
     const pageGroupSize = 5; // 한 그룹에 표시할 페이지 수
 
-    const startPage = Math.floor((currentPage) / pageGroupSize) * pageGroupSize + 1;
-    const endPage = Math.min(startPage + pageGroupSize - 1, pages);
+    // 현재 그룹의 첫 페이지와 마지막 페이지 계산
+    const startPage = Math.floor((currentPage - 1) / pageGroupSize) * pageGroupSize + 1;
+    const endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
 
+    // 페이지 변경 처리 함수
     const handlePageClick = (page) => {
-        if (page >= 1 && page <= pages) {
+        if (page >= 1 && page <= totalPages) {
             onPageChange(page); // 부모 컴포넌트에서 페이지 변경 처리
         }
     };
 
+    // 이전 그룹으로 이동
     const handlePrevGroup = () => {
-        if (startPage > 1) {
-            handlePageClick(startPage - 1);
+        const prevPage = startPage - 1;
+        if (prevPage >= 1) {
+            handlePageClick(prevPage);
         }
     };
 
+    // 다음 그룹으로 이동
     const handleNextGroup = () => {
-        if (endPage < pages) {
-            handlePageClick(endPage + 1);
+        const nextPage = endPage + 1;
+        if (nextPage <= totalPages) {
+            handlePageClick(nextPage);
         }
     };
 
+    // 현재 그룹의 페이지 번호 렌더링
     const renderPageNumbers = () => {
         const pageNumbers = [];
         for (let i = startPage; i <= endPage; i++) {
@@ -42,21 +49,15 @@ const MapPaging = ({ pages, currentPage, onPageChange }) => {
     };
 
     return (
-        <div className="pagingWrap">
+        <div className="pagination-container">
             {startPage > 1 && (
-                <button
-                    className="pagingPrevBtn"
-                    onClick={handlePrevGroup}
-                >
+                <button className="nav-button" onClick={handlePrevGroup}>
                     이전
                 </button>
             )}
-            <div className="pagingNumbers">{renderPageNumbers()}</div>
-            {endPage < pages && (
-                <button
-                    className="pagingNextBtn"
-                    onClick={handleNextGroup}
-                >
+            {renderPageNumbers()}
+            {endPage < totalPages && (
+                <button className="nav-button" onClick={handleNextGroup}>
                     다음
                 </button>
             )}

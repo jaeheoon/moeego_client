@@ -28,3 +28,15 @@
 .nav-button:hover, .page-button:hover {
     background-color: #d0d0d0;
 }
+
+@media screen and (max-width: 1250px) {
+    .page-button, .nav-button {
+        border-radius: 0.5rem;
+    margin: 0 5px;
+    padding: 0.5rem 0.7rem;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 0.825rem;
+    }
+}

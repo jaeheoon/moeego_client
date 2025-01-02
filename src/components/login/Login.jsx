@@ -107,7 +107,7 @@ const Login = () => {
                         </button>
                     </div>
                     <br />
-                    <div className="snsWrap">
+                    {/* <div className="snsWrap">
                         <button
                             type="button"
                             className="googleLoginBtn"
@@ -123,7 +123,7 @@ const Login = () => {
                             지메일로 시작
                         </button>
                     </div>
-                    <br />
+                    <br /> */}
                     <div className="login-function">
                         <div className="find">
                             <Link to="/signup">회원가입</Link>
