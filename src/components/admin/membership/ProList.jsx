@@ -10,7 +10,7 @@ const ProList = () => {
     const [pro, setPro] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-    const pageSize = 30; // 페이지 당 아이템 수 고정
+    const pageSize = 20; // 페이지 당 아이템 수 고정
 
     const navigate = useNavigate();
     const { setIsLoggedIn, setLoginStatus } = useContext(AuthContext);
