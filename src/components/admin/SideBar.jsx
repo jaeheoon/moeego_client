@@ -26,7 +26,7 @@ const SideBar = () => {
                         <li className="menu-item">대시보드</li>
                     </Link>
                     <Link to='/admin/proapproval' className='sideBar-Link'>
-                        <li className="menu-item">고수 권한 승인</li>
+                        <li className="menu-item">달인 권한 승인</li>
                     </Link>
                     <div>
                         <div
@@ -42,7 +42,7 @@ const SideBar = () => {
                                     <li className="submenu-item">일반 회원</li>
                                 </Link>
                                 <Link to='/admin/prolist' className='sideBar-Link'>
-                                    <li className="submenu-item">고수 회원</li>
+                                    <li className="submenu-item">달인 회원</li>
                                 </Link>
                                 <Link to='/admin/leavememberlist' className='sideBar-Link'>
                                     <li className="submenu-item">탈퇴 회원</li>

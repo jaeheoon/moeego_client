@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const MemberPieChart = ({ memberData, proData, leaveData }) => {
     // 각 데이터 배열의 길이를 기반으로 파이 차트 데이터 생성
-    const labels = ['일반 회원', '고수 회원', '탈퇴 회원'];
+    const labels = ['일반 회원', '달인 회원', '탈퇴 회원'];
     const data = [
         memberData, // 일반 회원 (숫자 값)
         proData,    // 고수 회원 (숫자 값)
@@ -36,7 +36,7 @@ const MemberPieChart = ({ memberData, proData, leaveData }) => {
 
     return (
         <div className="adminDashBoard-chart">
-            <p>회원 분포</p>
+            <p>전체 회원 분포</p>
             <div className="chart-container">
                 {data && data.length > 0 ? (
                     <Pie data={chartData} options={options} />

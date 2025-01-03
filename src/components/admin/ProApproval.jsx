@@ -67,7 +67,7 @@ const ProApproval = () => {
             try {
                 await apiAxios.post(`/api/admin/pro/approve/${memberNo}`);
                 fetchApprovalData(currentPage); // 승인 후 데이터 새로 고침
-                alert(`${name}님이 고수 등록 되었습니다.`); // 승인 완료 후 알림
+                alert(`${name}님이 달인 등록 되었습니다.`); // 승인 완료 후 알림
             } catch (err) {
                 console.error('승인 처리 중 오류 발생:', err);
                 setError(err.message);
@@ -82,7 +82,7 @@ const ProApproval = () => {
             try {
                 await apiAxios.post(`/api/admin/pro/cancel/${memberNo}`);
                 fetchApprovalData(currentPage); // 취소 후 데이터 새로 고침
-                alert(`${name}님이 고수 승인 취소 되었습니다.`); // 취소 완료 후 알림
+                alert(`${name}님이 달인 승인 취소 되었습니다.`); // 취소 완료 후 알림
             } catch (err) {
                 console.error('취소 처리 중 오류 발생:', err);
                 setError(err.message);
@@ -123,7 +123,7 @@ const ProApproval = () => {
     return (
         <div className="proApproval-approve-container">
             <div className="proApproval-approve-inner-container">
-                <h2 className="proApproval-approve-title">고수 권한 승인 | 고수가 되고 싶은가?</h2>
+                <h2 className="proApproval-approve-title">달인 권한 승인 | 달인이 되고 싶은가?</h2>
                 <hr className="proApproval-approve-divider" />
                 <div className="proApproval-table-container">
                     <table className="proApproval-approve-table">

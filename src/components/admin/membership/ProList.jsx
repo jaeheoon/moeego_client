@@ -119,7 +119,7 @@ const ProList = () => {
     return (
         <div className="membership-container">
             <div className="membership-inner-container">
-                <h2 className="membership-title">👑 고수 관리 👑</h2>
+                <h2 className="membership-title">👑 달인 관리 👑</h2>
 
                 <div className="membership-table-wrapper">
                     <hr className="membership-divider" />

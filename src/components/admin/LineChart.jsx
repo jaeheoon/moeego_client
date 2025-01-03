@@ -39,7 +39,7 @@ const LineChart = ({ weekMemberData, weekProData, weekLeaveMemberData }) => {
                 tension: 0.4, // 선의 굴곡 정도
             },
             {
-                label: '고수 등록 수',
+                label: '달인 등록 수',
                 data: fillData(pastWeekDates, weekProData), // 고수 신청 수 (Y축)
 
                 borderColor: 'rgba(255, 99, 132, 1)', // 고수 신청 선 색상
@@ -60,7 +60,7 @@ const LineChart = ({ weekMemberData, weekProData, weekLeaveMemberData }) => {
 
     return (
         <div className="adminDashBoard-chart">
-            <p>최근 일주일간 회원 가입 및 고수 등록 현황</p>
+            <p>최근 일주일간 회원 현황</p>
             <div className="chart-container"> {/* 차트 컨테이너 크기 제한 */}
                 <Line
                     data={chartData}
