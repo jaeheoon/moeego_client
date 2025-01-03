@@ -135,7 +135,7 @@ const CommentChild = ({ item }) => {
 
                     {!isDeleted && (
                         <div className='replyBtnWrap'>
-                            {userNo === item.memberNo && (
+                            {String(userNo) === String(item.memberNo) && (
                                 <>
                                     {isEditing ? (
                                         <button className='replyUpdateBtn' onClick={handleCancelEdit}>취소</button>
